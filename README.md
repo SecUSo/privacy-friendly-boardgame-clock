@@ -1,4 +1,4 @@
-## Privacy Friendly Boardgame Clock
+## Privacy Friendly Board Game Clock
 
 TODO
 
@@ -12,12 +12,12 @@ Android Studio is required if further development is intended.
 
 ## API Reference
 
-Mininum SDK: 14
-Target SDK: 23 
+- Mininum SDK: 14
+- Target SDK: 23 
 
 ## License
 
-Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+Privacy Friendly Board Game Clock is licensed under the GPLv3.
 
 
 
