@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/standalone_button"
+        android:text="@string/action_new_game"
+        android:textColor="@color/white"
+        android:onClick="newGameButton"/>
+
+    <Button
+        android:id="@+id/resumeGameButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/standalone_button"
+        android:text="@string/action_resume_game"
+        android:textColor="@color/white"
+        android:onClick="resumeGameButton"/>
+
+
+    <Button
+        android:id="@+id/playerManagementButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/standalone_button"
+        android:text="@string/action_player_management"
+        android:textColor="@color/white"
+        android:onClick="playerManagementButton"/>
+
+
+
+</LinearLayout><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_main_menu.xml -->

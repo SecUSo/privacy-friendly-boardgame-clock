@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+<!-- default -->
+<item>
+    <shape >
+        <solid
+            android:color="@color/middlegrey" />
+    </shape>
+</item>
+</selector><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/drawable/inactive_button.xml -->
