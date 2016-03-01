@@ -1,6 +1,7 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.res.Resources;
@@ -26,8 +27,9 @@ import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 public class NewGameFragment extends Fragment {
 
     private Activity activity;
-    private NumberPicker time_seconds, time_minutes, time_hours;
+    private NumberPicker round_time_s, round_time_m, round_time_h;
     private NumberPicker delta_seconds, delta_minutes, delta_hours;
+    private NumberPicker game_time_s, game_time_m, game_time_h;
     private CheckBox check_new_game_delta, check_new_game_reset_time;
     private Spinner game_mode;
     private EditText game_name;
@@ -40,17 +42,29 @@ public class NewGameFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(R.string.action_new_game);
         container.removeAllViews();
 
-        time_seconds =  (NumberPicker) rootView.findViewById(R.id.seconds_new_game_time);
-        time_seconds.setMinValue(0);
-        time_seconds.setMaxValue(59);
+        game_time_s =  (NumberPicker) rootView.findViewById(R.id.seconds_new_game_time);
+        game_time_s.setMinValue(0);
+        game_time_s.setMaxValue(59);
 
-        time_minutes =  (NumberPicker) rootView.findViewById(R.id.minutes_new_game_time);
-        time_minutes.setMinValue(0);
-        time_minutes.setMaxValue(59);
+        game_time_m =  (NumberPicker) rootView.findViewById(R.id.minutes_new_game_time);
+        game_time_m.setMinValue(0);
+        game_time_m.setMaxValue(59);
 
-        time_hours =  (NumberPicker) rootView.findViewById(R.id.hours_new_game_time);
-        time_hours.setMinValue(0);
-        time_hours.setMaxValue(99);
+        game_time_h =  (NumberPicker) rootView.findViewById(R.id.hours_new_game_time);
+        game_time_h.setMinValue(0);
+        game_time_h.setMaxValue(99);
+
+        round_time_s =  (NumberPicker) rootView.findViewById(R.id.seconds_new_round_time);
+        round_time_s.setMinValue(0);
+        round_time_s.setMaxValue(59);
+
+        round_time_m =  (NumberPicker) rootView.findViewById(R.id.minutes_new_round_time);
+        round_time_m.setMinValue(0);
+        round_time_m.setMaxValue(59);
+
+        round_time_h =  (NumberPicker) rootView.findViewById(R.id.hours_new_round_time);
+        round_time_h.setMinValue(0);
+        round_time_h.setMaxValue(99);
 
         delta_seconds =  (NumberPicker) rootView.findViewById(R.id.seconds_new_game_delta);
         delta_seconds.setMinValue(0);
@@ -65,12 +79,15 @@ public class NewGameFragment extends Fragment {
         delta_hours.setMaxValue(99);
 
         String dividerColor = "#024265";
-        setDividerColor(time_seconds, dividerColor);
-        setDividerColor(time_minutes, dividerColor);
-        setDividerColor(time_hours, dividerColor);
+        setDividerColor(round_time_s, dividerColor);
+        setDividerColor(round_time_m, dividerColor);
+        setDividerColor(round_time_h, dividerColor);
         setDividerColor(delta_seconds, dividerColor);
         setDividerColor(delta_minutes, dividerColor);
         setDividerColor(delta_hours, dividerColor);
+        setDividerColor(game_time_h, dividerColor);
+        setDividerColor(game_time_m, dividerColor);
+        setDividerColor(game_time_s, dividerColor);
 
         check_new_game_delta = ( CheckBox ) rootView.findViewById(R.id.check_new_game_delta);
         check_new_game_reset_time = (CheckBox) rootView.findViewById(R.id.check_new_game_reset_time);
@@ -94,15 +111,13 @@ public class NewGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createNewGame();
-
-                final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.content_frame, new ChoosePlayersFragment());
-                fragmentTransaction.addToBackStack("ChoosePlayersFragment");
-                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-                fragmentTransaction.commit();
             }
         });
+
+        //test data
+        check_new_game_reset_time.setChecked(true);
+        round_time_s.setValue(5);
+        game_time_m.setValue(1);
 
         return rootView;
     }
@@ -112,37 +127,63 @@ public class NewGameFragment extends Fragment {
         this.activity = activity;
     }
 
-    private void createNewGame(){
+    private void createNewGame() {
         Game newGame = new Game();
 
         //game name
         newGame.setName(game_name.getText().toString());
 
         //round time
-        int hours_in_seconds = time_hours.getValue() * 3600;
-        int minutes_in_seconds = time_minutes.getValue() * 60;
-        int total_time_in_seconds = time_seconds.getValue() + minutes_in_seconds + hours_in_seconds;
-        newGame.setRound_time(total_time_in_seconds);
+        int round_time_h_in_s = round_time_h.getValue() * 3600;
+        int round_time_m_in_s = round_time_m.getValue() * 60;
+        int round_total_time_in_s = round_time_s.getValue() + round_time_m_in_s + round_time_h_in_s;
+        newGame.setRound_time(round_total_time_in_s);
 
-        //reset round time
-        if (check_new_game_reset_time.isChecked())
-            newGame.setReset_round_time(1);
-        else
-            newGame.setReset_round_time(0);
+        //game time
+        int game_time_h_in_s = game_time_h.getValue() * 3600;
+        int game_time_m_in_s = game_time_m.getValue() * 60;
+        int game_total_time_in_s = game_time_s.getValue() + game_time_m_in_s + game_time_h_in_s;
+        newGame.setGame_time(game_total_time_in_s);
 
-        //round time delta
-        if (check_new_game_delta.isChecked()){
-            int delta_hours_in_seconds = delta_hours.getValue() * 3600;
-            int delta_minutes_in_seconds = delta_minutes.getValue() * 60;
-            int total_delta_in_seconds = delta_seconds.getValue() + delta_hours_in_seconds + delta_minutes_in_seconds;
+        if (game_total_time_in_s <= 0 || round_total_time_in_s <= 0){
+            new AlertDialog.Builder(activity)
+                    .setTitle("Error")
+                    .setMessage("Please set a game time and round time of at least 1 seconds to continue.")
+                    .setPositiveButton("OK", null)
+                    .show();
+        }else {
+            //reset round time
+            if (check_new_game_reset_time.isChecked())
+                newGame.setReset_round_time(1);
+            else
+                newGame.setReset_round_time(0);
 
-            newGame.setRound_time_delta(total_delta_in_seconds);
+            //round time delta
+            if (check_new_game_delta.isChecked()) {
+                int delta_hours_in_seconds = delta_hours.getValue() * 3600;
+                int delta_minutes_in_seconds = delta_minutes.getValue() * 60;
+                int total_delta_in_seconds = delta_seconds.getValue() + delta_hours_in_seconds + delta_minutes_in_seconds;
+
+                newGame.setRound_time_delta(total_delta_in_seconds);
+            }
+
+            //game mode
+            newGame.setGame_mode(game_mode.getSelectedItemPosition());
+
+            ((MainActivity) activity).setGame(newGame);
+
+            choosePlayers();
         }
+    }
 
-        //game mode
-        newGame.setGame_mode(game_mode.getSelectedItemPosition());
+    public void choosePlayers(){
 
-        ((MainActivity) activity).setGame(newGame);
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new ChoosePlayersFragment());
+        fragmentTransaction.addToBackStack("ChoosePlayersFragment");
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
     }
 
     private void setDividerColor(NumberPicker picker, String color) {

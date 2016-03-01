@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -134,9 +135,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void nextPlayerButton(View v){
+
+    }
+
+    boolean drawerOpened = false;
+
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 1) {
+        if (drawerOpened)
+            drawerLayout.closeDrawer(Gravity.LEFT);
+        else if (getFragmentManager().getBackStackEntryCount() > 1) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
@@ -151,12 +160,14 @@ public class MainActivity extends AppCompatActivity {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
 
+
     private void setupDrawer() {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                drawerOpened = true;
                 getSupportActionBar().setTitle(R.string.action_navigation);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -164,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
+                drawerOpened = false;
                 getSupportActionBar().setTitle(activityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }

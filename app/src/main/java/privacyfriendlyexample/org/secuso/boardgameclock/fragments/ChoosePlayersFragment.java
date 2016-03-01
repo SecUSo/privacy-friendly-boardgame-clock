@@ -1,8 +1,10 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
@@ -83,7 +86,6 @@ public class ChoosePlayersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createNewGame();
-                startNewGame();
             }
         });
 
@@ -105,16 +107,31 @@ public class ChoosePlayersFragment extends Fragment {
             }
         }
 
-        GamesDataSource gds = new GamesDataSource(activity);
-        gds.open();
-        gds.createGame(players, game.getName(), game.getRound_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta());
+        HashMap<Long, Long> player_round_times = new HashMap<>();
+        for (Player p : players){
+            player_round_times.put(p.getId(), Long.valueOf(game.getRound_time()));
+        }
 
-        gds.getAllGames();
-        gds.close();
+        if (players.size() < 2) new AlertDialog.Builder(activity)
+                .setTitle("Error")
+                .setMessage("Please choose at least two players to continue.")
+                .setPositiveButton("OK", null)
+                .show();
+        else {
 
-        game.setPlayers(players);
-        ((MainActivity) activity).setGame(game);
+            GamesDataSource gds = new GamesDataSource(activity);
+            gds.open();
+            gds.createGame(players, player_round_times, game.getName(), game.getRound_time(), game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta());
 
+            gds.getAllGames();
+            gds.close();
+
+            game.setPlayers(players);
+            game.setPlayer_round_times(player_round_times);
+            ((MainActivity) activity).setGame(game);
+
+            startNewGame();
+        }
     }
 
     public void onAttach(Activity activity) {
@@ -123,12 +140,13 @@ public class ChoosePlayersFragment extends Fragment {
     }
 
     public void startNewGame() {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new GameFragment());
-        fragmentTransaction.addToBackStack("GameFragment");
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-        fragmentTransaction.commit();
+            final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame, new GameFragment());
+            fragmentTransaction.addToBackStack("GameFragment");
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
+
     }
 
 

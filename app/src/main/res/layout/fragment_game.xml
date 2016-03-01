@@ -5,10 +5,31 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/game_current_player_header"
+        android:id="@+id/game_current_game_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:text="Game Time"
+        android:textColor="@color/darkblue"
+        android:background="@drawable/bottom_border"/>
+
+    <Chronometer android:id="@+id/game_chrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:textColor="@color/darkblue"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        />
+
+    <TextView
+        android:id="@+id/game_current_player_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:textStyle="bold"
         android:text="Current Player"
@@ -17,8 +38,8 @@
 
     <ImageView
         android:id="@+id/imageViewIcon"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -26,51 +47,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:textSize="20dp"
         android:textColor="@color/darkblue"/>
 
-    <!--TextView
-        android:id="@+id/game_current_player_round"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:text="Current Turn Number: XX"
-        android:textColor="@color/darkblue"/-->
-
-    <TextView
-        android:id="@+id/game_current_player_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:text="Time"
-        android:textColor="@color/darkblue"
-        android:background="@drawable/bottom_border"/>
-
-    <Chronometer android:id="@+id/chronometer"
+    <Chronometer android:id="@+id/round_chrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:textSize="50dp"
         android:layout_gravity="center"
         android:textColor="@color/darkblue"
-        android:paddingBottom="30dip"
-        android:paddingTop="30dip"
+        android:paddingBottom="20dip"
+        android:paddingTop="10dip"
         />
+
+    <Button
+        android:id="@+id/nextPlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/standalone_button"
+        android:text="Next Player"
+        android:visibility="invisible"
+        android:textColor="@color/white"
+        android:onClick="nextPlayerButton"/>
 
     <Button
         android:id="@+id/gamePlayPauseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/standalone_button"
         android:text="Play"
+        android:layout_gravity="bottom"
         android:textColor="@color/white"
         android:onClick="gamePlayPauseButton"/>
 

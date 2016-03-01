@@ -14,34 +14,42 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 
-/**
- * Created by yonjuni on 12.01.16.
- */
 public class GameFragment extends Fragment {
 
     Activity activity;
+    View rootView;
     private Game game;
+    private HashMap<Long, Long> playerRoundTimes;
+    private List<Player> players;
     private Player currentPlayer;
-    private boolean isPaused = true;
-    private boolean isFinished = false;
+    private int nextPlayerIndex = 0;
 
-    private Chronometer mChronometer;
-    private long timeWhenStopped = 0;
+    private long currentRoundTimeMs;
+    private long currentGameTimeMs;
+
+    private Chronometer roundChrono, gameChrono;
+    private long roundChronoTimeWhenStopped = 0;
+    private long gameChronoTimeWhenStopped = 0;
     private Button playPauseButton;
+    private Button nextPlayerButton;
+
+    private TextView currentPlayerTv;
+    private ImageView currentPlayerIcon;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         activity = getActivity();
 
-        View rootView = inflater.inflate(R.layout.fragment_game, container, false);
+        rootView = inflater.inflate(R.layout.fragment_game, container, false);
         container.removeAllViews();
 
         playPauseButton = (Button) rootView.findViewById(R.id.gamePlayPauseButton);
@@ -49,86 +57,205 @@ public class GameFragment extends Fragment {
         game = ((MainActivity) activity).getGame();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(game.getName());
 
-        if (game.getGame_mode() != 2)
-            currentPlayer = game.getPlayers().get(0);
-        else
-            currentPlayer = game.getPlayers().get(new Random().nextInt(game.getPlayers().size()));
+        players = game.getPlayers();
+        playerRoundTimes = game.getPlayer_round_times();
 
-        TextView tv = (TextView) rootView.findViewById(R.id.game_current_player_name);
-        tv.setText(currentPlayer.getName());
+        if (game.getGame_mode() == 0) {
+            currentPlayer = players.get(nextPlayerIndex);
+            nextPlayerIndex++;
+        } else if (game.getGame_mode() == 1) {
+            currentPlayer = players.get(nextPlayerIndex);
+            nextPlayerIndex = players.size() - 1;
+        } else {
+            int randomPlayerIndex = new Random().nextInt(players.size());
+            currentPlayer = players.get(randomPlayerIndex);
 
-        ImageView iv = (ImageView) rootView.findViewById(R.id.imageViewIcon);
-        iv.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+            nextPlayerIndex = new Random().nextInt(players.size());
+            while (nextPlayerIndex == randomPlayerIndex)
+                nextPlayerIndex = new Random().nextInt(players.size());
 
-        final long round_time_milliseconds = game.getRound_time() * 1000;
+        }
 
-        // init time text for chronometer
-        long time = round_time_milliseconds;
-        int h = (int) (time / 3600000);
-        int m = (int) (time - h * 3600000) / 60000;
-        int s = (int) (time - h * 3600000 - m * 60000) / 1000;
+        currentPlayerTv = (TextView) rootView.findViewById(R.id.game_current_player_name);
+        currentPlayerTv.setText(currentPlayer.getName());
+
+        currentPlayerIcon = (ImageView) rootView.findViewById(R.id.imageViewIcon);
+        currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+
+        currentRoundTimeMs = game.getRound_time() * 1000;
+        currentGameTimeMs = game.getGame_time() * 1000;
+
+        initChronometers();
+
+        nextPlayerButton = (Button) rootView.findViewById(R.id.nextPlayerButton);
+        nextPlayerButton.setOnClickListener(nextPlayer);
+
+        playPauseButton.setText("PLAY");
+        playPauseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
+                gameChrono.setBase(SystemClock.elapsedRealtime());
+                roundChrono.start();
+                gameChrono.start();
+                playPauseButton.setText("PAUSE");
+                playPauseButton.setOnClickListener(pause);
+
+                nextPlayerButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        System.err.println(players);
+
+        return rootView;
+    }
+
+    private void initChronometers() {
+
+        roundChrono = (Chronometer) rootView.findViewById(R.id.round_chrono);
+        gameChrono = (Chronometer) rootView.findViewById(R.id.game_chrono);
+
+        // init round time chronometer
+        String round_time_hh = getTimeStrings(currentRoundTimeMs)[0];
+        String round_time_mm = getTimeStrings(currentRoundTimeMs)[1];
+        String round_time_ss = getTimeStrings(currentRoundTimeMs)[2];
+        roundChrono.setFormat(round_time_hh + ":" + round_time_mm + ":" + round_time_ss);
+        roundChrono.setOnChronometerTickListener(roundChronoTicker);
+
+        // init game time chronometer
+        String game_time_hh = getTimeStrings(currentGameTimeMs)[0];
+        String game_time_mm = getTimeStrings(currentGameTimeMs)[1];
+        String game_time_ss = getTimeStrings(currentGameTimeMs)[2];
+        gameChrono.setFormat(game_time_hh + ":" + game_time_mm + ":" + game_time_ss);
+        gameChrono.setOnChronometerTickListener(gameChronoTicker);
+
+        roundChrono.setBase(SystemClock.elapsedRealtime());
+        gameChrono.setBase(SystemClock.elapsedRealtime());
+    }
+
+    //boolean roundEnded = false;
+
+    Chronometer.OnChronometerTickListener roundChronoTicker = new Chronometer.OnChronometerTickListener() {
+        @Override
+        public void onChronometerTick(Chronometer cArg) {
+
+            long time_ms = cArg.getBase() + currentRoundTimeMs - SystemClock.elapsedRealtime();
+            String hh = getTimeStrings(time_ms)[0];
+            String mm = getTimeStrings(time_ms)[1];
+            String ss = getTimeStrings(time_ms)[2];
+            cArg.setText(hh + ":" + mm + ":" + ss);
+
+            if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
+                if (game.getReset_round_time() == 0) {
+                    roundChrono.stop();
+                    gameChrono.stop();
+                    playPauseButton.setText("Show Results");
+                    playPauseButton.setOnClickListener(null);
+                }
+                else {
+                    nextPlayerButton.performClick();
+                }
+            }
+        }
+    };
+
+    Chronometer.OnChronometerTickListener gameChronoTicker = new Chronometer.OnChronometerTickListener() {
+        @Override
+        public void onChronometerTick(Chronometer cArg) {
+
+            long time_ms = cArg.getBase() + currentGameTimeMs - SystemClock.elapsedRealtime();
+            String hh = getTimeStrings(time_ms)[0];
+            String mm = getTimeStrings(time_ms)[1];
+            String ss = getTimeStrings(time_ms)[2];
+            cArg.setText(hh + ":" + mm + ":" + ss);
+
+            if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
+                roundChrono.stop();
+                gameChrono.stop();
+                playPauseButton.setText("Show Results");
+                playPauseButton.setOnClickListener(null);
+            }
+        }
+    };
+
+
+    private String[] getTimeStrings(long time_ms) {
+        int h = (int) (time_ms / 3600000);
+        int m = (int) (time_ms - h * 3600000) / 60000;
+        int s = (int) (time_ms - h * 3600000 - m * 60000) / 1000;
         String hh = h < 10 ? "0" + h : h + "";
         String mm = m < 10 ? "0" + m : m + "";
         String ss = s < 10 ? "0" + s : s + "";
 
-        // init chronometer
-        mChronometer = (Chronometer) rootView.findViewById(R.id.chronometer);
-
-        mChronometer.setFormat(hh + ":" + mm + ":" + ss);
-
-        mChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer cArg) {
-
-                long time = cArg.getBase() + round_time_milliseconds - SystemClock.elapsedRealtime();
-                int h = (int) (time / 3600000);
-                int m = (int) (time - h * 3600000) / 60000;
-                int s = (int) (time - h * 3600000 - m * 60000) / 1000;
-                String hh = h < 10 ? "0" + h : h + "";
-                String mm = m < 10 ? "0" + m : m + "";
-                String ss = s < 10 ? "0" + s : s + "";
-                cArg.setText(hh + ":" + mm + ":" + ss);
-
-                if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
-                    mChronometer.stop();
-                    isFinished = true;
-                    playPauseButton.setText("Show Results");
-                    playPauseButton.setOnClickListener(null);
-                }
-            }
-        });
-        mChronometer.setBase(SystemClock.elapsedRealtime());
-
-        // Watch for button clicks.
-        playPauseButton.setText("PLAY");
-        playPauseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mChronometer.setBase(SystemClock.elapsedRealtime());
-
-                mChronometer.start();
-                playPauseButton.setText("PAUSE");
-                playPauseButton.setOnClickListener(pause);
-                isPaused = false;
-            }
-        });
-        return rootView;
+        return new String[]{hh, mm, ss};
     }
 
     View.OnClickListener pause = new View.OnClickListener() {
         public void onClick(View v) {
-            timeWhenStopped = mChronometer.getBase() - SystemClock.elapsedRealtime();
-            mChronometer.stop();
-            playPauseButton.setText("PLAY");
+            roundChronoTimeWhenStopped = roundChrono.getBase() - SystemClock.elapsedRealtime();
+            gameChronoTimeWhenStopped = gameChrono.getBase() - SystemClock.elapsedRealtime();
+
+            nextPlayerButton.setVisibility(View.INVISIBLE);
+
+            roundChrono.stop();
+            gameChrono.stop();
+
+            playPauseButton.setText("RESUME");
             playPauseButton.setOnClickListener(run);
         }
     };
 
     View.OnClickListener run = new View.OnClickListener() {
         public void onClick(View v) {
-            mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-            mChronometer.start();
+
+            roundChrono.setBase(SystemClock.elapsedRealtime() + roundChronoTimeWhenStopped);
+            gameChrono.setBase(SystemClock.elapsedRealtime() + gameChronoTimeWhenStopped);
+
+            nextPlayerButton.setVisibility(View.VISIBLE);
+
+            roundChrono.start();
+            gameChrono.start();
+
             playPauseButton.setText("PAUSE");
             playPauseButton.setOnClickListener(pause);
+        }
+    };
+
+    View.OnClickListener nextPlayer = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
+            playPauseButton.performClick();
+
+            playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs / 1000);
+
+            if (game.getGame_mode() == 0) {
+                currentPlayer = players.get(nextPlayerIndex);
+                nextPlayerIndex = (nextPlayerIndex + 1) % players.size();
+            } else if (game.getGame_mode() == 1) {
+                currentPlayer = players.get(nextPlayerIndex);
+                if (nextPlayerIndex <= 0)
+                    nextPlayerIndex = players.size() - 1;
+                else
+                    nextPlayerIndex = nextPlayerIndex - 1;
+            } else if (game.getGame_mode() == 2) {
+                currentPlayer = players.get(nextPlayerIndex);
+
+                int randomPlayerIndex = new Random().nextInt(players.size());
+                while (randomPlayerIndex == nextPlayerIndex)
+                    randomPlayerIndex = new Random().nextInt(players.size());
+
+                nextPlayerIndex = randomPlayerIndex;
+            }
+
+            if (game.getReset_round_time() == 1) {
+                currentRoundTimeMs = game.getRound_time() * 1000;
+            } else {
+                currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId());
+            }
+
+            currentPlayerTv.setText(currentPlayer.getName());
+            currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+
         }
     };
 

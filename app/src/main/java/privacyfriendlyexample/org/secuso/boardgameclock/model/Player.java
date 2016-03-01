@@ -44,4 +44,9 @@ public class Player {
         this.photoUri = photoUri;
     }
 
+    @Override
+    public String toString(){
+        return name;
+    }
+
 }

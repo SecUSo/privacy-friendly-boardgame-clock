@@ -114,7 +114,6 @@ public class PlayersDataSource {
 
             if (Arrays.asList(playerIds).contains(idString))
                 playerList.add(player);
-            Log.d(LOG_TAG, "ID: " + player.getId() + ", Name: " + player.getName());
             cursor.moveToNext();
         }
 
@@ -135,7 +134,6 @@ public class PlayersDataSource {
         while(!cursor.isAfterLast()) {
             player = cursorToPlayer(cursor);
             playerList.add(player);
-            Log.d(LOG_TAG, "ID: " + player.getId() + ", Name: " + player.getName());
             cursor.moveToNext();
         }
 
