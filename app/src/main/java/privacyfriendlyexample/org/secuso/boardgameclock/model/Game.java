@@ -3,14 +3,12 @@ package privacyfriendlyexample.org.secuso.boardgameclock.model;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by Marco on 24.02.2016.
- */
 public class Game {
 
     private long id;
     private List<Player> players;
     private HashMap<Long, Long> player_round_times;
+    private HashMap<Long, Long> player_rounds;
     private String name;
     private long round_time;
     private long game_time;
@@ -86,13 +84,20 @@ public class Game {
         this.id = id;
     }
 
-
     public long getGame_time() {
         return game_time;
     }
 
     public void setGame_time(long game_time) {
         this.game_time = game_time;
+    }
+
+    public HashMap<Long, Long> getPlayer_rounds() {
+        return player_rounds;
+    }
+
+    public void setPlayer_rounds(HashMap<Long, Long> player_rounds) {
+        this.player_rounds = player_rounds;
     }
 
 }

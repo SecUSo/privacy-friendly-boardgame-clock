@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -24,7 +23,7 @@ import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.PFAListAdapter;
+import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 
 
 public class ChoosePlayersFragment extends Fragment {
@@ -48,7 +47,7 @@ public class ChoosePlayersFragment extends Fragment {
         playersDataSource.close();
 
         myListView = (ListView) rootView.findViewById(R.id.choose_players_list);
-        PFAListAdapter listAdapter = new PFAListAdapter(this.getActivity(), R.id.choose_players_list, list);
+        PlayerListAdapter listAdapter = new PlayerListAdapter(this.getActivity(), R.id.choose_players_list, list);
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -85,6 +84,7 @@ public class ChoosePlayersFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 createNewGame();
             }
         });
@@ -112,6 +112,11 @@ public class ChoosePlayersFragment extends Fragment {
             player_round_times.put(p.getId(), Long.valueOf(game.getRound_time()));
         }
 
+        HashMap<Long, Long> players_rounds = new HashMap<>();
+        for (Player p : players){
+            players_rounds.put(p.getId(), Long.valueOf(1));
+        }
+
         if (players.size() < 2) new AlertDialog.Builder(activity)
                 .setTitle("Error")
                 .setMessage("Please choose at least two players to continue.")
@@ -121,13 +126,14 @@ public class ChoosePlayersFragment extends Fragment {
 
             GamesDataSource gds = new GamesDataSource(activity);
             gds.open();
-            gds.createGame(players, player_round_times, game.getName(), game.getRound_time(), game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta());
+            gds.createGame(players, player_round_times, players_rounds, game.getName(), game.getRound_time(), game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta());
 
             gds.getAllGames();
             gds.close();
 
             game.setPlayers(players);
             game.setPlayer_round_times(player_round_times);
+            game.setPlayer_rounds(players_rounds);
             ((MainActivity) activity).setGame(game);
 
             startNewGame();

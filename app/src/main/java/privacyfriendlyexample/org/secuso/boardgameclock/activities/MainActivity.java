@@ -1,10 +1,12 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,8 +29,9 @@ import android.widget.TextView;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
-import privacyfriendlyexample.org.secuso.boardgameclock.fragments.ChoosePlayersFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.LoadGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
@@ -41,10 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    boolean drawerOpened = false;
     private String activityTitle;
     protected Game game;
-
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +66,13 @@ public class MainActivity extends AppCompatActivity {
         addDrawerItems();
         setupDrawer();
 
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[2];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
 
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_action_help, getString(R.string.action_help), "");
         drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
+        drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_tutorial, "Save Game", "");
+        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_tutorial, "Load Game", "");
+
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
         drawerList.setAdapter(adapter);
@@ -97,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void resumeGameButton(View v) {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new ResumeGameFragment());
-        fragmentTransaction.addToBackStack("ResumeGameFragment");
+        fragmentTransaction.replace(R.id.content_frame, new LoadGameFragment());
+        fragmentTransaction.addToBackStack("LoadGameFragment");
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         fragmentTransaction.commit();
@@ -116,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addContactSelectionButton(View v) {
-
     }
 
     public void choosePlayersButton(View v) {
@@ -131,21 +135,23 @@ public class MainActivity extends AppCompatActivity {
     public void addPlayerContactsButton(View v) {
     }
 
-    public void gamePlayPauseButton(View v){
+    public void gamePlayPauseButton(View v) {
+    }
+
+    public void nextPlayerButton(View v) {
+    }
+
+    public void loadGameButton(View v){
 
     }
 
-    public void nextPlayerButton(View v){
-
-    }
-
-    boolean drawerOpened = false;
 
     @Override
     public void onBackPressed() {
-        if (drawerOpened)
+
+        if (drawerOpened) {
             drawerLayout.closeDrawer(Gravity.LEFT);
-        else if (getFragmentManager().getBackStackEntryCount() > 1) {
+        } else if (getFragmentManager().getBackStackEntryCount() > 1) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
@@ -153,15 +159,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] mNavigationDrawerItemTitles = {getString(R.string.action_help), getString(R.string.action_about)};
+        String[] mNavigationDrawerItemTitles = {getString(R.string.action_help), getString(R.string.action_about), "Save Game", "Load Game" };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mNavigationDrawerItemTitles);
         drawerList.setAdapter(adapter);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
 
+    private GameFragment isGameRunning() {
+        if (getFragmentManager().getBackStackEntryCount() == 0)
+            return null;
+
+        FragmentManager.BackStackEntry backEntry = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1);
+        String str = backEntry.getName();
+
+        if (str.equals("GameFragment")) {
+            return (GameFragment) getFragmentManager().findFragmentByTag(str);
+        } else
+            return null;
+    }
 
     private void setupDrawer() {
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely open state. */
@@ -176,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 drawerOpened = false;
+
                 getSupportActionBar().setTitle(activityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -226,6 +246,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void saveGame(){
+
+    }
+
     private void selectItem(int position) {
 
         Fragment fragment = null;
@@ -236,6 +260,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 1:
                 fragment = new AboutFragment();
+                break;
+            case 2:
+                saveGame();
+                break;
+            case 3:
+                fragment = new LoadGameFragment();
                 break;
             default:
                 break;
@@ -271,14 +301,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View listItem = convertView;
-
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-            listItem = inflater.inflate(layoutResourceId, parent, false);
+            convertView = inflater.inflate(layoutResourceId, parent, false);
 
-            ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
-            TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
-            TextView textViewDescription = (TextView) listItem.findViewById(R.id.textViewDescription);
+            ImageView imageViewIcon = (ImageView) convertView.findViewById(R.id.imageViewIcon);
+            TextView textViewName = (TextView) convertView.findViewById(R.id.textViewName);
+            TextView textViewDescription = (TextView) convertView.findViewById(R.id.textViewDescription);
 
             ObjectDrawerItem folder = data[position];
 
@@ -286,8 +314,9 @@ public class MainActivity extends AppCompatActivity {
             textViewName.setText(folder.name);
             textViewDescription.setText(folder.description);
 
-            return listItem;
+            return convertView;
         }
 
     }
+
 }

@@ -2,6 +2,7 @@ package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -29,6 +30,7 @@ public class GameFragment extends Fragment {
     View rootView;
     private Game game;
     private HashMap<Long, Long> playerRoundTimes;
+    private HashMap<Long, Long> playerRounds;
     private List<Player> players;
     private Player currentPlayer;
     private int nextPlayerIndex = 0;
@@ -40,9 +42,14 @@ public class GameFragment extends Fragment {
     private long roundChronoTimeWhenStopped = 0;
     private long gameChronoTimeWhenStopped = 0;
     private Button playPauseButton;
+
+    public boolean gameFinished = false;
+    public boolean gameStarted = false;
+
     private Button nextPlayerButton;
 
     private TextView currentPlayerTv;
+    private TextView currentPlayerRound;
     private ImageView currentPlayerIcon;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +66,7 @@ public class GameFragment extends Fragment {
 
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
+        playerRounds = game.getPlayer_rounds();
 
         if (game.getGame_mode() == 0) {
             currentPlayer = players.get(nextPlayerIndex);
@@ -79,6 +87,9 @@ public class GameFragment extends Fragment {
         currentPlayerTv = (TextView) rootView.findViewById(R.id.game_current_player_name);
         currentPlayerTv.setText(currentPlayer.getName());
 
+        currentPlayerRound = (TextView) rootView.findViewById(R.id.game_current_player_round);
+        currentPlayerRound.setText("Round: " + playerRounds.get(currentPlayer.getId()).toString());
+
         currentPlayerIcon = (ImageView) rootView.findViewById(R.id.imageViewIcon);
         currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
 
@@ -87,12 +98,15 @@ public class GameFragment extends Fragment {
 
         initChronometers();
 
+
         nextPlayerButton = (Button) rootView.findViewById(R.id.nextPlayerButton);
         nextPlayerButton.setOnClickListener(nextPlayer);
 
         playPauseButton.setText("PLAY");
         playPauseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                gameStarted = true;
+
                 roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
                 gameChrono.setBase(SystemClock.elapsedRealtime());
                 roundChrono.start();
@@ -132,8 +146,6 @@ public class GameFragment extends Fragment {
         gameChrono.setBase(SystemClock.elapsedRealtime());
     }
 
-    //boolean roundEnded = false;
-
     Chronometer.OnChronometerTickListener roundChronoTicker = new Chronometer.OnChronometerTickListener() {
         @Override
         public void onChronometerTick(Chronometer cArg) {
@@ -144,14 +156,22 @@ public class GameFragment extends Fragment {
             String ss = getTimeStrings(time_ms)[2];
             cArg.setText(hh + ":" + mm + ":" + ss);
 
+            if (hh.equals("00") && mm.equals("00") &&
+                    (ss.equals("05") || ss.equals("04") || ss.equals("03") || ss.equals("02") || ss.equals("01") || ss.equals("00")))
+                roundChrono.setTextColor(Color.RED);
+            else
+                roundChrono.setTextColor(getResources().getColor(R.color.darkblue));
+
             if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
                 if (game.getReset_round_time() == 0) {
+                    gameFinished = true;
+
                     roundChrono.stop();
                     gameChrono.stop();
+                    nextPlayerButton.setVisibility(View.INVISIBLE);
                     playPauseButton.setText("Show Results");
                     playPauseButton.setOnClickListener(null);
-                }
-                else {
+                } else {
                     nextPlayerButton.performClick();
                 }
             }
@@ -168,9 +188,17 @@ public class GameFragment extends Fragment {
             String ss = getTimeStrings(time_ms)[2];
             cArg.setText(hh + ":" + mm + ":" + ss);
 
+            if (hh.equals("00") && mm.equals("00") &&
+                    (ss.equals("05") || ss.equals("04") || ss.equals("03") || ss.equals("02") || ss.equals("01") || ss.equals("00")))
+                gameChrono.setTextColor(Color.RED);
+            else
+                gameChrono.setTextColor(getResources().getColor(R.color.darkblue));
+
             if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
                 roundChrono.stop();
                 gameChrono.stop();
+
+                nextPlayerButton.setVisibility(View.INVISIBLE);
                 playPauseButton.setText("Show Results");
                 playPauseButton.setOnClickListener(null);
             }
@@ -226,7 +254,10 @@ public class GameFragment extends Fragment {
             roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
             playPauseButton.performClick();
 
-            playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs / 1000);
+            long currPlayerId = currentPlayer.getId();
+
+            playerRoundTimes.put(currPlayerId, currentRoundTimeMs / 1000);
+            playerRounds.put(currPlayerId, playerRounds.get(currPlayerId) + 1);
 
             if (game.getGame_mode() == 0) {
                 currentPlayer = players.get(nextPlayerIndex);
@@ -247,13 +278,19 @@ public class GameFragment extends Fragment {
                 nextPlayerIndex = randomPlayerIndex;
             }
 
+            currPlayerId = currentPlayer.getId();
+
             if (game.getReset_round_time() == 1) {
                 currentRoundTimeMs = game.getRound_time() * 1000;
             } else {
-                currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId());
+                currentRoundTimeMs = playerRoundTimes.get(currPlayerId);
             }
 
+            if ((game.getRound_time_delta() != -1) && (playerRounds.get(currPlayerId) > 1))
+                currentRoundTimeMs += game.getRound_time_delta() * 1000 * (playerRounds.get(currPlayerId) - 1);
+
             currentPlayerTv.setText(currentPlayer.getName());
+            currentPlayerRound.setText("Round: " + playerRounds.get(currentPlayer.getId()).toString());
             currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
 
         }
@@ -262,13 +299,12 @@ public class GameFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
     }
 
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
     }
+
 
 }

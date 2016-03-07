@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,8 +14,6 @@ import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 
 public class GamesDataSource {
-
-    private static final String LOG_TAG = GamesDataSource.class.getSimpleName();
 
     private SQLiteDatabase database;
     private DbHelper dbHelper;
@@ -26,6 +24,7 @@ public class GamesDataSource {
             DbHelper.GAMES_COL_NAME,
             DbHelper.GAMES_COL_PLAYERS,
             DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES,
+            DbHelper.GAMES_COL_PLAYERS_ROUNDS,
             DbHelper.GAMES_COL_ROUND_TIME,
             DbHelper.GAMES_COL_RESET_ROUND_TIME,
             DbHelper.GAMES_COL_GAME_MODE,
@@ -49,6 +48,7 @@ public class GamesDataSource {
 
     public Game createGame(List<Player> players,
                            HashMap<Long, Long> player_round_times,
+                           HashMap<Long, Long> player_rounds,
                            String name,
                            long round_time,
                            long game_time,
@@ -81,6 +81,14 @@ public class GamesDataSource {
         playerRoundTimes = playerRoundTimes.substring(0, playerRoundTimes.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES, playerRoundTimes);
 
+        // serialize player rounds
+        String playerRounds = "";
+        for (Player p : players)
+            playerRounds = playerRounds + player_rounds.get(p.getId()) + ";";
+        //remove last semicolon
+        playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
+        values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
+
         System.err.println(values);
         long insertId = database.insert(DbHelper.TABLE_GAMES, null, values);
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
@@ -92,6 +100,27 @@ public class GamesDataSource {
         cursor.close();
 
         return game;
+    }
+
+    public Game getGameWithId(String gameId){
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        Game newGame = null;
+
+        while(!cursor.isAfterLast()) {
+            Game game = cursorToGame(cursor);
+            String idString = String.valueOf(game.getId());
+
+            if (gameId.equals(idString))
+                newGame = game;
+
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return newGame;
     }
 
     public void deleteGame(Game g) {
@@ -106,6 +135,7 @@ public class GamesDataSource {
         int idName = cursor.getColumnIndex(DbHelper.GAMES_COL_NAME);
         int idPlayers = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS);
         int idPlayersRoundTimes = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES);
+        int idPlayersRounds = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS_ROUNDS);
         int idRound_time = cursor.getColumnIndex(DbHelper.GAMES_COL_ROUND_TIME);
         int idGame_time = cursor.getColumnIndex(DbHelper.GAMES_COL_GAME_TIME);
         int idReset_round_time = cursor.getColumnIndex(DbHelper.GAMES_COL_RESET_ROUND_TIME);
@@ -136,12 +166,21 @@ public class GamesDataSource {
             player_round_times.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerTimesArray[i]));
         }
 
+        //deserialize player rounds
+        String playerRounds = cursor.getString(idPlayersRounds);
+        String[] playerRoundsArray = playerRounds.split(";");
+        HashMap<Long, Long> player_rounds = new HashMap<>();
+        for (int i = 0; i < playerIdsArray.length; i++){
+            player_rounds.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerRoundsArray[i]));
+        }
+
         Game game = new Game();
         game.setId(id);
         game.setName(name);
         game.setRound_time(round_time);
         game.setGame_time(game_time);
         game.setPlayer_round_times(player_round_times);
+        game.setPlayer_rounds(player_rounds);
         game.setReset_round_time(reset_round_time);
         game.setGame_mode(game_mode);
         game.setRound_time_delta(round_time_delta);

@@ -29,6 +29,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_GAMES = "games";
     public static final String GAMES_COL_ID = "_id";
     public static final String GAMES_COL_PLAYERS = "players";
+    public static final String GAMES_COL_PLAYERS_ROUNDS = "players_rounds";
     public static final String GAMES_COL_PLAYERS_ROUND_TIMES = "players_times";
     public static final String GAMES_COL_NAME = "name";
     public static final String GAMES_COL_ROUND_TIME = "round_time";
@@ -44,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     GAMES_COL_NAME + " TEXT NOT NULL, " +
                     GAMES_COL_PLAYERS + " TEXT NOT NULL, " +
                     GAMES_COL_PLAYERS_ROUND_TIMES + " TEXT NOT NULL, " +
+                    GAMES_COL_PLAYERS_ROUNDS + " TEXT NOT NULL, " +
                     GAMES_COL_ROUND_TIME + " INTEGER NOT NULL, " +
                     GAMES_COL_GAME_TIME + " INTEGER NOT NULL, " +
                     GAMES_COL_RESET_ROUND_TIME + " INTEGER NOT NULL, " +
