@@ -1,7 +1,9 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +25,10 @@ import java.util.Random;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
+import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
+import privacyfriendlyexample.org.secuso.boardgameclock.view.OnSwipeTouchListener;
 
 public class GameFragment extends Fragment {
 
@@ -32,21 +38,19 @@ public class GameFragment extends Fragment {
     private HashMap<Long, Long> playerRoundTimes;
     private HashMap<Long, Long> playerRounds;
     private List<Player> players;
-    private Player currentPlayer;
-    private int nextPlayerIndex = 0;
 
+    private Player currentPlayer;
+    private int nextPlayerIndex;
+    private int startPlayerIndex;
     private long currentRoundTimeMs;
     private long currentGameTimeMs;
-
-    private Chronometer roundChrono, gameChrono;
     private long roundChronoTimeWhenStopped = 0;
     private long gameChronoTimeWhenStopped = 0;
+
+    private Chronometer roundChrono, gameChrono;
     private Button playPauseButton;
 
-    public boolean gameFinished = false;
-    public boolean gameStarted = false;
-
-    private Button nextPlayerButton;
+    private Button nextPlayerButton, saveGameButton;
 
     private TextView currentPlayerTv;
     private TextView currentPlayerRound;
@@ -64,25 +68,14 @@ public class GameFragment extends Fragment {
         game = ((MainActivity) activity).getGame();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(game.getName());
 
+        nextPlayerIndex = game.getNextPlayerIndex();
+        startPlayerIndex = game.getStartPlayerIndex();
+
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
         playerRounds = game.getPlayer_rounds();
 
-        if (game.getGame_mode() == 0) {
-            currentPlayer = players.get(nextPlayerIndex);
-            nextPlayerIndex++;
-        } else if (game.getGame_mode() == 1) {
-            currentPlayer = players.get(nextPlayerIndex);
-            nextPlayerIndex = players.size() - 1;
-        } else {
-            int randomPlayerIndex = new Random().nextInt(players.size());
-            currentPlayer = players.get(randomPlayerIndex);
-
-            nextPlayerIndex = new Random().nextInt(players.size());
-            while (nextPlayerIndex == randomPlayerIndex)
-                nextPlayerIndex = new Random().nextInt(players.size());
-
-        }
+        currentPlayer = players.get(startPlayerIndex);
 
         currentPlayerTv = (TextView) rootView.findViewById(R.id.game_current_player_name);
         currentPlayerTv.setText(currentPlayer.getName());
@@ -93,20 +86,20 @@ public class GameFragment extends Fragment {
         currentPlayerIcon = (ImageView) rootView.findViewById(R.id.imageViewIcon);
         currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
 
-        currentRoundTimeMs = game.getRound_time() * 1000;
-        currentGameTimeMs = game.getGame_time() * 1000;
+        currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId()) * 1000;
+        currentGameTimeMs = game.getCurrentGameTime() * 1000;
 
         initChronometers();
-
 
         nextPlayerButton = (Button) rootView.findViewById(R.id.nextPlayerButton);
         nextPlayerButton.setOnClickListener(nextPlayer);
 
+        saveGameButton = (Button) rootView.findViewById(R.id.saveGameButton);
+        saveGameButton.setOnClickListener(saveGame);
+
         playPauseButton.setText("PLAY");
         playPauseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                gameStarted = true;
-
                 roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
                 gameChrono.setBase(SystemClock.elapsedRealtime());
                 roundChrono.start();
@@ -115,10 +108,20 @@ public class GameFragment extends Fragment {
                 playPauseButton.setOnClickListener(pause);
 
                 nextPlayerButton.setVisibility(View.VISIBLE);
+
+                rootView.setOnTouchListener(new OnSwipeTouchListener(activity.getBaseContext()) {
+                    @Override
+                    public void onSwipeLeft() {
+                        nextPlayerButton.callOnClick();
+                    }
+
+                    @Override
+                    public void onSwipeRight() {
+                        nextPlayerButton.callOnClick();
+                    }
+                });
             }
         });
-
-        System.err.println(players);
 
         return rootView;
     }
@@ -146,6 +149,48 @@ public class GameFragment extends Fragment {
         gameChrono.setBase(SystemClock.elapsedRealtime());
     }
 
+    private void refreshRoundChronometer(){
+        roundChrono = (Chronometer) rootView.findViewById(R.id.round_chrono);
+
+        // init round time chronometer
+        String round_time_hh = getTimeStrings(currentRoundTimeMs)[0];
+        String round_time_mm = getTimeStrings(currentRoundTimeMs)[1];
+        String round_time_ss = getTimeStrings(currentRoundTimeMs)[2];
+        roundChrono.setFormat(round_time_hh + ":" + round_time_mm + ":" + round_time_ss);
+        roundChrono.setOnChronometerTickListener(roundChronoTicker);
+
+        roundChrono.setBase(SystemClock.elapsedRealtime());
+    }
+
+    View.OnClickListener saveGame = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("Save Game")
+                    .setMessage("Are you sure you want to save the current game?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            playerRoundTimes.put(currentPlayer.getId(), (currentRoundTimeMs + roundChronoTimeWhenStopped) / 1000);
+                            playerRounds.put(currentPlayer.getId(), playerRounds.get(currentPlayer.getId()));
+
+                            game.setPlayer_round_times(playerRoundTimes);
+                            game.setPlayer_rounds(playerRounds);
+                            game.setNextPlayerIndex(nextPlayerIndex);
+                            game.setStartPlayerIndex(startPlayerIndex);
+                            game.setCurrentGameTime((currentGameTimeMs + gameChronoTimeWhenStopped) / 1000);
+                            game.setSaved(1);
+
+                            GamesDataSource gds = new GamesDataSource(getActivity());
+                            gds.open();
+                            gds.saveGame(game);
+                            gds.close();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        }
+    };
+
     Chronometer.OnChronometerTickListener roundChronoTicker = new Chronometer.OnChronometerTickListener() {
         @Override
         public void onChronometerTick(Chronometer cArg) {
@@ -164,13 +209,19 @@ public class GameFragment extends Fragment {
 
             if (hh.equals("00") && mm.equals("00") && ss.equals("00")) {
                 if (game.getReset_round_time() == 0) {
-                    gameFinished = true;
-
                     roundChrono.stop();
                     gameChrono.stop();
-                    nextPlayerButton.setVisibility(View.INVISIBLE);
+                    nextPlayerButton.setVisibility(View.GONE);
+                    saveGameButton.setVisibility(View.GONE);
                     playPauseButton.setText("Show Results");
-                    playPauseButton.setOnClickListener(null);
+                    playPauseButton.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getActivity(), "NOT YET IMPLEMENTED", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    });
                 } else {
                     nextPlayerButton.performClick();
                 }
@@ -219,16 +270,21 @@ public class GameFragment extends Fragment {
 
     View.OnClickListener pause = new View.OnClickListener() {
         public void onClick(View v) {
+
             roundChronoTimeWhenStopped = roundChrono.getBase() - SystemClock.elapsedRealtime();
             gameChronoTimeWhenStopped = gameChrono.getBase() - SystemClock.elapsedRealtime();
 
             nextPlayerButton.setVisibility(View.INVISIBLE);
+            rootView.setOnTouchListener(null);
 
             roundChrono.stop();
             gameChrono.stop();
 
+            saveGameButton.setVisibility(View.VISIBLE);
+
             playPauseButton.setText("RESUME");
             playPauseButton.setOnClickListener(run);
+
         }
     };
 
@@ -239,6 +295,19 @@ public class GameFragment extends Fragment {
             gameChrono.setBase(SystemClock.elapsedRealtime() + gameChronoTimeWhenStopped);
 
             nextPlayerButton.setVisibility(View.VISIBLE);
+            saveGameButton.setVisibility(View.GONE);
+
+            rootView.setOnTouchListener(new OnSwipeTouchListener(activity.getBaseContext()) {
+                @Override
+                public void onSwipeLeft() {
+                    nextPlayerButton.callOnClick();
+                }
+
+                @Override
+                public void onSwipeRight() {
+                    nextPlayerButton.callOnClick();
+                }
+            });
 
             roundChrono.start();
             gameChrono.start();
@@ -251,13 +320,15 @@ public class GameFragment extends Fragment {
     View.OnClickListener nextPlayer = new View.OnClickListener() {
         public void onClick(View v) {
 
-            roundChrono.setBase(SystemClock.elapsedRealtime() + 1000);
+            long currPlayerId = currentPlayer.getId();
+            System.err.println(currPlayerId);
+            playerRoundTimes.put(currPlayerId, (currentRoundTimeMs + roundChronoTimeWhenStopped) / 1000);
+
+            roundChrono.setBase(SystemClock.elapsedRealtime());
             playPauseButton.performClick();
 
-            long currPlayerId = currentPlayer.getId();
-
-            playerRoundTimes.put(currPlayerId, currentRoundTimeMs / 1000);
             playerRounds.put(currPlayerId, playerRounds.get(currPlayerId) + 1);
+            startPlayerIndex = nextPlayerIndex;
 
             if (game.getGame_mode() == 0) {
                 currentPlayer = players.get(nextPlayerIndex);
@@ -283,7 +354,7 @@ public class GameFragment extends Fragment {
             if (game.getReset_round_time() == 1) {
                 currentRoundTimeMs = game.getRound_time() * 1000;
             } else {
-                currentRoundTimeMs = playerRoundTimes.get(currPlayerId);
+                currentRoundTimeMs = playerRoundTimes.get(currPlayerId) * 1000;
             }
 
             if ((game.getRound_time_delta() != -1) && (playerRounds.get(currPlayerId) > 1))
@@ -293,6 +364,7 @@ public class GameFragment extends Fragment {
             currentPlayerRound.setText("Round: " + playerRounds.get(currentPlayer.getId()).toString());
             currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
 
+            refreshRoundChronometer();
         }
     };
 

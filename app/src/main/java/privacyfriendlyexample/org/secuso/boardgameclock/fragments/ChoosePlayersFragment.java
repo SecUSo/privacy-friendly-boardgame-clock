@@ -16,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
@@ -117,19 +118,41 @@ public class ChoosePlayersFragment extends Fragment {
             players_rounds.put(p.getId(), Long.valueOf(1));
         }
 
+        long dateMs = System.currentTimeMillis();
+
         if (players.size() < 2) new AlertDialog.Builder(activity)
                 .setTitle("Error")
                 .setMessage("Please choose at least two players to continue.")
                 .setPositiveButton("OK", null)
                 .show();
         else {
-
             GamesDataSource gds = new GamesDataSource(activity);
             gds.open();
-            gds.createGame(players, player_round_times, players_rounds, game.getName(), game.getRound_time(), game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta());
-
+            game = gds.createGame(dateMs, players, player_round_times, players_rounds, game.getName(), game.getRound_time(),
+                    game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved());
             gds.getAllGames();
             gds.close();
+
+
+            //start player index
+            if (game.getGame_mode() == 0){
+                game.setStartPlayerIndex(0);
+                game.setNextPlayerIndex(1);
+            }
+            else if (game.getGame_mode() == 1){
+                game.setStartPlayerIndex(0);
+                game.setNextPlayerIndex(players.size() - 1);
+            }
+            else if (game.getGame_mode() == 2){
+                int randomPlayerIndex = new Random().nextInt(players.size());
+                game.setStartPlayerIndex(randomPlayerIndex);
+
+                randomPlayerIndex = new Random().nextInt(players.size());
+                while (randomPlayerIndex == game.getStartPlayerIndex())
+                    randomPlayerIndex = new Random().nextInt(players.size());
+
+                game.setNextPlayerIndex(randomPlayerIndex);
+            }
 
             game.setPlayers(players);
             game.setPlayer_round_times(player_round_times);

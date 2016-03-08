@@ -32,13 +32,6 @@ public class MainMenuFragment extends Fragment {
         return rootView;
     }
 
-    private static String resourceToUri (Context context,int resID) {
-        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                context.getResources().getResourcePackageName(resID) + '/' +
-                context.getResources().getResourceTypeName(resID) + '/' +
-                context.getResources().getResourceEntryName(resID)).toString();
-    }
-
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;

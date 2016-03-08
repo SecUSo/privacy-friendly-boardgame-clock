@@ -1,5 +1,7 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,8 +17,43 @@ public class Game {
     private int reset_round_time; //0 = false, 1 = true
     private int game_mode; //0 = clockwise, 1= counter_clockwise, 2=random
     private long round_time_delta = -1;
+    private int saved = 0;
+    private long date;
+    private String dateString;
+
+    public int getStartPlayerIndex() {
+        return startPlayerIndex;
+    }
+
+    public void setStartPlayerIndex(int startPlayerIndex) {
+        this.startPlayerIndex = startPlayerIndex;
+    }
+
+    private int startPlayerIndex;
+
+
+    private int nextPlayerIndex;
+
+    public long getCurrentGameTime() {
+        return currentGameTime;
+    }
+
+    public void setCurrentGameTime(long currentGameTime) {
+        this.currentGameTime = currentGameTime;
+    }
+
+    private long currentGameTime;
 
     public Game() {
+    }
+
+
+    public int getNextPlayerIndex() {
+        return nextPlayerIndex;
+    }
+
+    public void setNextPlayerIndex(int nextPlayerIndex) {
+        this.nextPlayerIndex = nextPlayerIndex;
     }
 
     public List<Player> getPlayers() {
@@ -99,5 +136,30 @@ public class Game {
     public void setPlayer_rounds(HashMap<Long, Long> player_rounds) {
         this.player_rounds = player_rounds;
     }
+
+
+    public int getSaved() {
+        return saved;
+    }
+
+    public void setSaved(int saved) {
+        this.saved = saved;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy kk:mm");
+        dateString = formatter.format(new Date(date));
+    }
+
+    public String getDateString(){
+        return dateString;
+    }
+
 
 }

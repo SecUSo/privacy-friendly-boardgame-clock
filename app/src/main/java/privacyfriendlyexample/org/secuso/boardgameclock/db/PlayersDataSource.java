@@ -52,7 +52,7 @@ public class PlayersDataSource {
         if (photoUri != null)
             values.put(DbHelper.PLAYERS_COL_PHOTOURI, photoUri);
         else
-            values.put(DbHelper.PLAYERS_COL_PHOTOURI, resourceToUri(context, R.mipmap.ic_launcher));
+            values.put(DbHelper.PLAYERS_COL_PHOTOURI, resourceToUri(context, R.drawable.ic_launcher));
 
         long insertId = database.insert(DbHelper.TABLE_PLAYERS, null, values);
 

@@ -3,14 +3,50 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Choose Language"/>
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center" />
 
-    <TextView
+    <Button
+        android:id="@+id/languageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dark Theme / Light Theme"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/standalone_button"
+        android:onClick="languageButton"
+        android:text="Change Language"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/themeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/standalone_button"
+        android:onClick="themeButton"
+        android:text="Change Color Theme"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/importBackupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/standalone_button"
+        android:onClick="importBackupButton"
+        android:text="Import Database Backup"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/exportBackupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/standalone_button"
+        android:onClick="exportBackupButton"
+        android:text="Export Database Backup"
+        android:textColor="@color/white" />
 
 </LinearLayout><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_settings.xml -->

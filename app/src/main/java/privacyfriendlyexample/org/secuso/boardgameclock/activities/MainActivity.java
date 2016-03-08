@@ -27,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
@@ -36,6 +38,7 @@ import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragme
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.ResumeGameFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.SettingsFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.ObjectDrawerItem;
 
@@ -66,13 +69,10 @@ public class MainActivity extends AppCompatActivity {
         addDrawerItems();
         setupDrawer();
 
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[2];
 
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_action_help, getString(R.string.action_help), "");
         drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
-        drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_tutorial, "Save Game", "");
-        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_tutorial, "Load Game", "");
-
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
         drawerList.setAdapter(adapter);
@@ -120,7 +120,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void settingsButton(View v){
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new SettingsFragment());
+        fragmentTransaction.addToBackStack("SettingsFragment");
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
+    }
+
     public void addContactSelectionButton(View v) {
+    }
+
+    public void languageButton(View v){
+
+    }
+
+    public void themeButton(View v){
+
+    }
+
+    public void importBackupButton(View v){
+
+    }
+
+    public void exportBackupButton(View v){
+
     }
 
     public void choosePlayersButton(View v) {
@@ -141,6 +166,10 @@ public class MainActivity extends AppCompatActivity {
     public void nextPlayerButton(View v) {
     }
 
+    public void saveGameButton(View v){
+
+    }
+
     public void loadGameButton(View v){
 
     }
@@ -159,24 +188,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] mNavigationDrawerItemTitles = {getString(R.string.action_help), getString(R.string.action_about), "Save Game", "Load Game" };
+        String[] mNavigationDrawerItemTitles = {getString(R.string.action_help), getString(R.string.action_about)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mNavigationDrawerItemTitles);
         drawerList.setAdapter(adapter);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-    }
-
-    private GameFragment isGameRunning() {
-        if (getFragmentManager().getBackStackEntryCount() == 0)
-            return null;
-
-        FragmentManager.BackStackEntry backEntry = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1);
-        String str = backEntry.getName();
-
-        if (str.equals("GameFragment")) {
-            return (GameFragment) getFragmentManager().findFragmentByTag(str);
-        } else
-            return null;
     }
 
     private void setupDrawer() {
@@ -246,9 +262,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void saveGame(){
-
-    }
 
     private void selectItem(int position) {
 
@@ -260,12 +273,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 1:
                 fragment = new AboutFragment();
-                break;
-            case 2:
-                saveGame();
-                break;
-            case 3:
-                fragment = new LoadGameFragment();
                 break;
             default:
                 break;

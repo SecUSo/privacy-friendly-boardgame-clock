@@ -55,7 +55,7 @@ public class LoadGameFragment extends ListFragment {
         final GamesDataSource gds = new GamesDataSource(getActivity());
         gds.open();
         final ListView myListView = getListView();
-        List<Game> gamesList = gds.getAllGames();
+        List<Game> gamesList = gds.getSavedGames();
         gds.close();
 
         final GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), this.getId(), gamesList);

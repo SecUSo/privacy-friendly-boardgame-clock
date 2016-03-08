@@ -9,7 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
@@ -40,11 +43,7 @@ public class GamesListAdapter extends ArrayAdapter { //--CloneChangeRequired
                         .setText(g.getName());
 
                 ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(String.valueOf(g.getId()));
-
-                ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setVisibility(View.INVISIBLE);
-
+                        .setText(g.getDateString());
             }
         } catch (Exception e) {
             e.printStackTrace();
