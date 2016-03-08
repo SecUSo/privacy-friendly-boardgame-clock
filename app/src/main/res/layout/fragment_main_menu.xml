@@ -4,37 +4,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center" />
+
     <Button
         android:id="@+id/newGameButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
+        android:onClick="newGameButton"
         android:text="@string/action_new_game"
-        android:textColor="@color/white"
-        android:onClick="newGameButton"/>
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/resumeGameButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
+        android:onClick="resumeGameButton"
         android:text="@string/action_resume_game"
-        android:textColor="@color/white"
-        android:onClick="resumeGameButton"/>
+        android:textColor="@color/white" />
 
 
     <Button
         android:id="@+id/playerManagementButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
+        android:onClick="playerManagementButton"
         android:text="@string/action_player_management"
-        android:textColor="@color/white"
-        android:onClick="playerManagementButton"/>
+        android:textColor="@color/white" />
 
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/standalone_button"
+        android:onClick="settingsButton"
+        android:text="Settings"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

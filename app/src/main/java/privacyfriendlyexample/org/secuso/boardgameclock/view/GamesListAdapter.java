@@ -9,18 +9,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 
-public class PFAListAdapter extends ArrayAdapter { //--CloneChangeRequired
+public class GamesListAdapter extends ArrayAdapter { //--CloneChangeRequired
     private List mList; //--CloneChangeRequired
     private Context mContext;
 
-    public PFAListAdapter(Context context, int textViewResourceId,
-                       List list) { //--CloneChangeRequired
+    public GamesListAdapter(Context context, int textViewResourceId,
+                            List list) { //--CloneChangeRequired
         super(context, textViewResourceId, list);
         this.mList = list;
         this.mContext = context;
@@ -33,18 +36,14 @@ public class PFAListAdapter extends ArrayAdapter { //--CloneChangeRequired
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = vi.inflate(R.layout.listview_item_row, null); //--CloneChangeRequired(list_item)
             }
-            final Player p = (Player) mList.get(position); //--CloneChangeRequired
-            if (p != null) {
+            final Game g = (Game) mList.get(position); //--CloneChangeRequired
+            if (g != null) {
                 // setting list_item views
                 ((TextView) view.findViewById(R.id.textViewName))
-                        .setText(p.getName());
+                        .setText(g.getName());
 
                 ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText("<Placeholder>");
-
-                ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageURI(Uri.parse(p.getPhotoUri()));
-
+                        .setText(g.getDateString());
             }
         } catch (Exception e) {
             e.printStackTrace();

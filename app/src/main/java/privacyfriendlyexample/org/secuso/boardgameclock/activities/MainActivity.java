@@ -1,10 +1,12 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,14 +27,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
-import privacyfriendlyexample.org.secuso.boardgameclock.fragments.ChoosePlayersFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.LoadGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.ResumeGameFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.SettingsFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.ObjectDrawerItem;
 
@@ -40,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    boolean drawerOpened = false;
     private String activityTitle;
     protected Game game;
-
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void resumeGameButton(View v) {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new ResumeGameFragment());
-        fragmentTransaction.addToBackStack("ResumeGameFragment");
+        fragmentTransaction.replace(R.id.content_frame, new LoadGameFragment());
+        fragmentTransaction.addToBackStack("LoadGameFragment");
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         fragmentTransaction.commit();
@@ -114,7 +120,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void settingsButton(View v){
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new SettingsFragment());
+        fragmentTransaction.addToBackStack("SettingsFragment");
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
+    }
+
     public void addContactSelectionButton(View v) {
+    }
+
+    public void languageButton(View v){
+
+    }
+
+    public void themeButton(View v){
+
+    }
+
+    public void importBackupButton(View v){
+
+    }
+
+    public void exportBackupButton(View v){
 
     }
 
@@ -130,13 +160,27 @@ public class MainActivity extends AppCompatActivity {
     public void addPlayerContactsButton(View v) {
     }
 
-    public void gamePlayPauseButton(View v){
+    public void gamePlayPauseButton(View v) {
+    }
+
+    public void nextPlayerButton(View v) {
+    }
+
+    public void saveGameButton(View v){
 
     }
 
+    public void loadGameButton(View v){
+
+    }
+
+
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 1) {
+
+        if (drawerOpened) {
+            drawerLayout.closeDrawer(Gravity.LEFT);
+        } else if (getFragmentManager().getBackStackEntryCount() > 1) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
@@ -152,11 +196,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawer() {
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                drawerOpened = true;
                 getSupportActionBar().setTitle(R.string.action_navigation);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -164,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
+                drawerOpened = false;
+
                 getSupportActionBar().setTitle(activityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -214,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void selectItem(int position) {
 
         Fragment fragment = null;
@@ -259,14 +308,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View listItem = convertView;
-
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-            listItem = inflater.inflate(layoutResourceId, parent, false);
+            convertView = inflater.inflate(layoutResourceId, parent, false);
 
-            ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
-            TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
-            TextView textViewDescription = (TextView) listItem.findViewById(R.id.textViewDescription);
+            ImageView imageViewIcon = (ImageView) convertView.findViewById(R.id.imageViewIcon);
+            TextView textViewName = (TextView) convertView.findViewById(R.id.textViewName);
+            TextView textViewDescription = (TextView) convertView.findViewById(R.id.textViewDescription);
 
             ObjectDrawerItem folder = data[position];
 
@@ -274,8 +321,9 @@ public class MainActivity extends AppCompatActivity {
             textViewName.setText(folder.name);
             textViewDescription.setText(folder.description);
 
-            return listItem;
+            return convertView;
         }
 
     }
+
 }

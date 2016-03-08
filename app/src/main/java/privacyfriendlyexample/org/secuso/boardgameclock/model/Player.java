@@ -1,9 +1,5 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.model;
 
-import android.net.Uri;
-
-import privacyfriendlyexample.org.secuso.boardgameclock.R;
-
 public class Player {
 
     private long id;
@@ -42,6 +38,11 @@ public class Player {
 
     public void setPhotoUri(String photoUri) {
         this.photoUri = photoUri;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 
 }

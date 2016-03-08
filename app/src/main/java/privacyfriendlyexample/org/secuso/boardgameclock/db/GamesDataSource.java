@@ -4,9 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
@@ -14,20 +15,26 @@ import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 
 public class GamesDataSource {
 
-    private static final String LOG_TAG = GamesDataSource.class.getSimpleName();
-
     private SQLiteDatabase database;
     private DbHelper dbHelper;
     private Context context;
 
     private String[] columns = {
             DbHelper.GAMES_COL_ID,
+            DbHelper.GAMES_COL_DATE,
             DbHelper.GAMES_COL_NAME,
             DbHelper.GAMES_COL_PLAYERS,
+            DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES,
+            DbHelper.GAMES_COL_PLAYERS_ROUNDS,
             DbHelper.GAMES_COL_ROUND_TIME,
             DbHelper.GAMES_COL_RESET_ROUND_TIME,
             DbHelper.GAMES_COL_GAME_MODE,
-            DbHelper.GAMES_COL_ROUND_TIME_DELTA
+            DbHelper.GAMES_COL_ROUND_TIME_DELTA,
+            DbHelper.GAMES_COL_GAME_TIME,
+            DbHelper.GAMES_COL_CURRENT_GAME_TIME,
+            DbHelper.GAMES_COL_NEXT_PLAYER_INDEX,
+            DbHelper.GAMES_COL_START_PLAYER_INDEX,
+            DbHelper.GAMES_COL_SAVED
     };
 
 
@@ -44,20 +51,33 @@ public class GamesDataSource {
         dbHelper.close();
     }
 
-    public Game createGame(List<Player> players,
+    public Game createGame(long date,
+                           List<Player> players,
+                           HashMap<Long, Long> player_round_times,
+                           HashMap<Long, Long> player_rounds,
                            String name,
-                           int round_time,
+                           long round_time,
+                           long game_time,
                            int reset_round_time,
                            int game_mode,
-                           int round_time_delta) {
+                           long round_time_delta,
+                           long currentGameTime,
+                           int nextPlayerIndex,
+                           int startPlayerIndex,
+                           int saved) {
 
         ContentValues values = new ContentValues();
         values.put(DbHelper.GAMES_COL_NAME, name);
+        values.put(DbHelper.GAMES_COL_DATE, date);
+        values.put(DbHelper.GAMES_COL_GAME_TIME, game_time);
         values.put(DbHelper.GAMES_COL_ROUND_TIME, round_time);
         values.put(DbHelper.GAMES_COL_RESET_ROUND_TIME, reset_round_time);
         values.put(DbHelper.GAMES_COL_GAME_MODE, game_mode);
         values.put(DbHelper.GAMES_COL_ROUND_TIME_DELTA, round_time_delta);
-
+        values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, currentGameTime);
+        values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, nextPlayerIndex);
+        values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, startPlayerIndex);
+        values.put(DbHelper.GAMES_COL_SAVED, saved);
 
         // serialize players id's
         String playerIds = "";
@@ -65,13 +85,26 @@ public class GamesDataSource {
             playerIds = playerIds + p.getId() + ";";
         //remove last semicolon
         playerIds = playerIds.substring(0, playerIds.length() - 1);
-
         values.put(DbHelper.GAMES_COL_PLAYERS, playerIds);
 
+        // serialize player round times
+        String playerRoundTimes = "";
+        for (Player p : players)
+            playerRoundTimes = playerRoundTimes + player_round_times.get(p.getId()) + ";";
+        //remove last semicolon
+        playerRoundTimes = playerRoundTimes.substring(0, playerRoundTimes.length() - 1);
+        values.put(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES, playerRoundTimes);
+
+        // serialize player rounds
+        String playerRounds = "";
+        for (Player p : players)
+            playerRounds = playerRounds + player_rounds.get(p.getId()) + ";";
+        //remove last semicolon
+        playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
+        values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
+
         System.err.println(values);
-
         long insertId = database.insert(DbHelper.TABLE_GAMES, null, values);
-
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
                 columns, DbHelper.GAMES_COL_ID + "=" + insertId,
                 null, null, null, null);
@@ -83,6 +116,55 @@ public class GamesDataSource {
         return game;
     }
 
+    public Game getGameWithId(String gameId){
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        Game newGame = null;
+
+        while(!cursor.isAfterLast()) {
+            Game game = cursorToGame(cursor);
+            String idString = String.valueOf(game.getId());
+
+            if (gameId.equals(idString))
+                newGame = game;
+
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return newGame;
+    }
+
+    public void saveGame(Game game){
+        ContentValues values = new ContentValues();
+        values.put(DbHelper.GAMES_COL_SAVED, 1);
+        values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, game.getCurrentGameTime());
+        values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, game.getNextPlayerIndex());
+        values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, game.getStartPlayerIndex());
+
+        // serialize player round times
+        String playerRoundTimes = "";
+        for (Player p : game.getPlayers())
+            playerRoundTimes = playerRoundTimes + game.getPlayer_round_times().get(p.getId()) + ";";
+
+        //remove last semicolon
+        playerRoundTimes = playerRoundTimes.substring(0, playerRoundTimes.length() - 1);
+        values.put(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES, playerRoundTimes);
+
+        // serialize player rounds
+        String playerRounds = "";
+        for (Player p : game.getPlayers())
+            playerRounds = playerRounds + game.getPlayer_rounds().get(p.getId()) + ";";
+
+        //remove last semicolon
+        playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
+        values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
+
+        int result = database.update(DbHelper.TABLE_GAMES, values, "_id=?", new String[]{ String.valueOf(game.getId())});
+    }
+
     public void deleteGame(Game g) {
         String whereClause = "_id" + "=?";
         String[] whereArgs = new String[]{String.valueOf(g.getId())};
@@ -92,19 +174,33 @@ public class GamesDataSource {
 
     private Game cursorToGame(Cursor cursor) {
         int idIndex = cursor.getColumnIndex(DbHelper.GAMES_COL_ID);
+        int idDate = cursor.getColumnIndex(DbHelper.GAMES_COL_DATE);
         int idName = cursor.getColumnIndex(DbHelper.GAMES_COL_NAME);
         int idPlayers = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS);
+        int idPlayersRoundTimes = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES);
+        int idPlayersRounds = cursor.getColumnIndex(DbHelper.GAMES_COL_PLAYERS_ROUNDS);
         int idRound_time = cursor.getColumnIndex(DbHelper.GAMES_COL_ROUND_TIME);
+        int idGame_time = cursor.getColumnIndex(DbHelper.GAMES_COL_GAME_TIME);
         int idReset_round_time = cursor.getColumnIndex(DbHelper.GAMES_COL_RESET_ROUND_TIME);
         int idGame_mode = cursor.getColumnIndex(DbHelper.GAMES_COL_GAME_MODE);
         int idRound_time_delta = cursor.getColumnIndex(DbHelper.GAMES_COL_ROUND_TIME_DELTA);
+        int idCurrent_game_time = cursor.getColumnIndex(DbHelper.GAMES_COL_CURRENT_GAME_TIME);
+        int idNext_player_index = cursor.getColumnIndex(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX);
+        int idStart_player_index = cursor.getColumnIndex(DbHelper.GAMES_COL_START_PLAYER_INDEX);
+        int idSaved = cursor.getColumnIndex(DbHelper.GAMES_COL_SAVED);
 
         long id = cursor.getLong(idIndex);
+        long date = cursor.getLong(idDate);
         String name = cursor.getString(idName);
-        int round_time = cursor.getInt(idRound_time);
+        long round_time = cursor.getInt(idRound_time);
+        long game_time = cursor.getInt(idGame_time);
         int reset_round_time = cursor.getInt(idReset_round_time);
         int game_mode = cursor.getInt(idGame_mode);
-        int round_time_delta = cursor.getInt(idRound_time_delta);
+        long round_time_delta = cursor.getInt(idRound_time_delta);
+        long current_game_time = cursor.getLong(idCurrent_game_time);
+        int next_player_index = cursor.getInt(idNext_player_index);
+        int start_player_index = cursor.getInt(idStart_player_index);
+        int saved = cursor.getInt(idSaved);
 
         // deserialize player IDs
         String playerIds = cursor.getString(idPlayers);
@@ -114,14 +210,38 @@ public class GamesDataSource {
         List<Player> players = pds.getPlayersWithIds(playerIdsArray);
         pds.close();
 
+        // deserialize player round times
+        String playerTimes = cursor.getString(idPlayersRoundTimes);
+        String[] playerTimesArray = playerTimes.split(";");
+        HashMap<Long, Long> player_round_times = new HashMap<>();
+        for (int i = 0; i < playerIdsArray.length; i++){
+            player_round_times.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerTimesArray[i]));
+        }
+
+        //deserialize player rounds
+        String playerRounds = cursor.getString(idPlayersRounds);
+        String[] playerRoundsArray = playerRounds.split(";");
+        HashMap<Long, Long> player_rounds = new HashMap<>();
+        for (int i = 0; i < playerIdsArray.length; i++){
+            player_rounds.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerRoundsArray[i]));
+        }
+
         Game game = new Game();
         game.setId(id);
+        game.setDate(date);
         game.setName(name);
         game.setRound_time(round_time);
+        game.setGame_time(game_time);
+        game.setPlayer_round_times(player_round_times);
+        game.setPlayer_rounds(player_rounds);
         game.setReset_round_time(reset_round_time);
         game.setGame_mode(game_mode);
         game.setRound_time_delta(round_time_delta);
         game.setPlayers(players);
+        game.setNextPlayerIndex(next_player_index);
+        game.setStartPlayerIndex(start_player_index);
+        game.setCurrentGameTime(current_game_time);
+        game.setSaved(saved);
 
         return game;
     }
@@ -138,11 +258,35 @@ public class GamesDataSource {
         while (!cursor.isAfterLast()) {
             game = cursorToGame(cursor);
             gameList.add(game);
-            Log.d(LOG_TAG, "ID: " + game.getId() + ", Name: " + game.getName());
             cursor.moveToNext();
         }
 
         cursor.close();
+
+        return gameList;
+    }
+
+    public List<Game> getSavedGames() {
+        List<Game> gameList = new ArrayList<>();
+
+        String whereClause = "saved" + "=?";
+        String[] whereArgs = new String[]{"1"};
+
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, whereClause, whereArgs, null, null, null);
+
+
+        cursor.moveToFirst();
+        Game game;
+
+        while (!cursor.isAfterLast()) {
+            game = cursorToGame(cursor);
+            gameList.add(game);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
 
         return gameList;
     }

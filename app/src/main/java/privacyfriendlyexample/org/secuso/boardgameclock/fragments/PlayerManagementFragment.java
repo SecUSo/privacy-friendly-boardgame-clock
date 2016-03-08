@@ -1,5 +1,6 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -7,9 +8,11 @@ import android.app.FragmentTransaction;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.SparseBooleanArray;
@@ -26,7 +29,7 @@ import java.util.List;
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.PFAListAdapter;
+import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 
 public class PlayerManagementFragment extends Fragment {
 
@@ -56,7 +59,7 @@ public class PlayerManagementFragment extends Fragment {
         playersDataSource.close();
 
         final ListView myListView = (ListView) rootView.findViewById(R.id.current_players_list);
-        final PFAListAdapter listAdapter = new PFAListAdapter(this.getActivity(), R.id.current_players_list, list);
+        final PlayerListAdapter listAdapter = new PlayerListAdapter(this.getActivity(), R.id.current_players_list, list);
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -90,12 +93,18 @@ public class PlayerManagementFragment extends Fragment {
         });
 
         final Button contactsButton = (Button) rootView.findViewById(R.id.addPlayerContactsButton);
-        contactsButton.setOnClickListener(new View.OnClickListener() {
+
+        int contactPermissionCheck = ContextCompat.checkSelfPermission(this.getActivity(),
+                Manifest.permission.READ_CONTACTS);
+        if (contactPermissionCheck == PackageManager.PERMISSION_GRANTED)
+            contactsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addPlayerFromContacts();
             }
         });
+        else
+            contactsButton.setVisibility(View.INVISIBLE);
 
         return rootView;
     }
@@ -134,6 +143,7 @@ public class PlayerManagementFragment extends Fragment {
                 .show();
 
     }
+
 
     private static String resourceToUri (Context context,int resID) {
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +

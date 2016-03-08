@@ -2,8 +2,6 @@ package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorWrapper;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
@@ -16,17 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CursorAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.PFAListAdapter;
 
 public class ContactListFragment extends ListFragment implements LoaderCallbacks<Cursor> {
 
