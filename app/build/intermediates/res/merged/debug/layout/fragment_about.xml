@@ -70,14 +70,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/privacy_friendly"/>
+        android:text="@string/privacy_friendly" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="@string/more_info"/>
+        android:text="@string/more_info" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,6 +85,6 @@
         android:text="@string/url"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:autoLink="web"/>
+        android:autoLink="web" />
 
 </LinearLayout><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_about.xml -->

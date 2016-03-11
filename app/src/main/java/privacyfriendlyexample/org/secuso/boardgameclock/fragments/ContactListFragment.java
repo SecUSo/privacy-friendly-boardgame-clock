@@ -66,7 +66,7 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 if (lv.getCheckedItemCount() > 0) {
-                    b.setText("Add Selected Contacts (" + lv.getCheckedItemCount() + ")");
+                    b.setText(getString(R.string.addSelectedContacts) + " (" + lv.getCheckedItemCount() + ")");
                     b.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -94,7 +94,7 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
                     });
 
                 } else
-                    b.setText("Add Selected Contacts (0)");
+                    b.setText(getString(R.string.addSelectedContacts));
 
             }
         });

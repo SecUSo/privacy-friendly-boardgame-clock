@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
-    <string-array name="game_modes">
-        <item>Clockwise</item>
-        <item>Counter-Clockwise</item>
-        <item>Random</item>
-    </string-array>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -33,7 +26,7 @@
     <color name="background_material_light">@color/material_grey_50</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="black">#000000</color>
+    <color name="black" type="color">#000000</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
@@ -46,7 +39,7 @@
     <color name="button_material_light">#ffd6d7d7</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="darkblue">#024265</color>
+    <color name="darkblue" type="color">#024265</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
@@ -72,7 +65,7 @@
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="lightblue">#0274B2</color>
+    <color name="lightblue" type="color">#0274B2</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
@@ -89,8 +82,8 @@
     <color name="material_grey_900">#ff212121</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="middleblue">#8aa5ce</color>
-    <color name="middlegrey">#A8A8A8</color>
+    <color name="middleblue" type="color">#8aa5ce</color>
+    <color name="middlegrey" type="color">#A8A8A8</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">@android:color/black</color>
@@ -113,9 +106,9 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="transparent">#00000000</color>
-    <color name="white">#ffffff</color>
-    <color name="yellow">#f6d126</color>
+    <color name="transparent" type="color">#00000000</color>
+    <color name="white" type="color">#ffffff</color>
+    <color name="yellow" type="color">#f6d126</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -335,14 +328,7 @@
     <eat-comment/>
     <string name="about_affiliation">In affiliation with</string>
     <string name="about_author">Author: Marco Bräuning</string>
-    <string name="action_about">About</string>
-    <string name="action_help">Help</string>
-    <string name="action_main">Main Menu</string>
     <string name="action_navigation">Navigation</string>
-    <string name="action_new_game">New Game</string>
-    <string name="action_player_management">Player Management</string>
-    <string name="action_resume_game">Resume Game</string>
-    <string name="action_settings">Settings</string>
     <string name="app_name">Board Game Clock</string>
     <string name="app_name_long">Privacy Friendly Board Game Clock</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
@@ -351,20 +337,24 @@
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="input_new_game_name">(set name of the game)</string>
+    <string name="choosePlayersFragment">ChoosePlayersFragment</string>
+    <string name="contactListFragment">ContactListFragment</string>
+    <string name="gameFragment">GameFragment</string>
+    <string name="loadGameFragment">LoadGameFragment</string>
+    <string name="mainMenuFragment">MainMenuFragment</string>
     <string name="more_info">More information can be found on:</string>
+    <string name="name">Name</string>
+    <string name="newGameFragment">NewGameFragment</string>
+    <string name="ok">OK</string>
+    <string name="pause_capslock">PAUSE</string>
+    <string name="playerManagementFragment">PlayerManagementFragment</string>
     <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
-    <string name="start_game">Start Game</string>
+    <string name="settingsFragment">SettingsFragment</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="title_activity_new_game">NewGameActivity</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
     <string name="version_number">Version 1.0</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
@@ -376,7 +366,11 @@
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:buttonStyle">@style/DarkButton</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/list_item_background</item>
+        <item name="colorControlNormal">@color/darkblue</item>
+        <item name="colorControlActivated">@color/darkblue</item>
+        <item name="colorControlHighlight">@color/yellow</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.NoActionBar">
@@ -1332,6 +1326,32 @@
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="DarkButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/darkblue</item>
+        <item name="android:colorPressedHighlight">@color/yellow</item>
+    </style>
+    <style name="DarkLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/LightButton</item>
+    </style>
+    <style name="LightButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/middlegrey</item>
+    </style>
+    <style name="LightLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
     </style>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>

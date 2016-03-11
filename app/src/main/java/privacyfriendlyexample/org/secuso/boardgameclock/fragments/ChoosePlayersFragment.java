@@ -121,9 +121,9 @@ public class ChoosePlayersFragment extends Fragment {
         long dateMs = System.currentTimeMillis();
 
         if (players.size() < 2) new AlertDialog.Builder(activity)
-                .setTitle("Error")
-                .setMessage("Please choose at least two players to continue.")
-                .setPositiveButton("OK", null)
+                .setTitle(R.string.error)
+                .setMessage(R.string.errorAtLeastTwoPlayers)
+                .setPositiveButton(R.string.ok, null)
                 .show();
         else {
             GamesDataSource gds = new GamesDataSource(activity);
@@ -172,7 +172,7 @@ public class ChoosePlayersFragment extends Fragment {
 
             final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.content_frame, new GameFragment());
-            fragmentTransaction.addToBackStack("GameFragment");
+            fragmentTransaction.addToBackStack(activity.getString(R.string.gameFragment));
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.commit();
 

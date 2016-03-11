@@ -39,6 +39,7 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
                 ((TextView) view.findViewById(R.id.textViewName))
                         .setText(p.getName());
 
+                //TODO
                 ((TextView) view.findViewById(R.id.textViewDescription))
                         .setText("<Placeholder>");
 

@@ -40,7 +40,7 @@ public class LoadGameFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_load_game, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("Load Game");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.loadGame));
         container.removeAllViews();
 
         b = (Button) rootView.findViewById(R.id.loadGameButton);
@@ -83,9 +83,9 @@ public class LoadGameFragment extends ListFragment {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(getActivity())
-                            .setTitle("Error")
-                            .setMessage("Please choose a game from the list.")
-                            .setPositiveButton("OK", null)
+                            .setTitle(R.string.error)
+                            .setMessage(R.string.pleaseChooseAGame)
+                            .setPositiveButton(R.string.ok, null)
                             .show();
             }
         });
@@ -95,7 +95,7 @@ public class LoadGameFragment extends ListFragment {
 
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new GameFragment());
-        fragmentTransaction.addToBackStack("GameFragment");
+        fragmentTransaction.addToBackStack(getString(R.string.gameFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.commit();
 

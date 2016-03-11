@@ -1,12 +1,15 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,9 +44,6 @@ public class SettingsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.action_settings);
 
-        ImageView iv = (ImageView) rootView.findViewById(R.id.appIcon);
-        iv.setImageResource(R.mipmap.ic_launcher);
-
         languageButton = (Button) rootView.findViewById(R.id.languageButton);
         themeButton = (Button) rootView.findViewById(R.id.themeButton);
         importBackupButton = (Button) rootView.findViewById(R.id.importBackupButton);
@@ -51,8 +51,19 @@ public class SettingsFragment extends Fragment {
 
         languageButton.setOnClickListener(language);
         themeButton.setOnClickListener(theme);
-        importBackupButton.setOnClickListener(importBackup);
-        exportBackupButton.setOnClickListener(exportBackup);
+
+        int readExtStoragePermissionCheck = ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        int writeExtStoragePermissionCheck = ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (readExtStoragePermissionCheck == PackageManager.PERMISSION_GRANTED)
+            importBackupButton.setOnClickListener(importBackup);
+        else
+            importBackupButton.setVisibility(View.INVISIBLE);
+
+        if (writeExtStoragePermissionCheck == PackageManager.PERMISSION_GRANTED)
+            exportBackupButton.setOnClickListener(exportBackup);
+        else
+            exportBackupButton.setVisibility(View.INVISIBLE);
 
         container.removeAllViews();
         return rootView;
@@ -64,14 +75,14 @@ public class SettingsFragment extends Fragment {
         public void onClick(View v) {
             new AlertDialog.Builder(getActivity())
                     .setSingleChoiceItems(languages, 0, null)
-                    .setTitle("Change Language")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setTitle(R.string.changeLanguage)
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             dialog.dismiss();
                             int selectedPosition = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
                             changeLang(languages[selectedPosition]);
 
-                            Toast.makeText(getActivity(), "NOT YET IMPLEMENTED", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.languageChangedSuccess, Toast.LENGTH_SHORT).show();
                         }
                     })
                     .show();
@@ -81,6 +92,7 @@ public class SettingsFragment extends Fragment {
     OnClickListener theme = new OnClickListener() {
         @Override
         public void onClick(View v) {
+            //TODO
             Toast.makeText(getActivity(), "NOT YET IMPLEMENTED", Toast.LENGTH_SHORT).show();
 
         }
@@ -91,14 +103,14 @@ public class SettingsFragment extends Fragment {
         public void onClick(View v) {
             new AlertDialog.Builder(getActivity())
                     .setSingleChoiceItems(languages, 0, null)
-                    .setTitle("Import Database Backup")
-                    .setMessage("Are you sure you want to import the current database backup from external storage? The active database will be replaced.")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setTitle(R.string.importDatabaseBackup)
+                    .setMessage(R.string.importDatabaseBackupInfoMessage)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             importBackup();
                         }
                     })
-                    .setNegativeButton("No", null)
+                    .setNegativeButton(R.string.no, null)
                     .show();
 
         }
@@ -126,10 +138,9 @@ public class SettingsFragment extends Fragment {
                     }
 
                     if (currentDB.exists() && backupDB.getTotalSpace() == currentDB.getTotalSpace())
-                        Toast.makeText(getActivity(), "Backup successfully loaded!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), R.string.importDatabaseBackupSuccess, Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
-                Log.w("Settings Backup", e);
             }
     }
 
@@ -139,14 +150,14 @@ public class SettingsFragment extends Fragment {
         public void onClick(View v) {
             new AlertDialog.Builder(getActivity())
                     .setSingleChoiceItems(languages, 0, null)
-                    .setTitle("Export Database Backup")
-                    .setMessage("Are you sure you want to create a backup from the active database? The current database backup will be replaced.")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setTitle(R.string.exportDatabaseBackup)
+                    .setMessage(R.string.exportDatabaseBackupInfoMessage)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             exportBackup();
                         }
                     })
-                    .setNegativeButton("No", null)
+                    .setNegativeButton(R.string.no, null)
                     .show();
 
         }
@@ -174,10 +185,9 @@ public class SettingsFragment extends Fragment {
                     }
 
                     if (backupDB.exists() && backupDB.getTotalSpace() == currentDB.getTotalSpace())
-                        Toast.makeText(getActivity(), "Backup successfully saved at external storage!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.exportDatabaseBackupSuccess, Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
-                Log.w("Settings Backup", e);
             }
     }
 
@@ -205,11 +215,15 @@ public class SettingsFragment extends Fragment {
         SharedPreferences prefs = getActivity().getSharedPreferences("CommonPrefs", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(langPref, lang);
-        editor.commit();
+        editor.apply();
     }
 
     private void updateTexts() {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.action_settings);
+        languageButton.setText(R.string.changeLanguage);
+        themeButton.setText(R.string.changeColorTheme);
+        importBackupButton.setText(R.string.importDatabaseBackup);
+        exportBackupButton.setText(R.string.exportDatabaseBackup);
 
     }
 }

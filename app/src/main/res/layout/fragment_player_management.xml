@@ -1,9 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/header_current_players"
         android:layout_width="match_parent"
@@ -12,7 +11,7 @@
         android:layout_marginBottom="5dp"
         android:textStyle="bold"
         android:textColor="@color/darkblue"
-        android:text="Current Players"
+        android:text="@string/currentPlayers"
         android:background="@drawable/bottom_border" />
 
     <ListView
@@ -20,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:choiceMode="multipleChoice"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/createNewPlayerButton"
@@ -28,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/standalone_button"
-        android:text="Create New Player"
+        android:text="@string/createNewPlayer"
         android:textColor="@color/white"
-        android:onClick="createNewPlayerButton"/>
+        android:onClick="createNewPlayerButton" />
 
     <Button
         android:id="@+id/addPlayerContactsButton"
@@ -38,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/standalone_button"
-        android:text="Add Player From Contacts"
+        android:text="@string/addPlayerFromContacts"
         android:textColor="@color/white"
-        android:onClick="addPlayerContactsButton"/>
+        android:onClick="addPlayerContactsButton" />
 
 
 </LinearLayout>

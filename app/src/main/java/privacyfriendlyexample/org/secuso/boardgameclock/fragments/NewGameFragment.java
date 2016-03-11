@@ -117,10 +117,10 @@ public class NewGameFragment extends Fragment {
         });
 
         //test data
-        // check_new_game_reset_time.setChecked(true);
-        // game_name.setText("TEST GAME");
-        // round_time_s.setValue(5);
-        // game_time_m.setValue(1);
+        check_new_game_reset_time.setChecked(true);
+        game_name.setText("TEST GAME");
+        round_time_m.setValue(5);
+        game_time_h.setValue(1);
 
         return rootView;
     }
@@ -150,15 +150,15 @@ public class NewGameFragment extends Fragment {
 
         if (game_name.getText().toString().length() == 0) {
             new AlertDialog.Builder(activity)
-                    .setTitle("Error")
-                    .setMessage("Please choose a game name with a length of at least 1 character to continue.")
-                    .setPositiveButton("OK", null)
-                    .show();
+                    .setTitle(R.string.error)
+                    .setMessage(getString(R.string.gameNameSizeError))
+                    .setPositiveButton(getString(R.string.ok), null)
+                            .show();
         } else if (game_total_time_in_s <= 0 || round_total_time_in_s <= 0) {
             new AlertDialog.Builder(activity)
-                    .setTitle("Error")
-                    .setMessage("Please set a game time and round time of at least 1 seconds to continue.")
-                    .setPositiveButton("OK", null)
+                    .setTitle(R.string.ok)
+                    .setMessage(R.string.roundTimeSetError)
+                    .setPositiveButton(R.string.ok, null)
                     .show();
         } else {
             //reset round time
@@ -192,7 +192,7 @@ public class NewGameFragment extends Fragment {
 
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new ChoosePlayersFragment());
-        fragmentTransaction.addToBackStack("ChoosePlayersFragment");
+        fragmentTransaction.addToBackStack(getString(R.string.choosePlayersFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         fragmentTransaction.commit();

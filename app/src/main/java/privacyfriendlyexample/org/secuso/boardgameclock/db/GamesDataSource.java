@@ -250,7 +250,7 @@ public class GamesDataSource {
         List<Game> gameList = new ArrayList<>();
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, null, null, null, null, null);
+                columns, null, null, null, null, DbHelper.GAMES_COL_DATE + " DESC");
 
         cursor.moveToFirst();
         Game game;
@@ -273,7 +273,7 @@ public class GamesDataSource {
         String[] whereArgs = new String[]{"1"};
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, whereClause, whereArgs, null, null, null);
+                columns, whereClause, whereArgs, null, null,  DbHelper.GAMES_COL_DATE + " DESC");
 
 
         cursor.moveToFirst();
