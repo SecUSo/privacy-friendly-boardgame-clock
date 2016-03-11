@@ -75,5 +75,9 @@
     <string name="quitGameQuestion">Möchtest du das Spiel vor dem verlassen speichern?</string>
     <string name="finishGame">Spiel beenden</string>
     <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
+    <string name="exit">Spiel verlassen</string>
+    <string name="gameFragment"></string>
+    <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
+    <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
 
 </resources>

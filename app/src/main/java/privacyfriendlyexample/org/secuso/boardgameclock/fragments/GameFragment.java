@@ -5,26 +5,18 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.LauncherActivity;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.SystemClock;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,15 +43,14 @@ public class GameFragment extends Fragment {
     private List<Player> players;
 
     private Player currentPlayer;
-    private int nextPlayerIndex;
-    private int startPlayerIndex;
-    private long currentRoundTimeMs;
-    public long currentGameTimeMs;
 
     private CountDownTimer roundTimer, gameTimer;
     private Button playPauseButton, finishGameButton;
 
     private Button nextPlayerButton, saveGameButton;
+
+    private long currentRoundTimeMs, currentGameTimeMs;
+    private int nextPlayerIndex, startPlayerIndex;
 
     private TextView currentPlayerTv;
     private TextView currentPlayerRound;
@@ -86,14 +77,14 @@ public class GameFragment extends Fragment {
         game = ((MainActivity) activity).getGame();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(game.getName());
 
-        nextPlayerIndex = game.getNextPlayerIndex();
-        startPlayerIndex = game.getStartPlayerIndex();
-
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
         playerRounds = game.getPlayer_rounds();
 
-        currentPlayer = players.get(startPlayerIndex);
+        startPlayerIndex = game.getStartPlayerIndex();
+        nextPlayerIndex = game.getNextPlayerIndex();
+
+        currentPlayer = players.get(game.getStartPlayerIndex());
 
         playersQueue = getPlayersNotInRound(playerRounds.get(currentPlayer.getId()));
 
@@ -198,7 +189,7 @@ public class GameFragment extends Fragment {
                 String game_time_ss = getTimeStrings(millisUntilFinished)[2];
                 gameTimerTv.setText(game_time_hh + ":" + game_time_mm + ":" + game_time_ss);
 
-                if (millisUntilFinished < 5000)
+                if (millisUntilFinished <= 5800)
                     gameTimerTv.setTextColor(Color.RED);
 
                 currentGameTimeMs = millisUntilFinished;
