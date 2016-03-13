@@ -23,8 +23,10 @@
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:paddingRight="10dp"
+            android:gravity="top"
+            android:textStyle="bold"
+            android:textSize="14sp"
             android:textColor="@drawable/list_item_textcolor"
             android:duplicateParentState="true"/>
 
@@ -34,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewName"
             android:paddingRight="10dp"
+            android:gravity="bottom"
             android:textSize="12sp"
             android:layout_marginTop="10dp"
             android:textColor="@drawable/list_item_textcolor"

@@ -43,7 +43,7 @@ public class GamesListAdapter extends ArrayAdapter { //--CloneChangeRequired
                         .setText(g.getName());
 
                 ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(g.getDateString());
+                        .setText(g.getDateString() + ", " + g.getPlayers().size() + " " + mContext.getString(R.string.players));
             }
         } catch (Exception e) {
             e.printStackTrace();

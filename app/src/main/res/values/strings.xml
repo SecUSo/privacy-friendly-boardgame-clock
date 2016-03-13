@@ -25,4 +25,6 @@
     <string name="name">Name</string>
     <string name="contactListFragment">ContactListFragment</string>
     <string name="mainMenuFragment">MainMenuFragment</string>
+    <string name="gameResultsFragment">GameResultsFragment</string>
+    <string name="gameHistoryFragment">GameHistoryFragment</string>
 </resources>

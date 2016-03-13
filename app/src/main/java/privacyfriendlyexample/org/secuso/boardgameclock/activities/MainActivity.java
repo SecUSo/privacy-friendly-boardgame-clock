@@ -33,6 +33,7 @@ import java.util.Locale;
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameHistoryFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.LoadGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragment;
@@ -190,6 +191,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void exitApplicationButton(View v){
 
+    }
+
+    public void mainMenuButton(View v){
+
+    }
+
+    public void deleteGameButton(View v){
+
+    }
+
+    public void removeEntryButton(View v){
+
+    }
+
+    public void showResultsButton(View v){
+
+    }
+
+    public void showHistoryButton(View v){
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new GameHistoryFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.gameHistoryFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
     }
 
 

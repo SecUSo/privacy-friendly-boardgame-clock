@@ -52,40 +52,11 @@ public class ChoosePlayersFragment extends Fragment {
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            // here i overide the onitemclick method in onitemclick listener
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                SparseBooleanArray checkedItems = myListView.getCheckedItemPositions();
-
-
-                // remove every color
-                for (int i = 0; i < myListView.getAdapter().getCount(); i++) {
-                //    myListView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                }
-
-                // get key values of SparseBooleanArray if checked=true
-                Vector<Integer> keys = new Vector<>();
-                for (int i = 0; i < checkedItems.size(); i++){
-                    if(checkedItems.valueAt(i))
-                        keys.add(checkedItems.keyAt(i));
-                }
-
-                // set color of checked elements (contained in keys vector)
-                for (int i : keys) {
-                    parent.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.darkblue));
-                }
-
-                System.err.println(checkedItems);
-            }
-        });*/
 
         Button b = (Button) rootView.findViewById(R.id.startNewGameButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 createNewGame();
             }
         });
@@ -129,7 +100,7 @@ public class ChoosePlayersFragment extends Fragment {
             GamesDataSource gds = new GamesDataSource(activity);
             gds.open();
             game = gds.createGame(dateMs, players, player_round_times, players_rounds, game.getName(), game.getRound_time(),
-                    game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved());
+                    game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0);
             gds.getAllGames();
             gds.close();
 

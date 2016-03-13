@@ -340,6 +340,8 @@
     <string name="choosePlayersFragment">ChoosePlayersFragment</string>
     <string name="contactListFragment">ContactListFragment</string>
     <string name="gameFragment">GameFragment</string>
+    <string name="gameHistoryFragment">GameHistoryFragment</string>
+    <string name="gameResultsFragment">GameResultsFragment</string>
     <string name="loadGameFragment">LoadGameFragment</string>
     <string name="mainMenuFragment">MainMenuFragment</string>
     <string name="more_info">More information can be found on:</string>

@@ -79,5 +79,22 @@
     <string name="gameFragment"></string>
     <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
     <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
+    <string name="gameResults">Spielergebnisse</string>
+    <string name="backToMainMenu">Zum Hauptmenü</string>
+    <string name="choosePlayersFragment"></string>
+    <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
+    <string name="activeGameTimeHeader">Gespielte Spielzeit (Gesamt)</string>
+    <string name="deleteGame">Ausgewähltes Spiel Löschen</string>
+    <string name="created">Erstellt:</string>
+    <string name="deleteGameQuestion">Bist du dir sicher, dass du das ausgewählte Spiel löschen möchtest?</string>
+    <string name="playedRoundsHeader">Letzte Runde</string>
+    <string name="playerResults">Spielerergebnisse</string>
+    <string name="timeLeft">Übrige Zeit:</string>
+    <string name="lastRound">Gespielte Runden:</string>
+    <string name="gameHistory">Spielhistorie</string>
+    <string name="removeEntry">Eintrag entfernen</string>
+    <string name="removeEntryQuestion">Bist du dir sicher, dass du den ausgewählten Eintrag aus der Historie entfernen möchtest?</string>
+    <string name="players">Spieler</string>
+
 
 </resources>

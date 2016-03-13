@@ -117,10 +117,10 @@ public class NewGameFragment extends Fragment {
         });
 
         //test data
-        check_new_game_reset_time.setChecked(true);
-        game_name.setText("TEST GAME");
-        round_time_m.setValue(5);
-        game_time_h.setValue(1);
+        //check_new_game_reset_time.setChecked(true);
+        //game_name.setText("TEST GAME");
+        //round_time_m.setValue(5);
+        //game_time_h.setValue(1);
 
         return rootView;
     }

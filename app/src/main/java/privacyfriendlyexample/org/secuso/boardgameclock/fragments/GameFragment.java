@@ -59,7 +59,7 @@ public class GameFragment extends Fragment {
     private TextView gameTimerTv, roundTimerTv;
 
     private boolean alreadySaved = true;
-    private boolean isFinished = false;
+    private int isFinished = 0;
     private boolean isPaused = true;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -228,6 +228,9 @@ public class GameFragment extends Fragment {
         game.setStartPlayerIndex(startPlayerIndex);
         game.setCurrentGameTime(currentGameTimeMs / 1000);
         game.setSaved(save);
+        game.setFinished(isFinished);
+
+        ((MainActivity) getActivity()).setGame(game);
 
         GamesDataSource gds = new GamesDataSource(getActivity());
         gds.open();
@@ -236,7 +239,7 @@ public class GameFragment extends Fragment {
     }
 
     private void finishGame() {
-        isFinished = true;
+        isFinished = 1;
 
         roundTimer.cancel();
         gameTimer.cancel();
@@ -245,18 +248,24 @@ public class GameFragment extends Fragment {
         saveGameButton.setVisibility(View.GONE);
         finishGameButton.setVisibility(View.GONE);
         playPauseButton.setText(R.string.showResults);
-        playPauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                Toast.makeText(getActivity(), "NOT YET IMPLEMENTED", Toast.LENGTH_SHORT).show();
-            }
-
-        });
+        playPauseButton.setOnClickListener(showGameResults);
 
         updateGame(0);
 
     }
+
+    private View.OnClickListener showGameResults = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+
+            final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame, new GameResultsFragment());
+            fragmentTransaction.addToBackStack(activity.getString(R.string.gameResultsFragment));
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
+
+        }
+    };
 
     private String[] getTimeStrings(long time_ms) {
         int h = (int) (time_ms / 3600000);
@@ -420,15 +429,27 @@ public class GameFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN)) {
-                    if (!isPaused)
+                    if (!isPaused && (isFinished == 0))
                         playPauseButton.performClick();
 
+                    String dialogTitle;
+                    String dialogQuestion;
+
+                    if (isFinished == 1){
+                        dialogTitle = getString(R.string.backToMainMenu);
+                        dialogQuestion = getString(R.string.backToMainMenuQuestion);
+                    }
+                    else {
+                        dialogTitle = getString(R.string.quitGame);
+                        dialogQuestion = getString(R.string.leaveGameQuestion);
+                    }
+
                     new AlertDialog.Builder(getActivity())
-                            .setTitle(R.string.quitGame)
-                            .setMessage(R.string.leaveGameQuestion)
+                            .setTitle(dialogTitle)
+                            .setMessage(dialogQuestion)
                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
-                                    if (!isFinished && !alreadySaved)
+                                    if ((isFinished == 0) && !alreadySaved)
                                         new AlertDialog.Builder(getActivity())
                                                 .setTitle(R.string.quitGame)
                                                 .setMessage(R.string.quitGameQuestion)
