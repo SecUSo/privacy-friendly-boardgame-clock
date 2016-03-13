@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/timePlayedHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/darkblue"
+        android:text="@string/activeGameTimeHeader"
+        android:background="@drawable/bottom_border" />
+
+    <TextView
+        android:id="@+id/timePlayedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/darkblue"/>
+
+    <TextView
+        android:id="@+id/roundsPlayedHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/darkblue"
+        android:text="@string/playedRoundsHeader"
+        android:background="@drawable/bottom_border" />
+
+    <TextView
+        android:id="@+id/roundsPlayedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:textColor="@color/darkblue"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/darkblue"
+        android:text="@string/playerResults"
+        android:background="@drawable/bottom_border" />
+
+    <ListView
+        android:id="@+id/players_results_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/standalone_button"
+        android:text="@string/backToMainMenu"
+        android:textColor="@android:color/white"
+        android:onClick="mainMenuButton" />
+
+</LinearLayout>
+<!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_game_results.xml -->

@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageViewIcon"
@@ -16,15 +16,19 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/imageViewIcon"
-        android:layout_toEndOf="@+id/imageViewIcon">
+        android:layout_toEndOf="@+id/imageViewIcon"
+        android:duplicateParentState="true">
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:paddingRight="10dp"
-            android:textColor="@color/black" />
+            android:gravity="top"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@drawable/list_item_textcolor"
+            android:duplicateParentState="true"/>
 
         <TextView
             android:id="@+id/textViewDescription"
@@ -32,9 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewName"
             android:paddingRight="10dp"
+            android:gravity="bottom"
             android:textSize="12sp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/middlegrey" />
+            android:textColor="@drawable/list_item_textcolor"
+            android:duplicateParentState="true"/>
 
     </RelativeLayout>
 

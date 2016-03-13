@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/appIcon"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center" />
+    style="@style/DarkLinearLayout">
 
     <Button
         android:id="@+id/languageButton"
@@ -16,7 +9,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
         android:onClick="languageButton"
-        android:text="Change Language"
+        android:text="@string/changeLanguage"
         android:textColor="@color/white" />
 
     <Button
@@ -26,17 +19,17 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
         android:onClick="themeButton"
-        android:text="Change Color Theme"
+        android:text="@string/changeColorTheme"
         android:textColor="@color/white" />
 
     <Button
         android:id="@+id/importBackupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/standalone_button"
         android:onClick="importBackupButton"
-        android:text="Import Database Backup"
+        android:text="@string/importDatabaseBackup"
         android:textColor="@color/white" />
 
     <Button
@@ -46,7 +39,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/standalone_button"
         android:onClick="exportBackupButton"
-        android:text="Export Database Backup"
+        android:text="@string/exportDatabaseBackup"
         android:textColor="@color/white" />
 
 </LinearLayout>

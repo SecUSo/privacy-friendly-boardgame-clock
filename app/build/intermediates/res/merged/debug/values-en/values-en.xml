@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-en/strings.xml -->
+    <eat-comment/>
+    <string-array name="game_modes">
+        <item>Clockwise</item>
+        <item>Counter-Clockwise</item>
+        <item>Random</item>
+    </string-array>
+    <string name="action_about">About</string>
+    <string name="action_help">Help</string>
+    <string name="action_main">Main Menu</string>
+    <string name="action_new_game">New Game</string>
+    <string name="action_player_management">Player Management</string>
+    <string name="action_resume_game">Resume Game</string>
+    <string name="action_settings">Settings</string>
+    <string name="activeGameTimeHeader">Active Game Time (Total)</string>
+    <string name="addPlayerFromContacts">Add Player From Contacts</string>
+    <string name="addSelectedContacts">Add Selected Contacts</string>
+    <string name="addSelectedContactsZero">Add Selected Contacts</string>
+    <string name="backToMainMenu">Back to Main Menu</string>
+    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
+    <string name="cancel">Cancel</string>
+    <string name="changeColorTheme">Change Color Theme</string>
+    <string name="changeLanguage">Change Language</string>
+    <string name="confirm">Confirm</string>
+    <string name="createNewPlayer">Create New Player</string>
+    <string name="created">Created:</string>
+    <string name="currentPlayer">Current Player</string>
+    <string name="currentPlayers">Current Players</string>
+    <string name="deleteGame">Delete Selected Game</string>
+    <string name="deleteGameQuestion">Do you really want to delete the selected game?</string>
+    <string name="deletePlayer">Delete Player</string>
+    <string name="deletePlayerQuestion">Do you really want to delete the selected players? This step cannot be undone.</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="error">Error</string>
+    <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
+    <string name="exit">Exit</string>
+    <string name="exitQuestion">Do you really want to close the application?</string>
+    <string name="exportDatabaseBackup">Export Database Backup</string>
+    <string name="exportDatabaseBackupInfoMessage">Are you sure you want to create a backup from the active database? The current database backup will be replaced.</string>
+    <string name="exportDatabaseBackupSuccess">Backup successfully created!</string>
+    <string name="finishGame">Finish Game</string>
+    <string name="finishGameQuestion">Do you really want to finish the current game?</string>
+    <string name="gameHistory">Game History</string>
+    <string name="gameMode">Game Mode</string>
+    <string name="gameNameSizeError">Please enter a game name to continue.</string>
+    <string name="gameResults">Game Results</string>
+    <string name="gameTime">Game Time</string>
+    <string name="importDatabaseBackup">Import Database Backup</string>
+    <string name="importDatabaseBackupInfoMessage">Are you sure you want to import the current database backup from external storage? The active database will be replaced.</string>
+    <string name="importDatabaseBackupSuccess">Backup successfully loaded!</string>
+    <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
+    <string name="input_new_game_name">...</string>
+    <string name="languageChangedSuccess">Language changed successfully!</string>
+    <string name="lastRound">Completed Rounds:</string>
+    <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
+    <string name="loadGame">Load Game</string>
+    <string name="loadSelectedGame">Load Selected Game</string>
+    <string name="nextPlayer">Next Player</string>
+    <string name="no">No</string>
+    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button ADD PLAYER FROM CONTACTS in the menu PLAYER MANAGEMENT is not visible.</string>
+    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button RESTORE BACKUP in the menu SETTINGS is not visible.</string>
+    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible.</string>
+    <string name="play">Play</string>
+    <string name="play_capslock">PLAY</string>
+    <string name="playedRoundsHeader">Last Round</string>
+    <string name="playerManagement">Player Management</string>
+    <string name="playerResults">Player Results</string>
+    <string name="players">Players</string>
+    <string name="pleaseChooseAGame">Please choose a game from the list.</string>
+    <string name="quitGame">Quit Game</string>
+    <string name="quitGameQuestion">Do you want to save the current game before leaving?</string>
+    <string name="removeEntry">Remove Entry</string>
+    <string name="removeEntryQuestion">Do you really want to remove the selected entry from history?</string>
+    <string name="resetTimeAfterRoundCheck">Reset time after each round?</string>
+    <string name="resume_capslock">RESUME</string>
+    <string name="round">Round:</string>
+    <string name="roundTime">Round Time</string>
+    <string name="roundTimeSetError">Please set a game time and round time of at least 1 seconds to continue.</string>
+    <string name="save">Save</string>
+    <string name="saveGame">Save Game</string>
+    <string name="selectContacts">Select Contacts</string>
+    <string name="selectPlayers">Select Players</string>
+    <string name="showResults">Show Results</string>
+    <string name="startNewGame">Start New Game</string>
+    <string name="start_game">Start Game</string>
+    <string name="sureToSaveGameQuestion">Are you sure you want to save the current game?</string>
+    <string name="timeDelta">Time Delta</string>
+    <string name="timeLeft">Time left:</string>
+    <string name="yes">Yes</string>
+</resources>

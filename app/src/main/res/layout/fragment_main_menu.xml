@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    style="@style/DarkLinearLayout">
 
-    <ImageView
-        android:id="@+id/appIcon"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/newGameButton"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/standalone_button"
-        android:onClick="newGameButton"
-        android:text="@string/action_new_game"
-        android:textColor="@color/white" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/resumeGameButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/standalone_button"
-        android:onClick="resumeGameButton"
-        android:text="@string/action_resume_game"
-        android:textColor="@color/white" />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/newGameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="newGameButton"
+                android:text="@string/action_new_game" />
 
-    <Button
-        android:id="@+id/playerManagementButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/standalone_button"
-        android:onClick="playerManagementButton"
-        android:text="@string/action_player_management"
-        android:textColor="@color/white" />
+            <Button
+                android:id="@+id/resumeGameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="resumeGameButton"
+                android:text="@string/action_resume_game" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/standalone_button"
-        android:onClick="settingsButton"
-        android:text="Settings"
-        android:textColor="@color/white" />
+            <Button
+                android:id="@+id/showHistoryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="showHistoryButton"
+                android:text="@string/gameHistory" />
 
+            <Button
+                android:id="@+id/playerManagementButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="playerManagementButton"
+                android:text="@string/action_player_management" />
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="settingsButton"
+                android:text="@string/action_settings" />
+
+            <Button
+                android:id="@+id/exitApplicationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="exitApplicationButton"
+                android:text="@string/exit" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

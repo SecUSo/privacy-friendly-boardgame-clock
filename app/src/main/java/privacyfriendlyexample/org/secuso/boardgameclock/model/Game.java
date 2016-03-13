@@ -21,6 +21,9 @@ public class Game {
     private long date;
     private String dateString;
 
+
+    private int finished = 0;
+
     public int getStartPlayerIndex() {
         return startPlayerIndex;
     }
@@ -159,6 +162,15 @@ public class Game {
 
     public String getDateString(){
         return dateString;
+    }
+
+
+    public int getFinished() {
+        return finished;
+    }
+
+    public void setFinished(int finished) {
+        this.finished = finished;
     }
 
 

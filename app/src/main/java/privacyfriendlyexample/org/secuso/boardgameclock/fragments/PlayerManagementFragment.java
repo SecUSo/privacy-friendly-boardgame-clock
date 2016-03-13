@@ -44,7 +44,7 @@ public class PlayerManagementFragment extends Fragment {
         container.removeAllViews();
 
         final Button b = (Button) rootView.findViewById(R.id.createNewPlayerButton);
-        b.setText("Create New Player");
+        b.setText(R.string.createNewPlayer);
         b.setBackgroundColor(getResources().getColor(R.color.darkblue));
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class PlayerManagementFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 if (myListView.getCheckedItemCount() > 0) {
-                    b.setText("Delete Player (" + myListView.getCheckedItemCount() + ")");
+                    b.setText(activity.getString(R.string.deletePlayer) + " (" + myListView.getCheckedItemCount() + ")");
                     b.setBackgroundColor(Color.RED);
                     b.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -79,7 +79,7 @@ public class PlayerManagementFragment extends Fragment {
                     });
 
                 } else {
-                    b.setText("Create New Player");
+                    b.setText(activity.getString(R.string.createNewPlayer));
                     b.setBackgroundColor(getResources().getColor(R.color.darkblue));
                     b.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -98,11 +98,11 @@ public class PlayerManagementFragment extends Fragment {
                 Manifest.permission.READ_CONTACTS);
         if (contactPermissionCheck == PackageManager.PERMISSION_GRANTED)
             contactsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addPlayerFromContacts();
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    addPlayerFromContacts();
+                }
+            });
         else
             contactsButton.setVisibility(View.INVISIBLE);
 
@@ -124,28 +124,26 @@ public class PlayerManagementFragment extends Fragment {
         input.setInputType(InputType.TYPE_CLASS_TEXT);
 
         new AlertDialog.Builder(activity)
-                //.setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Create New Player")
-                .setMessage("Name:")
+                .setTitle(activity.getString(R.string.createNewPlayer))
+                .setMessage(activity.getString(R.string.name) + ":")
                 .setView(input)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         playersDataSource.open();
-                        playersDataSource.createPlayer(input.getText().toString(), resourceToUri(activity, R.mipmap.ic_launcher));
+                        playersDataSource.createPlayer(input.getText().toString(), resourceToUri(activity, R.drawable.ic_launcher));
                         playersDataSource.close();
 
                         refreshFragment();
                     }
 
                 })
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(activity.getString(R.string.cancel), null)
                 .show();
 
     }
 
-
-    private static String resourceToUri (Context context,int resID) {
+    private static String resourceToUri(Context context, int resID) {
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
                 context.getResources().getResourcePackageName(resID) + '/' +
                 context.getResources().getResourceTypeName(resID) + '/' +
@@ -155,7 +153,7 @@ public class PlayerManagementFragment extends Fragment {
     private void addPlayerFromContacts() {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new ContactListFragment());
-        fragmentTransaction.addToBackStack("ContactListFragment");
+        fragmentTransaction.addToBackStack(activity.getString(R.string.contactListFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         fragmentTransaction.commit();
@@ -164,10 +162,9 @@ public class PlayerManagementFragment extends Fragment {
 
     private void deletePlayer(final ListView lv) {
         new AlertDialog.Builder(activity)
-                //.setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Delete Player (" + lv.getCheckedItemCount() + ")")
-                .setMessage("Are you sure you want to delete the selected players? This step cannot be undone.")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle(activity.getString(R.string.deletePlayer) + " (" + lv.getCheckedItemCount() + ")")
+                .setMessage(R.string.deletePlayerQuestion)
+                .setPositiveButton(activity.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SparseBooleanArray checked = lv.getCheckedItemPositions();
@@ -188,11 +185,10 @@ public class PlayerManagementFragment extends Fragment {
                     }
 
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(activity.getString(R.string.no), null)
                 .show();
 
     }
-
 
 
 }

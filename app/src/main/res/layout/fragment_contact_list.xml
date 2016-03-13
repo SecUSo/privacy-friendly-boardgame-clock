@@ -1,9 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/header_select_contacts"
         android:layout_width="match_parent"
@@ -12,7 +11,7 @@
         android:layout_marginBottom="5dp"
         android:textStyle="bold"
         android:textColor="@color/darkblue"
-        android:text="Select Contacts"
+        android:text="@string/selectContacts"
         android:background="@drawable/bottom_border" />
 
     <ListView
@@ -20,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:choiceMode="multipleChoice"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/addContactSelectionButton"
@@ -28,8 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/standalone_button"
-        android:text="Add Selected Contacts (0)"
+        android:text="@string/addSelectedContactsZero"
         android:textColor="@android:color/white"
-        android:onClick="addContactSelectionButton"/>
+        android:onClick="addContactSelectionButton" />
 
 </LinearLayout>

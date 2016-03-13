@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bottom_border"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bottom_border"
-                android:text="Game Time"
+                android:text="@string/gameTime"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold" />
 
@@ -99,7 +99,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bottom_border"
-                android:text="Round Time"
+                android:text="@string/roundTime"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold" />
 
@@ -158,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Reset time after each round?" />
+                android:text="@string/resetTimeAfterRoundCheck" />
 
 
             <TextView
@@ -168,7 +168,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bottom_border"
-                android:text="Game Mode"
+                android:text="@string/gameMode"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold" />
 
@@ -185,7 +185,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bottom_border"
-                android:text="Time Delta"
+                android:text="@string/timeDelta"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold" />
 
@@ -193,7 +193,7 @@
                 android:id="@+id/check_new_game_delta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Increase time after each round?" />
+                android:text="@string/increaseTimeAfterRoundCheck" />
 
             <LinearLayout
                 android:id="@+id/timer_new_game_delta"
@@ -256,7 +256,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/standalone_button"
         android:onClick="choosePlayersButton"
-        android:text="Confirm"
+        android:text="@string/confirm"
         android:textColor="@color/white" />
 
 </LinearLayout>

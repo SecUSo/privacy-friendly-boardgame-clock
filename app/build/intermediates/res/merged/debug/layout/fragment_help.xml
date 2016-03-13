@@ -1,9 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/header_help_contacts"
         android:layout_width="match_parent"
@@ -22,9 +21,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/darkblue"
-        android:text="This permission is used to retrieve contact data from your address book to create new players.
-
-If not granted, the button ADD PLAYER FROM CONTACTS in the menu PLAYER MANAGEMENT is not visible."/>
+        android:text="@string/permissionContacts" />
 
     <TextView
         android:id="@+id/header_help_read_external"
@@ -44,9 +41,7 @@ If not granted, the button ADD PLAYER FROM CONTACTS in the menu PLAYER MANAGEMEN
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/darkblue"
-        android:text="This permission is used to restore backups saved on your external storage.
-
-If not granted, the button RESTORE BACKUP in the menu SETTINGS is not visible."/>
+        android:text="@string/permissionReadExtStorage" />
 
     <TextView
         android:id="@+id/header_help_write_external"
@@ -66,10 +61,7 @@ If not granted, the button RESTORE BACKUP in the menu SETTINGS is not visible."/
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/darkblue"
-        android:text="This permission is used to create and save backups on your external storage.
-
-If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible."/>
-
+        android:text="@string/permissionSaveExtStorage" />
 
 
 </LinearLayout>

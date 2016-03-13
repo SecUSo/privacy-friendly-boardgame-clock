@@ -2,7 +2,41 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:buttonStyle">@style/DarkButton</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/list_item_background</item>
+        <item name="colorControlNormal">@color/darkblue</item>
+        <item name="colorControlActivated">@color/darkblue</item>
+        <item name="colorControlHighlight">@color/yellow</item>
+    </style>
+
+    <style name="DarkButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/darkblue</item>
+        <item name="android:colorPressedHighlight">@color/yellow</item>
+    </style>
+
+    <style name="LightLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!-- DARK THEME -->
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/LightButton</item>
+    </style>
+
+    <style name="LightButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/middlegrey</item>
+    </style>
+
+    <style name="DarkLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

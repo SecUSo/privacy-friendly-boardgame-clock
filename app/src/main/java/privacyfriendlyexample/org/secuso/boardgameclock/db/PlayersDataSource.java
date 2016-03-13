@@ -27,6 +27,7 @@ public class PlayersDataSource {
 
     private String[] columns = {
             DbHelper.PLAYERS_COL_ID,
+            DbHelper.PLAYERS_COL_DATE,
             DbHelper.PLAYERS_COL_NAME,
             DbHelper.PLAYERS_COL_PHOTOURI
     };
@@ -48,6 +49,7 @@ public class PlayersDataSource {
     public Player createPlayer(String name, String photoUri) {
         ContentValues values = new ContentValues();
         values.put(DbHelper.PLAYERS_COL_NAME, name);
+        values.put(DbHelper.PLAYERS_COL_DATE, System.currentTimeMillis());
 
         if (photoUri != null)
             values.put(DbHelper.PLAYERS_COL_PHOTOURI, photoUri);
@@ -84,15 +86,18 @@ public class PlayersDataSource {
     private Player cursorToPlayer(Cursor cursor) {
 
         int idIndex = cursor.getColumnIndex(DbHelper.PLAYERS_COL_ID);
+        int idDate = cursor.getColumnIndex(DbHelper.PLAYERS_COL_DATE);
         int idName = cursor.getColumnIndex(DbHelper.PLAYERS_COL_NAME);
         int idPhotoUri = cursor.getColumnIndex(DbHelper.PLAYERS_COL_PHOTOURI);
 
         String name = cursor.getString(idName);
         String photoUri = cursor.getString(idPhotoUri);
         long id = cursor.getLong(idIndex);
+        long date = cursor.getLong(idDate);
 
         Player player = new Player();
         player.setId(id);
+        player.setDate(date);
         player.setName(name);
         player.setPhotoUri(photoUri);
 

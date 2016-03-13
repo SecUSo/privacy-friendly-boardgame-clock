@@ -34,7 +34,8 @@ public class GamesDataSource {
             DbHelper.GAMES_COL_CURRENT_GAME_TIME,
             DbHelper.GAMES_COL_NEXT_PLAYER_INDEX,
             DbHelper.GAMES_COL_START_PLAYER_INDEX,
-            DbHelper.GAMES_COL_SAVED
+            DbHelper.GAMES_COL_SAVED,
+            DbHelper.GAMES_COL_FINISHED
     };
 
 
@@ -64,7 +65,7 @@ public class GamesDataSource {
                            long currentGameTime,
                            int nextPlayerIndex,
                            int startPlayerIndex,
-                           int saved) {
+                           int saved, int finished) {
 
         ContentValues values = new ContentValues();
         values.put(DbHelper.GAMES_COL_NAME, name);
@@ -78,6 +79,7 @@ public class GamesDataSource {
         values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, nextPlayerIndex);
         values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, startPlayerIndex);
         values.put(DbHelper.GAMES_COL_SAVED, saved);
+        values.put(DbHelper.GAMES_COL_FINISHED, finished);
 
         // serialize players id's
         String playerIds = "";
@@ -139,10 +141,11 @@ public class GamesDataSource {
 
     public void saveGame(Game game){
         ContentValues values = new ContentValues();
-        values.put(DbHelper.GAMES_COL_SAVED, 1);
+        values.put(DbHelper.GAMES_COL_SAVED, game.getSaved());
         values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, game.getCurrentGameTime());
         values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, game.getNextPlayerIndex());
         values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, game.getStartPlayerIndex());
+        values.put(DbHelper.GAMES_COL_FINISHED, game.getFinished());
 
         // serialize player round times
         String playerRoundTimes = "";
@@ -188,6 +191,7 @@ public class GamesDataSource {
         int idNext_player_index = cursor.getColumnIndex(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX);
         int idStart_player_index = cursor.getColumnIndex(DbHelper.GAMES_COL_START_PLAYER_INDEX);
         int idSaved = cursor.getColumnIndex(DbHelper.GAMES_COL_SAVED);
+        int idFinished = cursor.getColumnIndex(DbHelper.GAMES_COL_FINISHED);
 
         long id = cursor.getLong(idIndex);
         long date = cursor.getLong(idDate);
@@ -201,6 +205,7 @@ public class GamesDataSource {
         int next_player_index = cursor.getInt(idNext_player_index);
         int start_player_index = cursor.getInt(idStart_player_index);
         int saved = cursor.getInt(idSaved);
+        int finished = cursor.getInt(idFinished);
 
         // deserialize player IDs
         String playerIds = cursor.getString(idPlayers);
@@ -242,6 +247,7 @@ public class GamesDataSource {
         game.setStartPlayerIndex(start_player_index);
         game.setCurrentGameTime(current_game_time);
         game.setSaved(saved);
+        game.setFinished(finished);
 
         return game;
     }
@@ -250,7 +256,7 @@ public class GamesDataSource {
         List<Game> gameList = new ArrayList<>();
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, null, null, null, null, null);
+                columns, null, null, null, null, DbHelper.GAMES_COL_DATE + " DESC");
 
         cursor.moveToFirst();
         Game game;
@@ -273,7 +279,32 @@ public class GamesDataSource {
         String[] whereArgs = new String[]{"1"};
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, whereClause, whereArgs, null, null, null);
+                columns, whereClause, whereArgs, null, null,  DbHelper.GAMES_COL_DATE + " DESC");
+
+
+        cursor.moveToFirst();
+        Game game;
+
+        while (!cursor.isAfterLast()) {
+            game = cursorToGame(cursor);
+            gameList.add(game);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+
+        return gameList;
+    }
+
+    public List<Game> getFinishedGames() {
+        List<Game> gameList = new ArrayList<>();
+
+        String whereClause = "finished" + "=?";
+        String[] whereArgs = new String[]{"1"};
+
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, whereClause, whereArgs, null, null,  DbHelper.GAMES_COL_DATE + " DESC");
 
 
         cursor.moveToFirst();

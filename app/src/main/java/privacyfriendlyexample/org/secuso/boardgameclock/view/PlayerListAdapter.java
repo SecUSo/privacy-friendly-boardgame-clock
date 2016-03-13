@@ -40,7 +40,7 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
                         .setText(p.getName());
 
                 ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText("<Placeholder>");
+                        .setText(mContext.getString(R.string.created) + " " +p.getDateString());
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
                         .setImageURI(Uri.parse(p.getPhotoUri()));
@@ -51,4 +51,6 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
         }
         return view;
     }
+
+
 }
