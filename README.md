@@ -4,21 +4,12 @@ TODO
 
 ## Motivation
 
-TODO
+Privacy Friendly Board Game Clock belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly dicing application.
 
 ## Installation
 
 Android Studio is required if further development is intended. 
 
-## API Reference
-
-- Mininum SDK: 14
-- Target SDK: 23 
-
 ## License
 
 Privacy Friendly Board Game Clock is licensed under the GPLv3.
-
-
-
-
