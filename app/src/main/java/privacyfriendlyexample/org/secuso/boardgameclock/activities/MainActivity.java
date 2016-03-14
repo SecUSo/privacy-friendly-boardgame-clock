@@ -31,6 +31,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameHistoryFragment;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+
     boolean drawerOpened = false;
     private String activityTitle;
     protected Game game;
@@ -326,13 +328,62 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
+            final FragmentManager fragmentManager = getFragmentManager();
 
-            if (position == 0) {
-                getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+            String topElement = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
+
+            if (position == 0 && topElement.equals(getString(R.string.gameFragment))) {
+
+                String dialogTitle;
+                String dialogQuestion;
+                final Activity  activity = this;
+
+                if (game.getFinished() == 1){
+                    dialogTitle = getString(R.string.backToMainMenu);
+                    dialogQuestion = getString(R.string.backToMainMenuQuestion);
+                }
+                else {
+                    dialogTitle = getString(R.string.quitGame);
+                    dialogQuestion = getString(R.string.leaveGameQuestion);
+                }
+
+                new AlertDialog.Builder(activity)
+                        .setTitle(dialogTitle)
+                        .setMessage(dialogQuestion)
+                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                if ((game.getFinished() == 0))
+                                    new AlertDialog.Builder(activity)
+                                            .setTitle(R.string.quitGame)
+                                            .setMessage(R.string.quitGameQuestion)
+                                            .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int whichButton) {
+                                                    saveGameToDb(1);
+                                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                                }
+                                            })
+                                            .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int whichButton) {
+                                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                                }
+                                            })
+                                            .show();
+                                else {
+                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                }
+
+                            }
+                        })
+                        .setNegativeButton(getString(R.string.no), null)
+                        .show();
             }
-            else
+            else if (position == 0) {
+                fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+            }else
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(null).commit();
 
             drawerList.setItemChecked(position, true);
@@ -342,6 +393,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.e("MainActivity", "Error in creating fragment");
         }
+    }
+
+    private void saveGameToDb(int save){
+        game.setSaved(save);
+
+        GamesDataSource gds = new GamesDataSource(this);
+        gds.open();
+        gds.saveGame(game);
+        gds.close();
     }
 
     public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
@@ -377,6 +437,10 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
 
+    }
+
+    public boolean isDrawerOpened() {
+        return drawerOpened;
     }
 
 }

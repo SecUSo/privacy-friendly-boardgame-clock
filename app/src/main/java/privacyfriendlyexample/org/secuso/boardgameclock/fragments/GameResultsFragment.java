@@ -8,7 +8,6 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,19 +16,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
-import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
-import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
-import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerResultsListAdapter;
 
 public class GameResultsFragment extends Fragment {
@@ -54,7 +46,7 @@ public class GameResultsFragment extends Fragment {
         game = ((MainActivity) activity).getGame();
 
         ((TextView) rootView.findViewById(R.id.timePlayedText)).setText(getTotalTimePlayed());
-        ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getRoundsPlayed()));
+        ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
 
         players = (ListView) rootView.findViewById(R.id.players_results_list);
         PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.choose_players_list, game.getPlayers());
@@ -91,9 +83,13 @@ public class GameResultsFragment extends Fragment {
         return new String[]{hh, mm, ss};
     }
 
-    private long getRoundsPlayed(){
+    private long getLastRound(){
         HashMap<Long, Long> playerRounds = game.getPlayer_rounds();
-        return Collections.max(playerRounds.values()) - 1;
+        long lastRound = Collections.max(playerRounds.values());
+        if (lastRound > 1)
+            return Collections.max(playerRounds.values()) - 1;
+        else
+            return 1;
     }
 
     View.OnClickListener mainMenu = new View.OnClickListener() {

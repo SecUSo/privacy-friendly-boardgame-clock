@@ -4,120 +4,134 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/game_current_game_time"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bottom_border"
-        android:text="@string/gameTime"
-        android:textColor="@color/darkblue"
-        android:textStyle="bold" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/game_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:paddingBottom="10dip"
-        android:paddingTop="10dip"
-        android:textColor="@color/darkblue"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/game_current_player_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/bottom_border"
-        android:text="@string/currentPlayer"
-        android:textColor="@color/darkblue"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imageViewIcon"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center" />
-
-    <TextView
-        android:id="@+id/game_current_player_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/darkblue"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/round_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:paddingTop="10dip"
-        android:textColor="@color/darkblue"
-        android:textSize="50dp" />
-
-    <TextView
-        android:id="@+id/game_current_player_round"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/round"
-        android:textColor="@color/darkblue"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/nextPlayerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/standalone_button"
-        android:onClick="nextPlayerButton"
-        android:text="@string/nextPlayer"
-        android:textColor="@color/white"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:id="@+id/gameButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:background="@color/white"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/saveGameButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/standalone_button"
-            android:onClick="saveGameButton"
-            android:visibility="gone"
-            android:text="@string/save"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/finishGameButton"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/standalone_button"
-            android:onClick="finishGameButton"
-            android:text="@string/finishGame"
-            android:visibility="gone"
-            android:textColor="@color/white" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/game_current_game_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bottom_border"
+                android:text="@string/gameTime"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/game_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:textColor="@color/darkblue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/game_current_player_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bottom_border"
+                android:text="@string/currentPlayer"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewIcon"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/game_current_player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/darkblue"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/round_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:paddingTop="10dip"
+                android:textColor="@color/darkblue"
+                android:textSize="50dp" />
+
+            <TextView
+                android:id="@+id/game_current_player_round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/round"
+                android:textColor="@color/darkblue"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/nextPlayerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/standalone_button"
+                android:onClick="nextPlayerButton"
+                android:text="@string/nextPlayer"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/gameButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/saveGameButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/standalone_button"
+                    android:onClick="saveGameButton"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/finishGameButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/standalone_button"
+                    android:onClick="finishGameButton"
+                    android:text="@string/finishGame"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/gamePlayPauseButton"

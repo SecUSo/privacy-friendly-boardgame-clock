@@ -91,7 +91,7 @@
     <string name="play">Spielen</string>
     <string name="play_capslock">SPIELEN</string>
     <string name="playedRoundsHeader">Letzte Runde</string>
-    <string name="playerManagement">Spieleverwaltung</string>
+    <string name="playerManagement">Spielerverwaltung</string>
     <string name="playerResults">Spielerergebnisse</string>
     <string name="players">Spieler</string>
     <string name="pleaseChooseAGame">Bitte wähle ein Spiel aus der Liste aus.</string>

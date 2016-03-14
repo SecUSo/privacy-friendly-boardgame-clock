@@ -45,7 +45,7 @@
     <string name="exportDatabaseBackupInfoMessage">Bist du dir sicher, dass du ein Backup der aktuellen Datenbank erstellen möchtest? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
     <string name="exportDatabaseBackupSuccess">Backup erfolgreich erstellt!</string>
     <string name="selectPlayers">Spieler auswählen</string>
-    <string name="playerManagement">Spieleverwaltung</string>
+    <string name="playerManagement">Spielerverwaltung</string>
     <string name="startNewGame">Neues Spiel starten</string>
     <string name="selectContacts">Kontakte auswählen</string>
     <string name="addSelectedContactsZero">Ausgewählte Kontakte hinzufügen (0)</string>

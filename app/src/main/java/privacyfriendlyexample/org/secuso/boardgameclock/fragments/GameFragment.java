@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ import privacyfriendlyexample.org.secuso.boardgameclock.view.OnSwipeTouchListene
 public class GameFragment extends Fragment {
 
     Activity activity;
+    MainActivity mainActivity;
     View rootView;
     private Game game;
     private HashMap<Long, Long> playerRoundTimes;
@@ -59,12 +61,14 @@ public class GameFragment extends Fragment {
     private TextView gameTimerTv, roundTimerTv;
 
     private boolean alreadySaved = true;
+    private boolean alreadyPaused = false;
     private int isFinished = 0;
     private boolean isPaused = true;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         activity = getActivity();
+        mainActivity = ((MainActivity) activity);
 
         rootView = inflater.inflate(R.layout.fragment_game, container, false);
         container.removeAllViews();
@@ -75,7 +79,7 @@ public class GameFragment extends Fragment {
         roundTimerTv = (TextView) rootView.findViewById(R.id.round_timer);
 
         game = ((MainActivity) activity).getGame();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(game.getName());
+        ((AppCompatActivity) activity).getSupportActionBar().setSubtitle(game.getName());
 
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
@@ -170,6 +174,15 @@ public class GameFragment extends Fragment {
                     roundTimerTv.setTextColor(Color.RED);
 
                 currentRoundTimeMs = millisUntilFinished;
+
+                if (mainActivity.isDrawerOpened() && !alreadyPaused){
+                    alreadyPaused = true;
+                    playPauseButton.performClick();
+                }
+                else
+                    alreadyPaused = false;
+
+                updateGame();
             }
 
             public void onFinish() {
@@ -178,6 +191,7 @@ public class GameFragment extends Fragment {
                 else
                     finishGame();
             }
+
         };
 
         // init game time chronometer
@@ -193,6 +207,8 @@ public class GameFragment extends Fragment {
                     gameTimerTv.setTextColor(Color.RED);
 
                 currentGameTimeMs = millisUntilFinished;
+
+                updateGame();
             }
 
             public void onFinish() {
@@ -204,12 +220,12 @@ public class GameFragment extends Fragment {
     View.OnClickListener saveGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(getActivity())
+            new AlertDialog.Builder(activity)
                     .setTitle(R.string.saveGame)
                     .setMessage(R.string.sureToSaveGameQuestion)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            updateGame(1);
+                            saveGameToDb(1);
                             alreadySaved = true;
                         }
                     })
@@ -218,7 +234,7 @@ public class GameFragment extends Fragment {
         }
     };
 
-    private void updateGame(int save) {
+    private void updateGame() {
         playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs / 1000);
         playerRounds.put(currentPlayer.getId(), playerRounds.get(currentPlayer.getId()));
 
@@ -227,12 +243,15 @@ public class GameFragment extends Fragment {
         game.setNextPlayerIndex(nextPlayerIndex);
         game.setStartPlayerIndex(startPlayerIndex);
         game.setCurrentGameTime(currentGameTimeMs / 1000);
-        game.setSaved(save);
         game.setFinished(isFinished);
 
-        ((MainActivity) getActivity()).setGame(game);
+        mainActivity.setGame(game);
+    }
 
-        GamesDataSource gds = new GamesDataSource(getActivity());
+    private void saveGameToDb(int save){
+        game.setSaved(save);
+
+        GamesDataSource gds = new GamesDataSource(activity);
         gds.open();
         gds.saveGame(game);
         gds.close();
@@ -240,6 +259,7 @@ public class GameFragment extends Fragment {
 
     private void finishGame() {
         isFinished = 1;
+        game.setFinished(isFinished);
 
         roundTimer.cancel();
         gameTimer.cancel();
@@ -250,7 +270,7 @@ public class GameFragment extends Fragment {
         playPauseButton.setText(R.string.showResults);
         playPauseButton.setOnClickListener(showGameResults);
 
-        updateGame(0);
+        saveGameToDb(0);
 
     }
 
@@ -281,7 +301,7 @@ public class GameFragment extends Fragment {
     View.OnClickListener finishGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(getActivity())
+            new AlertDialog.Builder(activity)
                     .setTitle(R.string.finishGame)
                     .setMessage(R.string.finishGameQuestion)
                     .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -444,18 +464,18 @@ public class GameFragment extends Fragment {
                         dialogQuestion = getString(R.string.leaveGameQuestion);
                     }
 
-                    new AlertDialog.Builder(getActivity())
+                    new AlertDialog.Builder(activity)
                             .setTitle(dialogTitle)
                             .setMessage(dialogQuestion)
                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     if ((isFinished == 0) && !alreadySaved)
-                                        new AlertDialog.Builder(getActivity())
+                                        new AlertDialog.Builder(activity)
                                                 .setTitle(R.string.quitGame)
                                                 .setMessage(R.string.quitGameQuestion)
                                                 .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                                        updateGame(1);
+                                                        saveGameToDb(1);
                                                         showMainMenu();
                                                     }
                                                 })
