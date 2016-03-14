@@ -4,7 +4,7 @@ TODO
 
 ## Motivation
 
-Privacy Friendly Board Game Clock belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly board game clock.
+Privacy Friendly Board Game Clock belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly board game clock application.
 
 ## Installation
 
