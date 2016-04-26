@@ -30,7 +30,9 @@
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-de/strings.xml -->
     <eat-comment/>
-    <string name="action_about">About</string>
+    <string name="about_affiliation">In Zusammenarbeit mit</string>
+    <string name="about_author">Autor: Marco Bräuning und Mitwirkende</string>
+    <string name="action_about">Über</string>
     <string name="action_help">Hilfe</string>
     <string name="action_main">Hauptmenü</string>
     <string name="action_new_game">Neues Spiel</string>
@@ -38,33 +40,40 @@
     <string name="action_resume_game">Spiel fortsetzen</string>
     <string name="action_settings">Einstellungen</string>
     <string name="activeGameTimeHeader">Gespielte Spielzeit (Gesamt)</string>
-    <string name="addPlayerFromContacts">Spieler aus Kontaktbuch hinzufügen</string>
-    <string name="addSelectedContacts">Ausgewählte Kontakte hinzufügen</string>
-    <string name="addSelectedContactsZero">Ausgewählte Kontakte hinzufügen (0)</string>
+    <string name="addPlayerFromContacts">Kontaktbuch</string>
+    <string name="addSelectedContacts">Kontakte hinzufügen</string>
+    <string name="addSelectedContactsZero">Kontakte hinzufügen</string>
     <string name="backToMainMenu">Zum Hauptmenü</string>
     <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
     <string name="cancel">Abbrechen</string>
+    <string name="changeColorButton">Farbe</string>
     <string name="changeColorTheme">Farbpalette ändern</string>
     <string name="changeLanguage">Sprache ändern</string>
     <string name="choosePlayersFragment"/>
     <string name="confirm">Bestätigen</string>
-    <string name="createNewPlayer">Neuen Spieler anlegen</string>
+    <string name="confirmCreatePart1">Bist du sicher, dass du den Spieler \'</string>
+    <string name="confirmCreatePart2">\' anlegen möchtest?</string>
+    <string name="confirmEditPart1">Bist du sicher, dass du die Änderungen an Spieler \'</string>
+    <string name="confirmEditPart2">\' übernehmen möchtest?</string>
+    <string name="createNewPlayer">Neuer Spieler</string>
     <string name="created">Erstellt:</string>
-    <string name="currentPlayer">Aktueller Spieler</string>
+    <string name="currentPlayer">Spieler</string>
     <string name="currentPlayers">Aktuelle Spieler</string>
-    <string name="deleteGame">Ausgewähltes Spiel Löschen</string>
+    <string name="deleteGame">Spiel Löschen</string>
     <string name="deleteGameQuestion">Bist du dir sicher, dass du das ausgewählte Spiel löschen möchtest?</string>
     <string name="deletePlayer">Spieler löschen</string>
-    <string name="deletePlayerQuestion">Bist du dir sicher, dass du die ausgewählten Spieler löschen möchtest? Dieser Schritt kann nicht rückgängig gemacht werden.</string>
+    <string name="deletePlayerQuestion">Bist du dir sicher, dass du den ausgewählten Spieler löschen möchtest? Hierbei werden zusätzlich alle Spielstände gelöscht, in welchen dieser Spieler beteiligt war. Dieser Schritt kann nicht rückgängig gemacht werden.</string>
     <string name="drawer_close">Schließe Navigationsleiste</string>
     <string name="drawer_open">Öffne Navigationsleiste</string>
+    <string name="editPlayer">Spieler bearbeiten</string>
+    <string name="editPlayerName">Spieler bearbeiten</string>
     <string name="error">Fehler</string>
     <string name="errorAtLeastTwoPlayers">Bitte wähle mindestens zwei Spieler um fortzufahren.</string>
     <string name="exit">Spiel verlassen</string>
     <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
     <string name="exportDatabaseBackup">Datenbank-Backup exportieren</string>
     <string name="exportDatabaseBackupInfoMessage">Bist du dir sicher, dass du ein Backup der aktuellen Datenbank erstellen möchtest? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
-    <string name="exportDatabaseBackupSuccess">Backup erfolgreich erstellt!</string>
+    <string name="exportDatabaseBackupSuccess">Backup erfolgreich erstellt unter: </string>
     <string name="finishGame">Spiel beenden</string>
     <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
     <string name="gameFragment"/>
@@ -72,22 +81,26 @@
     <string name="gameMode">Spielmodus</string>
     <string name="gameNameSizeError">Bitte gebe einen Namen für das Spiel ein.</string>
     <string name="gameResults">Spielergebnisse</string>
+    <string name="gameSavedSuccess">Spiel erfolgreich gespeichert!</string>
     <string name="gameTime">Spielzeit</string>
     <string name="importDatabaseBackup">Datenbank-Backup importieren</string>
     <string name="importDatabaseBackupInfoMessage">Bist du dir sicher, dass du das aktuelle Datenbank-Backup importieren möchtest? Die aktuelle Datenbank wird dadurch ersetzt.</string>
     <string name="importDatabaseBackupSuccess">Backup erfolgreich wiederhergestellt!</string>
     <string name="increaseTimeAfterRoundCheck">Zeit nach jeder Runde erhöhen?</string>
-    <string name="input_new_game_name">...</string>
     <string name="languageChangedSuccess">Sprache erfolgreich geändert!</string>
     <string name="lastRound">Gespielte Runden:</string>
     <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
     <string name="loadGame">Spiel laden</string>
-    <string name="loadSelectedGame">Ausgewähltes Spiel laden</string>
+    <string name="loadSelectedGame">Spiel laden</string>
+    <string name="more_info">Mehr Informationen unter:</string>
     <string name="nextPlayer">Nächster Spieler</string>
     <string name="no">Nein</string>
-    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button ADD PLAYER FROM CONTACTS in the menu PLAYER MANAGEMENT is not visible.</string>
-    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button RESTORE BACKUP in the menu SETTINGS is not visible.</string>
-    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible.</string>
+    <string name="noBackupFound">Es konnte kein Datenbank-Backup gefunden werden!</string>
+    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button CONTACTS in the menu PLAYER MANAGEMENT is not visible.</string>
+    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button RESTORE BACKUP in the menu BACKUP is not visible.</string>
+    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible, which inhibits exporting database backups.</string>
+    <string name="pickColor">Farbe auswählen</string>
+    <string name="picture">Bild</string>
     <string name="play">Spielen</string>
     <string name="play_capslock">SPIELEN</string>
     <string name="playedRoundsHeader">Letzte Runde</string>
@@ -95,13 +108,14 @@
     <string name="playerResults">Spielerergebnisse</string>
     <string name="players">Spieler</string>
     <string name="pleaseChooseAGame">Bitte wähle ein Spiel aus der Liste aus.</string>
+    <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps.</string>
     <string name="quitGame">Spiel verlassen</string>
     <string name="quitGameQuestion">Möchtest du das Spiel vor dem verlassen speichern?</string>
     <string name="removeEntry">Eintrag entfernen</string>
     <string name="removeEntryQuestion">Bist du dir sicher, dass du den ausgewählten Eintrag aus der Historie entfernen möchtest?</string>
     <string name="resetTimeAfterRoundCheck">Zeit nach jeder Runde zurücksetzen?</string>
     <string name="resume_capslock">FORTSETZEN</string>
-    <string name="round">Runde: </string>
+    <string name="round">Runde</string>
     <string name="roundTime">Rundenzeit</string>
     <string name="roundTimeSetError">Bitte wähle eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
     <string name="save">Speichern</string>
@@ -117,7 +131,7 @@
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-de/strings.xml -->
     <eat-comment/>
     <string name="sureToSaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel speichern möchtest?</string>
-    <string name="timeDelta">Zeit Delta</string>
+    <string name="takePhotoButton">Foto</string>
     <string name="timeLeft">Übrige Zeit:</string>
     <string name="yes">Ja</string>
 </resources>

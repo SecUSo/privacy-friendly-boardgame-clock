@@ -5,51 +5,61 @@
 
     <ScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:isScrollContainer="false">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/show_hint_main_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/header_new_game_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bottom_border"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="10dp"
                 android:text="@string/name"
-                android:textColor="@color/darkblue"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/input_new_game_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/header_new_game_name"
+                android:layout_marginLeft="130sp"
+                android:layout_marginRight="@dimen/main_button_padding"
                 android:hint="@string/input_new_game_name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:layout_marginTop="-10sp"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/header_new_game_time"
-                android:layout_width="match_parent"
+                android:layout_below="@+id/header_new_game_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bottom_border"
+                android:layout_alignLeft="@+id/header_new_game_name"
+                android:layout_alignStart="@+id/header_new_game_name"
+                android:layout_marginTop="25sp"
+                android:layout_marginBottom="30sp"
                 android:text="@string/gameTime"
-                android:textColor="@color/darkblue"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:id="@+id/timer_new_game_time"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.5"
+                android:layout_alignTop="@+id/header_new_game_time"
+                android:layout_marginLeft="134sp"
+                android:layout_marginRight="@dimen/main_button_padding"
                 android:background="@color/white"
-                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="-15sp"
                 android:orientation="horizontal">
 
                 <NumberPicker
@@ -94,115 +104,134 @@
 
             <TextView
                 android:id="@+id/header_new_round_time"
-                android:layout_width="match_parent"
+                android:layout_below="@+id/header_new_game_time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bottom_border"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginBottom="20dp"
                 android:text="@string/roundTime"
-                android:textColor="@color/darkblue"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <LinearLayout
-                android:id="@+id/timer_new_round_time"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.5"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <NumberPicker
-                    android:id="@+id/hours_new_round_time"
-                    android:layout_width="35dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center" />
-
-                <TextView
+                    android:id="@+id/timer_new_round_time"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center_vertical"
-                    android:text="h" />
+                    android:layout_height="50dp"
+                    android:layout_alignTop="@+id/header_new_round_time"
+                    android:background="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginLeft="134sp"
+                    android:layout_marginTop="-15sp"
+                    android:orientation="horizontal">
 
-                <NumberPicker
-                    android:id="@+id/minutes_new_round_time"
-                    android:layout_width="35dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center" />
+                    <NumberPicker
+                        android:id="@+id/hours_new_round_time"
+                        android:layout_width="35dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center_vertical"
-                    android:text="m" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center_vertical"
+                        android:text="h" />
 
-                <NumberPicker
-                    android:id="@+id/seconds_new_round_time"
-                    android:layout_width="35dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center" />
+                    <NumberPicker
+                        android:id="@+id/minutes_new_round_time"
+                        android:layout_width="35dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center_vertical"
-                    android:text="s" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center_vertical"
+                        android:text="m" />
+
+                    <NumberPicker
+                        android:id="@+id/seconds_new_round_time"
+                        android:layout_width="35dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center_vertical"
+                        android:text="s" />
+                </LinearLayout>
 
             <CheckBox
                 android:id="@+id/check_new_game_reset_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_alignLeft="@+id/input_new_game_name"
+                android:layout_alignStart="@+id/input_new_game_name"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/timer_new_round_time"
                 android:text="@string/resetTimeAfterRoundCheck" />
-
 
             <TextView
                 android:id="@+id/header_new_game_mode"
-                android:layout_width="match_parent"
+                android:layout_below="@+id/check_new_game_reset_time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bottom_border"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginBottom="20dp"
                 android:text="@string/gameMode"
-                android:textColor="@color/darkblue"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <Spinner
                 android:id="@+id/spinner_new_game_mode"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/header_new_game_mode"
+                android:layout_alignLeft="@+id/input_new_game_name"
+                android:layout_alignStart="@+id/input_new_game_name"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="-3sp"
                 android:entries="@array/game_modes" />
 
             <TextView
                 android:id="@+id/header_new_game_delta"
-                android:layout_width="match_parent"
+                android:layout_below="@+id/header_new_game_mode"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bottom_border"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginBottom="20dp"
                 android:text="@string/timeDelta"
-                android:textColor="@color/darkblue"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/check_new_game_delta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/header_new_game_delta"
+                android:layout_alignLeft="@+id/input_new_game_name"
+                android:layout_alignStart="@+id/input_new_game_name"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="-9sp"
                 android:text="@string/increaseTimeAfterRoundCheck" />
 
             <LinearLayout
                 android:id="@+id/timer_new_game_delta"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="0.5"
+                android:layout_below="@+id/check_new_game_delta"
+                android:layout_marginLeft="134sp"
+                android:layout_marginRight="@dimen/main_button_padding"
                 android:background="@color/white"
-                android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="invisible">
 
@@ -246,17 +275,37 @@
                     android:text="s" />
             </LinearLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
+
     </ScrollView>
 
     <Button
-        android:id="@+id/choosePlayersButton"
+        android:id="@+id/choosePlayersButtonBlue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/standalone_button"
+        android:background="@drawable/button_darkblue"
+        android:layout_marginBottom="5sp"
         android:onClick="choosePlayersButton"
         android:text="@string/confirm"
-        android:textColor="@color/white" />
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/choosePlayersButtonGrey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/button_grey"
+        android:onClick="choosePlayersButton"
+        android:text="@string/confirm"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:textColor="@color/white"
+        android:visibility="visible"/>
+
 
 </LinearLayout>

@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -28,20 +27,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
-import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameHistoryFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.LoadGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
-import privacyfriendlyexample.org.secuso.boardgameclock.fragments.SettingsFragment;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.BackupDialog;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
+import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.ObjectDrawerItem;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,16 +50,20 @@ public class MainActivity extends AppCompatActivity {
     boolean drawerOpened = false;
     private String activityTitle;
     protected Game game;
+    private Player playerForEditing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(getString(R.string.app_name));
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#024265")));
+
+        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
+            finish();
+        }
 
         drawerList = (ListView) findViewById(R.id.navList);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,22 +73,14 @@ public class MainActivity extends AppCompatActivity {
         addDrawerItems();
         setupDrawer();
 
-        // load language
-        SharedPreferences settings = getSharedPreferences("CommonPrefs", Activity.MODE_PRIVATE);
-        String lang = settings.getString("Language", "EN");
-        Locale myLocale = new Locale(lang);
-        Locale.setDefault(myLocale);
-        android.content.res.Configuration config = new android.content.res.Configuration();
-        config.locale = myLocale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[3];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
 
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_tutorial, getString(R.string.action_main), "");
         drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_help, getString(R.string.action_help), "");
-        drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
+        drawerItem[2] = new ObjectDrawerItem(android.R.drawable.ic_menu_rotate, getString(R.string.backup), "");
+        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
 
-        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
+        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.navdrawer_item_row, drawerItem);
         drawerList.setAdapter(adapter);
 
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -133,24 +126,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void settingsButton(View v){
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new SettingsFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.settingsFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+    public void newGamePlayerManagementButton(View v) {
 
-        fragmentTransaction.commit();
     }
 
     public void addContactSelectionButton(View v) {
-    }
-
-    public void languageButton(View v){
-
-    }
-
-    public void themeButton(View v){
-
     }
 
     public void importBackupButton(View v){
@@ -191,7 +171,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void exitApplicationButton(View v){
+    public void confirmNewPlayerButton(View v){
+
+    }
+
+    public void confirmEditPlayerButton(View v){
 
     }
 
@@ -234,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] mNavigationDrawerItemTitles = {getString(R.string.action_main), getString(R.string.action_help), getString(R.string.action_about)};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mNavigationDrawerItemTitles);
+        String[] mNavigationDrawerItemTitles = {getString(R.string.action_main), getString(R.string.action_help), getString(R.string.backup), getString(R.string.action_about)};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.navdrawer_item_row, mNavigationDrawerItemTitles);
         drawerList.setAdapter(adapter);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -308,6 +292,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public Player getPlayerForEditing(){
+        return playerForEditing;
+    }
+
+    public void setPlayerForEditing(Player p){
+        this.playerForEditing = p;
+    }
 
     private void selectItem(int position) {
 
@@ -321,6 +312,9 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new HelpFragment();
                 break;
             case 2:
+                fragment = new BackupDialog();
+                break;
+            case 3:
                 fragment = new AboutFragment();
                 break;
             default:
@@ -350,12 +344,14 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(activity)
                         .setTitle(dialogTitle)
                         .setMessage(dialogQuestion)
+                        .setIcon(android.R.drawable.ic_menu_help)
                         .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 if ((game.getFinished() == 0))
                                     new AlertDialog.Builder(activity)
                                             .setTitle(R.string.quitGame)
                                             .setMessage(R.string.quitGameQuestion)
+                                            .setIcon(android.R.drawable.ic_menu_help)
                                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
                                                     saveGameToDb(1);
@@ -383,8 +379,13 @@ public class MainActivity extends AppCompatActivity {
             else if (position == 0) {
                 fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
-            }else
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(null).commit();
+            }
+            else if (position == 2) {
+                BackupDialog backupDialog = new BackupDialog();
+                backupDialog.show(fragmentManager, getString(R.string.backupDialog));
+            }
+            else
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(fragment.getClass().getName()).commit();
 
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);

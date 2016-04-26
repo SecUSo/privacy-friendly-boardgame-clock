@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -27,10 +29,11 @@ import privacyfriendlyexample.org.secuso.boardgameclock.view.GamesListAdapter;
 public class GameHistoryFragment extends ListFragment {
 
     Button loadButton, deleteButton;
-    String selectedGameId;
+    String selectedGameId = "-1";
     Activity activity;
     GamesDataSource gds;
     List<Game> gamesList;
+    ListView myListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,6 @@ public class GameHistoryFragment extends ListFragment {
 
         loadButton = (Button) rootView.findViewById(R.id.showResultsButton);
         deleteButton = (Button) rootView.findViewById(R.id.removeEntryButton);
-        deleteButton.setBackgroundColor(Color.RED);
 
         return rootView;
     }
@@ -59,7 +61,7 @@ public class GameHistoryFragment extends ListFragment {
 
         gds = new GamesDataSource(activity);
         gds.open();
-        final ListView myListView = getListView();
+        myListView = getListView();
         gamesList = gds.getFinishedGames();
         gds.close();
 
@@ -70,37 +72,65 @@ public class GameHistoryFragment extends ListFragment {
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                String lastGameId = selectedGameId;
                 selectedGameId = String.valueOf(((Game) adapter.getItemAtPosition(position)).getId());
 
-                loadButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        gds.open();
-                        ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
-                        gds.close();
+                if (lastGameId.equals(selectedGameId)) {
+                    myListView.setItemChecked(-1, true);
+                    selectedGameId = "-1";
+                    refreshFragment();
+                }
 
-                        showResults();
-                    }
-                });
+                if (getListView().getCheckedItemCount() > 0) {
+                    deleteButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_red));
 
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        gds.open();
-                        ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
-                        gds.close();
+                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            gds.open();
+                            ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
+                            gds.close();
 
-                        removeEntry(getListView());
-                    }
-                });
+                            removeEntry(getListView());
+                        }
+                    });
 
-                if (getListView().getCheckedItemCount() > 0)
-                    deleteButton.setVisibility(View.VISIBLE);
-                else
-                    deleteButton.setVisibility(View.GONE);
+                    loadButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+
+                    loadButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            gds.open();
+                            ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
+                            gds.close();
+
+                            showResults();
+                        }
+                    });
+                } else {
+                    deleteButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+
+                    deleteButton.setOnClickListener(null);
+
+                    loadButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+
+                    loadButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            new AlertDialog.Builder(getActivity())
+                                    .setTitle(R.string.error)
+                                    .setMessage(R.string.pleaseChooseAGame)
+                                    .setPositiveButton(R.string.ok, null)
+                                    .setIcon(android.R.drawable.ic_menu_help)
+
+                                    .show();
+                        }
+                    });
+                }
             }
         });
 
+        deleteButton.setClickable(false);
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,9 +138,12 @@ public class GameHistoryFragment extends ListFragment {
                         .setTitle(R.string.error)
                         .setMessage(R.string.pleaseChooseAGame)
                         .setPositiveButton(R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_menu_help)
+
                         .show();
             }
         });
+
     }
 
     public void showResults() {
@@ -128,34 +161,48 @@ public class GameHistoryFragment extends ListFragment {
         ft.detach(this).attach(this).commit();
     }
 
-    public void removeEntry(final ListView lv){
-            new AlertDialog.Builder(activity)
-                    .setTitle(R.string.removeEntry)
-                    .setMessage(R.string.removeEntryQuestion)
-                    .setPositiveButton(activity.getString(R.string.yes), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SparseBooleanArray checked = lv.getCheckedItemPositions();
-                            int size = checked.size();
-                            gds.open();
+    public void removeEntry(final ListView lv) {
+        new AlertDialog.Builder(activity)
+                .setTitle(R.string.removeEntry)
+                .setMessage(R.string.removeEntryQuestion)
+                .setIcon(android.R.drawable.ic_menu_help)
 
-                            for (int i = 0; i < size; i++) {
-                                int key = checked.keyAt(i);
-                                boolean value = checked.get(key);
-                                if (value) {
-                                    gds.deleteGame(gamesList.get(key));
-                                    lv.setItemChecked(key, false);
-                                }
+                .setPositiveButton(activity.getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SparseBooleanArray checked = lv.getCheckedItemPositions();
+                        int size = checked.size();
+                        gds.open();
+
+                        for (int i = 0; i < size; i++) {
+                            int key = checked.keyAt(i);
+                            boolean value = checked.get(key);
+                            if (value) {
+                                gds.deleteGame(gamesList.get(key));
+                                lv.setItemChecked(key, false);
                             }
-
-                            gamesList = gds.getFinishedGames();
-                            gds.close();
-                            refreshFragment();
                         }
 
-                    })
-                    .setNegativeButton(activity.getString(R.string.no), null)
-                    .show();
+                        gamesList = gds.getFinishedGames();
+                        gds.close();
+                        refreshFragment();
+                    }
+
+                })
+                .setNegativeButton(activity.getString(R.string.no), null)
+                .show();
 
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
+
 }

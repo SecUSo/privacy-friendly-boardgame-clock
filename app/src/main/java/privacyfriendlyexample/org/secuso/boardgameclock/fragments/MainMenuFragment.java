@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 
 
 public class MainMenuFragment extends Fragment {
@@ -30,25 +32,6 @@ public class MainMenuFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(R.string.action_main);
         container.removeAllViews();
-
-        Button exitApp = (Button) rootView.findViewById(R.id.exitApplicationButton);
-        exitApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle(R.string.exit)
-                        .setMessage(R.string.exitQuestion)
-                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                getActivity().finish();
-                                System.exit(0);
-                            }
-                        })
-                        .setNegativeButton(getString(R.string.no), null)
-                        .show();
-            }
-        });
-
         return rootView;
     }
 
@@ -68,10 +51,14 @@ public class MainMenuFragment extends Fragment {
                     new AlertDialog.Builder(getActivity())
                             .setTitle(R.string.exit)
                             .setMessage(R.string.exitQuestion)
+                            .setIcon(android.R.drawable.ic_menu_help)
+
                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
-                                    getActivity().finish();
-                                    System.exit(0);
+                                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("EXIT", true);
+                                    startActivity(intent);
                                 }
                             })
                             .setNegativeButton(getString(R.string.no), null)
@@ -90,5 +77,16 @@ public class MainMenuFragment extends Fragment {
         setKeyListenerOnView(getView());
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
 
 }

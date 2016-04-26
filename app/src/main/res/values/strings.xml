@@ -8,23 +8,25 @@
 
     <!-- AboutFragment-->
     <string name="version_number">Version 1.0</string>
-    <string name="about_author">Author: Marco Bräuning</string>
-    <string name="about_affiliation">In affiliation with</string>
-    <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
-    <string name="more_info">More information can be found on:</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
 
     <string name="newGameFragment">NewGameFragment</string>
     <string name="loadGameFragment">LoadGameFragment</string>
     <string name="playerManagementFragment">PlayerManagementFragment</string>
     <string name="settingsFragment">SettingsFragment</string>
-    <string name="ok">OK</string>
+    <string name="ok">Okay</string>
     <string name="gameFragment">GameFragment</string>
-    <string name="pause_capslock">PAUSE</string>
+    <string name="pause_capslock">Pause</string>
     <string name="choosePlayersFragment">ChoosePlayersFragment</string>
     <string name="name">Name</string>
     <string name="contactListFragment">ContactListFragment</string>
     <string name="mainMenuFragment">MainMenuFragment</string>
     <string name="gameResultsFragment">GameResultsFragment</string>
     <string name="gameHistoryFragment">GameHistoryFragment</string>
+    <string name="input_new_game_name" translatable="false">...</string>
+    <string name="timeDelta">Delta</string>
+    <string name="createNewPlayerFragment">CreateNewPlayerFragment</string>
+    <string name="editPlayerFragment">EditPlayerFragment</string>
+    <string name="backup">Backup</string>
+    <string name="backupDialog">BackupDialog</string>
 </resources>

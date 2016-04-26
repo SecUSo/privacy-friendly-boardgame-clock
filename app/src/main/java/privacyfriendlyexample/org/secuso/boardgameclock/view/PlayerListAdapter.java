@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
@@ -31,7 +30,7 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
         try {
             if (view == null) {
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.listview_item_row, null); //--CloneChangeRequired(list_item)
+                view = vi.inflate(R.layout.playerlist_item_row, null); //--CloneChangeRequired(list_item)
             }
             final Player p = (Player) mList.get(position); //--CloneChangeRequired
             if (p != null) {
@@ -43,7 +42,7 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
                         .setText(mContext.getString(R.string.created) + " " +p.getDateString());
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageURI(Uri.parse(p.getPhotoUri()));
+                        .setImageBitmap(p.getIcon());
 
             }
         } catch (Exception e) {

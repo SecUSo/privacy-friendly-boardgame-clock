@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,6 +72,9 @@ public class GameFragment extends Fragment {
         activity = getActivity();
         mainActivity = ((MainActivity) activity);
 
+        // prevent phone from sleeping while game is running
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         rootView = inflater.inflate(R.layout.fragment_game, container, false);
         container.removeAllViews();
 
@@ -96,10 +101,10 @@ public class GameFragment extends Fragment {
         currentPlayerTv.setText(currentPlayer.getName());
 
         currentPlayerRound = (TextView) rootView.findViewById(R.id.game_current_player_round);
-        currentPlayerRound.setText(activity.getString(R.string.round) + " " + playerRounds.get(currentPlayer.getId()).toString());
+        currentPlayerRound.setText(playerRounds.get(currentPlayer.getId()).toString());
 
         currentPlayerIcon = (ImageView) rootView.findViewById(R.id.imageViewIcon);
-        currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+        currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
 
         currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId()) * 1000;
         currentGameTimeMs = game.getCurrentGameTime() * 1000;
@@ -223,10 +228,13 @@ public class GameFragment extends Fragment {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.saveGame)
                     .setMessage(R.string.sureToSaveGameQuestion)
+                    .setIcon(android.R.drawable.ic_menu_help)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             saveGameToDb(1);
                             alreadySaved = true;
+
+                            Toast.makeText(activity, R.string.gameSavedSuccess, Toast.LENGTH_LONG).show();
                         }
                     })
                     .setNegativeButton(R.string.no, null)
@@ -304,6 +312,7 @@ public class GameFragment extends Fragment {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.finishGame)
                     .setMessage(R.string.finishGameQuestion)
+                    .setIcon(android.R.drawable.ic_menu_help)
                     .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             finishGame();
@@ -428,8 +437,8 @@ public class GameFragment extends Fragment {
                 currentRoundTimeMs += game.getRound_time_delta() * 1000 * (playerRounds.get(currPlayerId) - 1);
 
             currentPlayerTv.setText(currentPlayer.getName());
-            currentPlayerRound.setText(getString(R.string.round) + " " + playerRounds.get(currentPlayer.getId()).toString());
-            currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+            currentPlayerRound.setText(playerRounds.get(currentPlayer.getId()).toString());
+            currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
 
             initTimerTextViews();
             initChronometers();
@@ -455,11 +464,10 @@ public class GameFragment extends Fragment {
                     String dialogTitle;
                     String dialogQuestion;
 
-                    if (isFinished == 1){
+                    if (isFinished == 1) {
                         dialogTitle = getString(R.string.backToMainMenu);
                         dialogQuestion = getString(R.string.backToMainMenuQuestion);
-                    }
-                    else {
+                    } else {
                         dialogTitle = getString(R.string.quitGame);
                         dialogQuestion = getString(R.string.leaveGameQuestion);
                     }
@@ -467,12 +475,14 @@ public class GameFragment extends Fragment {
                     new AlertDialog.Builder(activity)
                             .setTitle(dialogTitle)
                             .setMessage(dialogQuestion)
+                            .setIcon(android.R.drawable.ic_menu_help)
                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     if ((isFinished == 0) && !alreadySaved)
                                         new AlertDialog.Builder(activity)
                                                 .setTitle(R.string.quitGame)
                                                 .setMessage(R.string.quitGameQuestion)
+                                                .setIcon(android.R.drawable.ic_menu_help)
                                                 .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int whichButton) {
                                                         saveGameToDb(1);
@@ -508,6 +518,7 @@ public class GameFragment extends Fragment {
         getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         fragmentTransaction.commit();
@@ -520,9 +531,22 @@ public class GameFragment extends Fragment {
     }
 
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity){
+            a=(Activity) context;
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
 }

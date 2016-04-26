@@ -139,6 +139,41 @@ public class GamesDataSource {
         return newGame;
     }
 
+    private String[] getGameIdsWithPlayerInvolved(long playerId){
+        List<String> gameIds = new ArrayList<>();
+
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, null, null, null, null, DbHelper.GAMES_COL_DATE + " DESC");
+
+        cursor.moveToFirst();
+        Game game;
+
+        while (!cursor.isAfterLast()) {
+            game = cursorToGame(cursor);
+
+            System.err.println("TO BE DELETED" + playerId);
+
+            for (Player player : game.getPlayers()) {
+                System.err.println(player.getId());
+                if (player.getId() == playerId)
+                    gameIds.add(String.valueOf(game.getId()));
+            }
+
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return gameIds.toArray(new String[gameIds.size()]);
+    }
+
+    public void deleteGamesWithPlayer(long playerId){
+        String whereClause = "_id" + "=?";
+        String[] whereArgs = getGameIdsWithPlayerInvolved(playerId);
+
+        database.delete(DbHelper.TABLE_GAMES, whereClause, whereArgs);
+    }
+
     public void saveGame(Game game){
         ContentValues values = new ContentValues();
         values.put(DbHelper.GAMES_COL_SAVED, game.getSaved());
@@ -219,6 +254,7 @@ public class GamesDataSource {
         String playerTimes = cursor.getString(idPlayersRoundTimes);
         String[] playerTimesArray = playerTimes.split(";");
         HashMap<Long, Long> player_round_times = new HashMap<>();
+
         for (int i = 0; i < playerIdsArray.length; i++){
             player_round_times.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerTimesArray[i]));
         }

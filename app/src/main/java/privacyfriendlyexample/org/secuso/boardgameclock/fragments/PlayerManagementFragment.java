@@ -5,29 +5,28 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.List;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
+import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
+import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 
@@ -36,6 +35,10 @@ public class PlayerManagementFragment extends Fragment {
     Activity activity;
     List<Player> list;
     PlayersDataSource playersDataSource;
+    boolean contactsButtonIsHidden = false;
+    String selectedPlayerId = "-1";
+    ListView myListView;
+    PlayerListAdapter listAdapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -43,57 +46,26 @@ public class PlayerManagementFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.action_player_management);
         container.removeAllViews();
 
-        final Button b = (Button) rootView.findViewById(R.id.createNewPlayerButton);
-        b.setText(R.string.createNewPlayer);
-        b.setBackgroundColor(getResources().getColor(R.color.darkblue));
-        b.setOnClickListener(new View.OnClickListener() {
+        activity = getActivity();
+
+        final Button editPlayerButton = (Button) rootView.findViewById(R.id.editPlayerButton);
+        editPlayerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editPlayer();
+            }
+        });
+
+        final Button createNewPlayerButton = (Button) rootView.findViewById(R.id.createNewPlayerButton);
+        createNewPlayerButton.setText(R.string.createNewPlayer);
+        createNewPlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewPlayer();
             }
         });
 
-        playersDataSource = new PlayersDataSource(this.getActivity());
-        playersDataSource.open();
-        list = playersDataSource.getAllPlayers();
-        playersDataSource.close();
-
-        final ListView myListView = (ListView) rootView.findViewById(R.id.current_players_list);
-        final PlayerListAdapter listAdapter = new PlayerListAdapter(this.getActivity(), R.id.current_players_list, list);
-
-        myListView.setAdapter(listAdapter);
-        myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                if (myListView.getCheckedItemCount() > 0) {
-                    b.setText(activity.getString(R.string.deletePlayer) + " (" + myListView.getCheckedItemCount() + ")");
-                    b.setBackgroundColor(Color.RED);
-                    b.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            deletePlayer(myListView);
-                        }
-                    });
-
-                } else {
-                    b.setText(activity.getString(R.string.createNewPlayer));
-                    b.setBackgroundColor(getResources().getColor(R.color.darkblue));
-                    b.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            createNewPlayer();
-                        }
-                    });
-                }
-
-            }
-        });
-
         final Button contactsButton = (Button) rootView.findViewById(R.id.addPlayerContactsButton);
-
         int contactPermissionCheck = ContextCompat.checkSelfPermission(this.getActivity(),
                 Manifest.permission.READ_CONTACTS);
         if (contactPermissionCheck == PackageManager.PERMISSION_GRANTED)
@@ -103,8 +75,70 @@ public class PlayerManagementFragment extends Fragment {
                     addPlayerFromContacts();
                 }
             });
-        else
-            contactsButton.setVisibility(View.INVISIBLE);
+        else {
+            contactsButton.setVisibility(View.GONE);
+            contactsButtonIsHidden = true;
+        }
+
+        playersDataSource = new PlayersDataSource(this.getActivity());
+        playersDataSource.open();
+        list = playersDataSource.getAllPlayers();
+        playersDataSource.close();
+
+        myListView = (ListView) rootView.findViewById(R.id.current_players_list);
+
+        listAdapter = new PlayerListAdapter(this.getActivity(), R.id.current_players_list, list);
+
+        myListView.setAdapter(listAdapter);
+        myListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                String lastPlayerId = selectedPlayerId;
+                selectedPlayerId = String.valueOf(((Player) listAdapter.getItem(position)).getId());
+
+                if (lastPlayerId.equals(selectedPlayerId)) {
+                    myListView.setItemChecked(-1, true);
+                    selectedPlayerId = "-1";
+                    refreshFragment();
+                }
+
+                if (myListView.getCheckedItemCount() > 0) {
+                    createNewPlayerButton.setText(activity.getString(R.string.deletePlayer));
+                    createNewPlayerButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_red));
+                    createNewPlayerButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            deletePlayer(myListView);
+                        }
+                    });
+
+                    ((MainActivity) activity).setPlayerForEditing((Player) listAdapter.getItem(position));
+
+                    contactsButton.setVisibility(View.GONE);
+                    editPlayerButton.setVisibility(View.VISIBLE);
+
+                } else {
+                    createNewPlayerButton.setText(activity.getString(R.string.createNewPlayer));
+                    createNewPlayerButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+                    createNewPlayerButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            createNewPlayer();
+                        }
+                    });
+
+                    if (!contactsButtonIsHidden)
+                        contactsButton.setVisibility(View.VISIBLE);
+
+                    editPlayerButton.setVisibility(View.GONE);
+                }
+
+            }
+        });
 
         return rootView;
     }
@@ -114,40 +148,39 @@ public class PlayerManagementFragment extends Fragment {
         ft.detach(this).attach(this).commit();
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
     private void createNewPlayer() {
-        final EditText input = new EditText(activity);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new CreateNewPlayerFragment());
+        fragmentTransaction.addToBackStack(activity.getString(R.string.createNewPlayerFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-        new AlertDialog.Builder(activity)
-                .setTitle(activity.getString(R.string.createNewPlayer))
-                .setMessage(activity.getString(R.string.name) + ":")
-                .setView(input)
-                .setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        playersDataSource.open();
-                        playersDataSource.createPlayer(input.getText().toString(), resourceToUri(activity, R.drawable.ic_launcher));
-                        playersDataSource.close();
+        myListView.setItemChecked(-1, true);
+        selectedPlayerId = "-1";
 
-                        refreshFragment();
-                    }
-
-                })
-                .setNegativeButton(activity.getString(R.string.cancel), null)
-                .show();
-
+        fragmentTransaction.commit();
     }
 
-    private static String resourceToUri(Context context, int resID) {
-        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                context.getResources().getResourcePackageName(resID) + '/' +
-                context.getResources().getResourceTypeName(resID) + '/' +
-                context.getResources().getResourceEntryName(resID)).toString();
+    private void editPlayer() {
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new EditPlayerFragment());
+        fragmentTransaction.addToBackStack(activity.getString(R.string.editPlayerFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        myListView.setItemChecked(-1, true);
+        selectedPlayerId = "-1";
+
+        fragmentTransaction.commit();
     }
 
     private void addPlayerFromContacts() {
@@ -162,8 +195,9 @@ public class PlayerManagementFragment extends Fragment {
 
     private void deletePlayer(final ListView lv) {
         new AlertDialog.Builder(activity)
-                .setTitle(activity.getString(R.string.deletePlayer) + " (" + lv.getCheckedItemCount() + ")")
+                .setTitle(activity.getString(R.string.deletePlayer))
                 .setMessage(R.string.deletePlayerQuestion)
+                .setIcon(android.R.drawable.ic_menu_help)
                 .setPositiveButton(activity.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -171,16 +205,26 @@ public class PlayerManagementFragment extends Fragment {
                         int size = checked.size();
                         playersDataSource.open();
 
+                        long deletedPlayerId = -1;
+
                         for (int i = 0; i < size; i++) {
                             int key = checked.keyAt(i);
                             boolean value = checked.get(key);
                             if (value) {
+                                deletedPlayerId = list.get(key).getId();
+
+                                GamesDataSource gds = new GamesDataSource(activity);
+                                gds.open();
+                                gds.deleteGamesWithPlayer(deletedPlayerId);
+                                gds.close();
+
                                 playersDataSource.deletePlayer(list.get(key));
                                 lv.setItemChecked(key, false);
                             }
                         }
                         list = playersDataSource.getAllPlayers();
                         playersDataSource.close();
+
                         refreshFragment();
                     }
 
@@ -189,6 +233,5 @@ public class PlayerManagementFragment extends Fragment {
                 .show();
 
     }
-
 
 }

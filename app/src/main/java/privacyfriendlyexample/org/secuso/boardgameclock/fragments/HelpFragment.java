@@ -2,6 +2,7 @@ package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -25,9 +26,16 @@ public class HelpFragment extends Fragment {
         return rootView;
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
     }
 
 }

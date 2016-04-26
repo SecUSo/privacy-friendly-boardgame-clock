@@ -36,7 +36,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         try {
             if (view == null) {
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.listview_item_row, null); //--CloneChangeRequired(list_item)
+                view = vi.inflate(R.layout.playerlist_item_row, null); //--CloneChangeRequired(list_item)
             }
             final Player p = (Player) mList.get(position); //--CloneChangeRequired
             if (p != null) {
@@ -53,7 +53,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
                                 mContext.getString(R.string.timeLeft) + " " + getTimeLeft(p));
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageURI(Uri.parse(p.getPhotoUri()));
+                        .setImageBitmap(p.getIcon());
 
             }
         } catch (Exception e) {

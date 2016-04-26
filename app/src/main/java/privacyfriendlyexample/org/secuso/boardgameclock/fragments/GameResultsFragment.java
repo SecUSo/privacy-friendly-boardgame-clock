@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -124,6 +125,8 @@ public class GameResultsFragment extends Fragment {
         new AlertDialog.Builder(getActivity())
                 .setTitle(getString(R.string.backToMainMenu))
                 .setMessage(getString(R.string.backToMainMenuQuestion))
+                .setIcon(android.R.drawable.ic_menu_help)
+
                 .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         rootView.setFocusableInTouchMode(true);
@@ -146,6 +149,18 @@ public class GameResultsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         setKeyListenerOnView(getView());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
     }
 
 }

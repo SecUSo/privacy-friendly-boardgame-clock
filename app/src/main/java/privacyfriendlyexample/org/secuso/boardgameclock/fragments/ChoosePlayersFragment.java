@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -47,19 +50,38 @@ public class ChoosePlayersFragment extends Fragment {
         list = playersDataSource.getAllPlayers();
         playersDataSource.close();
 
+
+        final Button startNewGameButton = (Button) rootView.findViewById(R.id.startNewGameButton);
+        startNewGameButton .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewGame();
+            }
+        });
+
+        final Button b = (Button) rootView.findViewById(R.id.newGamePlayerManagementButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newGamePlayerManagementButton();
+            }
+        });
+
         myListView = (ListView) rootView.findViewById(R.id.choose_players_list);
         PlayerListAdapter listAdapter = new PlayerListAdapter(this.getActivity(), R.id.choose_players_list, list);
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        Button b = (Button) rootView.findViewById(R.id.startNewGameButton);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNewGame();
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                if (myListView.getCheckedItemCount() >= 2)
+                    startNewGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+                else
+                    startNewGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
             }
         });
+
 
         return rootView;
     }
@@ -80,12 +102,12 @@ public class ChoosePlayersFragment extends Fragment {
         }
 
         HashMap<Long, Long> player_round_times = new HashMap<>();
-        for (Player p : players){
+        for (Player p : players) {
             player_round_times.put(p.getId(), Long.valueOf(game.getRound_time()));
         }
 
         HashMap<Long, Long> players_rounds = new HashMap<>();
-        for (Player p : players){
+        for (Player p : players) {
             players_rounds.put(p.getId(), Long.valueOf(1));
         }
 
@@ -94,6 +116,7 @@ public class ChoosePlayersFragment extends Fragment {
         if (players.size() < 2) new AlertDialog.Builder(activity)
                 .setTitle(R.string.error)
                 .setMessage(R.string.errorAtLeastTwoPlayers)
+                .setIcon(android.R.drawable.ic_menu_help)
                 .setPositiveButton(R.string.ok, null)
                 .show();
         else {
@@ -106,15 +129,13 @@ public class ChoosePlayersFragment extends Fragment {
 
 
             //start player index
-            if (game.getGame_mode() == 0){
+            if (game.getGame_mode() == 0) {
                 game.setStartPlayerIndex(0);
                 game.setNextPlayerIndex(1);
-            }
-            else if (game.getGame_mode() == 1){
+            } else if (game.getGame_mode() == 1) {
                 game.setStartPlayerIndex(0);
                 game.setNextPlayerIndex(players.size() - 1);
-            }
-            else if (game.getGame_mode() == 2){
+            } else if (game.getGame_mode() == 2) {
                 int randomPlayerIndex = new Random().nextInt(players.size());
                 game.setStartPlayerIndex(randomPlayerIndex);
 
@@ -134,18 +155,39 @@ public class ChoosePlayersFragment extends Fragment {
         }
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
     public void startNewGame() {
 
-            final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content_frame, new GameFragment());
-            fragmentTransaction.addToBackStack(activity.getString(R.string.gameFragment));
-            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            fragmentTransaction.commit();
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new GameFragment());
+        fragmentTransaction.addToBackStack(activity.getString(R.string.gameFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        myListView.setItemChecked(-1, true);
+
+        fragmentTransaction.commit();
+
+    }
+
+    public void newGamePlayerManagementButton() {
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new PlayerManagementFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.playerManagementFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        myListView.setItemChecked(-1, true);
+
+        fragmentTransaction.commit();
 
     }
 

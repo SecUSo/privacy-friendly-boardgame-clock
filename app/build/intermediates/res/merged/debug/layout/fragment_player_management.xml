@@ -3,17 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/header_current_players"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/darkblue"
-        android:text="@string/currentPlayers"
-        android:background="@drawable/bottom_border" />
-
     <ListView
         android:id="@+id/current_players_list"
         android:layout_width="match_parent"
@@ -26,9 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/standalone_button"
+        android:background="@drawable/button_darkblue"
         android:text="@string/createNewPlayer"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
         android:onClick="createNewPlayerButton" />
 
     <Button
@@ -36,10 +28,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/standalone_button"
+        android:background="@drawable/button_darkblue"
         android:text="@string/addPlayerFromContacts"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
         android:onClick="addPlayerContactsButton" />
+
+    <Button
+        android:id="@+id/editPlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/button_darkblue"
+        android:text="@string/editPlayerName"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:onClick="addPlayerContactsButton"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

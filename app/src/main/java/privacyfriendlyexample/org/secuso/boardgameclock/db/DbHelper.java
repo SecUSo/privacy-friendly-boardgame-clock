@@ -18,14 +18,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String PLAYERS_COL_ID = "_id";
     public static final String PLAYERS_COL_DATE = "date";
     public static final String PLAYERS_COL_NAME = "name";
-    public static final String PLAYERS_COL_PHOTOURI = "photo_uri";
+    public static final String PLAYERS_COL_ICON = "icon";
 
     public static final String PLAYERS_SQL_CREATE =
             "CREATE TABLE " + TABLE_PLAYERS +
                     "(" + PLAYERS_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     PLAYERS_COL_DATE + " INTEGER NOT NULL, " +
                     PLAYERS_COL_NAME + " TEXT NOT NULL, " +
-                    PLAYERS_COL_PHOTOURI + " TEXT NOT NULL);";
+                    PLAYERS_COL_ICON + " BLOB NOT NULL);";
 
 
     public static final String TABLE_GAMES = "games";
@@ -66,8 +66,6 @@ public class DbHelper extends SQLiteOpenHelper {
                     GAMES_COL_FINISHED + " INTEGER NOT NULL, " +
                     GAMES_COL_SAVED + " INTEGER NOT NULL);";
 
-    private static final String LOG_TAG = DbHelper.class.getSimpleName();
-
     public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -78,7 +76,6 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL(PLAYERS_SQL_CREATE);
             db.execSQL(GAME_SQL_CREATE);
         } catch (Exception ex) {
-            Log.e(LOG_TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
         }
     }
 

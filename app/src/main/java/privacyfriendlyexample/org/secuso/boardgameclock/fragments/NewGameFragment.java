@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SyncStatusObserver;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-
-import java.util.Random;
+import android.widget.Toast;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
@@ -35,6 +39,9 @@ public class NewGameFragment extends Fragment {
     private CheckBox check_new_game_delta, check_new_game_reset_time;
     private Spinner game_mode;
     private EditText game_name;
+    private boolean nameEntered = false, roundTimeEntered = true, gameTimeEntered = true;
+    private int round_total_time_in_s, game_total_time_in_s;
+    private Button choosePlayersButtonBlue, choosePlayersButtonGrey;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -80,6 +87,19 @@ public class NewGameFragment extends Fragment {
         delta_hours.setMinValue(0);
         delta_hours.setMaxValue(99);
 
+        game_time_h.setOnValueChangedListener(gameValueChangedListener);
+        game_time_m.setOnValueChangedListener(gameValueChangedListener);
+        game_time_s.setOnValueChangedListener(gameValueChangedListener);
+
+        round_time_h.setOnValueChangedListener(roundValueChangedListener);
+        round_time_m.setOnValueChangedListener(roundValueChangedListener);
+        round_time_s.setOnValueChangedListener(roundValueChangedListener);
+
+        round_time_m.setValue(2);
+        game_time_m.setValue(15);
+        setGameTime();
+        setRoundTime();
+
         String dividerColor = "#024265";
         setDividerColor(round_time_s, dividerColor);
         setDividerColor(round_time_m, dividerColor);
@@ -108,26 +128,122 @@ public class NewGameFragment extends Fragment {
         game_mode = (Spinner) rootView.findViewById(R.id.spinner_new_game_mode);
         game_name = (EditText) rootView.findViewById(R.id.input_new_game_name);
 
-        Button b = (Button) rootView.findViewById(R.id.choosePlayersButton);
-        b.setOnClickListener(new View.OnClickListener() {
+        choosePlayersButtonBlue = (Button) rootView.findViewById(R.id.choosePlayersButtonBlue);
+        choosePlayersButtonBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewGame();
             }
         });
 
-        //test data
-        //check_new_game_reset_time.setChecked(true);
-        //game_name.setText("TEST GAME");
-        //round_time_m.setValue(5);
-        //game_time_h.setValue(1);
+        choosePlayersButtonGrey = (Button) rootView.findViewById(R.id.choosePlayersButtonGrey);
+        choosePlayersButtonGrey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewGame();
+            }
+        });
+
+        final EditText inputGameName = (EditText) rootView.findViewById(R.id.input_new_game_name);
+        inputGameName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                if (inputGameName.getText().toString().length() > 0)
+                    nameEntered = true;
+                else
+                    nameEntered = false;
+
+                if (nameEntered && roundTimeEntered && gameTimeEntered){
+                    choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                    choosePlayersButtonGrey.setVisibility(View.GONE);
+                }
+                else
+                {
+                    choosePlayersButtonBlue.setVisibility(View.GONE);
+                    choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
 
         return rootView;
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    NumberPicker.OnValueChangeListener gameValueChangedListener = new NumberPicker.OnValueChangeListener() {
+        @Override
+        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            setGameTime();
+
+            if(game_total_time_in_s <= 0)
+                gameTimeEntered = false;
+            else
+                gameTimeEntered = true;
+
+            if (nameEntered && roundTimeEntered && gameTimeEntered){
+                choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                choosePlayersButtonGrey.setVisibility(View.GONE);
+            }
+            else
+            {
+                choosePlayersButtonBlue.setVisibility(View.GONE);
+                choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+            }
+
+        }
+    };
+
+    NumberPicker.OnValueChangeListener roundValueChangedListener = new NumberPicker.OnValueChangeListener() {
+        @Override
+        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            setRoundTime();
+
+            if(round_total_time_in_s <= 0)
+                roundTimeEntered = false;
+            else
+                roundTimeEntered = true;
+
+            if (nameEntered && roundTimeEntered && gameTimeEntered){
+                choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                choosePlayersButtonGrey.setVisibility(View.GONE);
+            }
+            else
+            {
+                choosePlayersButtonBlue.setVisibility(View.GONE);
+                choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
+
+
+    private void setRoundTime(){
+        int round_time_h_in_s = round_time_h.getValue() * 3600;
+        int round_time_m_in_s = round_time_m.getValue() * 60;
+        round_total_time_in_s = round_time_s.getValue() + round_time_m_in_s + round_time_h_in_s;
+    }
+
+    private void setGameTime(){
+        int game_time_h_in_s = game_time_h.getValue() * 3600;
+        int game_time_m_in_s = game_time_m.getValue() * 60;
+        game_total_time_in_s = game_time_s.getValue() + game_time_m_in_s + game_time_h_in_s;
     }
 
     private void createNewGame() {
@@ -137,28 +253,26 @@ public class NewGameFragment extends Fragment {
         newGame.setName(game_name.getText().toString());
 
         //round time
-        int round_time_h_in_s = round_time_h.getValue() * 3600;
-        int round_time_m_in_s = round_time_m.getValue() * 60;
-        int round_total_time_in_s = round_time_s.getValue() + round_time_m_in_s + round_time_h_in_s;
         newGame.setRound_time(round_total_time_in_s);
 
         //game time
-        int game_time_h_in_s = game_time_h.getValue() * 3600;
-        int game_time_m_in_s = game_time_m.getValue() * 60;
-        int game_total_time_in_s = game_time_s.getValue() + game_time_m_in_s + game_time_h_in_s;
         newGame.setGame_time(game_total_time_in_s);
 
-        if (game_name.getText().toString().length() == 0) {
+        if (!nameEntered) {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.error)
                     .setMessage(getString(R.string.gameNameSizeError))
+                    .setIcon(android.R.drawable.ic_menu_help)
+
                     .setPositiveButton(getString(R.string.ok), null)
                             .show();
-        } else if (game_total_time_in_s <= 0 || round_total_time_in_s <= 0) {
+        } else if (!gameTimeEntered || !roundTimeEntered) {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.ok)
                     .setMessage(R.string.roundTimeSetError)
                     .setPositiveButton(R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_menu_help)
+
                     .show();
         } else {
             //reset round time

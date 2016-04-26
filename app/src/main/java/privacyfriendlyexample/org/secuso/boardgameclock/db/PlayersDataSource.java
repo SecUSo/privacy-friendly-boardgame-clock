@@ -5,9 +5,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,8 +21,6 @@ import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 
 public class PlayersDataSource {
 
-    private static final String LOG_TAG = PlayersDataSource.class.getSimpleName();
-
     private SQLiteDatabase database;
     private DbHelper dbHelper;
 
@@ -29,7 +30,7 @@ public class PlayersDataSource {
             DbHelper.PLAYERS_COL_ID,
             DbHelper.PLAYERS_COL_DATE,
             DbHelper.PLAYERS_COL_NAME,
-            DbHelper.PLAYERS_COL_PHOTOURI
+            DbHelper.PLAYERS_COL_ICON
     };
 
 
@@ -46,15 +47,11 @@ public class PlayersDataSource {
         dbHelper.close();
     }
 
-    public Player createPlayer(String name, String photoUri) {
+    public Player createPlayer(String name, Bitmap playerIcon) {
         ContentValues values = new ContentValues();
         values.put(DbHelper.PLAYERS_COL_NAME, name);
         values.put(DbHelper.PLAYERS_COL_DATE, System.currentTimeMillis());
-
-        if (photoUri != null)
-            values.put(DbHelper.PLAYERS_COL_PHOTOURI, photoUri);
-        else
-            values.put(DbHelper.PLAYERS_COL_PHOTOURI, resourceToUri(context, R.drawable.ic_launcher));
+        values.put(DbHelper.PLAYERS_COL_ICON, getBytes(playerIcon));
 
         long insertId = database.insert(DbHelper.TABLE_PLAYERS, null, values);
 
@@ -69,11 +66,15 @@ public class PlayersDataSource {
         return player;
     }
 
-    private static String resourceToUri (Context context,int resID) {
-        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
-                context.getResources().getResourcePackageName(resID) + '/' +
-                context.getResources().getResourceTypeName(resID) + '/' +
-                context.getResources().getResourceEntryName(resID)).toString();
+    public void updatePlayer(Player p){
+        String whereClause = "_id" + "=?";
+        String[] whereArgs = new String[] { String.valueOf(p.getId()) };
+
+        ContentValues values = new ContentValues();
+        values.put(DbHelper.PLAYERS_COL_NAME, p.getName());
+        values.put(DbHelper.PLAYERS_COL_ICON, getBytes(p.getIcon()));
+
+        database.update(DbHelper.TABLE_PLAYERS, values, whereClause, whereArgs);
     }
 
     public void deletePlayer(Player p){
@@ -88,10 +89,12 @@ public class PlayersDataSource {
         int idIndex = cursor.getColumnIndex(DbHelper.PLAYERS_COL_ID);
         int idDate = cursor.getColumnIndex(DbHelper.PLAYERS_COL_DATE);
         int idName = cursor.getColumnIndex(DbHelper.PLAYERS_COL_NAME);
-        int idPhotoUri = cursor.getColumnIndex(DbHelper.PLAYERS_COL_PHOTOURI);
+        int idIcon = cursor.getColumnIndex(DbHelper.PLAYERS_COL_ICON);
 
         String name = cursor.getString(idName);
-        String photoUri = cursor.getString(idPhotoUri);
+        byte[] iconArray = cursor.getBlob(idIcon);
+        Bitmap icon = getImage(iconArray);
+
         long id = cursor.getLong(idIndex);
         long date = cursor.getLong(idDate);
 
@@ -99,7 +102,7 @@ public class PlayersDataSource {
         player.setId(id);
         player.setDate(date);
         player.setName(name);
-        player.setPhotoUri(photoUri);
+        player.setIcon(icon);
 
         return player;
     }
@@ -145,5 +148,16 @@ public class PlayersDataSource {
         cursor.close();
 
         return playerList;
+    }
+
+    public static byte[] getBytes(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        return stream.toByteArray();
+    }
+
+    // convert from byte array to bitmap
+    public static Bitmap getImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 }

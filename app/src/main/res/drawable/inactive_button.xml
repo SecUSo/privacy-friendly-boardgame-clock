@@ -4,6 +4,7 @@
     <item>
         <shape>
             <solid android:color="@color/middlegrey" />
+            <corners android:radius="6dp" />
         </shape>
     </item>
 </selector>
