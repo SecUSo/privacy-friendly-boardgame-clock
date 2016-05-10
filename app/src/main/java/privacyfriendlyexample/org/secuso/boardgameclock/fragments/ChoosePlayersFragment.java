@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Checkable;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class ChoosePlayersFragment extends Fragment {
         if (players.size() < 2) new AlertDialog.Builder(activity)
                 .setTitle(R.string.error)
                 .setMessage(R.string.errorAtLeastTwoPlayers)
-                .setIcon(android.R.drawable.ic_menu_help)
+                .setIcon(android.R.drawable.ic_menu_info_details)
                 .setPositiveButton(R.string.ok, null)
                 .show();
         else {
@@ -166,11 +167,26 @@ public class ChoosePlayersFragment extends Fragment {
         }
 
     }
+
+    private void clearListSelections(){
+        myListView.clearChoices();
+
+        SparseBooleanArray checked = myListView.getCheckedItemPositions();
+        int size = checked.size();
+        for (int i = 0; i < size; i++) {
+            int key = checked.keyAt(i);
+            boolean value = checked.get(key);
+            if (value) {
+                myListView.setItemChecked(key, false);
+            }
+        }
+    }
+
     public void startNewGame() {
 
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new GameFragment());
-        fragmentTransaction.addToBackStack(activity.getString(R.string.gameFragment));
+        fragmentTransaction.addToBackStack(getString(R.string.gameFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         myListView.setItemChecked(-1, true);
@@ -180,15 +196,14 @@ public class ChoosePlayersFragment extends Fragment {
     }
 
     public void newGamePlayerManagementButton() {
+        clearListSelections();
+
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new PlayerManagementFragment());
         fragmentTransaction.addToBackStack(getString(R.string.playerManagementFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-        myListView.setItemChecked(-1, true);
-
         fragmentTransaction.commit();
-
     }
 
 

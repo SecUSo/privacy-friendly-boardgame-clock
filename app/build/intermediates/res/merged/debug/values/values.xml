@@ -344,6 +344,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="aboutFragment">AboutFragment</string>
     <string name="action_navigation">Navigation</string>
     <string name="app_name">Board Game Clock</string>
     <string name="app_name_long">Privacy Friendly Board Game Clock</string>
@@ -366,13 +367,18 @@
     <string name="gameFragment">GameFragment</string>
     <string name="gameHistoryFragment">GameHistoryFragment</string>
     <string name="gameResultsFragment">GameResultsFragment</string>
+    <string name="helpFragment">HelpFragment</string>
     <string name="input_new_game_name" translatable="false">...</string>
     <string name="loadGameFragment">LoadGameFragment</string>
     <string name="mainMenuFragment">MainMenuFragment</string>
-    <string name="name">Name</string>
+    <string name="name">Name:</string>
     <string name="newGameFragment">NewGameFragment</string>
     <string name="ok">Okay</string>
     <string name="pause_capslock">Pause</string>
+    <string name="permissionContactsName">Read Contacts</string>
+    <string name="permissionHeading">Permissions</string>
+    <string name="permissionReadExtStorageName">Read External Storage</string>
+    <string name="permissionSaveExtStorageName">Write External Storage</string>
     <string name="playerManagementFragment">PlayerManagementFragment</string>
     <string name="settingsFragment">SettingsFragment</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
@@ -380,7 +386,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="timeDelta">Delta</string>
+    <string name="timeDelta">Delta:</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
     <string name="version_number">Version 1.0</string>
     <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->

@@ -7,11 +7,20 @@
     android:layout_centerHorizontal="true"
     >
 
+            <ImageView
+                android:id="@+id/appIcon"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_launcher"/>
+
             <Button
                 android:id="@+id/newGameButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/button_darkblue"
                 android:onClick="newGameButton"
                 android:textSize="@dimen/text_size"
@@ -30,30 +39,5 @@
                 android:layout_marginLeft="@dimen/main_button_padding"
                 android:layout_marginRight="@dimen/main_button_padding"
                 android:text="@string/action_resume_game" />
-
-            <Button
-                android:id="@+id/showHistoryButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/button_darkblue"
-                android:onClick="showHistoryButton"
-                android:textSize="@dimen/text_size"
-                android:layout_marginLeft="@dimen/main_button_padding"
-                android:layout_marginRight="@dimen/main_button_padding"
-                android:text="@string/gameHistory" />
-
-            <Button
-                android:id="@+id/playerManagementButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10sp"
-                android:background="@drawable/button_darkblue"
-                android:onClick="playerManagementButton"
-                android:textSize="@dimen/text_size"
-                android:layout_marginLeft="@dimen/main_button_padding"
-                android:layout_marginRight="@dimen/main_button_padding"
-                android:text="@string/action_player_management" />
 
         </LinearLayout>

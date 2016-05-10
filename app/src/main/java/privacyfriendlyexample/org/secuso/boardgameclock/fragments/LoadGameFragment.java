@@ -122,7 +122,7 @@ public class LoadGameFragment extends ListFragment {
                                     .setTitle(R.string.error)
                                     .setMessage(R.string.pleaseChooseAGame)
                                     .setPositiveButton(R.string.ok, null)
-                                    .setIcon(android.R.drawable.ic_menu_help)
+                                    .setIcon(android.R.drawable.ic_menu_info_details)
 
                                     .show();
                         }
@@ -139,7 +139,7 @@ public class LoadGameFragment extends ListFragment {
                         .setTitle(R.string.error)
                         .setMessage(R.string.pleaseChooseAGame)
                         .setPositiveButton(R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_menu_help)
+                        .setIcon(android.R.drawable.ic_menu_info_details)
 
                         .show();
             }

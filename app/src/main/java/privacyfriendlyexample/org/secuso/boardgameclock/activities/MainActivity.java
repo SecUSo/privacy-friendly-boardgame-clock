@@ -32,7 +32,6 @@ import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameHistoryFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
-import privacyfriendlyexample.org.secuso.boardgameclock.fragments.LoadGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
@@ -49,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
     boolean drawerOpened = false;
     private String activityTitle;
-    protected Game game;
+
+    private Game game;
+    private Game historyGame;
+
     private Player playerForEditing;
+
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +74,24 @@ public class MainActivity extends AppCompatActivity {
         activityTitle = getTitle().toString();
         game = new Game();
 
+        fm = getFragmentManager();
+
         addDrawerItems();
         setupDrawer();
 
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[4];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[6];
 
-        drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_tutorial, getString(R.string.action_main), "");
-        drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_help, getString(R.string.action_help), "");
-        drawerItem[2] = new ObjectDrawerItem(android.R.drawable.ic_menu_rotate, getString(R.string.backup), "");
-        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
+        drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_menu_grey_600_48dp, getString(R.string.action_main), "");
+        drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_supervisor_account_grey_600_48dp, getString(R.string.playerManagement), "");
+        drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_playlist_add_check_grey_600_48dp, getString(R.string.gameHistory), "");
+        drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_settings_backup_restore_grey_600_48dp, getString(R.string.backup), "");
+        drawerItem[4] = new ObjectDrawerItem(R.drawable.ic_action_help, getString(R.string.action_help), "");
+        drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_action_about, getString(R.string.action_about), "");
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.navdrawer_item_row, drawerItem);
         drawerList.setAdapter(adapter);
 
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        final FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
         fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
         fragmentTransaction.commit();
@@ -99,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newGameButton(View v) {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        final FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new NewGameFragment());
         fragmentTransaction.addToBackStack(getString(R.string.newGameFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -107,22 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resumeGameButton(View v) {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new LoadGameFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.loadGameFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
-
-    }
-
-    public void playerManagementButton(View v) {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new PlayerManagementFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.playerManagementFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
 
     }
 
@@ -179,10 +171,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void mainMenuButton(View v){
-
-    }
-
     public void deleteGameButton(View v){
 
     }
@@ -195,30 +183,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showHistoryButton(View v){
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new GameHistoryFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.gameHistoryFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
-    }
-
-
     @Override
     public void onBackPressed() {
 
         if (drawerOpened) {
             drawerLayout.closeDrawer(Gravity.LEFT);
-        } else if (getFragmentManager().getBackStackEntryCount() > 1) {
-            getFragmentManager().popBackStack();
+        } else if (fm.getBackStackEntryCount() > 1) {
+            fm.popBackStack();
         } else {
             super.onBackPressed();
         }
     }
 
     private void addDrawerItems() {
-        String[] mNavigationDrawerItemTitles = {getString(R.string.action_main), getString(R.string.action_help), getString(R.string.backup), getString(R.string.action_about)};
+        String[] mNavigationDrawerItemTitles = {getString(R.string.action_main), getString(R.string.playerManagement), getString(R.string.gameHistory), getString(R.string.backup), getString(R.string.action_help), getString(R.string.action_about)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.navdrawer_item_row, mNavigationDrawerItemTitles);
         drawerList.setAdapter(adapter);
 
@@ -309,12 +287,18 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new MainMenuFragment();
                 break;
             case 1:
-                fragment = new HelpFragment();
+                fragment = new PlayerManagementFragment();
                 break;
             case 2:
-                fragment = new BackupDialog();
+                fragment = new GameHistoryFragment();
                 break;
             case 3:
+                fragment = new BackupDialog();
+                break;
+            case 4:
+                fragment = new HelpFragment();
+                break;
+            case 5:
                 fragment = new AboutFragment();
                 break;
             default:
@@ -322,9 +306,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (fragment != null) {
-            final FragmentManager fragmentManager = getFragmentManager();
 
-            String topElement = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
+            String topElement = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName();
 
             if (position == 0 && topElement.equals(getString(R.string.gameFragment))) {
 
@@ -355,20 +338,20 @@ public class MainActivity extends AppCompatActivity {
                                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
                                                     saveGameToDb(1);
-                                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                                    fm.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                                    fm.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
                                                 }
                                             })
                                             .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
-                                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                                    fm.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                                    fm.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
                                                 }
                                             })
                                             .show();
                                 else {
-                                    fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                    fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                                    fm.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                    fm.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
                                 }
 
                             }
@@ -377,15 +360,25 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
             else if (position == 0) {
-                fragmentManager.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                fragmentManager.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
+                fm.popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fm.beginTransaction().replace(R.id.content_frame, new MainMenuFragment()).addToBackStack(getString(R.string.mainMenuFragment)).commit();
             }
-            else if (position == 2) {
+            else if (position == 1){
+                fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(getString(R.string.playerManagementFragment)).commit();
+            }
+            else if (position == 2){
+                fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(getString(R.string.gameHistoryFragment)).commit();
+            }
+            else if (position == 3) {
                 BackupDialog backupDialog = new BackupDialog();
-                backupDialog.show(fragmentManager, getString(R.string.backupDialog));
+                backupDialog.show(fm, getString(R.string.backupDialog));
             }
-            else
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(fragment.getClass().getName()).commit();
+            else if (position == 4){
+                fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(getString(R.string.helpFragment)).commit();
+            }
+            else if (position == 5){
+                fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(getString(R.string.aboutFragment)).commit();
+            }
 
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);
@@ -443,5 +436,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean isDrawerOpened() {
         return drawerOpened;
     }
+
+
+    public Game getHistoryGame() {
+        return historyGame;
+    }
+
+    public void setHistoryGame(Game prevGame) {
+        this.historyGame = prevGame;
+    }
+
 
 }

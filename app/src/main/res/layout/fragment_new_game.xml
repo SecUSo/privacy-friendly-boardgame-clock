@@ -22,7 +22,7 @@
                 android:layout_marginLeft="@dimen/main_button_padding"
                 android:layout_marginRight="@dimen/main_button_padding"
                 android:layout_marginTop="10dp"
-                android:text="@string/name"
+                android:text="@string/gameName"
                 android:textSize="15sp" />
 
             <EditText

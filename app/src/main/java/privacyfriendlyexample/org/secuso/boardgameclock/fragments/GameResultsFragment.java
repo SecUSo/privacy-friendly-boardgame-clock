@@ -27,24 +27,20 @@ import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerResultsListAd
 
 public class GameResultsFragment extends Fragment {
 
-    Activity activity;
-    Button mainMenuButton;
+    MainActivity activity;
     View rootView;
     ListView players;
     Game game;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        activity = this.getActivity();
+        activity = (MainActivity) getActivity();
 
         rootView = inflater.inflate(R.layout.fragment_game_results, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(activity.getString(R.string.gameResults));
         container.removeAllViews();
 
-        mainMenuButton = (Button) rootView.findViewById(R.id.mainMenuButton);
-        mainMenuButton.setOnClickListener(mainMenu);
-
-        game = ((MainActivity) activity).getGame();
+        game = ((MainActivity) activity).getHistoryGame();
 
         ((TextView) rootView.findViewById(R.id.timePlayedText)).setText(getTotalTimePlayed());
         ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
@@ -56,20 +52,20 @@ public class GameResultsFragment extends Fragment {
         return rootView;
     }
 
-    private String getTotalTimePlayed(){
+    private String getTotalTimePlayed() {
         long game_time = game.getGame_time();
         long current_game_time = game.getCurrentGameTime();
         long totalTimePlayed = game_time - current_game_time;
 
-        String[] times = getTimeStrings(totalTimePlayed*1000);
+        String[] times = getTimeStrings(totalTimePlayed * 1000);
 
         if (times[0].equals("00"))
             if (times[1].equals("00"))
-                return times[2] +"s ";
+                return times[2] + "s ";
             else
-                return times[1] + "m " + times[2] +"s ";
+                return times[1] + "m " + times[2] + "s ";
         else
-            return times[0] + "h " + times[1] + "m " + times[2] +"s ";
+            return times[0] + "h " + times[1] + "m " + times[2] + "s ";
 
     }
 
@@ -84,7 +80,7 @@ public class GameResultsFragment extends Fragment {
         return new String[]{hh, mm, ss};
     }
 
-    private long getLastRound(){
+    private long getLastRound() {
         HashMap<Long, Long> playerRounds = game.getPlayer_rounds();
         long lastRound = Collections.max(playerRounds.values());
         if (lastRound > 1)
@@ -92,19 +88,6 @@ public class GameResultsFragment extends Fragment {
         else
             return 1;
     }
-
-    View.OnClickListener mainMenu = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            showMainMenu();
-        }
-    };
-
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
-
     public void setKeyListenerOnView(View v) {
         v.setFocusableInTouchMode(true);
         v.requestFocus();
@@ -112,8 +95,23 @@ public class GameResultsFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                    showMainMenu();
+                if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN)) {
+
+                    boolean gameHistoryInBackground = false;
+                    for (int i = 0; i < getFragmentManager().getBackStackEntryCount(); i++) {
+                        System.err.println(getFragmentManager().getBackStackEntryAt(i).getName());
+                        if (getFragmentManager().getBackStackEntryAt(i).getName().equals(getString(R.string.gameHistoryFragment)))
+                            gameHistoryInBackground = true;
+                    }
+
+                    // TODO
+                    if (!gameHistoryInBackground) {
+                        System.err.println("FAIL.");
+                        showMainMenu();
+                    } else {
+                        activity.onBackPressed();
+                    }
+                }
 
                 return true;
             }
@@ -122,27 +120,19 @@ public class GameResultsFragment extends Fragment {
     }
 
     private void showMainMenu() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(getString(R.string.backToMainMenu))
-                .setMessage(getString(R.string.backToMainMenuQuestion))
-                .setIcon(android.R.drawable.ic_menu_help)
 
-                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        rootView.setFocusableInTouchMode(true);
-                        rootView.requestFocus();
-                        rootView.setOnKeyListener(null);
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(null);
 
-                        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
-                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-                        fragmentTransaction.commit();
-                    }
-                })
-                .setNegativeButton(R.string.no, null)
-                .show();
+        fragmentTransaction.commit();
+
     }
 
     @Override

@@ -27,7 +27,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         this.mList = list;
         this.mContext = context;
 
-        game = ((MainActivity) mContext).getGame();
+        game = ((MainActivity) mContext).getHistoryGame();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

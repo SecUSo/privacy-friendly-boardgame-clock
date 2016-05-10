@@ -3,68 +3,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/timePlayedHeader"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/show_hint_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/darkblue"
-        android:text="@string/activeGameTimeHeader"
-        android:background="@drawable/bottom_border" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/timePlayedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="18dp"
-        android:textColor="@color/darkblue"/>
+        <TextView
+            android:id="@+id/timePlayedHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_marginTop="10dp"
+            android:text="@string/activeGameTimeHeader"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/roundsPlayedHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/darkblue"
-        android:text="@string/playedRoundsHeader"
-        android:background="@drawable/bottom_border" />
+        <TextView
+            android:id="@+id/timePlayedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/timePlayedHeader"
+            android:layout_marginLeft="150sp"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/roundsPlayedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_gravity="center"
-        android:textColor="@color/darkblue"/>
+        <TextView
+            android:id="@+id/roundsPlayedHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_below="@+id/timePlayedHeader"
+            android:layout_marginTop="10dp"
+            android:text="@string/playedRoundsHeader"
+            android:textSize="15sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/darkblue"
-        android:text="@string/playerResults"
-        android:background="@drawable/bottom_border" />
+        <TextView
+            android:id="@+id/roundsPlayedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/roundsPlayedHeader"
+            android:layout_alignLeft="@+id/timePlayedText"
+            android:layout_alignStart="@+id/timePlayedText"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/playerListHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_below="@+id/roundsPlayedHeader"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/playerResults"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/players_results_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:listSelector="@android:color/transparent"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
         android:layout_weight="1" />
 
-    <Button
+    <!--<Button
         android:id="@+id/mainMenuButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,6 +85,6 @@
         android:textSize="@dimen/text_size"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:onClick="mainMenuButton" />
+        android:onClick="mainMenuButton" />-->
 
 </LinearLayout>

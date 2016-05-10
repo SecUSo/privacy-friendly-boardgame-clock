@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
+import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 
 
 public class MainMenuFragment extends Fragment {
@@ -28,12 +30,39 @@ public class MainMenuFragment extends Fragment {
     Activity activity;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        activity = getActivity();
         View rootView = inflater.inflate(R.layout.fragment_main_menu, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(R.string.action_main);
         container.removeAllViews();
+
+        Button loadGameButton = (Button) rootView.findViewById(R.id.resumeGameButton);
+
+        GamesDataSource gds = new GamesDataSource(activity);
+        gds.open();
+        if (gds.getSavedGames().size() == 0) {
+            loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+            loadGameButton.setOnClickListener(null);
+        }
+        else {
+            loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+            loadGameButton.setOnClickListener(resumeGameListener);
+        }
+        gds.close();
+
         return rootView;
     }
+
+    View.OnClickListener resumeGameListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame, new LoadGameFragment());
+            fragmentTransaction.addToBackStack(getString(R.string.loadGameFragment));
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+            fragmentTransaction.commit();
+        }
+    };
 
     public void onAttach(Activity activity) {
         super.onAttach(activity);

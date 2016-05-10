@@ -117,12 +117,7 @@ public class EditPlayerFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(activity)
-                    .setTitle(activity.getString(R.string.editPlayer))
-                    .setMessage(activity.getString(R.string.confirmEditPart1) + playerName.getText() + activity.getString(R.string.confirmEditPart2))
-                    .setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+
                             playersDataSource.open();
                             p.setName(playerName.getText().toString());
                             picture.buildDrawingCache();
@@ -132,11 +127,7 @@ public class EditPlayerFragment extends Fragment {
                             playersDataSource.close();
 
                             activity.onBackPressed();
-                        }
 
-                    })
-                    .setNegativeButton(activity.getString(R.string.cancel), null)
-                    .show();
         }
     };
 

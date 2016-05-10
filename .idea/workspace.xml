@@ -49,44 +49,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b58c6cf0-604a-457f-a37b-76648af12b6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Marco.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/colorpicker_0_0_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_backup.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_player.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_player.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/navdrawer_item_row.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/playerlist_item_row.xml" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\MainMenuFragment$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\MainMenuFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\PlayerManagementFragment$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\PlayerManagementFragment$2$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$1$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$3$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$4$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment$4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable\standalone_button.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\layout\fragment_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\layout\listview_item_row.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable\standalone_button.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\layout\fragment_settings.xml" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\java\privacyfriendlyexample\org\secuso\boardgameclock\fragments\SettingsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.java" />
-      <change type="MOVED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\layout\listview_item_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/gamelist_item_row.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\assets\debug\db.sqlite" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\CreateNewPlayerFragment$3$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\EditPlayerFragment$3$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\GameResultsFragment$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\GameResultsFragment$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\classes\debug\privacyfriendlyexample\org\secuso\boardgameclock\fragments\MainMenuFragment$1$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable-hdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable-mdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable-xhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable-xxhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable-xxxhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable\bottom_border.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\res\merged\debug\drawable\delete_reset_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\androidTest\java\privacyfriendlyexample\org\secuso\boardgameclock\ApplicationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\assets\db.sqlite" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-hdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-mdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-xhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-xxhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-xxxhdpi\ic_settings_backup_restore_black_24dp.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable\bottom_border.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable\delete_reset_button.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$4$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$10$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment$10$1$1.class" />
@@ -107,22 +112,19 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/GamesListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/GamesListAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$2$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$2$1.class" />
@@ -131,91 +133,86 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$DrawerItemClickListener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$DrawerItemClickListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$DrawerItemCustomAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity$DrawerItemCustomAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment$1$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/PlayersDataSource.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/db/PlayersDataSource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$attr.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$attr.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$array.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$array.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$bool.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$bool.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$bool.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$bool.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$bool.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$bool.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$bool.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$bool.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$color.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$color.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$color.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$color.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$color.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$dimen.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$dimen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$dimen.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$dimen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$dimen.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$dimen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$dimen.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$dimen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$dimen.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$dimen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$drawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$drawable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$integer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$integer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$integer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$layout.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$menu.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$menu.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$mipmap.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$string.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$string.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$style.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$style.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/flask/colorpicker/R$style.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/design/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/recyclerview/R$styleable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R$styleable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/privacyfriendlyexample/org/secuso/boardgameclock/R.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/GamesListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/GamesListAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/PlayersDataSource.java" afterPath="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/PlayersDataSource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/recyclerview/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/recyclerview/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/flask/colorpicker/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/flask/colorpicker/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/privacyfriendlyexample/org/secuso/boardgameclock/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/privacyfriendlyexample/org/secuso/boardgameclock/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/button_darkblue.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/button_darkblue.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/button_grey.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/button_grey.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/button_red.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable-xhdpi/button_red.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_choose_players.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_choose_players.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_contact_list.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_contact_list.xml" />
@@ -226,6 +223,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_game_results.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_game_results.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_help.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_help.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_help.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_help.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_load_game.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_load_game.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_main_menu.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_main_menu.xml" />
@@ -234,9 +233,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_player_management.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_player_management.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/inactive_button.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable/inactive_button.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/inactive_button.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inactive_button.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResourcesdebug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResourcesdebug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
@@ -272,83 +269,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.448276">
-              <caret line="539" column="22" selection-start-line="539" selection-start-column="20" selection-end-line="539" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.1376673">
+              <caret line="294" column="47" selection-start-line="294" selection-start-column="47" selection-end-line="294" selection-end-column="47" />
               <folding>
-                <element signature="e#4683#4705#0" expanded="true" />
-                <element signature="e#5007#5030#0" expanded="true" />
-                <element signature="e#8503#8520#0" expanded="true" />
-                <element signature="e#8554#8585#0" expanded="true" />
-                <element signature="e#8688#8700#0" expanded="true" />
-                <element signature="e#8977#9002#0" expanded="true" />
-                <element signature="e#9119#9130#0" expanded="true" />
-                <element signature="e#10274#10294#0" expanded="true" />
-                <element signature="e#10764#10812#0" expanded="true" />
-                <element signature="e#11571#11590#0" expanded="true" />
-                <element signature="e#11624#11651#0" expanded="true" />
-                <element signature="e#11754#11777#0" expanded="true" />
-                <element signature="e#12036#12058#0" expanded="true" />
-                <element signature="e#12563#12587#0" expanded="true" />
-                <element signature="e#13518#13541#0" expanded="true" />
-                <element signature="e#17064#17098#0" expanded="true" />
-                <element signature="e#17141#17183#0" expanded="true" />
-                <element signature="e#17252#17280#0" expanded="true" />
-                <element signature="e#17323#17360#0" expanded="true" />
-                <element signature="e#17663#17686#0" expanded="true" />
-                <element signature="e#18031#18048#0" expanded="true" />
-                <element signature="e#18110#18135#0" expanded="true" />
-                <element signature="e#18294#18317#0" expanded="true" />
-                <element signature="e#18791#18813#0" expanded="true" />
-                <element signature="e#19414#19436#0" expanded="true" />
-                <element signature="e#19804#19840#0" expanded="true" />
-                <element signature="e#20100#20136#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#10871#10919#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_game.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.827586">
-              <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameHistoryFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.6896553">
-              <caret line="163" column="48" selection-start-line="163" selection-start-column="48" selection-end-line="163" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerManagementFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamesDataSource.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48979592">
-              <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -358,10 +287,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="Class" />
         <option value="layoutResourceFile_vertical" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -1832,57 +1761,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/gamelist_item_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/navdrawer_item_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/standalone_button.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/inactive_button.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/CameraActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_player_management.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/PlayersDataSource.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_player.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_backup.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_player.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/bottom_border.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_help.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java" />
       </list>
     </option>
   </component>
@@ -1930,6 +1859,8 @@
     <panes>
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1950,92 +1881,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="privacy-friendly-boardgame-clock" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="privacy-friendly-boardgame-clock" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="strings.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="privacy-friendly-boardgame-clock" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="privacy-friendly-boardgame-clock" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="privacy-friendly-boardgame-clock" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2102,12 +1947,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="01b1706994d60b10" />
@@ -2131,6 +1974,9 @@
       <recent name="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\layout" />
       <recent name="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\drawable-mdpi" />
       <recent name="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\src\main\res\xml" />
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
@@ -2325,7 +2171,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
@@ -2336,8 +2182,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3696629" sideWeight="0.32822758" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21055438" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36929923" sideWeight="0.6717724" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2468017" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3548387" sideWeight="0.6717724" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.48720682" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
@@ -2345,8 +2190,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23667377" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.48933902" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20362474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -2358,6 +2202,8 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16577825" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.48933902" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2385,117 +2231,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/gamelist_item_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.037037">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29708737">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31365314">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/navdrawer_item_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19921875">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/graphics/Bitmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44155845">
-          <caret line="43" column="7" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2503,15 +2242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5120594">
-          <caret line="59" column="32" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2519,7 +2249,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="669" column="13" selection-start-line="669" selection-start-column="13" selection-end-line="669" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2527,286 +2256,332 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
-          <folding>
-            <element signature="e#1182#1183#0" expanded="false" />
-            <element signature="e#1214#1215#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_player.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1666666">
           <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding>
-            <element signature="e#2419#2446#0" expanded="true" />
-            <element signature="e#2991#3016#0" expanded="true" />
-          </folding>
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09461967">
-          <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.448276">
-          <caret line="286" column="40" selection-start-line="286" selection-start-column="37" selection-end-line="286" selection-end-column="40" />
-          <folding>
-            <element signature="e#12887#12905#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.896552">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.033333335">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.379311">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding>
-            <element signature="e#2682#2706#0" expanded="true" />
-            <element signature="e#2781#2799#0" expanded="true" />
-            <element signature="e#2834#2862#0" expanded="true" />
-            <element signature="e#2898#2926#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ContactListFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9369202">
           <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="e#2906#2945#0" expanded="false" />
-            <element signature="e#5233#5272#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_backup.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.62069">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.62069">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_player.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.137931">
+          <caret line="103" column="53" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/database/sqlite/SQLiteDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding />
+          <caret line="1492" column="15" selection-start-line="1492" selection-start-column="15" selection-end-line="1492" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.448276">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.275862">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39688715">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="e#482#510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_load_game.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/preferences.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/button_red.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_grey.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/inactive_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/invisible_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_darkblue.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2155797">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_help.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1625239">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.551724">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5124283">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_game.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.275862">
+          <caret line="211" column="29" selection-start-line="211" selection-start-column="29" selection-end-line="211" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.332696">
+          <caret line="53" column="8" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.796875">
+          <caret line="85" column="48" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/MainMenuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.275862">
+          <caret line="31" column="71" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/AboutFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7629063">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2963671">
+          <caret line="127" column="48" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07608695">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
-          <folding />
+          <caret line="2052" column="0" selection-start-line="2052" selection-start-column="0" selection-end-line="2052" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_results.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.275862">
+          <caret line="87" column="46" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48757172">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.332696">
+          <caret line="200" column="79" selection-start-line="200" selection-start-column="73" selection-end-line="200" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2173913">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/NewGameFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="273" column="60" selection-start-line="273" selection-start-column="60" selection-end-line="273" selection-end-column="60" />
-          <folding />
+        <state vertical-scroll-proportion="0.030797102">
+          <caret line="292" column="23" selection-start-line="292" selection-start-column="19" selection-end-line="292" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main_menu.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53333336">
-          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_player_management.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#1438#1466#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22077923">
-          <caret line="127" column="56" selection-start-line="127" selection-start-column="56" selection-end-line="127" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_history.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_choose_players.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.62069">
-          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/HelpFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91465676">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_help.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-          <folding>
-            <element signature="e#893#921#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_player.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.137931">
-          <caret line="103" column="53" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
-          <folding>
-            <element signature="e#1415#1432#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/EditPlayerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding>
-            <element signature="e#6407#6811#0" expanded="false" />
-            <element signature="e#6810#6811#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.030797102">
+          <caret line="141" column="72" selection-start-line="141" selection-start-column="72" selection-end-line="141" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/CreateNewPlayerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
-          <folding />
+          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/BackupDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.862069">
-          <caret line="106" column="43" selection-start-line="106" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/LoadGameFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34960938">
-          <caret line="70" column="152" selection-start-line="70" selection-start-column="152" selection-end-line="70" selection-end-column="152" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-de/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34960938">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding />
+        <state vertical-scroll-proportion="0.6229839">
+          <caret line="107" column="28" selection-start-line="107" selection-start-column="18" selection-end-line="107" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/ChoosePlayersFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72282606">
+          <caret line="356" column="0" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/app/FragmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="195" column="28" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -2815,87 +2590,121 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321739">
-          <caret line="200" column="37" selection-start-line="200" selection-start-column="37" selection-end-line="200" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4495#4530#0" expanded="true" />
-            <element signature="e#6831#6870#0" expanded="true" />
-            <element signature="e#12991#13027#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.827586">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.7447619">
+          <caret line="26" column="58" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="58" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/view/PlayerResultsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.448276">
-          <caret line="539" column="22" selection-start-line="539" selection-start-column="20" selection-end-line="539" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.03250478">
+          <caret line="308" column="12" selection-start-line="308" selection-start-column="12" selection-end-line="308" selection-end-column="12" />
           <folding>
-            <element signature="e#4683#4705#0" expanded="true" />
-            <element signature="e#5007#5030#0" expanded="true" />
-            <element signature="e#8503#8520#0" expanded="true" />
-            <element signature="e#8554#8585#0" expanded="true" />
-            <element signature="e#8688#8700#0" expanded="true" />
-            <element signature="e#8977#9002#0" expanded="true" />
-            <element signature="e#9119#9130#0" expanded="true" />
-            <element signature="e#10274#10294#0" expanded="true" />
-            <element signature="e#10764#10812#0" expanded="true" />
-            <element signature="e#11571#11590#0" expanded="true" />
-            <element signature="e#11624#11651#0" expanded="true" />
-            <element signature="e#11754#11777#0" expanded="true" />
-            <element signature="e#12036#12058#0" expanded="true" />
-            <element signature="e#12563#12587#0" expanded="true" />
-            <element signature="e#13518#13541#0" expanded="true" />
-            <element signature="e#17064#17098#0" expanded="true" />
-            <element signature="e#17141#17183#0" expanded="true" />
-            <element signature="e#17252#17280#0" expanded="true" />
-            <element signature="e#17323#17360#0" expanded="true" />
-            <element signature="e#17663#17686#0" expanded="true" />
-            <element signature="e#18031#18048#0" expanded="true" />
-            <element signature="e#18110#18135#0" expanded="true" />
-            <element signature="e#18294#18317#0" expanded="true" />
-            <element signature="e#18791#18813#0" expanded="true" />
-            <element signature="e#19414#19436#0" expanded="true" />
-            <element signature="e#19804#19840#0" expanded="true" />
-            <element signature="e#20100#20136#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2552#2580#0" expanded="true" />
+            <element signature="e#3295#3326#0" expanded="true" />
+            <element signature="e#3426#3462#0" expanded="true" />
+            <element signature="e#3562#3593#0" expanded="true" />
+            <element signature="e#3698#3724#0" expanded="true" />
+            <element signature="e#3803#3834#0" expanded="true" />
+            <element signature="e#3914#3946#0" expanded="true" />
+            <element signature="e#4316#4352#0" expanded="true" />
+            <element signature="e#4436#4437#0" expanded="true" />
+            <element signature="e#4468#4469#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
+            <element signature="e#4524#4525#0" expanded="true" />
+            <element signature="e#4769#4804#0" expanded="true" />
+            <element signature="e#6314#6345#0" expanded="true" />
+            <element signature="e#6347#6383#0" expanded="true" />
+            <element signature="e#6385#6416#0" expanded="true" />
+            <element signature="e#6418#6444#0" expanded="true" />
+            <element signature="e#6446#6477#0" expanded="true" />
+            <element signature="e#6479#6511#0" expanded="true" />
+            <element signature="e#6862#6882#0" expanded="true" />
+            <element signature="e#6884#6905#0" expanded="true" />
+            <element signature="e#7182#7208#0" expanded="true" />
+            <element signature="e#9051#9052#0" expanded="true" />
+            <element signature="e#9090#9091#0" expanded="true" />
+            <element signature="e#9138#9139#0" expanded="true" />
+            <element signature="e#9179#9180#0" expanded="true" />
+            <element signature="e#10093#10125#0" expanded="true" />
+            <element signature="e#10336#10370#0" expanded="true" />
+            <element signature="e#10409#10451#0" expanded="true" />
+            <element signature="e#10528#10556#0" expanded="true" />
+            <element signature="e#10595#10632#0" expanded="true" />
+            <element signature="e#10911#10934#0" expanded="true" />
+            <element signature="e#10936#13346#0" expanded="true" />
+            <element signature="e#11254#11271#0" expanded="true" />
+            <element signature="e#11329#11354#0" expanded="true" />
+            <element signature="e#11505#11528#0" expanded="true" />
+            <element signature="e#11818#11854#0" expanded="true" />
+            <element signature="e#12040#12076#0" expanded="true" />
+            <element signature="e#12248#12270#0" expanded="true" />
+            <element signature="e#12491#12527#0" expanded="true" />
+            <element signature="e#12713#12749#0" expanded="true" />
+            <element signature="e#13002#13038#0" expanded="true" />
+            <element signature="e#13208#13244#0" expanded="true" />
+            <element signature="e#13345#13346#0" expanded="true" />
+            <element signature="e#13391#13413#0" expanded="true" />
+            <element signature="e#13538#13574#0" expanded="true" />
+            <element signature="e#13724#13760#0" expanded="true" />
+            <element signature="e#13914#13958#0" expanded="true" />
+            <element signature="e#14112#14151#0" expanded="true" />
+            <element signature="e#14317#14349#0" expanded="true" />
+            <element signature="e#14494#14526#0" expanded="true" />
+            <element signature="e#14680#14713#0" expanded="true" />
+            <element signature="e#16529#16530#0" expanded="true" />
+            <element signature="e#16564#16565#0" expanded="true" />
+            <element signature="e#16601#16602#0" expanded="true" />
+            <element signature="e#16635#16636#0" expanded="true" />
+            <element signature="e#16684#16685#0" expanded="true" />
+            <element signature="e#16727#16728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameHistoryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6896553">
-          <caret line="163" column="48" selection-start-line="163" selection-start-column="48" selection-end-line="163" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/PlayerManagementFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/db/GamesDataSource.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameResultsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48979592">
-          <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
-          <folding />
+        <state vertical-scroll-proportion="-2.048913">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
+          <folding>
+            <element signature="e#1410#1450#0" expanded="true" />
+            <element signature="e#3452#4494#0" expanded="true" />
+            <element signature="e#4023#4062#0" expanded="true" />
+            <element signature="e#4493#4494#0" expanded="true" />
+            <element signature="e#4704#4740#0" expanded="true" />
+            <element signature="e#5000#5036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/privacyfriendlyexample/org/secuso/boardgameclock/fragments/GameFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1376673">
+          <caret line="294" column="47" selection-start-line="294" selection-start-column="47" selection-end-line="294" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10871#10919#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

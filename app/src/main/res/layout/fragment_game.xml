@@ -7,7 +7,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/show_hint_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/game_current_game_time"
@@ -90,7 +91,7 @@
             android:layout_below="@+id/game_current_player_name"
             android:paddingTop="10dip"
             android:textColor="@color/black"
-            android:textSize="50dp" />
+            android:textSize="40dp" />
 
     </RelativeLayout>
 
@@ -98,68 +99,69 @@
         android:id="@+id/nextPlayerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/button_darkblue"
+        android:text="@string/nextPlayer"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/button_darkblue"
         android:onClick="nextPlayerButton"
-        android:text="@string/nextPlayer"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/gameButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5sp"
         android:background="@color/white"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/saveGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="@dimen/main_button_padding"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
             android:background="@drawable/button_darkblue"
             android:onClick="saveGameButton"
             android:text="@string/save"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size"
-            android:visibility="gone" />
+            android:layout_weight="1"
+            />
 
         <Button
             android:id="@+id/finishGameButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginRight="@dimen/main_button_padding"
-            android:layout_marginTop="5dp"
             android:background="@drawable/button_darkblue"
             android:onClick="finishGameButton"
             android:text="@string/finishGame"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size"
-            android:visibility="gone" />
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
     <Button
         android:id="@+id/gamePlayPauseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5sp"
+        android:background="@drawable/button_darkblue"
+        android:text="@string/play"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:background="@drawable/button_darkblue"
-        android:onClick="gamePlayPauseButton"
-        android:text="@string/play"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size" />
+        android:onClick="gamePlayPauseButton" />
+
 
 </LinearLayout>

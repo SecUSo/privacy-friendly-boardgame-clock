@@ -262,7 +262,7 @@ public class NewGameFragment extends Fragment {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.error)
                     .setMessage(getString(R.string.gameNameSizeError))
-                    .setIcon(android.R.drawable.ic_menu_help)
+                    .setIcon(android.R.drawable.ic_menu_info_details)
 
                     .setPositiveButton(getString(R.string.ok), null)
                             .show();
@@ -271,7 +271,7 @@ public class NewGameFragment extends Fragment {
                     .setTitle(R.string.ok)
                     .setMessage(R.string.roundTimeSetError)
                     .setPositiveButton(R.string.ok, null)
-                    .setIcon(android.R.drawable.ic_menu_help)
+                    .setIcon(android.R.drawable.ic_menu_info_details)
 
                     .show();
         } else {

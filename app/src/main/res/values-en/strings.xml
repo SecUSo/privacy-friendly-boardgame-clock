@@ -23,7 +23,7 @@
     <string name="error">Error</string>
     <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
     <string name="addSelectedContacts">Add Contacts</string>
-    <string name="round">Round</string>
+    <string name="round">Round:</string>
     <string name="saveGame">Save Game</string>
     <string name="play_capslock">PLAY</string>
     <string name="sureToSaveGameQuestion">Are you sure you want to save the current game?</string>
@@ -49,18 +49,18 @@
     <string name="startNewGame">Start New Game</string>
     <string name="selectContacts">Select Contacts</string>
     <string name="addSelectedContactsZero">Add Contacts</string>
-    <string name="gameTime">Game Time</string>
-    <string name="currentPlayer">Player</string>
+    <string name="gameTime">Game Time:</string>
+    <string name="currentPlayer">Player:</string>
     <string name="nextPlayer">Next Player</string>
     <string name="save">Save</string>
     <string name="play">Play</string>
-    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button CONTACTS in the menu PLAYER MANAGEMENT is not visible.</string>
-    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button RESTORE BACKUP in the menu BACKUP is not visible.</string>
-    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible.</string>
+    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button "Contacts" in the menu "Player Management" is not visible and it is not possible to create new player profiles based on contact data.</string>
+    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button "Import Database Backup" in the menu "Backup" is not visible and it is not possible to import database backups from external storage.</string>
+    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button "Export Database Backup" in the menu "Backup" is not visible and it is not possible to create and save database backups on external storage.</string>
     <string name="loadSelectedGame">Load Game</string>
-    <string name="roundTime">Round Time</string>
+    <string name="roundTime">Round Time:</string>
     <string name="resetTimeAfterRoundCheck">Reset time after each round?</string>
-    <string name="gameMode">Game Mode</string>
+    <string name="gameMode">Game Mode:</string>
     <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
     <string name="confirm">Confirm</string>
     <string name="currentPlayers">Current Players</string>
@@ -72,7 +72,7 @@
     <string name="quitGame">Quit Game</string>
     <string name="quitGameQuestion">Do you want to save the current game before leaving?</string>
     <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
-    <string name="finishGame">Finish Game</string>
+    <string name="finishGame">Finish</string>
     <string name="finishGameQuestion">Do you really want to finish the current game?</string>
     <string name="exit">Exit</string>
     <string name="exitQuestion">Do you really want to close the application?</string>
@@ -81,9 +81,9 @@
     <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
     <string name="deleteGame">Delete Game</string>
     <string name="deleteGameQuestion">Do you really want to delete the selected game?</string>
-    <string name="activeGameTimeHeader">Active Game Time (Total)</string>
-    <string name="playedRoundsHeader">Last Round</string>
-    <string name="playerResults">Player Results</string>
+    <string name="activeGameTimeHeader">Time Played:</string>
+    <string name="playedRoundsHeader">Last Round:</string>
+    <string name="playerResults">Player Results:</string>
     <string name="timeLeft">Time left:</string>
     <string name="created">Created:</string>
     <string name="lastRound">Completed Rounds:</string>
@@ -98,16 +98,16 @@
     <string name="pickColor">Pick color</string>
     <string name="confirmEditPart1">Are you sure to save the changes made to player \'</string>
     <string name="createNewPlayerFragment"></string>
+    <string name="gameName">Game Name:</string>
     <string name="confirmEditPart2">\'?</string>
     <string name="editPlayer">Edit Player</string>
     <string name="editPlayerName">Edit Player</string>
     <string name="takePhotoButton">Photo</string>
     <string name="changeColorButton">Color</string>
-    <string name="picture">Picture</string>
+    <string name="picture">Picture:</string>
     <string name="confirmCreatePart1">Do you really want to create the player \'</string>
     <string name="confirmCreatePart2">\'?</string>
     <string name="gameSavedSuccess">Game saved successfully!</string>
-    <string name="ok"></string>
     <string name="noBackupFound">No database backup found!</string>
 
 </resources>

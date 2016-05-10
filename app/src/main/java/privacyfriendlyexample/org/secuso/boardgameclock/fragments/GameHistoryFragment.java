@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class GameHistoryFragment extends ListFragment {
 
     Button loadButton, deleteButton;
     String selectedGameId = "-1";
-    Activity activity;
+    MainActivity activity;
     GamesDataSource gds;
     List<Game> gamesList;
     ListView myListView;
@@ -43,7 +44,7 @@ public class GameHistoryFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        activity = getActivity();
+        activity = (MainActivity) getActivity();
 
         final View rootView = inflater.inflate(R.layout.fragment_game_history, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(activity.getString(R.string.gameHistory));
@@ -88,7 +89,7 @@ public class GameHistoryFragment extends ListFragment {
                         @Override
                         public void onClick(View v) {
                             gds.open();
-                            ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
+                            ((MainActivity) getActivity()).setHistoryGame(gds.getGameWithId(selectedGameId));
                             gds.close();
 
                             removeEntry(getListView());
@@ -101,7 +102,9 @@ public class GameHistoryFragment extends ListFragment {
                         @Override
                         public void onClick(View v) {
                             gds.open();
-                            ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
+
+                            ((MainActivity) getActivity()).setHistoryGame(gds.getGameWithId(selectedGameId));
+
                             gds.close();
 
                             showResults();
@@ -121,7 +124,7 @@ public class GameHistoryFragment extends ListFragment {
                                     .setTitle(R.string.error)
                                     .setMessage(R.string.pleaseChooseAGame)
                                     .setPositiveButton(R.string.ok, null)
-                                    .setIcon(android.R.drawable.ic_menu_help)
+                                    .setIcon(android.R.drawable.ic_menu_info_details)
 
                                     .show();
                         }
@@ -138,12 +141,11 @@ public class GameHistoryFragment extends ListFragment {
                         .setTitle(R.string.error)
                         .setMessage(R.string.pleaseChooseAGame)
                         .setPositiveButton(R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_menu_help)
+                        .setIcon(android.R.drawable.ic_menu_info_details)
 
                         .show();
             }
         });
-
     }
 
     public void showResults() {
@@ -191,8 +193,8 @@ public class GameHistoryFragment extends ListFragment {
                 })
                 .setNegativeButton(activity.getString(R.string.no), null)
                 .show();
-
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -204,5 +206,24 @@ public class GameHistoryFragment extends ListFragment {
         }
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //setKeyListenerOnView(getView());
+    }
+
+//    public void setKeyListenerOnView(View v) {
+//        v.setFocusableInTouchMode(true);
+//        v.requestFocus();
+//        v.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//
+//                activity.onBackPressed();
+//                return true;
+//            }
+//        });
+//    }
 
 }
