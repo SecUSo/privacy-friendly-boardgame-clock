@@ -40,4 +40,3 @@
         android:onClick="startNewGameButton" />
 
 </LinearLayout>
-<!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_choose_players.xml -->

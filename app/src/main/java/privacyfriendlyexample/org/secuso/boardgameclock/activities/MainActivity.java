@@ -7,9 +7,11 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import android.widget.TextView;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
+import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.AboutFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.GameHistoryFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.HelpFragment;
@@ -36,6 +39,7 @@ import privacyfriendlyexample.org.secuso.boardgameclock.fragments.MainMenuFragme
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.NewGameFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.PlayerManagementFragment;
 import privacyfriendlyexample.org.secuso.boardgameclock.fragments.BackupDialog;
+import privacyfriendlyexample.org.secuso.boardgameclock.fragments.WelcomeDialog;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.ObjectDrawerItem;
@@ -52,14 +56,30 @@ public class MainActivity extends AppCompatActivity {
     private Game game;
     private Game historyGame;
 
-    private Player playerForEditing;
+    private GamesDataSource gds;
+    private PlayersDataSource pds;
 
+    private Player playerForEditing;
+    private SharedPreferences settings;
     private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fm = getFragmentManager();
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean firstStart = settings.getBoolean("firstStart", true);
+        if(firstStart) {
+            WelcomeDialog welcomeDialog = new WelcomeDialog();
+            welcomeDialog.show(fm, getString(R.string.welcomeDialog));
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("firstStart", false);
+            editor.commit();
+        }
+
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(getString(R.string.app_name));
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -73,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         activityTitle = getTitle().toString();
         game = new Game();
-
-        fm = getFragmentManager();
 
         addDrawerItems();
         setupDrawer();
@@ -96,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
         fragmentTransaction.commit();
 
+        gds = new GamesDataSource(this);
+        pds = new PlayersDataSource(this);
+
+        gds.open();
+        pds.open();
     }
 
     public void setGame(Game game) {
@@ -392,10 +415,7 @@ public class MainActivity extends AppCompatActivity {
     private void saveGameToDb(int save){
         game.setSaved(save);
 
-        GamesDataSource gds = new GamesDataSource(this);
-        gds.open();
         gds.saveGame(game);
-        gds.close();
     }
 
     public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
@@ -431,6 +451,21 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
 
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+
+        gds.close();
+        pds.close();
+    }
+
+    public GamesDataSource getGamesDataSource(){
+        return gds;
+    }
+
+    public PlayersDataSource getPlayersDataSource(){
+        return pds;
     }
 
     public boolean isDrawerOpened() {

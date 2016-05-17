@@ -38,6 +38,39 @@
 
     </PreferenceCategory>-->
 
+    <PreferenceCategory android:title="@string/action_new_game">
+        <Preference
+            android:summary="@string/help_gameName"
+            android:title="@string/gameNameNoColon" />
+        <Preference
+            android:summary="@string/help_gameTime"
+            android:title="@string/gameTimeNoColon" />
+        <Preference
+            android:summary="@string/help_roundTime"
+            android:title="@string/roundTimeNoColon" />
+        <Preference
+            android:summary="@string/help_gameMode"
+            android:title="@string/gameModeNoColon" />
+        <Preference
+            android:summary="@string/help_timeDelta"
+            android:title="@string/timeDeltaNoColon" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/menuPoints">
+        <Preference
+            android:summary="@string/help_mainMenu"
+            android:title="@string/action_main" />
+        <Preference
+            android:summary="@string/help_playerManagement"
+            android:title="@string/playerManagement" />
+        <Preference
+            android:summary="@string/help_gameHistory"
+            android:title="@string/gameHistory" />
+        <Preference
+            android:summary="@string/help_backup"
+            android:title="@string/backup" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/permissionHeading">
         <Preference
             android:summary="@string/permissionContacts"

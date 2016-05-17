@@ -9,4 +9,4 @@
         android:layout_height="@dimen/default_preview_image_height"
         android:src="@android:color/transparent"
         android:id="@+id/image_preview"/>
-</LinearLayout><!-- From: file:/home/jitpack/build/library/src/main/res/layout/color_selector.xml --><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.github.QuadFlask/colorpicker/0.0.10/res/layout/color_selector.xml -->
+</LinearLayout><!-- From: file:/home/jitpack/build/library/src/main/res/layout/color_selector.xml -->

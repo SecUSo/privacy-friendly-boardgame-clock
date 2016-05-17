@@ -33,24 +33,24 @@ import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 
 public class ChoosePlayersFragment extends Fragment {
 
-    Activity activity;
-    ListView myListView;
-    List<Player> list;
+    private Activity activity;
+    private ListView myListView;
+    private List<Player> list;
+
+    private GamesDataSource gds;
+    private PlayersDataSource pds;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         activity = this.getActivity();
+        gds = ((MainActivity) activity).getGamesDataSource();
+        pds = ((MainActivity) activity).getPlayersDataSource();
 
         View rootView = inflater.inflate(R.layout.fragment_choose_players, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.action_new_game);
         container.removeAllViews();
 
-        PlayersDataSource playersDataSource = new PlayersDataSource(this.getActivity());
-
-        playersDataSource.open();
-        list = playersDataSource.getAllPlayers();
-        playersDataSource.close();
-
+        list = pds.getAllPlayers();
 
         final Button startNewGameButton = (Button) rootView.findViewById(R.id.startNewGameButton);
         startNewGameButton .setOnClickListener(new View.OnClickListener() {
@@ -121,16 +121,15 @@ public class ChoosePlayersFragment extends Fragment {
                 .setPositiveButton(R.string.ok, null)
                 .show();
         else {
-            GamesDataSource gds = new GamesDataSource(activity);
-            gds.open();
             game = gds.createGame(dateMs, players, player_round_times, players_rounds, game.getName(), game.getRound_time(),
                     game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0);
-            gds.getAllGames();
-            gds.close();
+
+            // TODO
+            //gds.getAllGames();
 
 
             //start player index
-            if (game.getGame_mode() == 0) {
+            if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
                 game.setStartPlayerIndex(0);
                 game.setNextPlayerIndex(1);
             } else if (game.getGame_mode() == 1) {
@@ -183,7 +182,6 @@ public class ChoosePlayersFragment extends Fragment {
     }
 
     public void startNewGame() {
-
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new GameFragment());
         fragmentTransaction.addToBackStack(getString(R.string.gameFragment));

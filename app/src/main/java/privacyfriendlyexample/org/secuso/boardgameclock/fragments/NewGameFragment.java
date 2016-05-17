@@ -95,8 +95,8 @@ public class NewGameFragment extends Fragment {
         round_time_m.setOnValueChangedListener(roundValueChangedListener);
         round_time_s.setOnValueChangedListener(roundValueChangedListener);
 
-        round_time_m.setValue(2);
-        game_time_m.setValue(15);
+        //game_time_m.setValue(15);
+        //round_time_s.setValue(30);
         setGameTime();
         setRoundTime();
 
@@ -126,6 +126,8 @@ public class NewGameFragment extends Fragment {
         });
 
         game_mode = (Spinner) rootView.findViewById(R.id.spinner_new_game_mode);
+        //game_mode.setSelection(3);
+
         game_name = (EditText) rootView.findViewById(R.id.input_new_game_name);
 
         choosePlayersButtonBlue = (Button) rootView.findViewById(R.id.choosePlayersButtonBlue);
@@ -172,6 +174,8 @@ public class NewGameFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
+
+        //inputGameName.setText("Test");
 
         return rootView;
     }
@@ -253,10 +257,10 @@ public class NewGameFragment extends Fragment {
         newGame.setName(game_name.getText().toString());
 
         //round time
-        newGame.setRound_time(round_total_time_in_s);
+        newGame.setRound_time(round_total_time_in_s * 1000);
 
         //game time
-        newGame.setGame_time(game_total_time_in_s);
+        newGame.setGame_time(game_total_time_in_s * 1000);
 
         if (!nameEntered) {
             new AlertDialog.Builder(activity)
@@ -287,7 +291,7 @@ public class NewGameFragment extends Fragment {
                 int delta_minutes_in_seconds = delta_minutes.getValue() * 60;
                 int total_delta_in_seconds = delta_seconds.getValue() + delta_hours_in_seconds + delta_minutes_in_seconds;
 
-                newGame.setRound_time_delta(total_delta_in_seconds);
+                newGame.setRound_time_delta(total_delta_in_seconds * 1000);
             }
 
             //game mode

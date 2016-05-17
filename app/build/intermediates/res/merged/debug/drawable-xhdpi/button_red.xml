@@ -1,8 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape >
-            <solid android:color="@android:color/holo_red_dark" />
-            <corners android:radius="6dp" />
-        </shape>
-    </item>
-</selector><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/drawable-xhdpi/button_red.xml -->

@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.URI;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 
 public class ContactListFragment extends ListFragment implements LoaderCallbacks<Cursor> {
@@ -35,10 +36,14 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
 
     private Loader<Cursor> contacts;
 
+    private PlayersDataSource pds;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        pds = ((MainActivity) getActivity()).getPlayersDataSource();
 
         // create adapter once
         Context context = getActivity();
@@ -91,8 +96,6 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
                         public void onClick(View v) {
                             SparseBooleanArray checked = lv.getCheckedItemPositions();
                             int size = checked.size();
-                            PlayersDataSource pds = new PlayersDataSource(getActivity());
-                            pds.open();
 
                             for (int i = 0; i < size; i++) {
                                 int key = checked.keyAt(i);
@@ -117,8 +120,9 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
                                     }
                                 }
                             }
-                            pds.getAllPlayers();
-                            pds.close();
+
+                            // TODO
+                            //pds.getAllPlayers();
 
                             getActivity().onBackPressed();
                         }

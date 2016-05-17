@@ -35,4 +35,6 @@
     <string name="permissionReadExtStorageName">Read External Storage</string>
     <string name="permissionSaveExtStorageName">Write External Storage</string>
     <string name="permissionHeading">Permissions</string>
+    <string name="welcomeDialog">WelcomeDialog</string>
+    <string name="timeDeltaNoColon">Delta</string>
 </resources>

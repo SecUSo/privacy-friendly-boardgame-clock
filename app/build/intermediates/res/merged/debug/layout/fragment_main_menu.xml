@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/button_darkblue"
                 android:onClick="resumeGameButton"
                 android:textSize="@dimen/text_size"
@@ -41,4 +42,3 @@
                 android:text="@string/action_resume_game" />
 
         </LinearLayout>
-<!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_main_menu.xml -->

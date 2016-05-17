@@ -3,4 +3,4 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:textSize="16sp"></TextView><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/row_example.xml -->
+    android:textSize="16sp"></TextView>

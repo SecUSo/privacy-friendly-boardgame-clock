@@ -57,7 +57,7 @@ public class GameResultsFragment extends Fragment {
         long current_game_time = game.getCurrentGameTime();
         long totalTimePlayed = game_time - current_game_time;
 
-        String[] times = getTimeStrings(totalTimePlayed * 1000);
+        String[] times = getTimeStrings(totalTimePlayed);
 
         if (times[0].equals("00"))
             if (times[1].equals("00"))
@@ -83,10 +83,10 @@ public class GameResultsFragment extends Fragment {
     private long getLastRound() {
         HashMap<Long, Long> playerRounds = game.getPlayer_rounds();
         long lastRound = Collections.max(playerRounds.values());
-        if (lastRound > 1)
-            return Collections.max(playerRounds.values()) - 1;
+        if (lastRound == Collections.min(playerRounds.values()))
+            return lastRound;
         else
-            return 1;
+            return Collections.max(playerRounds.values()) - 1;
     }
     public void setKeyListenerOnView(View v) {
         v.setFocusableInTouchMode(true);
@@ -99,14 +99,11 @@ public class GameResultsFragment extends Fragment {
 
                     boolean gameHistoryInBackground = false;
                     for (int i = 0; i < getFragmentManager().getBackStackEntryCount(); i++) {
-                        System.err.println(getFragmentManager().getBackStackEntryAt(i).getName());
                         if (getFragmentManager().getBackStackEntryAt(i).getName().equals(getString(R.string.gameHistoryFragment)))
                             gameHistoryInBackground = true;
                     }
 
-                    // TODO
                     if (!gameHistoryInBackground) {
-                        System.err.println("FAIL.");
                         showMainMenu();
                     } else {
                         activity.onBackPressed();

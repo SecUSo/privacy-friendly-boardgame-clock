@@ -28,6 +28,7 @@ import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 public class MainMenuFragment extends Fragment {
 
     Activity activity;
+    GamesDataSource gds;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         activity = getActivity();
@@ -37,8 +38,7 @@ public class MainMenuFragment extends Fragment {
 
         Button loadGameButton = (Button) rootView.findViewById(R.id.resumeGameButton);
 
-        GamesDataSource gds = new GamesDataSource(activity);
-        gds.open();
+        gds = ((MainActivity) getActivity()).getGamesDataSource();
         if (gds.getSavedGames().size() == 0) {
             loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
             loadGameButton.setOnClickListener(null);
@@ -47,8 +47,6 @@ public class MainMenuFragment extends Fragment {
             loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
             loadGameButton.setOnClickListener(resumeGameListener);
         }
-        gds.close();
-
         return rootView;
     }
 

@@ -43,6 +43,7 @@ public class LoadGameFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         activity = getActivity();
+        gds = ((MainActivity) activity).getGamesDataSource();
 
         final View rootView = inflater.inflate(R.layout.fragment_load_game, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.loadGame));
@@ -58,12 +59,8 @@ public class LoadGameFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        gds = new GamesDataSource(activity);
-        gds.open();
         final ListView myListView = getListView();
         gamesList = gds.getSavedGames();
-
-        gds.close();
 
         final GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), this.getId(), gamesList);
 
@@ -88,10 +85,7 @@ public class LoadGameFragment extends ListFragment {
                     deleteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            gds.open();
                             ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
-                            gds.close();
-
                             deleteGame(getListView());
                         }
                     });
@@ -101,10 +95,7 @@ public class LoadGameFragment extends ListFragment {
                     loadButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            gds.open();
                             ((MainActivity) getActivity()).setGame(gds.getGameWithId(selectedGameId));
-                            gds.close();
-
                             startNewGame();
                         }
                     });
@@ -175,7 +166,6 @@ public class LoadGameFragment extends ListFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         SparseBooleanArray checked = lv.getCheckedItemPositions();
                         int size = checked.size();
-                        gds.open();
 
                         for (int i = 0; i < size; i++) {
                             int key = checked.keyAt(i);
@@ -186,7 +176,6 @@ public class LoadGameFragment extends ListFragment {
                             }
                         }
                         gamesList = gds.getSavedGames();
-                        gds.close();
                         refreshFragment();
                     }
 

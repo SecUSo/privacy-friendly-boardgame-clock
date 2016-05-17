@@ -46,6 +46,8 @@ public class GameHistoryFragment extends ListFragment {
                              Bundle savedInstanceState) {
         activity = (MainActivity) getActivity();
 
+        gds = activity.getGamesDataSource();
+
         final View rootView = inflater.inflate(R.layout.fragment_game_history, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(activity.getString(R.string.gameHistory));
         container.removeAllViews();
@@ -60,11 +62,8 @@ public class GameHistoryFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        gds = new GamesDataSource(activity);
-        gds.open();
         myListView = getListView();
         gamesList = gds.getFinishedGames();
-        gds.close();
 
         final GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), this.getId(), gamesList);
 
@@ -88,9 +87,7 @@ public class GameHistoryFragment extends ListFragment {
                     deleteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            gds.open();
                             ((MainActivity) getActivity()).setHistoryGame(gds.getGameWithId(selectedGameId));
-                            gds.close();
 
                             removeEntry(getListView());
                         }
@@ -101,11 +98,7 @@ public class GameHistoryFragment extends ListFragment {
                     loadButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            gds.open();
-
                             ((MainActivity) getActivity()).setHistoryGame(gds.getGameWithId(selectedGameId));
-
-                            gds.close();
 
                             showResults();
                         }
@@ -174,7 +167,6 @@ public class GameHistoryFragment extends ListFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         SparseBooleanArray checked = lv.getCheckedItemPositions();
                         int size = checked.size();
-                        gds.open();
 
                         for (int i = 0; i < size; i++) {
                             int key = checked.keyAt(i);
@@ -186,7 +178,6 @@ public class GameHistoryFragment extends ListFragment {
                         }
 
                         gamesList = gds.getFinishedGames();
-                        gds.close();
                         refreshFragment();
                     }
 

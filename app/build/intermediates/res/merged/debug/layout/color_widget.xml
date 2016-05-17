@@ -4,4 +4,4 @@
 		   android:id="@+id/color_indicator"
 		   android:layout_width="36dp"
 		   android:layout_height="36dp"
-		   tools:ignore="ContentDescription"/><!-- From: file:/home/jitpack/build/library/src/main/res/layout/color_widget.xml --><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.github.QuadFlask/colorpicker/0.0.10/res/layout/color_widget.xml -->
+		   tools:ignore="ContentDescription"/><!-- From: file:/home/jitpack/build/library/src/main/res/layout/color_widget.xml -->

@@ -34,7 +34,7 @@ public class PlayerManagementFragment extends Fragment {
 
     Activity activity;
     List<Player> list;
-    PlayersDataSource playersDataSource;
+    PlayersDataSource pds;
     boolean contactsButtonIsHidden = false;
     String selectedPlayerId = "-1";
     ListView myListView;
@@ -80,10 +80,8 @@ public class PlayerManagementFragment extends Fragment {
             contactsButtonIsHidden = true;
         }
 
-        playersDataSource = new PlayersDataSource(this.getActivity());
-        playersDataSource.open();
-        list = playersDataSource.getAllPlayers();
-        playersDataSource.close();
+        pds = ((MainActivity) getActivity()).getPlayersDataSource();
+        list = pds.getAllPlayers();
 
         myListView = (ListView) rootView.findViewById(R.id.current_players_list);
 
@@ -203,7 +201,6 @@ public class PlayerManagementFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         SparseBooleanArray checked = lv.getCheckedItemPositions();
                         int size = checked.size();
-                        playersDataSource.open();
 
                         long deletedPlayerId = -1;
 
@@ -218,12 +215,11 @@ public class PlayerManagementFragment extends Fragment {
                                 gds.deleteGamesWithPlayer(deletedPlayerId);
                                 gds.close();
 
-                                playersDataSource.deletePlayer(list.get(key));
+                                pds.deletePlayer(list.get(key));
                                 lv.setItemChecked(key, false);
                             }
                         }
-                        list = playersDataSource.getAllPlayers();
-                        playersDataSource.close();
+                        list = pds.getAllPlayers();
 
                         refreshFragment();
                     }

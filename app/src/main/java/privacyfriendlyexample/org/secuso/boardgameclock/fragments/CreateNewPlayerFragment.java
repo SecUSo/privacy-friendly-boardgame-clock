@@ -42,13 +42,14 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import java.util.List;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 
 public class CreateNewPlayerFragment extends Fragment {
 
     Activity activity;
     View rootView;
-    PlayersDataSource playersDataSource;
+    private PlayersDataSource pds;
     private static final int CAMERA_REQUEST = 1888;
     Bitmap playerIcon;
     EditText playerName;
@@ -70,7 +71,7 @@ public class CreateNewPlayerFragment extends Fragment {
         confirmNewPlayerButtonBlue.setOnClickListener(confirmButtonListener);
         confirmNewPlayerButtonGrey.setOnClickListener(confirmButtonListener);
 
-        playersDataSource = new PlayersDataSource(this.getActivity());
+        pds = ((MainActivity) getActivity()).getPlayersDataSource();
 
         playerName = (EditText) rootView.findViewById(R.id.editName);
         playerName.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -122,13 +123,10 @@ public class CreateNewPlayerFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-                            playersDataSource.open();
-
                             picture.buildDrawingCache();
                             playerIcon = picture.getDrawingCache();
 
-                            playersDataSource.createPlayer(playerName.getText().toString(), playerIcon);
-                            playersDataSource.close();
+                            pds.createPlayer(playerName.getText().toString(), playerIcon);
 
                             activity.onBackPressed();
         }

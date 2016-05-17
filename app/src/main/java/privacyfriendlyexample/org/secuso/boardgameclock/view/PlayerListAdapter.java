@@ -38,9 +38,6 @@ public class PlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
                 ((TextView) view.findViewById(R.id.textViewName))
                         .setText(p.getName());
 
-                ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(mContext.getString(R.string.created) + " " +p.getDateString());
-
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
                         .setImageBitmap(p.getIcon());
 

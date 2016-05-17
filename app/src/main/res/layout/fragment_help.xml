@@ -2,33 +2,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/desc_help_contacts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/darkblue"
-        android:text="@string/permissionContacts" />
-
-    <TextView
-        android:id="@+id/desc_help_read_external"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/darkblue"
-        android:text="@string/permissionReadExtStorage" />
-
-    <TextView
-        android:id="@+id/desc_help_write_external"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/darkblue"
-        android:text="@string/permissionSaveExtStorage" />
-
-
 </LinearLayout>

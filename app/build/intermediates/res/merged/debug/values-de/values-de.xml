@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-de/strings.xml -->
-    <eat-comment/>
     <string-array name="game_modes">
         <item>Im Uhrzeigersinn</item>
         <item>Entgegen dem Uhrzeigersinn</item>
         <item>Zufällig</item>
+        <item>Schach</item>
     </string-array>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-de/values-de.xml -->
-    <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Zur Startseite"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s: %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s: %3$s"</string>
@@ -28,8 +25,6 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Freigeben für %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-de/strings.xml -->
-    <eat-comment/>
     <string name="about_affiliation">In Zusammenarbeit mit</string>
     <string name="about_author">Autor: Marco Bräuning und Mitwirkende</string>
     <string name="action_about">Über</string>
@@ -54,6 +49,7 @@
     <string name="confirmCreatePart2">\' anlegen möchtest?</string>
     <string name="confirmEditPart1">Bist du sicher, dass du die Änderungen an Spieler \'</string>
     <string name="confirmEditPart2">\' übernehmen möchtest?</string>
+    <string name="continue_text">Fortsetzen</string>
     <string name="createNewPlayer">Neuer Spieler</string>
     <string name="created">Erstellt:</string>
     <string name="currentPlayer">Spieler:</string>
@@ -77,11 +73,23 @@
     <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
     <string name="gameHistory">Spielhistorie</string>
     <string name="gameMode">Spielmodus:</string>
+    <string name="gameModeNoColon">Spielmodus</string>
     <string name="gameName">Spielname:</string>
+    <string name="gameNameNoColon">Spielname</string>
     <string name="gameNameSizeError">Bitte gebe einen Namen für das Spiel ein.</string>
     <string name="gameResults">Spielergebnisse</string>
     <string name="gameSavedSuccess">Spiel erfolgreich gespeichert!</string>
     <string name="gameTime">Spielzeit:</string>
+    <string name="gameTimeNoColon">Spielzeit</string>
+    <string name="help_backup">Dieser Menüpunkt öffnet den Dialog \'Backup\', in welchem ein Backup der Datenbank erstellt oder wiederhergestellt werden kann.</string>
+    <string name="help_gameHistory">Dieser Menüpunkt öffnet die Spielhistorie. Hier werden alle Spiele aufgelistet, welche in der Vergangenheit beendet worden sind.</string>
+    <string name="help_gameMode">Dieser Parameter bestimmt den Spielmodus. Es gibt vier unterschiedliche Spielmodi, welche letztlich die Zugreihenfolge der Spieler bestimmen. Im Spielmodus \'Schach\' wird zusätzlich das Spiel bei einem Spielerwechsel nicht mehr automatisch pausiert.</string>
+    <string name="help_gameName">Dieser Parameter legt den Namen des Spiels fest.</string>
+    <string name="help_gameTime">Dieser Parameter bestimmt die maximale Spieldauer. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_mainMenu">Dieser Menüpunkt öffnet das Hauptmenü. Ein laufendes Spiel kann bei Bedarf zuvor gespeichert werden.</string>
+    <string name="help_playerManagement">Dieser Menüpunkt öffnet die Spielerverwaltung. Hier können neue Spielerprofile angelegt sowie bestehende Spielerprofile bearbeitet oder gelöscht werden.</string>
+    <string name="help_roundTime">Dieser Parameter bestimmt die Zeit, welche ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_timeDelta">Dieser Parameter bestimmt die Zeit, welche ein Spieler zu Beginn einer neuen Runde/eines neuen Zuges gutgeschrieben wird.</string>
     <string name="importDatabaseBackup">Datenbank-Backup importieren</string>
     <string name="importDatabaseBackupInfoMessage">Bist du dir sicher, dass du das aktuelle Datenbank-Backup importieren möchtest? Die aktuelle Datenbank wird dadurch ersetzt.</string>
     <string name="importDatabaseBackupSuccess">Backup erfolgreich wiederhergestellt!</string>
@@ -91,6 +99,7 @@
     <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
     <string name="loadGame">Spiel laden</string>
     <string name="loadSelectedGame">Spiel laden</string>
+    <string name="menuPoints">Menüpunkte</string>
     <string name="more_info">Mehr Informationen unter:</string>
     <string name="nextPlayer">Nächster Spieler</string>
     <string name="no">Nein</string>
@@ -116,6 +125,7 @@
     <string name="resume_capslock">FORTSETZEN</string>
     <string name="round">Runde:</string>
     <string name="roundTime">Rundenzeit:</string>
+    <string name="roundTimeNoColon">Rundenzeit</string>
     <string name="roundTimeSetError">Bitte wähle eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
     <string name="save">Speichern</string>
     <string name="saveGame">Spiel speichern</string>
@@ -124,13 +134,14 @@
     <string name="showResults">Ergebnisse anzeigen</string>
     <string name="startNewGame">Neues Spiel starten</string>
     <string name="start_game">Spiel starten</string>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-de/values-de.xml -->
-    <eat-comment/>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-de/strings.xml -->
-    <eat-comment/>
     <string name="sureToSaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel speichern möchtest?</string>
     <string name="takePhotoButton">Foto</string>
     <string name="timeLeft">Übrige Zeit:</string>
+    <string name="welcome">Willkommen</string>
+    <string name="welcome_part1">Willkommen zur Privacy Friendly Board Game Clock!</string>
+    <string name="welcome_part2">Um ein neues Spiel zu starten, drücken Sie im Hauptmenü auf die Schaltfläche \'Neues Spiel\'.</string>
+    <string name="welcome_part3">Nach der Festlegung der Spielparameter können Sie beliebig viele Spielerprofile anlegen und dem Spiel hinzufügen.</string>
+    <string name="welcome_part4">Die Spielerprofile bleiben gespeichert und können über das Menü \'Spielerverwaltung\' nachträglich bearbeitet werden.</string>
     <string name="yes">Ja</string>
 </resources>

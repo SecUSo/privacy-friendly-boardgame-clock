@@ -37,7 +37,7 @@ public class EditPlayerFragment extends Fragment {
 
     Activity activity;
     View rootView;
-    PlayersDataSource playersDataSource;
+    PlayersDataSource pds;
     private static final int CAMERA_REQUEST = 1888;
     Bitmap playerIcon;
     EditText playerName;
@@ -61,7 +61,7 @@ public class EditPlayerFragment extends Fragment {
         confirmEditPlayerButtonBlue.setOnClickListener(confirmButtonListener);
         confirmEditPlayerButtonGrey.setOnClickListener(confirmButtonListener);
 
-        playersDataSource = new PlayersDataSource(this.getActivity());
+        pds = ((MainActivity) getActivity()).getPlayersDataSource();
 
         playerName = (EditText) rootView.findViewById(R.id.editName);
         playerName.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -118,15 +118,13 @@ public class EditPlayerFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-                            playersDataSource.open();
-                            p.setName(playerName.getText().toString());
-                            picture.buildDrawingCache();
-                            playerIcon = picture.getDrawingCache();
-                            p.setIcon(playerIcon);
-                            playersDataSource.updatePlayer(p);
-                            playersDataSource.close();
+            p.setName(playerName.getText().toString());
+            picture.buildDrawingCache();
+            playerIcon = picture.getDrawingCache();
+            p.setIcon(playerIcon);
+            pds.updatePlayer(p);
 
-                            activity.onBackPressed();
+            activity.onBackPressed();
 
         }
     };

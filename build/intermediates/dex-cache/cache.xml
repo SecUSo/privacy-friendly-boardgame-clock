@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
+<items version="2" />
 
-    <item
-        jar="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.github.QuadFlask\colorpicker\0.0.10\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e0441dc0a70f25f834fac1e9520a4b55acad0e54">
-        <dex dex="C:\Users\Marco\Documents\GitHub\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\classes-ee2db562b64fff3750d5c56d0f51fdd339c2cc9f.jar" />
-    </item>
-
-</items>

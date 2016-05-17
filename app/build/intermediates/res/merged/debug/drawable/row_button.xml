@@ -6,4 +6,4 @@
             <solid android:color="@color/lightblue" />
         </shape>
     </item>
-</selector><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/drawable/row_button.xml -->
+</selector>

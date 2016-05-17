@@ -31,4 +31,4 @@
         android:layout_marginRight="@dimen/main_button_padding"
         android:textColor="@color/white" />
 
-</LinearLayout><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/dialog_backup.xml -->
+</LinearLayout>

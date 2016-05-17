@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/values-en/strings.xml -->
-    <eat-comment/>
     <string-array name="game_modes">
         <item>Clockwise</item>
         <item>Counter-Clockwise</item>
         <item>Random</item>
+        <item>Chess</item>
     </string-array>
     <string name="about_affiliation">In affiliation with</string>
     <string name="about_author">Author: Marco Bräuning and contributors</string>
@@ -31,6 +30,7 @@
     <string name="confirmCreatePart2">\'?</string>
     <string name="confirmEditPart1">Are you sure to save the changes made to player \'</string>
     <string name="confirmEditPart2">\'?</string>
+    <string name="continue_text">Continue</string>
     <string name="createNewPlayer">New Player</string>
     <string name="createNewPlayerFragment"/>
     <string name="created">Created:</string>
@@ -55,11 +55,24 @@
     <string name="finishGameQuestion">Do you really want to finish the current game?</string>
     <string name="gameHistory">Game History</string>
     <string name="gameMode">Game Mode:</string>
+    <string name="gameModeNoColon">Game Mode</string>
     <string name="gameName">Game Name:</string>
+    <string name="gameNameNoColon">Game Name</string>
     <string name="gameNameSizeError">Please enter a game name to continue.</string>
     <string name="gameResults">Game Results</string>
     <string name="gameSavedSuccess">Game saved successfully!</string>
     <string name="gameTime">Game Time:</string>
+    <string name="gameTimeNoColon">Game Time</string>
+    <string name="helpFragment"/>
+    <string name="help_backup">This menu point show the dialog \'Backup\', in which you can either create or restore a database backup.</string>
+    <string name="help_gameHistory">This menu point opens the game history. Every completed game from the past is listed here.</string>
+    <string name="help_gameMode">This parameter sets the game mode. There are four different game modes, which in general define the turn order. The game mode \'Chess\' also prevents the automatic pausing of the game on a player change.</string>
+    <string name="help_gameName">This parameter sets the game name.</string>
+    <string name="help_gameTime">This parameter sets the maximum playing time. The game is automatically finished after the time is over.</string>
+    <string name="help_mainMenu">This menu point opens the main menu. If needed, a running game can be saved beforehand.</string>
+    <string name="help_playerManagement">This menu point opens the player management. Here, new player profiles can be created and existing profiles can be modified or deleted.</string>
+    <string name="help_roundTime">This parameter defines the time per round/turn available to a player. The game is automatically finished after the time is over.</string>
+    <string name="help_timeDelta">This parameter defines the time a player gets added at the beginning of a new round/turn.</string>
     <string name="importDatabaseBackup">Import Database Backup</string>
     <string name="importDatabaseBackupInfoMessage">Are you sure you want to import the current database backup from external storage? The active database will be replaced.</string>
     <string name="importDatabaseBackupSuccess">Backup successfully loaded!</string>
@@ -69,6 +82,7 @@
     <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
     <string name="loadGame">Load Game</string>
     <string name="loadSelectedGame">Load Game</string>
+    <string name="menuPoints">Menu Points</string>
     <string name="more_info">More information can be found on:</string>
     <string name="nextPlayer">Next Player</string>
     <string name="no">No</string>
@@ -94,6 +108,7 @@
     <string name="resume_capslock">RESUME</string>
     <string name="round">Round:</string>
     <string name="roundTime">Round Time:</string>
+    <string name="roundTimeNoColon">Round Time</string>
     <string name="roundTimeSetError">Please set a game time and round time of at least 1 seconds to continue.</string>
     <string name="save">Save</string>
     <string name="saveGame">Save Game</string>
@@ -105,5 +120,10 @@
     <string name="sureToSaveGameQuestion">Are you sure you want to save the current game?</string>
     <string name="takePhotoButton">Photo</string>
     <string name="timeLeft">Time left:</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_part1">Welcome to Privacy Friendly Board Game Clock!</string>
+    <string name="welcome_part2">Press the button \'New Game\' at the main menu to start a new game.</string>
+    <string name="welcome_part3">After setting the game parameters you can create an unlimited amount of player profiles and add them to the game afterwards.</string>
+    <string name="welcome_part4">The player profiles remain saved and can be modified at the menu \'Player Management\' later on.</string>
     <string name="yes">Yes</string>
 </resources>

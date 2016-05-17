@@ -18,6 +18,7 @@
         <item>Im Uhrzeigersinn</item>
         <item>Entgegen dem Uhrzeigersinn</item>
         <item>Zufällig</item>
+        <item>Schach</item>
     </string-array>
 
     <string name="error">Fehler</string>
@@ -108,6 +109,25 @@
     <string name="permissionReadExtStorage">Diese Permission wird benötigt um gespeicherte Datenbank-Backups wiederherstellen zu können. Sofern die Permission nicht erteilt wurde, ist die Schaltfläche "Datenbank-Backup importieren" im Menü "Backup" nicht sichtbar und es ist nicht möglich, gespeicherte Datenbank-Backups zu importieren.</string>
     <string name="permissionContacts">Diese Permission wird benötigt um Kontaktdaten aus dem Adressbuch für die Erstellung von neuen Spielerprofilen auszulesen. Sofern die Permission nicht erteilt wurde, ist die Schaltfläche "Kontaktbuch" im Menü "Spielerverwaltung" nicht sichtbar und es ist nicht möglich neue Spielerprofile basierend auf vorhandenen Kontaktdaten zu erstellen.</string>
     <string name="gameSavedSuccess">Spiel erfolgreich gespeichert!</string>
-
+    <string name="continue_text">Fortsetzen</string>
+    <string name="welcome_part4">Die Spielerprofile bleiben gespeichert und können über das Menü \'Spielerverwaltung\' nachträglich bearbeitet werden.</string>
+    <string name="welcome_part3">Nach der Festlegung der Spielparameter können Sie beliebig viele Spielerprofile anlegen und dem Spiel hinzufügen.</string>
+    <string name="welcome_part2">Um ein neues Spiel zu starten, drücken Sie im Hauptmenü auf die Schaltfläche \'Neues Spiel\'.</string>
+    <string name="welcome_part1">Willkommen zur Privacy Friendly Board Game Clock!</string>
+    <string name="gameNameNoColon">Spielname</string>
+    <string name="gameTimeNoColon">Spielzeit</string>
+    <string name="roundTimeNoColon">Rundenzeit</string>
+    <string name="gameModeNoColon">Spielmodus</string>
+    <string name="welcome">Willkommen</string>
+    <string name="menuPoints">Menüpunkte</string>
+    <string name="help_gameTime">Dieser Parameter bestimmt die maximale Spieldauer. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_roundTime">Dieser Parameter bestimmt die Zeit, welche ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_gameMode">Dieser Parameter bestimmt den Spielmodus. Es gibt vier unterschiedliche Spielmodi, welche letztlich die Zugreihenfolge der Spieler bestimmen. Im Spielmodus \'Schach\' wird zusätzlich das Spiel bei einem Spielerwechsel nicht mehr automatisch pausiert.</string>
+    <string name="help_timeDelta">Dieser Parameter bestimmt die Zeit, welche ein Spieler zu Beginn einer neuen Runde/eines neuen Zuges gutgeschrieben wird.</string>
+    <string name="help_mainMenu">Dieser Menüpunkt öffnet das Hauptmenü. Ein laufendes Spiel kann bei Bedarf zuvor gespeichert werden.</string>
+    <string name="help_playerManagement">Dieser Menüpunkt öffnet die Spielerverwaltung. Hier können neue Spielerprofile angelegt sowie bestehende Spielerprofile bearbeitet oder gelöscht werden.</string>
+    <string name="help_gameHistory">Dieser Menüpunkt öffnet die Spielhistorie. Hier werden alle Spiele aufgelistet, welche in der Vergangenheit beendet worden sind.</string>
+    <string name="help_backup">Dieser Menüpunkt öffnet den Dialog \'Backup\', in welchem ein Backup der Datenbank erstellt oder wiederhergestellt werden kann.</string>
+    <string name="help_gameName">Dieser Parameter legt den Namen des Spiels fest.</string>
 
 </resources>

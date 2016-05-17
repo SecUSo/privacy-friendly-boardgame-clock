@@ -28,4 +28,3 @@
         android:onClick="addContactSelectionButton" />
 
 </LinearLayout>
-<!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_contact_list.xml -->
