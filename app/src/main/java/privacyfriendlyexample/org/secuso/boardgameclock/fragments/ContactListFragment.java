@@ -1,7 +1,10 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
@@ -9,6 +12,7 @@ import android.app.ListFragment;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
+import android.provider.MediaStore;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +23,11 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.io.IOException;
+import java.net.URI;
+
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
+import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 
 public class ContactListFragment extends ListFragment implements LoaderCallbacks<Cursor> {
@@ -28,17 +36,33 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
 
     private Loader<Cursor> contacts;
 
+    private PlayersDataSource pds;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
+        pds = ((MainActivity) getActivity()).getPlayersDataSource();
+
         // create adapter once
         Context context = getActivity();
-        int layout = R.layout.listview_item_row;
+        int layout = R.layout.navdrawer_item_row;
         Cursor c = null; // there is no cursor yet
         int flags = 0; // no auto-requery! Loader requeries.
         mAdapter = new SimpleCursorAdapter(context, layout, c, FROM, TO, flags);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
     }
 
     @Override
@@ -72,22 +96,33 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
                         public void onClick(View v) {
                             SparseBooleanArray checked = lv.getCheckedItemPositions();
                             int size = checked.size();
-                            PlayersDataSource pds = new PlayersDataSource(getActivity());
-                            pds.open();
 
                             for (int i = 0; i < size; i++) {
                                 int key = checked.keyAt(i);
                                 boolean value = checked.get(key);
                                 if (value) {
-                                    Cursor c = (Cursor) getListAdapter().getItem(0);
-                                    c.move(key);
-                                    String name = c.getString(c.getColumnIndex(Contacts.DISPLAY_NAME));
-                                    String photoThumbnailUri = c.getString(c.getColumnIndex(Contacts.PHOTO_THUMBNAIL_URI));
-                                    pds.createPlayer(name, photoThumbnailUri);
+                                    try {
+                                        Cursor c = (Cursor) getListAdapter().getItem(0);
+                                        c.move(key);
+                                        String name = c.getString(c.getColumnIndex(Contacts.DISPLAY_NAME));
+
+                                        String photoThumbnailUri = c.getString(c.getColumnIndex(Contacts.PHOTO_THUMBNAIL_URI));
+
+                                        if (photoThumbnailUri != null) {
+                                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.parse(photoThumbnailUri));
+                                            pds.createPlayer(name, Bitmap.createScaledBitmap(cutSquareBitmap(bitmap), 288, 288, false));
+                                        }else {
+                                            Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_launcher);
+                                            pds.createPlayer(name, bitmap);
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
-                            pds.getAllPlayers();
-                            pds.close();
+
+                            // TODO
+                            //pds.getAllPlayers();
 
                             getActivity().onBackPressed();
                         }
@@ -109,9 +144,9 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
     };
 
     // and name should be displayed in the text1 textview in item layout
-    private static final String[] FROM = { Contacts.DISPLAY_NAME, Contacts.PHOTO_THUMBNAIL_URI };
+    private static final String[] FROM = {Contacts.DISPLAY_NAME, Contacts.PHOTO_THUMBNAIL_URI};
 
-    private static final int[] TO = { R.id.textViewName, R.id.imageViewIcon };
+    private static final int[] TO = {R.id.textViewName, R.id.imageViewIcon};
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -141,5 +176,21 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
     public void onLoaderReset(Loader<Cursor> loader) {
         // on reset take any old cursor away
         mAdapter.swapCursor(null);
+    }
+
+    private Bitmap cutSquareBitmap(Bitmap b) {
+        int bHeight = b.getHeight();
+        int bWidth = b.getWidth();
+        int longEdge = bHeight;
+        int shortEdge = bWidth;
+
+        if (bWidth > bHeight) {
+            longEdge = bWidth;
+            shortEdge = bHeight;
+        }
+
+        int diff = longEdge - shortEdge;
+
+        return Bitmap.createBitmap(b, 0, diff / 2, shortEdge, shortEdge);
     }
 }

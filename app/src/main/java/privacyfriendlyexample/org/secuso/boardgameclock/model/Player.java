@@ -1,5 +1,7 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.model;
 
+import android.graphics.Bitmap;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,13 +11,13 @@ public class Player {
     private long date;
     private String dateString;
     private String name;
-    private String photoUri;
+    private Bitmap icon;
 
-    public Player(long id, long date, String name, String photoUri) {
+    public Player(long id, long date, String name, Bitmap icon) {
         this.id = id;
         this.date = date;
         this.name = name;
-        this.photoUri = photoUri;
+        this.icon = icon;
     }
 
     public Player() {
@@ -30,8 +32,8 @@ public class Player {
         this.name = name;
     }
 
-    public String getPhotoUri() {
-        return photoUri;
+    public Bitmap getIcon() {
+        return icon;
     }
 
     public long getId() {
@@ -42,8 +44,8 @@ public class Player {
         this.id = id;
     }
 
-    public void setPhotoUri(String photoUri) {
-        this.photoUri = photoUri;
+    public void setIcon(Bitmap icon) {
+        this.icon = icon;
     }
 
     @Override

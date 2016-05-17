@@ -4,7 +4,7 @@
 
     <!-- Menu Items-->
     <string name="action_help">Hilfe</string>
-    <string name="action_about">About</string>
+    <string name="action_about">Über</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_main">Hauptmenü</string>
 
@@ -18,12 +18,13 @@
         <item>Im Uhrzeigersinn</item>
         <item>Entgegen dem Uhrzeigersinn</item>
         <item>Zufällig</item>
+        <item>Schach</item>
     </string-array>
 
     <string name="error">Fehler</string>
     <string name="errorAtLeastTwoPlayers">Bitte wähle mindestens zwei Spieler um fortzufahren.</string>
-    <string name="addSelectedContacts">Ausgewählte Kontakte hinzufügen</string>
-    <string name="round">Runde: </string>
+    <string name="addSelectedContacts">Kontakte hinzufügen</string>
+    <string name="round">Runde:</string>
     <string name="saveGame">Spiel speichern</string>
     <string name="play_capslock">SPIELEN</string>
     <string name="sureToSaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel speichern möchtest?</string>
@@ -35,7 +36,7 @@
     <string name="pleaseChooseAGame">Bitte wähle ein Spiel aus der Liste aus.</string>
     <string name="gameNameSizeError">Bitte gebe einen Namen für das Spiel ein.</string>
     <string name="roundTimeSetError">Bitte wähle eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
-    <string name="createNewPlayer">Neuen Spieler anlegen</string>
+    <string name="createNewPlayer">Neuer Spieler</string>
     <string name="changeLanguage">Sprache ändern</string>
     <string name="languageChangedSuccess">Sprache erfolgreich geändert!</string>
     <string name="importDatabaseBackup">Datenbank-Backup importieren</string>
@@ -43,58 +44,90 @@
     <string name="importDatabaseBackupSuccess">Backup erfolgreich wiederhergestellt!</string>
     <string name="exportDatabaseBackup">Datenbank-Backup exportieren</string>
     <string name="exportDatabaseBackupInfoMessage">Bist du dir sicher, dass du ein Backup der aktuellen Datenbank erstellen möchtest? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
-    <string name="exportDatabaseBackupSuccess">Backup erfolgreich erstellt!</string>
+    <string name="exportDatabaseBackupSuccess">Backup erfolgreich erstellt unter: </string>
     <string name="selectPlayers">Spieler auswählen</string>
-    <string name="playerManagement">Spieleverwaltung</string>
+    <string name="playerManagement">Spielerverwaltung</string>
     <string name="startNewGame">Neues Spiel starten</string>
     <string name="selectContacts">Kontakte auswählen</string>
-    <string name="addSelectedContactsZero">Ausgewählte Kontakte hinzufügen (0)</string>
-    <string name="gameTime">Spielzeit</string>
-    <string name="currentPlayer">Aktueller Spieler</string>
+    <string name="addSelectedContactsZero">Kontakte hinzufügen</string>
+    <string name="gameTime">Spielzeit:</string>
+    <string name="currentPlayer">Spieler:</string>
     <string name="nextPlayer">Nächster Spieler</string>
     <string name="save">Speichern</string>
+    <string name="gameName">Spielname:</string>
     <string name="play">Spielen</string>
-    <string name="permissionContacts">This permission is used to retrieve contact data from your address book to create new players. If not granted, the button ADD PLAYER FROM CONTACTS in the menu PLAYER MANAGEMENT is not visible.</string>
-    <string name="permissionReadExtStorage">This permission is used to restore backups saved on your external storage. If not granted, the button RESTORE BACKUP in the menu SETTINGS is not visible.</string>
-    <string name="permissionSaveExtStorage">This permission is used to create and save backups on your external storage. If not granted, the button CREATE BACKUP in the menu SETTINGS is not visible.</string>
-    <string name="loadSelectedGame">Ausgewähltes Spiel laden</string>
-    <string name="roundTime">Rundenzeit</string>
+    <string name="permissionSaveExtStorage">Diese Permission wird benötigt um Datenbank-Backups erstellen und speichern zu können. Sofern die Permission nicht erteilt wurde, ist die Schaltfläche "Datenbank-Backup exportieren" im Menü "Backup" nicht sichtbar und es ist nicht möglich Datenbank-Backups zu erstellen.</string>
+    <string name="loadSelectedGame">Spiel laden</string>
+    <string name="roundTime">Rundenzeit:</string>
     <string name="resetTimeAfterRoundCheck">Zeit nach jeder Runde zurücksetzen?</string>
-    <string name="gameMode">Spielmodus</string>
-    <string name="timeDelta">Zeit Delta</string>
+    <string name="gameMode">Spielmodus:</string>
     <string name="increaseTimeAfterRoundCheck">Zeit nach jeder Runde erhöhen?</string>
     <string name="confirm">Bestätigen</string>
     <string name="currentPlayers">Aktuelle Spieler</string>
-    <string name="addPlayerFromContacts">Spieler aus Kontaktbuch hinzufügen</string>
+    <string name="addPlayerFromContacts">Kontaktbuch</string>
     <string name="changeColorTheme">Farbpalette ändern</string>
-    <string name="input_new_game_name">...</string>
     <string name="deletePlayer">Spieler löschen</string>
     <string name="cancel">Abbrechen</string>
-    <string name="deletePlayerQuestion">Bist du dir sicher, dass du die ausgewählten Spieler löschen möchtest? Dieser Schritt kann nicht rückgängig gemacht werden.</string>
+    <string name="deletePlayerQuestion">Bist du dir sicher, dass du den ausgewählten Spieler löschen möchtest? Hierbei werden zusätzlich alle Spielstände gelöscht, in welchen dieser Spieler beteiligt war. Dieser Schritt kann nicht rückgängig gemacht werden.</string>
     <string name="quitGame">Spiel verlassen</string>
     <string name="quitGameQuestion">Möchtest du das Spiel vor dem verlassen speichern?</string>
-    <string name="finishGame">Spiel beenden</string>
+    <string name="finishGame">Beenden</string>
     <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
     <string name="exit">Spiel verlassen</string>
-    <string name="gameFragment"></string>
     <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
     <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
     <string name="gameResults">Spielergebnisse</string>
     <string name="backToMainMenu">Zum Hauptmenü</string>
-    <string name="choosePlayersFragment"></string>
     <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
-    <string name="activeGameTimeHeader">Gespielte Spielzeit (Gesamt)</string>
-    <string name="deleteGame">Ausgewähltes Spiel Löschen</string>
+    <string name="activeGameTimeHeader">Gespielte Zeit:</string>
+    <string name="deleteGame">Spiel Löschen</string>
     <string name="created">Erstellt:</string>
     <string name="deleteGameQuestion">Bist du dir sicher, dass du das ausgewählte Spiel löschen möchtest?</string>
-    <string name="playedRoundsHeader">Letzte Runde</string>
-    <string name="playerResults">Spielerergebnisse</string>
+    <string name="playedRoundsHeader">Letzte Runde:</string>
+    <string name="playerResults">Spielerergebnisse:</string>
     <string name="timeLeft">Übrige Zeit:</string>
     <string name="lastRound">Gespielte Runden:</string>
     <string name="gameHistory">Spielhistorie</string>
     <string name="removeEntry">Eintrag entfernen</string>
     <string name="removeEntryQuestion">Bist du dir sicher, dass du den ausgewählten Eintrag aus der Historie entfernen möchtest?</string>
     <string name="players">Spieler</string>
-
+    <string name="about_author">Autor: Marco Bräuning und Mitwirkende</string>
+    <string name="about_affiliation">In Zusammenarbeit mit</string>
+    <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps.</string>
+    <string name="more_info">Mehr Informationen unter:</string>
+    <string name="editPlayer">Spieler bearbeiten</string>
+    <string name="editPlayerName">Spieler bearbeiten</string>
+    <string name="confirmEditPart1">Bist du sicher, dass du die Änderungen an Spieler \'</string>
+    <string name="confirmEditPart2">\' übernehmen möchtest?</string>
+    <string name="pickColor">Farbe auswählen</string>
+    <string name="confirmCreatePart1">Bist du sicher, dass du den Spieler \'</string>
+    <string name="confirmCreatePart2">\' anlegen möchtest?</string>
+    <string name="changeColorButton">Farbe</string>
+    <string name="picture">Bild:</string>
+    <string name="takePhotoButton">Foto</string>
+    <string name="noBackupFound">Es konnte kein Datenbank-Backup gefunden werden!</string>
+    <string name="permissionReadExtStorage">Diese Permission wird benötigt um gespeicherte Datenbank-Backups wiederherstellen zu können. Sofern die Permission nicht erteilt wurde, ist die Schaltfläche "Datenbank-Backup importieren" im Menü "Backup" nicht sichtbar und es ist nicht möglich, gespeicherte Datenbank-Backups zu importieren.</string>
+    <string name="permissionContacts">Diese Permission wird benötigt um Kontaktdaten aus dem Adressbuch für die Erstellung von neuen Spielerprofilen auszulesen. Sofern die Permission nicht erteilt wurde, ist die Schaltfläche "Kontaktbuch" im Menü "Spielerverwaltung" nicht sichtbar und es ist nicht möglich neue Spielerprofile basierend auf vorhandenen Kontaktdaten zu erstellen.</string>
+    <string name="gameSavedSuccess">Spiel erfolgreich gespeichert!</string>
+    <string name="continue_text">Fortsetzen</string>
+    <string name="welcome_part4">Die Spielerprofile bleiben gespeichert und können über das Menü \'Spielerverwaltung\' nachträglich bearbeitet werden.</string>
+    <string name="welcome_part3">Nach der Festlegung der Spielparameter können Sie beliebig viele Spielerprofile anlegen und dem Spiel hinzufügen.</string>
+    <string name="welcome_part2">Um ein neues Spiel zu starten, drücken Sie im Hauptmenü auf die Schaltfläche \'Neues Spiel\'.</string>
+    <string name="welcome_part1">Willkommen zur Privacy Friendly Board Game Clock!</string>
+    <string name="gameNameNoColon">Spielname</string>
+    <string name="gameTimeNoColon">Spielzeit</string>
+    <string name="roundTimeNoColon">Rundenzeit</string>
+    <string name="gameModeNoColon">Spielmodus</string>
+    <string name="welcome">Willkommen</string>
+    <string name="menuPoints">Menüpunkte</string>
+    <string name="help_gameTime">Dieser Parameter bestimmt die maximale Spieldauer. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_roundTime">Dieser Parameter bestimmt die Zeit, welche ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird das Spiel automatisch beendet.</string>
+    <string name="help_gameMode">Dieser Parameter bestimmt den Spielmodus. Es gibt vier unterschiedliche Spielmodi, welche letztlich die Zugreihenfolge der Spieler bestimmen. Im Spielmodus \'Schach\' wird zusätzlich das Spiel bei einem Spielerwechsel nicht mehr automatisch pausiert.</string>
+    <string name="help_timeDelta">Dieser Parameter bestimmt die Zeit, welche ein Spieler zu Beginn einer neuen Runde/eines neuen Zuges gutgeschrieben wird.</string>
+    <string name="help_mainMenu">Dieser Menüpunkt öffnet das Hauptmenü. Ein laufendes Spiel kann bei Bedarf zuvor gespeichert werden.</string>
+    <string name="help_playerManagement">Dieser Menüpunkt öffnet die Spielerverwaltung. Hier können neue Spielerprofile angelegt sowie bestehende Spielerprofile bearbeitet oder gelöscht werden.</string>
+    <string name="help_gameHistory">Dieser Menüpunkt öffnet die Spielhistorie. Hier werden alle Spiele aufgelistet, welche in der Vergangenheit beendet worden sind.</string>
+    <string name="help_backup">Dieser Menüpunkt öffnet den Dialog \'Backup\', in welchem ein Backup der Datenbank erstellt oder wiederhergestellt werden kann.</string>
+    <string name="help_gameName">Dieser Parameter legt den Namen des Spiels fest.</string>
 
 </resources>

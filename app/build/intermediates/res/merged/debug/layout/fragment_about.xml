@@ -87,4 +87,4 @@
         android:layout_gravity="center_horizontal"
         android:autoLink="web" />
 
-</LinearLayout><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/layout/fragment_about.xml -->
+</LinearLayout>

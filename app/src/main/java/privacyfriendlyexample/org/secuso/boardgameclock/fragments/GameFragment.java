@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +15,10 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,12 +32,12 @@ import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
 import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.ObjectDrawerItem;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.OnSwipeTouchListener;
 
 public class GameFragment extends Fragment {
 
     Activity activity;
+    MainActivity mainActivity;
     View rootView;
     private Game game;
     private HashMap<Long, Long> playerRoundTimes;
@@ -44,13 +46,14 @@ public class GameFragment extends Fragment {
 
     private Player currentPlayer;
 
-    private CountDownTimer roundTimer, gameTimer;
-    private Button playPauseButton, finishGameButton;
+    private CountDownTimer countDownTimer;
+    private Button playPauseButton;
+    private Button nextPlayerButton;
 
-    private Button nextPlayerButton, saveGameButton;
+    private LinearLayout gameButtons;
 
     private long currentRoundTimeMs, currentGameTimeMs;
-    private int nextPlayerIndex, startPlayerIndex;
+    private int nextPlayerIndex, currentPlayerIndex;
 
     private TextView currentPlayerTv;
     private TextView currentPlayerRound;
@@ -59,12 +62,26 @@ public class GameFragment extends Fragment {
     private TextView gameTimerTv, roundTimerTv;
 
     private boolean alreadySaved = true;
+    private boolean alreadyPaused = false;
     private int isFinished = 0;
     private boolean isPaused = true;
+
+    private List<Player> playersQueue;
+
+
+    private GamesDataSource gds;
+
+    private long gameTime;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         activity = getActivity();
+        mainActivity = ((MainActivity) activity);
+
+        gds = mainActivity.getGamesDataSource();
+
+        // prevent phone from sleeping while game is running
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         rootView = inflater.inflate(R.layout.fragment_game, container, false);
         container.removeAllViews();
@@ -75,41 +92,43 @@ public class GameFragment extends Fragment {
         roundTimerTv = (TextView) rootView.findViewById(R.id.round_timer);
 
         game = ((MainActivity) activity).getGame();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(game.getName());
+        ((AppCompatActivity) activity).getSupportActionBar().setSubtitle(game.getName());
 
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
         playerRounds = game.getPlayer_rounds();
 
-        startPlayerIndex = game.getStartPlayerIndex();
+        currentPlayerIndex = game.getStartPlayerIndex();
         nextPlayerIndex = game.getNextPlayerIndex();
 
         currentPlayer = players.get(game.getStartPlayerIndex());
-
         playersQueue = getPlayersNotInRound(playerRounds.get(currentPlayer.getId()));
 
         currentPlayerTv = (TextView) rootView.findViewById(R.id.game_current_player_name);
         currentPlayerTv.setText(currentPlayer.getName());
 
         currentPlayerRound = (TextView) rootView.findViewById(R.id.game_current_player_round);
-        currentPlayerRound.setText(activity.getString(R.string.round) + " " + playerRounds.get(currentPlayer.getId()).toString());
+        currentPlayerRound.setText(playerRounds.get(currentPlayer.getId()).toString());
 
         currentPlayerIcon = (ImageView) rootView.findViewById(R.id.imageViewIcon);
-        currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
+        currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
 
-        currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId()) * 1000;
-        currentGameTimeMs = game.getCurrentGameTime() * 1000;
+        currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId());
+        currentGameTimeMs = game.getCurrentGameTime();
+        gameTime = currentGameTimeMs;
 
-        initTimerTextViews();
-        initChronometers();
+        updateTimerTextViews();
+        initCountDownTimer(currentRoundTimeMs);
 
         nextPlayerButton = (Button) rootView.findViewById(R.id.nextPlayerButton);
         nextPlayerButton.setOnClickListener(nextPlayer);
 
-        saveGameButton = (Button) rootView.findViewById(R.id.saveGameButton);
+        gameButtons = (LinearLayout) rootView.findViewById(R.id.gameButtons);
+
+        Button saveGameButton = (Button) rootView.findViewById(R.id.saveGameButton);
         saveGameButton.setOnClickListener(saveGame);
 
-        finishGameButton = (Button) rootView.findViewById(R.id.finishGameButton);
+        Button finishGameButton = (Button) rootView.findViewById(R.id.finishGameButton);
         finishGameButton.setOnClickListener(finishGame);
 
         playPauseButton.setText(R.string.play_capslock);
@@ -118,8 +137,7 @@ public class GameFragment extends Fragment {
                 alreadySaved = false;
                 isPaused = false;
 
-                roundTimer.start();
-                gameTimer.start();
+                countDownTimer.start();
 
                 playPauseButton.setText(R.string.pause_capslock);
                 playPauseButton.setOnClickListener(pause);
@@ -143,74 +161,19 @@ public class GameFragment extends Fragment {
         return rootView;
     }
 
-    private void initTimerTextViews() {
-        String round_time_hh = getTimeStrings(currentRoundTimeMs)[0];
-        String round_time_mm = getTimeStrings(currentRoundTimeMs)[1];
-        String round_time_ss = getTimeStrings(currentRoundTimeMs)[2];
-        roundTimerTv.setText(round_time_hh + ":" + round_time_mm + ":" + round_time_ss);
-
-        String game_time_hh = getTimeStrings(currentGameTimeMs)[0];
-        String game_time_mm = getTimeStrings(currentGameTimeMs)[1];
-        String game_time_ss = getTimeStrings(currentGameTimeMs)[2];
-        gameTimerTv.setText(game_time_hh + ":" + game_time_mm + ":" + game_time_ss);
-    }
-
-    private void initChronometers() {
-
-        // init round time chronometer
-        roundTimer = new CountDownTimer(currentRoundTimeMs, 100) {
-
-            public void onTick(long millisUntilFinished) {
-                String round_time_hh = getTimeStrings(millisUntilFinished)[0];
-                String round_time_mm = getTimeStrings(millisUntilFinished)[1];
-                String round_time_ss = getTimeStrings(millisUntilFinished)[2];
-                roundTimerTv.setText(round_time_hh + ":" + round_time_mm + ":" + round_time_ss);
-
-                if (millisUntilFinished < 5000)
-                    roundTimerTv.setTextColor(Color.RED);
-
-                currentRoundTimeMs = millisUntilFinished;
-            }
-
-            public void onFinish() {
-                if (game.getReset_round_time() == 1)
-                    nextPlayerButton.performClick();
-                else
-                    finishGame();
-            }
-        };
-
-        // init game time chronometer
-        gameTimer = new CountDownTimer(currentGameTimeMs, 100) {
-
-            public void onTick(long millisUntilFinished) {
-                String game_time_hh = getTimeStrings(millisUntilFinished)[0];
-                String game_time_mm = getTimeStrings(millisUntilFinished)[1];
-                String game_time_ss = getTimeStrings(millisUntilFinished)[2];
-                gameTimerTv.setText(game_time_hh + ":" + game_time_mm + ":" + game_time_ss);
-
-                if (millisUntilFinished <= 5800)
-                    gameTimerTv.setTextColor(Color.RED);
-
-                currentGameTimeMs = millisUntilFinished;
-            }
-
-            public void onFinish() {
-                finishGame();
-            }
-        };
-    }
-
     View.OnClickListener saveGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(getActivity())
+            new AlertDialog.Builder(activity)
                     .setTitle(R.string.saveGame)
                     .setMessage(R.string.sureToSaveGameQuestion)
+                    .setIcon(android.R.drawable.ic_menu_help)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            updateGame(1);
+                            saveGameToDb(1);
                             alreadySaved = true;
+
+                            Toast.makeText(activity, R.string.gameSavedSuccess, Toast.LENGTH_LONG).show();
                         }
                     })
                     .setNegativeButton(R.string.no, null)
@@ -218,43 +181,8 @@ public class GameFragment extends Fragment {
         }
     };
 
-    private void updateGame(int save) {
-        playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs / 1000);
-        playerRounds.put(currentPlayer.getId(), playerRounds.get(currentPlayer.getId()));
 
-        game.setPlayer_round_times(playerRoundTimes);
-        game.setPlayer_rounds(playerRounds);
-        game.setNextPlayerIndex(nextPlayerIndex);
-        game.setStartPlayerIndex(startPlayerIndex);
-        game.setCurrentGameTime(currentGameTimeMs / 1000);
-        game.setSaved(save);
-        game.setFinished(isFinished);
-
-        ((MainActivity) getActivity()).setGame(game);
-
-        GamesDataSource gds = new GamesDataSource(getActivity());
-        gds.open();
-        gds.saveGame(game);
-        gds.close();
-    }
-
-    private void finishGame() {
-        isFinished = 1;
-
-        roundTimer.cancel();
-        gameTimer.cancel();
-
-        nextPlayerButton.setVisibility(View.GONE);
-        saveGameButton.setVisibility(View.GONE);
-        finishGameButton.setVisibility(View.GONE);
-        playPauseButton.setText(R.string.showResults);
-        playPauseButton.setOnClickListener(showGameResults);
-
-        updateGame(0);
-
-    }
-
-    private View.OnClickListener showGameResults = new View.OnClickListener(){
+    private View.OnClickListener showGameResults = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
@@ -267,23 +195,13 @@ public class GameFragment extends Fragment {
         }
     };
 
-    private String[] getTimeStrings(long time_ms) {
-        int h = (int) (time_ms / 3600000);
-        int m = (int) (time_ms - h * 3600000) / 60000;
-        int s = (int) (time_ms - h * 3600000 - m * 60000) / 1000;
-        String hh = h < 10 ? "0" + h : h + "";
-        String mm = m < 10 ? "0" + m : m + "";
-        String ss = s < 10 ? "0" + s : s + "";
-
-        return new String[]{hh, mm, ss};
-    }
-
     View.OnClickListener finishGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new AlertDialog.Builder(getActivity())
+            new AlertDialog.Builder(activity)
                     .setTitle(R.string.finishGame)
                     .setMessage(R.string.finishGameQuestion)
+                    .setIcon(android.R.drawable.ic_menu_help)
                     .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             finishGame();
@@ -301,11 +219,11 @@ public class GameFragment extends Fragment {
 
             isPaused = true;
 
-            roundTimer.cancel();
-            gameTimer.cancel();
+            countDownTimer.cancel();
+            gameTime = currentGameTimeMs;
 
-            saveGameButton.setVisibility(View.VISIBLE);
-            finishGameButton.setVisibility(View.VISIBLE);
+
+            gameButtons.setVisibility(View.VISIBLE);
 
             playPauseButton.setText(R.string.resume_capslock);
             playPauseButton.setOnClickListener(run);
@@ -318,8 +236,7 @@ public class GameFragment extends Fragment {
             alreadySaved = false;
 
             nextPlayerButton.setVisibility(View.VISIBLE);
-            saveGameButton.setVisibility(View.GONE);
-            finishGameButton.setVisibility(View.GONE);
+            gameButtons.setVisibility(View.GONE);
 
             isPaused = false;
 
@@ -335,51 +252,68 @@ public class GameFragment extends Fragment {
                 }
             });
 
-            initChronometers();
-            roundTimer.start();
-            gameTimer.start();
+            initCountDownTimer(currentRoundTimeMs);
+            countDownTimer.start();
 
             playPauseButton.setText(R.string.pause_capslock);
             playPauseButton.setOnClickListener(pause);
         }
     };
 
-    List<Player> playersQueue;
-
-    private List<Player> getPlayersNotInRound(long round) {
-        List<Player> retPlayers = new ArrayList<>();
-
-        for (int i = 0; i < players.size(); i++)
-            if (playerRounds.get(players.get(i).getId()) != round)
-                retPlayers.add(players.get(i));
-
-        return retPlayers;
-    }
-
     View.OnClickListener nextPlayer = new View.OnClickListener() {
         public void onClick(View v) {
-            playPauseButton.performClick();
 
+            if (game.getGame_mode() != 3)
+                playPauseButton.performClick();
+            else
+                countDownTimer.cancel();
+
+            gameTime = currentGameTimeMs;
+
+            // save current player data
             long currPlayerId = currentPlayer.getId();
-            playerRoundTimes.put(currPlayerId, currentRoundTimeMs / 1000);
-
+            playerRoundTimes.put(currPlayerId, currentRoundTimeMs);
             long nextPlayerRound = playerRounds.get(currPlayerId) + 1;
-
             playerRounds.put(currPlayerId, nextPlayerRound);
-            startPlayerIndex = nextPlayerIndex;
 
-            if (game.getGame_mode() == 0) {
-                currentPlayer = players.get(nextPlayerIndex);
+            // set next player to current player
+            currentPlayerIndex = nextPlayerIndex;
+            currentPlayer = players.get(nextPlayerIndex);
+            currPlayerId = currentPlayer.getId();
+
+            // restore player data
+            if (game.getReset_round_time() == 1) {
+
+                currentRoundTimeMs = game.getRound_time();
+
+                if ((game.getRound_time_delta() != -1) && (playerRounds.get(currPlayerId) > 1))
+                    currentRoundTimeMs += game.getRound_time_delta() * (playerRounds.get(currPlayerId) - 1);
+
+            } else {
+                currentRoundTimeMs = playerRoundTimes.get(currPlayerId);
+
+                if ((game.getRound_time_delta() != -1) && (playerRounds.get(currPlayerId) > 1))
+                    currentRoundTimeMs += game.getRound_time_delta();
+            }
+
+            // update view
+            currentPlayerTv.setText(currentPlayer.getName());
+            currentPlayerRound.setText(playerRounds.get(currentPlayer.getId()).toString());
+            currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
+            updateTimerTextViews();
+
+            initCountDownTimer(currentRoundTimeMs);
+
+            // determine next player
+            if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
                 nextPlayerIndex = (nextPlayerIndex + 1) % players.size();
+                System.err.println(nextPlayerIndex);
             } else if (game.getGame_mode() == 1) {
-                currentPlayer = players.get(nextPlayerIndex);
                 if (nextPlayerIndex <= 0)
                     nextPlayerIndex = players.size() - 1;
                 else
                     nextPlayerIndex = nextPlayerIndex - 1;
             } else if (game.getGame_mode() == 2) {
-                currentPlayer = players.get(nextPlayerIndex);
-
                 playersQueue = getPlayersNotInRound(nextPlayerRound);
                 playersQueue.remove(currentPlayer);
 
@@ -392,33 +326,142 @@ public class GameFragment extends Fragment {
                 int r = new Random().nextInt(playersQueue.size());
 
                 nextPlayerIndex = players.indexOf(playersQueue.get(r));
-
-
             }
 
-            currPlayerId = currentPlayer.getId();
-
-            if (game.getReset_round_time() == 1) {
-                currentRoundTimeMs = game.getRound_time() * 1000;
-            } else {
-                currentRoundTimeMs = playerRoundTimes.get(currPlayerId) * 1000;
+            if (game.getGame_mode() == 3) {
+                countDownTimer.start();
             }
-
-            if ((game.getRound_time_delta() != -1) && (playerRounds.get(currPlayerId) > 1))
-                currentRoundTimeMs += game.getRound_time_delta() * 1000 * (playerRounds.get(currPlayerId) - 1);
-
-            currentPlayerTv.setText(currentPlayer.getName());
-            currentPlayerRound.setText(getString(R.string.round) + " " + playerRounds.get(currentPlayer.getId()).toString());
-            currentPlayerIcon.setImageURI(Uri.parse(currentPlayer.getPhotoUri()));
-
-            initTimerTextViews();
-            initChronometers();
         }
     };
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    private void updateTimerTextViews() {
+        String round_time_hh = getTimeStrings(currentRoundTimeMs)[0];
+        String round_time_mm = getTimeStrings(currentRoundTimeMs)[1];
+        String round_time_ss = getTimeStrings(currentRoundTimeMs)[2];
+        roundTimerTv.setText(round_time_hh + ":" + round_time_mm + ":" + round_time_ss);
+
+        String game_time_hh = getTimeStrings(currentGameTimeMs)[0];
+        String game_time_mm = getTimeStrings(currentGameTimeMs)[1];
+        String game_time_ss = getTimeStrings(currentGameTimeMs)[2];
+        gameTimerTv.setText(game_time_hh + ":" + game_time_mm + ":" + game_time_ss);
+
+        // highlight low timers red colored
+        if (currentRoundTimeMs <= 5000)
+            roundTimerTv.setTextColor(Color.RED);
+        else
+            roundTimerTv.setTextColor(Color.BLACK);
+        if (currentGameTimeMs <= 5000)
+            gameTimerTv.setTextColor(Color.RED);
+        else
+            gameTimerTv.setTextColor(Color.BLACK);
+    }
+
+    private void initCountDownTimer(final long initTime) {
+
+        // init round time chronometer
+        countDownTimer = new CountDownTimer(initTime, 100) {
+
+            public void onTick(long millisUntilFinished) {
+                //pause game if drawer opened
+                if (mainActivity.isDrawerOpened() && !alreadyPaused) {
+                    alreadyPaused = true;
+                    playPauseButton.performClick();
+                } else
+                    alreadyPaused = false;
+
+                updateTimerTextViews();
+
+                currentRoundTimeMs = (millisUntilFinished / 1000) * 1000;
+                currentGameTimeMs = gameTime - initTime + currentRoundTimeMs;
+
+                if (gameTimerTv.getText().equals("00:00:00"))
+                    this.onFinish();
+
+                updateGame();
+            }
+
+            public void onFinish() {
+                gameTime = currentGameTimeMs;
+                updateTimerTextViews();
+                finishGame();
+            }
+        };
+    }
+
+
+    private List<Player> getPlayersNotInRound(long round) {
+        List<Player> retPlayers = new ArrayList<>();
+
+        for (int i = 0; i < players.size(); i++)
+            if (playerRounds.get(players.get(i).getId()) != round)
+                retPlayers.add(players.get(i));
+
+        return retPlayers;
+    }
+
+
+    private void showMainMenu() {
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(null);
+
+        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
+    }
+
+    private void updateGame() {
+        playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs);
+        playerRounds.put(currentPlayer.getId(), playerRounds.get(currentPlayer.getId()));
+
+        game.setPlayer_round_times(playerRoundTimes);
+        game.setPlayer_rounds(playerRounds);
+        game.setNextPlayerIndex(nextPlayerIndex);
+        game.setStartPlayerIndex(currentPlayerIndex);
+        game.setCurrentGameTime(currentGameTimeMs);
+        game.setFinished(isFinished);
+
+        mainActivity.setGame(game);
+    }
+
+    private void saveGameToDb(int save) {
+        updateGame();
+        game.setSaved(save);
+
+        gds.saveGame(game);
+    }
+
+    private void finishGame() {
+        isFinished = 1;
+        game.setFinished(isFinished);
+        updateGame();
+        ((MainActivity) activity).setHistoryGame(game);
+
+        countDownTimer.cancel();
+
+        nextPlayerButton.setVisibility(View.GONE);
+        gameButtons.setVisibility(View.GONE);
+        playPauseButton.setText(R.string.showResults);
+        playPauseButton.setOnClickListener(showGameResults);
+
+        saveGameToDb(0);
+
+    }
+
+
+    private String[] getTimeStrings(long time_ms) {
+        int h = (int) (time_ms / 3600000);
+        int m = (int) (time_ms - h * 3600000) / 60000;
+        int s = (int) (time_ms - h * 3600000 - m * 60000) / 1000;
+        String hh = h < 10 ? "0" + h : h + "";
+        String mm = m < 10 ? "0" + m : m + "";
+        String ss = s < 10 ? "0" + s : s + "";
+
+        return new String[]{hh, mm, ss};
     }
 
     public void setKeyListenerOnView(View v) {
@@ -435,27 +478,28 @@ public class GameFragment extends Fragment {
                     String dialogTitle;
                     String dialogQuestion;
 
-                    if (isFinished == 1){
+                    if (isFinished == 1) {
                         dialogTitle = getString(R.string.backToMainMenu);
                         dialogQuestion = getString(R.string.backToMainMenuQuestion);
-                    }
-                    else {
+                    } else {
                         dialogTitle = getString(R.string.quitGame);
                         dialogQuestion = getString(R.string.leaveGameQuestion);
                     }
 
-                    new AlertDialog.Builder(getActivity())
+                    new AlertDialog.Builder(activity)
                             .setTitle(dialogTitle)
                             .setMessage(dialogQuestion)
+                            .setIcon(android.R.drawable.ic_menu_help)
                             .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     if ((isFinished == 0) && !alreadySaved)
-                                        new AlertDialog.Builder(getActivity())
+                                        new AlertDialog.Builder(activity)
                                                 .setTitle(R.string.quitGame)
                                                 .setMessage(R.string.quitGameQuestion)
+                                                .setIcon(android.R.drawable.ic_menu_help)
                                                 .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                                        updateGame(1);
+                                                        saveGameToDb(1);
                                                         showMainMenu();
                                                     }
                                                 })
@@ -480,18 +524,6 @@ public class GameFragment extends Fragment {
         });
     }
 
-    private void showMainMenu() {
-        rootView.setFocusableInTouchMode(true);
-        rootView.requestFocus();
-        rootView.setOnKeyListener(null);
-
-        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
-    }
 
     @Override
     public void onResume() {
@@ -500,9 +532,26 @@ public class GameFragment extends Fragment {
     }
 
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
 }
