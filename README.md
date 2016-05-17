@@ -4,11 +4,11 @@ TODO
 
 ## Motivation
 
-Privacy Friendly Board Game Clock belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly board game clock application.
+As it is part of the Privacy Friendly Apps developed by the SECUSO research group of the Technische Universtität Darmstadt in Germany it is optimized due to user's privacy.
 
 ## Installation
 
-Android Studio is required if further development is intended. 
+Further development requires Android Studio.
 
 ## License
 
