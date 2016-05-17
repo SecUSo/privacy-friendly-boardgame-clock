@@ -3,4 +3,4 @@
     <item android:state_selected="true" android:color="@color/white" />
     <item android:state_activated="true" android:color="@color/white" />
     <item android:color="@color/black" />
-</selector><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/drawable/list_item_textcolor.xml -->
+</selector>

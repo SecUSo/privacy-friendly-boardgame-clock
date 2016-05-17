@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top"
+    >
+
+    <TextView
+        android:id="@+id/nameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pictureHeading"
+        android:layout_alignStart="@+id/pictureHeading"
+        android:layout_marginTop="20dp"
+        android:text="Name"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/picture"
+        android:layout_alignStart="@+id/picture"
+        android:layout_alignTop="@+id/nameHeading"
+        android:layout_marginTop="-15sp"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/pictureHeading"
+        android:layout_below="@+id/nameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginBottom="20dp"
+        android:text="@string/picture"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/picture"
+        android:src="@drawable/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/pictureHeading"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:orientation="horizontal"
+        ></ImageView>
+
+    <Button
+        android:id="@+id/colorButton"
+        android:layout_width="@+id/picture"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/picture"
+        android:layout_alignRight="@+id/picture"
+        android:layout_below="@+id/picture"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/button_darkblue"
+        android:orientation="horizontal"
+        android:textSize="@dimen/text_size"
+        android:text="@string/changeColorButton"
+        />
+
+    <Button
+        android:id="@+id/photoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/colorButton"
+        android:layout_alignLeft="@+id/picture"
+        android:layout_alignRight="@+id/picture"
+        android:layout_marginTop="10sp"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/button_darkblue"
+        android:orientation="horizontal"
+        android:text="@string/takePhotoButton"
+        />
+
+    <Button
+        android:id="@+id/confirmNewPlayerButtonBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_darkblue"
+        android:layout_marginBottom="5sp"
+        android:onClick="confirmNewPlayerButton"
+        android:text="@string/confirm"
+        android:textSize="@dimen/text_size"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/confirmNewPlayerButtonGrey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/button_grey"
+        android:onClick="confirmNewPlayerButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/confirm"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:textColor="@color/white"
+        android:visibility="visible"/>
+
+</RelativeLayout>

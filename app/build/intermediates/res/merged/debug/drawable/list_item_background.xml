@@ -6,4 +6,4 @@
     <item android:state_pressed="true" android:drawable="@color/lightblue" />
 
     <item android:drawable="@color/white" />
-</selector><!-- From: file:/C:/Users/Marco/Documents/GitHub/privacy-friendly-boardgame-clock/app/src/main/res/drawable/list_item_background.xml -->
+</selector>

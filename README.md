@@ -4,7 +4,7 @@ TODO
 
 ## Motivation
 
-As it is part of the Privacy Friendly Apps developed by the SECUSO research group of the Technische Universtit√§t Darmstadt in Germany it is optimized due to user's privacy.
+As it is part of the Privacy Friendly Apps developed by the SECUSO research group of the Technische Universtit‰t Darmstadt in Germany it is optimized due to user's privacy.
 
 ## Installation
 

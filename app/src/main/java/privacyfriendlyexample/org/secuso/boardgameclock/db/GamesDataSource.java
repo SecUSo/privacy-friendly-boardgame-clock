@@ -18,6 +18,7 @@ public class GamesDataSource {
     private SQLiteDatabase database;
     private DbHelper dbHelper;
     private Context context;
+    private Game game;
 
     private String[] columns = {
             DbHelper.GAMES_COL_ID,
@@ -67,7 +68,7 @@ public class GamesDataSource {
                            int startPlayerIndex,
                            int saved, int finished) {
 
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(DbHelper.GAMES_COL_NAME, name);
         values.put(DbHelper.GAMES_COL_DATE, date);
         values.put(DbHelper.GAMES_COL_GAME_TIME, game_time);
@@ -105,41 +106,77 @@ public class GamesDataSource {
         playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
 
-        System.err.println(values);
         long insertId = database.insert(DbHelper.TABLE_GAMES, null, values);
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
                 columns, DbHelper.GAMES_COL_ID + "=" + insertId,
                 null, null, null, null);
 
         cursor.moveToFirst();
-        Game game = cursorToGame(cursor);
+        game = cursorToGame(cursor);
         cursor.close();
 
         return game;
     }
 
-    public Game getGameWithId(String gameId){
+    public Game getGameWithId(final String gameId) {
+
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
                 columns, null, null, null, null, null);
-
         cursor.moveToFirst();
-        Game newGame = null;
 
-        while(!cursor.isAfterLast()) {
-            Game game = cursorToGame(cursor);
-            String idString = String.valueOf(game.getId());
+        while (!cursor.isAfterLast()) {
+            Game g = cursorToGame(cursor);
+            String idString = String.valueOf(g.getId());
 
             if (gameId.equals(idString))
-                newGame = game;
+                game = g;
 
             cursor.moveToNext();
         }
 
         cursor.close();
-        return newGame;
+
+        return game;
     }
 
-    public void saveGame(Game game){
+    private String[] getGameIdsWithPlayerInvolved(final long playerId) {
+
+        final List<String> gameIds = new ArrayList<>();
+
+        Cursor cursor = database.query(DbHelper.TABLE_GAMES,
+                columns, null, null, null, null, DbHelper.GAMES_COL_DATE + " DESC");
+
+        cursor.moveToFirst();
+        Game game;
+
+        while (!cursor.isAfterLast()) {
+            game = cursorToGame(cursor);
+
+            for (Player player : game.getPlayers()) {
+                if (player.getId() == playerId)
+                    gameIds.add(String.valueOf(game.getId()));
+            }
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return gameIds.toArray(new String[gameIds.size()]);
+    }
+
+    public void deleteGamesWithPlayer(final long playerId) {
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                String whereClause = "_id" + "=?";
+                String[] whereArgs = getGameIdsWithPlayerInvolved(playerId);
+                for (String whereArg : whereArgs)
+                    database.delete(DbHelper.TABLE_GAMES, whereClause, new String[]{whereArg});
+            }
+        });
+    }
+
+    public void saveGame(final Game game) {
+
         ContentValues values = new ContentValues();
         values.put(DbHelper.GAMES_COL_SAVED, game.getSaved());
         values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, game.getCurrentGameTime());
@@ -165,10 +202,10 @@ public class GamesDataSource {
         playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
 
-        int result = database.update(DbHelper.TABLE_GAMES, values, "_id=?", new String[]{ String.valueOf(game.getId())});
+        int result = database.update(DbHelper.TABLE_GAMES, values, "_id=?", new String[]{String.valueOf(game.getId())});
     }
 
-    public void deleteGame(Game g) {
+    public void deleteGame(final Game g) {
         String whereClause = "_id" + "=?";
         String[] whereArgs = new String[]{String.valueOf(g.getId())};
 
@@ -219,7 +256,8 @@ public class GamesDataSource {
         String playerTimes = cursor.getString(idPlayersRoundTimes);
         String[] playerTimesArray = playerTimes.split(";");
         HashMap<Long, Long> player_round_times = new HashMap<>();
-        for (int i = 0; i < playerIdsArray.length; i++){
+
+        for (int i = 0; i < playerIdsArray.length; i++) {
             player_round_times.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerTimesArray[i]));
         }
 
@@ -227,7 +265,7 @@ public class GamesDataSource {
         String playerRounds = cursor.getString(idPlayersRounds);
         String[] playerRoundsArray = playerRounds.split(";");
         HashMap<Long, Long> player_rounds = new HashMap<>();
-        for (int i = 0; i < playerIdsArray.length; i++){
+        for (int i = 0; i < playerIdsArray.length; i++) {
             player_rounds.put(Long.valueOf(playerIdsArray[i]), Long.valueOf(playerRoundsArray[i]));
         }
 
@@ -253,7 +291,7 @@ public class GamesDataSource {
     }
 
     public List<Game> getAllGames() {
-        List<Game> gameList = new ArrayList<>();
+        final List<Game> gameList = new ArrayList<>();
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
                 columns, null, null, null, null, DbHelper.GAMES_COL_DATE + " DESC");
@@ -273,13 +311,13 @@ public class GamesDataSource {
     }
 
     public List<Game> getSavedGames() {
-        List<Game> gameList = new ArrayList<>();
+        final List<Game> gameList = new ArrayList<>();
 
         String whereClause = "saved" + "=?";
         String[] whereArgs = new String[]{"1"};
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, whereClause, whereArgs, null, null,  DbHelper.GAMES_COL_DATE + " DESC");
+                columns, whereClause, whereArgs, null, null, DbHelper.GAMES_COL_DATE + " DESC");
 
 
         cursor.moveToFirst();
@@ -292,19 +330,18 @@ public class GamesDataSource {
         }
 
         cursor.close();
-
 
         return gameList;
     }
 
     public List<Game> getFinishedGames() {
-        List<Game> gameList = new ArrayList<>();
+        final List<Game> gameList = new ArrayList<>();
 
         String whereClause = "finished" + "=?";
         String[] whereArgs = new String[]{"1"};
 
         Cursor cursor = database.query(DbHelper.TABLE_GAMES,
-                columns, whereClause, whereArgs, null, null,  DbHelper.GAMES_COL_DATE + " DESC");
+                columns, whereClause, whereArgs, null, null, DbHelper.GAMES_COL_DATE + " DESC");
 
 
         cursor.moveToFirst();
@@ -317,7 +354,6 @@ public class GamesDataSource {
         }
 
         cursor.close();
-
 
         return gameList;
     }

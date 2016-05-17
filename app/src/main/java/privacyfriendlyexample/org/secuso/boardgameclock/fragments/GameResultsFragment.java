@@ -5,10 +5,10 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,44 +17,33 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 import privacyfriendlyexample.org.secuso.boardgameclock.R;
 import privacyfriendlyexample.org.secuso.boardgameclock.activities.MainActivity;
-import privacyfriendlyexample.org.secuso.boardgameclock.db.GamesDataSource;
-import privacyfriendlyexample.org.secuso.boardgameclock.db.PlayersDataSource;
 import privacyfriendlyexample.org.secuso.boardgameclock.model.Game;
-import privacyfriendlyexample.org.secuso.boardgameclock.model.Player;
-import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerListAdapter;
 import privacyfriendlyexample.org.secuso.boardgameclock.view.PlayerResultsListAdapter;
 
 public class GameResultsFragment extends Fragment {
 
-    Activity activity;
-    Button mainMenuButton;
+    MainActivity activity;
     View rootView;
     ListView players;
     Game game;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        activity = this.getActivity();
+        activity = (MainActivity) getActivity();
 
         rootView = inflater.inflate(R.layout.fragment_game_results, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(activity.getString(R.string.gameResults));
         container.removeAllViews();
 
-        mainMenuButton = (Button) rootView.findViewById(R.id.mainMenuButton);
-        mainMenuButton.setOnClickListener(mainMenu);
-
-        game = ((MainActivity) activity).getGame();
+        game = ((MainActivity) activity).getHistoryGame();
 
         ((TextView) rootView.findViewById(R.id.timePlayedText)).setText(getTotalTimePlayed());
-        ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getRoundsPlayed()));
+        ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
 
         players = (ListView) rootView.findViewById(R.id.players_results_list);
         PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.choose_players_list, game.getPlayers());
@@ -63,20 +52,20 @@ public class GameResultsFragment extends Fragment {
         return rootView;
     }
 
-    private String getTotalTimePlayed(){
+    private String getTotalTimePlayed() {
         long game_time = game.getGame_time();
         long current_game_time = game.getCurrentGameTime();
         long totalTimePlayed = game_time - current_game_time;
 
-        String[] times = getTimeStrings(totalTimePlayed*1000);
+        String[] times = getTimeStrings(totalTimePlayed);
 
         if (times[0].equals("00"))
             if (times[1].equals("00"))
-                return times[2] +"s ";
+                return times[2] + "s ";
             else
-                return times[1] + "m " + times[2] +"s ";
+                return times[1] + "m " + times[2] + "s ";
         else
-            return times[0] + "h " + times[1] + "m " + times[2] +"s ";
+            return times[0] + "h " + times[1] + "m " + times[2] + "s ";
 
     }
 
@@ -91,23 +80,14 @@ public class GameResultsFragment extends Fragment {
         return new String[]{hh, mm, ss};
     }
 
-    private long getRoundsPlayed(){
+    private long getLastRound() {
         HashMap<Long, Long> playerRounds = game.getPlayer_rounds();
-        return Collections.max(playerRounds.values()) - 1;
+        long lastRound = Collections.max(playerRounds.values());
+        if (lastRound == Collections.min(playerRounds.values()))
+            return lastRound;
+        else
+            return Collections.max(playerRounds.values()) - 1;
     }
-
-    View.OnClickListener mainMenu = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            showMainMenu();
-        }
-    };
-
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
-
     public void setKeyListenerOnView(View v) {
         v.setFocusableInTouchMode(true);
         v.requestFocus();
@@ -115,8 +95,20 @@ public class GameResultsFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN))
-                    showMainMenu();
+                if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN)) {
+
+                    boolean gameHistoryInBackground = false;
+                    for (int i = 0; i < getFragmentManager().getBackStackEntryCount(); i++) {
+                        if (getFragmentManager().getBackStackEntryAt(i).getName().equals(getString(R.string.gameHistoryFragment)))
+                            gameHistoryInBackground = true;
+                    }
+
+                    if (!gameHistoryInBackground) {
+                        showMainMenu();
+                    } else {
+                        activity.onBackPressed();
+                    }
+                }
 
                 return true;
             }
@@ -125,31 +117,37 @@ public class GameResultsFragment extends Fragment {
     }
 
     private void showMainMenu() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(getString(R.string.backToMainMenu))
-                .setMessage(getString(R.string.backToMainMenuQuestion))
-                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        rootView.setFocusableInTouchMode(true);
-                        rootView.requestFocus();
-                        rootView.setOnKeyListener(null);
 
-                        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
-                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(null);
 
-                        fragmentTransaction.commit();
-                    }
-                })
-                .setNegativeButton(R.string.no, null)
-                .show();
+        getFragmentManager().popBackStack(getString(R.string.mainMenuFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, new MainMenuFragment());
+        fragmentTransaction.addToBackStack(getString(R.string.mainMenuFragment));
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
         setKeyListenerOnView(getView());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity a;
+
+        if (context instanceof Activity) {
+            a = (Activity) context;
+        }
+
     }
 
 }

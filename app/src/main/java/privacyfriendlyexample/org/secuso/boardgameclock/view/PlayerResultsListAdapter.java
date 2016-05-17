@@ -1,7 +1,6 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.view;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         this.mList = list;
         this.mContext = context;
 
-        game = ((MainActivity) mContext).getGame();
+        game = ((MainActivity) mContext).getHistoryGame();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,7 +35,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         try {
             if (view == null) {
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.listview_item_row, null); //--CloneChangeRequired(list_item)
+                view = vi.inflate(R.layout.playerresultslist_item_row, null); //--CloneChangeRequired(list_item)
             }
             final Player p = (Player) mList.get(position); //--CloneChangeRequired
             if (p != null) {
@@ -44,16 +43,11 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
                 ((TextView) view.findViewById(R.id.textViewName))
                         .setText(p.getName());
 
-                long round = game.getPlayer_rounds().get(p.getId()) - 1;
-                if (game.getPlayers().get(game.getNextPlayerIndex()) == p)
-                    round++;
-
                 ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(mContext.getString(R.string.lastRound) + " " + (game.getPlayer_rounds().get(p.getId()) - 1) + ", " +
-                                mContext.getString(R.string.timeLeft) + " " + getTimeLeft(p));
+                        .setText(mContext.getString(R.string.timeLeft) + " " + getTimeLeft(p));
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageURI(Uri.parse(p.getPhotoUri()));
+                        .setImageBitmap(p.getIcon());
 
             }
         } catch (Exception e) {
@@ -66,7 +60,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
 
         long timeLeft = game.getPlayer_round_times().get(p.getId());
 
-        String[] times = getTimeStrings(timeLeft*1000);
+        String[] times = getTimeStrings(timeLeft);
         if (times[0].equals("00"))
             if (times[1].equals("00"))
                 return times[2] +"s ";
