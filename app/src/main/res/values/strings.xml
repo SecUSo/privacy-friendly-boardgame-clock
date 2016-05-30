@@ -37,4 +37,5 @@
     <string name="permissionHeading">Permissions</string>
     <string name="welcomeDialog">WelcomeDialog</string>
     <string name="timeDeltaNoColon">Delta</string>
+    <string name="nameDots">Name:</string>
 </resources>

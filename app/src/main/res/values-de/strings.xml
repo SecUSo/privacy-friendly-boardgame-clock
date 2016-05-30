@@ -129,5 +129,6 @@
     <string name="help_gameHistory">Dieser Menüpunkt öffnet die Spielhistorie. Hier werden alle Spiele aufgelistet, welche in der Vergangenheit beendet worden sind.</string>
     <string name="help_backup">Dieser Menüpunkt öffnet den Dialog \'Backup\', in welchem ein Backup der Datenbank erstellt oder wiederhergestellt werden kann.</string>
     <string name="help_gameName">Dieser Parameter legt den Namen des Spiels fest.</string>
+    <string name="dialog_no_permissions">Die benötigten Permissions wurden nicht erteilt!</string>
 
 </resources>

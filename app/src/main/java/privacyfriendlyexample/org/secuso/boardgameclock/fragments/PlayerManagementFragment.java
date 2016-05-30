@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -39,6 +41,7 @@ public class PlayerManagementFragment extends Fragment {
     String selectedPlayerId = "-1";
     ListView myListView;
     PlayerListAdapter listAdapter;
+    Button contactsButton;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -65,7 +68,7 @@ public class PlayerManagementFragment extends Fragment {
             }
         });
 
-        final Button contactsButton = (Button) rootView.findViewById(R.id.addPlayerContactsButton);
+        contactsButton = (Button) rootView.findViewById(R.id.addPlayerContactsButton);
         int contactPermissionCheck = ContextCompat.checkSelfPermission(this.getActivity(),
                 Manifest.permission.READ_CONTACTS);
         if (contactPermissionCheck == PackageManager.PERMISSION_GRANTED)
@@ -157,6 +160,7 @@ public class PlayerManagementFragment extends Fragment {
         }
 
     }
+
     private void createNewPlayer() {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new CreateNewPlayerFragment());

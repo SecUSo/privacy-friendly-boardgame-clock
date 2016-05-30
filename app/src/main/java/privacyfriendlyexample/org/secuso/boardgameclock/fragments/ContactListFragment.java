@@ -107,22 +107,19 @@ public class ContactListFragment extends ListFragment implements LoaderCallbacks
                                         String name = c.getString(c.getColumnIndex(Contacts.DISPLAY_NAME));
 
                                         String photoThumbnailUri = c.getString(c.getColumnIndex(Contacts.PHOTO_THUMBNAIL_URI));
+                                        Bitmap androidIcon = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_launcher);
 
                                         if (photoThumbnailUri != null) {
                                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.parse(photoThumbnailUri));
-                                            pds.createPlayer(name, Bitmap.createScaledBitmap(cutSquareBitmap(bitmap), 288, 288, false));
+                                            pds.createPlayer(name, Bitmap.createScaledBitmap(cutSquareBitmap(bitmap), androidIcon.getWidth(), androidIcon.getHeight(), false));
                                         }else {
-                                            Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_launcher);
-                                            pds.createPlayer(name, bitmap);
+                                            pds.createPlayer(name, androidIcon);
                                         }
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
                                 }
                             }
-
-                            // TODO
-                            //pds.getAllPlayers();
 
                             getActivity().onBackPressed();
                         }

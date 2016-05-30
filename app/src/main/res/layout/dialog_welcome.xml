@@ -15,15 +15,6 @@
             android:gravity="center"
             android:text="@string/welcome_part1" />
         <Space
-            android:layout_width="10dp"
-            android:layout_height="20dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/action_new_game"
-            style="@style/Base.DialogWindowTitle.AppCompat"/>
-        <Space
             android:layout_width="20dp"
             android:layout_height="20dp" />
         <TextView

@@ -178,7 +178,7 @@ public class CreateNewPlayerFragment extends Fragment {
             Bitmap photo = (Bitmap) imageReturnedIntent.getExtras().get("data");
             ImageView picture = (ImageView) rootView.findViewById(R.id.picture);
 
-            playerIcon = Bitmap.createScaledBitmap(cutSquareBitmap(photo), 288, 288, false);
+            playerIcon = Bitmap.createScaledBitmap(cutSquareBitmap(photo), picture.getWidth(), picture.getHeight(), false);
             picture.setImageBitmap(playerIcon);
             picture.setColorFilter(null);
         }

@@ -1,11 +1,15 @@
 package privacyfriendlyexample.org.secuso.boardgameclock.fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
@@ -64,7 +68,15 @@ public class ChoosePlayersFragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newGamePlayerManagementButton();
+                // Android 6 Permission Requests
+                if (Build.VERSION.SDK_INT >= 23) {
+                    if (!hasPermissions(activity, new String[]{Manifest.permission.READ_CONTACTS})) {
+                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_CONTACTS}, 5);
+                        clearListSelections();
+                    } else
+                        newGamePlayerManagementButton();
+                } else
+                    newGamePlayerManagementButton();
             }
         });
 
@@ -123,10 +135,6 @@ public class ChoosePlayersFragment extends Fragment {
         else {
             game = gds.createGame(dateMs, players, player_round_times, players_rounds, game.getName(), game.getRound_time(),
                     game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0);
-
-            // TODO
-            //gds.getAllGames();
-
 
             //start player index
             if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
@@ -191,6 +199,17 @@ public class ChoosePlayersFragment extends Fragment {
 
         fragmentTransaction.commit();
 
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void newGamePlayerManagementButton() {

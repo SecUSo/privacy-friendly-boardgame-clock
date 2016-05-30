@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\invisible_button.xml",
-        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\drawable\\invisible_button.xml"
-    },
-    {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\invisible_button.xml",
+        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\drawable\\invisible_button.xml"
     },
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\privacyfriendlyappslogo.png",

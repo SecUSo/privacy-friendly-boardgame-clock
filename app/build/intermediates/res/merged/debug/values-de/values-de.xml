@@ -58,6 +58,7 @@
     <string name="deleteGameQuestion">Bist du dir sicher, dass du das ausgewählte Spiel löschen möchtest?</string>
     <string name="deletePlayer">Spieler löschen</string>
     <string name="deletePlayerQuestion">Bist du dir sicher, dass du den ausgewählten Spieler löschen möchtest? Hierbei werden zusätzlich alle Spielstände gelöscht, in welchen dieser Spieler beteiligt war. Dieser Schritt kann nicht rückgängig gemacht werden.</string>
+    <string name="dialog_no_permissions">Die benötigten Permissions wurden nicht erteilt!</string>
     <string name="drawer_close">Schließe Navigationsleiste</string>
     <string name="drawer_open">Öffne Navigationsleiste</string>
     <string name="editPlayer">Spieler bearbeiten</string>

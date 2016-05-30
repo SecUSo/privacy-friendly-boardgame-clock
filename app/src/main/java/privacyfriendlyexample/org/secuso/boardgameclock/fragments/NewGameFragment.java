@@ -39,7 +39,7 @@ public class NewGameFragment extends Fragment {
     private CheckBox check_new_game_delta, check_new_game_reset_time;
     private Spinner game_mode;
     private EditText game_name;
-    private boolean nameEntered = false, roundTimeEntered = true, gameTimeEntered = true;
+    private boolean nameEntered = false, roundTimeEntered = false, gameTimeEntered = false;
     private int round_total_time_in_s, game_total_time_in_s;
     private Button choosePlayersButtonBlue, choosePlayersButtonGrey;
 
@@ -236,7 +236,6 @@ public class NewGameFragment extends Fragment {
         }
 
     }
-
 
     private void setRoundTime(){
         int round_time_h_in_s = round_time_h.getValue() * 3600;

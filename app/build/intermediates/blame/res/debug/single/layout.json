@@ -12,12 +12,12 @@
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_backup.xml",
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\layout\\dialog_backup.xml"
+    },
+    {
+        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -66,10 +66,6 @@
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_new_game.xml",
-        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\layout\\fragment_new_game.xml"
     },
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
@@ -158,10 +154,6 @@
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
-        "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_game.xml",
-        "source": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\layout\\fragment_game.xml"
     },
     {
         "merged": "C:\\Users\\Marco\\Documents\\GitHub\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
