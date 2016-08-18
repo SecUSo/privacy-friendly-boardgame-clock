@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "privacyfriendlyexample.org.secuso.boardgameclock"
+        applicationId "org.secuso.privacyfriendlyboardgameclock"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

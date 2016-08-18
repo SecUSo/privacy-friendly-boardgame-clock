@@ -1,47 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<PreferenceCategory android:title="@string/help_overview_heading">
-        <Preference
-            android:summary="@string/help_tip_one" />
-        <Preference
-            android:summary="@string/help_tip_two" />
-        <Preference
-            android:summary="@string/help_tip_three" />
+    <PreferenceCategory android:title="@string/overviewHeading">
+        <Preference android:summary="@string/overviewSummary" />
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/help_shape_heading">
-        <Preference
-            android:icon="@drawable/one_help"
-            android:summary="@string/help_one_highlighted" />
-        <Preference
-            android:icon="@drawable/two_help"
-            android:summary="@string/help_two_highlighted" />
-        <Preference
-            android:icon="@drawable/three_help"
-            android:summary="@string/help_three_highlighted" />
-        <Preference
-            android:icon="@drawable/four_help"
-            android:summary="@string/help_four_highlighted" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/help_story_heading">
-        <Preference
-            android:icon="@drawable/story_two"
-            android:summary="@string/help_story_description" />
-        <Preference
-            android:icon="@drawable/help_story"
-            android:summary="@string/help_story_example" />
-        <Preference
-            android:summary="@string/help_story_additional"
-            />
-
-    </PreferenceCategory>-->
-
     <PreferenceCategory android:title="@string/action_new_game">
-        <Preference
-            android:summary="@string/help_gameName"
-            android:title="@string/gameNameNoColon" />
         <Preference
             android:summary="@string/help_gameTime"
             android:title="@string/gameTimeNoColon" />
@@ -49,28 +12,26 @@
             android:summary="@string/help_roundTime"
             android:title="@string/roundTimeNoColon" />
         <Preference
-            android:summary="@string/help_gameMode"
-            android:title="@string/gameModeNoColon" />
-        <Preference
             android:summary="@string/help_timeDelta"
             android:title="@string/timeDeltaNoColon" />
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/menuPoints">
+    <PreferenceCategory android:title="@string/gameModeNoColon">
         <Preference
-            android:summary="@string/help_mainMenu"
-            android:title="@string/action_main" />
+            android:summary="@string/modeClockwiseSummary"
+            android:title="@string/modeClockwise" />
         <Preference
-            android:summary="@string/help_playerManagement"
-            android:title="@string/playerManagement" />
+            android:summary="@string/modeCounterClockwiseSummary"
+            android:title="@string/modeCounterClockwise" />
         <Preference
-            android:summary="@string/help_gameHistory"
-            android:title="@string/gameHistory" />
+            android:summary="@string/modeRandomSummary"
+            android:title="@string/modeRandom" />
         <Preference
-            android:summary="@string/help_backup"
-            android:title="@string/backup" />
+            android:summary="@string/modeChessSummary"
+            android:title="@string/modeChess" />
     </PreferenceCategory>
-
+    <PreferenceCategory android:title="@string/nextPlayer">
+        <Preference android:summary="@string/swipeDialogAnswer" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/permissionHeading">
         <Preference
             android:summary="@string/permissionContacts"

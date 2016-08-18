@@ -15,27 +15,27 @@
         android:id="@+id/removeEntryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_grey"
-        android:text="@string/removeEntry"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_size"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:onClick="removeEntryButton" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_grey"
+        android:onClick="removeEntryButton"
+        android:text="@string/removeEntry"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size" />
 
     <Button
         android:id="@+id/showResultsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="5sp"
-        android:background="@drawable/button_grey"
-        android:text="@string/showResults"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_size"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:onClick="showResultsButton" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_grey"
+        android:onClick="showResultsButton"
+        android:text="@string/showResults"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size" />
 
 </LinearLayout>

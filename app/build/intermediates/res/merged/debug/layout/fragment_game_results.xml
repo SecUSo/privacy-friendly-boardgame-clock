@@ -32,9 +32,9 @@
             android:id="@+id/roundsPlayedHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/timePlayedHeader"
             android:layout_marginLeft="@dimen/main_button_padding"
             android:layout_marginRight="@dimen/main_button_padding"
-            android:layout_below="@+id/timePlayedHeader"
             android:layout_marginTop="10dp"
             android:text="@string/playedRoundsHeader"
             android:textSize="15sp" />
@@ -54,37 +54,24 @@
             android:id="@+id/playerListHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/roundsPlayedHeader"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="@dimen/main_button_padding"
             android:layout_marginRight="@dimen/main_button_padding"
-            android:layout_below="@+id/roundsPlayedHeader"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="5dp"
             android:text="@string/playerResults"
             android:textSize="15sp" />
 
     </RelativeLayout>
 
+
     <ListView
         android:id="@+id/players_results_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:listSelector="@android:color/transparent"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_weight="1" />
-
-    <!--<Button
-        android:id="@+id/mainMenuButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5sp"
-        android:background="@drawable/button_darkblue"
-        android:text="@string/backToMainMenu"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_size"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:onClick="mainMenuButton" />-->
+        android:layout_weight="1"
+        android:listSelector="@android:color/transparent" />
 
 </LinearLayout>

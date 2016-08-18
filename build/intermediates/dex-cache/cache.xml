@@ -1,3 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="2b56239f574129ce75b86f9366331aa59a1df339">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\instant-run_bfb987c2136043b5050413b65d1d4b881063bb2a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_2b3c79ca79cf361eb7fa32927959a5fd8547ccaa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_2240b5943cbca05fa92a1be4ec203496bf745bf6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="ed1357f71af1517399f9faa2834f5a4c4fb4e05f">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_0ea6b06d323678761136f923cb04ff3aaa71e9a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_bd882f4796b3806b01dca6c7cacecbea4161664b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_9b9757a9ac443bb97cebd568e549b825571d3172.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_ff40a7af1c676aaa9a1046a28d7c818bec333473.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_8ee42ad66978cdfd53577d87b5726fd823b173c8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\exploded-aar\com.github.QuadFlask\colorpicker\0.0.10\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.1"
+        sha1="e0441dc0a70f25f834fac1e9520a4b55acad0e54">
+        <dex dex="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\pre-dexed\debug\com.github.QuadFlask-colorpicker-0.0.10_54d00eca44f754c23f03abe20f852d843c0a29c5.jar" />
+    </item>
+
+</items>

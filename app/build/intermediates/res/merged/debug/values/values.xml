@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="game_modes">
+        <item>Clockwise</item>
+        <item>Counter-Clockwise</item>
+        <item>Random</item>
+        <item>Manual sequence</item>
+    </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
@@ -198,8 +204,6 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_padding_side">10dp</dimen>
     <dimen name="default_preview_height">40dp</dimen>
     <dimen name="default_preview_image_height">36dp</dimen>
@@ -237,16 +241,13 @@
     <dimen name="design_tab_text_size_2line">12sp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <dimen name="fab_margin">16dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
-    <dimen name="main_button_padding">30dp</dimen>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <dimen name="text_size">20sp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -285,40 +286,162 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="aboutFragment">AboutFragment</string>
+    <string name="about_affiliation">In affiliation with</string>
+    <string name="about_author">Author: Marco Bräuning and contributors</string>
+    <string name="action_about">About</string>
+    <string name="action_help">Help</string>
+    <string name="action_main">Main Menu</string>
     <string name="action_navigation">Navigation</string>
+    <string name="action_new_game">New Game</string>
+    <string name="action_player_management">Player Management</string>
+    <string name="action_resume_game">Resume Game</string>
+    <string name="activeGameTimeHeader">Game Time left:</string>
+    <string name="addContact">Add Contact</string>
+    <string name="addPlayerFromContacts">Contacts</string>
+    <string name="addSelectedContacts">Add Contacts</string>
     <string name="app_name">Board Game Clock</string>
     <string name="app_name_long">Privacy Friendly Board Game Clock</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="backToMainMenu">Back to Main Menu</string>
+    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
     <string name="backup">Backup</string>
     <string name="backupDialog">BackupDialog</string>
+    <string name="backupDuringGame">Please quit the current game first before importing or exporting database backups.</string>
+    <string name="backupExportError">Export of database failed!</string>
+    <string name="cancel">Cancel</string>
+    <string name="changeColorButton">Color</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="chess_clock">Chess Clock</string>
     <string name="choosePlayersFragment">ChoosePlayersFragment</string>
+    <string name="completedRounds">Rounds finished:</string>
+    <string name="confirm">Confirm</string>
     <string name="contactListFragment">ContactListFragment</string>
+    <string name="createNewPlayer">New Player</string>
     <string name="createNewPlayerFragment">CreateNewPlayerFragment</string>
+    <string name="currentPlayer">Player:</string>
+    <string name="deleteGame">Delete Game</string>
+    <string name="deleteGameQuestion">Do you really want to delete the selected game?</string>
+    <string name="deletePlayer">Delete Player</string>
+    <string name="deletePlayerQuestion">Do you really want to delete the selected player? This also deletes every saved game where this player took part. This step cannot be undone.</string>
+    <string name="dialog_no_permissions">Required permissions are not granted!</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="editPlayer">Edit Player</string>
     <string name="editPlayerFragment">EditPlayerFragment</string>
+    <string name="error">Error</string>
+    <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
+    <string name="exit">Exit</string>
+    <string name="exitQuestion">Do you really want to close the application?</string>
+    <string name="exportDatabaseBackup">Export Database Backup</string>
+    <string name="exportDatabaseBackupInfoMessage">Are you sure you want to create a backup from the active database? The current database backup will be replaced.</string>
+    <string name="exportDatabaseBackupSuccess">Backup successfully created at: </string>
+    <string name="finishGame">Finish</string>
+    <string name="finishGameQuestion">Do you really want to finish the current game?</string>
     <string name="gameFragment">GameFragment</string>
+    <string name="gameHistory">Game History</string>
     <string name="gameHistoryFragment">GameHistoryFragment</string>
+    <string name="gameMode">Game Mode:</string>
+    <string name="gameModeNoColon">Game Modes</string>
+    <string name="gameName">Game Name:</string>
+    <string name="gameNameSizeError">Please enter a game name to continue.</string>
+    <string name="gameNameStandard">Game</string>
+    <string name="gameResults">Game Results</string>
     <string name="gameResultsFragment">GameResultsFragment</string>
+    <string name="gameSavedSuccess">Clock saved successfully!</string>
+    <string name="gameTime">Game Time:</string>
+    <string name="gameTimeNoColon">Game Time</string>
     <string name="helpFragment">HelpFragment</string>
-    <string name="input_new_game_name" translatable="false">...</string>
+    <string name="help_gameTime">Total time for a game.</string>
+    <string name="help_roundTime">The time a player has available per round/turn. After this time the turn will be finished automatically.</string>
+    <string name="help_timeDelta">The time a player a player gets credited once a new round starts.</string>
+    <string name="importDatabaseBackup">Import Database Backup</string>
+    <string name="importDatabaseBackupInfoMessage">Are you sure you want to import the current database backup from external storage? The active database will be replaced.</string>
+    <string name="importDatabaseBackupSuccess">Backup successfully loaded!</string>
+    <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
+    <string name="infinite">Infinite</string>
+    <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
+    <string name="loadGame">Load Game</string>
     <string name="loadGameFragment">LoadGameFragment</string>
+    <string name="loadSelectedGame">Load Game</string>
     <string name="mainMenuFragment">MainMenuFragment</string>
-    <string name="name">Name:</string>
+    <string name="manualChoiceError">Please select every player from the list!</string>
+    <string name="manualChoiceHeading">Set player sequence</string>
+    <string name="modeChess">Chess</string>
+    <string name="modeChessSummary">The turn order corresponds to the player list, no game pause after a round ends.</string>
+    <string name="modeClockwise">Clockwise</string>
+    <string name="modeClockwiseSummary">The turn order corresponds to the player list and will continue clockwise.</string>
+    <string name="modeCounterClockwise">Counter-Clockwise</string>
+    <string name="modeCounterClockwiseSummary">The turn order corresponds to the player list and will continue counter-clockwise.</string>
+    <string name="modeRandom">Random</string>
+    <string name="modeRandomSummary">The next player will be selected randomly from the player list.</string>
+    <string name="more_info">More information can be found on:</string>
+    <string name="nameDots">Name:</string>
     <string name="newGameFragment">NewGameFragment</string>
+    <string name="nextPlayer">Next Player</string>
+    <string name="no">No</string>
+    <string name="noBackupFound">No database backup found!</string>
     <string name="ok">Okay</string>
+    <string name="overviewHeading">Overview</string>
+    <string name="overviewSummary">Privacy Friendly Board Game Clock allows to measure in (round-based) games with any amount of players. </string>
     <string name="pause_capslock">Pause</string>
+    <string name="permissionContacts">Additional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.</string>
     <string name="permissionContactsName">Read Contacts</string>
     <string name="permissionHeading">Permissions</string>
+    <string name="permissionReadExtStorage">The app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.</string>
     <string name="permissionReadExtStorageName">Read External Storage</string>
+    <string name="permissionSaveExtStorage">App data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.</string>
     <string name="permissionSaveExtStorageName">Write External Storage</string>
+    <string name="pickColor">Pick color</string>
+    <string name="picture">Picture:</string>
+    <string name="play">Play</string>
+    <string name="playedGames">Games played:</string>
+    <string name="playedRoundsHeader">Last Round:</string>
+    <string name="playerManagement">Player Management</string>
     <string name="playerManagementFragment">PlayerManagementFragment</string>
-    <string name="settingsFragment">SettingsFragment</string>
+    <string name="playerResults">Player Results:</string>
+    <string name="playerStatistics">Player Statistics</string>
+    <string name="playerStatisticsFragment">PlayerStatisticsFragment</string>
+    <string name="players">Players</string>
+    <string name="pleaseChooseAGame">Please choose a game from the list.</string>
+    <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
+    <string name="quitGame">Quit Game</string>
+    <string name="quitGameQuestion">Do you want to save the current clock before leaving?</string>
+    <string name="removeEntry">Remove Entry</string>
+    <string name="removeEntryQuestion">Do you really want to remove the selected entry from history?</string>
+    <string name="resetTimeAfterRoundCheck">Reset time after each round?</string>
+    <string name="resume">Resume</string>
+    <string name="round">Round:</string>
+    <string name="roundTime">Round Time:</string>
+    <string name="roundTimeNoColon">Round Time</string>
+    <string name="roundTimeOverDialogHeading">Finish Game</string>
+    <string name="roundTimeOverDialogQuestion">The current player ran out of time. Do you want to finish this game or resume with the next player until the current round is over?</string>
+    <string name="roundTimeSetError">Please set a game time and round time of at least 1 seconds to continue.</string>
+    <string name="save">Save</string>
+    <string name="saveGame">Save Clock</string>
+    <string name="setParameters">2. Set Parameters</string>
+    <string name="showPlayerStats">Statistics</string>
+    <string name="showResults">Show Results</string>
+    <string name="startNewGame">Start New Game</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="timeDelta">Delta:</string>
-    <string name="timeDeltaNoColon">Delta</string>
+    <string name="sureToSaveGameQuestion">Are you sure you want to save the current clock?</string>
+    <string name="swipeDialogAnswer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
+    <string name="swipeDialogQuestion">Swipe Gestures</string>
+    <string name="takePhotoButton">Photo</string>
+    <string name="timeDelta">Extra Time:</string>
+    <string name="timeDeltaNoColon">Extra Time</string>
+    <string name="timeLeft">Time left:</string>
+    <string name="totalTimePlayed">Total Time played:</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
     <string name="version_number">Version 1.0</string>
+    <string name="viewHelp">View Help</string>
     <string name="welcomeDialog">WelcomeDialog</string>
+    <string name="welcomeNewGame">1. New Game</string>
+    <string name="welcomePlay">3. Play!</string>
+    <string name="welcome_part1">Welcome!</string>
+    <string name="welcome_part2">Thanks for using Privacy Friendly Board Game Clock.</string>
+    <string name="welcome_part3">Start a New Game by pressing the button.</string>
+    <string name="welcome_part4">Choose time, round time and players for your game.</string>
+    <string name="yes">Yes</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

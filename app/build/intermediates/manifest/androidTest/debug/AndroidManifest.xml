@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="privacyfriendlyexample.org.secuso.boardgameclock.test">
+    package="org.secuso.privacyfriendlyboardgameclock.test">
 
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="23" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="privacyfriendlyexample.org.secuso.boardgameclock"
+                     android:targetPackage="org.secuso.privacyfriendlyboardgameclock"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for privacyfriendlyexample.org.secuso.boardgameclock"/>
+                     android:label="Tests for org.secuso.privacyfriendlyboardgameclock"/>
 </manifest>

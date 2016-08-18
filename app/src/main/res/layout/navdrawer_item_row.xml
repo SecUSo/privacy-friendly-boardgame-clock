@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageViewIcon"
@@ -15,8 +15,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/imageViewIcon"
-        android:layout_toEndOf="@+id/imageViewIcon">
+        android:layout_toEndOf="@+id/imageViewIcon"
+        android:layout_toRightOf="@+id/imageViewIcon">
 
         <TextView
             android:id="@+id/textViewName"
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewName"
-            android:paddingRight="10dp"
-            android:textSize="12sp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/middlegrey" />
+            android:paddingRight="10dp"
+            android:textColor="@color/middlegrey"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
