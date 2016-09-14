@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/current_players_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/createNewPlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_darkblue"
+        android:onClick="createNewPlayerButton"
+        android:text="@string/createNewPlayer"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size" />
+
+    <Button
+        android:id="@+id/addPlayerContactsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="5sp"
+        android:background="@drawable/button_darkblue"
+        android:onClick="addPlayerContactsButton"
+        android:text="@string/addPlayerFromContacts"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size" />
+
+    <Button
+        android:id="@+id/editPlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="5sp"
+        android:background="@drawable/button_darkblue"
+        android:onClick="addPlayerContactsButton"
+        android:text="@string/editPlayer"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/showPlayerStatsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="5sp"
+        android:background="@drawable/button_darkblue"
+        android:onClick="showPlayerStatistics"
+        android:text="@string/showPlayerStats"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
+        android:visibility="gone" />
+
+
+</LinearLayout>

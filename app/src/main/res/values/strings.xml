@@ -1,7 +1,7 @@
 <resources>
     <!-- App -->
-    <string name="app_name">Board Game Clock</string>
-    <string name="app_name_long">Privacy Friendly Board Game Clock</string>
+    <string name="app_name" translatable="false">Board Game Clock</string>
+    <string name="app_name_long" translatable="false">Privacy Friendly Board Game Clock</string>
 
     <!-- General -->
     <string name="yes">Yes</string>
@@ -20,9 +20,9 @@
     <string name="action_about">About</string>
     <string name="action_main">Main Menu</string>
     <string name="action_player_management">Player Management</string>
-    <string name="backup">Backup</string>
+    <string name="backup" translatable="false">Backup</string>
     <string name="gameHistory">Game History</string>
-    <string name="action_navigation">Navigation</string>
+    <string name="action_navigation" translatable="false">Navigation</string>
     <string name="backupDuringGame">Please quit the current game first before importing or exporting database backups.</string>
 
     <!-- Main Menu -->
@@ -63,7 +63,7 @@
     <string name="finishGame">Finish</string>
     <string name="quitGame">Quit Game</string>
     <string name="infinite">Infinite</string>
-    <string name="pause_capslock">Pause</string>
+    <string name="pause_capslock" translatable="false">Pause</string>
     <string name="resume">Resume</string>
     <string name="quitGameQuestion">Do you want to save the current clock before leaving?</string>
     <string name="leaveGameQuestion">Do you really want to quit the current game?</string>
@@ -165,15 +165,15 @@
     <string name="about_author">Author: Marco Bräuning and contributors</string>
     <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
     <string name="more_info">More information can be found on:</string>
-    <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
-    <string name="version_number">Version 1.0</string>
+    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
+    <string name="version_number" translatable="false">Version 1.0</string>
 
     <!-- New / Edit Player -->
     <string name="pickColor">Pick color</string>
     <string name="takePhotoButton">Photo</string>
     <string name="changeColorButton">Color</string>
     <string name="picture">Picture:</string>
-    <string name="nameDots">Name:</string>
+    <string name="nameDots" translatable="false">Name:</string>
 
     <!-- Player Statistics -->
     <string name="playerStatistics">Player Statistics</string>
@@ -182,22 +182,22 @@
     <string name="totalTimePlayed">Total Time played:</string>
 
     <!-- Fragments and Dialogs-->
-    <string name="welcomeDialog">WelcomeDialog</string>
-    <string name="backupDialog">BackupDialog</string>
-    <string name="aboutFragment">AboutFragment</string>
-    <string name="createNewPlayerFragment">CreateNewPlayerFragment</string>
-    <string name="choosePlayersFragment">ChoosePlayersFragment</string>
-    <string name="contactListFragment">ContactListFragment</string>
-    <string name="editPlayerFragment">EditPlayerFragment</string>
-    <string name="gameFragment">GameFragment</string>
-    <string name="gameHistoryFragment">GameHistoryFragment</string>
-    <string name="gameResultsFragment">GameResultsFragment</string>
-    <string name="loadGameFragment">LoadGameFragment</string>
-    <string name="helpFragment">HelpFragment</string>
-    <string name="mainMenuFragment">MainMenuFragment</string>
-    <string name="playerManagementFragment">PlayerManagementFragment</string>
-    <string name="newGameFragment">NewGameFragment</string>
-    <string name="playerStatisticsFragment">PlayerStatisticsFragment</string>
+    <string name="welcomeDialog" translatable="false">WelcomeDialog</string>
+    <string name="backupDialog" translatable="false">BackupDialog</string>
+    <string name="aboutFragment" translatable="false">AboutFragment</string>
+    <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
+    <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
+    <string name="contactListFragment" translatable="false">ContactListFragment</string>
+    <string name="editPlayerFragment" translatable="false">EditPlayerFragment</string>
+    <string name="gameFragment" translatable="false">GameFragment</string>
+    <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
+    <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
+    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
+    <string name="helpFragment" translatable="false">HelpFragment</string>
+    <string name="mainMenuFragment" translatable="false">MainMenuFragment</string>
+    <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
+    <string name="newGameFragment" translatable="false">NewGameFragment</string>
+    <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
 
 
 </resources>

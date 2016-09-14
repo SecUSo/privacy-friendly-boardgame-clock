@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/overviewHeading">
+        <Preference android:summary="@string/overviewSummary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/action_new_game">
+        <Preference
+            android:summary="@string/help_gameTime"
+            android:title="@string/gameTimeNoColon" />
+        <Preference
+            android:summary="@string/help_roundTime"
+            android:title="@string/roundTimeNoColon" />
+        <Preference
+            android:summary="@string/help_timeDelta"
+            android:title="@string/timeDeltaNoColon" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/gameModeNoColon">
+        <Preference
+            android:summary="@string/modeClockwiseSummary"
+            android:title="@string/modeClockwise" />
+        <Preference
+            android:summary="@string/modeCounterClockwiseSummary"
+            android:title="@string/modeCounterClockwise" />
+        <Preference
+            android:summary="@string/modeRandomSummary"
+            android:title="@string/modeRandom" />
+        <Preference
+            android:summary="@string/modeChessSummary"
+            android:title="@string/modeChess" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/nextPlayer">
+        <Preference android:summary="@string/swipeDialogAnswer" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/permissionHeading">
+        <Preference
+            android:summary="@string/permissionContacts"
+            android:title="@string/permissionContactsName" />
+        <Preference
+            android:summary="@string/permissionReadExtStorage"
+            android:title="@string/permissionReadExtStorageName" />
+        <Preference
+            android:summary="@string/permissionSaveExtStorage"
+            android:title="@string/permissionSaveExtStorageName" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
