@@ -25,8 +25,8 @@ public class WelcomeDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setView(i.inflate(R.layout.dialog_welcome, null));
-        builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle(getActivity().getString(R.string.app_name_long));
+        builder.setIcon(R.drawable.drawer);
+        builder.setTitle(R.string.welcome);
         builder.setNegativeButton(getActivity().getString(R.string.viewHelp), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

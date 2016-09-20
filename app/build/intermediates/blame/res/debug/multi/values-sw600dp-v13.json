@@ -11,13 +11,13 @@
                     "endOffset": 119
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 233,
+                        "startOffset": 55,
                         "endColumn": 68,
-                        "endOffset": 297
+                        "endOffset": 119
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 189
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 302,
+                        "startOffset": 124,
                         "endColumn": 69,
-                        "endOffset": 367
+                        "endOffset": 189
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 263
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 372,
+                        "startOffset": 194,
                         "endColumn": 73,
-                        "endOffset": 441
+                        "endOffset": 263
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 339
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 446,
+                        "startOffset": 268,
                         "endColumn": 75,
-                        "endOffset": 517
+                        "endOffset": 339
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 398
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 700,
+                        "startOffset": 344,
                         "endColumn": 58,
-                        "endOffset": 754
+                        "endOffset": 398
                     }
                 }
             },
@@ -106,13 +106,13 @@
                     "endOffset": 469
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 937,
+                        "startOffset": 403,
                         "endColumn": 70,
-                        "endOffset": 1003
+                        "endOffset": 469
                     }
                 }
             },
@@ -125,13 +125,13 @@
                     "endOffset": 537
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 1008,
+                        "startOffset": 474,
                         "endColumn": 67,
-                        "endOffset": 1071
+                        "endOffset": 537
                     }
                 }
             },
@@ -277,13 +277,13 @@
                     "endOffset": 1091
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 1076,
+                        "startOffset": 542,
                         "endColumn": 54,
-                        "endOffset": 1126
+                        "endOffset": 592
                     }
                 }
             },

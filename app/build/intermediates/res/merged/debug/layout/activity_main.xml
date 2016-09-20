@@ -22,7 +22,7 @@
 
     </RelativeLayout>
 
-    <!-- Side navigation drawer UI -->
+    <!-- Side navigation drawer UI-->
     <ListView
         android:id="@+id/navList"
         android:layout_width="200dp"

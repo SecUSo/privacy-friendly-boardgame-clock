@@ -11,13 +11,13 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-v18\\values-v18.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v18\\values-v18.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 229,
+                        "startOffset": 55,
                         "endColumn": 48,
-                        "endOffset": 273
+                        "endOffset": 99
                     }
                 }
             }

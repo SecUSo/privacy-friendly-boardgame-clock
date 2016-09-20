@@ -70,11 +70,11 @@
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 292,
+                        "startOffset": 290,
                         "endColumn": 50,
-                        "endOffset": 338
+                        "endOffset": 336
                     }
                 }
             },
@@ -89,11 +89,11 @@
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 250,
+                        "startOffset": 248,
                         "endColumn": 40,
-                        "endOffset": 286
+                        "endOffset": 284
                     }
                 }
             }

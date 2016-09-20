@@ -126,14 +126,14 @@
                     "endOffset": 620
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-hdpi\\values-hdpi.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 235,
-                        "endLine": 8,
+                        "startOffset": 55,
+                        "endLine": 6,
                         "endColumn": 13,
-                        "endOffset": 507
+                        "endOffset": 327
                     }
                 }
             }

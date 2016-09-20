@@ -6,9 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:orientation="vertical">
 
         <Space
             android:layout_width="20dp"
@@ -17,17 +15,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/welcome_part1" />
-
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/welcome_part2" />
 
         <Space
@@ -37,14 +26,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/welcomeNewGame"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/welcome_part3" />
 
         <Space
@@ -54,14 +45,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/setParameters"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/welcome_part4" />
 
         <Space
@@ -71,7 +64,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
             android:text="@string/welcomePlay"
             android:textStyle="bold" />
     </LinearLayout>

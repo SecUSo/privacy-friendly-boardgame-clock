@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_group_main"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_example"
+            android:icon="@drawable/ic_menu_grey_600_48dp"
+            android:title="@string/action_main" />
+        <item
+            android:id="@+id/nav_game"
+            android:icon="@drawable/ic_menu_grey_600_48dp"
+            android:title="Test" />
+    </group>
+
+    <group android:id="@+id/nav_group_add"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_main_menu"
+            android:icon="@drawable/ic_menu_grey_600_48dp"
+            android:title="@string/action_main" />
+        <item
+            android:id="@+id/nav_player_management"
+            android:icon="@drawable/ic_supervisor_account_grey_600_48dp"
+            android:title="@string/playerManagement" />
+        <item
+            android:id="@+id/nav_game_history"
+            android:icon="@drawable/ic_playlist_add_check_grey_600_48dp"
+            android:title="@string/gameHistory" />
+        <item
+            android:id="@+id/nav_backup"
+            android:icon="@drawable/ic_settings_backup_restore_grey_600_48dp"
+            android:title="@string/backup" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_action_help"
+            android:title="@string/action_help" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_action_about"
+            android:title="@string/action_about" />
+    </group>
+</menu>

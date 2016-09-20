@@ -11,13 +11,13 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 229,
+                        "startOffset": 55,
                         "endColumn": 61,
-                        "endOffset": 286
+                        "endOffset": 112
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 466,
+                        "startOffset": 117,
                         "endColumn": 71,
-                        "endOffset": 533
+                        "endOffset": 184
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 254
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 722,
+                        "startOffset": 189,
                         "endColumn": 69,
-                        "endOffset": 787
+                        "endOffset": 254
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 318
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 967,
+                        "startOffset": 259,
                         "endColumn": 63,
-                        "endOffset": 1026
+                        "endOffset": 318
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 389
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 1215,
+                        "startOffset": 323,
                         "endColumn": 70,
-                        "endOffset": 1281
+                        "endOffset": 389
                     }
                 }
             },
@@ -106,13 +106,13 @@
                     "endOffset": 457
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-land\\values-land.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-land\\values-land.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 1286,
+                        "startOffset": 394,
                         "endColumn": 67,
-                        "endOffset": 1349
+                        "endOffset": 457
                     }
                 }
             },

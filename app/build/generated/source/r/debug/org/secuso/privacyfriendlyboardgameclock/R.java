@@ -31,15 +31,15 @@ public final class R {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarDivider=0x7f0100af;
+        public static final int actionBarDivider=0x7f01003e;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarItemBackground=0x7f0100b0;
+        public static final int actionBarItemBackground=0x7f01003f;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarPopupTheme=0x7f0100a9;
+        public static final int actionBarPopupTheme=0x7f010038;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -57,117 +57,117 @@ containing a value of this type.
 <tr><td><code>wrap_content</code></td><td>0</td><td></td></tr>
 </table>
          */
-        public static final int actionBarSize=0x7f0100ae;
+        public static final int actionBarSize=0x7f01003d;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarSplitStyle=0x7f0100ab;
+        public static final int actionBarSplitStyle=0x7f01003a;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarStyle=0x7f0100aa;
+        public static final int actionBarStyle=0x7f010039;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarTabBarStyle=0x7f0100a5;
+        public static final int actionBarTabBarStyle=0x7f010034;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarTabStyle=0x7f0100a4;
+        public static final int actionBarTabStyle=0x7f010033;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarTabTextStyle=0x7f0100a6;
+        public static final int actionBarTabTextStyle=0x7f010035;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarTheme=0x7f0100ac;
+        public static final int actionBarTheme=0x7f01003b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionBarWidgetTheme=0x7f0100ad;
+        public static final int actionBarWidgetTheme=0x7f01003c;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionButtonStyle=0x7f0100c9;
+        public static final int actionButtonStyle=0x7f010058;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionDropDownStyle=0x7f0100c5;
+        public static final int actionDropDownStyle=0x7f010054;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionLayout=0x7f01005b;
+        public static final int actionLayout=0x7f0100ca;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionMenuTextAppearance=0x7f0100b1;
+        public static final int actionMenuTextAppearance=0x7f010040;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int actionMenuTextColor=0x7f0100b2;
+        public static final int actionMenuTextColor=0x7f010041;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeBackground=0x7f0100b5;
+        public static final int actionModeBackground=0x7f010044;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeCloseButtonStyle=0x7f0100b4;
+        public static final int actionModeCloseButtonStyle=0x7f010043;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeCloseDrawable=0x7f0100b7;
+        public static final int actionModeCloseDrawable=0x7f010046;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeCopyDrawable=0x7f0100b9;
+        public static final int actionModeCopyDrawable=0x7f010048;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeCutDrawable=0x7f0100b8;
+        public static final int actionModeCutDrawable=0x7f010047;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeFindDrawable=0x7f0100bd;
+        public static final int actionModeFindDrawable=0x7f01004c;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModePasteDrawable=0x7f0100ba;
+        public static final int actionModePasteDrawable=0x7f010049;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModePopupWindowStyle=0x7f0100bf;
+        public static final int actionModePopupWindowStyle=0x7f01004e;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeSelectAllDrawable=0x7f0100bb;
+        public static final int actionModeSelectAllDrawable=0x7f01004a;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeShareDrawable=0x7f0100bc;
+        public static final int actionModeShareDrawable=0x7f01004b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeSplitBackground=0x7f0100b6;
+        public static final int actionModeSplitBackground=0x7f010045;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeStyle=0x7f0100b3;
+        public static final int actionModeStyle=0x7f010042;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionModeWebSearchDrawable=0x7f0100be;
+        public static final int actionModeWebSearchDrawable=0x7f01004d;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionOverflowButtonStyle=0x7f0100a7;
+        public static final int actionOverflowButtonStyle=0x7f010036;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int actionOverflowMenuStyle=0x7f0100a8;
+        public static final int actionOverflowMenuStyle=0x7f010037;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -175,7 +175,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int actionProviderClass=0x7f01005d;
+        public static final int actionProviderClass=0x7f0100cc;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -183,15 +183,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int actionViewClass=0x7f01005c;
+        public static final int actionViewClass=0x7f0100cb;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int activityChooserViewStyle=0x7f0100d1;
+        public static final int activityChooserViewStyle=0x7f010060;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int alertDialogButtonGroupStyle=0x7f0100f4;
+        public static final int alertDialogButtonGroupStyle=0x7f010083;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -199,15 +199,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int alertDialogCenterButtons=0x7f0100f5;
+        public static final int alertDialogCenterButtons=0x7f010084;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int alertDialogStyle=0x7f0100f3;
+        public static final int alertDialogStyle=0x7f010082;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int alertDialogTheme=0x7f0100f6;
+        public static final int alertDialogTheme=0x7f010085;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -215,7 +215,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int allowStacking=0x7f010028;
+        public static final int allowStacking=0x7f010097;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -223,11 +223,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int alphaSlider=0x7f010038;
+        public static final int alphaSlider=0x7f0100a7;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int alphaSliderView=0x7f01003e;
+        public static final int alphaSliderView=0x7f0100ad;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -237,7 +237,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int arrowHeadLength=0x7f01004e;
+        public static final int arrowHeadLength=0x7f0100bd;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -247,11 +247,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int arrowShaftLength=0x7f01004f;
+        public static final int arrowShaftLength=0x7f0100be;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int autoCompleteTextViewStyle=0x7f0100fb;
+        public static final int autoCompleteTextViewStyle=0x7f01008a;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -276,7 +276,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int backgroundTint=0x7f010118;
+        public static final int backgroundTint=0x7f01011b;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -290,7 +290,7 @@ containing a value of this type.
 <tr><td><code>screen</code></td><td>15</td><td></td></tr>
 </table>
          */
-        public static final int backgroundTintMode=0x7f010119;
+        public static final int backgroundTintMode=0x7f01011c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -300,7 +300,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int barLength=0x7f010050;
+        public static final int barLength=0x7f0100bf;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -310,7 +310,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behavior_overlapTop=0x7f01006c;
+        public static final int behavior_overlapTop=0x7f0100db;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -320,31 +320,31 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int borderWidth=0x7f010055;
+        public static final int borderWidth=0x7f0100c4;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int borderlessButtonStyle=0x7f0100ce;
+        public static final int borderlessButtonStyle=0x7f01005d;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonBarButtonStyle=0x7f0100cb;
+        public static final int buttonBarButtonStyle=0x7f01005a;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonBarNegativeButtonStyle=0x7f0100f9;
+        public static final int buttonBarNegativeButtonStyle=0x7f010088;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonBarNeutralButtonStyle=0x7f0100fa;
+        public static final int buttonBarNeutralButtonStyle=0x7f010089;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonBarPositiveButtonStyle=0x7f0100f8;
+        public static final int buttonBarPositiveButtonStyle=0x7f010087;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonBarStyle=0x7f0100ca;
+        public static final int buttonBarStyle=0x7f010059;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -352,11 +352,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonStyle=0x7f0100fc;
+        public static final int buttonStyle=0x7f01008b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int buttonStyleSmall=0x7f0100fd;
+        public static final int buttonStyleSmall=0x7f01008c;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -365,7 +365,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int buttonTint=0x7f010042;
+        public static final int buttonTint=0x7f0100b1;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -379,19 +379,19 @@ containing a value of this type.
 <tr><td><code>screen</code></td><td>15</td><td></td></tr>
 </table>
          */
-        public static final int buttonTintMode=0x7f010043;
+        public static final int buttonTintMode=0x7f0100b2;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int checkboxStyle=0x7f0100fe;
+        public static final int checkboxStyle=0x7f01008d;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int checkedTextViewStyle=0x7f0100ff;
+        public static final int checkedTextViewStyle=0x7f01008e;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int closeIcon=0x7f010071;
+        public static final int closeIcon=0x7f0100e0;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -403,11 +403,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int collapseContentDescription=0x7f01010f;
+        public static final int collapseContentDescription=0x7f010112;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int collapseIcon=0x7f01010e;
+        public static final int collapseIcon=0x7f010111;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -426,11 +426,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>end</code></td><td>0x00800005</td><td></td></tr>
 </table>
          */
-        public static final int collapsedTitleGravity=0x7f010035;
+        public static final int collapsedTitleGravity=0x7f0100a4;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int collapsedTitleTextAppearance=0x7f010031;
+        public static final int collapsedTitleTextAppearance=0x7f0100a0;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -439,7 +439,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int color=0x7f01004a;
+        public static final int color=0x7f0100b9;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -448,7 +448,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorAccent=0x7f0100ec;
+        public static final int colorAccent=0x7f01007b;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -457,7 +457,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorButtonNormal=0x7f0100f0;
+        public static final int colorButtonNormal=0x7f01007f;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -466,7 +466,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorControlActivated=0x7f0100ee;
+        public static final int colorControlActivated=0x7f01007d;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -475,7 +475,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorControlHighlight=0x7f0100ef;
+        public static final int colorControlHighlight=0x7f01007e;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -484,7 +484,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorControlNormal=0x7f0100ed;
+        public static final int colorControlNormal=0x7f01007c;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -493,7 +493,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorPrimary=0x7f0100ea;
+        public static final int colorPrimary=0x7f010079;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -502,7 +502,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorPrimaryDark=0x7f0100eb;
+        public static final int colorPrimaryDark=0x7f01007a;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -511,11 +511,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int colorSwitchThumbNormal=0x7f0100f1;
+        public static final int colorSwitchThumbNormal=0x7f010080;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int commitIcon=0x7f010076;
+        public static final int commitIcon=0x7f0100e5;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -564,11 +564,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int contentScrim=0x7f010032;
+        public static final int contentScrim=0x7f0100a1;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int controlBackground=0x7f0100f2;
+        public static final int controlBackground=0x7f010081;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -576,7 +576,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int counterEnabled=0x7f010095;
+        public static final int counterEnabled=0x7f010104;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -584,15 +584,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int counterMaxLength=0x7f010096;
+        public static final int counterMaxLength=0x7f010105;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int counterOverflowTextAppearance=0x7f010098;
+        public static final int counterOverflowTextAppearance=0x7f010107;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int counterTextAppearance=0x7f010097;
+        public static final int counterTextAppearance=0x7f010106;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -604,7 +604,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int defaultQueryHint=0x7f010070;
+        public static final int defaultQueryHint=0x7f0100df;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -612,7 +612,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int density=0x7f01003a;
+        public static final int density=0x7f0100a9;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -622,11 +622,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int dialogPreferredPadding=0x7f0100c3;
+        public static final int dialogPreferredPadding=0x7f010052;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int dialogTheme=0x7f0100c2;
+        public static final int dialogTheme=0x7f010051;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -650,7 +650,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int dividerHorizontal=0x7f0100d0;
+        public static final int dividerHorizontal=0x7f01005f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -660,11 +660,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int dividerPadding=0x7f010059;
+        public static final int dividerPadding=0x7f0100c8;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int dividerVertical=0x7f0100cf;
+        public static final int dividerVertical=0x7f01005e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -674,7 +674,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int drawableSize=0x7f01004c;
+        public static final int drawableSize=0x7f0100bb;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -682,7 +682,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int dropDownListViewStyle=0x7f0100e2;
+        public static final int dropDownListViewStyle=0x7f010071;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -692,21 +692,21 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int dropdownListPreferredItemHeight=0x7f0100c6;
+        public static final int dropdownListPreferredItemHeight=0x7f010055;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int editTextBackground=0x7f0100d7;
+        public static final int editTextBackground=0x7f010066;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int editTextColor=0x7f0100d6;
+        public static final int editTextColor=0x7f010065;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int editTextStyle=0x7f010100;
+        public static final int editTextStyle=0x7f01008f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -724,11 +724,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int errorEnabled=0x7f010093;
+        public static final int errorEnabled=0x7f010102;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int errorTextAppearance=0x7f010094;
+        public static final int errorTextAppearance=0x7f010103;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -759,7 +759,7 @@ containing a value of this type.
 <tr><td><code>end</code></td><td>0x00800005</td><td></td></tr>
 </table>
          */
-        public static final int expandedTitleGravity=0x7f010036;
+        public static final int expandedTitleGravity=0x7f0100a5;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -769,7 +769,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int expandedTitleMargin=0x7f01002b;
+        public static final int expandedTitleMargin=0x7f01009a;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -779,7 +779,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int expandedTitleMarginBottom=0x7f01002f;
+        public static final int expandedTitleMarginBottom=0x7f01009e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -789,7 +789,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int expandedTitleMarginEnd=0x7f01002e;
+        public static final int expandedTitleMarginEnd=0x7f01009d;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -799,7 +799,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int expandedTitleMarginStart=0x7f01002c;
+        public static final int expandedTitleMarginStart=0x7f01009b;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -809,11 +809,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int expandedTitleMarginTop=0x7f01002d;
+        public static final int expandedTitleMarginTop=0x7f01009c;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int expandedTitleTextAppearance=0x7f010030;
+        public static final int expandedTitleTextAppearance=0x7f01009f;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -824,7 +824,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>mini</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int fabSize=0x7f010053;
+        public static final int fabSize=0x7f0100c2;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -832,7 +832,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int foregroundInsidePadding=0x7f010056;
+        public static final int foregroundInsidePadding=0x7f0100c5;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -842,15 +842,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int gapBetweenBars=0x7f01004d;
+        public static final int gapBetweenBars=0x7f0100bc;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int goIcon=0x7f010072;
+        public static final int goIcon=0x7f0100e1;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int headerLayout=0x7f010064;
+        public static final int headerLayout=0x7f0100d3;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -876,15 +876,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int hintAnimationEnabled=0x7f010099;
+        public static final int hintAnimationEnabled=0x7f010108;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int hintTextAppearance=0x7f010092;
+        public static final int hintTextAppearance=0x7f010101;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int homeAsUpIndicator=0x7f0100c8;
+        public static final int homeAsUpIndicator=0x7f010057;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -900,11 +900,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int iconifiedByDefault=0x7f01006e;
+        public static final int iconifiedByDefault=0x7f0100dd;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int imageButtonStyle=0x7f0100d8;
+        public static final int imageButtonStyle=0x7f010067;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -924,13 +924,13 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int initialColor=0x7f01003b;
+        public static final int initialColor=0x7f0100aa;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int insetForeground=0x7f01006b;
+        public static final int insetForeground=0x7f0100da;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -942,7 +942,7 @@ containing a value of this type.
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int itemBackground=0x7f010062;
+        public static final int itemBackground=0x7f0100d1;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -951,7 +951,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int itemIconTint=0x7f010060;
+        public static final int itemIconTint=0x7f0100cf;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -965,7 +965,7 @@ containing a value of this type.
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int itemTextAppearance=0x7f010063;
+        public static final int itemTextAppearance=0x7f0100d2;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -974,15 +974,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int itemTextColor=0x7f010061;
+        public static final int itemTextColor=0x7f0100d0;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int keylines=0x7f010044;
+        public static final int keylines=0x7f0100b3;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int layout=0x7f01006d;
+        public static final int layout=0x7f0100dc;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -990,11 +990,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layoutManager=0x7f010067;
+        public static final int layoutManager=0x7f0100d6;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int layout_anchor=0x7f010047;
+        public static final int layout_anchor=0x7f0100b6;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1017,7 +1017,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>end</code></td><td>0x00800005</td><td></td></tr>
 </table>
          */
-        public static final int layout_anchorGravity=0x7f010049;
+        public static final int layout_anchorGravity=0x7f0100b8;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1025,7 +1025,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_behavior=0x7f010046;
+        public static final int layout_behavior=0x7f0100b5;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1037,7 +1037,7 @@ containing a value of this type.
 <tr><td><code>parallax</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int layout_collapseMode=0x7f010029;
+        public static final int layout_collapseMode=0x7f010098;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1045,7 +1045,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_collapseParallaxMultiplier=0x7f01002a;
+        public static final int layout_collapseParallaxMultiplier=0x7f010099;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1053,7 +1053,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_keyline=0x7f010048;
+        public static final int layout_keyline=0x7f0100b7;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1079,19 +1079,19 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int lightnessSlider=0x7f010039;
+        public static final int lightnessSlider=0x7f0100a8;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int lightnessSliderView=0x7f01003d;
+        public static final int lightnessSliderView=0x7f0100ac;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int listChoiceBackgroundIndicator=0x7f0100e9;
+        public static final int listChoiceBackgroundIndicator=0x7f010078;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int listDividerAlertDialog=0x7f0100c4;
+        public static final int listDividerAlertDialog=0x7f010053;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1103,7 +1103,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int listPopupWindowStyle=0x7f0100e3;
+        public static final int listPopupWindowStyle=0x7f010072;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1113,7 +1113,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int listPreferredItemHeight=0x7f0100dd;
+        public static final int listPreferredItemHeight=0x7f01006c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1123,7 +1123,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int listPreferredItemHeightLarge=0x7f0100df;
+        public static final int listPreferredItemHeightLarge=0x7f01006e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1133,7 +1133,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int listPreferredItemHeightSmall=0x7f0100de;
+        public static final int listPreferredItemHeightSmall=0x7f01006d;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1143,7 +1143,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int listPreferredItemPaddingLeft=0x7f0100e0;
+        public static final int listPreferredItemPaddingLeft=0x7f01006f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1153,7 +1153,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int listPreferredItemPaddingRight=0x7f0100e1;
+        public static final int listPreferredItemPaddingRight=0x7f010070;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1165,7 +1165,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int logoDescription=0x7f010112;
+        public static final int logoDescription=0x7f010115;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1175,7 +1175,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int maxActionInlineWidth=0x7f01007a;
+        public static final int maxActionInlineWidth=0x7f0100e9;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1185,7 +1185,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int maxButtonHeight=0x7f01010d;
+        public static final int maxButtonHeight=0x7f010110;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1193,11 +1193,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int measureWithLargestChild=0x7f010057;
+        public static final int measureWithLargestChild=0x7f0100c6;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int menu=0x7f01005f;
+        public static final int menu=0x7f0100ce;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1209,11 +1209,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int navigationContentDescription=0x7f010111;
+        public static final int navigationContentDescription=0x7f010114;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int navigationIcon=0x7f010110;
+        public static final int navigationIcon=0x7f010113;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1233,7 +1233,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int overlapAnchor=0x7f010065;
+        public static final int overlapAnchor=0x7f0100d4;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1243,7 +1243,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int paddingEnd=0x7f010116;
+        public static final int paddingEnd=0x7f010119;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1253,15 +1253,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int paddingStart=0x7f010115;
+        public static final int paddingStart=0x7f010118;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int panelBackground=0x7f0100e6;
+        public static final int panelBackground=0x7f010075;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int panelMenuListTheme=0x7f0100e8;
+        public static final int panelMenuListTheme=0x7f010077;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1271,26 +1271,26 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int panelMenuListWidth=0x7f0100e7;
+        public static final int panelMenuListWidth=0x7f010076;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int pickerButtonCancel=0x7f010041;
+        public static final int pickerButtonCancel=0x7f0100b0;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int pickerButtonOk=0x7f010040;
+        public static final int pickerButtonOk=0x7f0100af;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int pickerTitle=0x7f01003f;
+        public static final int pickerTitle=0x7f0100ae;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int popupMenuStyle=0x7f0100d4;
+        public static final int popupMenuStyle=0x7f010063;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1298,7 +1298,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int popupWindowStyle=0x7f0100d5;
+        public static final int popupWindowStyle=0x7f010064;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1306,7 +1306,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int preserveIconSpacing=0x7f01005e;
+        public static final int preserveIconSpacing=0x7f0100cd;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1316,7 +1316,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int pressedTranslationZ=0x7f010054;
+        public static final int pressedTranslationZ=0x7f0100c3;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1334,7 +1334,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int queryBackground=0x7f010078;
+        public static final int queryBackground=0x7f0100e7;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1342,15 +1342,23 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int queryHint=0x7f01006f;
+        public static final int queryHint=0x7f0100de;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int radioButtonStyle=0x7f010101;
+        public static final int radioButtonStyle=0x7f010090;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int ratingBarStyle=0x7f010102;
+        public static final int ratingBarStyle=0x7f010091;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ratingBarStyleIndicator=0x7f010092;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ratingBarStyleSmall=0x7f010093;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1358,7 +1366,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int reverseLayout=0x7f010069;
+        public static final int reverseLayout=0x7f0100d8;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1367,31 +1375,31 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int rippleColor=0x7f010052;
+        public static final int rippleColor=0x7f0100c1;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int searchHintIcon=0x7f010074;
+        public static final int searchHintIcon=0x7f0100e3;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int searchIcon=0x7f010073;
+        public static final int searchIcon=0x7f0100e2;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int searchViewStyle=0x7f0100dc;
+        public static final int searchViewStyle=0x7f01006b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int seekBarStyle=0x7f010103;
+        public static final int seekBarStyle=0x7f010094;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int selectableItemBackground=0x7f0100cc;
+        public static final int selectableItemBackground=0x7f01005b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int selectableItemBackgroundBorderless=0x7f0100cd;
+        public static final int selectableItemBackgroundBorderless=0x7f01005c;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1405,7 +1413,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>collapseActionView</code></td><td>8</td><td></td></tr>
 </table>
          */
-        public static final int showAsAction=0x7f01005a;
+        public static final int showAsAction=0x7f0100c9;
         /** <p>Must be one or more (separated by '|') of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1418,7 +1426,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>end</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int showDividers=0x7f010058;
+        public static final int showDividers=0x7f0100c7;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1426,7 +1434,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int showText=0x7f010081;
+        public static final int showText=0x7f0100f0;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1438,7 +1446,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int spanCount=0x7f010068;
+        public static final int spanCount=0x7f0100d7;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1446,15 +1454,15 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int spinBars=0x7f01004b;
+        public static final int spinBars=0x7f0100ba;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int spinnerDropDownItemStyle=0x7f0100c7;
+        public static final int spinnerDropDownItemStyle=0x7f010056;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int spinnerStyle=0x7f010104;
+        public static final int spinnerStyle=0x7f010095;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1462,27 +1470,31 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int splitTrack=0x7f010080;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int stackFromEnd=0x7f01006a;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int state_above_anchor=0x7f010066;
+        public static final int splitTrack=0x7f0100ef;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int statusBarBackground=0x7f010045;
+        public static final int srcCompat=0x7f010027;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int stackFromEnd=0x7f0100d9;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int state_above_anchor=0x7f0100d5;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int statusBarBackground=0x7f0100b4;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1491,11 +1503,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int statusBarScrim=0x7f010033;
+        public static final int statusBarScrim=0x7f0100a2;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int submitBackground=0x7f010079;
+        public static final int submitBackground=0x7f0100e8;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1507,7 +1519,7 @@ containing a value of this type.
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int subtitleTextAppearance=0x7f010107;
+        public static final int subtitleTextAppearance=0x7f01010a;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1516,7 +1528,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int subtitleTextColor=0x7f010114;
+        public static final int subtitleTextColor=0x7f010117;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1524,7 +1536,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int suggestionRowLayout=0x7f010077;
+        public static final int suggestionRowLayout=0x7f0100e6;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1534,7 +1546,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int switchMinWidth=0x7f01007e;
+        public static final int switchMinWidth=0x7f0100ed;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1544,19 +1556,19 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int switchPadding=0x7f01007f;
+        public static final int switchPadding=0x7f0100ee;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int switchStyle=0x7f010105;
+        public static final int switchStyle=0x7f010096;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int switchTextAppearance=0x7f01007d;
+        public static final int switchTextAppearance=0x7f0100ec;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int tabBackground=0x7f010085;
+        public static final int tabBackground=0x7f0100f4;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1566,7 +1578,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabContentStart=0x7f010084;
+        public static final int tabContentStart=0x7f0100f3;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1577,7 +1589,7 @@ containing a value of this type.
 <tr><td><code>center</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int tabGravity=0x7f010087;
+        public static final int tabGravity=0x7f0100f6;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1586,7 +1598,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabIndicatorColor=0x7f010082;
+        public static final int tabIndicatorColor=0x7f0100f1;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1596,7 +1608,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabIndicatorHeight=0x7f010083;
+        public static final int tabIndicatorHeight=0x7f0100f2;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1606,7 +1618,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabMaxWidth=0x7f010089;
+        public static final int tabMaxWidth=0x7f0100f8;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1616,7 +1628,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabMinWidth=0x7f010088;
+        public static final int tabMinWidth=0x7f0100f7;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1627,7 +1639,7 @@ containing a value of this type.
 <tr><td><code>fixed</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int tabMode=0x7f010086;
+        public static final int tabMode=0x7f0100f5;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1637,7 +1649,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabPadding=0x7f010091;
+        public static final int tabPadding=0x7f010100;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1647,7 +1659,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabPaddingBottom=0x7f010090;
+        public static final int tabPaddingBottom=0x7f0100ff;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1657,7 +1669,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabPaddingEnd=0x7f01008f;
+        public static final int tabPaddingEnd=0x7f0100fe;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1667,7 +1679,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabPaddingStart=0x7f01008d;
+        public static final int tabPaddingStart=0x7f0100fc;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1677,7 +1689,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabPaddingTop=0x7f01008e;
+        public static final int tabPaddingTop=0x7f0100fd;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1686,11 +1698,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabSelectedTextColor=0x7f01008c;
+        public static final int tabSelectedTextColor=0x7f0100fb;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int tabTextAppearance=0x7f01008a;
+        public static final int tabTextAppearance=0x7f0100f9;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1699,52 +1711,52 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tabTextColor=0x7f01008b;
+        public static final int tabTextColor=0x7f0100fa;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
          */
-        public static final int textAllCaps=0x7f010027;
+        public static final int textAllCaps=0x7f010028;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceLargePopupMenu=0x7f0100c0;
+        public static final int textAppearanceLargePopupMenu=0x7f01004f;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceListItem=0x7f0100e4;
+        public static final int textAppearanceListItem=0x7f010073;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceListItemSmall=0x7f0100e5;
+        public static final int textAppearanceListItemSmall=0x7f010074;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceSearchResultSubtitle=0x7f0100da;
+        public static final int textAppearanceSearchResultSubtitle=0x7f010069;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceSearchResultTitle=0x7f0100d9;
+        public static final int textAppearanceSearchResultTitle=0x7f010068;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int textAppearanceSmallPopupMenu=0x7f0100c1;
+        public static final int textAppearanceSmallPopupMenu=0x7f010050;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int textColorAlertDialogListItem=0x7f0100f7;
+        public static final int textColorAlertDialogListItem=0x7f010086;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int textColorSearchUrl=0x7f0100db;
+        public static final int textColorSearchUrl=0x7f01006a;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int theme=0x7f010117;
+        public static final int theme=0x7f01011a;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1754,7 +1766,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int thickness=0x7f010051;
+        public static final int thickness=0x7f0100c0;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1764,7 +1776,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int thumbTextPadding=0x7f01007c;
+        public static final int thumbTextPadding=0x7f0100eb;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1780,7 +1792,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleEnabled=0x7f010037;
+        public static final int titleEnabled=0x7f0100a6;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1790,7 +1802,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleMarginBottom=0x7f01010c;
+        public static final int titleMarginBottom=0x7f01010f;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1800,7 +1812,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleMarginEnd=0x7f01010a;
+        public static final int titleMarginEnd=0x7f01010d;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1810,7 +1822,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleMarginStart=0x7f010109;
+        public static final int titleMarginStart=0x7f01010c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1820,7 +1832,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleMarginTop=0x7f01010b;
+        public static final int titleMarginTop=0x7f01010e;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1830,11 +1842,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleMargins=0x7f010108;
+        public static final int titleMargins=0x7f01010b;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int titleTextAppearance=0x7f010106;
+        public static final int titleTextAppearance=0x7f010109;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -1843,7 +1855,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int titleTextColor=0x7f010113;
+        public static final int titleTextColor=0x7f010116;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1851,23 +1863,23 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int toolbarId=0x7f010034;
+        public static final int toolbarId=0x7f0100a3;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int toolbarNavigationButtonStyle=0x7f0100d3;
+        public static final int toolbarNavigationButtonStyle=0x7f010062;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int toolbarStyle=0x7f0100d2;
+        public static final int toolbarStyle=0x7f010061;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int track=0x7f01007b;
+        public static final int track=0x7f0100ea;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int voiceIcon=0x7f010075;
+        public static final int voiceIcon=0x7f0100e4;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1878,7 +1890,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>CIRCLE</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int wheelType=0x7f01003c;
+        public static final int wheelType=0x7f0100ab;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1886,7 +1898,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowActionBar=0x7f01009a;
+        public static final int windowActionBar=0x7f010029;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1894,7 +1906,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowActionBarOverlay=0x7f01009c;
+        public static final int windowActionBarOverlay=0x7f01002b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1902,7 +1914,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowActionModeOverlay=0x7f01009d;
+        public static final int windowActionModeOverlay=0x7f01002c;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1915,7 +1927,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowFixedHeightMajor=0x7f0100a1;
+        public static final int windowFixedHeightMajor=0x7f010030;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1928,7 +1940,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowFixedHeightMinor=0x7f01009f;
+        public static final int windowFixedHeightMinor=0x7f01002e;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1941,7 +1953,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowFixedWidthMajor=0x7f01009e;
+        public static final int windowFixedWidthMajor=0x7f01002d;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1954,7 +1966,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowFixedWidthMinor=0x7f0100a0;
+        public static final int windowFixedWidthMinor=0x7f01002f;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1967,7 +1979,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowMinWidthMajor=0x7f0100a2;
+        public static final int windowMinWidthMajor=0x7f010031;
         /** <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1980,7 +1992,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowMinWidthMinor=0x7f0100a3;
+        public static final int windowMinWidthMinor=0x7f010032;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1988,7 +2000,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int windowNoTitle=0x7f01009b;
+        public static final int windowNoTitle=0x7f01002a;
     }
     public static final class bool {
         public static final int abc_action_bar_embed_tabs=0x7f090003;
@@ -2242,72 +2254,80 @@ containing a value of this type.
         public static final int abc_ic_menu_selectall_mtrl_alpha=0x7f02001e;
         public static final int abc_ic_menu_share_mtrl_alpha=0x7f02001f;
         public static final int abc_ic_search_api_mtrl_alpha=0x7f020020;
-        public static final int abc_ic_voice_search_api_mtrl_alpha=0x7f020021;
-        public static final int abc_item_background_holo_dark=0x7f020022;
-        public static final int abc_item_background_holo_light=0x7f020023;
-        public static final int abc_list_divider_mtrl_alpha=0x7f020024;
-        public static final int abc_list_focused_holo=0x7f020025;
-        public static final int abc_list_longpressed_holo=0x7f020026;
-        public static final int abc_list_pressed_holo_dark=0x7f020027;
-        public static final int abc_list_pressed_holo_light=0x7f020028;
-        public static final int abc_list_selector_background_transition_holo_dark=0x7f020029;
-        public static final int abc_list_selector_background_transition_holo_light=0x7f02002a;
-        public static final int abc_list_selector_disabled_holo_dark=0x7f02002b;
-        public static final int abc_list_selector_disabled_holo_light=0x7f02002c;
-        public static final int abc_list_selector_holo_dark=0x7f02002d;
-        public static final int abc_list_selector_holo_light=0x7f02002e;
-        public static final int abc_menu_hardkey_panel_mtrl_mult=0x7f02002f;
-        public static final int abc_popup_background_mtrl_mult=0x7f020030;
-        public static final int abc_ratingbar_full_material=0x7f020031;
-        public static final int abc_scrubber_control_off_mtrl_alpha=0x7f020032;
-        public static final int abc_scrubber_control_to_pressed_mtrl_000=0x7f020033;
-        public static final int abc_scrubber_control_to_pressed_mtrl_005=0x7f020034;
-        public static final int abc_scrubber_primary_mtrl_alpha=0x7f020035;
-        public static final int abc_scrubber_track_mtrl_alpha=0x7f020036;
-        public static final int abc_seekbar_thumb_material=0x7f020037;
-        public static final int abc_seekbar_track_material=0x7f020038;
-        public static final int abc_spinner_mtrl_am_alpha=0x7f020039;
-        public static final int abc_spinner_textfield_background_material=0x7f02003a;
-        public static final int abc_switch_thumb_material=0x7f02003b;
-        public static final int abc_switch_track_mtrl_alpha=0x7f02003c;
-        public static final int abc_tab_indicator_material=0x7f02003d;
-        public static final int abc_tab_indicator_mtrl_alpha=0x7f02003e;
-        public static final int abc_text_cursor_material=0x7f02003f;
-        public static final int abc_textfield_activated_mtrl_alpha=0x7f020040;
-        public static final int abc_textfield_default_mtrl_alpha=0x7f020041;
-        public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020042;
-        public static final int abc_textfield_search_default_mtrl_alpha=0x7f020043;
-        public static final int abc_textfield_search_material=0x7f020044;
-        public static final int button_darkblue=0x7f020045;
-        public static final int button_grey=0x7f020046;
-        public static final int button_red=0x7f020047;
-        public static final int design_fab_background=0x7f020048;
-        public static final int design_snackbar_background=0x7f020049;
-        public static final int ic_action_about=0x7f02004a;
-        public static final int ic_action_help=0x7f02004b;
-        public static final int ic_action_replay=0x7f02004c;
-        public static final int ic_assignment_returned_black_24dp=0x7f02004d;
-        public static final int ic_exit_to_app=0x7f02004e;
-        public static final int ic_launcher=0x7f02004f;
-        public static final int ic_menu_grey_600_48dp=0x7f020050;
-        public static final int ic_playlist_add_check_grey_600_48dp=0x7f020051;
-        public static final int ic_settings_backup_restore_grey_600_48dp=0x7f020052;
-        public static final int ic_supervisor_account_grey_600_48dp=0x7f020053;
-        public static final int ic_tutorial=0x7f020054;
-        public static final int inactive_button=0x7f020055;
-        public static final int invisible_button=0x7f020056;
-        public static final int list_item_background=0x7f020057;
-        public static final int list_item_textcolor=0x7f020058;
-        public static final int notification_template_icon_bg=0x7f02005d;
-        public static final int numpad_highlighted=0x7f020059;
-        public static final int privacyfriendlyappslogo=0x7f02005a;
-        public static final int row_button=0x7f02005b;
-        public static final int secuso_logo_blau_blau=0x7f02005c;
+        public static final int abc_ic_star_black_16dp=0x7f020021;
+        public static final int abc_ic_star_black_36dp=0x7f020022;
+        public static final int abc_ic_star_half_black_16dp=0x7f020023;
+        public static final int abc_ic_star_half_black_36dp=0x7f020024;
+        public static final int abc_ic_voice_search_api_mtrl_alpha=0x7f020025;
+        public static final int abc_item_background_holo_dark=0x7f020026;
+        public static final int abc_item_background_holo_light=0x7f020027;
+        public static final int abc_list_divider_mtrl_alpha=0x7f020028;
+        public static final int abc_list_focused_holo=0x7f020029;
+        public static final int abc_list_longpressed_holo=0x7f02002a;
+        public static final int abc_list_pressed_holo_dark=0x7f02002b;
+        public static final int abc_list_pressed_holo_light=0x7f02002c;
+        public static final int abc_list_selector_background_transition_holo_dark=0x7f02002d;
+        public static final int abc_list_selector_background_transition_holo_light=0x7f02002e;
+        public static final int abc_list_selector_disabled_holo_dark=0x7f02002f;
+        public static final int abc_list_selector_disabled_holo_light=0x7f020030;
+        public static final int abc_list_selector_holo_dark=0x7f020031;
+        public static final int abc_list_selector_holo_light=0x7f020032;
+        public static final int abc_menu_hardkey_panel_mtrl_mult=0x7f020033;
+        public static final int abc_popup_background_mtrl_mult=0x7f020034;
+        public static final int abc_ratingbar_full_material=0x7f020035;
+        public static final int abc_ratingbar_indicator_material=0x7f020036;
+        public static final int abc_ratingbar_small_material=0x7f020037;
+        public static final int abc_scrubber_control_off_mtrl_alpha=0x7f020038;
+        public static final int abc_scrubber_control_to_pressed_mtrl_000=0x7f020039;
+        public static final int abc_scrubber_control_to_pressed_mtrl_005=0x7f02003a;
+        public static final int abc_scrubber_primary_mtrl_alpha=0x7f02003b;
+        public static final int abc_scrubber_track_mtrl_alpha=0x7f02003c;
+        public static final int abc_seekbar_thumb_material=0x7f02003d;
+        public static final int abc_seekbar_track_material=0x7f02003e;
+        public static final int abc_spinner_mtrl_am_alpha=0x7f02003f;
+        public static final int abc_spinner_textfield_background_material=0x7f020040;
+        public static final int abc_switch_thumb_material=0x7f020041;
+        public static final int abc_switch_track_mtrl_alpha=0x7f020042;
+        public static final int abc_tab_indicator_material=0x7f020043;
+        public static final int abc_tab_indicator_mtrl_alpha=0x7f020044;
+        public static final int abc_text_cursor_material=0x7f020045;
+        public static final int abc_textfield_activated_mtrl_alpha=0x7f020046;
+        public static final int abc_textfield_default_mtrl_alpha=0x7f020047;
+        public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020048;
+        public static final int abc_textfield_search_default_mtrl_alpha=0x7f020049;
+        public static final int abc_textfield_search_material=0x7f02004a;
+        public static final int button_darkblue=0x7f02004b;
+        public static final int button_grey=0x7f02004c;
+        public static final int button_red=0x7f02004d;
+        public static final int design_fab_background=0x7f02004e;
+        public static final int design_snackbar_background=0x7f02004f;
+        public static final int drawer=0x7f020050;
+        public static final int ic_action_about=0x7f020051;
+        public static final int ic_action_help=0x7f020052;
+        public static final int ic_action_replay=0x7f020053;
+        public static final int ic_assignment_returned_black_24dp=0x7f020054;
+        public static final int ic_exit_to_app=0x7f020055;
+        public static final int ic_launcher=0x7f020056;
+        public static final int ic_menu_grey_600_48dp=0x7f020057;
+        public static final int ic_playlist_add_check_grey_600_48dp=0x7f020058;
+        public static final int ic_settings_backup_restore_grey_600_48dp=0x7f020059;
+        public static final int ic_supervisor_account_grey_600_48dp=0x7f02005a;
+        public static final int ic_tutorial=0x7f02005b;
+        public static final int inactive_button=0x7f02005c;
+        public static final int invisible_button=0x7f02005d;
+        public static final int launcher=0x7f02005e;
+        public static final int list_item_background=0x7f02005f;
+        public static final int list_item_textcolor=0x7f020060;
+        public static final int notification_template_icon_bg=0x7f020065;
+        public static final int numpad_highlighted=0x7f020061;
+        public static final int privacyfriendlyappslogo=0x7f020062;
+        public static final int row_button=0x7f020063;
+        public static final int secuso_logo_blau_blau=0x7f020064;
     }
     public static final class id {
-        public static final int CIRCLE=0x7f0e0026;
-        public static final int FLOWER=0x7f0e0027;
-        public static final int action0=0x7f0e00d2;
+        public static final int CIRCLE=0x7f0e0027;
+        public static final int FLOWER=0x7f0e0028;
+        public static final int action0=0x7f0e00d5;
         public static final int action_bar=0x7f0e005c;
         public static final int action_bar_activity_content=0x7f0e0000;
         public static final int action_bar_container=0x7f0e005b;
@@ -2316,156 +2336,167 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0e003d;
         public static final int action_bar_title=0x7f0e003c;
         public static final int action_context_bar=0x7f0e005d;
-        public static final int action_divider=0x7f0e00d6;
+        public static final int action_divider=0x7f0e00d9;
         public static final int action_menu_divider=0x7f0e0002;
         public static final int action_menu_presenter=0x7f0e0003;
         public static final int action_mode_bar=0x7f0e0059;
         public static final int action_mode_bar_stub=0x7f0e0058;
         public static final int action_mode_close_button=0x7f0e003e;
         public static final int activity_chooser_view_content=0x7f0e003f;
-        public static final int addContactSelectionButton=0x7f0e0084;
-        public static final int addPlayerContactsButton=0x7f0e00c7;
+        public static final int addContactSelectionButton=0x7f0e0087;
+        public static final int addPlayerContactsButton=0x7f0e00ca;
         public static final int alertTitle=0x7f0e004b;
-        public static final int always=0x7f0e0034;
-        public static final int appIcon=0x7f0e00a6;
-        public static final int appName=0x7f0e007c;
-        public static final int beginning=0x7f0e0032;
-        public static final int bottom=0x7f0e001c;
+        public static final int always=0x7f0e0035;
+        public static final int appIcon=0x7f0e00a9;
+        public static final int appName=0x7f0e007d;
+        public static final int barcodeLogo=0x7f0e007c;
+        public static final int beginning=0x7f0e0033;
+        public static final int bottom=0x7f0e001d;
         public static final int buttonPanel=0x7f0e0046;
-        public static final int cancel_action=0x7f0e00d3;
-        public static final int center=0x7f0e001d;
-        public static final int center_horizontal=0x7f0e001e;
-        public static final int center_vertical=0x7f0e001f;
-        public static final int check_chess_mode=0x7f0e00ba;
-        public static final int check_game_time_infinite=0x7f0e00b1;
-        public static final int check_new_game_delta=0x7f0e00bc;
-        public static final int check_new_game_reset_time=0x7f0e00b7;
+        public static final int cancel_action=0x7f0e00d6;
+        public static final int center=0x7f0e001e;
+        public static final int center_horizontal=0x7f0e001f;
+        public static final int center_vertical=0x7f0e0020;
+        public static final int check_chess_mode=0x7f0e00bd;
+        public static final int check_game_time_infinite=0x7f0e00b4;
+        public static final int check_new_game_delta=0x7f0e00bf;
+        public static final int check_new_game_reset_time=0x7f0e00ba;
         public static final int checkbox=0x7f0e0054;
-        public static final int choosePlayersButtonBlue=0x7f0e00c1;
-        public static final int choosePlayersButtonGrey=0x7f0e00c2;
-        public static final int choose_players_list=0x7f0e0081;
-        public static final int chronometer=0x7f0e00d9;
-        public static final int clip_horizontal=0x7f0e002d;
-        public static final int clip_vertical=0x7f0e002e;
-        public static final int collapseActionView=0x7f0e0035;
-        public static final int colorButton=0x7f0e0089;
+        public static final int choosePlayersButtonBlue=0x7f0e00c4;
+        public static final int choosePlayersButtonGrey=0x7f0e00c5;
+        public static final int choose_players_list=0x7f0e0084;
+        public static final int chronometer=0x7f0e00dc;
+        public static final int clip_horizontal=0x7f0e002e;
+        public static final int clip_vertical=0x7f0e002f;
+        public static final int collapseActionView=0x7f0e0036;
+        public static final int colorButton=0x7f0e008c;
         public static final int color_indicator=0x7f0e006f;
-        public static final int completedRoundsHeader=0x7f0e00cc;
-        public static final int completedRoundsText=0x7f0e00cd;
-        public static final int confirmEditPlayerButtonBlue=0x7f0e008b;
-        public static final int confirmEditPlayerButtonGrey=0x7f0e008c;
-        public static final int confirmNewPlayerButtonBlue=0x7f0e00c3;
-        public static final int confirmNewPlayerButtonGrey=0x7f0e00c4;
+        public static final int completedRoundsHeader=0x7f0e00cf;
+        public static final int completedRoundsText=0x7f0e00d0;
+        public static final int confirmEditPlayerButtonBlue=0x7f0e008e;
+        public static final int confirmEditPlayerButtonGrey=0x7f0e008f;
+        public static final int confirmNewPlayerButtonBlue=0x7f0e00c6;
+        public static final int confirmNewPlayerButtonGrey=0x7f0e00c7;
         public static final int contentPanel=0x7f0e004c;
         public static final int content_frame=0x7f0e006c;
-        public static final int createNewPlayerButton=0x7f0e00c6;
-        public static final int current_players_list=0x7f0e00c5;
+        public static final int createNewPlayerButton=0x7f0e00c9;
+        public static final int current_players_list=0x7f0e00c8;
         public static final int custom=0x7f0e0052;
         public static final int customPanel=0x7f0e0051;
         public static final int decor_content_parent=0x7f0e005a;
         public static final int default_activity_button=0x7f0e0042;
-        public static final int deleteGameButton=0x7f0e00a3;
+        public static final int deleteGameButton=0x7f0e00a6;
         public static final int design_menu_item_action_area=0x7f0e0076;
         public static final int design_menu_item_action_area_stub=0x7f0e0075;
         public static final int design_menu_item_text=0x7f0e0074;
         public static final int design_navigation_view=0x7f0e0073;
         public static final int disableHome=0x7f0e000e;
         public static final int drawer_layout=0x7f0e006b;
-        public static final int editName=0x7f0e0087;
-        public static final int editPlayerButton=0x7f0e00c8;
+        public static final int editName=0x7f0e008a;
+        public static final int editPlayerButton=0x7f0e00cb;
         public static final int edit_query=0x7f0e005e;
-        public static final int end=0x7f0e0020;
-        public static final int end_padder=0x7f0e00de;
+        public static final int end=0x7f0e0021;
+        public static final int end_padder=0x7f0e00e1;
         public static final int enterAlways=0x7f0e0015;
         public static final int enterAlwaysCollapsed=0x7f0e0016;
         public static final int exitUntilCollapsed=0x7f0e0017;
         public static final int expand_activities_button=0x7f0e0040;
         public static final int expanded_menu=0x7f0e0053;
         public static final int exportBackupButton=0x7f0e0078;
-        public static final int fill=0x7f0e002f;
-        public static final int fill_horizontal=0x7f0e0030;
-        public static final int fill_vertical=0x7f0e0021;
-        public static final int finishGameButton=0x7f0e009a;
-        public static final int fixed=0x7f0e0039;
-        public static final int gameButtons=0x7f0e0097;
-        public static final int gamePlayPauseButton=0x7f0e0099;
-        public static final int game_current_game_time=0x7f0e008e;
-        public static final int game_current_player_header=0x7f0e0092;
-        public static final int game_current_player_name=0x7f0e0094;
-        public static final int game_current_player_round=0x7f0e0091;
-        public static final int game_timer=0x7f0e008f;
-        public static final int gamesListHeader=0x7f0e00ce;
-        public static final int games_list=0x7f0e00cf;
-        public static final int header_game_current_player_round=0x7f0e0090;
-        public static final int header_new_game_delta=0x7f0e00bb;
-        public static final int header_new_game_mode=0x7f0e00b8;
-        public static final int header_new_game_name=0x7f0e00aa;
-        public static final int header_new_game_time=0x7f0e00ac;
-        public static final int header_new_round_time=0x7f0e00b2;
+        public static final int fill=0x7f0e0030;
+        public static final int fill_horizontal=0x7f0e0031;
+        public static final int fill_vertical=0x7f0e0022;
+        public static final int finishGameButton=0x7f0e009d;
+        public static final int fixed=0x7f0e003a;
+        public static final int gameButtons=0x7f0e009a;
+        public static final int gamePlayPauseButton=0x7f0e009c;
+        public static final int game_current_game_time=0x7f0e0091;
+        public static final int game_current_player_header=0x7f0e0095;
+        public static final int game_current_player_name=0x7f0e0097;
+        public static final int game_current_player_round=0x7f0e0094;
+        public static final int game_timer=0x7f0e0092;
+        public static final int gamesListHeader=0x7f0e00d1;
+        public static final int games_list=0x7f0e00d2;
+        public static final int header_game_current_player_round=0x7f0e0093;
+        public static final int header_new_game_delta=0x7f0e00be;
+        public static final int header_new_game_mode=0x7f0e00bb;
+        public static final int header_new_game_name=0x7f0e00ad;
+        public static final int header_new_game_time=0x7f0e00af;
+        public static final int header_new_round_time=0x7f0e00b5;
         public static final int home=0x7f0e0004;
         public static final int homeAsUp=0x7f0e000f;
-        public static final int hours_new_game_delta=0x7f0e00be;
-        public static final int hours_new_game_time=0x7f0e00ae;
-        public static final int hours_new_round_time=0x7f0e00b4;
+        public static final int hours_new_game_delta=0x7f0e00c1;
+        public static final int hours_new_game_time=0x7f0e00b1;
+        public static final int hours_new_round_time=0x7f0e00b7;
         public static final int icon=0x7f0e0044;
-        public static final int ifRoom=0x7f0e0036;
+        public static final int ifRoom=0x7f0e0037;
         public static final int image=0x7f0e0041;
-        public static final int imageView1=0x7f0e0080;
-        public static final int imageViewIcon=0x7f0e0093;
+        public static final int imageView1=0x7f0e0083;
+        public static final int imageViewIcon=0x7f0e0096;
         public static final int image_preview=0x7f0e006e;
         public static final int importBackupButton=0x7f0e0077;
-        public static final int info=0x7f0e00dd;
-        public static final int input_new_game_name=0x7f0e00ab;
+        public static final int info=0x7f0e00e0;
+        public static final int input_new_game_name=0x7f0e00ae;
         public static final int item_touch_helper_previous_elevation=0x7f0e0005;
-        public static final int left=0x7f0e0022;
-        public static final int line1=0x7f0e00d7;
-        public static final int line3=0x7f0e00db;
+        public static final int left=0x7f0e0023;
+        public static final int line1=0x7f0e00da;
+        public static final int line3=0x7f0e00de;
         public static final int listMode=0x7f0e000b;
         public static final int list_item=0x7f0e0043;
-        public static final int loadGameButton=0x7f0e00a4;
-        public static final int logo=0x7f0e007b;
-        public static final int mainMenuFragment=0x7f0e00a5;
-        public static final int media_actions=0x7f0e00d5;
-        public static final int middle=0x7f0e0033;
-        public static final int mini=0x7f0e0031;
-        public static final int minutes_new_game_delta=0x7f0e00bf;
-        public static final int minutes_new_game_time=0x7f0e00af;
-        public static final int minutes_new_round_time=0x7f0e00b5;
-        public static final int multiply=0x7f0e0028;
-        public static final int nameHeading=0x7f0e0085;
+        public static final int loadGameButton=0x7f0e00a7;
+        public static final int mainMenuFragment=0x7f0e00a8;
+        public static final int main_content=0x7f0e007b;
+        public static final int media_actions=0x7f0e00d8;
+        public static final int middle=0x7f0e0034;
+        public static final int mini=0x7f0e0032;
+        public static final int minutes_new_game_delta=0x7f0e00c2;
+        public static final int minutes_new_game_time=0x7f0e00b2;
+        public static final int minutes_new_round_time=0x7f0e00b8;
+        public static final int multiply=0x7f0e0029;
+        public static final int nameHeading=0x7f0e0088;
         public static final int navList=0x7f0e006d;
+        public static final int nav_about=0x7f0e00ec;
+        public static final int nav_backup=0x7f0e00ea;
+        public static final int nav_example=0x7f0e00e4;
+        public static final int nav_game=0x7f0e00e5;
+        public static final int nav_game_history=0x7f0e00e9;
+        public static final int nav_group_add=0x7f0e00e6;
+        public static final int nav_group_main=0x7f0e00e3;
+        public static final int nav_help=0x7f0e00eb;
+        public static final int nav_main_menu=0x7f0e00e7;
+        public static final int nav_player_management=0x7f0e00e8;
         public static final int navigation_header_container=0x7f0e0072;
-        public static final int never=0x7f0e0037;
-        public static final int newGameButton=0x7f0e00a7;
-        public static final int newGamePlayerManagementButton=0x7f0e0082;
-        public static final int nextPlayerButton=0x7f0e0096;
+        public static final int never=0x7f0e0038;
+        public static final int newGameButton=0x7f0e00aa;
+        public static final int newGamePlayerManagementButton=0x7f0e0085;
+        public static final int nextPlayerButton=0x7f0e0099;
         public static final int none=0x7f0e0010;
         public static final int normal=0x7f0e000c;
-        public static final int parallax=0x7f0e001a;
+        public static final int parallax=0x7f0e001b;
         public static final int parentPanel=0x7f0e0048;
-        public static final int photoButton=0x7f0e008a;
-        public static final int picture=0x7f0e0088;
-        public static final int pictureHeading=0x7f0e0086;
-        public static final int pin=0x7f0e001b;
-        public static final int playerListHeader=0x7f0e00a1;
-        public static final int players_results_list=0x7f0e00a2;
+        public static final int photoButton=0x7f0e008d;
+        public static final int picture=0x7f0e008b;
+        public static final int pictureHeading=0x7f0e0089;
+        public static final int pin=0x7f0e001c;
+        public static final int playerListHeader=0x7f0e00a4;
+        public static final int players_results_list=0x7f0e00a5;
         public static final int progress_circular=0x7f0e0006;
         public static final int progress_horizontal=0x7f0e0007;
         public static final int radio=0x7f0e0056;
-        public static final int removeEntryButton=0x7f0e009b;
-        public static final int resumeGameButton=0x7f0e00a8;
-        public static final int right=0x7f0e0023;
-        public static final int round_timer=0x7f0e0095;
-        public static final int roundsPlayedHeader=0x7f0e009f;
-        public static final int roundsPlayedText=0x7f0e00a0;
-        public static final int saveGameButton=0x7f0e0098;
-        public static final int screen=0x7f0e0029;
+        public static final int removeEntryButton=0x7f0e009e;
+        public static final int resumeGameButton=0x7f0e00ab;
+        public static final int right=0x7f0e0024;
+        public static final int round_timer=0x7f0e0098;
+        public static final int roundsPlayedHeader=0x7f0e00a2;
+        public static final int roundsPlayedText=0x7f0e00a3;
+        public static final int saveGameButton=0x7f0e009b;
+        public static final int screen=0x7f0e002a;
         public static final int scroll=0x7f0e0018;
         public static final int scrollIndicatorDown=0x7f0e0050;
         public static final int scrollIndicatorUp=0x7f0e004d;
         public static final int scrollView=0x7f0e004e;
-        public static final int scrollView1=0x7f0e00a9;
-        public static final int scrollable=0x7f0e003a;
+        public static final int scrollView1=0x7f0e00ac;
+        public static final int scrollable=0x7f0e003b;
         public static final int search_badge=0x7f0e0060;
         public static final int search_bar=0x7f0e005f;
         public static final int search_button=0x7f0e0061;
@@ -2476,59 +2507,61 @@ containing a value of this type.
         public static final int search_plate=0x7f0e0064;
         public static final int search_src_text=0x7f0e0065;
         public static final int search_voice_btn=0x7f0e0069;
-        public static final int seconds_new_game_delta=0x7f0e00c0;
-        public static final int seconds_new_game_time=0x7f0e00b0;
-        public static final int seconds_new_round_time=0x7f0e00b6;
+        public static final int seconds_new_game_delta=0x7f0e00c3;
+        public static final int seconds_new_game_time=0x7f0e00b3;
+        public static final int seconds_new_round_time=0x7f0e00b9;
         public static final int select_dialog_listview=0x7f0e006a;
         public static final int setPlayerSequenceButton=0x7f0e007a;
         public static final int set_player_sequence_list=0x7f0e0079;
         public static final int shortcut=0x7f0e0055;
         public static final int showCustom=0x7f0e0011;
         public static final int showHome=0x7f0e0012;
-        public static final int showPlayerStatsButton=0x7f0e00c9;
-        public static final int showResultsButton=0x7f0e009c;
+        public static final int showPlayerStatsButton=0x7f0e00cc;
+        public static final int showResultsButton=0x7f0e009f;
         public static final int showTitle=0x7f0e0013;
-        public static final int show_hint_main_layout=0x7f0e008d;
+        public static final int show_hint_main_layout=0x7f0e0090;
         public static final int snackbar_action=0x7f0e0071;
         public static final int snackbar_text=0x7f0e0070;
         public static final int snap=0x7f0e0019;
         public static final int spacer=0x7f0e0047;
-        public static final int spinner_new_game_mode=0x7f0e00b9;
+        public static final int spinner_new_game_mode=0x7f0e00bc;
         public static final int split_action_bar=0x7f0e0008;
-        public static final int src_atop=0x7f0e002a;
-        public static final int src_in=0x7f0e002b;
-        public static final int src_over=0x7f0e002c;
-        public static final int start=0x7f0e0024;
-        public static final int startNewGameButton=0x7f0e0083;
-        public static final int status_bar_latest_event_content=0x7f0e00d4;
+        public static final int src_atop=0x7f0e002b;
+        public static final int src_in=0x7f0e002c;
+        public static final int src_over=0x7f0e002d;
+        public static final int start=0x7f0e0025;
+        public static final int startNewGameButton=0x7f0e0086;
+        public static final int status_bar_latest_event_content=0x7f0e00d7;
         public static final int submit_area=0x7f0e0067;
         public static final int tabMode=0x7f0e000d;
-        public static final int text=0x7f0e00dc;
-        public static final int text2=0x7f0e00da;
-        public static final int textFieldAffiliation=0x7f0e007f;
-        public static final int textFieldAuthor=0x7f0e007e;
-        public static final int textFieldVersion=0x7f0e007d;
+        public static final int text=0x7f0e00df;
+        public static final int text2=0x7f0e00dd;
+        public static final int textFieldAffiliation=0x7f0e0082;
+        public static final int textFieldAuthor=0x7f0e007f;
+        public static final int textFieldAuthorNames=0x7f0e0080;
+        public static final int textFieldContributors=0x7f0e0081;
+        public static final int textFieldVersion=0x7f0e007e;
         public static final int textSpacerNoButtons=0x7f0e004f;
-        public static final int textViewDescription=0x7f0e00d1;
-        public static final int textViewName=0x7f0e00d0;
-        public static final int textViewNumber=0x7f0e00df;
-        public static final int time=0x7f0e00d8;
-        public static final int timePlayedHeader=0x7f0e009d;
-        public static final int timePlayedText=0x7f0e009e;
-        public static final int timer_new_game_delta=0x7f0e00bd;
-        public static final int timer_new_game_time=0x7f0e00ad;
-        public static final int timer_new_round_time=0x7f0e00b3;
+        public static final int textViewDescription=0x7f0e00d4;
+        public static final int textViewName=0x7f0e00d3;
+        public static final int textViewNumber=0x7f0e00e2;
+        public static final int time=0x7f0e00db;
+        public static final int timePlayedHeader=0x7f0e00a0;
+        public static final int timePlayedText=0x7f0e00a1;
+        public static final int timer_new_game_delta=0x7f0e00c0;
+        public static final int timer_new_game_time=0x7f0e00b0;
+        public static final int timer_new_round_time=0x7f0e00b6;
         public static final int title=0x7f0e0045;
         public static final int title_template=0x7f0e004a;
-        public static final int top=0x7f0e0025;
+        public static final int top=0x7f0e0026;
         public static final int topPanel=0x7f0e0049;
-        public static final int totalTimePlayedHeader=0x7f0e00ca;
-        public static final int totalTimePlayedText=0x7f0e00cb;
+        public static final int totalTimePlayedHeader=0x7f0e00cd;
+        public static final int totalTimePlayedText=0x7f0e00ce;
         public static final int up=0x7f0e0009;
         public static final int useLogo=0x7f0e0014;
         public static final int view_offset_helper=0x7f0e000a;
-        public static final int withText=0x7f0e0038;
-        public static final int wrap_content=0x7f0e003b;
+        public static final int withText=0x7f0e0039;
+        public static final int wrap_content=0x7f0e001a;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur=0x7f0c0002;
@@ -2614,6 +2647,9 @@ containing a value of this type.
         public static final int selectplayerlist_item_row=0x7f040048;
         public static final int support_simple_spinner_dropdown_item=0x7f040049;
     }
+    public static final class menu {
+        public static final int activity_main_drawer=0x7f0f0000;
+    }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
     }
@@ -2637,499 +2673,513 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f070010;
         public static final int abc_shareactionprovider_share_with_application=0x7f070011;
         public static final int abc_toolbar_collapse_description=0x7f070012;
-        public static final int aboutFragment=0x7f070096;
+        public static final int aboutFragment=0x7f070097;
         public static final int about_affiliation=0x7f070014;
         public static final int about_author=0x7f070015;
-        public static final int action_about=0x7f070016;
-        public static final int action_help=0x7f070017;
-        public static final int action_main=0x7f070018;
-        public static final int action_navigation=0x7f070097;
-        public static final int action_new_game=0x7f070019;
-        public static final int action_player_management=0x7f07001a;
-        public static final int action_resume_game=0x7f07001b;
-        public static final int activeGameTimeHeader=0x7f07001c;
-        public static final int addContact=0x7f07001d;
-        public static final int addPlayerFromContacts=0x7f07001e;
-        public static final int addSelectedContacts=0x7f07001f;
-        public static final int app_name=0x7f070098;
-        public static final int app_name_long=0x7f070099;
-        public static final int appbar_scrolling_view_behavior=0x7f07009a;
-        public static final int backToMainMenu=0x7f070020;
-        public static final int backToMainMenuQuestion=0x7f070021;
-        public static final int backup=0x7f07009b;
-        public static final int backupDialog=0x7f07009c;
-        public static final int backupDuringGame=0x7f070022;
-        public static final int backupExportError=0x7f070023;
-        public static final int cancel=0x7f070024;
-        public static final int changeColorButton=0x7f070025;
-        public static final int character_counter_pattern=0x7f07009d;
-        public static final int chess_clock=0x7f070026;
-        public static final int choosePlayersFragment=0x7f07009e;
-        public static final int completedRounds=0x7f070027;
-        public static final int confirm=0x7f070028;
-        public static final int contactListFragment=0x7f07009f;
-        public static final int createNewPlayer=0x7f070029;
-        public static final int createNewPlayerFragment=0x7f0700a0;
-        public static final int currentPlayer=0x7f07002a;
-        public static final int deleteGame=0x7f07002b;
-        public static final int deleteGameQuestion=0x7f07002c;
-        public static final int deletePlayer=0x7f07002d;
-        public static final int deletePlayerQuestion=0x7f07002e;
-        public static final int dialog_no_permissions=0x7f07002f;
-        public static final int drawer_close=0x7f070030;
-        public static final int drawer_open=0x7f070031;
-        public static final int editPlayer=0x7f070032;
-        public static final int editPlayerFragment=0x7f0700a1;
-        public static final int error=0x7f070033;
-        public static final int errorAtLeastTwoPlayers=0x7f070034;
-        public static final int exit=0x7f070035;
-        public static final int exitQuestion=0x7f070036;
-        public static final int exportDatabaseBackup=0x7f070037;
-        public static final int exportDatabaseBackupInfoMessage=0x7f070038;
-        public static final int exportDatabaseBackupSuccess=0x7f070039;
-        public static final int finishGame=0x7f07003a;
-        public static final int finishGameQuestion=0x7f07003b;
-        public static final int gameFragment=0x7f0700a2;
-        public static final int gameHistory=0x7f07003c;
-        public static final int gameHistoryFragment=0x7f0700a3;
-        public static final int gameMode=0x7f07003d;
-        public static final int gameModeNoColon=0x7f07003e;
-        public static final int gameName=0x7f07003f;
-        public static final int gameNameSizeError=0x7f070040;
-        public static final int gameNameStandard=0x7f070041;
-        public static final int gameResults=0x7f070042;
-        public static final int gameResultsFragment=0x7f0700a4;
-        public static final int gameSavedSuccess=0x7f070043;
-        public static final int gameTime=0x7f070044;
-        public static final int gameTimeNoColon=0x7f070045;
-        public static final int helpFragment=0x7f0700a5;
-        public static final int help_gameTime=0x7f070046;
-        public static final int help_roundTime=0x7f070047;
-        public static final int help_timeDelta=0x7f070048;
-        public static final int importDatabaseBackup=0x7f070049;
-        public static final int importDatabaseBackupInfoMessage=0x7f07004a;
-        public static final int importDatabaseBackupSuccess=0x7f07004b;
-        public static final int increaseTimeAfterRoundCheck=0x7f07004c;
-        public static final int infinite=0x7f07004d;
-        public static final int leaveGameQuestion=0x7f07004e;
-        public static final int loadGame=0x7f07004f;
-        public static final int loadGameFragment=0x7f0700a6;
-        public static final int loadSelectedGame=0x7f070050;
-        public static final int mainMenuFragment=0x7f0700a7;
-        public static final int manualChoiceError=0x7f070051;
-        public static final int manualChoiceHeading=0x7f070052;
-        public static final int modeChess=0x7f070053;
-        public static final int modeChessSummary=0x7f070054;
-        public static final int modeClockwise=0x7f070055;
-        public static final int modeClockwiseSummary=0x7f070056;
-        public static final int modeCounterClockwise=0x7f070057;
-        public static final int modeCounterClockwiseSummary=0x7f070058;
-        public static final int modeRandom=0x7f070059;
-        public static final int modeRandomSummary=0x7f07005a;
-        public static final int more_info=0x7f07005b;
-        public static final int nameDots=0x7f0700a8;
-        public static final int newGameFragment=0x7f0700a9;
-        public static final int nextPlayer=0x7f07005c;
-        public static final int no=0x7f07005d;
-        public static final int noBackupFound=0x7f07005e;
-        public static final int ok=0x7f07005f;
-        public static final int overviewHeading=0x7f070060;
-        public static final int overviewSummary=0x7f070061;
-        public static final int pause_capslock=0x7f0700aa;
-        public static final int permissionContacts=0x7f070062;
-        public static final int permissionContactsName=0x7f070063;
-        public static final int permissionHeading=0x7f070064;
-        public static final int permissionReadExtStorage=0x7f070065;
-        public static final int permissionReadExtStorageName=0x7f070066;
-        public static final int permissionSaveExtStorage=0x7f070067;
-        public static final int permissionSaveExtStorageName=0x7f070068;
-        public static final int pickColor=0x7f070069;
-        public static final int picture=0x7f07006a;
-        public static final int play=0x7f07006b;
-        public static final int playedGames=0x7f07006c;
-        public static final int playedRoundsHeader=0x7f07006d;
-        public static final int playerManagement=0x7f07006e;
-        public static final int playerManagementFragment=0x7f0700ab;
-        public static final int playerResults=0x7f07006f;
-        public static final int playerStatistics=0x7f070070;
-        public static final int playerStatisticsFragment=0x7f0700ac;
-        public static final int players=0x7f070071;
-        public static final int pleaseChooseAGame=0x7f070072;
-        public static final int privacy_friendly=0x7f070073;
-        public static final int quitGame=0x7f070074;
-        public static final int quitGameQuestion=0x7f070075;
-        public static final int removeEntry=0x7f070076;
-        public static final int removeEntryQuestion=0x7f070077;
-        public static final int resetTimeAfterRoundCheck=0x7f070078;
-        public static final int resume=0x7f070079;
-        public static final int round=0x7f07007a;
-        public static final int roundTime=0x7f07007b;
-        public static final int roundTimeNoColon=0x7f07007c;
-        public static final int roundTimeOverDialogHeading=0x7f07007d;
-        public static final int roundTimeOverDialogQuestion=0x7f07007e;
-        public static final int roundTimeSetError=0x7f07007f;
-        public static final int save=0x7f070080;
-        public static final int saveGame=0x7f070081;
-        public static final int setParameters=0x7f070082;
-        public static final int showPlayerStats=0x7f070083;
-        public static final int showResults=0x7f070084;
-        public static final int startNewGame=0x7f070085;
+        public static final int about_author_contributors=0x7f070016;
+        public static final int about_author_names=0x7f070098;
+        public static final int action_about=0x7f070017;
+        public static final int action_help=0x7f070018;
+        public static final int action_main=0x7f070019;
+        public static final int action_navigation=0x7f070099;
+        public static final int action_new_game=0x7f07001a;
+        public static final int action_player_management=0x7f07001b;
+        public static final int action_resume_game=0x7f07001c;
+        public static final int activeGameTimeHeader=0x7f07001d;
+        public static final int addContact=0x7f07001e;
+        public static final int addPlayerFromContacts=0x7f07001f;
+        public static final int addSelectedContacts=0x7f070020;
+        public static final int app_name=0x7f07009a;
+        public static final int app_name_long=0x7f07009b;
+        public static final int appbar_scrolling_view_behavior=0x7f07009c;
+        public static final int backToMainMenu=0x7f070021;
+        public static final int backToMainMenuQuestion=0x7f070022;
+        public static final int backup=0x7f07009d;
+        public static final int backupDialog=0x7f07009e;
+        public static final int backupDuringGame=0x7f070023;
+        public static final int backupExportError=0x7f070024;
+        public static final int cancel=0x7f070025;
+        public static final int changeColorButton=0x7f070026;
+        public static final int character_counter_pattern=0x7f07009f;
+        public static final int chess_clock=0x7f070027;
+        public static final int choosePlayersFragment=0x7f0700a0;
+        public static final int completedRounds=0x7f070028;
+        public static final int confirm=0x7f070029;
+        public static final int contactListFragment=0x7f0700a1;
+        public static final int createNewPlayer=0x7f07002a;
+        public static final int createNewPlayerFragment=0x7f0700a2;
+        public static final int currentPlayer=0x7f07002b;
+        public static final int deleteGame=0x7f07002c;
+        public static final int deleteGameQuestion=0x7f07002d;
+        public static final int deletePlayer=0x7f07002e;
+        public static final int deletePlayerQuestion=0x7f07002f;
+        public static final int dialog_no_permissions=0x7f070030;
+        public static final int editPlayer=0x7f070031;
+        public static final int editPlayerFragment=0x7f0700a3;
+        public static final int error=0x7f070032;
+        public static final int errorAtLeastTwoPlayers=0x7f070033;
+        public static final int exit=0x7f070034;
+        public static final int exitQuestion=0x7f070035;
+        public static final int exportDatabaseBackup=0x7f070036;
+        public static final int exportDatabaseBackupInfoMessage=0x7f070037;
+        public static final int exportDatabaseBackupSuccess=0x7f070038;
+        public static final int finishGame=0x7f070039;
+        public static final int finishGameQuestion=0x7f07003a;
+        public static final int gameFragment=0x7f0700a4;
+        public static final int gameHistory=0x7f07003b;
+        public static final int gameHistoryFragment=0x7f0700a5;
+        public static final int gameMode=0x7f07003c;
+        public static final int gameModeNoColon=0x7f07003d;
+        public static final int gameName=0x7f07003e;
+        public static final int gameNameSizeError=0x7f07003f;
+        public static final int gameNameStandard=0x7f070040;
+        public static final int gameResults=0x7f070041;
+        public static final int gameResultsFragment=0x7f0700a6;
+        public static final int gameSavedSuccess=0x7f070042;
+        public static final int gameTime=0x7f070043;
+        public static final int gameTimeNoColon=0x7f070044;
+        public static final int github=0x7f0700a7;
+        public static final int helpFragment=0x7f0700a8;
+        public static final int help_gameTime=0x7f070045;
+        public static final int help_roundTime=0x7f070046;
+        public static final int help_timeDelta=0x7f070047;
+        public static final int importDatabaseBackup=0x7f070048;
+        public static final int importDatabaseBackupInfoMessage=0x7f070049;
+        public static final int importDatabaseBackupSuccess=0x7f07004a;
+        public static final int increaseTimeAfterRoundCheck=0x7f07004b;
+        public static final int infinite=0x7f07004c;
+        public static final int leaveGameQuestion=0x7f07004d;
+        public static final int loadGame=0x7f07004e;
+        public static final int loadGameFragment=0x7f0700a9;
+        public static final int loadSelectedGame=0x7f07004f;
+        public static final int mainMenuFragment=0x7f0700aa;
+        public static final int manualChoiceError=0x7f070050;
+        public static final int manualChoiceHeading=0x7f070051;
+        public static final int modeChess=0x7f070052;
+        public static final int modeChessSummary=0x7f070053;
+        public static final int modeClockwise=0x7f070054;
+        public static final int modeClockwiseSummary=0x7f070055;
+        public static final int modeCounterClockwise=0x7f070056;
+        public static final int modeCounterClockwiseSummary=0x7f070057;
+        public static final int modeRandom=0x7f070058;
+        public static final int modeRandomSummary=0x7f070059;
+        public static final int more_info=0x7f07005a;
+        public static final int nameDots=0x7f0700ab;
+        public static final int navigation_drawer_close=0x7f07005b;
+        public static final int navigation_drawer_open=0x7f07005c;
+        public static final int newGameFragment=0x7f0700ac;
+        public static final int nextPlayer=0x7f07005d;
+        public static final int no=0x7f07005e;
+        public static final int noBackupFound=0x7f07005f;
+        public static final int ok=0x7f070060;
+        public static final int overviewHeading=0x7f070061;
+        public static final int overviewSummary=0x7f070062;
+        public static final int pause_capslock=0x7f0700ad;
+        public static final int permissionContacts=0x7f070063;
+        public static final int permissionContactsName=0x7f070064;
+        public static final int permissionHeading=0x7f070065;
+        public static final int permissionReadExtStorage=0x7f070066;
+        public static final int permissionReadExtStorageName=0x7f070067;
+        public static final int permissionSaveExtStorage=0x7f070068;
+        public static final int permissionSaveExtStorageName=0x7f070069;
+        public static final int pickColor=0x7f07006a;
+        public static final int picture=0x7f07006b;
+        public static final int play=0x7f07006c;
+        public static final int playedGames=0x7f07006d;
+        public static final int playedRoundsHeader=0x7f07006e;
+        public static final int playerManagement=0x7f07006f;
+        public static final int playerManagementFragment=0x7f0700ae;
+        public static final int playerResults=0x7f070070;
+        public static final int playerStatistics=0x7f070071;
+        public static final int playerStatisticsFragment=0x7f0700af;
+        public static final int players=0x7f070072;
+        public static final int pleaseChooseAGame=0x7f070073;
+        public static final int privacy_friendly=0x7f070074;
+        public static final int quitGame=0x7f070075;
+        public static final int quitGameQuestion=0x7f070076;
+        public static final int removeEntry=0x7f070077;
+        public static final int removeEntryQuestion=0x7f070078;
+        public static final int resetTimeAfterRoundCheck=0x7f070079;
+        public static final int resume=0x7f07007a;
+        public static final int round=0x7f07007b;
+        public static final int roundTime=0x7f07007c;
+        public static final int roundTimeNoColon=0x7f07007d;
+        public static final int roundTimeOverDialogHeading=0x7f07007e;
+        public static final int roundTimeOverDialogQuestion=0x7f07007f;
+        public static final int roundTimeSetError=0x7f070080;
+        public static final int save=0x7f070081;
+        public static final int saveGame=0x7f070082;
+        public static final int setParameters=0x7f070083;
+        public static final int showPlayerStats=0x7f070084;
+        public static final int showResults=0x7f070085;
+        public static final int startNewGame=0x7f070086;
         public static final int status_bar_notification_info_overflow=0x7f070013;
-        public static final int sureToSaveGameQuestion=0x7f070086;
-        public static final int swipeDialogAnswer=0x7f070087;
-        public static final int swipeDialogQuestion=0x7f070088;
-        public static final int takePhotoButton=0x7f070089;
-        public static final int timeDelta=0x7f07008a;
-        public static final int timeDeltaNoColon=0x7f07008b;
-        public static final int timeLeft=0x7f07008c;
-        public static final int totalTimePlayed=0x7f07008d;
-        public static final int url=0x7f0700ad;
-        public static final int version_number=0x7f0700ae;
-        public static final int viewHelp=0x7f07008e;
-        public static final int welcomeDialog=0x7f0700af;
-        public static final int welcomeNewGame=0x7f07008f;
-        public static final int welcomePlay=0x7f070090;
-        public static final int welcome_part1=0x7f070091;
-        public static final int welcome_part2=0x7f070092;
-        public static final int welcome_part3=0x7f070093;
-        public static final int welcome_part4=0x7f070094;
-        public static final int yes=0x7f070095;
+        public static final int sureToSaveGameQuestion=0x7f070087;
+        public static final int swipeDialogAnswer=0x7f070088;
+        public static final int swipeDialogQuestion=0x7f070089;
+        public static final int takePhotoButton=0x7f07008a;
+        public static final int timeDelta=0x7f07008b;
+        public static final int timeDeltaNoColon=0x7f07008c;
+        public static final int timeLeft=0x7f07008d;
+        public static final int totalTimePlayed=0x7f07008e;
+        public static final int url=0x7f0700b0;
+        public static final int version_number=0x7f0700b1;
+        public static final int viewHelp=0x7f07008f;
+        public static final int welcome=0x7f070090;
+        public static final int welcomeDialog=0x7f0700b2;
+        public static final int welcomeNewGame=0x7f070091;
+        public static final int welcomePlay=0x7f070092;
+        public static final int welcome_part2=0x7f070093;
+        public static final int welcome_part3=0x7f070094;
+        public static final int welcome_part4=0x7f070095;
+        public static final int yes=0x7f070096;
     }
     public static final class style {
-        public static final int AlertDialog_AppCompat=0x7f0b007e;
-        public static final int AlertDialog_AppCompat_Light=0x7f0b007f;
-        public static final int Animation_AppCompat_Dialog=0x7f0b0080;
-        public static final int Animation_AppCompat_DropDownUp=0x7f0b0081;
-        public static final int AppTheme=0x7f0b0082;
-        public static final int AppTheme_AppBarOverlay=0x7f0b0083;
-        public static final int AppTheme_NoActionBar=0x7f0b0084;
-        public static final int AppTheme_PopupOverlay=0x7f0b0085;
-        public static final int Base_AlertDialog_AppCompat=0x7f0b0086;
-        public static final int Base_AlertDialog_AppCompat_Light=0x7f0b0087;
-        public static final int Base_Animation_AppCompat_Dialog=0x7f0b0088;
-        public static final int Base_Animation_AppCompat_DropDownUp=0x7f0b0089;
-        public static final int Base_DialogWindowTitle_AppCompat=0x7f0b008a;
-        public static final int Base_DialogWindowTitleBackground_AppCompat=0x7f0b008b;
-        public static final int Base_TextAppearance_AppCompat=0x7f0b0030;
-        public static final int Base_TextAppearance_AppCompat_Body1=0x7f0b0031;
-        public static final int Base_TextAppearance_AppCompat_Body2=0x7f0b0032;
-        public static final int Base_TextAppearance_AppCompat_Button=0x7f0b001a;
-        public static final int Base_TextAppearance_AppCompat_Caption=0x7f0b0033;
-        public static final int Base_TextAppearance_AppCompat_Display1=0x7f0b0034;
-        public static final int Base_TextAppearance_AppCompat_Display2=0x7f0b0035;
-        public static final int Base_TextAppearance_AppCompat_Display3=0x7f0b0036;
-        public static final int Base_TextAppearance_AppCompat_Display4=0x7f0b0037;
-        public static final int Base_TextAppearance_AppCompat_Headline=0x7f0b0038;
-        public static final int Base_TextAppearance_AppCompat_Inverse=0x7f0b0005;
-        public static final int Base_TextAppearance_AppCompat_Large=0x7f0b0039;
-        public static final int Base_TextAppearance_AppCompat_Large_Inverse=0x7f0b0006;
-        public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large=0x7f0b003a;
-        public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small=0x7f0b003b;
-        public static final int Base_TextAppearance_AppCompat_Medium=0x7f0b003c;
-        public static final int Base_TextAppearance_AppCompat_Medium_Inverse=0x7f0b0007;
-        public static final int Base_TextAppearance_AppCompat_Menu=0x7f0b003d;
-        public static final int Base_TextAppearance_AppCompat_SearchResult=0x7f0b008c;
-        public static final int Base_TextAppearance_AppCompat_SearchResult_Subtitle=0x7f0b003e;
-        public static final int Base_TextAppearance_AppCompat_SearchResult_Title=0x7f0b003f;
-        public static final int Base_TextAppearance_AppCompat_Small=0x7f0b0040;
-        public static final int Base_TextAppearance_AppCompat_Small_Inverse=0x7f0b0008;
-        public static final int Base_TextAppearance_AppCompat_Subhead=0x7f0b0041;
-        public static final int Base_TextAppearance_AppCompat_Subhead_Inverse=0x7f0b0009;
-        public static final int Base_TextAppearance_AppCompat_Title=0x7f0b0042;
-        public static final int Base_TextAppearance_AppCompat_Title_Inverse=0x7f0b000a;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu=0x7f0b0043;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle=0x7f0b0044;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse=0x7f0b0045;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title=0x7f0b0046;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse=0x7f0b0047;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle=0x7f0b0048;
-        public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Title=0x7f0b0049;
-        public static final int Base_TextAppearance_AppCompat_Widget_Button=0x7f0b004a;
-        public static final int Base_TextAppearance_AppCompat_Widget_Button_Inverse=0x7f0b007a;
-        public static final int Base_TextAppearance_AppCompat_Widget_DropDownItem=0x7f0b008d;
-        public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large=0x7f0b004b;
-        public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b004c;
-        public static final int Base_TextAppearance_AppCompat_Widget_Switch=0x7f0b004d;
-        public static final int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem=0x7f0b004e;
-        public static final int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0b008e;
-        public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle=0x7f0b004f;
-        public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Title=0x7f0b0050;
-        public static final int Base_Theme_AppCompat=0x7f0b0051;
-        public static final int Base_Theme_AppCompat_CompactMenu=0x7f0b008f;
-        public static final int Base_Theme_AppCompat_Dialog=0x7f0b000b;
-        public static final int Base_Theme_AppCompat_Dialog_Alert=0x7f0b0090;
-        public static final int Base_Theme_AppCompat_Dialog_FixedSize=0x7f0b0091;
-        public static final int Base_Theme_AppCompat_Dialog_MinWidth=0x7f0b0092;
+        public static final int AlertDialog_AppCompat=0x7f0b0087;
+        public static final int AlertDialog_AppCompat_Light=0x7f0b0088;
+        public static final int Animation_AppCompat_Dialog=0x7f0b0089;
+        public static final int Animation_AppCompat_DropDownUp=0x7f0b008a;
+        public static final int AppTheme=0x7f0b008b;
+        public static final int AppTheme_AppBarOverlay=0x7f0b008c;
+        public static final int AppTheme_NoActionBar=0x7f0b008d;
+        public static final int AppTheme_PopupOverlay=0x7f0b008e;
+        public static final int Base_AlertDialog_AppCompat=0x7f0b008f;
+        public static final int Base_AlertDialog_AppCompat_Light=0x7f0b0090;
+        public static final int Base_Animation_AppCompat_Dialog=0x7f0b0091;
+        public static final int Base_Animation_AppCompat_DropDownUp=0x7f0b0092;
+        public static final int Base_DialogWindowTitle_AppCompat=0x7f0b0093;
+        public static final int Base_DialogWindowTitleBackground_AppCompat=0x7f0b0094;
+        public static final int Base_TextAppearance_AppCompat=0x7f0b0037;
+        public static final int Base_TextAppearance_AppCompat_Body1=0x7f0b0038;
+        public static final int Base_TextAppearance_AppCompat_Body2=0x7f0b0039;
+        public static final int Base_TextAppearance_AppCompat_Button=0x7f0b0021;
+        public static final int Base_TextAppearance_AppCompat_Caption=0x7f0b003a;
+        public static final int Base_TextAppearance_AppCompat_Display1=0x7f0b003b;
+        public static final int Base_TextAppearance_AppCompat_Display2=0x7f0b003c;
+        public static final int Base_TextAppearance_AppCompat_Display3=0x7f0b003d;
+        public static final int Base_TextAppearance_AppCompat_Display4=0x7f0b003e;
+        public static final int Base_TextAppearance_AppCompat_Headline=0x7f0b003f;
+        public static final int Base_TextAppearance_AppCompat_Inverse=0x7f0b000c;
+        public static final int Base_TextAppearance_AppCompat_Large=0x7f0b0040;
+        public static final int Base_TextAppearance_AppCompat_Large_Inverse=0x7f0b000d;
+        public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large=0x7f0b0041;
+        public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small=0x7f0b0042;
+        public static final int Base_TextAppearance_AppCompat_Medium=0x7f0b0043;
+        public static final int Base_TextAppearance_AppCompat_Medium_Inverse=0x7f0b000e;
+        public static final int Base_TextAppearance_AppCompat_Menu=0x7f0b0044;
+        public static final int Base_TextAppearance_AppCompat_SearchResult=0x7f0b0095;
+        public static final int Base_TextAppearance_AppCompat_SearchResult_Subtitle=0x7f0b0045;
+        public static final int Base_TextAppearance_AppCompat_SearchResult_Title=0x7f0b0046;
+        public static final int Base_TextAppearance_AppCompat_Small=0x7f0b0047;
+        public static final int Base_TextAppearance_AppCompat_Small_Inverse=0x7f0b000f;
+        public static final int Base_TextAppearance_AppCompat_Subhead=0x7f0b0048;
+        public static final int Base_TextAppearance_AppCompat_Subhead_Inverse=0x7f0b0010;
+        public static final int Base_TextAppearance_AppCompat_Title=0x7f0b0049;
+        public static final int Base_TextAppearance_AppCompat_Title_Inverse=0x7f0b0011;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu=0x7f0b0080;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle=0x7f0b004a;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse=0x7f0b004b;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title=0x7f0b004c;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse=0x7f0b004d;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle=0x7f0b004e;
+        public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Title=0x7f0b004f;
+        public static final int Base_TextAppearance_AppCompat_Widget_Button=0x7f0b0050;
+        public static final int Base_TextAppearance_AppCompat_Widget_Button_Inverse=0x7f0b0081;
+        public static final int Base_TextAppearance_AppCompat_Widget_DropDownItem=0x7f0b0096;
+        public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large=0x7f0b0051;
+        public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b0052;
+        public static final int Base_TextAppearance_AppCompat_Widget_Switch=0x7f0b0053;
+        public static final int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem=0x7f0b0054;
+        public static final int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0b0097;
+        public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle=0x7f0b0055;
+        public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Title=0x7f0b0056;
+        public static final int Base_Theme_AppCompat=0x7f0b0057;
+        public static final int Base_Theme_AppCompat_CompactMenu=0x7f0b0098;
+        public static final int Base_Theme_AppCompat_Dialog=0x7f0b0012;
+        public static final int Base_Theme_AppCompat_Dialog_Alert=0x7f0b0099;
+        public static final int Base_Theme_AppCompat_Dialog_FixedSize=0x7f0b009a;
+        public static final int Base_Theme_AppCompat_Dialog_MinWidth=0x7f0b009b;
         public static final int Base_Theme_AppCompat_DialogWhenLarge=0x7f0b0002;
-        public static final int Base_Theme_AppCompat_Light=0x7f0b0052;
-        public static final int Base_Theme_AppCompat_Light_DarkActionBar=0x7f0b0093;
-        public static final int Base_Theme_AppCompat_Light_Dialog=0x7f0b000c;
-        public static final int Base_Theme_AppCompat_Light_Dialog_Alert=0x7f0b0094;
-        public static final int Base_Theme_AppCompat_Light_Dialog_FixedSize=0x7f0b0095;
-        public static final int Base_Theme_AppCompat_Light_Dialog_MinWidth=0x7f0b0096;
+        public static final int Base_Theme_AppCompat_Light=0x7f0b0058;
+        public static final int Base_Theme_AppCompat_Light_DarkActionBar=0x7f0b009c;
+        public static final int Base_Theme_AppCompat_Light_Dialog=0x7f0b0013;
+        public static final int Base_Theme_AppCompat_Light_Dialog_Alert=0x7f0b009d;
+        public static final int Base_Theme_AppCompat_Light_Dialog_FixedSize=0x7f0b009e;
+        public static final int Base_Theme_AppCompat_Light_Dialog_MinWidth=0x7f0b009f;
         public static final int Base_Theme_AppCompat_Light_DialogWhenLarge=0x7f0b0003;
-        public static final int Base_ThemeOverlay_AppCompat=0x7f0b0097;
-        public static final int Base_ThemeOverlay_AppCompat_ActionBar=0x7f0b0098;
-        public static final int Base_ThemeOverlay_AppCompat_Dark=0x7f0b0099;
-        public static final int Base_ThemeOverlay_AppCompat_Dark_ActionBar=0x7f0b009a;
-        public static final int Base_ThemeOverlay_AppCompat_Light=0x7f0b009b;
-        public static final int Base_V11_Theme_AppCompat_Dialog=0x7f0b000d;
-        public static final int Base_V11_Theme_AppCompat_Light_Dialog=0x7f0b000e;
-        public static final int Base_V12_Widget_AppCompat_AutoCompleteTextView=0x7f0b0016;
-        public static final int Base_V12_Widget_AppCompat_EditText=0x7f0b0017;
-        public static final int Base_V21_Theme_AppCompat=0x7f0b0053;
-        public static final int Base_V21_Theme_AppCompat_Dialog=0x7f0b0054;
-        public static final int Base_V21_Theme_AppCompat_Light=0x7f0b0055;
-        public static final int Base_V21_Theme_AppCompat_Light_Dialog=0x7f0b0056;
-        public static final int Base_V22_Theme_AppCompat=0x7f0b0078;
-        public static final int Base_V22_Theme_AppCompat_Light=0x7f0b0079;
-        public static final int Base_V23_Theme_AppCompat=0x7f0b007b;
-        public static final int Base_V23_Theme_AppCompat_Light=0x7f0b007c;
-        public static final int Base_V7_Theme_AppCompat=0x7f0b009c;
-        public static final int Base_V7_Theme_AppCompat_Dialog=0x7f0b009d;
-        public static final int Base_V7_Theme_AppCompat_Light=0x7f0b009e;
-        public static final int Base_V7_Theme_AppCompat_Light_Dialog=0x7f0b009f;
-        public static final int Base_V7_Widget_AppCompat_AutoCompleteTextView=0x7f0b00a0;
-        public static final int Base_V7_Widget_AppCompat_EditText=0x7f0b00a1;
-        public static final int Base_Widget_AppCompat_ActionBar=0x7f0b00a2;
-        public static final int Base_Widget_AppCompat_ActionBar_Solid=0x7f0b00a3;
-        public static final int Base_Widget_AppCompat_ActionBar_TabBar=0x7f0b00a4;
-        public static final int Base_Widget_AppCompat_ActionBar_TabText=0x7f0b0057;
-        public static final int Base_Widget_AppCompat_ActionBar_TabView=0x7f0b0058;
-        public static final int Base_Widget_AppCompat_ActionButton=0x7f0b0059;
-        public static final int Base_Widget_AppCompat_ActionButton_CloseMode=0x7f0b005a;
-        public static final int Base_Widget_AppCompat_ActionButton_Overflow=0x7f0b005b;
-        public static final int Base_Widget_AppCompat_ActionMode=0x7f0b00a5;
-        public static final int Base_Widget_AppCompat_ActivityChooserView=0x7f0b00a6;
-        public static final int Base_Widget_AppCompat_AutoCompleteTextView=0x7f0b0018;
-        public static final int Base_Widget_AppCompat_Button=0x7f0b005c;
-        public static final int Base_Widget_AppCompat_Button_Borderless=0x7f0b005d;
-        public static final int Base_Widget_AppCompat_Button_Borderless_Colored=0x7f0b005e;
-        public static final int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog=0x7f0b00a7;
-        public static final int Base_Widget_AppCompat_Button_Colored=0x7f0b007d;
-        public static final int Base_Widget_AppCompat_Button_Small=0x7f0b005f;
-        public static final int Base_Widget_AppCompat_ButtonBar=0x7f0b0060;
-        public static final int Base_Widget_AppCompat_ButtonBar_AlertDialog=0x7f0b00a8;
-        public static final int Base_Widget_AppCompat_CompoundButton_CheckBox=0x7f0b0061;
-        public static final int Base_Widget_AppCompat_CompoundButton_RadioButton=0x7f0b0062;
-        public static final int Base_Widget_AppCompat_CompoundButton_Switch=0x7f0b00a9;
+        public static final int Base_ThemeOverlay_AppCompat=0x7f0b00a0;
+        public static final int Base_ThemeOverlay_AppCompat_ActionBar=0x7f0b00a1;
+        public static final int Base_ThemeOverlay_AppCompat_Dark=0x7f0b00a2;
+        public static final int Base_ThemeOverlay_AppCompat_Dark_ActionBar=0x7f0b00a3;
+        public static final int Base_ThemeOverlay_AppCompat_Light=0x7f0b00a4;
+        public static final int Base_V11_Theme_AppCompat_Dialog=0x7f0b0014;
+        public static final int Base_V11_Theme_AppCompat_Light_Dialog=0x7f0b0015;
+        public static final int Base_V12_Widget_AppCompat_AutoCompleteTextView=0x7f0b001d;
+        public static final int Base_V12_Widget_AppCompat_EditText=0x7f0b001e;
+        public static final int Base_V21_Theme_AppCompat=0x7f0b0059;
+        public static final int Base_V21_Theme_AppCompat_Dialog=0x7f0b005a;
+        public static final int Base_V21_Theme_AppCompat_Light=0x7f0b005b;
+        public static final int Base_V21_Theme_AppCompat_Light_Dialog=0x7f0b005c;
+        public static final int Base_V22_Theme_AppCompat=0x7f0b007e;
+        public static final int Base_V22_Theme_AppCompat_Light=0x7f0b007f;
+        public static final int Base_V23_Theme_AppCompat=0x7f0b0082;
+        public static final int Base_V23_Theme_AppCompat_Light=0x7f0b0083;
+        public static final int Base_V7_Theme_AppCompat=0x7f0b00a5;
+        public static final int Base_V7_Theme_AppCompat_Dialog=0x7f0b00a6;
+        public static final int Base_V7_Theme_AppCompat_Light=0x7f0b00a7;
+        public static final int Base_V7_Theme_AppCompat_Light_Dialog=0x7f0b00a8;
+        public static final int Base_V7_Widget_AppCompat_AutoCompleteTextView=0x7f0b00a9;
+        public static final int Base_V7_Widget_AppCompat_EditText=0x7f0b00aa;
+        public static final int Base_Widget_AppCompat_ActionBar=0x7f0b00ab;
+        public static final int Base_Widget_AppCompat_ActionBar_Solid=0x7f0b00ac;
+        public static final int Base_Widget_AppCompat_ActionBar_TabBar=0x7f0b00ad;
+        public static final int Base_Widget_AppCompat_ActionBar_TabText=0x7f0b005d;
+        public static final int Base_Widget_AppCompat_ActionBar_TabView=0x7f0b005e;
+        public static final int Base_Widget_AppCompat_ActionButton=0x7f0b005f;
+        public static final int Base_Widget_AppCompat_ActionButton_CloseMode=0x7f0b0060;
+        public static final int Base_Widget_AppCompat_ActionButton_Overflow=0x7f0b0061;
+        public static final int Base_Widget_AppCompat_ActionMode=0x7f0b00ae;
+        public static final int Base_Widget_AppCompat_ActivityChooserView=0x7f0b00af;
+        public static final int Base_Widget_AppCompat_AutoCompleteTextView=0x7f0b001f;
+        public static final int Base_Widget_AppCompat_Button=0x7f0b0062;
+        public static final int Base_Widget_AppCompat_Button_Borderless=0x7f0b0063;
+        public static final int Base_Widget_AppCompat_Button_Borderless_Colored=0x7f0b0064;
+        public static final int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog=0x7f0b00b0;
+        public static final int Base_Widget_AppCompat_Button_Colored=0x7f0b0084;
+        public static final int Base_Widget_AppCompat_Button_Small=0x7f0b0065;
+        public static final int Base_Widget_AppCompat_ButtonBar=0x7f0b0066;
+        public static final int Base_Widget_AppCompat_ButtonBar_AlertDialog=0x7f0b00b1;
+        public static final int Base_Widget_AppCompat_CompoundButton_CheckBox=0x7f0b0067;
+        public static final int Base_Widget_AppCompat_CompoundButton_RadioButton=0x7f0b0068;
+        public static final int Base_Widget_AppCompat_CompoundButton_Switch=0x7f0b00b2;
         public static final int Base_Widget_AppCompat_DrawerArrowToggle=0x7f0b0000;
-        public static final int Base_Widget_AppCompat_DrawerArrowToggle_Common=0x7f0b00aa;
-        public static final int Base_Widget_AppCompat_DropDownItem_Spinner=0x7f0b0063;
-        public static final int Base_Widget_AppCompat_EditText=0x7f0b0019;
-        public static final int Base_Widget_AppCompat_ImageButton=0x7f0b0064;
-        public static final int Base_Widget_AppCompat_Light_ActionBar=0x7f0b00ab;
-        public static final int Base_Widget_AppCompat_Light_ActionBar_Solid=0x7f0b00ac;
-        public static final int Base_Widget_AppCompat_Light_ActionBar_TabBar=0x7f0b00ad;
-        public static final int Base_Widget_AppCompat_Light_ActionBar_TabText=0x7f0b0065;
-        public static final int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse=0x7f0b0066;
-        public static final int Base_Widget_AppCompat_Light_ActionBar_TabView=0x7f0b0067;
-        public static final int Base_Widget_AppCompat_Light_PopupMenu=0x7f0b0068;
-        public static final int Base_Widget_AppCompat_Light_PopupMenu_Overflow=0x7f0b0069;
-        public static final int Base_Widget_AppCompat_ListPopupWindow=0x7f0b006a;
-        public static final int Base_Widget_AppCompat_ListView=0x7f0b006b;
-        public static final int Base_Widget_AppCompat_ListView_DropDown=0x7f0b006c;
-        public static final int Base_Widget_AppCompat_ListView_Menu=0x7f0b006d;
-        public static final int Base_Widget_AppCompat_PopupMenu=0x7f0b006e;
-        public static final int Base_Widget_AppCompat_PopupMenu_Overflow=0x7f0b006f;
-        public static final int Base_Widget_AppCompat_PopupWindow=0x7f0b00ae;
-        public static final int Base_Widget_AppCompat_ProgressBar=0x7f0b000f;
-        public static final int Base_Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0010;
-        public static final int Base_Widget_AppCompat_RatingBar=0x7f0b0070;
-        public static final int Base_Widget_AppCompat_SearchView=0x7f0b00af;
-        public static final int Base_Widget_AppCompat_SearchView_ActionBar=0x7f0b00b0;
-        public static final int Base_Widget_AppCompat_SeekBar=0x7f0b0071;
-        public static final int Base_Widget_AppCompat_Spinner=0x7f0b0072;
+        public static final int Base_Widget_AppCompat_DrawerArrowToggle_Common=0x7f0b00b3;
+        public static final int Base_Widget_AppCompat_DropDownItem_Spinner=0x7f0b0069;
+        public static final int Base_Widget_AppCompat_EditText=0x7f0b0020;
+        public static final int Base_Widget_AppCompat_ImageButton=0x7f0b006a;
+        public static final int Base_Widget_AppCompat_Light_ActionBar=0x7f0b00b4;
+        public static final int Base_Widget_AppCompat_Light_ActionBar_Solid=0x7f0b00b5;
+        public static final int Base_Widget_AppCompat_Light_ActionBar_TabBar=0x7f0b00b6;
+        public static final int Base_Widget_AppCompat_Light_ActionBar_TabText=0x7f0b006b;
+        public static final int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse=0x7f0b006c;
+        public static final int Base_Widget_AppCompat_Light_ActionBar_TabView=0x7f0b006d;
+        public static final int Base_Widget_AppCompat_Light_PopupMenu=0x7f0b006e;
+        public static final int Base_Widget_AppCompat_Light_PopupMenu_Overflow=0x7f0b006f;
+        public static final int Base_Widget_AppCompat_ListPopupWindow=0x7f0b0070;
+        public static final int Base_Widget_AppCompat_ListView=0x7f0b0071;
+        public static final int Base_Widget_AppCompat_ListView_DropDown=0x7f0b0072;
+        public static final int Base_Widget_AppCompat_ListView_Menu=0x7f0b0073;
+        public static final int Base_Widget_AppCompat_PopupMenu=0x7f0b0074;
+        public static final int Base_Widget_AppCompat_PopupMenu_Overflow=0x7f0b0075;
+        public static final int Base_Widget_AppCompat_PopupWindow=0x7f0b00b7;
+        public static final int Base_Widget_AppCompat_ProgressBar=0x7f0b0016;
+        public static final int Base_Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0017;
+        public static final int Base_Widget_AppCompat_RatingBar=0x7f0b0076;
+        public static final int Base_Widget_AppCompat_RatingBar_Indicator=0x7f0b0085;
+        public static final int Base_Widget_AppCompat_RatingBar_Small=0x7f0b0086;
+        public static final int Base_Widget_AppCompat_SearchView=0x7f0b00b8;
+        public static final int Base_Widget_AppCompat_SearchView_ActionBar=0x7f0b00b9;
+        public static final int Base_Widget_AppCompat_SeekBar=0x7f0b0077;
+        public static final int Base_Widget_AppCompat_Spinner=0x7f0b0078;
         public static final int Base_Widget_AppCompat_Spinner_Underlined=0x7f0b0004;
-        public static final int Base_Widget_AppCompat_TextView_SpinnerItem=0x7f0b0073;
-        public static final int Base_Widget_AppCompat_Toolbar=0x7f0b00b1;
-        public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0074;
-        public static final int Base_Widget_Design_TabLayout=0x7f0b00b2;
-        public static final int DarkButton=0x7f0b00b3;
-        public static final int DarkLinearLayout=0x7f0b00b4;
-        public static final int DarkTheme=0x7f0b00b5;
-        public static final int LightButton=0x7f0b00b6;
-        public static final int LightLinearLayout=0x7f0b00b7;
-        public static final int PickerEditText=0x7f0b00b8;
-        public static final int Platform_AppCompat=0x7f0b0011;
-        public static final int Platform_AppCompat_Light=0x7f0b0012;
-        public static final int Platform_ThemeOverlay_AppCompat=0x7f0b0075;
-        public static final int Platform_ThemeOverlay_AppCompat_Dark=0x7f0b0076;
-        public static final int Platform_ThemeOverlay_AppCompat_Light=0x7f0b0077;
-        public static final int Platform_V11_AppCompat=0x7f0b0013;
-        public static final int Platform_V11_AppCompat_Light=0x7f0b0014;
-        public static final int Platform_V14_AppCompat=0x7f0b001b;
-        public static final int Platform_V14_AppCompat_Light=0x7f0b001c;
-        public static final int Platform_Widget_AppCompat_Spinner=0x7f0b0015;
-        public static final int RtlOverlay_DialogWindowTitle_AppCompat=0x7f0b0022;
-        public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem=0x7f0b0023;
-        public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon=0x7f0b0024;
-        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem=0x7f0b0025;
-        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup=0x7f0b0026;
-        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text=0x7f0b0027;
-        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown=0x7f0b0028;
-        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1=0x7f0b0029;
-        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2=0x7f0b002a;
-        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query=0x7f0b002b;
-        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text=0x7f0b002c;
-        public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon=0x7f0b002d;
-        public static final int RtlUnderlay_Widget_AppCompat_ActionButton=0x7f0b002e;
-        public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow=0x7f0b002f;
-        public static final int TextAppearance_AppCompat=0x7f0b00b9;
-        public static final int TextAppearance_AppCompat_Body1=0x7f0b00ba;
-        public static final int TextAppearance_AppCompat_Body2=0x7f0b00bb;
-        public static final int TextAppearance_AppCompat_Button=0x7f0b00bc;
-        public static final int TextAppearance_AppCompat_Caption=0x7f0b00bd;
-        public static final int TextAppearance_AppCompat_Display1=0x7f0b00be;
-        public static final int TextAppearance_AppCompat_Display2=0x7f0b00bf;
-        public static final int TextAppearance_AppCompat_Display3=0x7f0b00c0;
-        public static final int TextAppearance_AppCompat_Display4=0x7f0b00c1;
-        public static final int TextAppearance_AppCompat_Headline=0x7f0b00c2;
-        public static final int TextAppearance_AppCompat_Inverse=0x7f0b00c3;
-        public static final int TextAppearance_AppCompat_Large=0x7f0b00c4;
-        public static final int TextAppearance_AppCompat_Large_Inverse=0x7f0b00c5;
-        public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle=0x7f0b00c6;
-        public static final int TextAppearance_AppCompat_Light_SearchResult_Title=0x7f0b00c7;
-        public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large=0x7f0b00c8;
-        public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small=0x7f0b00c9;
-        public static final int TextAppearance_AppCompat_Medium=0x7f0b00ca;
-        public static final int TextAppearance_AppCompat_Medium_Inverse=0x7f0b00cb;
-        public static final int TextAppearance_AppCompat_Menu=0x7f0b00cc;
-        public static final int TextAppearance_AppCompat_SearchResult_Subtitle=0x7f0b00cd;
-        public static final int TextAppearance_AppCompat_SearchResult_Title=0x7f0b00ce;
-        public static final int TextAppearance_AppCompat_Small=0x7f0b00cf;
-        public static final int TextAppearance_AppCompat_Small_Inverse=0x7f0b00d0;
-        public static final int TextAppearance_AppCompat_Subhead=0x7f0b00d1;
-        public static final int TextAppearance_AppCompat_Subhead_Inverse=0x7f0b00d2;
-        public static final int TextAppearance_AppCompat_Title=0x7f0b00d3;
-        public static final int TextAppearance_AppCompat_Title_Inverse=0x7f0b00d4;
-        public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu=0x7f0b00d5;
-        public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle=0x7f0b00d6;
-        public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse=0x7f0b00d7;
-        public static final int TextAppearance_AppCompat_Widget_ActionBar_Title=0x7f0b00d8;
-        public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse=0x7f0b00d9;
-        public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle=0x7f0b00da;
-        public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse=0x7f0b00db;
-        public static final int TextAppearance_AppCompat_Widget_ActionMode_Title=0x7f0b00dc;
-        public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse=0x7f0b00dd;
-        public static final int TextAppearance_AppCompat_Widget_Button=0x7f0b00de;
-        public static final int TextAppearance_AppCompat_Widget_Button_Inverse=0x7f0b00df;
-        public static final int TextAppearance_AppCompat_Widget_DropDownItem=0x7f0b00e0;
-        public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large=0x7f0b00e1;
-        public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b00e2;
-        public static final int TextAppearance_AppCompat_Widget_Switch=0x7f0b00e3;
-        public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem=0x7f0b00e4;
-        public static final int TextAppearance_Design_CollapsingToolbar_Expanded=0x7f0b00e5;
-        public static final int TextAppearance_Design_Counter=0x7f0b00e6;
-        public static final int TextAppearance_Design_Counter_Overflow=0x7f0b00e7;
-        public static final int TextAppearance_Design_Error=0x7f0b00e8;
-        public static final int TextAppearance_Design_Hint=0x7f0b00e9;
-        public static final int TextAppearance_Design_Snackbar_Message=0x7f0b00ea;
-        public static final int TextAppearance_Design_Tab=0x7f0b00eb;
-        public static final int TextAppearance_StatusBar_EventContent=0x7f0b001d;
-        public static final int TextAppearance_StatusBar_EventContent_Info=0x7f0b001e;
-        public static final int TextAppearance_StatusBar_EventContent_Line2=0x7f0b001f;
-        public static final int TextAppearance_StatusBar_EventContent_Time=0x7f0b0020;
-        public static final int TextAppearance_StatusBar_EventContent_Title=0x7f0b0021;
-        public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0b00ec;
-        public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle=0x7f0b00ed;
-        public static final int TextAppearance_Widget_AppCompat_Toolbar_Title=0x7f0b00ee;
-        public static final int Theme_AppCompat=0x7f0b00ef;
-        public static final int Theme_AppCompat_CompactMenu=0x7f0b00f0;
-        public static final int Theme_AppCompat_Dialog=0x7f0b00f1;
-        public static final int Theme_AppCompat_Dialog_Alert=0x7f0b00f2;
-        public static final int Theme_AppCompat_Dialog_MinWidth=0x7f0b00f3;
-        public static final int Theme_AppCompat_DialogWhenLarge=0x7f0b00f4;
-        public static final int Theme_AppCompat_Light=0x7f0b00f5;
-        public static final int Theme_AppCompat_Light_DarkActionBar=0x7f0b00f6;
-        public static final int Theme_AppCompat_Light_Dialog=0x7f0b00f7;
-        public static final int Theme_AppCompat_Light_Dialog_Alert=0x7f0b00f8;
-        public static final int Theme_AppCompat_Light_Dialog_MinWidth=0x7f0b00f9;
-        public static final int Theme_AppCompat_Light_DialogWhenLarge=0x7f0b00fa;
-        public static final int Theme_AppCompat_Light_NoActionBar=0x7f0b00fb;
-        public static final int Theme_AppCompat_NoActionBar=0x7f0b00fc;
-        public static final int ThemeOverlay_AppCompat=0x7f0b00fd;
-        public static final int ThemeOverlay_AppCompat_ActionBar=0x7f0b00fe;
-        public static final int ThemeOverlay_AppCompat_Dark=0x7f0b00ff;
-        public static final int ThemeOverlay_AppCompat_Dark_ActionBar=0x7f0b0100;
-        public static final int ThemeOverlay_AppCompat_Light=0x7f0b0101;
-        public static final int Widget_AppCompat_ActionBar=0x7f0b0102;
-        public static final int Widget_AppCompat_ActionBar_Solid=0x7f0b0103;
-        public static final int Widget_AppCompat_ActionBar_TabBar=0x7f0b0104;
-        public static final int Widget_AppCompat_ActionBar_TabText=0x7f0b0105;
-        public static final int Widget_AppCompat_ActionBar_TabView=0x7f0b0106;
-        public static final int Widget_AppCompat_ActionButton=0x7f0b0107;
-        public static final int Widget_AppCompat_ActionButton_CloseMode=0x7f0b0108;
-        public static final int Widget_AppCompat_ActionButton_Overflow=0x7f0b0109;
-        public static final int Widget_AppCompat_ActionMode=0x7f0b010a;
-        public static final int Widget_AppCompat_ActivityChooserView=0x7f0b010b;
-        public static final int Widget_AppCompat_AutoCompleteTextView=0x7f0b010c;
-        public static final int Widget_AppCompat_Button=0x7f0b010d;
-        public static final int Widget_AppCompat_Button_Borderless=0x7f0b010e;
-        public static final int Widget_AppCompat_Button_Borderless_Colored=0x7f0b010f;
-        public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog=0x7f0b0110;
-        public static final int Widget_AppCompat_Button_Colored=0x7f0b0111;
-        public static final int Widget_AppCompat_Button_Small=0x7f0b0112;
-        public static final int Widget_AppCompat_ButtonBar=0x7f0b0113;
-        public static final int Widget_AppCompat_ButtonBar_AlertDialog=0x7f0b0114;
-        public static final int Widget_AppCompat_CompoundButton_CheckBox=0x7f0b0115;
-        public static final int Widget_AppCompat_CompoundButton_RadioButton=0x7f0b0116;
-        public static final int Widget_AppCompat_CompoundButton_Switch=0x7f0b0117;
-        public static final int Widget_AppCompat_DrawerArrowToggle=0x7f0b0118;
-        public static final int Widget_AppCompat_DropDownItem_Spinner=0x7f0b0119;
-        public static final int Widget_AppCompat_EditText=0x7f0b011a;
-        public static final int Widget_AppCompat_ImageButton=0x7f0b011b;
-        public static final int Widget_AppCompat_Light_ActionBar=0x7f0b011c;
-        public static final int Widget_AppCompat_Light_ActionBar_Solid=0x7f0b011d;
-        public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse=0x7f0b011e;
-        public static final int Widget_AppCompat_Light_ActionBar_TabBar=0x7f0b011f;
-        public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse=0x7f0b0120;
-        public static final int Widget_AppCompat_Light_ActionBar_TabText=0x7f0b0121;
-        public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse=0x7f0b0122;
-        public static final int Widget_AppCompat_Light_ActionBar_TabView=0x7f0b0123;
-        public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse=0x7f0b0124;
-        public static final int Widget_AppCompat_Light_ActionButton=0x7f0b0125;
-        public static final int Widget_AppCompat_Light_ActionButton_CloseMode=0x7f0b0126;
-        public static final int Widget_AppCompat_Light_ActionButton_Overflow=0x7f0b0127;
-        public static final int Widget_AppCompat_Light_ActionMode_Inverse=0x7f0b0128;
-        public static final int Widget_AppCompat_Light_ActivityChooserView=0x7f0b0129;
-        public static final int Widget_AppCompat_Light_AutoCompleteTextView=0x7f0b012a;
-        public static final int Widget_AppCompat_Light_DropDownItem_Spinner=0x7f0b012b;
-        public static final int Widget_AppCompat_Light_ListPopupWindow=0x7f0b012c;
-        public static final int Widget_AppCompat_Light_ListView_DropDown=0x7f0b012d;
-        public static final int Widget_AppCompat_Light_PopupMenu=0x7f0b012e;
-        public static final int Widget_AppCompat_Light_PopupMenu_Overflow=0x7f0b012f;
-        public static final int Widget_AppCompat_Light_SearchView=0x7f0b0130;
-        public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar=0x7f0b0131;
-        public static final int Widget_AppCompat_ListPopupWindow=0x7f0b0132;
-        public static final int Widget_AppCompat_ListView=0x7f0b0133;
-        public static final int Widget_AppCompat_ListView_DropDown=0x7f0b0134;
-        public static final int Widget_AppCompat_ListView_Menu=0x7f0b0135;
-        public static final int Widget_AppCompat_PopupMenu=0x7f0b0136;
-        public static final int Widget_AppCompat_PopupMenu_Overflow=0x7f0b0137;
-        public static final int Widget_AppCompat_PopupWindow=0x7f0b0138;
-        public static final int Widget_AppCompat_ProgressBar=0x7f0b0139;
-        public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b013a;
-        public static final int Widget_AppCompat_RatingBar=0x7f0b013b;
-        public static final int Widget_AppCompat_SearchView=0x7f0b013c;
-        public static final int Widget_AppCompat_SearchView_ActionBar=0x7f0b013d;
-        public static final int Widget_AppCompat_SeekBar=0x7f0b013e;
-        public static final int Widget_AppCompat_Spinner=0x7f0b013f;
-        public static final int Widget_AppCompat_Spinner_DropDown=0x7f0b0140;
-        public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0141;
-        public static final int Widget_AppCompat_Spinner_Underlined=0x7f0b0142;
-        public static final int Widget_AppCompat_TextView_SpinnerItem=0x7f0b0143;
-        public static final int Widget_AppCompat_Toolbar=0x7f0b0144;
-        public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0145;
-        public static final int Widget_Design_AppBarLayout=0x7f0b0146;
-        public static final int Widget_Design_CollapsingToolbar=0x7f0b0147;
-        public static final int Widget_Design_CoordinatorLayout=0x7f0b0148;
-        public static final int Widget_Design_FloatingActionButton=0x7f0b0149;
-        public static final int Widget_Design_NavigationView=0x7f0b014a;
-        public static final int Widget_Design_ScrimInsetsFrameLayout=0x7f0b014b;
-        public static final int Widget_Design_Snackbar=0x7f0b014c;
+        public static final int Base_Widget_AppCompat_TextView_SpinnerItem=0x7f0b0079;
+        public static final int Base_Widget_AppCompat_Toolbar=0x7f0b00ba;
+        public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b007a;
+        public static final int Base_Widget_Design_TabLayout=0x7f0b00bb;
+        public static final int DarkButton=0x7f0b00bc;
+        public static final int DarkLinearLayout=0x7f0b00bd;
+        public static final int DarkTheme=0x7f0b00be;
+        public static final int LightButton=0x7f0b00bf;
+        public static final int LightLinearLayout=0x7f0b00c0;
+        public static final int PickerEditText=0x7f0b00c1;
+        public static final int Platform_AppCompat=0x7f0b0018;
+        public static final int Platform_AppCompat_Light=0x7f0b0019;
+        public static final int Platform_ThemeOverlay_AppCompat=0x7f0b007b;
+        public static final int Platform_ThemeOverlay_AppCompat_Dark=0x7f0b007c;
+        public static final int Platform_ThemeOverlay_AppCompat_Light=0x7f0b007d;
+        public static final int Platform_V11_AppCompat=0x7f0b001a;
+        public static final int Platform_V11_AppCompat_Light=0x7f0b001b;
+        public static final int Platform_V14_AppCompat=0x7f0b0022;
+        public static final int Platform_V14_AppCompat_Light=0x7f0b0023;
+        public static final int Platform_Widget_AppCompat_Spinner=0x7f0b001c;
+        public static final int RtlOverlay_DialogWindowTitle_AppCompat=0x7f0b0029;
+        public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem=0x7f0b002a;
+        public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon=0x7f0b002b;
+        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem=0x7f0b002c;
+        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup=0x7f0b002d;
+        public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text=0x7f0b002e;
+        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown=0x7f0b002f;
+        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1=0x7f0b0030;
+        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2=0x7f0b0031;
+        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query=0x7f0b0032;
+        public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text=0x7f0b0033;
+        public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon=0x7f0b0034;
+        public static final int RtlUnderlay_Widget_AppCompat_ActionButton=0x7f0b0035;
+        public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow=0x7f0b0036;
+        public static final int TextAppearance_AppCompat=0x7f0b00c2;
+        public static final int TextAppearance_AppCompat_Body1=0x7f0b00c3;
+        public static final int TextAppearance_AppCompat_Body2=0x7f0b00c4;
+        public static final int TextAppearance_AppCompat_Button=0x7f0b00c5;
+        public static final int TextAppearance_AppCompat_Caption=0x7f0b00c6;
+        public static final int TextAppearance_AppCompat_Display1=0x7f0b00c7;
+        public static final int TextAppearance_AppCompat_Display2=0x7f0b00c8;
+        public static final int TextAppearance_AppCompat_Display3=0x7f0b00c9;
+        public static final int TextAppearance_AppCompat_Display4=0x7f0b00ca;
+        public static final int TextAppearance_AppCompat_Headline=0x7f0b00cb;
+        public static final int TextAppearance_AppCompat_Inverse=0x7f0b00cc;
+        public static final int TextAppearance_AppCompat_Large=0x7f0b00cd;
+        public static final int TextAppearance_AppCompat_Large_Inverse=0x7f0b00ce;
+        public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle=0x7f0b00cf;
+        public static final int TextAppearance_AppCompat_Light_SearchResult_Title=0x7f0b00d0;
+        public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large=0x7f0b00d1;
+        public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small=0x7f0b00d2;
+        public static final int TextAppearance_AppCompat_Medium=0x7f0b00d3;
+        public static final int TextAppearance_AppCompat_Medium_Inverse=0x7f0b00d4;
+        public static final int TextAppearance_AppCompat_Menu=0x7f0b00d5;
+        public static final int TextAppearance_AppCompat_SearchResult_Subtitle=0x7f0b00d6;
+        public static final int TextAppearance_AppCompat_SearchResult_Title=0x7f0b00d7;
+        public static final int TextAppearance_AppCompat_Small=0x7f0b00d8;
+        public static final int TextAppearance_AppCompat_Small_Inverse=0x7f0b00d9;
+        public static final int TextAppearance_AppCompat_Subhead=0x7f0b00da;
+        public static final int TextAppearance_AppCompat_Subhead_Inverse=0x7f0b00db;
+        public static final int TextAppearance_AppCompat_Title=0x7f0b00dc;
+        public static final int TextAppearance_AppCompat_Title_Inverse=0x7f0b00dd;
+        public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu=0x7f0b00de;
+        public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle=0x7f0b00df;
+        public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse=0x7f0b00e0;
+        public static final int TextAppearance_AppCompat_Widget_ActionBar_Title=0x7f0b00e1;
+        public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse=0x7f0b00e2;
+        public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle=0x7f0b00e3;
+        public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse=0x7f0b00e4;
+        public static final int TextAppearance_AppCompat_Widget_ActionMode_Title=0x7f0b00e5;
+        public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse=0x7f0b00e6;
+        public static final int TextAppearance_AppCompat_Widget_Button=0x7f0b00e7;
+        public static final int TextAppearance_AppCompat_Widget_Button_Inverse=0x7f0b00e8;
+        public static final int TextAppearance_AppCompat_Widget_DropDownItem=0x7f0b00e9;
+        public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large=0x7f0b00ea;
+        public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b00eb;
+        public static final int TextAppearance_AppCompat_Widget_Switch=0x7f0b00ec;
+        public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem=0x7f0b00ed;
+        public static final int TextAppearance_Design_CollapsingToolbar_Expanded=0x7f0b00ee;
+        public static final int TextAppearance_Design_Counter=0x7f0b00ef;
+        public static final int TextAppearance_Design_Counter_Overflow=0x7f0b00f0;
+        public static final int TextAppearance_Design_Error=0x7f0b00f1;
+        public static final int TextAppearance_Design_Hint=0x7f0b00f2;
+        public static final int TextAppearance_Design_Snackbar_Message=0x7f0b00f3;
+        public static final int TextAppearance_Design_Tab=0x7f0b00f4;
+        public static final int TextAppearance_StatusBar_EventContent=0x7f0b0024;
+        public static final int TextAppearance_StatusBar_EventContent_Info=0x7f0b0025;
+        public static final int TextAppearance_StatusBar_EventContent_Line2=0x7f0b0026;
+        public static final int TextAppearance_StatusBar_EventContent_Time=0x7f0b0027;
+        public static final int TextAppearance_StatusBar_EventContent_Title=0x7f0b0028;
+        public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0b00f5;
+        public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle=0x7f0b00f6;
+        public static final int TextAppearance_Widget_AppCompat_Toolbar_Title=0x7f0b00f7;
+        public static final int Theme_AppCompat=0x7f0b00f8;
+        public static final int Theme_AppCompat_CompactMenu=0x7f0b00f9;
+        public static final int Theme_AppCompat_DayNight=0x7f0b0005;
+        public static final int Theme_AppCompat_DayNight_DarkActionBar=0x7f0b0006;
+        public static final int Theme_AppCompat_DayNight_Dialog=0x7f0b0007;
+        public static final int Theme_AppCompat_DayNight_Dialog_Alert=0x7f0b0008;
+        public static final int Theme_AppCompat_DayNight_Dialog_MinWidth=0x7f0b0009;
+        public static final int Theme_AppCompat_DayNight_DialogWhenLarge=0x7f0b000a;
+        public static final int Theme_AppCompat_DayNight_NoActionBar=0x7f0b000b;
+        public static final int Theme_AppCompat_Dialog=0x7f0b00fa;
+        public static final int Theme_AppCompat_Dialog_Alert=0x7f0b00fb;
+        public static final int Theme_AppCompat_Dialog_MinWidth=0x7f0b00fc;
+        public static final int Theme_AppCompat_DialogWhenLarge=0x7f0b00fd;
+        public static final int Theme_AppCompat_Light=0x7f0b00fe;
+        public static final int Theme_AppCompat_Light_DarkActionBar=0x7f0b00ff;
+        public static final int Theme_AppCompat_Light_Dialog=0x7f0b0100;
+        public static final int Theme_AppCompat_Light_Dialog_Alert=0x7f0b0101;
+        public static final int Theme_AppCompat_Light_Dialog_MinWidth=0x7f0b0102;
+        public static final int Theme_AppCompat_Light_DialogWhenLarge=0x7f0b0103;
+        public static final int Theme_AppCompat_Light_NoActionBar=0x7f0b0104;
+        public static final int Theme_AppCompat_NoActionBar=0x7f0b0105;
+        public static final int ThemeOverlay_AppCompat=0x7f0b0106;
+        public static final int ThemeOverlay_AppCompat_ActionBar=0x7f0b0107;
+        public static final int ThemeOverlay_AppCompat_Dark=0x7f0b0108;
+        public static final int ThemeOverlay_AppCompat_Dark_ActionBar=0x7f0b0109;
+        public static final int ThemeOverlay_AppCompat_Light=0x7f0b010a;
+        public static final int Widget_AppCompat_ActionBar=0x7f0b010b;
+        public static final int Widget_AppCompat_ActionBar_Solid=0x7f0b010c;
+        public static final int Widget_AppCompat_ActionBar_TabBar=0x7f0b010d;
+        public static final int Widget_AppCompat_ActionBar_TabText=0x7f0b010e;
+        public static final int Widget_AppCompat_ActionBar_TabView=0x7f0b010f;
+        public static final int Widget_AppCompat_ActionButton=0x7f0b0110;
+        public static final int Widget_AppCompat_ActionButton_CloseMode=0x7f0b0111;
+        public static final int Widget_AppCompat_ActionButton_Overflow=0x7f0b0112;
+        public static final int Widget_AppCompat_ActionMode=0x7f0b0113;
+        public static final int Widget_AppCompat_ActivityChooserView=0x7f0b0114;
+        public static final int Widget_AppCompat_AutoCompleteTextView=0x7f0b0115;
+        public static final int Widget_AppCompat_Button=0x7f0b0116;
+        public static final int Widget_AppCompat_Button_Borderless=0x7f0b0117;
+        public static final int Widget_AppCompat_Button_Borderless_Colored=0x7f0b0118;
+        public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog=0x7f0b0119;
+        public static final int Widget_AppCompat_Button_Colored=0x7f0b011a;
+        public static final int Widget_AppCompat_Button_Small=0x7f0b011b;
+        public static final int Widget_AppCompat_ButtonBar=0x7f0b011c;
+        public static final int Widget_AppCompat_ButtonBar_AlertDialog=0x7f0b011d;
+        public static final int Widget_AppCompat_CompoundButton_CheckBox=0x7f0b011e;
+        public static final int Widget_AppCompat_CompoundButton_RadioButton=0x7f0b011f;
+        public static final int Widget_AppCompat_CompoundButton_Switch=0x7f0b0120;
+        public static final int Widget_AppCompat_DrawerArrowToggle=0x7f0b0121;
+        public static final int Widget_AppCompat_DropDownItem_Spinner=0x7f0b0122;
+        public static final int Widget_AppCompat_EditText=0x7f0b0123;
+        public static final int Widget_AppCompat_ImageButton=0x7f0b0124;
+        public static final int Widget_AppCompat_Light_ActionBar=0x7f0b0125;
+        public static final int Widget_AppCompat_Light_ActionBar_Solid=0x7f0b0126;
+        public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse=0x7f0b0127;
+        public static final int Widget_AppCompat_Light_ActionBar_TabBar=0x7f0b0128;
+        public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse=0x7f0b0129;
+        public static final int Widget_AppCompat_Light_ActionBar_TabText=0x7f0b012a;
+        public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse=0x7f0b012b;
+        public static final int Widget_AppCompat_Light_ActionBar_TabView=0x7f0b012c;
+        public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse=0x7f0b012d;
+        public static final int Widget_AppCompat_Light_ActionButton=0x7f0b012e;
+        public static final int Widget_AppCompat_Light_ActionButton_CloseMode=0x7f0b012f;
+        public static final int Widget_AppCompat_Light_ActionButton_Overflow=0x7f0b0130;
+        public static final int Widget_AppCompat_Light_ActionMode_Inverse=0x7f0b0131;
+        public static final int Widget_AppCompat_Light_ActivityChooserView=0x7f0b0132;
+        public static final int Widget_AppCompat_Light_AutoCompleteTextView=0x7f0b0133;
+        public static final int Widget_AppCompat_Light_DropDownItem_Spinner=0x7f0b0134;
+        public static final int Widget_AppCompat_Light_ListPopupWindow=0x7f0b0135;
+        public static final int Widget_AppCompat_Light_ListView_DropDown=0x7f0b0136;
+        public static final int Widget_AppCompat_Light_PopupMenu=0x7f0b0137;
+        public static final int Widget_AppCompat_Light_PopupMenu_Overflow=0x7f0b0138;
+        public static final int Widget_AppCompat_Light_SearchView=0x7f0b0139;
+        public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar=0x7f0b013a;
+        public static final int Widget_AppCompat_ListPopupWindow=0x7f0b013b;
+        public static final int Widget_AppCompat_ListView=0x7f0b013c;
+        public static final int Widget_AppCompat_ListView_DropDown=0x7f0b013d;
+        public static final int Widget_AppCompat_ListView_Menu=0x7f0b013e;
+        public static final int Widget_AppCompat_PopupMenu=0x7f0b013f;
+        public static final int Widget_AppCompat_PopupMenu_Overflow=0x7f0b0140;
+        public static final int Widget_AppCompat_PopupWindow=0x7f0b0141;
+        public static final int Widget_AppCompat_ProgressBar=0x7f0b0142;
+        public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0143;
+        public static final int Widget_AppCompat_RatingBar=0x7f0b0144;
+        public static final int Widget_AppCompat_RatingBar_Indicator=0x7f0b0145;
+        public static final int Widget_AppCompat_RatingBar_Small=0x7f0b0146;
+        public static final int Widget_AppCompat_SearchView=0x7f0b0147;
+        public static final int Widget_AppCompat_SearchView_ActionBar=0x7f0b0148;
+        public static final int Widget_AppCompat_SeekBar=0x7f0b0149;
+        public static final int Widget_AppCompat_Spinner=0x7f0b014a;
+        public static final int Widget_AppCompat_Spinner_DropDown=0x7f0b014b;
+        public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b014c;
+        public static final int Widget_AppCompat_Spinner_Underlined=0x7f0b014d;
+        public static final int Widget_AppCompat_TextView_SpinnerItem=0x7f0b014e;
+        public static final int Widget_AppCompat_Toolbar=0x7f0b014f;
+        public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0150;
+        public static final int Widget_Design_AppBarLayout=0x7f0b0151;
+        public static final int Widget_Design_CollapsingToolbar=0x7f0b0152;
+        public static final int Widget_Design_CoordinatorLayout=0x7f0b0153;
+        public static final int Widget_Design_FloatingActionButton=0x7f0b0154;
+        public static final int Widget_Design_NavigationView=0x7f0b0155;
+        public static final int Widget_Design_ScrimInsetsFrameLayout=0x7f0b0156;
+        public static final int Widget_Design_Snackbar=0x7f0b0157;
         public static final int Widget_Design_TabLayout=0x7f0b0001;
-        public static final int Widget_Design_TextInputLayout=0x7f0b014d;
+        public static final int Widget_Design_TextInputLayout=0x7f0b0158;
     }
     public static final class xml {
         public static final int preferences=0x7f060000;
@@ -3204,7 +3254,7 @@ containing a value of this type.
             0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011,
             0x7f010012, 0x7f010013, 0x7f010014, 0x7f010015,
             0x7f010016, 0x7f010017, 0x7f010018, 0x7f010019,
-            0x7f01001a, 0x7f01001b, 0x7f0100c8
+            0x7f01001a, 0x7f01001b, 0x7f010057
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#background}
@@ -3912,6 +3962,37 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name org.secuso.privacyfriendlyboardgameclock:layout_scrollInterpolator
         */
         public static final int AppBarLayout_LayoutParams_layout_scrollInterpolator = 1;
+        /** Attributes that can be used with a AppCompatImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AppCompatImageView_android_src android:src}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatImageView_srcCompat org.secuso.privacyfriendlyboardgameclock:srcCompat}</code></td><td></td></tr>
+           </table>
+           @see #AppCompatImageView_android_src
+           @see #AppCompatImageView_srcCompat
+         */
+        public static final int[] AppCompatImageView = {
+            0x01010119, 0x7f010027
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#src}
+          attribute's value can be found in the {@link #AppCompatImageView} array.
+          @attr name android:src
+        */
+        public static final int AppCompatImageView_android_src = 0;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#srcCompat}
+          attribute's value can be found in the {@link #AppCompatImageView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:srcCompat
+        */
+        public static final int AppCompatImageView_srcCompat = 1;
         /** Attributes that can be used with a AppCompatTextView.
            <p>Includes the following attributes:</p>
            <table>
@@ -3925,7 +4006,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #AppCompatTextView_textAllCaps
          */
         public static final int[] AppCompatTextView = {
-            0x01010034, 0x7f010027
+            0x01010034, 0x7f010028
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#textAppearance}
@@ -3944,6 +4025,1564 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name org.secuso.privacyfriendlyboardgameclock:textAllCaps
         */
         public static final int AppCompatTextView_textAllCaps = 1;
+        /** Attributes that can be used with a AppCompatTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarDivider org.secuso.privacyfriendlyboardgameclock:actionBarDivider}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarItemBackground org.secuso.privacyfriendlyboardgameclock:actionBarItemBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarPopupTheme org.secuso.privacyfriendlyboardgameclock:actionBarPopupTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarSize org.secuso.privacyfriendlyboardgameclock:actionBarSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarSplitStyle org.secuso.privacyfriendlyboardgameclock:actionBarSplitStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarStyle org.secuso.privacyfriendlyboardgameclock:actionBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabBarStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTabTextStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabTextStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarTheme org.secuso.privacyfriendlyboardgameclock:actionBarTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionBarWidgetTheme org.secuso.privacyfriendlyboardgameclock:actionBarWidgetTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionButtonStyle org.secuso.privacyfriendlyboardgameclock:actionButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionDropDownStyle org.secuso.privacyfriendlyboardgameclock:actionDropDownStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionMenuTextAppearance org.secuso.privacyfriendlyboardgameclock:actionMenuTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionMenuTextColor org.secuso.privacyfriendlyboardgameclock:actionMenuTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeBackground org.secuso.privacyfriendlyboardgameclock:actionModeBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCloseButtonStyle org.secuso.privacyfriendlyboardgameclock:actionModeCloseButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCloseDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCloseDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCopyDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCopyDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeCutDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCutDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeFindDrawable org.secuso.privacyfriendlyboardgameclock:actionModeFindDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModePasteDrawable org.secuso.privacyfriendlyboardgameclock:actionModePasteDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModePopupWindowStyle org.secuso.privacyfriendlyboardgameclock:actionModePopupWindowStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeSelectAllDrawable org.secuso.privacyfriendlyboardgameclock:actionModeSelectAllDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeShareDrawable org.secuso.privacyfriendlyboardgameclock:actionModeShareDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeSplitBackground org.secuso.privacyfriendlyboardgameclock:actionModeSplitBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeStyle org.secuso.privacyfriendlyboardgameclock:actionModeStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionModeWebSearchDrawable org.secuso.privacyfriendlyboardgameclock:actionModeWebSearchDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionOverflowButtonStyle org.secuso.privacyfriendlyboardgameclock:actionOverflowButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_actionOverflowMenuStyle org.secuso.privacyfriendlyboardgameclock:actionOverflowMenuStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_activityChooserViewStyle org.secuso.privacyfriendlyboardgameclock:activityChooserViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogButtonGroupStyle org.secuso.privacyfriendlyboardgameclock:alertDialogButtonGroupStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogCenterButtons org.secuso.privacyfriendlyboardgameclock:alertDialogCenterButtons}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogStyle org.secuso.privacyfriendlyboardgameclock:alertDialogStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_alertDialogTheme org.secuso.privacyfriendlyboardgameclock:alertDialogTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_android_windowAnimationStyle android:windowAnimationStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_android_windowIsFloating android:windowIsFloating}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_autoCompleteTextViewStyle org.secuso.privacyfriendlyboardgameclock:autoCompleteTextViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_borderlessButtonStyle org.secuso.privacyfriendlyboardgameclock:borderlessButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarNegativeButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarNegativeButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarNeutralButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarNeutralButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarPositiveButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarPositiveButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonBarStyle org.secuso.privacyfriendlyboardgameclock:buttonBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonStyle org.secuso.privacyfriendlyboardgameclock:buttonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_buttonStyleSmall org.secuso.privacyfriendlyboardgameclock:buttonStyleSmall}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_checkboxStyle org.secuso.privacyfriendlyboardgameclock:checkboxStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_checkedTextViewStyle org.secuso.privacyfriendlyboardgameclock:checkedTextViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorAccent org.secuso.privacyfriendlyboardgameclock:colorAccent}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorButtonNormal org.secuso.privacyfriendlyboardgameclock:colorButtonNormal}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlActivated org.secuso.privacyfriendlyboardgameclock:colorControlActivated}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlHighlight org.secuso.privacyfriendlyboardgameclock:colorControlHighlight}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorControlNormal org.secuso.privacyfriendlyboardgameclock:colorControlNormal}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorPrimary org.secuso.privacyfriendlyboardgameclock:colorPrimary}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorPrimaryDark org.secuso.privacyfriendlyboardgameclock:colorPrimaryDark}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_colorSwitchThumbNormal org.secuso.privacyfriendlyboardgameclock:colorSwitchThumbNormal}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_controlBackground org.secuso.privacyfriendlyboardgameclock:controlBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dialogPreferredPadding org.secuso.privacyfriendlyboardgameclock:dialogPreferredPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dialogTheme org.secuso.privacyfriendlyboardgameclock:dialogTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dividerHorizontal org.secuso.privacyfriendlyboardgameclock:dividerHorizontal}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dividerVertical org.secuso.privacyfriendlyboardgameclock:dividerVertical}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dropDownListViewStyle org.secuso.privacyfriendlyboardgameclock:dropDownListViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_dropdownListPreferredItemHeight org.secuso.privacyfriendlyboardgameclock:dropdownListPreferredItemHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextBackground org.secuso.privacyfriendlyboardgameclock:editTextBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextColor org.secuso.privacyfriendlyboardgameclock:editTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_editTextStyle org.secuso.privacyfriendlyboardgameclock:editTextStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_homeAsUpIndicator org.secuso.privacyfriendlyboardgameclock:homeAsUpIndicator}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_imageButtonStyle org.secuso.privacyfriendlyboardgameclock:imageButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listChoiceBackgroundIndicator org.secuso.privacyfriendlyboardgameclock:listChoiceBackgroundIndicator}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listDividerAlertDialog org.secuso.privacyfriendlyboardgameclock:listDividerAlertDialog}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPopupWindowStyle org.secuso.privacyfriendlyboardgameclock:listPopupWindowStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeight org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightLarge org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightLarge}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemHeightSmall org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightSmall}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingLeft org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_listPreferredItemPaddingRight org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelBackground org.secuso.privacyfriendlyboardgameclock:panelBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelMenuListTheme org.secuso.privacyfriendlyboardgameclock:panelMenuListTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_panelMenuListWidth org.secuso.privacyfriendlyboardgameclock:panelMenuListWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_popupMenuStyle org.secuso.privacyfriendlyboardgameclock:popupMenuStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_popupWindowStyle org.secuso.privacyfriendlyboardgameclock:popupWindowStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_radioButtonStyle org.secuso.privacyfriendlyboardgameclock:radioButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyle org.secuso.privacyfriendlyboardgameclock:ratingBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleIndicator org.secuso.privacyfriendlyboardgameclock:ratingBarStyleIndicator}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_ratingBarStyleSmall org.secuso.privacyfriendlyboardgameclock:ratingBarStyleSmall}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_searchViewStyle org.secuso.privacyfriendlyboardgameclock:searchViewStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_seekBarStyle org.secuso.privacyfriendlyboardgameclock:seekBarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_selectableItemBackground org.secuso.privacyfriendlyboardgameclock:selectableItemBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_selectableItemBackgroundBorderless org.secuso.privacyfriendlyboardgameclock:selectableItemBackgroundBorderless}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_spinnerDropDownItemStyle org.secuso.privacyfriendlyboardgameclock:spinnerDropDownItemStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_spinnerStyle org.secuso.privacyfriendlyboardgameclock:spinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_switchStyle org.secuso.privacyfriendlyboardgameclock:switchStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceLargePopupMenu org.secuso.privacyfriendlyboardgameclock:textAppearanceLargePopupMenu}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItem org.secuso.privacyfriendlyboardgameclock:textAppearanceListItem}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceListItemSmall org.secuso.privacyfriendlyboardgameclock:textAppearanceListItemSmall}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultSubtitle org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultSubtitle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSearchResultTitle org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultTitle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textAppearanceSmallPopupMenu org.secuso.privacyfriendlyboardgameclock:textAppearanceSmallPopupMenu}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textColorAlertDialogListItem org.secuso.privacyfriendlyboardgameclock:textColorAlertDialogListItem}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_textColorSearchUrl org.secuso.privacyfriendlyboardgameclock:textColorSearchUrl}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_toolbarNavigationButtonStyle org.secuso.privacyfriendlyboardgameclock:toolbarNavigationButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_toolbarStyle org.secuso.privacyfriendlyboardgameclock:toolbarStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowActionBar org.secuso.privacyfriendlyboardgameclock:windowActionBar}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowActionBarOverlay org.secuso.privacyfriendlyboardgameclock:windowActionBarOverlay}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowActionModeOverlay org.secuso.privacyfriendlyboardgameclock:windowActionModeOverlay}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMajor org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMajor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowFixedHeightMinor org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMinor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMajor org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMajor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowFixedWidthMinor org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMinor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMajor org.secuso.privacyfriendlyboardgameclock:windowMinWidthMajor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowMinWidthMinor org.secuso.privacyfriendlyboardgameclock:windowMinWidthMinor}</code></td><td></td></tr>
+           <tr><td><code>{@link #AppCompatTheme_windowNoTitle org.secuso.privacyfriendlyboardgameclock:windowNoTitle}</code></td><td></td></tr>
+           </table>
+           @see #AppCompatTheme_actionBarDivider
+           @see #AppCompatTheme_actionBarItemBackground
+           @see #AppCompatTheme_actionBarPopupTheme
+           @see #AppCompatTheme_actionBarSize
+           @see #AppCompatTheme_actionBarSplitStyle
+           @see #AppCompatTheme_actionBarStyle
+           @see #AppCompatTheme_actionBarTabBarStyle
+           @see #AppCompatTheme_actionBarTabStyle
+           @see #AppCompatTheme_actionBarTabTextStyle
+           @see #AppCompatTheme_actionBarTheme
+           @see #AppCompatTheme_actionBarWidgetTheme
+           @see #AppCompatTheme_actionButtonStyle
+           @see #AppCompatTheme_actionDropDownStyle
+           @see #AppCompatTheme_actionMenuTextAppearance
+           @see #AppCompatTheme_actionMenuTextColor
+           @see #AppCompatTheme_actionModeBackground
+           @see #AppCompatTheme_actionModeCloseButtonStyle
+           @see #AppCompatTheme_actionModeCloseDrawable
+           @see #AppCompatTheme_actionModeCopyDrawable
+           @see #AppCompatTheme_actionModeCutDrawable
+           @see #AppCompatTheme_actionModeFindDrawable
+           @see #AppCompatTheme_actionModePasteDrawable
+           @see #AppCompatTheme_actionModePopupWindowStyle
+           @see #AppCompatTheme_actionModeSelectAllDrawable
+           @see #AppCompatTheme_actionModeShareDrawable
+           @see #AppCompatTheme_actionModeSplitBackground
+           @see #AppCompatTheme_actionModeStyle
+           @see #AppCompatTheme_actionModeWebSearchDrawable
+           @see #AppCompatTheme_actionOverflowButtonStyle
+           @see #AppCompatTheme_actionOverflowMenuStyle
+           @see #AppCompatTheme_activityChooserViewStyle
+           @see #AppCompatTheme_alertDialogButtonGroupStyle
+           @see #AppCompatTheme_alertDialogCenterButtons
+           @see #AppCompatTheme_alertDialogStyle
+           @see #AppCompatTheme_alertDialogTheme
+           @see #AppCompatTheme_android_windowAnimationStyle
+           @see #AppCompatTheme_android_windowIsFloating
+           @see #AppCompatTheme_autoCompleteTextViewStyle
+           @see #AppCompatTheme_borderlessButtonStyle
+           @see #AppCompatTheme_buttonBarButtonStyle
+           @see #AppCompatTheme_buttonBarNegativeButtonStyle
+           @see #AppCompatTheme_buttonBarNeutralButtonStyle
+           @see #AppCompatTheme_buttonBarPositiveButtonStyle
+           @see #AppCompatTheme_buttonBarStyle
+           @see #AppCompatTheme_buttonStyle
+           @see #AppCompatTheme_buttonStyleSmall
+           @see #AppCompatTheme_checkboxStyle
+           @see #AppCompatTheme_checkedTextViewStyle
+           @see #AppCompatTheme_colorAccent
+           @see #AppCompatTheme_colorButtonNormal
+           @see #AppCompatTheme_colorControlActivated
+           @see #AppCompatTheme_colorControlHighlight
+           @see #AppCompatTheme_colorControlNormal
+           @see #AppCompatTheme_colorPrimary
+           @see #AppCompatTheme_colorPrimaryDark
+           @see #AppCompatTheme_colorSwitchThumbNormal
+           @see #AppCompatTheme_controlBackground
+           @see #AppCompatTheme_dialogPreferredPadding
+           @see #AppCompatTheme_dialogTheme
+           @see #AppCompatTheme_dividerHorizontal
+           @see #AppCompatTheme_dividerVertical
+           @see #AppCompatTheme_dropDownListViewStyle
+           @see #AppCompatTheme_dropdownListPreferredItemHeight
+           @see #AppCompatTheme_editTextBackground
+           @see #AppCompatTheme_editTextColor
+           @see #AppCompatTheme_editTextStyle
+           @see #AppCompatTheme_homeAsUpIndicator
+           @see #AppCompatTheme_imageButtonStyle
+           @see #AppCompatTheme_listChoiceBackgroundIndicator
+           @see #AppCompatTheme_listDividerAlertDialog
+           @see #AppCompatTheme_listPopupWindowStyle
+           @see #AppCompatTheme_listPreferredItemHeight
+           @see #AppCompatTheme_listPreferredItemHeightLarge
+           @see #AppCompatTheme_listPreferredItemHeightSmall
+           @see #AppCompatTheme_listPreferredItemPaddingLeft
+           @see #AppCompatTheme_listPreferredItemPaddingRight
+           @see #AppCompatTheme_panelBackground
+           @see #AppCompatTheme_panelMenuListTheme
+           @see #AppCompatTheme_panelMenuListWidth
+           @see #AppCompatTheme_popupMenuStyle
+           @see #AppCompatTheme_popupWindowStyle
+           @see #AppCompatTheme_radioButtonStyle
+           @see #AppCompatTheme_ratingBarStyle
+           @see #AppCompatTheme_ratingBarStyleIndicator
+           @see #AppCompatTheme_ratingBarStyleSmall
+           @see #AppCompatTheme_searchViewStyle
+           @see #AppCompatTheme_seekBarStyle
+           @see #AppCompatTheme_selectableItemBackground
+           @see #AppCompatTheme_selectableItemBackgroundBorderless
+           @see #AppCompatTheme_spinnerDropDownItemStyle
+           @see #AppCompatTheme_spinnerStyle
+           @see #AppCompatTheme_switchStyle
+           @see #AppCompatTheme_textAppearanceLargePopupMenu
+           @see #AppCompatTheme_textAppearanceListItem
+           @see #AppCompatTheme_textAppearanceListItemSmall
+           @see #AppCompatTheme_textAppearanceSearchResultSubtitle
+           @see #AppCompatTheme_textAppearanceSearchResultTitle
+           @see #AppCompatTheme_textAppearanceSmallPopupMenu
+           @see #AppCompatTheme_textColorAlertDialogListItem
+           @see #AppCompatTheme_textColorSearchUrl
+           @see #AppCompatTheme_toolbarNavigationButtonStyle
+           @see #AppCompatTheme_toolbarStyle
+           @see #AppCompatTheme_windowActionBar
+           @see #AppCompatTheme_windowActionBarOverlay
+           @see #AppCompatTheme_windowActionModeOverlay
+           @see #AppCompatTheme_windowFixedHeightMajor
+           @see #AppCompatTheme_windowFixedHeightMinor
+           @see #AppCompatTheme_windowFixedWidthMajor
+           @see #AppCompatTheme_windowFixedWidthMinor
+           @see #AppCompatTheme_windowMinWidthMajor
+           @see #AppCompatTheme_windowMinWidthMinor
+           @see #AppCompatTheme_windowNoTitle
+         */
+        public static final int[] AppCompatTheme = {
+            0x01010057, 0x010100ae, 0x7f010029, 0x7f01002a,
+            0x7f01002b, 0x7f01002c, 0x7f01002d, 0x7f01002e,
+            0x7f01002f, 0x7f010030, 0x7f010031, 0x7f010032,
+            0x7f010033, 0x7f010034, 0x7f010035, 0x7f010036,
+            0x7f010037, 0x7f010038, 0x7f010039, 0x7f01003a,
+            0x7f01003b, 0x7f01003c, 0x7f01003d, 0x7f01003e,
+            0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042,
+            0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046,
+            0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a,
+            0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e,
+            0x7f01004f, 0x7f010050, 0x7f010051, 0x7f010052,
+            0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056,
+            0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a,
+            0x7f01005b, 0x7f01005c, 0x7f01005d, 0x7f01005e,
+            0x7f01005f, 0x7f010060, 0x7f010061, 0x7f010062,
+            0x7f010063, 0x7f010064, 0x7f010065, 0x7f010066,
+            0x7f010067, 0x7f010068, 0x7f010069, 0x7f01006a,
+            0x7f01006b, 0x7f01006c, 0x7f01006d, 0x7f01006e,
+            0x7f01006f, 0x7f010070, 0x7f010071, 0x7f010072,
+            0x7f010073, 0x7f010074, 0x7f010075, 0x7f010076,
+            0x7f010077, 0x7f010078, 0x7f010079, 0x7f01007a,
+            0x7f01007b, 0x7f01007c, 0x7f01007d, 0x7f01007e,
+            0x7f01007f, 0x7f010080, 0x7f010081, 0x7f010082,
+            0x7f010083, 0x7f010084, 0x7f010085, 0x7f010086,
+            0x7f010087, 0x7f010088, 0x7f010089, 0x7f01008a,
+            0x7f01008b, 0x7f01008c, 0x7f01008d, 0x7f01008e,
+            0x7f01008f, 0x7f010090, 0x7f010091, 0x7f010092,
+            0x7f010093, 0x7f010094, 0x7f010095, 0x7f010096
+        };
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarDivider}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarDivider
+        */
+        public static final int AppCompatTheme_actionBarDivider = 23;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarItemBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarItemBackground
+        */
+        public static final int AppCompatTheme_actionBarItemBackground = 24;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarPopupTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarPopupTheme
+        */
+        public static final int AppCompatTheme_actionBarPopupTheme = 17;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarSize}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>wrap_content</code></td><td>0</td><td></td></tr>
+</table>
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarSize
+        */
+        public static final int AppCompatTheme_actionBarSize = 22;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarSplitStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarSplitStyle
+        */
+        public static final int AppCompatTheme_actionBarSplitStyle = 19;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarStyle
+        */
+        public static final int AppCompatTheme_actionBarStyle = 18;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabBarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabBarStyle
+        */
+        public static final int AppCompatTheme_actionBarTabBarStyle = 13;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabStyle
+        */
+        public static final int AppCompatTheme_actionBarTabStyle = 12;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabTextStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabTextStyle
+        */
+        public static final int AppCompatTheme_actionBarTabTextStyle = 14;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTheme
+        */
+        public static final int AppCompatTheme_actionBarTheme = 20;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarWidgetTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarWidgetTheme
+        */
+        public static final int AppCompatTheme_actionBarWidgetTheme = 21;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionButtonStyle
+        */
+        public static final int AppCompatTheme_actionButtonStyle = 49;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionDropDownStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionDropDownStyle
+        */
+        public static final int AppCompatTheme_actionDropDownStyle = 45;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionMenuTextAppearance}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionMenuTextAppearance
+        */
+        public static final int AppCompatTheme_actionMenuTextAppearance = 25;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionMenuTextColor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionMenuTextColor
+        */
+        public static final int AppCompatTheme_actionMenuTextColor = 26;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeBackground
+        */
+        public static final int AppCompatTheme_actionModeBackground = 29;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCloseButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCloseButtonStyle
+        */
+        public static final int AppCompatTheme_actionModeCloseButtonStyle = 28;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCloseDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCloseDrawable
+        */
+        public static final int AppCompatTheme_actionModeCloseDrawable = 31;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCopyDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCopyDrawable
+        */
+        public static final int AppCompatTheme_actionModeCopyDrawable = 33;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCutDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCutDrawable
+        */
+        public static final int AppCompatTheme_actionModeCutDrawable = 32;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeFindDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeFindDrawable
+        */
+        public static final int AppCompatTheme_actionModeFindDrawable = 37;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModePasteDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModePasteDrawable
+        */
+        public static final int AppCompatTheme_actionModePasteDrawable = 34;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModePopupWindowStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModePopupWindowStyle
+        */
+        public static final int AppCompatTheme_actionModePopupWindowStyle = 39;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeSelectAllDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeSelectAllDrawable
+        */
+        public static final int AppCompatTheme_actionModeSelectAllDrawable = 35;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeShareDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeShareDrawable
+        */
+        public static final int AppCompatTheme_actionModeShareDrawable = 36;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeSplitBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeSplitBackground
+        */
+        public static final int AppCompatTheme_actionModeSplitBackground = 30;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeStyle
+        */
+        public static final int AppCompatTheme_actionModeStyle = 27;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeWebSearchDrawable}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeWebSearchDrawable
+        */
+        public static final int AppCompatTheme_actionModeWebSearchDrawable = 38;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionOverflowButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionOverflowButtonStyle
+        */
+        public static final int AppCompatTheme_actionOverflowButtonStyle = 15;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionOverflowMenuStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:actionOverflowMenuStyle
+        */
+        public static final int AppCompatTheme_actionOverflowMenuStyle = 16;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#activityChooserViewStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:activityChooserViewStyle
+        */
+        public static final int AppCompatTheme_activityChooserViewStyle = 57;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogButtonGroupStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogButtonGroupStyle
+        */
+        public static final int AppCompatTheme_alertDialogButtonGroupStyle = 92;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogCenterButtons}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogCenterButtons
+        */
+        public static final int AppCompatTheme_alertDialogCenterButtons = 93;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogStyle
+        */
+        public static final int AppCompatTheme_alertDialogStyle = 91;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogTheme
+        */
+        public static final int AppCompatTheme_alertDialogTheme = 94;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#windowAnimationStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+          @attr name android:windowAnimationStyle
+        */
+        public static final int AppCompatTheme_android_windowAnimationStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#windowIsFloating}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+          @attr name android:windowIsFloating
+        */
+        public static final int AppCompatTheme_android_windowIsFloating = 0;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#autoCompleteTextViewStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:autoCompleteTextViewStyle
+        */
+        public static final int AppCompatTheme_autoCompleteTextViewStyle = 99;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#borderlessButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:borderlessButtonStyle
+        */
+        public static final int AppCompatTheme_borderlessButtonStyle = 54;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarButtonStyle
+        */
+        public static final int AppCompatTheme_buttonBarButtonStyle = 51;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarNegativeButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarNegativeButtonStyle
+        */
+        public static final int AppCompatTheme_buttonBarNegativeButtonStyle = 97;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarNeutralButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarNeutralButtonStyle
+        */
+        public static final int AppCompatTheme_buttonBarNeutralButtonStyle = 98;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarPositiveButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarPositiveButtonStyle
+        */
+        public static final int AppCompatTheme_buttonBarPositiveButtonStyle = 96;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarStyle
+        */
+        public static final int AppCompatTheme_buttonBarStyle = 50;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonStyle
+        */
+        public static final int AppCompatTheme_buttonStyle = 100;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonStyleSmall}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:buttonStyleSmall
+        */
+        public static final int AppCompatTheme_buttonStyleSmall = 101;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#checkboxStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:checkboxStyle
+        */
+        public static final int AppCompatTheme_checkboxStyle = 102;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#checkedTextViewStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:checkedTextViewStyle
+        */
+        public static final int AppCompatTheme_checkedTextViewStyle = 103;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorAccent}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorAccent
+        */
+        public static final int AppCompatTheme_colorAccent = 84;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorButtonNormal}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorButtonNormal
+        */
+        public static final int AppCompatTheme_colorButtonNormal = 88;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlActivated}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlActivated
+        */
+        public static final int AppCompatTheme_colorControlActivated = 86;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlHighlight}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlHighlight
+        */
+        public static final int AppCompatTheme_colorControlHighlight = 87;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlNormal}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlNormal
+        */
+        public static final int AppCompatTheme_colorControlNormal = 85;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorPrimary}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorPrimary
+        */
+        public static final int AppCompatTheme_colorPrimary = 82;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorPrimaryDark}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorPrimaryDark
+        */
+        public static final int AppCompatTheme_colorPrimaryDark = 83;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorSwitchThumbNormal}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:colorSwitchThumbNormal
+        */
+        public static final int AppCompatTheme_colorSwitchThumbNormal = 89;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#controlBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:controlBackground
+        */
+        public static final int AppCompatTheme_controlBackground = 90;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dialogPreferredPadding}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:dialogPreferredPadding
+        */
+        public static final int AppCompatTheme_dialogPreferredPadding = 43;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dialogTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:dialogTheme
+        */
+        public static final int AppCompatTheme_dialogTheme = 42;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dividerHorizontal}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:dividerHorizontal
+        */
+        public static final int AppCompatTheme_dividerHorizontal = 56;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dividerVertical}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:dividerVertical
+        */
+        public static final int AppCompatTheme_dividerVertical = 55;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dropDownListViewStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:dropDownListViewStyle
+        */
+        public static final int AppCompatTheme_dropDownListViewStyle = 74;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dropdownListPreferredItemHeight}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:dropdownListPreferredItemHeight
+        */
+        public static final int AppCompatTheme_dropdownListPreferredItemHeight = 46;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:editTextBackground
+        */
+        public static final int AppCompatTheme_editTextBackground = 63;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextColor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:editTextColor
+        */
+        public static final int AppCompatTheme_editTextColor = 62;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:editTextStyle
+        */
+        public static final int AppCompatTheme_editTextStyle = 104;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#homeAsUpIndicator}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:homeAsUpIndicator
+        */
+        public static final int AppCompatTheme_homeAsUpIndicator = 48;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#imageButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:imageButtonStyle
+        */
+        public static final int AppCompatTheme_imageButtonStyle = 64;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listChoiceBackgroundIndicator}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:listChoiceBackgroundIndicator
+        */
+        public static final int AppCompatTheme_listChoiceBackgroundIndicator = 81;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listDividerAlertDialog}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:listDividerAlertDialog
+        */
+        public static final int AppCompatTheme_listDividerAlertDialog = 44;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPopupWindowStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPopupWindowStyle
+        */
+        public static final int AppCompatTheme_listPopupWindowStyle = 75;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeight}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeight
+        */
+        public static final int AppCompatTheme_listPreferredItemHeight = 69;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeightLarge}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightLarge
+        */
+        public static final int AppCompatTheme_listPreferredItemHeightLarge = 71;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeightSmall}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightSmall
+        */
+        public static final int AppCompatTheme_listPreferredItemHeightSmall = 70;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemPaddingLeft}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingLeft
+        */
+        public static final int AppCompatTheme_listPreferredItemPaddingLeft = 72;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemPaddingRight}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingRight
+        */
+        public static final int AppCompatTheme_listPreferredItemPaddingRight = 73;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:panelBackground
+        */
+        public static final int AppCompatTheme_panelBackground = 78;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelMenuListTheme}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:panelMenuListTheme
+        */
+        public static final int AppCompatTheme_panelMenuListTheme = 80;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelMenuListWidth}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:panelMenuListWidth
+        */
+        public static final int AppCompatTheme_panelMenuListWidth = 79;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#popupMenuStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:popupMenuStyle
+        */
+        public static final int AppCompatTheme_popupMenuStyle = 60;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#popupWindowStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:popupWindowStyle
+        */
+        public static final int AppCompatTheme_popupWindowStyle = 61;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#radioButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:radioButtonStyle
+        */
+        public static final int AppCompatTheme_radioButtonStyle = 105;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#ratingBarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:ratingBarStyle
+        */
+        public static final int AppCompatTheme_ratingBarStyle = 106;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#ratingBarStyleIndicator}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:ratingBarStyleIndicator
+        */
+        public static final int AppCompatTheme_ratingBarStyleIndicator = 107;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#ratingBarStyleSmall}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:ratingBarStyleSmall
+        */
+        public static final int AppCompatTheme_ratingBarStyleSmall = 108;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#searchViewStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:searchViewStyle
+        */
+        public static final int AppCompatTheme_searchViewStyle = 68;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#seekBarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:seekBarStyle
+        */
+        public static final int AppCompatTheme_seekBarStyle = 109;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#selectableItemBackground}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:selectableItemBackground
+        */
+        public static final int AppCompatTheme_selectableItemBackground = 52;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#selectableItemBackgroundBorderless}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:selectableItemBackgroundBorderless
+        */
+        public static final int AppCompatTheme_selectableItemBackgroundBorderless = 53;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#spinnerDropDownItemStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:spinnerDropDownItemStyle
+        */
+        public static final int AppCompatTheme_spinnerDropDownItemStyle = 47;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#spinnerStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:spinnerStyle
+        */
+        public static final int AppCompatTheme_spinnerStyle = 110;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#switchStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:switchStyle
+        */
+        public static final int AppCompatTheme_switchStyle = 111;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceLargePopupMenu}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceLargePopupMenu
+        */
+        public static final int AppCompatTheme_textAppearanceLargePopupMenu = 40;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceListItem}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceListItem
+        */
+        public static final int AppCompatTheme_textAppearanceListItem = 76;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceListItemSmall}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceListItemSmall
+        */
+        public static final int AppCompatTheme_textAppearanceListItemSmall = 77;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSearchResultSubtitle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultSubtitle
+        */
+        public static final int AppCompatTheme_textAppearanceSearchResultSubtitle = 66;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSearchResultTitle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultTitle
+        */
+        public static final int AppCompatTheme_textAppearanceSearchResultTitle = 65;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSmallPopupMenu}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSmallPopupMenu
+        */
+        public static final int AppCompatTheme_textAppearanceSmallPopupMenu = 41;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textColorAlertDialogListItem}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textColorAlertDialogListItem
+        */
+        public static final int AppCompatTheme_textColorAlertDialogListItem = 95;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textColorSearchUrl}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:textColorSearchUrl
+        */
+        public static final int AppCompatTheme_textColorSearchUrl = 67;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#toolbarNavigationButtonStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:toolbarNavigationButtonStyle
+        */
+        public static final int AppCompatTheme_toolbarNavigationButtonStyle = 59;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#toolbarStyle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name org.secuso.privacyfriendlyboardgameclock:toolbarStyle
+        */
+        public static final int AppCompatTheme_toolbarStyle = 58;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionBar}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionBar
+        */
+        public static final int AppCompatTheme_windowActionBar = 2;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionBarOverlay}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionBarOverlay
+        */
+        public static final int AppCompatTheme_windowActionBarOverlay = 4;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionModeOverlay}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionModeOverlay
+        */
+        public static final int AppCompatTheme_windowActionModeOverlay = 5;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedHeightMajor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMajor
+        */
+        public static final int AppCompatTheme_windowFixedHeightMajor = 9;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedHeightMinor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMinor
+        */
+        public static final int AppCompatTheme_windowFixedHeightMinor = 7;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedWidthMajor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMajor
+        */
+        public static final int AppCompatTheme_windowFixedWidthMajor = 6;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedWidthMinor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMinor
+        */
+        public static final int AppCompatTheme_windowFixedWidthMinor = 8;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowMinWidthMajor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowMinWidthMajor
+        */
+        public static final int AppCompatTheme_windowMinWidthMajor = 10;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowMinWidthMinor}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowMinWidthMinor
+        */
+        public static final int AppCompatTheme_windowMinWidthMinor = 11;
+        /**
+          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowNoTitle}
+          attribute's value can be found in the {@link #AppCompatTheme} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.secuso.privacyfriendlyboardgameclock:windowNoTitle
+        */
+        public static final int AppCompatTheme_windowNoTitle = 3;
         /** Attributes that can be used with a ButtonBarLayout.
            <p>Includes the following attributes:</p>
            <table>
@@ -3955,7 +5594,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #ButtonBarLayout_allowStacking
          */
         public static final int[] ButtonBarLayout = {
-            0x7f010028
+            0x7f010097
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#allowStacking}
@@ -3984,7 +5623,7 @@ containing a value of this type.
            @see #CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier
          */
         public static final int[] CollapsingAppBarLayout_LayoutParams = {
-            0x7f010029, 0x7f01002a
+            0x7f010098, 0x7f010099
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#layout_collapseMode}
@@ -4055,10 +5694,10 @@ containing a value of this type.
            @see #CollapsingToolbarLayout_toolbarId
          */
         public static final int[] CollapsingToolbarLayout = {
-            0x7f010003, 0x7f01002b, 0x7f01002c, 0x7f01002d,
-            0x7f01002e, 0x7f01002f, 0x7f010030, 0x7f010031,
-            0x7f010032, 0x7f010033, 0x7f010034, 0x7f010035,
-            0x7f010036, 0x7f010037
+            0x7f010003, 0x7f01009a, 0x7f01009b, 0x7f01009c,
+            0x7f01009d, 0x7f01009e, 0x7f01009f, 0x7f0100a0,
+            0x7f0100a1, 0x7f0100a2, 0x7f0100a3, 0x7f0100a4,
+            0x7f0100a5, 0x7f0100a6
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#collapsedTitleGravity}
@@ -4307,9 +5946,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #ColorPickerPreference_wheelType
          */
         public static final int[] ColorPickerPreference = {
-            0x7f010038, 0x7f010039, 0x7f01003a, 0x7f01003b,
-            0x7f01003c, 0x7f01003d, 0x7f01003e, 0x7f01003f,
-            0x7f010040, 0x7f010041
+            0x7f0100a7, 0x7f0100a8, 0x7f0100a9, 0x7f0100aa,
+            0x7f0100ab, 0x7f0100ac, 0x7f0100ad, 0x7f0100ae,
+            0x7f0100af, 0x7f0100b0
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alphaSlider}
@@ -4452,7 +6091,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #CompoundButton_buttonTintMode
          */
         public static final int[] CompoundButton = {
-            0x01010107, 0x7f010042, 0x7f010043
+            0x01010107, 0x7f0100b1, 0x7f0100b2
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#button}
@@ -4508,7 +6147,7 @@ containing a value of this type.
            @see #CoordinatorLayout_statusBarBackground
          */
         public static final int[] CoordinatorLayout = {
-            0x7f010044, 0x7f010045
+            0x7f0100b3, 0x7f0100b4
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#keylines}
@@ -4549,8 +6188,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #CoordinatorLayout_LayoutParams_layout_keyline
          */
         public static final int[] CoordinatorLayout_LayoutParams = {
-            0x010100b3, 0x7f010046, 0x7f010047, 0x7f010048,
-            0x7f010049
+            0x010100b3, 0x7f0100b5, 0x7f0100b6, 0x7f0100b7,
+            0x7f0100b8
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#layout_gravity}
@@ -4650,8 +6289,8 @@ containing a value of this type.
            @see #DrawerArrowToggle_thickness
          */
         public static final int[] DrawerArrowToggle = {
-            0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d,
-            0x7f01004e, 0x7f01004f, 0x7f010050, 0x7f010051
+            0x7f0100b9, 0x7f0100ba, 0x7f0100bb, 0x7f0100bc,
+            0x7f0100bd, 0x7f0100be, 0x7f0100bf, 0x7f0100c0
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#arrowHeadLength}
@@ -4801,8 +6440,8 @@ containing a value of this type.
            @see #FloatingActionButton_rippleColor
          */
         public static final int[] FloatingActionButton = {
-            0x7f01001a, 0x7f010052, 0x7f010053, 0x7f010054,
-            0x7f010055, 0x7f010118, 0x7f010119
+            0x7f01001a, 0x7f0100c1, 0x7f0100c2, 0x7f0100c3,
+            0x7f0100c4, 0x7f01011b, 0x7f01011c
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#backgroundTint}
@@ -4934,7 +6573,7 @@ containing a value of this type.
            @see #ForegroundLinearLayout_foregroundInsidePadding
          */
         public static final int[] ForegroundLinearLayout = {
-            0x01010109, 0x01010200, 0x7f010056
+            0x01010109, 0x01010200, 0x7f0100c5
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#foreground}
@@ -4990,8 +6629,8 @@ containing a value of this type.
          */
         public static final int[] LinearLayoutCompat = {
             0x010100af, 0x010100c4, 0x01010126, 0x01010127,
-            0x01010128, 0x7f01000b, 0x7f010057, 0x7f010058,
-            0x7f010059
+            0x01010128, 0x7f01000b, 0x7f0100c6, 0x7f0100c7,
+            0x7f0100c8
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#baselineAligned}
@@ -5258,8 +6897,8 @@ containing a value of this type.
             0x01010002, 0x0101000e, 0x010100d0, 0x01010106,
             0x01010194, 0x010101de, 0x010101df, 0x010101e1,
             0x010101e2, 0x010101e3, 0x010101e4, 0x010101e5,
-            0x0101026f, 0x7f01005a, 0x7f01005b, 0x7f01005c,
-            0x7f01005d
+            0x0101026f, 0x7f0100c9, 0x7f0100ca, 0x7f0100cb,
+            0x7f0100cc
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionLayout}
@@ -5423,7 +7062,7 @@ containing a value of this type.
          */
         public static final int[] MenuView = {
             0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
-            0x0101012f, 0x01010130, 0x01010131, 0x7f01005e
+            0x0101012f, 0x01010130, 0x01010131, 0x7f0100cd
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#headerBackground}
@@ -5511,8 +7150,8 @@ containing a value of this type.
          */
         public static final int[] NavigationView = {
             0x010100d4, 0x010100dd, 0x0101011f, 0x7f01001a,
-            0x7f01005f, 0x7f010060, 0x7f010061, 0x7f010062,
-            0x7f010063, 0x7f010064
+            0x7f0100ce, 0x7f0100cf, 0x7f0100d0, 0x7f0100d1,
+            0x7f0100d2, 0x7f0100d3
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#background}
@@ -5631,7 +7270,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #PopupWindow_overlapAnchor
          */
         public static final int[] PopupWindow = {
-            0x01010176, 0x7f010065
+            0x01010176, 0x7f0100d4
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#popupBackground}
@@ -5664,7 +7303,7 @@ containing a value of this type.
            @see #PopupWindowBackgroundState_state_above_anchor
          */
         public static final int[] PopupWindowBackgroundState = {
-            0x7f010066
+            0x7f0100d5
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#state_above_anchor}
@@ -5699,8 +7338,8 @@ containing a value of this type.
            @see #RecyclerView_stackFromEnd
          */
         public static final int[] RecyclerView = {
-            0x010100c4, 0x7f010067, 0x7f010068, 0x7f010069,
-            0x7f01006a
+            0x010100c4, 0x7f0100d6, 0x7f0100d7, 0x7f0100d8,
+            0x7f0100d9
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#orientation}
@@ -5775,7 +7414,7 @@ containing a value of this type.
            @see #ScrimInsetsFrameLayout_insetForeground
          */
         public static final int[] ScrimInsetsFrameLayout = {
-            0x7f01006b
+            0x7f0100da
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#insetForeground}
@@ -5800,7 +7439,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #ScrollingViewBehavior_Params_behavior_overlapTop
          */
         public static final int[] ScrollingViewBehavior_Params = {
-            0x7f01006c
+            0x7f0100db
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#behavior_overlapTop}
@@ -5862,10 +7501,10 @@ containing a value of this type.
          */
         public static final int[] SearchView = {
             0x010100da, 0x0101011f, 0x01010220, 0x01010264,
-            0x7f01006d, 0x7f01006e, 0x7f01006f, 0x7f010070,
-            0x7f010071, 0x7f010072, 0x7f010073, 0x7f010074,
-            0x7f010075, 0x7f010076, 0x7f010077, 0x7f010078,
-            0x7f010079
+            0x7f0100dc, 0x7f0100dd, 0x7f0100de, 0x7f0100df,
+            0x7f0100e0, 0x7f0100e1, 0x7f0100e2, 0x7f0100e3,
+            0x7f0100e4, 0x7f0100e5, 0x7f0100e6, 0x7f0100e7,
+            0x7f0100e8
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#focusable}
@@ -6048,7 +7687,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #SnackbarLayout_maxActionInlineWidth
          */
         public static final int[] SnackbarLayout = {
-            0x0101011f, 0x7f01001a, 0x7f01007a
+            0x0101011f, 0x7f01001a, 0x7f0100e9
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#maxWidth}
@@ -6095,36 +7734,45 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #Spinner_android_dropDownWidth android:dropDownWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #Spinner_android_entries android:entries}</code></td><td></td></tr>
            <tr><td><code>{@link #Spinner_android_popupBackground android:popupBackground}</code></td><td></td></tr>
            <tr><td><code>{@link #Spinner_android_prompt android:prompt}</code></td><td></td></tr>
            <tr><td><code>{@link #Spinner_popupTheme org.secuso.privacyfriendlyboardgameclock:popupTheme}</code></td><td></td></tr>
            </table>
            @see #Spinner_android_dropDownWidth
+           @see #Spinner_android_entries
            @see #Spinner_android_popupBackground
            @see #Spinner_android_prompt
            @see #Spinner_popupTheme
          */
         public static final int[] Spinner = {
-            0x01010176, 0x0101017b, 0x01010262, 0x7f01001b
+            0x010100b2, 0x01010176, 0x0101017b, 0x01010262,
+            0x7f01001b
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#dropDownWidth}
           attribute's value can be found in the {@link #Spinner} array.
           @attr name android:dropDownWidth
         */
-        public static final int Spinner_android_dropDownWidth = 2;
+        public static final int Spinner_android_dropDownWidth = 3;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#entries}
+          attribute's value can be found in the {@link #Spinner} array.
+          @attr name android:entries
+        */
+        public static final int Spinner_android_entries = 0;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#popupBackground}
           attribute's value can be found in the {@link #Spinner} array.
           @attr name android:popupBackground
         */
-        public static final int Spinner_android_popupBackground = 0;
+        public static final int Spinner_android_popupBackground = 1;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#prompt}
           attribute's value can be found in the {@link #Spinner} array.
           @attr name android:prompt
         */
-        public static final int Spinner_android_prompt = 1;
+        public static final int Spinner_android_prompt = 2;
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#popupTheme}
           attribute's value can be found in the {@link #Spinner} array.
@@ -6134,7 +7782,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name org.secuso.privacyfriendlyboardgameclock:popupTheme
         */
-        public static final int Spinner_popupTheme = 3;
+        public static final int Spinner_popupTheme = 4;
         /** Attributes that can be used with a SwitchCompat.
            <p>Includes the following attributes:</p>
            <table>
@@ -6164,9 +7812,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #SwitchCompat_track
          */
         public static final int[] SwitchCompat = {
-            0x01010124, 0x01010125, 0x01010142, 0x7f01007b,
-            0x7f01007c, 0x7f01007d, 0x7f01007e, 0x7f01007f,
-            0x7f010080, 0x7f010081
+            0x01010124, 0x01010125, 0x01010142, 0x7f0100ea,
+            0x7f0100eb, 0x7f0100ec, 0x7f0100ed, 0x7f0100ee,
+            0x7f0100ef, 0x7f0100f0
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#textOff}
@@ -6323,10 +7971,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #TabLayout_tabTextColor
          */
         public static final int[] TabLayout = {
-            0x7f010082, 0x7f010083, 0x7f010084, 0x7f010085,
-            0x7f010086, 0x7f010087, 0x7f010088, 0x7f010089,
-            0x7f01008a, 0x7f01008b, 0x7f01008c, 0x7f01008d,
-            0x7f01008e, 0x7f01008f, 0x7f010090, 0x7f010091
+            0x7f0100f1, 0x7f0100f2, 0x7f0100f3, 0x7f0100f4,
+            0x7f0100f5, 0x7f0100f6, 0x7f0100f7, 0x7f0100f8,
+            0x7f0100f9, 0x7f0100fa, 0x7f0100fb, 0x7f0100fc,
+            0x7f0100fd, 0x7f0100fe, 0x7f0100ff, 0x7f010100
         };
         /**
           <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#tabBackground}
@@ -6600,7 +8248,7 @@ containing a value of this type.
         public static final int[] TextAppearance = {
             0x01010095, 0x01010096, 0x01010097, 0x01010098,
             0x01010161, 0x01010162, 0x01010163, 0x01010164,
-            0x7f010027
+            0x7f010028
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#shadowColor}
@@ -6690,9 +8338,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #TextInputLayout_hintTextAppearance
          */
         public static final int[] TextInputLayout = {
-            0x0101009a, 0x01010150, 0x7f010092, 0x7f010093,
-            0x7f010094, 0x7f010095, 0x7f010096, 0x7f010097,
-            0x7f010098, 0x7f010099
+            0x0101009a, 0x01010150, 0x7f010101, 0x7f010102,
+            0x7f010103, 0x7f010104, 0x7f010105, 0x7f010106,
+            0x7f010107, 0x7f010108
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#hint}
@@ -6802,1540 +8450,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name org.secuso.privacyfriendlyboardgameclock:hintTextAppearance
         */
         public static final int TextInputLayout_hintTextAppearance = 2;
-        /** Attributes that can be used with a Theme.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #Theme_actionBarDivider org.secuso.privacyfriendlyboardgameclock:actionBarDivider}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarItemBackground org.secuso.privacyfriendlyboardgameclock:actionBarItemBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarPopupTheme org.secuso.privacyfriendlyboardgameclock:actionBarPopupTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarSize org.secuso.privacyfriendlyboardgameclock:actionBarSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarSplitStyle org.secuso.privacyfriendlyboardgameclock:actionBarSplitStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarStyle org.secuso.privacyfriendlyboardgameclock:actionBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarTabBarStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarTabStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarTabTextStyle org.secuso.privacyfriendlyboardgameclock:actionBarTabTextStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarTheme org.secuso.privacyfriendlyboardgameclock:actionBarTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionBarWidgetTheme org.secuso.privacyfriendlyboardgameclock:actionBarWidgetTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionButtonStyle org.secuso.privacyfriendlyboardgameclock:actionButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionDropDownStyle org.secuso.privacyfriendlyboardgameclock:actionDropDownStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionMenuTextAppearance org.secuso.privacyfriendlyboardgameclock:actionMenuTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionMenuTextColor org.secuso.privacyfriendlyboardgameclock:actionMenuTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeBackground org.secuso.privacyfriendlyboardgameclock:actionModeBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeCloseButtonStyle org.secuso.privacyfriendlyboardgameclock:actionModeCloseButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeCloseDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCloseDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeCopyDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCopyDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeCutDrawable org.secuso.privacyfriendlyboardgameclock:actionModeCutDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeFindDrawable org.secuso.privacyfriendlyboardgameclock:actionModeFindDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModePasteDrawable org.secuso.privacyfriendlyboardgameclock:actionModePasteDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModePopupWindowStyle org.secuso.privacyfriendlyboardgameclock:actionModePopupWindowStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeSelectAllDrawable org.secuso.privacyfriendlyboardgameclock:actionModeSelectAllDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeShareDrawable org.secuso.privacyfriendlyboardgameclock:actionModeShareDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeSplitBackground org.secuso.privacyfriendlyboardgameclock:actionModeSplitBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeStyle org.secuso.privacyfriendlyboardgameclock:actionModeStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionModeWebSearchDrawable org.secuso.privacyfriendlyboardgameclock:actionModeWebSearchDrawable}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionOverflowButtonStyle org.secuso.privacyfriendlyboardgameclock:actionOverflowButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_actionOverflowMenuStyle org.secuso.privacyfriendlyboardgameclock:actionOverflowMenuStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_activityChooserViewStyle org.secuso.privacyfriendlyboardgameclock:activityChooserViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_alertDialogButtonGroupStyle org.secuso.privacyfriendlyboardgameclock:alertDialogButtonGroupStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_alertDialogCenterButtons org.secuso.privacyfriendlyboardgameclock:alertDialogCenterButtons}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_alertDialogStyle org.secuso.privacyfriendlyboardgameclock:alertDialogStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_alertDialogTheme org.secuso.privacyfriendlyboardgameclock:alertDialogTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_android_windowAnimationStyle android:windowAnimationStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_android_windowIsFloating android:windowIsFloating}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_autoCompleteTextViewStyle org.secuso.privacyfriendlyboardgameclock:autoCompleteTextViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_borderlessButtonStyle org.secuso.privacyfriendlyboardgameclock:borderlessButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonBarButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonBarNegativeButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarNegativeButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonBarNeutralButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarNeutralButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonBarPositiveButtonStyle org.secuso.privacyfriendlyboardgameclock:buttonBarPositiveButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonBarStyle org.secuso.privacyfriendlyboardgameclock:buttonBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonStyle org.secuso.privacyfriendlyboardgameclock:buttonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_buttonStyleSmall org.secuso.privacyfriendlyboardgameclock:buttonStyleSmall}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_checkboxStyle org.secuso.privacyfriendlyboardgameclock:checkboxStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_checkedTextViewStyle org.secuso.privacyfriendlyboardgameclock:checkedTextViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorAccent org.secuso.privacyfriendlyboardgameclock:colorAccent}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorButtonNormal org.secuso.privacyfriendlyboardgameclock:colorButtonNormal}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorControlActivated org.secuso.privacyfriendlyboardgameclock:colorControlActivated}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorControlHighlight org.secuso.privacyfriendlyboardgameclock:colorControlHighlight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorControlNormal org.secuso.privacyfriendlyboardgameclock:colorControlNormal}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorPrimary org.secuso.privacyfriendlyboardgameclock:colorPrimary}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorPrimaryDark org.secuso.privacyfriendlyboardgameclock:colorPrimaryDark}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_colorSwitchThumbNormal org.secuso.privacyfriendlyboardgameclock:colorSwitchThumbNormal}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_controlBackground org.secuso.privacyfriendlyboardgameclock:controlBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dialogPreferredPadding org.secuso.privacyfriendlyboardgameclock:dialogPreferredPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dialogTheme org.secuso.privacyfriendlyboardgameclock:dialogTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dividerHorizontal org.secuso.privacyfriendlyboardgameclock:dividerHorizontal}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dividerVertical org.secuso.privacyfriendlyboardgameclock:dividerVertical}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dropDownListViewStyle org.secuso.privacyfriendlyboardgameclock:dropDownListViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_dropdownListPreferredItemHeight org.secuso.privacyfriendlyboardgameclock:dropdownListPreferredItemHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_editTextBackground org.secuso.privacyfriendlyboardgameclock:editTextBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_editTextColor org.secuso.privacyfriendlyboardgameclock:editTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_editTextStyle org.secuso.privacyfriendlyboardgameclock:editTextStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_homeAsUpIndicator org.secuso.privacyfriendlyboardgameclock:homeAsUpIndicator}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_imageButtonStyle org.secuso.privacyfriendlyboardgameclock:imageButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listChoiceBackgroundIndicator org.secuso.privacyfriendlyboardgameclock:listChoiceBackgroundIndicator}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listDividerAlertDialog org.secuso.privacyfriendlyboardgameclock:listDividerAlertDialog}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPopupWindowStyle org.secuso.privacyfriendlyboardgameclock:listPopupWindowStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPreferredItemHeight org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPreferredItemHeightLarge org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightLarge}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPreferredItemHeightSmall org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightSmall}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPreferredItemPaddingLeft org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingLeft}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_listPreferredItemPaddingRight org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingRight}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_panelBackground org.secuso.privacyfriendlyboardgameclock:panelBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_panelMenuListTheme org.secuso.privacyfriendlyboardgameclock:panelMenuListTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_panelMenuListWidth org.secuso.privacyfriendlyboardgameclock:panelMenuListWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_popupMenuStyle org.secuso.privacyfriendlyboardgameclock:popupMenuStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_popupWindowStyle org.secuso.privacyfriendlyboardgameclock:popupWindowStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_radioButtonStyle org.secuso.privacyfriendlyboardgameclock:radioButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_ratingBarStyle org.secuso.privacyfriendlyboardgameclock:ratingBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_searchViewStyle org.secuso.privacyfriendlyboardgameclock:searchViewStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_seekBarStyle org.secuso.privacyfriendlyboardgameclock:seekBarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_selectableItemBackground org.secuso.privacyfriendlyboardgameclock:selectableItemBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_selectableItemBackgroundBorderless org.secuso.privacyfriendlyboardgameclock:selectableItemBackgroundBorderless}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_spinnerDropDownItemStyle org.secuso.privacyfriendlyboardgameclock:spinnerDropDownItemStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_spinnerStyle org.secuso.privacyfriendlyboardgameclock:spinnerStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_switchStyle org.secuso.privacyfriendlyboardgameclock:switchStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceLargePopupMenu org.secuso.privacyfriendlyboardgameclock:textAppearanceLargePopupMenu}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceListItem org.secuso.privacyfriendlyboardgameclock:textAppearanceListItem}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceListItemSmall org.secuso.privacyfriendlyboardgameclock:textAppearanceListItemSmall}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceSearchResultSubtitle org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultSubtitle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceSearchResultTitle org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultTitle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textAppearanceSmallPopupMenu org.secuso.privacyfriendlyboardgameclock:textAppearanceSmallPopupMenu}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textColorAlertDialogListItem org.secuso.privacyfriendlyboardgameclock:textColorAlertDialogListItem}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_textColorSearchUrl org.secuso.privacyfriendlyboardgameclock:textColorSearchUrl}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_toolbarNavigationButtonStyle org.secuso.privacyfriendlyboardgameclock:toolbarNavigationButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_toolbarStyle org.secuso.privacyfriendlyboardgameclock:toolbarStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowActionBar org.secuso.privacyfriendlyboardgameclock:windowActionBar}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowActionBarOverlay org.secuso.privacyfriendlyboardgameclock:windowActionBarOverlay}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowActionModeOverlay org.secuso.privacyfriendlyboardgameclock:windowActionModeOverlay}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowFixedHeightMajor org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMajor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowFixedHeightMinor org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMinor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowFixedWidthMajor org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMajor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowFixedWidthMinor org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMinor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowMinWidthMajor org.secuso.privacyfriendlyboardgameclock:windowMinWidthMajor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowMinWidthMinor org.secuso.privacyfriendlyboardgameclock:windowMinWidthMinor}</code></td><td></td></tr>
-           <tr><td><code>{@link #Theme_windowNoTitle org.secuso.privacyfriendlyboardgameclock:windowNoTitle}</code></td><td></td></tr>
-           </table>
-           @see #Theme_actionBarDivider
-           @see #Theme_actionBarItemBackground
-           @see #Theme_actionBarPopupTheme
-           @see #Theme_actionBarSize
-           @see #Theme_actionBarSplitStyle
-           @see #Theme_actionBarStyle
-           @see #Theme_actionBarTabBarStyle
-           @see #Theme_actionBarTabStyle
-           @see #Theme_actionBarTabTextStyle
-           @see #Theme_actionBarTheme
-           @see #Theme_actionBarWidgetTheme
-           @see #Theme_actionButtonStyle
-           @see #Theme_actionDropDownStyle
-           @see #Theme_actionMenuTextAppearance
-           @see #Theme_actionMenuTextColor
-           @see #Theme_actionModeBackground
-           @see #Theme_actionModeCloseButtonStyle
-           @see #Theme_actionModeCloseDrawable
-           @see #Theme_actionModeCopyDrawable
-           @see #Theme_actionModeCutDrawable
-           @see #Theme_actionModeFindDrawable
-           @see #Theme_actionModePasteDrawable
-           @see #Theme_actionModePopupWindowStyle
-           @see #Theme_actionModeSelectAllDrawable
-           @see #Theme_actionModeShareDrawable
-           @see #Theme_actionModeSplitBackground
-           @see #Theme_actionModeStyle
-           @see #Theme_actionModeWebSearchDrawable
-           @see #Theme_actionOverflowButtonStyle
-           @see #Theme_actionOverflowMenuStyle
-           @see #Theme_activityChooserViewStyle
-           @see #Theme_alertDialogButtonGroupStyle
-           @see #Theme_alertDialogCenterButtons
-           @see #Theme_alertDialogStyle
-           @see #Theme_alertDialogTheme
-           @see #Theme_android_windowAnimationStyle
-           @see #Theme_android_windowIsFloating
-           @see #Theme_autoCompleteTextViewStyle
-           @see #Theme_borderlessButtonStyle
-           @see #Theme_buttonBarButtonStyle
-           @see #Theme_buttonBarNegativeButtonStyle
-           @see #Theme_buttonBarNeutralButtonStyle
-           @see #Theme_buttonBarPositiveButtonStyle
-           @see #Theme_buttonBarStyle
-           @see #Theme_buttonStyle
-           @see #Theme_buttonStyleSmall
-           @see #Theme_checkboxStyle
-           @see #Theme_checkedTextViewStyle
-           @see #Theme_colorAccent
-           @see #Theme_colorButtonNormal
-           @see #Theme_colorControlActivated
-           @see #Theme_colorControlHighlight
-           @see #Theme_colorControlNormal
-           @see #Theme_colorPrimary
-           @see #Theme_colorPrimaryDark
-           @see #Theme_colorSwitchThumbNormal
-           @see #Theme_controlBackground
-           @see #Theme_dialogPreferredPadding
-           @see #Theme_dialogTheme
-           @see #Theme_dividerHorizontal
-           @see #Theme_dividerVertical
-           @see #Theme_dropDownListViewStyle
-           @see #Theme_dropdownListPreferredItemHeight
-           @see #Theme_editTextBackground
-           @see #Theme_editTextColor
-           @see #Theme_editTextStyle
-           @see #Theme_homeAsUpIndicator
-           @see #Theme_imageButtonStyle
-           @see #Theme_listChoiceBackgroundIndicator
-           @see #Theme_listDividerAlertDialog
-           @see #Theme_listPopupWindowStyle
-           @see #Theme_listPreferredItemHeight
-           @see #Theme_listPreferredItemHeightLarge
-           @see #Theme_listPreferredItemHeightSmall
-           @see #Theme_listPreferredItemPaddingLeft
-           @see #Theme_listPreferredItemPaddingRight
-           @see #Theme_panelBackground
-           @see #Theme_panelMenuListTheme
-           @see #Theme_panelMenuListWidth
-           @see #Theme_popupMenuStyle
-           @see #Theme_popupWindowStyle
-           @see #Theme_radioButtonStyle
-           @see #Theme_ratingBarStyle
-           @see #Theme_searchViewStyle
-           @see #Theme_seekBarStyle
-           @see #Theme_selectableItemBackground
-           @see #Theme_selectableItemBackgroundBorderless
-           @see #Theme_spinnerDropDownItemStyle
-           @see #Theme_spinnerStyle
-           @see #Theme_switchStyle
-           @see #Theme_textAppearanceLargePopupMenu
-           @see #Theme_textAppearanceListItem
-           @see #Theme_textAppearanceListItemSmall
-           @see #Theme_textAppearanceSearchResultSubtitle
-           @see #Theme_textAppearanceSearchResultTitle
-           @see #Theme_textAppearanceSmallPopupMenu
-           @see #Theme_textColorAlertDialogListItem
-           @see #Theme_textColorSearchUrl
-           @see #Theme_toolbarNavigationButtonStyle
-           @see #Theme_toolbarStyle
-           @see #Theme_windowActionBar
-           @see #Theme_windowActionBarOverlay
-           @see #Theme_windowActionModeOverlay
-           @see #Theme_windowFixedHeightMajor
-           @see #Theme_windowFixedHeightMinor
-           @see #Theme_windowFixedWidthMajor
-           @see #Theme_windowFixedWidthMinor
-           @see #Theme_windowMinWidthMajor
-           @see #Theme_windowMinWidthMinor
-           @see #Theme_windowNoTitle
-         */
-        public static final int[] Theme = {
-            0x01010057, 0x010100ae, 0x7f01009a, 0x7f01009b,
-            0x7f01009c, 0x7f01009d, 0x7f01009e, 0x7f01009f,
-            0x7f0100a0, 0x7f0100a1, 0x7f0100a2, 0x7f0100a3,
-            0x7f0100a4, 0x7f0100a5, 0x7f0100a6, 0x7f0100a7,
-            0x7f0100a8, 0x7f0100a9, 0x7f0100aa, 0x7f0100ab,
-            0x7f0100ac, 0x7f0100ad, 0x7f0100ae, 0x7f0100af,
-            0x7f0100b0, 0x7f0100b1, 0x7f0100b2, 0x7f0100b3,
-            0x7f0100b4, 0x7f0100b5, 0x7f0100b6, 0x7f0100b7,
-            0x7f0100b8, 0x7f0100b9, 0x7f0100ba, 0x7f0100bb,
-            0x7f0100bc, 0x7f0100bd, 0x7f0100be, 0x7f0100bf,
-            0x7f0100c0, 0x7f0100c1, 0x7f0100c2, 0x7f0100c3,
-            0x7f0100c4, 0x7f0100c5, 0x7f0100c6, 0x7f0100c7,
-            0x7f0100c8, 0x7f0100c9, 0x7f0100ca, 0x7f0100cb,
-            0x7f0100cc, 0x7f0100cd, 0x7f0100ce, 0x7f0100cf,
-            0x7f0100d0, 0x7f0100d1, 0x7f0100d2, 0x7f0100d3,
-            0x7f0100d4, 0x7f0100d5, 0x7f0100d6, 0x7f0100d7,
-            0x7f0100d8, 0x7f0100d9, 0x7f0100da, 0x7f0100db,
-            0x7f0100dc, 0x7f0100dd, 0x7f0100de, 0x7f0100df,
-            0x7f0100e0, 0x7f0100e1, 0x7f0100e2, 0x7f0100e3,
-            0x7f0100e4, 0x7f0100e5, 0x7f0100e6, 0x7f0100e7,
-            0x7f0100e8, 0x7f0100e9, 0x7f0100ea, 0x7f0100eb,
-            0x7f0100ec, 0x7f0100ed, 0x7f0100ee, 0x7f0100ef,
-            0x7f0100f0, 0x7f0100f1, 0x7f0100f2, 0x7f0100f3,
-            0x7f0100f4, 0x7f0100f5, 0x7f0100f6, 0x7f0100f7,
-            0x7f0100f8, 0x7f0100f9, 0x7f0100fa, 0x7f0100fb,
-            0x7f0100fc, 0x7f0100fd, 0x7f0100fe, 0x7f0100ff,
-            0x7f010100, 0x7f010101, 0x7f010102, 0x7f010103,
-            0x7f010104, 0x7f010105
-        };
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarDivider}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarDivider
-        */
-        public static final int Theme_actionBarDivider = 23;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarItemBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarItemBackground
-        */
-        public static final int Theme_actionBarItemBackground = 24;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarPopupTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarPopupTheme
-        */
-        public static final int Theme_actionBarPopupTheme = 17;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarSize}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-<p>May be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>wrap_content</code></td><td>0</td><td></td></tr>
-</table>
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarSize
-        */
-        public static final int Theme_actionBarSize = 22;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarSplitStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarSplitStyle
-        */
-        public static final int Theme_actionBarSplitStyle = 19;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarStyle
-        */
-        public static final int Theme_actionBarStyle = 18;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabBarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabBarStyle
-        */
-        public static final int Theme_actionBarTabBarStyle = 13;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabStyle
-        */
-        public static final int Theme_actionBarTabStyle = 12;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTabTextStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTabTextStyle
-        */
-        public static final int Theme_actionBarTabTextStyle = 14;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarTheme
-        */
-        public static final int Theme_actionBarTheme = 20;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionBarWidgetTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionBarWidgetTheme
-        */
-        public static final int Theme_actionBarWidgetTheme = 21;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionButtonStyle
-        */
-        public static final int Theme_actionButtonStyle = 49;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionDropDownStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionDropDownStyle
-        */
-        public static final int Theme_actionDropDownStyle = 45;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionMenuTextAppearance}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionMenuTextAppearance
-        */
-        public static final int Theme_actionMenuTextAppearance = 25;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionMenuTextColor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionMenuTextColor
-        */
-        public static final int Theme_actionMenuTextColor = 26;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeBackground
-        */
-        public static final int Theme_actionModeBackground = 29;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCloseButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCloseButtonStyle
-        */
-        public static final int Theme_actionModeCloseButtonStyle = 28;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCloseDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCloseDrawable
-        */
-        public static final int Theme_actionModeCloseDrawable = 31;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCopyDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCopyDrawable
-        */
-        public static final int Theme_actionModeCopyDrawable = 33;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeCutDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeCutDrawable
-        */
-        public static final int Theme_actionModeCutDrawable = 32;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeFindDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeFindDrawable
-        */
-        public static final int Theme_actionModeFindDrawable = 37;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModePasteDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModePasteDrawable
-        */
-        public static final int Theme_actionModePasteDrawable = 34;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModePopupWindowStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModePopupWindowStyle
-        */
-        public static final int Theme_actionModePopupWindowStyle = 39;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeSelectAllDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeSelectAllDrawable
-        */
-        public static final int Theme_actionModeSelectAllDrawable = 35;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeShareDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeShareDrawable
-        */
-        public static final int Theme_actionModeShareDrawable = 36;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeSplitBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeSplitBackground
-        */
-        public static final int Theme_actionModeSplitBackground = 30;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeStyle
-        */
-        public static final int Theme_actionModeStyle = 27;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionModeWebSearchDrawable}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionModeWebSearchDrawable
-        */
-        public static final int Theme_actionModeWebSearchDrawable = 38;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionOverflowButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionOverflowButtonStyle
-        */
-        public static final int Theme_actionOverflowButtonStyle = 15;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#actionOverflowMenuStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:actionOverflowMenuStyle
-        */
-        public static final int Theme_actionOverflowMenuStyle = 16;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#activityChooserViewStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:activityChooserViewStyle
-        */
-        public static final int Theme_activityChooserViewStyle = 57;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogButtonGroupStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogButtonGroupStyle
-        */
-        public static final int Theme_alertDialogButtonGroupStyle = 92;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogCenterButtons}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogCenterButtons
-        */
-        public static final int Theme_alertDialogCenterButtons = 93;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogStyle
-        */
-        public static final int Theme_alertDialogStyle = 91;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#alertDialogTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:alertDialogTheme
-        */
-        public static final int Theme_alertDialogTheme = 94;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#windowAnimationStyle}
-          attribute's value can be found in the {@link #Theme} array.
-          @attr name android:windowAnimationStyle
-        */
-        public static final int Theme_android_windowAnimationStyle = 1;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#windowIsFloating}
-          attribute's value can be found in the {@link #Theme} array.
-          @attr name android:windowIsFloating
-        */
-        public static final int Theme_android_windowIsFloating = 0;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#autoCompleteTextViewStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:autoCompleteTextViewStyle
-        */
-        public static final int Theme_autoCompleteTextViewStyle = 99;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#borderlessButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:borderlessButtonStyle
-        */
-        public static final int Theme_borderlessButtonStyle = 54;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarButtonStyle
-        */
-        public static final int Theme_buttonBarButtonStyle = 51;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarNegativeButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarNegativeButtonStyle
-        */
-        public static final int Theme_buttonBarNegativeButtonStyle = 97;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarNeutralButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarNeutralButtonStyle
-        */
-        public static final int Theme_buttonBarNeutralButtonStyle = 98;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarPositiveButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarPositiveButtonStyle
-        */
-        public static final int Theme_buttonBarPositiveButtonStyle = 96;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonBarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonBarStyle
-        */
-        public static final int Theme_buttonBarStyle = 50;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonStyle
-        */
-        public static final int Theme_buttonStyle = 100;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#buttonStyleSmall}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:buttonStyleSmall
-        */
-        public static final int Theme_buttonStyleSmall = 101;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#checkboxStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:checkboxStyle
-        */
-        public static final int Theme_checkboxStyle = 102;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#checkedTextViewStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:checkedTextViewStyle
-        */
-        public static final int Theme_checkedTextViewStyle = 103;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorAccent}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorAccent
-        */
-        public static final int Theme_colorAccent = 84;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorButtonNormal}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorButtonNormal
-        */
-        public static final int Theme_colorButtonNormal = 88;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlActivated}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlActivated
-        */
-        public static final int Theme_colorControlActivated = 86;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlHighlight}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlHighlight
-        */
-        public static final int Theme_colorControlHighlight = 87;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorControlNormal}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorControlNormal
-        */
-        public static final int Theme_colorControlNormal = 85;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorPrimary}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorPrimary
-        */
-        public static final int Theme_colorPrimary = 82;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorPrimaryDark}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorPrimaryDark
-        */
-        public static final int Theme_colorPrimaryDark = 83;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#colorSwitchThumbNormal}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:colorSwitchThumbNormal
-        */
-        public static final int Theme_colorSwitchThumbNormal = 89;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#controlBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:controlBackground
-        */
-        public static final int Theme_controlBackground = 90;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dialogPreferredPadding}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:dialogPreferredPadding
-        */
-        public static final int Theme_dialogPreferredPadding = 43;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dialogTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:dialogTheme
-        */
-        public static final int Theme_dialogTheme = 42;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dividerHorizontal}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:dividerHorizontal
-        */
-        public static final int Theme_dividerHorizontal = 56;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dividerVertical}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:dividerVertical
-        */
-        public static final int Theme_dividerVertical = 55;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dropDownListViewStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:dropDownListViewStyle
-        */
-        public static final int Theme_dropDownListViewStyle = 74;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#dropdownListPreferredItemHeight}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:dropdownListPreferredItemHeight
-        */
-        public static final int Theme_dropdownListPreferredItemHeight = 46;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:editTextBackground
-        */
-        public static final int Theme_editTextBackground = 63;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextColor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:editTextColor
-        */
-        public static final int Theme_editTextColor = 62;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#editTextStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:editTextStyle
-        */
-        public static final int Theme_editTextStyle = 104;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#homeAsUpIndicator}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:homeAsUpIndicator
-        */
-        public static final int Theme_homeAsUpIndicator = 48;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#imageButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:imageButtonStyle
-        */
-        public static final int Theme_imageButtonStyle = 64;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listChoiceBackgroundIndicator}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:listChoiceBackgroundIndicator
-        */
-        public static final int Theme_listChoiceBackgroundIndicator = 81;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listDividerAlertDialog}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:listDividerAlertDialog
-        */
-        public static final int Theme_listDividerAlertDialog = 44;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPopupWindowStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPopupWindowStyle
-        */
-        public static final int Theme_listPopupWindowStyle = 75;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeight}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeight
-        */
-        public static final int Theme_listPreferredItemHeight = 69;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeightLarge}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightLarge
-        */
-        public static final int Theme_listPreferredItemHeightLarge = 71;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemHeightSmall}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemHeightSmall
-        */
-        public static final int Theme_listPreferredItemHeightSmall = 70;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemPaddingLeft}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingLeft
-        */
-        public static final int Theme_listPreferredItemPaddingLeft = 72;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#listPreferredItemPaddingRight}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:listPreferredItemPaddingRight
-        */
-        public static final int Theme_listPreferredItemPaddingRight = 73;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:panelBackground
-        */
-        public static final int Theme_panelBackground = 78;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelMenuListTheme}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:panelMenuListTheme
-        */
-        public static final int Theme_panelMenuListTheme = 80;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#panelMenuListWidth}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:panelMenuListWidth
-        */
-        public static final int Theme_panelMenuListWidth = 79;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#popupMenuStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:popupMenuStyle
-        */
-        public static final int Theme_popupMenuStyle = 60;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#popupWindowStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:popupWindowStyle
-        */
-        public static final int Theme_popupWindowStyle = 61;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#radioButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:radioButtonStyle
-        */
-        public static final int Theme_radioButtonStyle = 105;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#ratingBarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:ratingBarStyle
-        */
-        public static final int Theme_ratingBarStyle = 106;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#searchViewStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:searchViewStyle
-        */
-        public static final int Theme_searchViewStyle = 68;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#seekBarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:seekBarStyle
-        */
-        public static final int Theme_seekBarStyle = 107;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#selectableItemBackground}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:selectableItemBackground
-        */
-        public static final int Theme_selectableItemBackground = 52;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#selectableItemBackgroundBorderless}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:selectableItemBackgroundBorderless
-        */
-        public static final int Theme_selectableItemBackgroundBorderless = 53;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#spinnerDropDownItemStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:spinnerDropDownItemStyle
-        */
-        public static final int Theme_spinnerDropDownItemStyle = 47;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#spinnerStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:spinnerStyle
-        */
-        public static final int Theme_spinnerStyle = 108;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#switchStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:switchStyle
-        */
-        public static final int Theme_switchStyle = 109;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceLargePopupMenu}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceLargePopupMenu
-        */
-        public static final int Theme_textAppearanceLargePopupMenu = 40;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceListItem}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceListItem
-        */
-        public static final int Theme_textAppearanceListItem = 76;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceListItemSmall}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceListItemSmall
-        */
-        public static final int Theme_textAppearanceListItemSmall = 77;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSearchResultSubtitle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultSubtitle
-        */
-        public static final int Theme_textAppearanceSearchResultSubtitle = 66;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSearchResultTitle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSearchResultTitle
-        */
-        public static final int Theme_textAppearanceSearchResultTitle = 65;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textAppearanceSmallPopupMenu}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textAppearanceSmallPopupMenu
-        */
-        public static final int Theme_textAppearanceSmallPopupMenu = 41;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textColorAlertDialogListItem}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textColorAlertDialogListItem
-        */
-        public static final int Theme_textColorAlertDialogListItem = 95;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#textColorSearchUrl}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:textColorSearchUrl
-        */
-        public static final int Theme_textColorSearchUrl = 67;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#toolbarNavigationButtonStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:toolbarNavigationButtonStyle
-        */
-        public static final int Theme_toolbarNavigationButtonStyle = 59;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#toolbarStyle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name org.secuso.privacyfriendlyboardgameclock:toolbarStyle
-        */
-        public static final int Theme_toolbarStyle = 58;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionBar}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionBar
-        */
-        public static final int Theme_windowActionBar = 2;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionBarOverlay}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionBarOverlay
-        */
-        public static final int Theme_windowActionBarOverlay = 4;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowActionModeOverlay}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowActionModeOverlay
-        */
-        public static final int Theme_windowActionModeOverlay = 5;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedHeightMajor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMajor
-        */
-        public static final int Theme_windowFixedHeightMajor = 9;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedHeightMinor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedHeightMinor
-        */
-        public static final int Theme_windowFixedHeightMinor = 7;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedWidthMajor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMajor
-        */
-        public static final int Theme_windowFixedWidthMajor = 6;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowFixedWidthMinor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowFixedWidthMinor
-        */
-        public static final int Theme_windowFixedWidthMinor = 8;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowMinWidthMajor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowMinWidthMajor
-        */
-        public static final int Theme_windowMinWidthMajor = 10;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowMinWidthMinor}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>May be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowMinWidthMinor
-        */
-        public static final int Theme_windowMinWidthMinor = 11;
-        /**
-          <p>This symbol is the offset where the {@link org.secuso.privacyfriendlyboardgameclock.R.attr#windowNoTitle}
-          attribute's value can be found in the {@link #Theme} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name org.secuso.privacyfriendlyboardgameclock:windowNoTitle
-        */
-        public static final int Theme_windowNoTitle = 3;
         /** Attributes that can be used with a Toolbar.
            <p>Includes the following attributes:</p>
            <table>
@@ -8397,11 +8511,11 @@ containing a value of this type.
         public static final int[] Toolbar = {
             0x010100af, 0x01010140, 0x7f010003, 0x7f010006,
             0x7f01000a, 0x7f010016, 0x7f010017, 0x7f010018,
-            0x7f010019, 0x7f01001b, 0x7f010106, 0x7f010107,
-            0x7f010108, 0x7f010109, 0x7f01010a, 0x7f01010b,
-            0x7f01010c, 0x7f01010d, 0x7f01010e, 0x7f01010f,
-            0x7f010110, 0x7f010111, 0x7f010112, 0x7f010113,
-            0x7f010114
+            0x7f010019, 0x7f01001b, 0x7f010109, 0x7f01010a,
+            0x7f01010b, 0x7f01010c, 0x7f01010d, 0x7f01010e,
+            0x7f01010f, 0x7f010110, 0x7f010111, 0x7f010112,
+            0x7f010113, 0x7f010114, 0x7f010115, 0x7f010116,
+            0x7f010117
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#gravity}
@@ -8754,8 +8868,8 @@ containing a value of this type.
            @see #View_theme
          */
         public static final int[] View = {
-            0x01010000, 0x010100da, 0x7f010115, 0x7f010116,
-            0x7f010117
+            0x01010000, 0x010100da, 0x7f010118, 0x7f010119,
+            0x7f01011a
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#focusable}
@@ -8826,7 +8940,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #ViewBackgroundHelper_backgroundTintMode
          */
         public static final int[] ViewBackgroundHelper = {
-            0x010100d4, 0x7f010118, 0x7f010119
+            0x010100d4, 0x7f01011b, 0x7f01011c
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#background}

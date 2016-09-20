@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 
-/**
- * Created by yonjuni on 12.01.16.
- */
 public class AboutFragment extends Fragment {
 
     Activity activity;

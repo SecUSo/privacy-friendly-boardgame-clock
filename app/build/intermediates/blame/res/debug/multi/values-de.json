@@ -16,10 +16,10 @@
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 1318,
+                        "startOffset": 1342,
                         "endLine": 33,
                         "endColumn": 19,
-                        "endOffset": 1533
+                        "endOffset": 1557
                     }
                 }
             },
@@ -32,13 +32,13 @@
                     "endOffset": 370
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 229,
+                        "startOffset": 55,
                         "endColumn": 104,
-                        "endOffset": 329
+                        "endOffset": 155
                     }
                 }
             },
@@ -51,13 +51,13 @@
                     "endOffset": 478
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 334,
+                        "startOffset": 160,
                         "endColumn": 107,
-                        "endOffset": 437
+                        "endOffset": 263
                     }
                 }
             },
@@ -70,13 +70,13 @@
                     "endOffset": 601
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 442,
+                        "startOffset": 268,
                         "endColumn": 122,
-                        "endOffset": 560
+                        "endOffset": 386
                     }
                 }
             },
@@ -89,13 +89,13 @@
                     "endOffset": 699
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 565,
+                        "startOffset": 391,
                         "endColumn": 97,
-                        "endOffset": 658
+                        "endOffset": 484
                     }
                 }
             },
@@ -108,13 +108,13 @@
                     "endOffset": 811
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 663,
+                        "startOffset": 489,
                         "endColumn": 111,
-                        "endOffset": 770
+                        "endOffset": 596
                     }
                 }
             },
@@ -127,13 +127,13 @@
                     "endOffset": 897
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 775,
+                        "startOffset": 601,
                         "endColumn": 85,
-                        "endOffset": 856
+                        "endOffset": 682
                     }
                 }
             },
@@ -146,13 +146,13 @@
                     "endOffset": 1002
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 861,
+                        "startOffset": 687,
                         "endColumn": 104,
-                        "endOffset": 961
+                        "endOffset": 787
                     }
                 }
             },
@@ -165,13 +165,13 @@
                     "endOffset": 1117
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 966,
+                        "startOffset": 792,
                         "endColumn": 114,
-                        "endOffset": 1076
+                        "endOffset": 902
                     }
                 }
             },
@@ -184,13 +184,13 @@
                     "endOffset": 1194
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 1081,
+                        "startOffset": 907,
                         "endColumn": 76,
-                        "endOffset": 1153
+                        "endOffset": 979
                     }
                 }
             },
@@ -203,13 +203,13 @@
                     "endOffset": 1270
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1158,
+                        "startOffset": 984,
                         "endColumn": 75,
-                        "endOffset": 1229
+                        "endOffset": 1055
                     }
                 }
             },
@@ -222,13 +222,13 @@
                     "endOffset": 1352
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1234,
+                        "startOffset": 1060,
                         "endColumn": 81,
-                        "endOffset": 1311
+                        "endOffset": 1137
                     }
                 }
             },
@@ -241,13 +241,13 @@
                     "endOffset": 1463
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1316,
+                        "startOffset": 1142,
                         "endColumn": 110,
-                        "endOffset": 1422
+                        "endOffset": 1248
                     }
                 }
             },
@@ -260,13 +260,13 @@
                     "endOffset": 1566
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1427,
+                        "startOffset": 1253,
                         "endColumn": 102,
-                        "endOffset": 1525
+                        "endOffset": 1351
                     }
                 }
             },
@@ -279,13 +279,13 @@
                     "endOffset": 1665
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1530,
+                        "startOffset": 1356,
                         "endColumn": 98,
-                        "endOffset": 1624
+                        "endOffset": 1450
                     }
                 }
             },
@@ -298,13 +298,13 @@
                     "endOffset": 1776
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 1629,
+                        "startOffset": 1455,
                         "endColumn": 110,
-                        "endOffset": 1735
+                        "endOffset": 1561
                     }
                 }
             },
@@ -317,13 +317,13 @@
                     "endOffset": 1878
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1740,
+                        "startOffset": 1566,
                         "endColumn": 101,
-                        "endOffset": 1837
+                        "endOffset": 1663
                     }
                 }
             },
@@ -336,13 +336,13 @@
                     "endOffset": 1985
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1842,
+                        "startOffset": 1668,
                         "endColumn": 106,
-                        "endOffset": 1944
+                        "endOffset": 1770
                     }
                 }
             },
@@ -355,13 +355,13 @@
                     "endOffset": 2107
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 1949,
+                        "startOffset": 1775,
                         "endColumn": 121,
-                        "endOffset": 2066
+                        "endOffset": 1892
                     }
                 }
             },
@@ -374,13 +374,13 @@
                     "endOffset": 2209
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 20,
                         "startColumn": 4,
-                        "startOffset": 2071,
+                        "startOffset": 1897,
                         "endColumn": 101,
-                        "endOffset": 2168
+                        "endOffset": 1994
                     }
                 }
             },
@@ -395,11 +395,11 @@
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 157,
+                        "startLine": 158,
                         "startColumn": 4,
-                        "startOffset": 10697,
+                        "startOffset": 10758,
                         "endColumn": 67,
-                        "endOffset": 10760
+                        "endOffset": 10821
                     }
                 }
             },
@@ -408,17 +408,17 @@
                     "startLine": 28,
                     "startColumn": 4,
                     "startOffset": 2282,
-                    "endColumn": 78,
-                    "endOffset": 2356
+                    "endColumn": 50,
+                    "endOffset": 2328
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 156,
                         "startColumn": 4,
-                        "startOffset": 10617,
-                        "endColumn": 78,
-                        "endOffset": 10691
+                        "startOffset": 10634,
+                        "endColumn": 50,
+                        "endOffset": 10680
                     }
                 }
             },
@@ -426,18 +426,18 @@
                 "to": {
                     "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 2361,
-                    "endColumn": 45,
-                    "endOffset": 2402
+                    "startOffset": 2333,
+                    "endColumn": 70,
+                    "endOffset": 2399
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 157,
                         "startColumn": 4,
-                        "startOffset": 634,
-                        "endColumn": 45,
-                        "endOffset": 675
+                        "startOffset": 10686,
+                        "endColumn": 70,
+                        "endOffset": 10752
                     }
                 }
             },
@@ -445,18 +445,18 @@
                 "to": {
                     "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 2407,
+                    "startOffset": 2404,
                     "endColumn": 45,
-                    "endOffset": 2448
+                    "endOffset": 2445
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 587,
+                        "startOffset": 658,
                         "endColumn": 45,
-                        "endOffset": 628
+                        "endOffset": 699
                     }
                 }
             },
@@ -464,18 +464,18 @@
                 "to": {
                     "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 2453,
-                    "endColumn": 49,
-                    "endOffset": 2498
+                    "startOffset": 2450,
+                    "endColumn": 45,
+                    "endOffset": 2491
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 681,
-                        "endColumn": 49,
-                        "endOffset": 726
+                        "startOffset": 611,
+                        "endColumn": 45,
+                        "endOffset": 652
                     }
                 }
             },
@@ -483,18 +483,18 @@
                 "to": {
                     "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 2503,
-                    "endColumn": 55,
-                    "endOffset": 2554
+                    "startOffset": 2496,
+                    "endColumn": 49,
+                    "endOffset": 2541
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 1017,
-                        "endColumn": 55,
-                        "endOffset": 1068
+                        "startOffset": 705,
+                        "endColumn": 49,
+                        "endOffset": 750
                     }
                 }
             },
@@ -502,18 +502,18 @@
                 "to": {
                     "startLine": 33,
                     "startColumn": 4,
-                    "startOffset": 2559,
-                    "endColumn": 70,
-                    "endOffset": 2625
+                    "startOffset": 2546,
+                    "endColumn": 55,
+                    "endOffset": 2597
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 732,
-                        "endColumn": 70,
-                        "endOffset": 798
+                        "startOffset": 1041,
+                        "endColumn": 55,
+                        "endOffset": 1092
                     }
                 }
             },
@@ -521,18 +521,18 @@
                 "to": {
                     "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 2630,
-                    "endColumn": 63,
-                    "endOffset": 2689
+                    "startOffset": 2602,
+                    "endColumn": 70,
+                    "endOffset": 2668
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 23,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1074,
-                        "endColumn": 63,
-                        "endOffset": 1133
+                        "startOffset": 756,
+                        "endColumn": 70,
+                        "endOffset": 822
                     }
                 }
             },
@@ -540,18 +540,18 @@
                 "to": {
                     "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 2694,
-                    "endColumn": 66,
-                    "endOffset": 2756
+                    "startOffset": 2673,
+                    "endColumn": 63,
+                    "endOffset": 2732
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 140,
+                        "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 9733,
-                        "endColumn": 66,
-                        "endOffset": 9795
+                        "startOffset": 1098,
+                        "endColumn": 63,
+                        "endOffset": 1157
                     }
                 }
             },
@@ -559,18 +559,18 @@
                 "to": {
                     "startLine": 36,
                     "startColumn": 4,
-                    "startOffset": 2761,
-                    "endColumn": 57,
-                    "endOffset": 2814
+                    "startOffset": 2737,
+                    "endColumn": 66,
+                    "endOffset": 2799
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 112,
+                        "startLine": 140,
                         "startColumn": 4,
-                        "startOffset": 6871,
-                        "endColumn": 57,
-                        "endOffset": 6924
+                        "startOffset": 9757,
+                        "endColumn": 66,
+                        "endOffset": 9819
                     }
                 }
             },
@@ -578,18 +578,18 @@
                 "to": {
                     "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 2819,
-                    "endColumn": 61,
-                    "endOffset": 2876
+                    "startOffset": 2804,
+                    "endColumn": 57,
+                    "endOffset": 2857
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 87,
+                        "startLine": 112,
                         "startColumn": 4,
-                        "startOffset": 4942,
-                        "endColumn": 61,
-                        "endOffset": 4999
+                        "startOffset": 6895,
+                        "endColumn": 57,
+                        "endOffset": 6948
                     }
                 }
             },
@@ -597,18 +597,18 @@
                 "to": {
                     "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 2881,
-                    "endColumn": 67,
-                    "endOffset": 2944
+                    "startOffset": 2862,
+                    "endColumn": 61,
+                    "endOffset": 2919
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 111,
+                        "startLine": 87,
                         "startColumn": 4,
-                        "startOffset": 6802,
-                        "endColumn": 67,
-                        "endOffset": 6865
+                        "startOffset": 4966,
+                        "endColumn": 61,
+                        "endOffset": 5023
                     }
                 }
             },
@@ -616,18 +616,18 @@
                 "to": {
                     "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 2949,
-                    "endColumn": 56,
-                    "endOffset": 3001
+                    "startOffset": 2924,
+                    "endColumn": 67,
+                    "endOffset": 2987
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 138,
+                        "startLine": 111,
                         "startColumn": 4,
-                        "startOffset": 9565,
-                        "endColumn": 56,
-                        "endOffset": 9617
+                        "startOffset": 6826,
+                        "endColumn": 67,
+                        "endOffset": 6889
                     }
                 }
             },
@@ -635,18 +635,18 @@
                 "to": {
                     "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 3006,
-                    "endColumn": 108,
-                    "endOffset": 3110
+                    "startOffset": 2992,
+                    "endColumn": 56,
+                    "endOffset": 3044
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 139,
+                        "startLine": 138,
                         "startColumn": 4,
-                        "startOffset": 9623,
-                        "endColumn": 108,
-                        "endOffset": 9727
+                        "startOffset": 9589,
+                        "endColumn": 56,
+                        "endOffset": 9641
                     }
                 }
             },
@@ -654,18 +654,18 @@
                 "to": {
                     "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 3115,
-                    "endColumn": 130,
-                    "endOffset": 3241
+                    "startOffset": 3049,
+                    "endColumn": 108,
+                    "endOffset": 3153
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 139,
                         "startColumn": 4,
-                        "startOffset": 859,
-                        "endColumn": 130,
-                        "endOffset": 985
+                        "startOffset": 9647,
+                        "endColumn": 108,
+                        "endOffset": 9751
                     }
                 }
             },
@@ -673,18 +673,18 @@
                 "to": {
                     "startLine": 42,
                     "startColumn": 4,
-                    "startOffset": 3246,
-                    "endColumn": 82,
-                    "endOffset": 3324
+                    "startOffset": 3158,
+                    "endColumn": 130,
+                    "endOffset": 3284
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 108,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 6689,
-                        "endColumn": 82,
-                        "endOffset": 6767
+                        "startOffset": 883,
+                        "endColumn": 130,
+                        "endOffset": 1009
                     }
                 }
             },
@@ -692,9 +692,28 @@
                 "to": {
                     "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 3329,
+                    "startOffset": 3289,
+                    "endColumn": 82,
+                    "endOffset": 3367
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 6713,
+                        "endColumn": 82,
+                        "endOffset": 6791
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 3372,
                     "endColumn": 44,
-                    "endOffset": 3369
+                    "endOffset": 3412
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -709,39 +728,20 @@
             },
             {
                 "to": {
-                    "startLine": 44,
-                    "startColumn": 4,
-                    "startOffset": 3374,
-                    "endColumn": 51,
-                    "endOffset": 3421
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 169,
-                        "startColumn": 4,
-                        "startOffset": 11303,
-                        "endColumn": 51,
-                        "endOffset": 11350
-                    }
-                }
-            },
-            {
-                "to": {
                     "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 3426,
-                    "endColumn": 49,
-                    "endOffset": 3471
+                    "startOffset": 3417,
+                    "endColumn": 51,
+                    "endOffset": 3464
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 44,
+                        "startLine": 170,
                         "startColumn": 4,
-                        "startOffset": 2151,
-                        "endColumn": 49,
-                        "endOffset": 2196
+                        "startOffset": 11492,
+                        "endColumn": 51,
+                        "endOffset": 11539
                     }
                 }
             },
@@ -749,18 +749,18 @@
                 "to": {
                     "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 3476,
-                    "endColumn": 60,
-                    "endOffset": 3532
+                    "startOffset": 3469,
+                    "endColumn": 49,
+                    "endOffset": 3514
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 165,
+                        "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 11152,
-                        "endColumn": 60,
-                        "endOffset": 11208
+                        "startOffset": 2175,
+                        "endColumn": 49,
+                        "endOffset": 2220
                     }
                 }
             },
@@ -768,9 +768,28 @@
                 "to": {
                     "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 3537,
+                    "startOffset": 3519,
+                    "endColumn": 60,
+                    "endOffset": 3575
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 166,
+                        "startColumn": 4,
+                        "startOffset": 11341,
+                        "endColumn": 60,
+                        "endOffset": 11397
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3580,
                     "endColumn": 46,
-                    "endOffset": 3579
+                    "endOffset": 3622
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -785,39 +804,20 @@
             },
             {
                 "to": {
-                    "startLine": 48,
+                    "startLine": 49,
                     "startColumn": 4,
-                    "startOffset": 3584,
+                    "startOffset": 3627,
                     "endColumn": 57,
-                    "endOffset": 3637
+                    "endOffset": 3680
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 85,
                         "startColumn": 4,
-                        "startOffset": 4819,
+                        "startOffset": 4843,
                         "endColumn": 57,
-                        "endOffset": 4872
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 49,
-                    "startColumn": 4,
-                    "startOffset": 3642,
-                    "endColumn": 50,
-                    "endOffset": 3688
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 52,
-                        "startColumn": 4,
-                        "startOffset": 2429,
-                        "endColumn": 50,
-                        "endOffset": 2475
+                        "endOffset": 4896
                     }
                 }
             },
@@ -825,18 +825,18 @@
                 "to": {
                     "startLine": 50,
                     "startColumn": 4,
-                    "startOffset": 3693,
-                    "endColumn": 52,
-                    "endOffset": 3741
+                    "startOffset": 3685,
+                    "endColumn": 50,
+                    "endOffset": 3731
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 95,
+                        "startLine": 52,
                         "startColumn": 4,
-                        "startOffset": 5478,
-                        "endColumn": 52,
-                        "endOffset": 5526
+                        "startOffset": 2453,
+                        "endColumn": 50,
+                        "endOffset": 2499
                     }
                 }
             },
@@ -844,18 +844,18 @@
                 "to": {
                     "startLine": 51,
                     "startColumn": 4,
-                    "startOffset": 3746,
-                    "endColumn": 114,
-                    "endOffset": 3856
+                    "startOffset": 3736,
+                    "endColumn": 52,
+                    "endOffset": 3784
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 96,
+                        "startLine": 95,
                         "startColumn": 4,
-                        "startOffset": 5532,
-                        "endColumn": 114,
-                        "endOffset": 5642
+                        "startOffset": 5502,
+                        "endColumn": 52,
+                        "endOffset": 5550
                     }
                 }
             },
@@ -863,18 +863,18 @@
                 "to": {
                     "startLine": 52,
                     "startColumn": 4,
-                    "startOffset": 3861,
-                    "endColumn": 56,
-                    "endOffset": 3913
+                    "startOffset": 3789,
+                    "endColumn": 114,
+                    "endOffset": 3899
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 88,
+                        "startLine": 96,
                         "startColumn": 4,
-                        "startOffset": 5005,
-                        "endColumn": 56,
-                        "endOffset": 5057
+                        "startOffset": 5556,
+                        "endColumn": 114,
+                        "endOffset": 5666
                     }
                 }
             },
@@ -882,18 +882,18 @@
                 "to": {
                     "startLine": 53,
                     "startColumn": 4,
-                    "startOffset": 3918,
-                    "endColumn": 266,
-                    "endOffset": 4180
+                    "startOffset": 3904,
+                    "endColumn": 56,
+                    "endOffset": 3956
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 90,
+                        "startLine": 88,
                         "startColumn": 4,
-                        "startOffset": 5122,
-                        "endColumn": 266,
-                        "endOffset": 5384
+                        "startOffset": 5029,
+                        "endColumn": 56,
+                        "endOffset": 5081
                     }
                 }
             },
@@ -901,9 +901,28 @@
                 "to": {
                     "startLine": 54,
                     "startColumn": 4,
-                    "startOffset": 4185,
+                    "startOffset": 3961,
+                    "endColumn": 266,
+                    "endOffset": 4223
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 5146,
+                        "endColumn": 266,
+                        "endOffset": 5408
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 4228,
                     "endColumn": 98,
-                    "endOffset": 4279
+                    "endOffset": 4322
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -918,39 +937,20 @@
             },
             {
                 "to": {
-                    "startLine": 55,
-                    "startColumn": 4,
-                    "startOffset": 4284,
-                    "endColumn": 67,
-                    "endOffset": 4347
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 518,
-                        "endColumn": 67,
-                        "endOffset": 581
-                    }
-                }
-            },
-            {
-                "to": {
                     "startLine": 56,
                     "startColumn": 4,
-                    "startOffset": 4352,
-                    "endColumn": 63,
-                    "endOffset": 4411
+                    "startOffset": 4327,
+                    "endColumn": 57,
+                    "endOffset": 4380
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 89,
                         "startColumn": 4,
-                        "startOffset": 453,
-                        "endColumn": 63,
-                        "endOffset": 512
+                        "startOffset": 5087,
+                        "endColumn": 57,
+                        "endOffset": 5140
                     }
                 }
             },
@@ -958,28 +958,9 @@
                 "to": {
                     "startLine": 57,
                     "startColumn": 4,
-                    "startOffset": 4416,
-                    "endColumn": 57,
-                    "endOffset": 4469
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 89,
-                        "startColumn": 4,
-                        "startOffset": 5063,
-                        "endColumn": 57,
-                        "endOffset": 5116
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 58,
-                    "startColumn": 4,
-                    "startOffset": 4474,
+                    "startOffset": 4385,
                     "endColumn": 40,
-                    "endOffset": 4510
+                    "endOffset": 4421
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -994,20 +975,39 @@
             },
             {
                 "to": {
-                    "startLine": 59,
+                    "startLine": 58,
                     "startColumn": 4,
-                    "startOffset": 4515,
+                    "startOffset": 4426,
                     "endColumn": 103,
-                    "endOffset": 4614
+                    "endOffset": 4525
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 81,
                         "startColumn": 4,
-                        "startOffset": 4618,
+                        "startOffset": 4642,
                         "endColumn": 103,
-                        "endOffset": 4717
+                        "endOffset": 4741
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 4530,
+                    "endColumn": 48,
+                    "endOffset": 4574
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1163,
+                        "endColumn": 48,
+                        "endOffset": 1207
                     }
                 }
             },
@@ -1015,18 +1015,18 @@
                 "to": {
                     "startLine": 60,
                     "startColumn": 4,
-                    "startOffset": 4619,
-                    "endColumn": 48,
-                    "endOffset": 4663
+                    "startOffset": 4579,
+                    "endColumn": 102,
+                    "endOffset": 4677
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 1139,
-                        "endColumn": 48,
-                        "endOffset": 1183
+                        "startOffset": 1213,
+                        "endColumn": 102,
+                        "endOffset": 1311
                     }
                 }
             },
@@ -1034,18 +1034,18 @@
                 "to": {
                     "startLine": 61,
                     "startColumn": 4,
-                    "startOffset": 4668,
-                    "endColumn": 102,
-                    "endOffset": 4766
+                    "startOffset": 4682,
+                    "endColumn": 77,
+                    "endOffset": 4755
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 104,
                         "startColumn": 4,
-                        "startOffset": 1189,
-                        "endColumn": 102,
-                        "endOffset": 1287
+                        "startOffset": 6253,
+                        "endColumn": 77,
+                        "endOffset": 6326
                     }
                 }
             },
@@ -1053,18 +1053,18 @@
                 "to": {
                     "startLine": 62,
                     "startColumn": 4,
-                    "startOffset": 4771,
-                    "endColumn": 77,
-                    "endOffset": 4844
+                    "startOffset": 4760,
+                    "endColumn": 194,
+                    "endOffset": 4950
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 104,
+                        "startLine": 105,
                         "startColumn": 4,
-                        "startOffset": 6229,
-                        "endColumn": 77,
-                        "endOffset": 6302
+                        "startOffset": 6332,
+                        "endColumn": 194,
+                        "endOffset": 6522
                     }
                 }
             },
@@ -1072,18 +1072,18 @@
                 "to": {
                     "startLine": 63,
                     "startColumn": 4,
-                    "startOffset": 4849,
-                    "endColumn": 194,
-                    "endOffset": 5039
+                    "startOffset": 4955,
+                    "endColumn": 91,
+                    "endOffset": 5042
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 105,
+                        "startLine": 106,
                         "startColumn": 4,
-                        "startOffset": 6308,
-                        "endColumn": 194,
-                        "endOffset": 6498
+                        "startOffset": 6528,
+                        "endColumn": 91,
+                        "endOffset": 6615
                     }
                 }
             },
@@ -1091,18 +1091,18 @@
                 "to": {
                     "startLine": 64,
                     "startColumn": 4,
-                    "startOffset": 5044,
-                    "endColumn": 91,
-                    "endOffset": 5131
+                    "startOffset": 5047,
+                    "endColumn": 46,
+                    "endOffset": 5089
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 106,
+                        "startLine": 58,
                         "startColumn": 4,
-                        "startOffset": 6504,
-                        "endColumn": 91,
-                        "endOffset": 6591
+                        "startOffset": 2753,
+                        "endColumn": 46,
+                        "endOffset": 2795
                     }
                 }
             },
@@ -1110,18 +1110,18 @@
                 "to": {
                     "startLine": 65,
                     "startColumn": 4,
-                    "startOffset": 5136,
-                    "endColumn": 46,
-                    "endOffset": 5178
+                    "startOffset": 5094,
+                    "endColumn": 111,
+                    "endOffset": 5201
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 58,
+                        "startLine": 62,
                         "startColumn": 4,
-                        "startOffset": 2729,
-                        "endColumn": 46,
-                        "endOffset": 2771
+                        "startOffset": 3007,
+                        "endColumn": 111,
+                        "endOffset": 3114
                     }
                 }
             },
@@ -1129,18 +1129,18 @@
                 "to": {
                     "startLine": 66,
                     "startColumn": 4,
-                    "startOffset": 5183,
-                    "endColumn": 111,
-                    "endOffset": 5290
+                    "startOffset": 5206,
+                    "endColumn": 53,
+                    "endOffset": 5255
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 62,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 2983,
-                        "endColumn": 111,
-                        "endOffset": 3090
+                        "startOffset": 828,
+                        "endColumn": 53,
+                        "endOffset": 877
                     }
                 }
             },
@@ -1148,18 +1148,18 @@
                 "to": {
                     "startLine": 67,
                     "startColumn": 4,
-                    "startOffset": 5295,
-                    "endColumn": 53,
-                    "endOffset": 5344
+                    "startOffset": 5260,
+                    "endColumn": 48,
+                    "endOffset": 5304
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 39,
                         "startColumn": 4,
-                        "startOffset": 804,
-                        "endColumn": 53,
-                        "endOffset": 853
+                        "startOffset": 1885,
+                        "endColumn": 48,
+                        "endOffset": 1929
                     }
                 }
             },
@@ -1167,18 +1167,18 @@
                 "to": {
                     "startLine": 68,
                     "startColumn": 4,
-                    "startOffset": 5349,
-                    "endColumn": 48,
-                    "endOffset": 5393
+                    "startOffset": 5309,
+                    "endColumn": 53,
+                    "endOffset": 5358
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 39,
+                        "startLine": 123,
                         "startColumn": 4,
-                        "startOffset": 1861,
-                        "endColumn": 48,
-                        "endOffset": 1905
+                        "startOffset": 8216,
+                        "endColumn": 53,
+                        "endOffset": 8265
                     }
                 }
             },
@@ -1186,18 +1186,18 @@
                 "to": {
                     "startLine": 69,
                     "startColumn": 4,
-                    "startOffset": 5398,
-                    "endColumn": 53,
-                    "endOffset": 5447
+                    "startOffset": 5363,
+                    "endColumn": 47,
+                    "endOffset": 5406
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 123,
+                        "startLine": 41,
                         "startColumn": 4,
-                        "startOffset": 8192,
-                        "endColumn": 53,
-                        "endOffset": 8241
+                        "startOffset": 2023,
+                        "endColumn": 47,
+                        "endOffset": 2066
                     }
                 }
             },
@@ -1205,18 +1205,18 @@
                 "to": {
                     "startLine": 70,
                     "startColumn": 4,
-                    "startOffset": 5452,
-                    "endColumn": 47,
-                    "endOffset": 5495
+                    "startOffset": 5411,
+                    "endColumn": 87,
+                    "endOffset": 5494
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 41,
+                        "startLine": 65,
                         "startColumn": 4,
-                        "startOffset": 1999,
-                        "endColumn": 47,
-                        "endOffset": 2042
+                        "startOffset": 3368,
+                        "endColumn": 87,
+                        "endOffset": 3451
                     }
                 }
             },
@@ -1224,18 +1224,18 @@
                 "to": {
                     "startLine": 71,
                     "startColumn": 4,
-                    "startOffset": 5500,
-                    "endColumn": 87,
-                    "endOffset": 5583
+                    "startOffset": 5499,
+                    "endColumn": 50,
+                    "endOffset": 5545
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 65,
+                        "startLine": 42,
                         "startColumn": 4,
-                        "startOffset": 3344,
-                        "endColumn": 87,
-                        "endOffset": 3427
+                        "startOffset": 2072,
+                        "endColumn": 50,
+                        "endOffset": 2118
                     }
                 }
             },
@@ -1243,18 +1243,18 @@
                 "to": {
                     "startLine": 72,
                     "startColumn": 4,
-                    "startOffset": 5588,
-                    "endColumn": 50,
-                    "endOffset": 5634
+                    "startOffset": 5550,
+                    "endColumn": 55,
+                    "endOffset": 5601
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 42,
+                        "startLine": 137,
                         "startColumn": 4,
-                        "startOffset": 2048,
-                        "endColumn": 50,
-                        "endOffset": 2094
+                        "startOffset": 9532,
+                        "endColumn": 55,
+                        "endOffset": 9583
                     }
                 }
             },
@@ -1262,18 +1262,18 @@
                 "to": {
                     "startLine": 73,
                     "startColumn": 4,
-                    "startOffset": 5639,
-                    "endColumn": 55,
-                    "endOffset": 5690
+                    "startOffset": 5606,
+                    "endColumn": 89,
+                    "endOffset": 5691
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 137,
+                        "startLine": 67,
                         "startColumn": 4,
-                        "startOffset": 9508,
-                        "endColumn": 55,
-                        "endOffset": 9559
+                        "startOffset": 3586,
+                        "endColumn": 89,
+                        "endOffset": 3671
                     }
                 }
             },
@@ -1281,18 +1281,18 @@
                 "to": {
                     "startLine": 74,
                     "startColumn": 4,
-                    "startOffset": 5695,
-                    "endColumn": 89,
-                    "endOffset": 5780
+                    "startOffset": 5696,
+                    "endColumn": 47,
+                    "endOffset": 5739
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 67,
+                        "startLine": 51,
                         "startColumn": 4,
-                        "startOffset": 3562,
-                        "endColumn": 89,
-                        "endOffset": 3647
+                        "startOffset": 2404,
+                        "endColumn": 47,
+                        "endOffset": 2447
                     }
                 }
             },
@@ -1300,18 +1300,18 @@
                 "to": {
                     "startLine": 75,
                     "startColumn": 4,
-                    "startOffset": 5785,
-                    "endColumn": 47,
-                    "endOffset": 5828
+                    "startOffset": 5744,
+                    "endColumn": 53,
+                    "endOffset": 5793
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 51,
+                        "startLine": 121,
                         "startColumn": 4,
-                        "startOffset": 2380,
-                        "endColumn": 47,
-                        "endOffset": 2423
+                        "startOffset": 8104,
+                        "endColumn": 53,
+                        "endOffset": 8153
                     }
                 }
             },
@@ -1319,18 +1319,18 @@
                 "to": {
                     "startLine": 76,
                     "startColumn": 4,
-                    "startOffset": 5833,
-                    "endColumn": 53,
-                    "endOffset": 5882
+                    "startOffset": 5798,
+                    "endColumn": 75,
+                    "endOffset": 5869
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 121,
+                        "startLine": 132,
                         "startColumn": 4,
-                        "startOffset": 8080,
-                        "endColumn": 53,
-                        "endOffset": 8129
+                        "startOffset": 9149,
+                        "endColumn": 75,
+                        "endOffset": 9220
                     }
                 }
             },
@@ -1338,18 +1338,18 @@
                 "to": {
                     "startLine": 77,
                     "startColumn": 4,
-                    "startOffset": 5887,
-                    "endColumn": 75,
-                    "endOffset": 5958
+                    "startOffset": 5874,
+                    "endColumn": 155,
+                    "endOffset": 6025
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 132,
+                        "startLine": 133,
                         "startColumn": 4,
-                        "startOffset": 9125,
-                        "endColumn": 75,
-                        "endOffset": 9196
+                        "startOffset": 9226,
+                        "endColumn": 155,
+                        "endOffset": 9377
                     }
                 }
             },
@@ -1357,18 +1357,18 @@
                 "to": {
                     "startLine": 78,
                     "startColumn": 4,
-                    "startOffset": 5963,
-                    "endColumn": 155,
-                    "endOffset": 6114
+                    "startOffset": 6030,
+                    "endColumn": 118,
+                    "endOffset": 6144
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 133,
+                        "startLine": 134,
                         "startColumn": 4,
-                        "startOffset": 9202,
-                        "endColumn": 155,
-                        "endOffset": 9353
+                        "startOffset": 9383,
+                        "endColumn": 118,
+                        "endOffset": 9497
                     }
                 }
             },
@@ -1376,18 +1376,18 @@
                 "to": {
                     "startLine": 79,
                     "startColumn": 4,
-                    "startOffset": 6119,
-                    "endColumn": 118,
-                    "endOffset": 6233
+                    "startOffset": 6149,
+                    "endColumn": 77,
+                    "endOffset": 6222
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 134,
+                        "startLine": 101,
                         "startColumn": 4,
-                        "startOffset": 9359,
-                        "endColumn": 118,
-                        "endOffset": 9473
+                        "startOffset": 5893,
+                        "endColumn": 77,
+                        "endOffset": 5966
                     }
                 }
             },
@@ -1395,18 +1395,18 @@
                 "to": {
                     "startLine": 80,
                     "startColumn": 4,
-                    "startOffset": 6238,
-                    "endColumn": 77,
-                    "endOffset": 6311
+                    "startOffset": 6227,
+                    "endColumn": 184,
+                    "endOffset": 6407
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 101,
+                        "startLine": 102,
                         "startColumn": 4,
-                        "startOffset": 5869,
-                        "endColumn": 77,
-                        "endOffset": 5942
+                        "startOffset": 5972,
+                        "endColumn": 184,
+                        "endOffset": 6152
                     }
                 }
             },
@@ -1414,18 +1414,18 @@
                 "to": {
                     "startLine": 81,
                     "startColumn": 4,
-                    "startOffset": 6316,
-                    "endColumn": 184,
-                    "endOffset": 6496
+                    "startOffset": 6412,
+                    "endColumn": 93,
+                    "endOffset": 6501
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 102,
+                        "startLine": 103,
                         "startColumn": 4,
-                        "startOffset": 5948,
-                        "endColumn": 184,
-                        "endOffset": 6128
+                        "startOffset": 6158,
+                        "endColumn": 93,
+                        "endOffset": 6247
                     }
                 }
             },
@@ -1433,18 +1433,18 @@
                 "to": {
                     "startLine": 82,
                     "startColumn": 4,
-                    "startOffset": 6501,
-                    "endColumn": 93,
-                    "endOffset": 6590
+                    "startOffset": 6506,
+                    "endColumn": 86,
+                    "endOffset": 6588
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 103,
+                        "startLine": 40,
                         "startColumn": 4,
-                        "startOffset": 6134,
-                        "endColumn": 93,
-                        "endOffset": 6223
+                        "startOffset": 1935,
+                        "endColumn": 86,
+                        "endOffset": 2017
                     }
                 }
             },
@@ -1452,18 +1452,18 @@
                 "to": {
                     "startLine": 83,
                     "startColumn": 4,
-                    "startOffset": 6595,
-                    "endColumn": 86,
-                    "endOffset": 6677
+                    "startOffset": 6593,
+                    "endColumn": 46,
+                    "endOffset": 6635
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 40,
+                        "startLine": 59,
                         "startColumn": 4,
-                        "startOffset": 1911,
-                        "endColumn": 86,
-                        "endOffset": 1993
+                        "startOffset": 2801,
+                        "endColumn": 46,
+                        "endOffset": 2843
                     }
                 }
             },
@@ -1471,18 +1471,18 @@
                 "to": {
                     "startLine": 84,
                     "startColumn": 4,
-                    "startOffset": 6682,
-                    "endColumn": 46,
-                    "endOffset": 6724
+                    "startOffset": 6640,
+                    "endColumn": 112,
+                    "endOffset": 6748
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 59,
+                        "startLine": 63,
                         "startColumn": 4,
-                        "startOffset": 2777,
-                        "endColumn": 46,
-                        "endOffset": 2819
+                        "startOffset": 3120,
+                        "endColumn": 112,
+                        "endOffset": 3228
                     }
                 }
             },
@@ -1490,18 +1490,18 @@
                 "to": {
                     "startLine": 85,
                     "startColumn": 4,
-                    "startOffset": 6729,
-                    "endColumn": 112,
-                    "endOffset": 6837
+                    "startOffset": 6753,
+                    "endColumn": 48,
+                    "endOffset": 6797
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 63,
+                        "startLine": 77,
                         "startColumn": 4,
-                        "startOffset": 3096,
-                        "endColumn": 112,
-                        "endOffset": 3204
+                        "startOffset": 4473,
+                        "endColumn": 48,
+                        "endOffset": 4517
                     }
                 }
             },
@@ -1509,18 +1509,18 @@
                 "to": {
                     "startLine": 86,
                     "startColumn": 4,
-                    "startOffset": 6842,
-                    "endColumn": 48,
-                    "endOffset": 6886
+                    "startOffset": 6802,
+                    "endColumn": 56,
+                    "endOffset": 6854
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 77,
+                        "startLine": 76,
                         "startColumn": 4,
-                        "startOffset": 4449,
-                        "endColumn": 48,
-                        "endOffset": 4493
+                        "startOffset": 4415,
+                        "endColumn": 56,
+                        "endOffset": 4467
                     }
                 }
             },
@@ -1528,18 +1528,18 @@
                 "to": {
                     "startLine": 87,
                     "startColumn": 4,
-                    "startOffset": 6891,
-                    "endColumn": 56,
-                    "endOffset": 6943
+                    "startOffset": 6859,
+                    "endColumn": 119,
+                    "endOffset": 6974
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 76,
+                        "startLine": 72,
                         "startColumn": 4,
-                        "startOffset": 4391,
-                        "endColumn": 56,
-                        "endOffset": 4443
+                        "startOffset": 4190,
+                        "endColumn": 119,
+                        "endOffset": 4305
                     }
                 }
             },
@@ -1547,18 +1547,18 @@
                 "to": {
                     "startLine": 88,
                     "startColumn": 4,
-                    "startOffset": 6948,
-                    "endColumn": 119,
-                    "endOffset": 7063
+                    "startOffset": 6979,
+                    "endColumn": 76,
+                    "endOffset": 7051
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 72,
+                        "startLine": 73,
                         "startColumn": 4,
-                        "startOffset": 4166,
-                        "endColumn": 119,
-                        "endOffset": 4281
+                        "startOffset": 4311,
+                        "endColumn": 76,
+                        "endOffset": 4383
                     }
                 }
             },
@@ -1566,18 +1566,18 @@
                 "to": {
                     "startLine": 89,
                     "startColumn": 4,
-                    "startOffset": 7068,
-                    "endColumn": 76,
-                    "endOffset": 7140
+                    "startOffset": 7056,
+                    "endColumn": 44,
+                    "endOffset": 7096
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 73,
+                        "startLine": 37,
                         "startColumn": 4,
-                        "startOffset": 4287,
-                        "endColumn": 76,
-                        "endOffset": 4359
+                        "startOffset": 1749,
+                        "endColumn": 44,
+                        "endOffset": 1789
                     }
                 }
             },
@@ -1585,18 +1585,18 @@
                 "to": {
                     "startLine": 90,
                     "startColumn": 4,
-                    "startOffset": 7145,
-                    "endColumn": 44,
-                    "endOffset": 7185
+                    "startOffset": 7101,
+                    "endColumn": 133,
+                    "endOffset": 7230
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 37,
+                        "startLine": 129,
                         "startColumn": 4,
-                        "startOffset": 1725,
-                        "endColumn": 44,
-                        "endOffset": 1765
+                        "startOffset": 8792,
+                        "endColumn": 133,
+                        "endOffset": 8921
                     }
                 }
             },
@@ -1604,18 +1604,18 @@
                 "to": {
                     "startLine": 91,
                     "startColumn": 4,
-                    "startOffset": 7190,
-                    "endColumn": 133,
-                    "endOffset": 7319
+                    "startOffset": 7235,
+                    "endColumn": 58,
+                    "endOffset": 7289
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 129,
+                        "startLine": 34,
                         "startColumn": 4,
-                        "startOffset": 8768,
-                        "endColumn": 133,
-                        "endOffset": 8897
+                        "startOffset": 1563,
+                        "endColumn": 58,
+                        "endOffset": 1617
                     }
                 }
             },
@@ -1623,18 +1623,18 @@
                 "to": {
                     "startLine": 92,
                     "startColumn": 4,
-                    "startOffset": 7324,
-                    "endColumn": 58,
-                    "endOffset": 7378
+                    "startOffset": 7294,
+                    "endColumn": 136,
+                    "endOffset": 7426
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 34,
+                        "startLine": 126,
                         "startColumn": 4,
-                        "startOffset": 1539,
-                        "endColumn": 58,
-                        "endOffset": 1593
+                        "startOffset": 8390,
+                        "endColumn": 136,
+                        "endOffset": 8522
                     }
                 }
             },
@@ -1642,18 +1642,18 @@
                 "to": {
                     "startLine": 93,
                     "startColumn": 4,
-                    "startOffset": 7383,
-                    "endColumn": 136,
-                    "endOffset": 7515
+                    "startOffset": 7431,
+                    "endColumn": 75,
+                    "endOffset": 7502
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 126,
+                        "startLine": 35,
                         "startColumn": 4,
-                        "startOffset": 8366,
-                        "endColumn": 136,
-                        "endOffset": 8498
+                        "startOffset": 1623,
+                        "endColumn": 75,
+                        "endOffset": 1694
                     }
                 }
             },
@@ -1661,18 +1661,18 @@
                 "to": {
                     "startLine": 94,
                     "startColumn": 4,
-                    "startOffset": 7520,
-                    "endColumn": 75,
-                    "endOffset": 7591
+                    "startOffset": 7507,
+                    "endColumn": 150,
+                    "endOffset": 7653
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 35,
+                        "startLine": 127,
                         "startColumn": 4,
-                        "startOffset": 1599,
-                        "endColumn": 75,
-                        "endOffset": 1670
+                        "startOffset": 8528,
+                        "endColumn": 150,
+                        "endOffset": 8674
                     }
                 }
             },
@@ -1680,18 +1680,18 @@
                 "to": {
                     "startLine": 95,
                     "startColumn": 4,
-                    "startOffset": 7596,
-                    "endColumn": 150,
-                    "endOffset": 7742
+                    "startOffset": 7658,
+                    "endColumn": 47,
+                    "endOffset": 7701
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 127,
+                        "startLine": 36,
                         "startColumn": 4,
-                        "startOffset": 8504,
-                        "endColumn": 150,
-                        "endOffset": 8650
+                        "startOffset": 1700,
+                        "endColumn": 47,
+                        "endOffset": 1743
                     }
                 }
             },
@@ -1699,18 +1699,18 @@
                 "to": {
                     "startLine": 96,
                     "startColumn": 4,
-                    "startOffset": 7747,
-                    "endColumn": 47,
-                    "endOffset": 7790
+                    "startOffset": 7706,
+                    "endColumn": 110,
+                    "endOffset": 7812
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 36,
+                        "startLine": 128,
                         "startColumn": 4,
-                        "startOffset": 1676,
-                        "endColumn": 47,
-                        "endOffset": 1719
+                        "startOffset": 8680,
+                        "endColumn": 110,
+                        "endOffset": 8786
                     }
                 }
             },
@@ -1718,18 +1718,18 @@
                 "to": {
                     "startLine": 97,
                     "startColumn": 4,
-                    "startOffset": 7795,
-                    "endColumn": 110,
-                    "endOffset": 7901
+                    "startOffset": 7817,
+                    "endColumn": 58,
+                    "endOffset": 7871
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 128,
+                        "startLine": 160,
                         "startColumn": 4,
-                        "startOffset": 8656,
-                        "endColumn": 110,
-                        "endOffset": 8762
+                        "startOffset": 11061,
+                        "endColumn": 58,
+                        "endOffset": 11115
                     }
                 }
             },
@@ -1737,18 +1737,18 @@
                 "to": {
                     "startLine": 98,
                     "startColumn": 4,
-                    "startOffset": 7906,
-                    "endColumn": 63,
-                    "endOffset": 7965
+                    "startOffset": 7876,
+                    "endColumn": 79,
+                    "endOffset": 7951
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 159,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 10867,
-                        "endColumn": 63,
-                        "endOffset": 10926
+                        "startOffset": 530,
+                        "endColumn": 79,
+                        "endOffset": 605
                     }
                 }
             },
@@ -1756,18 +1756,18 @@
                 "to": {
                     "startLine": 99,
                     "startColumn": 4,
-                    "startOffset": 7970,
-                    "endColumn": 55,
-                    "endOffset": 8021
+                    "startOffset": 7956,
+                    "endColumn": 75,
+                    "endOffset": 8027
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 53,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 2481,
-                        "endColumn": 55,
-                        "endOffset": 2532
+                        "startOffset": 453,
+                        "endColumn": 75,
+                        "endOffset": 524
                     }
                 }
             },
@@ -1775,9 +1775,28 @@
                 "to": {
                     "startLine": 100,
                     "startColumn": 4,
-                    "startOffset": 8026,
+                    "startOffset": 8032,
+                    "endColumn": 55,
+                    "endOffset": 8083
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 2505,
+                        "endColumn": 55,
+                        "endOffset": 2556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 8088,
                     "endColumn": 35,
-                    "endOffset": 8057
+                    "endOffset": 8119
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -1792,30 +1811,30 @@
             },
             {
                 "to": {
-                    "startLine": 101,
+                    "startLine": 102,
                     "startColumn": 4,
-                    "startOffset": 8062,
+                    "startOffset": 8124,
                     "endColumn": 90,
-                    "endOffset": 8148
+                    "endOffset": 8210
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 107,
                         "startColumn": 4,
-                        "startOffset": 6597,
+                        "startOffset": 6621,
                         "endColumn": 90,
-                        "endOffset": 6683
+                        "endOffset": 6707
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 102,
+                    "startLine": 103,
                     "startColumn": 4,
-                    "startOffset": 8153,
+                    "startOffset": 8215,
                     "endColumn": 35,
-                    "endOffset": 8184
+                    "endOffset": 8246
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -1830,39 +1849,20 @@
             },
             {
                 "to": {
-                    "startLine": 103,
+                    "startLine": 104,
                     "startColumn": 4,
-                    "startOffset": 8189,
+                    "startOffset": 8251,
                     "endColumn": 53,
-                    "endOffset": 8238
+                    "endOffset": 8300
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 130,
                         "startColumn": 4,
-                        "startOffset": 8903,
+                        "startOffset": 8927,
                         "endColumn": 53,
-                        "endOffset": 8952
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 104,
-                    "startColumn": 4,
-                    "startOffset": 8243,
-                    "endColumn": 165,
-                    "endOffset": 8404
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 131,
-                        "startColumn": 4,
-                        "startOffset": 8958,
-                        "endColumn": 165,
-                        "endOffset": 9119
+                        "endOffset": 8976
                     }
                 }
             },
@@ -1870,18 +1870,18 @@
                 "to": {
                     "startLine": 105,
                     "startColumn": 4,
-                    "startOffset": 8409,
-                    "endColumn": 290,
-                    "endOffset": 8695
+                    "startOffset": 8305,
+                    "endColumn": 165,
+                    "endOffset": 8466
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 119,
+                        "startLine": 131,
                         "startColumn": 4,
-                        "startOffset": 7485,
-                        "endColumn": 290,
-                        "endOffset": 7771
+                        "startOffset": 8982,
+                        "endColumn": 165,
+                        "endOffset": 9143
                     }
                 }
             },
@@ -1889,18 +1889,18 @@
                 "to": {
                     "startLine": 106,
                     "startColumn": 4,
-                    "startOffset": 8700,
-                    "endColumn": 59,
-                    "endOffset": 8755
+                    "startOffset": 8471,
+                    "endColumn": 290,
+                    "endOffset": 8757
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 115,
+                        "startLine": 119,
                         "startColumn": 4,
-                        "startOffset": 6951,
-                        "endColumn": 59,
-                        "endOffset": 7006
+                        "startOffset": 7509,
+                        "endColumn": 290,
+                        "endOffset": 7795
                     }
                 }
             },
@@ -1908,18 +1908,18 @@
                 "to": {
                     "startLine": 107,
                     "startColumn": 4,
-                    "startOffset": 8760,
-                    "endColumn": 60,
-                    "endOffset": 8816
+                    "startOffset": 8762,
+                    "endColumn": 59,
+                    "endOffset": 8817
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 125,
+                        "startLine": 115,
                         "startColumn": 4,
-                        "startOffset": 8304,
-                        "endColumn": 60,
-                        "endOffset": 8360
+                        "startOffset": 6975,
+                        "endColumn": 59,
+                        "endOffset": 7030
                     }
                 }
             },
@@ -1927,18 +1927,18 @@
                 "to": {
                     "startLine": 108,
                     "startColumn": 4,
-                    "startOffset": 8821,
-                    "endColumn": 303,
-                    "endOffset": 9120
+                    "startOffset": 8822,
+                    "endColumn": 60,
+                    "endOffset": 8878
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 118,
+                        "startLine": 125,
                         "startColumn": 4,
-                        "startOffset": 7180,
-                        "endColumn": 303,
-                        "endOffset": 7479
+                        "startOffset": 8328,
+                        "endColumn": 60,
+                        "endOffset": 8384
                     }
                 }
             },
@@ -1946,18 +1946,18 @@
                 "to": {
                     "startLine": 109,
                     "startColumn": 4,
-                    "startOffset": 9125,
-                    "endColumn": 80,
-                    "endOffset": 9201
+                    "startOffset": 8883,
+                    "endColumn": 303,
+                    "endOffset": 9182
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 116,
+                        "startLine": 118,
                         "startColumn": 4,
-                        "startOffset": 7012,
-                        "endColumn": 80,
-                        "endOffset": 7088
+                        "startOffset": 7204,
+                        "endColumn": 303,
+                        "endOffset": 7503
                     }
                 }
             },
@@ -1965,18 +1965,18 @@
                 "to": {
                     "startLine": 110,
                     "startColumn": 4,
-                    "startOffset": 9206,
-                    "endColumn": 301,
-                    "endOffset": 9503
+                    "startOffset": 9187,
+                    "endColumn": 80,
+                    "endOffset": 9263
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 120,
+                        "startLine": 116,
                         "startColumn": 4,
-                        "startOffset": 7777,
-                        "endColumn": 301,
-                        "endOffset": 8074
+                        "startOffset": 7036,
+                        "endColumn": 80,
+                        "endOffset": 7112
                     }
                 }
             },
@@ -1984,18 +1984,18 @@
                 "to": {
                     "startLine": 111,
                     "startColumn": 4,
-                    "startOffset": 9508,
-                    "endColumn": 84,
-                    "endOffset": 9588
+                    "startOffset": 9268,
+                    "endColumn": 301,
+                    "endOffset": 9565
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 117,
+                        "startLine": 120,
                         "startColumn": 4,
-                        "startOffset": 7094,
-                        "endColumn": 84,
-                        "endOffset": 7174
+                        "startOffset": 7801,
+                        "endColumn": 301,
+                        "endOffset": 8098
                     }
                 }
             },
@@ -2003,18 +2003,18 @@
                 "to": {
                     "startLine": 112,
                     "startColumn": 4,
-                    "startOffset": 9593,
-                    "endColumn": 53,
-                    "endOffset": 9642
+                    "startOffset": 9570,
+                    "endColumn": 84,
+                    "endOffset": 9650
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 168,
+                        "startLine": 117,
                         "startColumn": 4,
-                        "startOffset": 11248,
-                        "endColumn": 53,
-                        "endOffset": 11297
+                        "startOffset": 7118,
+                        "endColumn": 84,
+                        "endOffset": 7198
                     }
                 }
             },
@@ -2022,18 +2022,18 @@
                 "to": {
                     "startLine": 113,
                     "startColumn": 4,
-                    "startOffset": 9647,
-                    "endColumn": 41,
-                    "endOffset": 9684
+                    "startOffset": 9655,
+                    "endColumn": 53,
+                    "endOffset": 9704
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 170,
+                        "startLine": 169,
                         "startColumn": 4,
-                        "startOffset": 11356,
-                        "endColumn": 41,
-                        "endOffset": 11393
+                        "startOffset": 11437,
+                        "endColumn": 53,
+                        "endOffset": 11486
                     }
                 }
             },
@@ -2041,18 +2041,18 @@
                 "to": {
                     "startLine": 114,
                     "startColumn": 4,
-                    "startOffset": 9689,
-                    "endColumn": 40,
-                    "endOffset": 9725
+                    "startOffset": 9709,
+                    "endColumn": 41,
+                    "endOffset": 9746
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 55,
+                        "startLine": 171,
                         "startColumn": 4,
-                        "startOffset": 2582,
-                        "endColumn": 40,
-                        "endOffset": 2618
+                        "startOffset": 11545,
+                        "endColumn": 41,
+                        "endOffset": 11582
                     }
                 }
             },
@@ -2060,18 +2060,18 @@
                 "to": {
                     "startLine": 115,
                     "startColumn": 4,
-                    "startOffset": 9730,
-                    "endColumn": 57,
-                    "endOffset": 9783
+                    "startOffset": 9751,
+                    "endColumn": 40,
+                    "endOffset": 9787
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 163,
+                        "startLine": 55,
                         "startColumn": 4,
-                        "startOffset": 11031,
-                        "endColumn": 57,
-                        "endOffset": 11084
+                        "startOffset": 2606,
+                        "endColumn": 40,
+                        "endOffset": 2642
                     }
                 }
             },
@@ -2079,18 +2079,18 @@
                 "to": {
                     "startLine": 116,
                     "startColumn": 4,
-                    "startOffset": 9788,
-                    "endColumn": 60,
-                    "endOffset": 9844
+                    "startOffset": 9792,
+                    "endColumn": 57,
+                    "endOffset": 9845
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 141,
+                        "startLine": 164,
                         "startColumn": 4,
-                        "startOffset": 9801,
-                        "endColumn": 60,
-                        "endOffset": 9857
+                        "startOffset": 11220,
+                        "endColumn": 57,
+                        "endOffset": 11273
                     }
                 }
             },
@@ -2098,18 +2098,18 @@
                 "to": {
                     "startLine": 117,
                     "startColumn": 4,
-                    "startOffset": 9849,
-                    "endColumn": 62,
-                    "endOffset": 9907
+                    "startOffset": 9850,
+                    "endColumn": 60,
+                    "endOffset": 9906
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 86,
+                        "startLine": 141,
                         "startColumn": 4,
-                        "startOffset": 4878,
-                        "endColumn": 62,
-                        "endOffset": 4936
+                        "startOffset": 9825,
+                        "endColumn": 60,
+                        "endOffset": 9881
                     }
                 }
             },
@@ -2117,18 +2117,18 @@
                 "to": {
                     "startLine": 118,
                     "startColumn": 4,
-                    "startOffset": 9912,
-                    "endColumn": 60,
-                    "endOffset": 9968
+                    "startOffset": 9911,
+                    "endColumn": 62,
+                    "endOffset": 9969
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 142,
+                        "startLine": 86,
                         "startColumn": 4,
-                        "startOffset": 9863,
-                        "endColumn": 60,
-                        "endOffset": 9919
+                        "startOffset": 4902,
+                        "endColumn": 62,
+                        "endOffset": 4960
                     }
                 }
             },
@@ -2136,18 +2136,18 @@
                 "to": {
                     "startLine": 119,
                     "startColumn": 4,
-                    "startOffset": 9973,
-                    "endColumn": 63,
-                    "endOffset": 10032
+                    "startOffset": 9974,
+                    "endColumn": 60,
+                    "endOffset": 10030
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 162,
+                        "startLine": 142,
                         "startColumn": 4,
-                        "startOffset": 10966,
-                        "endColumn": 63,
-                        "endOffset": 11025
+                        "startOffset": 9887,
+                        "endColumn": 60,
+                        "endOffset": 9943
                     }
                 }
             },
@@ -2155,9 +2155,28 @@
                 "to": {
                     "startLine": 120,
                     "startColumn": 4,
-                    "startOffset": 10037,
+                    "startOffset": 10035,
+                    "endColumn": 63,
+                    "endOffset": 10094
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 163,
+                        "startColumn": 4,
+                        "startOffset": 11155,
+                        "endColumn": 63,
+                        "endOffset": 11214
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 121,
+                    "startColumn": 4,
+                    "startOffset": 10099,
                     "endColumn": 43,
-                    "endOffset": 10076
+                    "endOffset": 10138
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
@@ -2172,39 +2191,20 @@
             },
             {
                 "to": {
-                    "startLine": 121,
+                    "startLine": 122,
                     "startColumn": 4,
-                    "startOffset": 10081,
+                    "startOffset": 10143,
                     "endColumn": 86,
-                    "endOffset": 10163
+                    "endOffset": 10225
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
                         "startLine": 78,
                         "startColumn": 4,
-                        "startOffset": 4499,
+                        "startOffset": 4523,
                         "endColumn": 86,
-                        "endOffset": 4581
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 122,
-                    "startColumn": 4,
-                    "startOffset": 10168,
-                    "endColumn": 99,
-                    "endOffset": 10263
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
-                    "position": {
-                        "startLine": 158,
-                        "startColumn": 4,
-                        "startOffset": 10766,
-                        "endColumn": 99,
-                        "endOffset": 10861
+                        "endOffset": 4605
                     }
                 }
             },
@@ -2212,18 +2212,18 @@
                 "to": {
                     "startLine": 123,
                     "startColumn": 4,
-                    "startOffset": 10268,
-                    "endColumn": 52,
-                    "endOffset": 10316
+                    "startOffset": 10230,
+                    "endColumn": 232,
+                    "endOffset": 10458
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 57,
+                        "startLine": 159,
                         "startColumn": 4,
-                        "startOffset": 2675,
-                        "endColumn": 52,
-                        "endOffset": 2723
+                        "startOffset": 10827,
+                        "endColumn": 232,
+                        "endOffset": 11055
                     }
                 }
             },
@@ -2231,18 +2231,18 @@
                 "to": {
                     "startLine": 124,
                     "startColumn": 4,
-                    "startOffset": 10321,
-                    "endColumn": 109,
-                    "endOffset": 10426
+                    "startOffset": 10463,
+                    "endColumn": 52,
+                    "endOffset": 10511
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 61,
+                        "startLine": 57,
                         "startColumn": 4,
-                        "startOffset": 2872,
-                        "endColumn": 109,
-                        "endOffset": 2977
+                        "startOffset": 2699,
+                        "endColumn": 52,
+                        "endOffset": 2747
                     }
                 }
             },
@@ -2250,18 +2250,18 @@
                 "to": {
                     "startLine": 125,
                     "startColumn": 4,
-                    "startOffset": 10431,
-                    "endColumn": 57,
-                    "endOffset": 10484
+                    "startOffset": 10516,
+                    "endColumn": 109,
+                    "endOffset": 10621
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 97,
+                        "startLine": 61,
                         "startColumn": 4,
-                        "startOffset": 5648,
-                        "endColumn": 57,
-                        "endOffset": 5701
+                        "startOffset": 2896,
+                        "endColumn": 109,
+                        "endOffset": 3001
                     }
                 }
             },
@@ -2269,18 +2269,18 @@
                 "to": {
                     "startLine": 126,
                     "startColumn": 4,
-                    "startOffset": 10489,
-                    "endColumn": 137,
-                    "endOffset": 10622
+                    "startOffset": 10626,
+                    "endColumn": 57,
+                    "endOffset": 10679
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 98,
+                        "startLine": 97,
                         "startColumn": 4,
-                        "startOffset": 5707,
-                        "endColumn": 137,
-                        "endOffset": 5840
+                        "startOffset": 5672,
+                        "endColumn": 57,
+                        "endOffset": 5725
                     }
                 }
             },
@@ -2288,18 +2288,18 @@
                 "to": {
                     "startLine": 127,
                     "startColumn": 4,
-                    "startOffset": 10627,
-                    "endColumn": 88,
-                    "endOffset": 10711
+                    "startOffset": 10684,
+                    "endColumn": 137,
+                    "endOffset": 10817
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 38,
+                        "startLine": 98,
                         "startColumn": 4,
-                        "startOffset": 1771,
-                        "endColumn": 88,
-                        "endOffset": 1855
+                        "startOffset": 5731,
+                        "endColumn": 137,
+                        "endOffset": 5864
                     }
                 }
             },
@@ -2307,18 +2307,18 @@
                 "to": {
                     "startLine": 128,
                     "startColumn": 4,
-                    "startOffset": 10716,
-                    "endColumn": 45,
-                    "endOffset": 10757
+                    "startOffset": 10822,
+                    "endColumn": 88,
+                    "endOffset": 10906
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 60,
+                        "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 2825,
-                        "endColumn": 45,
-                        "endOffset": 2866
+                        "startOffset": 1795,
+                        "endColumn": 88,
+                        "endOffset": 1879
                     }
                 }
             },
@@ -2326,18 +2326,18 @@
                 "to": {
                     "startLine": 129,
                     "startColumn": 4,
-                    "startOffset": 10762,
-                    "endColumn": 40,
-                    "endOffset": 10798
+                    "startOffset": 10911,
+                    "endColumn": 45,
+                    "endOffset": 10952
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 48,
+                        "startLine": 60,
                         "startColumn": 4,
-                        "startOffset": 2225,
-                        "endColumn": 40,
-                        "endOffset": 2261
+                        "startOffset": 2849,
+                        "endColumn": 45,
+                        "endOffset": 2890
                     }
                 }
             },
@@ -2345,18 +2345,18 @@
                 "to": {
                     "startLine": 130,
                     "startColumn": 4,
-                    "startOffset": 10803,
-                    "endColumn": 49,
-                    "endOffset": 10848
+                    "startOffset": 10957,
+                    "endColumn": 40,
+                    "endOffset": 10993
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 56,
+                        "startLine": 48,
                         "startColumn": 4,
-                        "startOffset": 2624,
-                        "endColumn": 49,
-                        "endOffset": 2669
+                        "startOffset": 2249,
+                        "endColumn": 40,
+                        "endOffset": 2285
                     }
                 }
             },
@@ -2364,18 +2364,18 @@
                 "to": {
                     "startLine": 131,
                     "startColumn": 4,
-                    "startOffset": 10853,
-                    "endColumn": 55,
-                    "endOffset": 10904
+                    "startOffset": 10998,
+                    "endColumn": 49,
+                    "endOffset": 11043
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 122,
+                        "startLine": 56,
                         "startColumn": 4,
-                        "startOffset": 8135,
-                        "endColumn": 55,
-                        "endOffset": 8186
+                        "startOffset": 2648,
+                        "endColumn": 49,
+                        "endOffset": 2693
                     }
                 }
             },
@@ -2383,18 +2383,18 @@
                 "to": {
                     "startLine": 132,
                     "startColumn": 4,
-                    "startOffset": 10909,
-                    "endColumn": 68,
-                    "endOffset": 10973
+                    "startOffset": 11048,
+                    "endColumn": 55,
+                    "endOffset": 11099
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 70,
+                        "startLine": 122,
                         "startColumn": 4,
-                        "startOffset": 3879,
-                        "endColumn": 68,
-                        "endOffset": 3943
+                        "startOffset": 8159,
+                        "endColumn": 55,
+                        "endOffset": 8210
                     }
                 }
             },
@@ -2402,18 +2402,18 @@
                 "to": {
                     "startLine": 133,
                     "startColumn": 4,
-                    "startOffset": 10978,
-                    "endColumn": 215,
-                    "endOffset": 11189
+                    "startOffset": 11104,
+                    "endColumn": 68,
+                    "endOffset": 11168
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 71,
+                        "startLine": 70,
                         "startColumn": 4,
-                        "startOffset": 3949,
-                        "endColumn": 215,
-                        "endOffset": 4160
+                        "startOffset": 3903,
+                        "endColumn": 68,
+                        "endOffset": 3967
                     }
                 }
             },
@@ -2421,18 +2421,18 @@
                 "to": {
                     "startLine": 134,
                     "startColumn": 4,
-                    "startOffset": 11194,
-                    "endColumn": 127,
-                    "endOffset": 11317
+                    "startOffset": 11173,
+                    "endColumn": 215,
+                    "endOffset": 11384
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 66,
+                        "startLine": 71,
                         "startColumn": 4,
-                        "startOffset": 3433,
-                        "endColumn": 127,
-                        "endOffset": 3556
+                        "startOffset": 3973,
+                        "endColumn": 215,
+                        "endOffset": 4184
                     }
                 }
             },
@@ -2440,18 +2440,18 @@
                 "to": {
                     "startLine": 135,
                     "startColumn": 4,
-                    "startOffset": 11322,
-                    "endColumn": 42,
-                    "endOffset": 11360
+                    "startOffset": 11389,
+                    "endColumn": 127,
+                    "endOffset": 11512
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 54,
+                        "startLine": 66,
                         "startColumn": 4,
-                        "startOffset": 2538,
-                        "endColumn": 42,
-                        "endOffset": 2576
+                        "startOffset": 3457,
+                        "endColumn": 127,
+                        "endOffset": 3580
                     }
                 }
             },
@@ -2459,18 +2459,18 @@
                 "to": {
                     "startLine": 136,
                     "startColumn": 4,
-                    "startOffset": 11365,
-                    "endColumn": 50,
-                    "endOffset": 11411
+                    "startOffset": 11517,
+                    "endColumn": 42,
+                    "endOffset": 11555
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 49,
+                        "startLine": 54,
                         "startColumn": 4,
-                        "startOffset": 2267,
-                        "endColumn": 50,
-                        "endOffset": 2313
+                        "startOffset": 2562,
+                        "endColumn": 42,
+                        "endOffset": 2600
                     }
                 }
             },
@@ -2478,18 +2478,18 @@
                 "to": {
                     "startLine": 137,
                     "startColumn": 4,
-                    "startOffset": 11416,
-                    "endColumn": 61,
-                    "endOffset": 11473
+                    "startOffset": 11560,
+                    "endColumn": 50,
+                    "endOffset": 11606
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 147,
+                        "startLine": 49,
                         "startColumn": 4,
-                        "startOffset": 10058,
-                        "endColumn": 61,
-                        "endOffset": 10115
+                        "startOffset": 2291,
+                        "endColumn": 50,
+                        "endOffset": 2337
                     }
                 }
             },
@@ -2497,18 +2497,18 @@
                 "to": {
                     "startLine": 138,
                     "startColumn": 4,
-                    "startOffset": 11478,
-                    "endColumn": 55,
-                    "endOffset": 11529
+                    "startOffset": 11611,
+                    "endColumn": 61,
+                    "endOffset": 11668
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 91,
+                        "startLine": 148,
                         "startColumn": 4,
-                        "startOffset": 5390,
-                        "endColumn": 55,
-                        "endOffset": 5441
+                        "startOffset": 10130,
+                        "endColumn": 61,
+                        "endOffset": 10187
                     }
                 }
             },
@@ -2516,18 +2516,18 @@
                 "to": {
                     "startLine": 139,
                     "startColumn": 4,
-                    "startOffset": 11534,
-                    "endColumn": 59,
-                    "endOffset": 11589
+                    "startOffset": 11673,
+                    "endColumn": 55,
+                    "endOffset": 11724
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 50,
+                        "startLine": 91,
                         "startColumn": 4,
-                        "startOffset": 2319,
-                        "endColumn": 59,
-                        "endOffset": 2374
+                        "startOffset": 5414,
+                        "endColumn": 55,
+                        "endOffset": 5465
                     }
                 }
             },
@@ -2535,18 +2535,18 @@
                 "to": {
                     "startLine": 140,
                     "startColumn": 4,
-                    "startOffset": 11594,
-                    "endColumn": 60,
-                    "endOffset": 11650
+                    "startOffset": 11729,
+                    "endColumn": 59,
+                    "endOffset": 11784
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 82,
+                        "startLine": 50,
                         "startColumn": 4,
-                        "startOffset": 4723,
-                        "endColumn": 60,
-                        "endOffset": 4779
+                        "startOffset": 2343,
+                        "endColumn": 59,
+                        "endOffset": 2398
                     }
                 }
             },
@@ -2554,18 +2554,18 @@
                 "to": {
                     "startLine": 141,
                     "startColumn": 4,
-                    "startOffset": 11655,
-                    "endColumn": 100,
-                    "endOffset": 11751
+                    "startOffset": 11789,
+                    "endColumn": 60,
+                    "endOffset": 11845
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-de\\values-de.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 23,
+                        "startLine": 82,
                         "startColumn": 4,
-                        "startOffset": 2173,
-                        "endColumn": 100,
-                        "endOffset": 2269
+                        "startOffset": 4747,
+                        "endColumn": 60,
+                        "endOffset": 4803
                     }
                 }
             },
@@ -2573,18 +2573,18 @@
                 "to": {
                     "startLine": 142,
                     "startColumn": 4,
-                    "startOffset": 11756,
-                    "endColumn": 132,
-                    "endOffset": 11884
+                    "startOffset": 11850,
+                    "endColumn": 100,
+                    "endOffset": 11946
                 },
                 "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-de\\values-de.xml",
                     "position": {
-                        "startLine": 64,
+                        "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 3210,
-                        "endColumn": 132,
-                        "endOffset": 3338
+                        "startOffset": 1999,
+                        "endColumn": 100,
+                        "endOffset": 2095
                     }
                 }
             },
@@ -2592,18 +2592,18 @@
                 "to": {
                     "startLine": 143,
                     "startColumn": 4,
-                    "startOffset": 11889,
-                    "endColumn": 163,
-                    "endOffset": 12048
+                    "startOffset": 11951,
+                    "endColumn": 132,
+                    "endOffset": 12079
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 69,
+                        "startLine": 64,
                         "startColumn": 4,
-                        "startOffset": 3714,
-                        "endColumn": 163,
-                        "endOffset": 3873
+                        "startOffset": 3234,
+                        "endColumn": 132,
+                        "endOffset": 3362
                     }
                 }
             },
@@ -2611,18 +2611,18 @@
                 "to": {
                     "startLine": 144,
                     "startColumn": 4,
-                    "startOffset": 12053,
-                    "endColumn": 59,
-                    "endOffset": 12108
+                    "startOffset": 12084,
+                    "endColumn": 163,
+                    "endOffset": 12243
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 68,
+                        "startLine": 69,
                         "startColumn": 4,
-                        "startOffset": 3653,
-                        "endColumn": 59,
-                        "endOffset": 3708
+                        "startOffset": 3738,
+                        "endColumn": 163,
+                        "endOffset": 3897
                     }
                 }
             },
@@ -2630,18 +2630,18 @@
                 "to": {
                     "startLine": 145,
                     "startColumn": 4,
-                    "startOffset": 12113,
-                    "endColumn": 48,
-                    "endOffset": 12157
+                    "startOffset": 12248,
+                    "endColumn": 59,
+                    "endOffset": 12303
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 171,
+                        "startLine": 68,
                         "startColumn": 4,
-                        "startOffset": 11399,
-                        "endColumn": 48,
-                        "endOffset": 11443
+                        "startOffset": 3677,
+                        "endColumn": 59,
+                        "endOffset": 3732
                     }
                 }
             },
@@ -2649,18 +2649,18 @@
                 "to": {
                     "startLine": 146,
                     "startColumn": 4,
-                    "startOffset": 12162,
-                    "endColumn": 49,
-                    "endOffset": 12207
+                    "startOffset": 12308,
+                    "endColumn": 48,
+                    "endOffset": 12352
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 43,
+                        "startLine": 172,
                         "startColumn": 4,
-                        "startOffset": 2100,
-                        "endColumn": 49,
-                        "endOffset": 2145
+                        "startOffset": 11588,
+                        "endColumn": 48,
+                        "endOffset": 11632
                     }
                 }
             },
@@ -2668,18 +2668,18 @@
                 "to": {
                     "startLine": 147,
                     "startColumn": 4,
-                    "startOffset": 12212,
-                    "endColumn": 55,
-                    "endOffset": 12263
+                    "startOffset": 12357,
+                    "endColumn": 49,
+                    "endOffset": 12402
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 124,
+                        "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 8247,
-                        "endColumn": 55,
-                        "endOffset": 8298
+                        "startOffset": 2124,
+                        "endColumn": 49,
+                        "endOffset": 2169
                     }
                 }
             },
@@ -2687,18 +2687,18 @@
                 "to": {
                     "startLine": 148,
                     "startColumn": 4,
-                    "startOffset": 12268,
-                    "endColumn": 49,
-                    "endOffset": 12313
+                    "startOffset": 12407,
+                    "endColumn": 55,
+                    "endOffset": 12458
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 143,
+                        "startLine": 124,
                         "startColumn": 4,
-                        "startOffset": 9925,
-                        "endColumn": 49,
-                        "endOffset": 9970
+                        "startOffset": 8271,
+                        "endColumn": 55,
+                        "endOffset": 8322
                     }
                 }
             },
@@ -2706,18 +2706,18 @@
                 "to": {
                     "startLine": 149,
                     "startColumn": 4,
-                    "startOffset": 12318,
-                    "endColumn": 60,
-                    "endOffset": 12374
+                    "startOffset": 12463,
+                    "endColumn": 49,
+                    "endOffset": 12508
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 164,
+                        "startLine": 143,
                         "startColumn": 4,
-                        "startOffset": 11090,
-                        "endColumn": 60,
-                        "endOffset": 11146
+                        "startOffset": 9949,
+                        "endColumn": 49,
+                        "endOffset": 9994
                     }
                 }
             },
@@ -2725,18 +2725,18 @@
                 "to": {
                     "startLine": 150,
                     "startColumn": 4,
-                    "startOffset": 12379,
-                    "endColumn": 49,
-                    "endOffset": 12424
+                    "startOffset": 12513,
+                    "endColumn": 60,
+                    "endOffset": 12569
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 146,
+                        "startLine": 165,
                         "startColumn": 4,
-                        "startOffset": 10007,
-                        "endColumn": 49,
-                        "endOffset": 10052
+                        "startOffset": 11279,
+                        "endColumn": 60,
+                        "endOffset": 11335
                     }
                 }
             },
@@ -2744,18 +2744,18 @@
                 "to": {
                     "startLine": 151,
                     "startColumn": 4,
-                    "startOffset": 12429,
-                    "endColumn": 57,
-                    "endOffset": 12482
+                    "startOffset": 12574,
+                    "endColumn": 49,
+                    "endOffset": 12619
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 151,
+                        "startLine": 147,
                         "startColumn": 4,
-                        "startOffset": 10382,
-                        "endColumn": 57,
-                        "endOffset": 10435
+                        "startOffset": 10079,
+                        "endColumn": 49,
+                        "endOffset": 10124
                     }
                 }
             },
@@ -2763,18 +2763,18 @@
                 "to": {
                     "startLine": 152,
                     "startColumn": 4,
-                    "startOffset": 12487,
-                    "endColumn": 51,
-                    "endOffset": 12534
+                    "startOffset": 12624,
+                    "endColumn": 46,
+                    "endOffset": 12666
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 150,
+                        "startLine": 146,
                         "startColumn": 4,
-                        "startOffset": 10329,
-                        "endColumn": 51,
-                        "endOffset": 10376
+                        "startOffset": 10031,
+                        "endColumn": 46,
+                        "endOffset": 10073
                     }
                 }
             },
@@ -2782,18 +2782,18 @@
                 "to": {
                     "startLine": 153,
                     "startColumn": 4,
-                    "startOffset": 12539,
-                    "endColumn": 53,
-                    "endOffset": 12588
+                    "startOffset": 12671,
+                    "endColumn": 57,
+                    "endOffset": 12724
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 153,
+                        "startLine": 152,
                         "startColumn": 4,
-                        "startOffset": 10540,
-                        "endColumn": 53,
-                        "endOffset": 10589
+                        "startOffset": 10454,
+                        "endColumn": 57,
+                        "endOffset": 10507
                     }
                 }
             },
@@ -2801,18 +2801,18 @@
                 "to": {
                     "startLine": 154,
                     "startColumn": 4,
-                    "startOffset": 12593,
-                    "endColumn": 108,
-                    "endOffset": 12697
+                    "startOffset": 12729,
+                    "endColumn": 51,
+                    "endOffset": 12776
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 149,
+                        "startLine": 151,
                         "startColumn": 4,
-                        "startOffset": 10219,
-                        "endColumn": 108,
-                        "endOffset": 10323
+                        "startOffset": 10401,
+                        "endColumn": 51,
+                        "endOffset": 10448
                     }
                 }
             },
@@ -2820,18 +2820,18 @@
                 "to": {
                     "startLine": 155,
                     "startColumn": 4,
-                    "startOffset": 12702,
-                    "endColumn": 96,
-                    "endOffset": 12794
+                    "startOffset": 12781,
+                    "endColumn": 108,
+                    "endOffset": 12885
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 148,
+                        "startLine": 150,
                         "startColumn": 4,
-                        "startOffset": 10121,
-                        "endColumn": 96,
-                        "endOffset": 10213
+                        "startOffset": 10291,
+                        "endColumn": 108,
+                        "endOffset": 10395
                     }
                 }
             },
@@ -2839,18 +2839,18 @@
                 "to": {
                     "startLine": 156,
                     "startColumn": 4,
-                    "startOffset": 12799,
-                    "endColumn": 97,
-                    "endOffset": 12892
+                    "startOffset": 12890,
+                    "endColumn": 96,
+                    "endOffset": 12982
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
                     "position": {
-                        "startLine": 152,
+                        "startLine": 149,
                         "startColumn": 4,
-                        "startOffset": 10441,
-                        "endColumn": 97,
-                        "endOffset": 10534
+                        "startOffset": 10193,
+                        "endColumn": 96,
+                        "endOffset": 10285
                     }
                 }
             },
@@ -2858,9 +2858,28 @@
                 "to": {
                     "startLine": 157,
                     "startColumn": 4,
-                    "startOffset": 12897,
+                    "startOffset": 12987,
+                    "endColumn": 97,
+                    "endOffset": 13080
+                },
+                "from": {
+                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",
+                    "position": {
+                        "startLine": 153,
+                        "startColumn": 4,
+                        "startOffset": 10513,
+                        "endColumn": 97,
+                        "endOffset": 10606
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 158,
+                    "startColumn": 4,
+                    "startOffset": 13085,
                     "endColumn": 34,
-                    "endOffset": 12927
+                    "endOffset": 13115
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-de\\strings.xml",

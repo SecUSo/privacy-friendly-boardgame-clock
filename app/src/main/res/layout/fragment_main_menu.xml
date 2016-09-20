@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/appIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/drawer" />
 
     <Button
         android:id="@+id/newGameButton"

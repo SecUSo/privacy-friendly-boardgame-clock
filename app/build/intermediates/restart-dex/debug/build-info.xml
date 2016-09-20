@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<instant-run abi="armeabi-v7a,armeabi" api-level="19" density="hdpi" format="7"
-    timestamp="665923024250206" token="-1430146428524833105">
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="19"
+    density="hdpi"
+    format="7"
+    timestamp="163960812449730"
+    token="-1430146428524833105" >
 
-    <task name="javac" duration="521" />
-    <task name="instant-run-dex" duration="0" />
-    <task name="instant-run-transform" duration="700" />
-    <task name="verifier" duration="263" />
+    <task
+        name="javac"
+        duration="627" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="736" />
+    <task
+        name="verifier"
+        duration="271" />
 
     <artifact
         location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="665923024250206">
+    <build timestamp="163960812449730" >
         <artifact
             location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
