@@ -43,6 +43,7 @@
     <string name="gameNameStandard">Spiel</string>
     <string name="timeDelta">Zusatzzeit:</string>
     <string name="chess_clock">Schachuhr</string>
+    <string name="roundTimeLargerInfo">Die ausgewählte Rundenzeit wurde auf die Höhe der Spielzeit verringert, da die Rundenzeit nicht größer als die Spielzeit sein kann.</string>
 
 
     <!-- Game -->

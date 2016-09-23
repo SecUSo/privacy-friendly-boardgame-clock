@@ -7,8 +7,8 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 57,
-                    "endOffset": 108
+                    "endColumn": 55,
+                    "endOffset": 106
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
@@ -16,8 +16,8 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 90,
-                        "endColumn": 57,
-                        "endOffset": 143
+                        "endColumn": 55,
+                        "endOffset": 141
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 113,
-                    "endColumn": 55,
-                    "endOffset": 164
+                    "startOffset": 111,
+                    "endColumn": 41,
+                    "endOffset": 148
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 149,
-                        "endColumn": 55,
-                        "endOffset": 200
+                        "startOffset": 147,
+                        "endColumn": 41,
+                        "endOffset": 184
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 169,
-                    "endColumn": 41,
-                    "endOffset": 206
+                    "startOffset": 153,
+                    "endColumn": 45,
+                    "endOffset": 194
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 206,
-                        "endColumn": 41,
-                        "endOffset": 243
+                        "startOffset": 284,
+                        "endColumn": 45,
+                        "endOffset": 325
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 211,
-                    "endColumn": 45,
-                    "endOffset": 252
+                    "startOffset": 199,
+                    "endColumn": 50,
+                    "endOffset": 245
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 342,
-                        "endColumn": 45,
-                        "endOffset": 383
+                        "startOffset": 232,
+                        "endColumn": 50,
+                        "endOffset": 278
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 257,
-                    "endColumn": 49,
-                    "endOffset": 302
+                    "startOffset": 250,
+                    "endColumn": 40,
+                    "endOffset": 286
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 291,
-                        "endColumn": 49,
-                        "endOffset": 336
+                        "startOffset": 190,
+                        "endColumn": 40,
+                        "endOffset": 226
                     }
                 }
             },
@@ -101,29 +101,10 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 307,
-                    "endColumn": 40,
-                    "endOffset": 343
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-hdpi\\dimens.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 249,
-                        "endColumn": 40,
-                        "endOffset": 285
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 348,
-                    "endLine": 12,
+                    "startOffset": 291,
+                    "endLine": 11,
                     "endColumn": 13,
-                    "endOffset": 620
+                    "endOffset": 563
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",

@@ -7,8 +7,8 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 56,
-                    "endOffset": 107
+                    "endColumn": 55,
+                    "endOffset": 106
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
@@ -16,8 +16,8 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 90,
-                        "endColumn": 56,
-                        "endOffset": 142
+                        "endColumn": 55,
+                        "endOffset": 141
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 112,
-                    "endColumn": 55,
-                    "endOffset": 163
+                    "startOffset": 111,
+                    "endColumn": 41,
+                    "endOffset": 148
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 148,
-                        "endColumn": 55,
-                        "endOffset": 199
+                        "startOffset": 147,
+                        "endColumn": 41,
+                        "endOffset": 184
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 168,
-                    "endColumn": 41,
-                    "endOffset": 205
+                    "startOffset": 153,
+                    "endColumn": 50,
+                    "endOffset": 199
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 205,
-                        "endColumn": 41,
-                        "endOffset": 242
+                        "startOffset": 232,
+                        "endColumn": 50,
+                        "endOffset": 278
                     }
                 }
             },
@@ -63,37 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 210,
-                    "endColumn": 50,
-                    "endOffset": 256
-                },
-                "from": {
-                    "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 290,
-                        "endColumn": 50,
-                        "endOffset": 336
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 261,
+                    "startOffset": 204,
                     "endColumn": 40,
-                    "endOffset": 297
+                    "endOffset": 240
                 },
                 "from": {
                     "file": "C:\\Users\\Marco\\StudioProjects\\privacy-friendly-boardgame-clock\\app\\src\\main\\res\\values-xhdpi\\dimens.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 248,
+                        "startOffset": 190,
                         "endColumn": 40,
-                        "endOffset": 284
+                        "endOffset": 226
                     }
                 }
             }

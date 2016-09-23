@@ -42,8 +42,8 @@ public class GameResultsFragment extends Fragment {
         ((TextView) rootView.findViewById(R.id.timePlayedText)).setText(getTimeLeft());
         ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
 
-        players = (ListView) rootView.findViewById(R.id.players_results_list);
-        PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.choose_players_list, game.getPlayers());
+        players = (ListView) rootView.findViewById(R.id.list);
+        PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.list, game.getPlayers());
         players.setAdapter(listAdapter);
 
         return rootView;

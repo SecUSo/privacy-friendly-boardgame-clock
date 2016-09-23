@@ -130,6 +130,7 @@
     <string name="resume">Fortsetzen</string>
     <string name="round">Runde:</string>
     <string name="roundTime">Rundenzeit:</string>
+    <string name="roundTimeLargerInfo">Die ausgewählte Rundenzeit wurde auf die Höhe der Spielzeit verringert, da die Rundenzeit nicht größer als die Spielzeit sein kann.</string>
     <string name="roundTimeNoColon">Rundenzeit</string>
     <string name="roundTimeOverDialogHeading">Spiel beenden</string>
     <string name="roundTimeOverDialogQuestion">Die Rundenzeit des aktuellen Spielers ist vorüber. Möchtest du dieses Spiel beenden oder mit dem nächsten Spieler fortfahren, um die aktuelle Runde zu beenden?</string>

@@ -370,7 +370,7 @@ public class NewGameFragment extends Fragment {
                 ((MainActivity) activity).getGame().setRound_time(newGame.getGame_time());
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.action_new_game)
-                        .setMessage("The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.")
+                        .setMessage(R.string.roundTimeLargerInfo)
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 choosePlayers();

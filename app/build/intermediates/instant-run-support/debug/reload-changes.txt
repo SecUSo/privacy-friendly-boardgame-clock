@@ -1,0 +1,2 @@
+CHANGED,C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\org\secuso\privacyfriendlyboardgameclock\fragments\GameFragment$7$1$override.class
+CHANGED,C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class

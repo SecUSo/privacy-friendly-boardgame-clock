@@ -23,7 +23,7 @@ Target SDK: 23
 
 ## License
 
-Privacy Friendly App Example is licensed under the GPLv3.
+Privacy Friendly Board Game Clock is licensed under the GPLv3.
 Copyright (C) 2016  Marco Bräuning
 
 This program is free software: you can redistribute it and/or modify
@@ -47,5 +47,6 @@ App-Icon: <br />
 Markus Hau<br />
 
 Github-Users: <br />
+Awlzable <br />
 Yonjuni <br />
 Kamuno

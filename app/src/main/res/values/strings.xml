@@ -49,6 +49,8 @@
     <string name="timeDelta">Extra Time:</string>
     <string name="gameNameStandard">Game</string>
     <string name="chess_clock">Chess Clock</string>
+    <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
+
 
     <!-- Game -->
     <string name="round">Round:</string>
@@ -161,7 +163,7 @@
     <string name="setParameters">2. Set Parameters</string>
 
     <!-- About -->
-    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
+    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/secuso/research/results/privacy-friendly-apps/">https://www.secuso.org</a></string>
     <string name="version_number" translatable="false">Version 1.0</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Marco Bräuning</string>

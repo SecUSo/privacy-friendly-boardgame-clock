@@ -416,6 +416,7 @@
     <string name="resume">Resume</string>
     <string name="round">Round:</string>
     <string name="roundTime">Round Time:</string>
+    <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
     <string name="roundTimeNoColon">Round Time</string>
     <string name="roundTimeOverDialogHeading">Finish Game</string>
     <string name="roundTimeOverDialogQuestion">The current player ran out of time. Do you want to finish this game or resume with the next player until the current round is over?</string>
@@ -435,7 +436,7 @@
     <string name="timeDeltaNoColon">Extra Time</string>
     <string name="timeLeft">Time left:</string>
     <string name="totalTimePlayed">Total Time played:</string>
-    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/privacy-friendly-apps">https://www.secuso.org</a></string>
+    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/secuso/research/results/privacy-friendly-apps/">https://www.secuso.org</a></string>
     <string name="version_number" translatable="false">Version 1.0</string>
     <string name="viewHelp">View Help</string>
     <string name="welcome">Welcome</string>

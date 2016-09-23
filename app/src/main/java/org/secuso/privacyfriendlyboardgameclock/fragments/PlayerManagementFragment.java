@@ -87,6 +87,11 @@ public class PlayerManagementFragment extends Fragment {
         });
 
         contactsButton = (Button) rootView.findViewById(R.id.addPlayerContactsButton);
+        if (ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
+            contactsButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+        else
+            contactsButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
         contactsButton.setOnClickListener(contactButtonListener);
 
 
@@ -94,9 +99,9 @@ public class PlayerManagementFragment extends Fragment {
 
         list = pds.getAllPlayers();
 
-        myListView = (ListView) rootView.findViewById(R.id.current_players_list);
+        myListView = (ListView) rootView.findViewById(R.id.list);
 
-        listAdapter = new PlayerListAdapter(this.getActivity(), R.id.current_players_list, list);
+        listAdapter = new PlayerListAdapter(this.getActivity(), R.id.list, list);
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);

@@ -74,8 +74,8 @@ public class ChoosePlayersFragment extends Fragment {
             }
         });
 
-        myListView = (ListView) rootView.findViewById(R.id.choose_players_list);
-        SelectPlayerListAdapter listAdapter = new SelectPlayerListAdapter(this.getActivity(), R.id.choose_players_list, list);
+        myListView = (ListView) rootView.findViewById(R.id.list);
+        SelectPlayerListAdapter listAdapter = new SelectPlayerListAdapter(this.getActivity(), R.id.list, list);
 
         myListView.setAdapter(listAdapter);
         myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

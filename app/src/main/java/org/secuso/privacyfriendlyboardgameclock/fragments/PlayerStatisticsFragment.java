@@ -46,8 +46,8 @@ public class PlayerStatisticsFragment extends Fragment {
         ((TextView) rootView.findViewById(R.id.totalTimePlayedText)).setText(getTotalTimePlayed());
         ((TextView) rootView.findViewById(R.id.completedRoundsText)).setText(String.valueOf(getTotalRoundsPlayed()));
 
-        GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), R.id.games_list, playerGames);
-        games = (ListView) rootView.findViewById(R.id.games_list);
+        GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), R.id.list, playerGames);
+        games = (ListView) rootView.findViewById(R.id.list);
         games.setAdapter(listAdapter);
 
         return rootView;
@@ -114,21 +114,6 @@ public class PlayerStatisticsFragment extends Fragment {
             return lastRound;
         else
             return Collections.max(playerRounds.values()) - 1;
-    }
-
-    public void showResults() {
-
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new GameResultsFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.gameResultsFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragmentTransaction.commit();
-
-    }
-
-    private void refreshFragment() {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.detach(this).attach(this).commit();
     }
 
     @Override

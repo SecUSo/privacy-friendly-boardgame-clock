@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="19"
-    density="hdpi"
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="23"
+    density="xxxhdpi"
     format="7"
-    timestamp="163960812449730"
+    timestamp="403867212192365"
     token="-1430146428524833105" >
 
     <task
         name="javac"
-        duration="627" />
+        duration="559" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="736" />
+        duration="27" />
     <task
         name="verifier"
-        duration="271" />
+        duration="2" />
 
     <artifact
-        location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\res\resources-debug.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+        type="DEX" />
 
-    <build timestamp="163960812449730" >
+    <build timestamp="403154102988342" >
         <artifact
             location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="403771801293405" >
+        <artifact
+            location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="403867212192365" >
+        <artifact
+            location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="C:\Users\Marco\StudioProjects\privacy-friendly-boardgame-clock\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

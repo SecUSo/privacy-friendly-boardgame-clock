@@ -3,13 +3,17 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
@@ -44,6 +50,7 @@ public class BackupDialog extends DialogFragment {
             else if (ContextCompat.checkSelfPermission(activity,
                     Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+                exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.importDatabaseBackup)
                         .setMessage(R.string.importDatabaseBackupInfoMessage)
@@ -58,9 +65,11 @@ public class BackupDialog extends DialogFragment {
                         .show();
             } else {
                 importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+                exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
             }
         }
     };
+
     OnClickListener exportBackup = new OnClickListener() {
 
         @Override
@@ -71,6 +80,7 @@ public class BackupDialog extends DialogFragment {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 8);
             else if (ContextCompat.checkSelfPermission(activity,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                 exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.exportDatabaseBackup)
@@ -85,23 +95,38 @@ public class BackupDialog extends DialogFragment {
 
                         .show();
             } else {
+                importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
                 exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
             }
 
         }
 
     };
-    private String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
+    Dialog dialog;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         activity = (MainActivity) getActivity();
         this.getDialog().requestWindowFeature(Window.FEATURE_LEFT_ICON);
 
+        dialog = this.getDialog();
+
         View rootView = inflater.inflate(R.layout.dialog_backup, container, false);
 
         importBackupButton = (Button) rootView.findViewById(R.id.importBackupButton);
         exportBackupButton = (Button) rootView.findViewById(R.id.exportBackupButton);
+
+        if ((ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) || (ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
+            importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+            exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+        }
+        else {
+            importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+            exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+        }
 
         importBackupButton.setOnClickListener(importBackup);
         exportBackupButton.setOnClickListener(exportBackup);
@@ -126,6 +151,7 @@ public class BackupDialog extends DialogFragment {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
+                    exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                     new AlertDialog.Builder(getActivity())
                             .setTitle(R.string.importDatabaseBackup)
                             .setMessage(R.string.importDatabaseBackupInfoMessage)
@@ -140,6 +166,7 @@ public class BackupDialog extends DialogFragment {
                             .show();
                 } else {
                     importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
+                    exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
                 }
 
                 return;
@@ -147,6 +174,7 @@ public class BackupDialog extends DialogFragment {
             case 8: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                     exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
                     new AlertDialog.Builder(getActivity())
                             .setTitle(R.string.exportDatabaseBackup)
@@ -161,6 +189,7 @@ public class BackupDialog extends DialogFragment {
 
                             .show();
                 } else {
+                    importBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
                     exportBackupButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
                 }
 
@@ -194,6 +223,7 @@ public class BackupDialog extends DialogFragment {
             }
 
         this.getDialog().cancel();
+        updateListView();
         updateResumeGameButton();
     }
 
@@ -219,7 +249,6 @@ public class BackupDialog extends DialogFragment {
                 Toast.makeText(getActivity(), R.string.backupExportError, Toast.LENGTH_LONG).show();
             }
         this.getDialog().cancel();
-        updateResumeGameButton();
     }
 
     private void copy(File src, File dst) throws IOException {
@@ -238,8 +267,9 @@ public class BackupDialog extends DialogFragment {
 
     private void updateResumeGameButton() {
         Button loadGameButton = (Button) activity.findViewById(R.id.resumeGameButton);
-        System.err.println("I WAS CALLED");
+
         GamesDataSource gds = activity.getGamesDataSource();
+        if (loadGameButton != null)
         if (gds.getSavedGames().size() == 0) {
             loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_grey));
             loadGameButton.setOnClickListener(null);
@@ -247,6 +277,34 @@ public class BackupDialog extends DialogFragment {
             loadGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_darkblue));
             loadGameButton.setOnClickListener(MainMenuFragment.resumeGameListener);
         }
+    }
+
+    private void updateListView(){
+        for (int i = 0; i < getFragmentManager().getBackStackEntryCount(); i++){
+            String fragmentName = getFragmentManager().getBackStackEntryAt(i).getName();
+            if (fragmentName.equals(getString(R.string.playerManagementFragment)) ||
+                    fragmentName.equals(getString(R.string.gameHistoryFragment)) ||
+                    fragmentName.equals(getString(R.string.loadGameFragment))){
+                System.err.println(fragmentName + ": " + getFragmentManager().findFragmentByTag(fragmentName));
+                refreshFragment(fragmentName);
+            }
+        }
+    }
+
+    private void refreshFragment(String fName) {
+        Fragment f = null;
+        if (fName.equals(getString(R.string.playerManagementFragment)))
+            f = new PlayerManagementFragment();
+         else if (fName.equals(getString(R.string.gameHistoryFragment)))
+            f = new GameHistoryFragment();
+        else
+            f = new LoadGameFragment();
+
+        final FragmentTransaction fragmentTransaction = activity.getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, f);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        fragmentTransaction.commit();
     }
 
     @Override

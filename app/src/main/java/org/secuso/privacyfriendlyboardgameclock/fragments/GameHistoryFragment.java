@@ -145,6 +145,10 @@ public class GameHistoryFragment extends ListFragment {
         fragmentTransaction.replace(R.id.content_frame, new GameResultsFragment());
         fragmentTransaction.addToBackStack(getString(R.string.gameResultsFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+        myListView.setItemChecked(-1, true);
+        selectedGameId = "-1";
+
         fragmentTransaction.commit();
 
     }
