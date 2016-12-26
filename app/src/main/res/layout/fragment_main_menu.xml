@@ -16,7 +16,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
-        android:src="@drawable/drawer" />
+        android:src="@mipmap/drawer" />
 
     <Button
         android:id="@+id/newGameButton"
