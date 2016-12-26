@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.w3c.dom.Text;
 
 public class AboutFragment extends Fragment {
 
