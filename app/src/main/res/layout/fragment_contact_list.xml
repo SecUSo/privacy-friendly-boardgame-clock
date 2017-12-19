@@ -6,9 +6,11 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/contactListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@color/grey"
+        android:dividerHeight="1dp"
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
         android:layout_weight="1"
@@ -22,11 +24,10 @@
         android:layout_marginLeft="@dimen/main_button_padding"
         android:layout_marginRight="@dimen/main_button_padding"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button_grey"
+        android:background="@drawable/button_disabled"
         android:onClick="addContactSelectionButton"
         android:text="@string/addContact"
         android:textColor="@android:color/white"
-
         android:textSize="@dimen/text_size" />
 
 </LinearLayout>

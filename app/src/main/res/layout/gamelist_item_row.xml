@@ -7,8 +7,6 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_toEndOf="@+id/imageViewIcon"
-        android:layout_toRightOf="@+id/imageViewIcon"
         android:duplicateParentState="true">
 
         <TextView

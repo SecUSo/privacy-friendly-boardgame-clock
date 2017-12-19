@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/dialog_player_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="5dp"/><!--TODO Relative Number?-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/dialog_player_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/dialog_player_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/dialog_player_name"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/edit_player_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5sp"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:background="@drawable/button_fullwidth"
+            android:text="@string/editPlayer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/player_statistic_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5sp"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:background="@drawable/button_fullwidth"
+            android:text="@string/playerStatistic"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size"
+            android:visibility="visible" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,36 +1,42 @@
 <resources>
-    <!-- App -->
-    <string name="app_name" translatable="false">Board Game Clock</string>
-    <string name="app_name_long" translatable="false">Privacy Friendly Board Game Clock</string>
+    <string name="app_name">Board Game Clock</string>
+    <string name="app_name_long">Privacy Friendly Board Game Clock</string>
+    <string name="app_prefix" translatable="false">Privacy Friendly</string>
 
-    <!-- General -->
+    <!-- ###GENERAL### -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="error">Error</string>
-    <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="players">Players</string>
     <string name="ok">Okay</string>
     <string name="dialog_no_permissions">Required permissions are not granted!</string>
 
-    <!-- Drawer -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- ###DRAWER###-->
     <string name="action_help">Help</string>
     <string name="action_about">About</string>
-    <string name="action_main">Main Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_main">Main</string>
+    <string name="action_game">Game</string>
     <string name="action_player_management">Player Management</string>
-    <string name="backup" translatable="false">Backup</string>
-    <string name="gameHistory">Game History</string>
-    <string name="action_navigation" translatable="false">Navigation</string>
-    <string name="backupDuringGame">Please quit the current game first before importing or exporting database backups.</string>
+    <string name="action_game_history">Game History</string>
+    <string name="action_backup">Backup</string>
+    <string name="action_tutorial">Tutorial</string>
 
-    <!-- Main Menu -->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- ###MAIN### -->
+    <string name="title_activity_game">Game</string>
+    <string name="game_button_start">New Game</string>
+    <string name="game_button_continue">Continue Game</string>
     <string name="action_new_game">New Game</string>
     <string name="action_resume_game">Resume Game</string>
+    <string name="choose_players">Choose Players</string>
     <string name="exit">Exit</string>
     <string name="exitQuestion">Do you really want to close the application?</string>
-
+    <string name="game_desc">This is the default main menu for game apps. The viewpager above should be used to switch between game modes.</string>
     <!-- New Game -->
     <string-array name="game_modes">
         <item>Clockwise</item>
@@ -50,8 +56,6 @@
     <string name="gameNameStandard">Game</string>
     <string name="chess_clock">Chess Clock</string>
     <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
-
-
     <!-- Game -->
     <string name="round">Round:</string>
     <string name="saveGame">Save Clock</string>
@@ -90,106 +94,85 @@
     <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
     <string name="startNewGame">Start New Game</string>
 
-    <!-- Player Management -->
-    <string name="createNewPlayer">New Player</string>
-    <string name="playerManagement">Player Management</string>
-    <string name="addPlayerFromContacts">Contacts</string>
-    <string name="deletePlayer">Delete Player</string>
+    <!-- ###PLAYER MANAGEMENT### -->
+    <string name="player_management">Player Management</string>
+    <string name="new_player">New Player</string>
+    <string name="contact">Contact</string>
+    <string name="dialog_choose_new_player">Choose how to create new player:</string>
+    <string name="nameDots">Name:</string>
+    <string name="picDots">Picture:</string>
+    <string name="changeColorButton">COLOR</string>
+    <string name="takePhotoButton">PHOTO</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="addContact">ADD CONTACT</string>
+    <string name="addContacts">ADD CONTACTS</string>
     <string name="editPlayer">Edit Player</string>
-    <string name="deletePlayerQuestion">Do you really want to delete the selected player? This also deletes every saved game where this player took part. This step cannot be undone.</string>
-    <string name="showPlayerStats">Statistics</string>
-
-
-    <!-- Game History -->
-    <string name="deleteGame">Delete Game</string>
-    <string name="deleteGameQuestion">Do you really want to delete the selected game?</string>
-    <string name="removeEntry">Remove Entry</string>
-    <string name="removeEntryQuestion">Do you really want to remove the selected entry from history?</string>
-
-    <!-- Backup -->
-    <string name="importDatabaseBackup">Import Database Backup</string>
-    <string name="importDatabaseBackupInfoMessage">Are you sure you want to import the current database backup from external storage? The active database will be replaced.</string>
-    <string name="importDatabaseBackupSuccess">Backup successfully loaded!</string>
-    <string name="exportDatabaseBackup">Export Database Backup</string>
-    <string name="exportDatabaseBackupInfoMessage">Are you sure you want to create a backup from the active database? The current database backup will be replaced.</string>
-    <string name="exportDatabaseBackupSuccess">Backup successfully created at: </string>
-    <string name="noBackupFound">No database backup found!</string>
-    <string name="backupExportError">Export of database failed!</string>
-
-
-    <!-- Contact List -->
-    <string name="addSelectedContacts">Add Contacts</string>
-    <string name="addContact">Add Contact</string>
-
-    <!-- Help -->
-    <string name="permissionContacts">Additional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.</string>
-    <string name="permissionReadExtStorage">The app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.</string>
-    <string name="permissionSaveExtStorage">App data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.</string>
-    <string name="gameModeNoColon">Game Modes</string>
-    <string name="gameTimeNoColon">Game Time</string>
-    <string name="roundTimeNoColon">Round Time</string>
-    <string name="timeDeltaNoColon">Extra Time</string>
-    <string name="permissionHeading">Permissions</string>
-    <string name="modeClockwiseSummary">The turn order corresponds to the player list and will continue clockwise.</string>
-    <string name="modeCounterClockwiseSummary">The turn order corresponds to the player list and will continue counter-clockwise.</string>
-    <string name="modeRandomSummary">The next player will be selected randomly from the player list.</string>
-    <string name="modeChessSummary">The turn order corresponds to the player list, no game pause after a round ends.</string>
-    <string name="overviewHeading">Overview</string>
-    <string name="overviewSummary">Privacy Friendly Board Game Clock allows to measure in (round-based) games with any amount of players. </string>
-    <string name="permissionContactsName">Read Contacts</string>
-    <string name="permissionReadExtStorageName">Read External Storage</string>
-    <string name="permissionSaveExtStorageName">Write External Storage</string>
-    <string name="help_gameTime">Total time for a game.</string>
-    <string name="help_roundTime">The time a player has available per round/turn. After this time the turn will be finished automatically.</string>
-    <string name="help_timeDelta">The time a player a player gets credited once a new round starts.</string>
-
-    <!-- Game Results -->
-    <string name="gameResults">Game Results</string>
-    <string name="backToMainMenu">Back to Main Menu</string>
-    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
-    <string name="activeGameTimeHeader">Game Time left:</string>
-    <string name="playedRoundsHeader">Last Round:</string>
-    <string name="playerResults">Player Results:</string>
-    <string name="timeLeft">Time left:</string>
-
-    <!-- Welcome Dialog -->
-    <string name="welcome">Welcome</string>
-    <string name="welcome_part4">Choose time, round time and players for your game.</string>
-    <string name="welcomePlay">3. Play!</string>
-    <string name="welcomeNewGame">1. New Game</string>
-    <string name="welcome_part3">Start a New Game by pressing the button.</string>
-    <string name="welcome_part2">Thanks for using Privacy Friendly Board Game Clock.</string>
-    <string name="viewHelp">View Help</string>
-    <string name="setParameters">2. Set Parameters</string>
-
-    <!-- About -->
-    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/secuso/research/results/privacy-friendly-apps/">https://www.secuso.org</a></string>
-    <string name="version_number" translatable="false">Version 1.0</string>
-    <string name="about_author">Authors: </string>
-    <string name="about_author_names" translatable="false">Marco Bräuning</string>
-    <string name="about_author_contributors">and contributors.</string>
-    <string name="about_affiliation">In affiliation with</string>
-    <string name="privacy_friendly">This application belongs to the group of Privacy Friendly Apps developed by Technische Universität Darmstadt. Sourcecode licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>
-    <string name="more_info">More information can be found on:</string>
-    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-boardgame-clock">Github-Repo</a></string>
-
-    <!-- New / Edit Player -->
-    <string name="pickColor">Pick color</string>
-    <string name="takePhotoButton">Photo</string>
-    <string name="changeColorButton">Color</string>
-    <string name="picture">Picture:</string>
-    <string name="nameDots" translatable="false">Name:</string>
 
     <!-- Player Statistics -->
-    <string name="playerStatistics">Player Statistics</string>
+    <string name="playerStatistic">Player Statistic</string>
     <string name="playedGames">Games played:</string>
     <string name="completedRounds">Rounds finished:</string>
     <string name="totalTimePlayed">Total Time played:</string>
 
-    <!-- Fragments and Dialogs-->
-    <string name="welcomeDialog" translatable="false">WelcomeDialog</string>
-    <string name="backupDialog" translatable="false">BackupDialog</string>
-    <string name="aboutFragment" translatable="false">AboutFragment</string>
+
+    <!--###HELP###-->
+    <string name="help">Help</string>
+
+    <string name="help_whatis">What is Privacy Friendly App Example?</string>
+    <string name="help_whatis_answer">Privacy Friendly App Example is an app that demonstrates the design of a Privacy Friendly App.</string>
+    <string name="help_feature_one">Feature 1</string>
+    <string name="help_feature_one_answer">Description of first feature.
+Lorem ipsum dolor sit amet, eu ius alia fierent indoctum, ad pri sale tation. Elit dictas sit an, ad volumus urbanitas duo. Ei clita iracundia mel, eum et laoreet pertinax abhorreant. Nonumy suavitate dignissim quo id, ius audire prodesset adipiscing ei, altera saperet his et. Nostrud pertinax eu has, qui munere complectitur an.
+
+Ne albucius perfecto adolescens eum, id choro assueverit mea, sed viris constituto ex. Per soleat impedit delicatissimi cu. Inermis volumus his ea, id quo praesent eloquentiam conclusionemque. Dolores mediocrem ad sit, ex cibo evertitur cotidieque eos.
+
+    </string>
+    <string name="help_privacy">What makes the app privacy-friendly?</string>
+    <string name="help_privacy_answer">Privacy Friendly App Example does not require any permission. It further does not include any tracking mechanisms or advertisement.</string>
+    <string name="help_permission">Which permissions requires the app?</string>
+    <string name="help_permission_answer">Privacy Friendly App Example does not require any permission.</string>
+
+    <!--###ABOUT###-->
+    <string name="about">About</string>
+    <string name="version_number">Version</string>
+    <string name="about_author">Authors: </string>
+    <string name="about_author_names" translatable="false">Karola Marky</string>
+    <string name="about_author_contributors">and contributors.</string>
+    <string name="about_affiliation">In affiliation with</string>
+    <string name="privacy_friendly">This application belongs to the group of Privacy Friendly Apps developed by Technische Universität Darmstadt. Sourcecode licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>
+    <string name="more_info">More information can be found on:</string>
+    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-app-example">Github-Repo</a></string>
+    <string name="url" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
+
+    <!-- ###SETTINGS### -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_header_general">General</string>
+    <string name="pref_example_switch">Example Switch</string>
+    <string name="pref_example_switch_summary">Example Switch Summary</string>
+    <string name="pref_example_summary">Example Summary</string>
+
+    <!-- ### TUTORIAL DIALOG ### -->
+    <string name="slide1_heading">Welcome!</string>
+    <string name="slide1_text">This App serves as a guideline to see the basic design of Privacy Friendly Apps. Here introduce your app in one or two sentences.</string>
+
+    <string name="slide2_heading">Key Elements</string>
+    <string name="slide2_text">Introduce key elements of your app. Do not introduce too many details.</string>
+
+    <string name="slide3_heading">Github and Guide</string>
+    <string name="slide3_text">The sourcecode of this app is available at GitHub. For further explanations have a look at the Privacy Friendly App Guide.</string>
+
+    <string name="okay">Okay</string>
+    <string name="viewhelp">View Help</string>
+    <string name="main_button_welcomedialog">Show Welcome</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <!-- ### FRAGMENT AND DIALOG ### -->
+    <!-- ### Main Menu ### -->
+    <string name="mainMenuWelcomeFragment" translatable="false">MainMenuWelcomeFragment</string>
+    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
+    <!-- ### Player Management ### -->
+    <string name="chooseNewPlayerMode" translatable="false">ChooseNewPlayerModeFragment</string>
     <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
     <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
     <string name="contactListFragment" translatable="false">ContactListFragment</string>
@@ -197,12 +180,9 @@
     <string name="gameFragment" translatable="false">GameFragment</string>
     <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
     <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
-    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
     <string name="helpFragment" translatable="false">HelpFragment</string>
-    <string name="mainMenuFragment" translatable="false">MainMenuFragment</string>
     <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
     <string name="newGameFragment" translatable="false">NewGameFragment</string>
     <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
-
 
 </resources>
