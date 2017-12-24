@@ -1,36 +1,26 @@
 package org.secuso.privacyfriendlyboardgameclock.fragments;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ClipData;
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
-import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
@@ -50,10 +40,9 @@ import java.util.Random;
  * @author Quang Anh Dang
  */
 
-public class MainMenuChoosePlayers extends Fragment implements ItemClickListener{
+public class MainMenuChoosePlayersFragment extends Fragment implements ItemClickListener{
     private MainActivity activity;
     private List<Player> listPlayers;
-    private List<Player> selectedPlayers;
     private GamesDataSourceSingleton gds;
     private PlayersDataSourceSingleton pds;
     private RecyclerView playersRecycleView;
@@ -61,12 +50,20 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
     private LinearLayoutManager layoutManager;
     private FloatingActionButton fabStartGame;
     private FloatingActionButton fabDelete;
+    private int fabActive;
+    private int fabInactive;
     // To toggle selection mode
-    private MainMenuChoosePlayers.ActionModeCallback actionModeCallback = new MainMenuChoosePlayers.ActionModeCallback();
+    private MainMenuChoosePlayersFragment.ActionModeCallback actionModeCallback = new MainMenuChoosePlayersFragment.ActionModeCallback();
     private ActionMode actionMode;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        fabActive = getResources().getColor(R.color.fabActive);
+        fabInactive = getResources().getColor(R.color.fabInactive);
+    }
 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         activity = (MainActivity) this.getActivity();
         gds = GamesDataSourceSingleton.getInstance(activity);
         pds = PlayersDataSourceSingleton.getInstance(activity);
@@ -76,13 +73,17 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
         container.removeAllViews();
 
         listPlayers = pds.getAllPlayers();
-        selectedPlayers = new ArrayList<>();
+
+        // Set the plus icon in toolbar to add more players
+        setHasOptionsMenu(true);
 
         // FAB Listener
         fabStartGame = (FloatingActionButton) rootView.findViewById(R.id.fab_start_game);
-        fabStartGame.setOnClickListener(createNewGame());
+        fabStartGame.setBackgroundColor(R.drawable.button_disabled);
+        fabStartGame.setOnClickListener(selectPlayerToast());
+
         fabDelete = (FloatingActionButton) rootView.findViewById(R.id.fab_delete_player);
-        fabStartGame.setOnClickListener(onFABDeleteListenter());
+        fabDelete.setOnClickListener(onFABDeleteListenter());
 
         // Lookup the recyclerview in fragment layout
         layoutManager = new LinearLayoutManager(activity);
@@ -119,7 +120,7 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
             @Override
             public void onClick(View view) {
                 Game game = ((MainActivity) activity).getGame();
-
+                List<Player> selectedPlayers = playerListAdapter.getOrderdSelectedPlayers();
                 HashMap<Long, Long> player_round_times = new HashMap<>();
                 for (Player p : selectedPlayers) {
                     player_round_times.put(p.getId(), Long.valueOf(game.getRound_time()));
@@ -132,57 +133,58 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
 
                 long dateMs = System.currentTimeMillis();
 
-                if (selectedPlayers.size() < 2) new AlertDialog.Builder(activity)
-                        .setTitle(R.string.error)
-                        .setMessage(R.string.errorAtLeastTwoPlayers)
-                        .setIcon(android.R.drawable.ic_menu_info_details)
-                        .setPositiveButton(R.string.ok, null)
-                        .show();
-                else {
-                    game = gds.createGame(dateMs, selectedPlayers, player_round_times, players_rounds, game.getName(), game.getRound_time(),
-                            game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0, game.getGame_time_infinite(),
-                            game.getChess_mode(), 0);
+                game = gds.createGame(dateMs, selectedPlayers, player_round_times, players_rounds, game.getName(), game.getRound_time(),
+                        game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0, game.getGame_time_infinite(),
+                        game.getChess_mode(), 0);
 
-                    //start player index
-                    if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
-                        game.setStartPlayerIndex(0);
-                        game.setNextPlayerIndex(1);
-                    } else if (game.getGame_mode() == 1) {
-                        game.setStartPlayerIndex(0);
-                        game.setNextPlayerIndex(selectedPlayers.size() - 1);
-                    } else if (game.getGame_mode() == 2) {
-                        game.setStartPlayerIndex(0);
+                //start player index
+                if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
+                    game.setStartPlayerIndex(0);
+                    game.setNextPlayerIndex(1);
+                } else if (game.getGame_mode() == 1) {
+                    game.setStartPlayerIndex(0);
+                    game.setNextPlayerIndex(selectedPlayers.size() - 1);
+                } else if (game.getGame_mode() == 2) {
+                    game.setStartPlayerIndex(0);
 
-                        int randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
-                        while (randomPlayerIndex == game.getStartPlayerIndex())
-                            randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
-                        game.setNextPlayerIndex(randomPlayerIndex);
-                    }
-
-                    game.setPlayers(selectedPlayers);
-                    game.setPlayer_round_times(player_round_times);
-                    game.setPlayer_rounds(players_rounds);
-                    ((MainActivity) activity).setGame(game);
-
-                    // if game is finally created and game time is infinite, set game time to zero
-                    if (game.getGame_time_infinite() == 1) {
-                        game.setGame_time(0);
-                        game.setCurrentGameTime(0);
-                    }
-
-                    // store game number
-                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(activity);
-                    int gameNumber = settings.getInt("gameNumber", 1);
-                    gameNumber++;
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putInt("gameNumber", gameNumber);
-                    editor.commit();
-
-                    startNewGame();
+                    int randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
+                    while (randomPlayerIndex == game.getStartPlayerIndex())
+                        randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
+                    game.setNextPlayerIndex(randomPlayerIndex);
                 }
+
+                game.setPlayers(selectedPlayers);
+                game.setPlayer_round_times(player_round_times);
+                game.setPlayer_rounds(players_rounds);
+                ((MainActivity) activity).setGame(game);
+
+                // if game is finally created and game time is infinite, set game time to zero
+                if (game.getGame_time_infinite() == 1) {
+                    game.setGame_time(0);
+                    game.setCurrentGameTime(0);
+                }
+
+                // store game number
+                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(activity);
+                int gameNumber = settings.getInt("gameNumber", 1);
+                gameNumber++;
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("gameNumber", gameNumber);
+                editor.commit();
+
+                startNewGame();
             }
         };
+    }
 
+    private View.OnClickListener selectPlayerToast(){
+        return new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                activity.showToast(getResources().getString(R.string.selectAtLeast2Players));
+        }
+        };
     }
 
     private void clearListSelections() {
@@ -199,7 +201,7 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
     }
 
     /**
-     * Infalte the Actionicons on Toolbar, in this case the delete icon
+     * Infalte the Actionicons on Toolbar, in this case the plus icon
      * @param menu
      * @return
      */
@@ -233,10 +235,14 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
             playerListAdapter.setSimpleClickedSelected(true);
             playerListAdapter.setLongClickedSelected(false);
             toggleSelection(position);
-            if (playerListAdapter.getSelectedItemCount() >= 2 && playerListAdapter.isSimpleClickedSelected())
-                fabStartGame.setVisibility(View.VISIBLE);
-            else
-                fabStartGame.setVisibility(View.GONE);
+            if (playerListAdapter.getSelectedItemCount() >= 2 && playerListAdapter.isSimpleClickedSelected()) {
+                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabActive));
+                fabStartGame.setOnClickListener(createNewGame());
+            }
+            else{
+                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
+                fabStartGame.setOnClickListener(selectPlayerToast());
+            }
         }
     }
 
@@ -276,6 +282,16 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
         }
     }
 
+    private void switchVisibilityOf2FABs(){
+        if(fabStartGame.getVisibility() != View.GONE && fabDelete.getVisibility() == View.GONE){
+            fabStartGame.setVisibility(View.GONE);
+            fabDelete.setVisibility(View.VISIBLE);
+        }else{
+            fabStartGame.setVisibility(View.VISIBLE);
+            fabDelete.setVisibility(View.GONE);
+        }
+    }
+
     /*  #################################################################
         #                                                               #
         #                       Helper class                            #
@@ -284,14 +300,14 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
 
     private class ActionModeCallback implements ActionMode.Callback {
         @SuppressWarnings("unused")
-        private final String TAG = MainMenuChoosePlayers.ActionModeCallback.class.getSimpleName();
+        private final String TAG = MainMenuChoosePlayersFragment.ActionModeCallback.class.getSimpleName();
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             playerListAdapter.setSimpleClickedSelected(false);
             playerListAdapter.setLongClickedSelected(true);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
-            // TODO Turn delete Button visible
+            switchVisibilityOf2FABs();
             return true;
         }
 
@@ -311,7 +327,7 @@ public class MainMenuChoosePlayers extends Fragment implements ItemClickListener
             playerListAdapter.setLongClickedSelected(false);
             playerListAdapter.clearSelection();
             actionMode = null;
-            // TODO Delete button gone
+            switchVisibilityOf2FABs();
         }
     }
 }

@@ -390,7 +390,7 @@ public class MainMenuNewGameFragment extends Fragment{
     public void choosePlayers() {
 
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuChoosePlayers());
+        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuChoosePlayersFragment());
         fragmentTransaction.addToBackStack(getString(R.string.choosePlayersFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 

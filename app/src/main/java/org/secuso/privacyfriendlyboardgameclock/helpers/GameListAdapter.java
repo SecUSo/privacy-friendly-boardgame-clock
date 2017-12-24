@@ -1,24 +1,20 @@
 package org.secuso.privacyfriendlyboardgameclock.helpers;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,29 +22,28 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by Quang Anh Dang on 01.12.2017.
- * https://guides.codepath.com/android/Using-the-RecyclerView#creating-the-recyclerview-adapter
- * https://www.youtube.com/watch?v=puyiZKvxBa0
- * TODO DOC
+ * Created by Quang Anh Dang on 23.12.2017.
+ *
+ * @author Quang Anh Dang
  */
-public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewHolder> {
-    private List<Player> playersList;
+public class GameListAdapter extends SelectableAdapter<GameListAdapter.ViewHolder> {
+    private List<Game> gamesList;
     private Activity activity;
     private ItemClickListener itemClickListener;
-    private PlayersDataSourceSingleton pdss;
+    private GamesDataSourceSingleton gdss;
 
     /**
      *
      * @param activity
-     * @param playersList
+     * @param gamesList
      * @param itemClickListener the class which implement ItemClickListener Interface. In this case PlayerManagementActivity
      */
-    public PlayerListAdapter(Activity activity, List<Player> playersList, ItemClickListener itemClickListener) {
+    public GameListAdapter(Activity activity, List<Game> gamesList, ItemClickListener itemClickListener) {
         super();
-        this.playersList = playersList;
+        this.gamesList = gamesList;
         this.activity = activity;
         this.itemClickListener = itemClickListener;
-        this.pdss = PlayersDataSourceSingleton.getInstance(activity);
+        this.gdss = GamesDataSourceSingleton.getInstance(activity);
     }
 
     public Context getContext() {
@@ -62,20 +57,20 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      * @param viewType The view type of the new View.
      * @return A new ViewHolder that holds a View of the given view type.
      * @see #getItemViewType(int)
-     * @see #onBindViewHolder(ViewHolder, int)
      */
     @Override
-    public PlayerListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GameListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = activity.getLayoutInflater();
 
         // Inflate the custom layout
-        View playersView = inflater.inflate(R.layout.player_management_custom_row, parent, false);
+        View gamesView = inflater.inflate(R.layout.gamelist_item_row, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(playersView,itemClickListener);
+        ViewHolder viewHolder = new ViewHolder(gamesView,itemClickListener);
         return viewHolder;
     }
+
 
     /**
      * Involves populating data into the item through holder
@@ -84,37 +79,17 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(PlayerListAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(GameListAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Player player = playersList.get(position);
+        Game game = gamesList.get(position);
+        if(game != null){
+            TextView gameName = viewHolder.gameName;
+            gameName.setText(game.getName());
+            TextView gameInfo = viewHolder.gameInfo;
+            gameInfo.setText(game.getDateString() + ", " + game.getPlayers().size() + " " + getContext().getString(R.string.players));
 
-        // Set item views based on your views and data model
-        TextView textView = viewHolder.playerTextView;
-        textView.setText(player.getName());
-        ImageView imageView = viewHolder.playerIMGView;
-        imageView.setImageBitmap(player.getIcon());
-
-        // Highlight the item with blue if it's simple selected
-        if(isSimpleClickedSelected && !isLongClickedSelected){
-            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-            if(isSelected(position)){
-                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.VISIBLE);
-                viewHolder.selectedPlayerNumber.setText(orderedSelectedItems.indexOf(position)+1+".");
-            }
-            else{
-                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-                viewHolder.selectedPlayerNumber.setText("");
-            }
-        }
-        // Highlight the item with grey if it's long selected
-        else if (!isSimpleClickedSelected && isLongClickedSelected){
-            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+            // Highlight the item with grey if it's long selected
             viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
-        }
-        else{
-            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-            viewHolder.selectedPlayerNumber.setText("");
         }
     }
 
@@ -123,8 +98,8 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      * @param position position von diesem Item
      */
     public void removeItem(int position) {
-        pdss.deletePlayer(playersList.get(position));
-        playersList.remove(position);
+        gdss.deleteGame(gamesList.get(position));
+        gamesList.remove(position);
         orderedSelectedItems = new ArrayList<>();
         notifyItemRemoved(position);
     }
@@ -174,8 +149,8 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      */
     private void removeRange(int positionStart, int itemCount) {
         for (int i = 0; i < itemCount; ++i) {
-            pdss.deletePlayer(playersList.get(positionStart));
-            playersList.remove(positionStart);
+            gdss.deleteGame(gamesList.get(positionStart));
+            gamesList.remove(positionStart);
             orderedSelectedItems.remove((Integer)positionStart);
         }
         notifyItemRangeRemoved(positionStart, itemCount);
@@ -188,29 +163,29 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      */
     @Override
     public int getItemCount() {
-        return (playersList != null ? playersList.size() : 0);
+        return (gamesList != null ? gamesList.size() : 0);
     }
 
-    public List<Player> getPlayersList() {
-        return playersList;
+    public List<Game> getPlayersList() {
+        return gamesList;
     }
 
-    public void setPlayersList(List<Player> playersList) {
-        this.playersList = playersList;
+    public void setPlayersList(List<Game> gamesList) {
+        this.gamesList = gamesList;
     }
 
-    public Player getPlayer(int posision){
-        return playersList.get(posision);
+    public Game getGame(int posision){
+        return gamesList.get(posision);
     }
 
     /**
      *
      * @return an ordered list of selected Players
      */
-    public List<Player> getOrderdSelectedPlayers (){
-        List<Player> result = new ArrayList<>();
+    public List<Game> getOrderdSelectedGames (){
+        List<Game> result = new ArrayList<>();
         for(Integer i: orderedSelectedItems){
-            result.add(getPlayer(i));
+            result.add(getGame(i));
         }
         return result;
     }
@@ -222,12 +197,10 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         #################################################################*/
 
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
-        private ImageView playerIMGView;
-        private TextView playerTextView;
         private ItemClickListener itemClickListener;
         private View longClickedSelectedOverlay;
-        private View simpleClickedSelectedOverlay;
-        private TextView selectedPlayerNumber;
+        private TextView gameName;
+        private TextView gameInfo;
 
         /**
          *
@@ -236,13 +209,11 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
          */
         public ViewHolder(View itemView, ItemClickListener itemClickListener) {
             super(itemView);
+            this.gameName = itemView.findViewById(R.id.textViewName);
+            this.gameInfo = itemView.findViewById(R.id.textViewDescription);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            playerIMGView = (ImageView) itemView.findViewById(R.id.player_image);
-            playerTextView = (TextView) itemView.findViewById(R.id.player_text);
-            simpleClickedSelectedOverlay = itemView.findViewById(R.id.simpleClicked_selected_overlay);
             longClickedSelectedOverlay = itemView.findViewById(R.id.longClicked_selected_overlay);
-            selectedPlayerNumber = itemView.findViewById(R.id.selectedPlayerNumberTextView);
             this.itemClickListener = itemClickListener;
         }
 

@@ -66,11 +66,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
 
         listPlayers = pds.getAllPlayers();
-        /*listPlayers.add(new Player(112,2011457,"Player1", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
-        listPlayers.add(new Player(113,2011453,"Player2", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
-        listPlayers.add(new Player(114,2011454,"Player3", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));
-        listPlayers.add(new Player(115,2011456,"Player4", BitmapFactory.decodeResource(getResources(),R.drawable.privacyfriendlyappslogo)));*/
-
         layoutManager = new LinearLayoutManager(this);
 
         // FAB Listener

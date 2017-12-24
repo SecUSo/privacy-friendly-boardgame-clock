@@ -60,8 +60,17 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameActivity"
-            android:label="@string/title_activity_game"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity"
+            android:label="@string/player_management"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity"
+            android:label="@string/title_activity_game_history"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -70,10 +79,9 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity"
-            android:label="@string/player_management"
-            android:theme="@style/AppTheme.NoActionBar">
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.BackUpActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:theme="@android:style/Theme.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />

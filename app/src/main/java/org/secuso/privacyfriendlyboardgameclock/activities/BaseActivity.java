@@ -34,6 +34,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
@@ -157,10 +158,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
-            case R.id.nav_game:
-                intent = new Intent(this, GameActivity.class);
-                createBackStack(intent);
-                break;
             case R.id.nav_tutorial:
                 intent = new Intent(this, TutorialActivity.class);
                 intent.setAction(TutorialActivity.ACTION_SHOW_ANYWAYS);
@@ -182,6 +179,14 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
                 break;
             case R.id.nav_player_management:
                 intent = new Intent(this, PlayerManagementActivity.class);
+                createBackStack(intent);
+                break;
+            case R.id.nav_game_history:
+                intent = new Intent(this, GameHistoryActivity.class);
+                createBackStack(intent);
+                break;
+            case R.id.nav_backup:
+                intent = new Intent(this, BackUpActivity.class);
                 createBackStack(intent);
                 break;
             default:
@@ -215,5 +220,12 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
         }
     }
 
-
+    /**
+     * show a toast with certain text as message
+     * @param text
+     */
+    public void showToast(String text){
+        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }

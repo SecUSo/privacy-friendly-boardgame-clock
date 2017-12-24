@@ -13,13 +13,15 @@ import java.util.List;
 public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     @SuppressWarnings("unused")
     private static final String TAG = SelectableAdapter.class.getSimpleName();
-    protected boolean isLongClickedSelected = false;
-    protected boolean isSimpleClickedSelected = false;
+    boolean isLongClickedSelected = false;
+    boolean isSimpleClickedSelected = false;
 
     private SparseBooleanArray selectedItems;
+    List<Integer> orderedSelectedItems = new ArrayList<>();
 
     public SelectableAdapter() {
         selectedItems = new SparseBooleanArray();
+        orderedSelectedItems = new ArrayList<>();
     }
 
     /**
@@ -36,17 +38,26 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> exte
      * @param position Position of the item to toggle the selection status for
      */
     public void toggleSelection(int position) {
+        // Keep a list of which elements to notify
+        List<Integer> selectedItemsPositions = new ArrayList<>(selectedItems.size());
+        for(int i  = 0; i < selectedItems.size(); i++){
+            selectedItemsPositions.add(selectedItems.keyAt(i));
+        }
         if (selectedItems.get(position, false)) {
             selectedItems.delete(position);
+            if(orderedSelectedItems.contains(position))
+                orderedSelectedItems.remove((Integer) position);
         } else {
             selectedItems.put(position, true);
+            selectedItemsPositions.add(position);
+            orderedSelectedItems.add(position);
         }
         // if item is longclicked selected, notify only 1 item changed
         if(isLongClickedSelected && !isSimpleClickedSelected) notifyItemChanged(position);
         // if item is simple selected, notify all selected item cause the selected player number has to be updated
         else if (!isLongClickedSelected && isSimpleClickedSelected){
-            for(int i  = 0; i < selectedItems.size(); i++){
-                notifyItemChanged(selectedItems.keyAt(i));
+            for(Integer i: selectedItemsPositions){
+                notifyItemChanged(i);
             }
         }
     }

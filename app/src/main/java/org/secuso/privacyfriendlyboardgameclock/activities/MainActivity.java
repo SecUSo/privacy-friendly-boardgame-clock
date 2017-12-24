@@ -17,20 +17,20 @@
 
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.Button;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuChoosePlayersFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuWelcomeFragment;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
-import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
-import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
  * @author Christopher Beckmann, Karola Marky
@@ -40,6 +40,7 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 public class MainActivity extends BaseActivity {
     private FragmentManager fm;
     private Game game;
+    private Game historyGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +77,50 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (!drawer.isDrawerOpen(GravityCompat.START) && fm.getBackStackEntryCount() > 0) {
+            Fragment currentFragment = fm.findFragmentById(R.id.MainActivity_fragment_container);
+            if (currentFragment instanceof MainMenuChoosePlayersFragment) {
+                // Pop all the DialogFragment in BackStack
+                int backstackCount =  fm.getBackStackEntryCount();
+                int i =  backstackCount -1;
+                String backstackEntryName = fm.getBackStackEntryAt(i).getName();
+                while(i >= 0 && backstackEntryName == null){
+                    if(backstackEntryName != null){
+                        if(backstackEntryName.equals(getString(R.string.choosePlayersFragment))) break;
+                    }
+                    fm.popBackStack();
+                    i--;
+                    backstackEntryName = fm.getBackStackEntryAt(i).getName();
+                }
+                // restart ChoosePlayerFragment
+                FragmentTransaction fragTransaction = fm.beginTransaction();
+                fragTransaction.detach(currentFragment);
+                fragTransaction.attach(currentFragment);
+                fragTransaction.commit();
+            }
+            else{
+                super.onBackPressed();
+            }
+        }
+        else super.onBackPressed();
+    }
+
     public Game getGame() {
         return game;
     }
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public Game getHistoryGame() {
+        return historyGame;
+    }
+
+    public void setHistoryGame(Game prevGame) {
+        this.historyGame = prevGame;
     }
 }

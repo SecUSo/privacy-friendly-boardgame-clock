@@ -5,19 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
+import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 import java.util.List;
 
-public class GamesListAdapter extends ArrayAdapter { //--CloneChangeRequired
+public class SelectPlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
     private List mList; //--CloneChangeRequired
     private Context mContext;
 
-    public GamesListAdapter(Context context, int textViewResourceId,
-                            List list) { //--CloneChangeRequired
+    public SelectPlayerListAdapter(Context context, int textViewResourceId,
+                                   List list) { //--CloneChangeRequired
         super(context, textViewResourceId, list);
         this.mList = list;
         this.mContext = context;
@@ -28,20 +29,26 @@ public class GamesListAdapter extends ArrayAdapter { //--CloneChangeRequired
         try {
             if (view == null) {
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.gamelist_item_row, null); //--CloneChangeRequired(list_item)
+                view = vi.inflate(R.layout.selectplayerlist_item_row, null); //--CloneChangeRequired(list_item)
             }
-            final Game g = (Game) mList.get(position); //--CloneChangeRequired
-            if (g != null) {
+            final Player p = (Player) mList.get(position); //--CloneChangeRequired
+            if (p != null) {
                 // setting list_item views
                 ((TextView) view.findViewById(R.id.textViewName))
-                        .setText(g.getName());
+                        .setText(p.getName());
 
-                ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(g.getDateString() + ", " + g.getPlayers().size() + " " + mContext.getString(R.string.players));
+                ((ImageView) view.findViewById(R.id.imageViewIcon))
+                        .setImageBitmap(p.getIcon());
+
+                ((TextView) view.findViewById(R.id.textViewNumber))
+                        .setText("");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return view;
     }
+
+
 }

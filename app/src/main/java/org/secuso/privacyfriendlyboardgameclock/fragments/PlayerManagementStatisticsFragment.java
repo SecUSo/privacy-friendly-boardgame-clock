@@ -2,10 +2,8 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,7 @@ import android.widget.TextView;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.helpers.GamesListAdapter;
+import org.secuso.privacyfriendlyboardgameclock.helpers.GamesListAdapterOld;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
@@ -58,7 +56,7 @@ public class PlayerManagementStatisticsFragment extends DialogFragment {
         ((TextView) rootView.findViewById(R.id.totalTimePlayedText)).setText(getTotalTimePlayed());
         ((TextView) rootView.findViewById(R.id.completedRoundsText)).setText(String.valueOf(getTotalRoundsPlayed()));
 
-        GamesListAdapter listAdapter = new GamesListAdapter(this.getActivity(), R.id.list, playerGames);
+        GamesListAdapterOld listAdapter = new GamesListAdapterOld(this.getActivity(), R.id.list, playerGames);
         games = (ListView) rootView.findViewById(R.id.list);
         games.setAdapter(listAdapter);
 

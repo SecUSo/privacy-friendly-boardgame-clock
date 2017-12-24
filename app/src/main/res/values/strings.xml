@@ -85,6 +85,15 @@
     <string name="manualChoiceError">Please select every player from the list!</string>
     <string name="manualChoiceHeading">Set player sequence</string>
 
+    <!-- Game Results -->
+    <string name="gameResults">Game Results</string>
+    <string name="backToMainMenu">Back to Main Menu</string>
+    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
+    <string name="activeGameTimeHeader">Game Time left:</string>
+    <string name="playedRoundsHeader">Last Round:</string>
+    <string name="playerResults">Player Results:</string>
+    <string name="timeLeft">Time left:</string>
+
     <!-- Load Game -->
     <string name="loadGame">Load Game</string>
     <string name="loadSelectedGame">Load Game</string>
@@ -114,6 +123,18 @@
     <string name="completedRounds">Rounds finished:</string>
     <string name="totalTimePlayed">Total Time played:</string>
 
+    <!-- Game History -->
+    <string name="title_activity_game_history">Game History</string>
+
+    <!-- Backup -->
+    <string name="importDatabaseBackup">Import Database Backup</string>
+    <string name="importDatabaseBackupInfoMessage">Are you sure you want to import the current database backup from external storage? The active database will be replaced.</string>
+    <string name="importDatabaseBackupSuccess">Backup successfully loaded!</string>
+    <string name="exportDatabaseBackup">Export Database Backup</string>
+    <string name="exportDatabaseBackupInfoMessage">Are you sure you want to create a backup from the active database? The current database backup will be replaced.</string>
+    <string name="exportDatabaseBackupSuccess">Backup successfully created at: </string>
+    <string name="noBackupFound">No database backup found!</string>
+    <string name="backupExportError">Export of database failed!</string>
 
     <!--###HELP###-->
     <string name="help">Help</string>
@@ -184,5 +205,10 @@ Ne albucius perfecto adolescens eum, id choro assueverit mea, sed viris constitu
     <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
     <string name="newGameFragment" translatable="false">NewGameFragment</string>
     <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
+
+
+    <!-- ### Toast ### -->
+    <string name="selectAtLeast2Players" >Please select at least 2 Players to continue.</string>
+
 
 </resources>

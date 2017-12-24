@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
+            app:backgroundTint="@color/fabInactive"
             app:srcCompat="@drawable/ic_play"
             app:layout_anchor="@id/player_list"
             app:layout_anchorGravity="bottom|right|end"

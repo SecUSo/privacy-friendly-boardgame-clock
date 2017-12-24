@@ -16,6 +16,9 @@
     <color name="grey">#b3b3b3</color>
     <color name="trans50grey">#64b3b3b3</color>
     <color name="trans50blue">#640274B2</color>
+    <color name="fabActive">#0274B2</color>
+    <color name="fabInactive">#A8A8A8</color>
+
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen">#026499</color>

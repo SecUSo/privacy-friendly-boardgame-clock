@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/VerticalCenterLinearLayout"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true">
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <ListView
+        android:id="@+id/set_player_sequence_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_weight="1"
+        android:choiceMode="multipleChoice" />
+
+    <Button
+        android:id="@+id/setPlayerSequenceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:layout_marginLeft="@dimen/main_button_padding"
+        android:layout_marginRight="@dimen/main_button_padding"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/button_fullwidth"
+        android:onClick="setPlayerSequenceButton"
+        android:text="@string/resume"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>
