@@ -1,33 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <Button
-        android:id="@+id/importBackupButton"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@drawable/button_disabled"
-        android:onClick="importBackupButton"
-        android:text="@string/importDatabaseBackup"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity">
 
-    <Button
-        android:id="@+id/exportBackupButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_disabled"
-        android:onClick="exportBackupButton"
-        android:text="@string/exportDatabaseBackup"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size" />
-</LinearLayout>
+    <include layout="@layout/toolbar"/>
+
+        <RelativeLayout
+            android:id="@+id/main_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="org.secuso.privacyfriendlyboardgameclock.activities.BackUpActivity"
+            android:orientation="vertical"
+            style="@style/AlertDialog.AppCompat">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+
+                <Button
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_disabled"
+                    android:text="@string/importDatabaseBackup"
+                    android:id="@+id/importBackupButton"
+                    android:onClick="importBackupButton"
+                    android:layout_gravity="center_vertical|center_horizontal"/>
+
+                <Button
+                    android:id="@+id/exportBackupButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_disabled"
+                    android:onClick="exportBackupButton"
+                    android:text="@string/exportDatabaseBackup"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+</android.support.v4.widget.DrawerLayout>

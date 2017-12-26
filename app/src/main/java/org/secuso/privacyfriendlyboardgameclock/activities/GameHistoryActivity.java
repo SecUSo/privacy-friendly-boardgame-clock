@@ -157,16 +157,6 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
         };
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (!drawer.isDrawerOpen(GravityCompat.START)) {
-            finish();
-            startActivity(getIntent());
-        }
-        else super.onBackPressed();
-    }
-
     public Game getSelectedGame() {
         return selectedGame;
     }

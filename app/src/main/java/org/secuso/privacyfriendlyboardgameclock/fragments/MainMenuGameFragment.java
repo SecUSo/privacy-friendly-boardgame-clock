@@ -547,6 +547,7 @@ public class MainMenuGameFragment extends Fragment {
         else
             roundTimerTv.setTextColor(Color.BLACK);
 
+        // if game time is not infinite
         if (game.getGame_time_infinite() == 0) {
 
             String game_time_hh = getTimeStrings(currentGameTimeMs)[0];
@@ -586,6 +587,9 @@ public class MainMenuGameFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    /**
+     * update the current game object
+     */
     public void updateGame() {
         playerRoundTimes.put(currentPlayer.getId(), currentRoundTimeMs);
         playerRounds.put(currentPlayer.getId(), playerRounds.get(currentPlayer.getId()));
@@ -602,6 +606,10 @@ public class MainMenuGameFragment extends Fragment {
         mainActivity.setGame(game);
     }
 
+    /**
+     * save Game to DB is called when game is finished or save button is clicked
+     * @param save 0 if game is finished, 1 if game is still on going
+     */
     private void saveGameToDb(int save) {
         updateGame();
         game.setSaved(save);
@@ -609,6 +617,10 @@ public class MainMenuGameFragment extends Fragment {
         gds.saveGame(game);
     }
 
+    /**
+     * game is finished, set finish flag, update buttons and textview
+     * and call save game to DB
+     */
     private void finishGame() {
         isFinished = 1;
         game.setFinished(isFinished);
@@ -628,6 +640,11 @@ public class MainMenuGameFragment extends Fragment {
     }
 
 
+    /**
+     *
+     * @param time_ms time in milliseconds
+     * @return a String Array list of 4 elements, hour, minutes, seconds and milliseconds
+     */
     private String[] getTimeStrings(long time_ms) {
         int h = (int) (time_ms / 3600000);
         int m = (int) (time_ms - h * 3600000) / 60000;

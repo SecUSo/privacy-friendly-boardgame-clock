@@ -37,6 +37,7 @@
     <string name="exit">Exit</string>
     <string name="exitQuestion">Do you really want to close the application?</string>
     <string name="game_desc">This is the default main menu for game apps. The viewpager above should be used to switch between game modes.</string>
+    <string name="resumeGameErrorToast">No saved games found.</string>
     <!-- New Game -->
     <string-array name="game_modes">
         <item>Clockwise</item>
@@ -209,6 +210,9 @@ Ne albucius perfecto adolescens eum, id choro assueverit mea, sed viris constitu
 
     <!-- ### Toast ### -->
     <string name="selectAtLeast2Players" >Please select at least 2 Players to continue.</string>
+
+    <!-- ### Service ### -->
+    <string name="CountdownTimerServiceDescription" >Privacy friendly Board Game Clock Countdown Timer Service.</string>
 
 
 </resources>

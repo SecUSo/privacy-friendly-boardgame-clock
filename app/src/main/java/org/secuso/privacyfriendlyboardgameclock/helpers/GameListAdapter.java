@@ -88,8 +88,25 @@ public class GameListAdapter extends SelectableAdapter<GameListAdapter.ViewHolde
             TextView gameInfo = viewHolder.gameInfo;
             gameInfo.setText(game.getDateString() + ", " + game.getPlayers().size() + " " + getContext().getString(R.string.players));
 
+            // Highlight the item with blue if it's simple selected
+            if(isSimpleClickedSelected && !isLongClickedSelected){
+                viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+                if(isSelected(position)){
+                    viewHolder.simpleClickedSelectedOverlay.setVisibility(View.VISIBLE);
+                }
+                else{
+                    viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+                }
+            }
             // Highlight the item with grey if it's long selected
-            viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+            else if (!isSimpleClickedSelected && isLongClickedSelected){
+                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+                viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+            }
+            else{
+                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+                viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
@@ -199,6 +216,7 @@ public class GameListAdapter extends SelectableAdapter<GameListAdapter.ViewHolde
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
         private ItemClickListener itemClickListener;
         private View longClickedSelectedOverlay;
+        private View simpleClickedSelectedOverlay;
         private TextView gameName;
         private TextView gameInfo;
 
@@ -213,6 +231,7 @@ public class GameListAdapter extends SelectableAdapter<GameListAdapter.ViewHolde
             this.gameInfo = itemView.findViewById(R.id.textViewDescription);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
+            simpleClickedSelectedOverlay = itemView.findViewById(R.id.simpleClicked_selected_overlay);
             longClickedSelectedOverlay = itemView.findViewById(R.id.longClicked_selected_overlay);
             this.itemClickListener = itemClickListener;
         }

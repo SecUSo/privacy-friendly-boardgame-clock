@@ -75,7 +75,12 @@ public class MainMenuWelcomeFragment extends Fragment{
         gds = GamesDataSourceSingleton.getInstance(activity);
         if (gds.getSavedGames().size() == 0) {
             continueGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_disabled));
-            continueGameButton.setOnClickListener(null);
+            continueGameButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) activity).showToast(getString(R.string.resumeGameErrorToast));
+                }
+            });
         } else {
             continueGameButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
             continueGameButton.setOnClickListener(resumeGameListener);
