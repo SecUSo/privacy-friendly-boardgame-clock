@@ -39,7 +39,7 @@ import java.util.Random;
  *
  * @author Quang Anh Dang
  */
-
+// TODO #4 Fragment backbutton not possible
 public class MainMenuChoosePlayersFragment extends Fragment implements ItemClickListener{
     private MainActivity activity;
     private List<Player> listPlayers;
@@ -158,10 +158,10 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
                 game.setPlayer_rounds(players_rounds);
                 ((MainActivity) activity).setGame(game);
 
-                // if game is finally created and game time is infinite, set game time to zero
+                // if game is finally created and game time is infinite, set game time to -1
                 if (game.getGame_time_infinite() == 1) {
                     game.setGame_time(0);
-                    game.setCurrentGameTime(0);
+                    game.setCurrentGameTime(TAGHelper.DEFAULT_VALUE_LONG);
                 }
 
                 // store game number

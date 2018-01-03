@@ -20,7 +20,9 @@ package org.secuso.privacyfriendlyboardgameclock.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -41,15 +43,19 @@ public class MainActivity extends BaseActivity {
     private FragmentManager fm;
     private Game game;
     private Game historyGame;
+    private PlayersDataSourceSingleton pds;
+    private GamesDataSourceSingleton gds;
+    private MediaPlayer roundEndSound = null;
+    private MediaPlayer gameEndSound = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Create Database, only once
-        PlayersDataSourceSingleton pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
+        pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
         pds.open();
-        GamesDataSourceSingleton gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
+        gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
         gds.open();
 
         fm = getFragmentManager();
@@ -59,6 +65,11 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.commit();
 
         overridePendingTransition(0, 0);
+        roundEndSound = MediaPlayer.create(this,R.raw.roundend);
+        gameEndSound = MediaPlayer.create(this, R.raw.gameend);
+        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
+            finish();
+        }
     }
 
     /**
@@ -122,5 +133,26 @@ public class MainActivity extends BaseActivity {
 
     public void setHistoryGame(Game prevGame) {
         this.historyGame = prevGame;
+    }
+
+    public MediaPlayer getRoundEndSound() {
+        return roundEndSound;
+    }
+
+    public MediaPlayer getGameEndSound() {
+        return gameEndSound;
+    }
+
+    @Override
+    protected void onDestroy() {
+        roundEndSound.release();
+        gameEndSound.release();
+        try{
+            gds.close();
+            pds.close();
+        }catch (Exception e){
+
+        }
+        super.onDestroy();
     }
 }

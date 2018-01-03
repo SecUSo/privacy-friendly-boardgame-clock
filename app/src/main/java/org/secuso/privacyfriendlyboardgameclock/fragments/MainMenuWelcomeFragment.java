@@ -32,6 +32,7 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  */
 
 public class MainMenuWelcomeFragment extends Fragment{
+    // TODO #7, back press to close app
     private static Activity activity;
     private FragmentManager fm;
     public static View.OnClickListener resumeGameListener = new View.OnClickListener() {

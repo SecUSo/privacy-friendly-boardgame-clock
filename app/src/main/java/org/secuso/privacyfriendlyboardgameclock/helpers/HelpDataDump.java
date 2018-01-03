@@ -18,6 +18,7 @@
 package org.secuso.privacyfriendlyboardgameclock.helpers;
 
 import android.content.Context;
+import android.text.Html;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 
@@ -35,35 +36,28 @@ import java.util.List;
 public class HelpDataDump {
 
     private Context context;
+    private LinkedHashMap<CharSequence, List<CharSequence>> expandableListDetail;
 
     public HelpDataDump(Context context) {
         this.context = context;
     }
 
-    public LinkedHashMap<String, List<String>> getDataGeneral() {
-        LinkedHashMap<String, List<String>> expandableListDetail = new LinkedHashMap<String, List<String>>();
-
-        List<String> general = new ArrayList<String>();
-        general.add(context.getResources().getString(R.string.help_whatis_answer));
-
-        expandableListDetail.put(context.getResources().getString(R.string.help_whatis), general);
-
-        List<String> features = new ArrayList<String>();
-        features.add(context.getResources().getString(R.string.help_feature_one_answer));
-
-        expandableListDetail.put(context.getResources().getString(R.string.help_feature_one), features);
-
-        List<String> privacy = new ArrayList<String>();
-        privacy.add(context.getResources().getString(R.string.help_privacy_answer));
-
-        expandableListDetail.put(context.getResources().getString(R.string.help_privacy), privacy);
-
-        List<String> permissions = new ArrayList<String>();
-        permissions.add(context.getResources().getString(R.string.help_permission_answer));
-
-        expandableListDetail.put(context.getResources().getString(R.string.help_permission), permissions);
+    public LinkedHashMap<CharSequence, List<CharSequence>> getDataGeneral() {
+        expandableListDetail = new LinkedHashMap<>();
+        addTextToList(context.getResources().getText(R.string.help_whatis),context.getResources().getText(R.string.help_whatis_answer));
+        addTextToList(context.getResources().getText(R.string.help_privacy),context.getResources().getText(R.string.help_privacy_answer));
+        addTextToList(context.getResources().getText(R.string.help_new_game),context.getResources().getText(R.string.help_new_game_answer));
+        addTextToList(context.getResources().getText(R.string.help_game_mode),context.getResources().getText(R.string.help_game_mode_answer));
+        addTextToList(context.getResources().getText(R.string.help_next_player),context.getResources().getText(R.string.help_next_player_answer));
+        addTextToList(context.getResources().getText(R.string.help_permissions),context.getResources().getText(R.string.help_permissions_answer));
 
         return expandableListDetail;
+    }
+
+    private void addTextToList(CharSequence title, CharSequence answer){
+        List<CharSequence> tmp = new ArrayList<>();
+        tmp.add(answer);
+        expandableListDetail.put(title, tmp);
     }
 
 }

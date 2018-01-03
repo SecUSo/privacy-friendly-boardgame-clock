@@ -47,8 +47,8 @@ public class HelpActivity extends BaseActivity {
 
         ExpandableListView generalExpandableListView = (ExpandableListView) findViewById(R.id.generalExpandableListView);
 
-        LinkedHashMap<String, List<String>> expandableListDetail = helpDataDump.getDataGeneral();
-        List<String> expandableListTitleGeneral = new ArrayList<String>(expandableListDetail.keySet());
+        LinkedHashMap<CharSequence, List<CharSequence>> expandableListDetail = helpDataDump.getDataGeneral();
+        List<CharSequence> expandableListTitleGeneral = new ArrayList<CharSequence>(expandableListDetail.keySet());
         expandableListAdapter = new ExpandableListAdapter(this, expandableListTitleGeneral, expandableListDetail);
         generalExpandableListView.setAdapter(expandableListAdapter);
 

@@ -40,11 +40,11 @@ import java.util.List;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context context;
-        private List<String> expandableListTitle;
-        private HashMap<String, List<String>> expandableListDetail;
+        private List<CharSequence> expandableListTitle;
+        private HashMap<CharSequence, List<CharSequence>> expandableListDetail;
 
-        public ExpandableListAdapter(Context context, List<String> expandableListTitle,
-                HashMap<String, List<String>> expandableListDetail) {
+        public ExpandableListAdapter(Context context, List<CharSequence> expandableListTitle,
+                HashMap<CharSequence, List<CharSequence>> expandableListDetail) {
             this.context = context;
             this.expandableListTitle = expandableListTitle;
             this.expandableListDetail = expandableListDetail;
@@ -64,7 +64,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         @Override
         public View getChildView(int listPosition, final int expandedListPosition,
         boolean isLastChild, View convertView, ViewGroup parent) {
-            final String expandedListText = (String) getChild(listPosition, expandedListPosition);
+            final CharSequence expandedListText = (CharSequence) getChild(listPosition, expandedListPosition);
             if (convertView == null) {
                 LayoutInflater layoutInflater = (LayoutInflater) this.context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
