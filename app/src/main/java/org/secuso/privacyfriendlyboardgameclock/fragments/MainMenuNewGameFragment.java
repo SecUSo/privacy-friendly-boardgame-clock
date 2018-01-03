@@ -280,6 +280,13 @@ public class MainMenuNewGameFragment extends Fragment{
 
     }
 
+    @Override
+    public void onResume() {
+        // disable NavigationDrawer
+        ((MainActivity)activity).setDrawerEnabled(false);
+        super.onResume();
+    }
+
     private void setRoundTime() {
         int round_time_h_in_s = round_time_h.getValue() * 3600;
         int round_time_m_in_s = round_time_m.getValue() * 60;

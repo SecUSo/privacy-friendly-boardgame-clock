@@ -25,6 +25,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
@@ -98,6 +102,12 @@ public class MainActivity extends BaseActivity {
                 int backstackCount =  fm.getBackStackEntryCount();
                 int i =  backstackCount -1;
                 String backstackEntryName = fm.getBackStackEntryAt(i).getName();
+
+                // if no dialog fragment open, call super onBackPressed
+                if(backstackEntryName == getString(R.string.choosePlayersFragment)){
+                    super.onBackPressed();
+                    return;
+                }
                 while(i >= 0 && backstackEntryName == null){
                     if(backstackEntryName != null){
                         if(backstackEntryName.equals(getString(R.string.choosePlayersFragment))) break;
@@ -116,8 +126,64 @@ public class MainActivity extends BaseActivity {
                 super.onBackPressed();
             }
         }
+        else if(fm.getBackStackEntryCount() > 1){
+            fm.popBackStack();
+    }
         else super.onBackPressed();
     }
+
+    public void setDrawerEnabled(final boolean enabled) {
+
+        int lockMode = enabled ?
+                DrawerLayout.LOCK_MODE_UNLOCKED :
+                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+
+        mDrawerLayout.setDrawerLockMode(lockMode);
+
+        toggle.setDrawerIndicatorEnabled(enabled);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(!enabled);
+            actionBar.setDisplayShowHomeEnabled(enabled);
+            actionBar.setHomeButtonEnabled(enabled);
+        }
+
+        toggle.syncState();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if(fm.getBackStackEntryCount() > 1)
+                    fm.popBackStack();
+                else
+                    finish();
+                Log.i("MainActivity", "Home Action Bar selected");
+                return true;
+            default:
+                Log.i("MainActivity", "Default option selected?");
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * when ever user chooses to navigate up within app activity hierachy from the action bar
+     * @return
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+        // TODO if Fragmentmanager > 1 then...
+        onBackPressed();
+        return true;
+    }
+
 
     public Game getGame() {
         return game;

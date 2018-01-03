@@ -55,8 +55,9 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
     static final int MAIN_CONTENT_FADEIN_DURATION = 250;
 
     // Navigation drawer:
-    private DrawerLayout mDrawerLayout;
+    DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+    ActionBarDrawerToggle toggle;
 
     // Helper
     private Handler mHandler;
@@ -197,7 +198,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
         }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();

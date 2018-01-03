@@ -147,6 +147,7 @@ public class MainMenuWelcomeFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
+        ((MainActivity)activity).setDrawerEnabled(true);
         setKeyListenerOnView(getView());
     }
 }

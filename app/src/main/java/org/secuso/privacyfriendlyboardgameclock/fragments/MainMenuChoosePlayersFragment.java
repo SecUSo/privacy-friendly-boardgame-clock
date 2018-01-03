@@ -92,6 +92,9 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
         playerListAdapter = new PlayerListAdapter(activity, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
+
+        // disable NavigationDrawer
+        ((MainActivity)activity).setDrawerEnabled(false);
         return rootView;
     }
 

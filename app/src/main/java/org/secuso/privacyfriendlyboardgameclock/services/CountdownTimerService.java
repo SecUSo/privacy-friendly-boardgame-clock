@@ -205,6 +205,7 @@ public class CountdownTimerService extends Service{
      * Show a notification while this service is running.
      */
     private void showNotification() {
+        // TODO click notification bar to come back to fragment
         // In this sample, we'll use the same text for the ticker and the expanded notification
         CharSequence text = getText(R.string.serviceNotificationContent);
 
