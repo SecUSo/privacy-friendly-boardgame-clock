@@ -82,6 +82,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.ResumeGameActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <!--TODO #11 Add the new Activities-->
     </application>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

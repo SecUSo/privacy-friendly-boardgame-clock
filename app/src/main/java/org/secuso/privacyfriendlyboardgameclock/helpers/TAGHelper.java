@@ -16,4 +16,6 @@ public class TAGHelper {
     public static final long DEFAULT_VALUE_LONG = -1;
     public static final String GAME_FINISHED_SIGNAL = "game finished";
     public static final String ROUND_FINISHED_SIGNAL = "round finished";
+    // Intent Tag
+    public static final String GAME_INDEX_FROM_LIST = "game index from list";
 }

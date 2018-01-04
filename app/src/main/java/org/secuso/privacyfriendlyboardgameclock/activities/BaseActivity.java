@@ -37,6 +37,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
@@ -131,6 +133,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
     /**
      * Enables back navigation for activities that are launched from the NavBar. See
      * {@code AndroidManifest.xml} to find out the parent activity names for each activity.
+     * so in case back button pressed --> go directly to parent
      * @param intent
      */
     private void createBackStack(Intent intent) {
@@ -222,5 +225,23 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
     public void showToast(String text){
         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    /**
+     * before starting to work, check if Database and Singleton Object (use to save some objects
+     * and transferring objects between activity), if any attribute is null --> move to main activity
+     * and remove all other activities --> start new
+     */
+    public boolean checkIfSingletonDataIsCorrupt(){
+        if(!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
+                && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())){
+            Intent intent = new Intent(this, MainActivity.class);
+            // clear all other activities
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        else return false;
     }
 }

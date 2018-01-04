@@ -174,4 +174,12 @@ public class PlayersDataSourceSingleton {
 
         return playerList;
     }
+
+    /**
+     *
+     * @return true if no relevant variable is null
+     */
+    public boolean checkIfAllVariableNotNull(){
+        return instance != null && database != null && dbHelper != null && columns != null;
+    }
 }

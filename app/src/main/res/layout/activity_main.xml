@@ -18,23 +18,73 @@
 
         <include layout="@layout/toolbar"/>
 
-        <LinearLayout
-            android:id="@+id/main_content"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/mainMenuWelcomeFragment"
+            style="@style/VerticalCenterLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity"
-            android:orientation="vertical"
-            android:weightSum="10"
-            style="?android:buttonBarStyle">
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true">
 
-            <FrameLayout
-                android:id="@+id/MainActivity_fragment_container"
+            <ImageView
+                android:id="@+id/appIcon"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:src="@mipmap/icon" />
+
+            <Button
+                android:id="@+id/newGameButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/button_fullwidth"
+                android:onClick="newGameButton"
+                android:text="@string/game_button_start"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size" />
+
+            <Button
+                android:id="@+id/resumeGameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/main_button_padding"
+                android:layout_marginRight="@dimen/main_button_padding"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_fullwidth"
+                android:text="@string/game_button_continue"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="center|bottom"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/button_welcomedialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="@dimen/activity_horizontal_margin"
+                    android:layout_gravity="bottom|center"
+                    android:background="@drawable/button_normal"
+                    android:text="@string/main_button_welcomedialog"
+                    android:textColor="@color/white"
+                    android:layout_margin="@dimen/fab_margin"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

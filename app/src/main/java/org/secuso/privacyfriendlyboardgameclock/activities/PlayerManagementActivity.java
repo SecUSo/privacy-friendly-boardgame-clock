@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment;
@@ -61,9 +62,14 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_management);
+
         fm = getFragmentManager();
         // pds already opened in MainActivity
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
+
+        /* Check if Data Corrupt, if yes move to main menu immediately
+        GamesDataSourceSingleton.getInstance(this).setGame(null);
+        if(checkIfSingletonDataIsCorrupt()) return;*/
 
         listPlayers = pds.getAllPlayers();
         layoutManager = new LinearLayoutManager(this);
@@ -80,6 +86,16 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

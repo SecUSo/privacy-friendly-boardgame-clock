@@ -411,4 +411,20 @@ public class GamesDataSourceSingleton {
 
         return gameList;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    /**
+     *
+     * @return true if no relevant variable is null
+     */
+    public boolean checkIfAllVariableNotNull(){
+        return instance != null && database != null && dbHelper != null && game != null && columns != null;
+    }
 }

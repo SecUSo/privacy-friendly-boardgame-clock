@@ -1,101 +1,112 @@
-package org.secuso.privacyfriendlyboardgameclock.fragments;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+package org.secuso.privacyfriendlyboardgameclock.activities;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
-import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 import java.util.List;
 
 /**
- * Created by Quang Anh Dang on 15.12.2017.
+ * Created by Quang Anh Dang on 03.01.2018.
+ *
+ * @author Quang Anh Dang
  */
 
-public class MainMenuContinueGameFragment extends Fragment implements ItemClickListener{
-    // TODO Recycle View, FAB, ACtionbar, GameListAdapter with Viewholder, implements on click and onlongclick
-    private MainActivity activity;
+public class ResumeGameActivity extends BaseActivity implements ItemClickListener {
     private FloatingActionButton loadGameFAB, deleteGameFAB;
     private RecyclerView gameListRecyleView;
     private GameListAdapter gameListAdapter;
     private List<Game> savedGamesList;
     private GamesDataSourceSingleton gds;
     private Game chosenGame;
-    private MainMenuContinueGameFragment.ActionModeCallback actionModeCallback = new MainMenuContinueGameFragment.ActionModeCallback();
+    private ResumeGameActivity.ActionModeCallback actionModeCallback = new ResumeGameActivity.ActionModeCallback();
     private ActionMode actionMode;
     private int fabActive;
     private int fabInactive;
     private View.OnClickListener selectAGameToast = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            activity.showToast(getString(R.string.pleaseChooseAGame));
-        }
-    };
-    private View.OnClickListener resumeGame = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(chosenGame != null){
-                activity.setGame(chosenGame);
-                final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuGameFragment());
-                fragmentTransaction.addToBackStack(getString(R.string.gameFragment));
-                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                fragmentTransaction.commit();
-            }
+            showToast(getString(R.string.pleaseChooseAGame));
         }
     };
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        activity = (MainActivity) getActivity();
-        gds = GamesDataSourceSingleton.getInstance(activity);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        gds = GamesDataSourceSingleton.getInstance(this);
         savedGamesList = gds.getSavedGames();
         fabActive = getResources().getColor(R.color.fabActive);
         fabInactive = getResources().getColor(R.color.fabInactive);
 
-        final View rootView = inflater.inflate(R.layout.fragment_main_menu_resume,null);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.loadGame);
+        setContentView(R.layout.activity_resume);
 
-        loadGameFAB = rootView.findViewById(R.id.fab_start_game);
+        loadGameFAB = findViewById(R.id.fab_start_game);
         loadGameFAB.setOnClickListener(selectAGameToast);
-        deleteGameFAB = rootView.findViewById(R.id.fab_delete_game);
+        deleteGameFAB = findViewById(R.id.fab_delete_game);
         deleteGameFAB.setOnClickListener(onFABDeleteListenter());
 
-        // Set the plus icon in toolbar to add more players
-        setHasOptionsMenu(true);
-
         // Recycle View for Game List
-        LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
-        gameListRecyleView = rootView.findViewById(R.id.savedGamesList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        gameListRecyleView = findViewById(R.id.savedGamesList);
         gameListRecyleView.setHasFixedSize(true);
-        gameListAdapter = new GameListAdapter(activity, savedGamesList, this);
+        gameListAdapter = new GameListAdapter(this, savedGamesList, this);
         gameListRecyleView.setAdapter(gameListAdapter);
         gameListRecyleView.setLayoutManager(layoutManager);
+    }
 
-        return rootView;
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        getSupportActionBar().setTitle(R.string.action_resume_game);
+    }
+
+    @Override
+    protected int getNavigationDrawerID() {
+        return 0;
+    }
+
+    private View.OnClickListener resumeGame(){
+         return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int index = getIndexOfChosenGame(chosenGame);
+                if(index >= 0){
+                    Intent intent = new Intent(ResumeGameActivity.this, GameCountDownActivity.class);
+                    intent.putExtra(TAGHelper.GAME_INDEX_FROM_LIST, index);
+                    startActivity(intent);
+                }
+                else
+                    showToast(getString(R.string.pleaseChooseAGame));
+            }
+        };
+    }
+
+    /**
+     * @param game
+     * @return the index of the given game in the gds.getAllGames List
+     */
+    private int getIndexOfChosenGame(Game game){
+        int i = 0;
+        for(Game g:gds.getAllGames()){
+            if(g.getName().equals(game.getName())) return i;
+            else i++;
+        }
+        return -1;
     }
 
     @Override
@@ -110,7 +121,7 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
                 chosenGame = gameListAdapter.getGame(position);
                 gameListAdapter.toggleSelection(position);
                 loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                loadGameFAB.setOnClickListener(resumeGame);
+                loadGameFAB.setOnClickListener(resumeGame());
             }
             else{
                 // If the same game has been selected again, deselect this
@@ -130,7 +141,7 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
                     gameListAdapter.clearSelection();
                     gameListAdapter.toggleSelection(position);
                     loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                    loadGameFAB.setOnClickListener(resumeGame);
+                    loadGameFAB.setOnClickListener(resumeGame());
                 }
             }
         }
@@ -139,7 +150,7 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
     @Override
     public boolean onItemLongClicked(View view, int position) {
         if (actionMode == null) {
-            actionMode = activity.startSupportActionMode(actionModeCallback);
+            actionMode = startSupportActionMode(actionModeCallback);
         }
         toggleSelection(position);
         return true;
@@ -165,7 +176,6 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
             }
         }
     }
-
     /**
      * remove all the selected games
      * @return
@@ -182,14 +192,11 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
         };
     }
 
-    /**
-     * Infalte the Actionicons on Toolbar, in this case the plus icon
-     * @param menu
-     * @return
-     */
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.player_management_menu, menu);
+        return true;
     }
 
     @Override
@@ -197,7 +204,7 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
         switch (item.getItemId()){
             case R.id.action_delete:
                 if(actionMode == null)
-                    actionMode = activity.startSupportActionMode(actionModeCallback);
+                    actionMode = startSupportActionMode(actionModeCallback);
         }
         return true;
     }
@@ -220,7 +227,7 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
 
     private class ActionModeCallback implements ActionMode.Callback {
         @SuppressWarnings("unused")
-        private final String TAG = MainMenuContinueGameFragment.ActionModeCallback.class.getSimpleName();
+        private final String TAG = ResumeGameActivity.ActionModeCallback.class.getSimpleName();
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -250,4 +257,3 @@ public class MainMenuContinueGameFragment extends Fragment implements ItemClickL
         }
     }
 }
-

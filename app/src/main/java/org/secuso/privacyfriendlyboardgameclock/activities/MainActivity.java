@@ -20,9 +20,9 @@ package org.secuso.privacyfriendlyboardgameclock.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.media.MediaPlayer;
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -30,13 +30,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuChoosePlayersFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuWelcomeFragment;
+import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuNewGameFragment;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
+import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
  * @author Christopher Beckmann, Karola Marky
@@ -46,11 +49,8 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
 public class MainActivity extends BaseActivity {
     private FragmentManager fm;
     private Game game;
-    private Game historyGame;
     private PlayersDataSourceSingleton pds;
     private GamesDataSourceSingleton gds;
-    private MediaPlayer roundEndSound = null;
-    private MediaPlayer gameEndSound = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +61,59 @@ public class MainActivity extends BaseActivity {
         pds.open();
         gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
         gds.open();
-
         fm = getFragmentManager();
-        final FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuWelcomeFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.mainMenuWelcomeFragment));
-        fragmentTransaction.commit();
+
+        // New Game Button
+        final Button newGameButton = findViewById(R.id.newGameButton);
+        newGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuNewGameFragment());
+                fragmentTransaction.addToBackStack(getString(R.string.newGameFragment));
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+        // Continue Game Button
+        final Button continueGameButton = findViewById(R.id.resumeGameButton);
+        if (gds.getSavedGames().size() == 0) {
+            continueGameButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
+            continueGameButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(getString(R.string.resumeGameErrorToast));
+                }
+            });
+        } else {
+            continueGameButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
+            continueGameButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, ResumeGameActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        // Use this a button to display the tutorial screen
+        final Button tutorialButton = findViewById(R.id.button_welcomedialog);
+        if(tutorialButton != null) {
+            tutorialButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PrefManager prefManager = new PrefManager(getBaseContext());
+                    prefManager.setFirstTimeLaunch(true);
+                    Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        }
 
         overridePendingTransition(0, 0);
-        roundEndSound = MediaPlayer.create(this,R.raw.roundend);
-        gameEndSound = MediaPlayer.create(this, R.raw.gameend);
         if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
             finish();
         }
@@ -193,26 +236,8 @@ public class MainActivity extends BaseActivity {
         this.game = game;
     }
 
-    public Game getHistoryGame() {
-        return historyGame;
-    }
-
-    public void setHistoryGame(Game prevGame) {
-        this.historyGame = prevGame;
-    }
-
-    public MediaPlayer getRoundEndSound() {
-        return roundEndSound;
-    }
-
-    public MediaPlayer getGameEndSound() {
-        return gameEndSound;
-    }
-
     @Override
     protected void onDestroy() {
-        roundEndSound.release();
-        gameEndSound.release();
         try{
             gds.close();
             pds.close();

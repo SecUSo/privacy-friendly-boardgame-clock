@@ -38,12 +38,12 @@ public class MainMenuWelcomeFragment extends Fragment{
     public static View.OnClickListener resumeGameListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            final FragmentTransaction fragmentTransaction = activity.getFragmentManager().beginTransaction();
+            /*final FragmentTransaction fragmentTransaction = activity.getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuContinueGameFragment());
             fragmentTransaction.addToBackStack(activity.getString(R.string.loadGameFragment));
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
         }
     };
     GamesDataSourceSingleton gds;

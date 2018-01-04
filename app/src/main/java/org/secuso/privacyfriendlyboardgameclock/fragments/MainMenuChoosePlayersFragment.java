@@ -195,12 +195,12 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
     }
 
     public void startNewGame() {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        /*final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuGameFragment());
         fragmentTransaction.addToBackStack(getString(R.string.gameFragment));
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         clearListSelections();
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
     }
 
     /**

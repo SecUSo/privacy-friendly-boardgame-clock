@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
@@ -26,8 +27,8 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         super(context, textViewResourceId, list);
         this.mList = list;
         this.mContext = context;
-        if(mContext instanceof MainActivity){
-            game = ((MainActivity) mContext).getHistoryGame();
+        if(mContext instanceof GameCountDownActivity){
+            game = ((GameCountDownActivity) mContext).getGame();
         }
         else if(mContext instanceof GameHistoryActivity){
             game = ((GameHistoryActivity)mContext).getSelectedGame();

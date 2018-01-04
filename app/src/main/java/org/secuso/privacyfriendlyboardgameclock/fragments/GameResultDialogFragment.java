@@ -1,10 +1,14 @@
 package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -15,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
@@ -28,31 +34,38 @@ import java.util.HashMap;
  * @author Quang Anh Dang
  */
 
-public class MainMenuGameResultFragment extends Fragment {
+public class GameResultDialogFragment extends DialogFragment {
 
-    MainActivity activity;
+    GameCountDownActivity activity;
     View rootView;
     ListView players;
     Game game;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        activity = (GameCountDownActivity) getActivity();
+        game = activity.getGame();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(game.getName())
+                .setPositiveButton(R.string.okay,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
-        activity = (MainActivity) getActivity();
+                            }
+                        }
+                );
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View v = inflater.inflate(R.layout.fragment_game_results,null);
+        ((TextView)v.findViewById(R.id.timePlayedText)).setText(getTimeLeft());
+        ((TextView)v.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
 
-        rootView = inflater.inflate(R.layout.fragment_game_results, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(activity.getString(R.string.gameResults));
-        container.removeAllViews();
-
-        game = activity.getHistoryGame();
-
-        ((TextView) rootView.findViewById(R.id.timePlayedText)).setText(getTimeLeft());
-        ((TextView) rootView.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
-
-        players = (ListView) rootView.findViewById(R.id.list);
+        ListView players = (ListView) v.findViewById(R.id.list);
         PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.list, game.getPlayers());
         players.setAdapter(listAdapter);
 
-        return rootView;
+        builder.setView(v);
+        return builder.create();
     }
 
     private String getTimeLeft() {
