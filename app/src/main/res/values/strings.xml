@@ -118,6 +118,7 @@
     <string name="addContact">ADD CONTACT</string>
     <string name="addContacts">ADD CONTACTS</string>
     <string name="editPlayer">Edit Player</string>
+    <string name="enterAName">Please enter a name.</string>
 
     <!-- Player Statistics -->
     <string name="playerStatistic">Player Statistic</string>

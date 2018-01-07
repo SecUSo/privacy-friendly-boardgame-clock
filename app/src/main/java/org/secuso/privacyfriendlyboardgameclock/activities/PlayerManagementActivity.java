@@ -57,15 +57,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     private ActionModeCallback actionModeCallback = new ActionModeCallback();
     private ActionMode actionMode;
     private Player playerToEdit;
-    View.OnClickListener onFABDeleteListenter = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
-            actionMode.finish();
-            actionMode = null;
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +66,11 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fm = getFragmentManager();
         // pds already opened in MainActivity
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
+
+        /* Check if Data Corrupt, if yes move to main menu immediately
+        GamesDataSourceSingleton.getInstance(this).setGame(null);
+        if(checkIfSingletonDataIsCorrupt()) return;*/
+
         listPlayers = pds.getAllPlayers();
         layoutManager = new LinearLayoutManager(this);
 
@@ -82,7 +78,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fabAdd = findViewById(R.id.fab_add_new_player);
         fabAdd.setOnClickListener(onFABAddClickListener());
         fabDelete = findViewById(R.id.fab_delete_player);
-        fabDelete.setOnClickListener(onFABDeleteListenter);
+        fabDelete.setOnClickListener(onFABDeleteListenter());
 
         // Lookup the recyclerview in fragment layout
         playersRecycleView = findViewById(R.id.player_list);
@@ -107,56 +103,15 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         if(actionMode != null){
             toggleSelection(position);
         } else{
-            List<Player> playersList = playerListAdapter.getPlayersList();
-            final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-            LayoutInflater factory = getLayoutInflater();
-            View diaglogView = factory.inflate(R.layout.dialog_show_player_details,null);
+            FragmentTransaction ft = fm.beginTransaction();
+            Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
+            if(prev != null) ft.remove(prev);
+            ft.addToBackStack(null);
+            playerToEdit = playerListAdapter.getPlayer(position);
 
-            // set the custom dialog components - texts and image
-            TextView name = diaglogView.findViewById(R.id.dialog_player_name);
-            name.setText(playersList.get(position).getName());
-            ImageView icon = diaglogView.findViewById(R.id.dialog_player_image);
-            icon.setImageBitmap(playersList.get(position).getIcon());
-
-            // Set onClickListener for Edit Player Button
-            final Button editPlayerButton = diaglogView.findViewById(R.id.edit_player_button);
-            editPlayerButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentTransaction ft = fm.beginTransaction();
-                    Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-                    if(prev != null) ft.remove(prev);
-                    ft.addToBackStack(null);
-                    playerToEdit = playerListAdapter.getPlayer(position);
-
-                    // Create and show the dialog
-                    PlayerManagementEditPlayerFragment editPlayerFragment = PlayerManagementEditPlayerFragment.newInstance("Edit Player");
-                    editPlayerFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
-                }
-            });
-
-            // Set onClickListener for Player Statistic Button
-            final Button playerStatisticButton = diaglogView.findViewById(R.id.player_statistic_button);
-            playerStatisticButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentTransaction ft  = fm.beginTransaction();
-                    Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-                    if(prev != null) ft.remove(prev);
-                    ft.addToBackStack(null);
-                    playerToEdit = playerListAdapter.getPlayer(position);
-
-                    // Create and show the dialog
-                    PlayerManagementStatisticsFragment playerStatisticFragment = PlayerManagementStatisticsFragment.newInstance("Player Statistic");
-                    playerStatisticFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
-                }
-            });
-
-
-            dialogBuilder.setTitle("Position " + position)
-                    .setView(diaglogView)
-                    .setCancelable(true)// dismiss when touching outside Dialog
-                    .create().show();
+            // Create and show the dialog
+            PlayerManagementEditPlayerFragment editPlayerFragment = PlayerManagementEditPlayerFragment.newInstance("Edit Player");
+            editPlayerFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
         }
     }
 
@@ -208,6 +163,22 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
                 // Create and show the dialog
                 PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
                 chooseDialogFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
+            }
+        };
+    }
+
+    /**
+     * remove all the selected players
+     * @return
+     */
+    private View.OnClickListener onFABDeleteListenter() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
+                actionMode.finish();
+                actionMode = null;
+
             }
         };
     }
@@ -278,8 +249,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
-            // so all check box are visible
-            playerListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -299,8 +268,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
-            // so all check box are gone
-            playerListAdapter.notifyDataSetChanged();
         }
     }
 }

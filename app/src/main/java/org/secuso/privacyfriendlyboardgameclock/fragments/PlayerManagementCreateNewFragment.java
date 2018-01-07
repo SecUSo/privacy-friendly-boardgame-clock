@@ -1,7 +1,12 @@
 package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,12 +25,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 
 /**
  * Diaglog Fragment responsible for creating new Player
@@ -40,40 +49,42 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
     Bitmap playerIcon;
     EditText playerNameEditText;
     ImageView pictureIMGView;
-    Button confirmNewPlayerButtonBlue, confirmNewPlayerButtonGrey;
+    boolean confirmReady = false;
     private PlayersDataSourceSingleton pds;
     View.OnClickListener confirmButtonListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
+            if(confirmReady){
+                pictureIMGView.buildDrawingCache();
+                playerIcon = pictureIMGView.getDrawingCache();
 
-            pictureIMGView.buildDrawingCache();
-            playerIcon = pictureIMGView.getDrawingCache();
+                pds.createPlayer(playerNameEditText.getText().toString(), playerIcon);
 
-            pds.createPlayer(playerNameEditText.getText().toString(), playerIcon);
-
-            // reload the activity starting this
-            Intent intent = getActivity().getIntent();
-            getActivity().finish();
-            startActivity(intent);
+                // reload the activity starting this
+                Intent intent = getActivity().getIntent();
+                getActivity().finish();
+                startActivity(intent);
+            }
+            else{
+                Toast toast = Toast.makeText(activity, getString(R.string.enterAName), Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
     };
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        rootView = inflater.inflate(R.layout.fragment_player_management_newplayer, container, false);
-        //((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.createNewPlayer);
-        //container.removeAllViews();
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(R.string.editPlayer)
+                .setPositiveButton(R.string.confirm,null)
+                .setNegativeButton(R.string.cancel, null);
+
+        LayoutInflater inflater = activity.getLayoutInflater();
+        rootView = inflater.inflate(R.layout.fragment_player_management_newplayer, null);
 
         playerIcon = BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_android);
-
-        confirmNewPlayerButtonBlue = rootView.findViewById(R.id.confirmNewPlayerButtonBlue);
-        confirmNewPlayerButtonGrey = rootView.findViewById(R.id.confirmNewPlayerButtonGrey);
-
-        confirmNewPlayerButtonBlue.setOnClickListener(confirmButtonListener);
-        confirmNewPlayerButtonGrey.setOnClickListener(confirmButtonListener);
-
         pds = PlayersDataSourceSingleton.getInstance(null);
 
         playerNameEditText = rootView.findViewById(R.id.editName);
@@ -82,11 +93,9 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
             @Override
             public void afterTextChanged(Editable arg0) {
                 if (playerNameEditText.getText().toString().length() > 0) {
-                    confirmNewPlayerButtonBlue.setVisibility(View.VISIBLE);
-                    confirmNewPlayerButtonGrey.setVisibility(View.GONE);
+                    confirmReady = true;
                 } else {
-                    confirmNewPlayerButtonBlue.setVisibility(View.GONE);
-                    confirmNewPlayerButtonGrey.setVisibility(View.VISIBLE);
+                    confirmReady = false;
                 }
             }
 
@@ -118,19 +127,18 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
             photoButton.setVisibility(View.GONE);
 
 
-        return rootView;
+        builder.setView(rootView);
+        return builder.create();
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        Activity a;
-
-        if (context instanceof Activity) {
-            a = (Activity) context;
+    public void onResume() {
+        super.onResume();
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(confirmButtonListener);
         }
-
     }
 
     private View.OnClickListener colorWheelDialog() {

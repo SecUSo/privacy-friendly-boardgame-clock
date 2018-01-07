@@ -1,8 +1,12 @@
 package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,10 +33,11 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 public class PlayerManagementEditPlayerFragment extends DialogFragment {
-
+    // TODO FIX java.lang.RuntimeException: Canvas: trying to use a recycled bitmap android.graphics.Bitmap@3cef10f
     private static final int CAMERA_REQUEST = 1888;
     private Activity activity;
     private View rootView;
@@ -41,8 +46,6 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
     private EditText playerName;
     private ImageView pictureIMGView;
     private Player p;
-    private Button confirmButtonGrey;
-    private Button confirmButtonBlue;
     View.OnClickListener confirmButtonListener = new View.OnClickListener() {
 
         @Override
@@ -73,15 +76,41 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
         return frag;
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        rootView = inflater.inflate(R.layout.fragment_player_management_newplayer, container, false);
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(R.string.editPlayer)
+                .setPositiveButton(R.string.confirm,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                p.setName(playerName.getText().toString());
+                                pictureIMGView.buildDrawingCache();
+                                playerIcon = pictureIMGView.getDrawingCache();
+                                p.setIcon(playerIcon);
+                                pds.updatePlayer(p);
+                            }
+                        }
+                )
+                .setNeutralButton(R.string.playerStatistic, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction ft  = fm.beginTransaction();
+                        Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
+                        if(prev != null) ft.remove(prev);
+                        ft.addToBackStack(null);
+
+                        // Create and show the dialog
+                        PlayerManagementStatisticsFragment playerStatisticFragment = PlayerManagementStatisticsFragment.newInstance("Player Statistic");
+                        playerStatisticFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
+                    }
+                });
+        LayoutInflater inflater = activity.getLayoutInflater();
+        rootView = inflater.inflate(R.layout.fragment_player_management_newplayer, null);
 
         p = ((PlayerManagementActivity)activity).getPlayerToEdit();
-        confirmButtonGrey = rootView.findViewById(R.id.confirmNewPlayerButtonGrey);
-        confirmButtonBlue = rootView.findViewById(R.id.confirmNewPlayerButtonBlue);
-        confirmButtonBlue.setOnClickListener(confirmButtonListener);
 
         pds = PlayersDataSourceSingleton.getInstance(activity);
 
@@ -90,28 +119,6 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
         playerName.setText(p.getName());
 
         playerIcon = p.getIcon();
-
-        playerName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                if (playerName.getText().toString().length() > 0) {
-                    confirmButtonGrey.setVisibility(View.GONE);
-                    confirmButtonBlue.setVisibility(View.VISIBLE);
-                } else {
-                    confirmButtonGrey.setVisibility(View.VISIBLE);
-                    confirmButtonBlue.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-
         pictureIMGView = (ImageView) rootView.findViewById(R.id.picture);
         pictureIMGView.setImageBitmap(playerIcon);
 
@@ -131,20 +138,8 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
         } else
             photoButton.setVisibility(View.GONE);
 
-
-        return rootView;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        Activity a;
-
-        if (context instanceof Activity) {
-            a = (Activity) context;
-        }
-
+        builder.setView(rootView);
+        return builder.create();
     }
 
     private View.OnClickListener colorWheelDialog() {
@@ -166,8 +161,6 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
                                 pictureIMGView.setImageBitmap(playerIcon);
                                 pictureIMGView.setColorFilter(selectedColor, PorterDuff.Mode.OVERLAY);
-                                confirmButtonGrey.setVisibility(View.GONE);
-                                confirmButtonBlue.setVisibility(View.VISIBLE);
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

@@ -87,43 +87,6 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
                             }
                         }
                 );
-        /*LayoutInflater inflater = activity.getLayoutInflater();
-        View rootView = inflater.inflate(R.layout.fragment_player_management_choose_mode,null);
-
-        final Button createNewPlayerButton = rootView.findViewById(R.id.button_new_player);
-        createNewPlayerButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                createNewPlayer();
-            }
-        });
-
-        contactButton = rootView.findViewById(R.id.button_contact);
-        // Check for Contact Permission
-        if (ContextCompat.checkSelfPermission(activity,
-                Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
-            contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
-        else
-            contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_disabled));
-        contactButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(activity,
-                        Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
-                    requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACT_CODE);
-                else if (ContextCompat.checkSelfPermission(activity,
-                        Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-                    contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_fullwidth));
-                    addPlayerFromContacts();
-                } else {
-                    contactButton.setBackground(ContextCompat.getDrawable(activity, R.drawable.button_disabled));
-                }
-            }
-        });
-
-        builder.setView(rootView);*/
         return builder.create();
     }
 

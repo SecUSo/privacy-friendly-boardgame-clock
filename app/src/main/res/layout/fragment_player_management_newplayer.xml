@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="wrap_content"
     android:layout_gravity="top">
 
     <TextView
@@ -13,7 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/pictureHeading"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/nameDots"
         android:textSize="15sp" />
 
@@ -34,10 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameHeading"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:text="@string/picDots"
         android:textSize="15sp" />
 
@@ -57,59 +56,30 @@
         android:id="@+id/colorButton"
         android:layout_width="@+id/picture"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/picture"
-        android:layout_alignRight="@+id/picture"
+        android:layout_alignEnd="@+id/picture"
+        android:layout_alignStart="@+id/picture"
         android:layout_below="@+id/picture"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/button_fullwidth"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/button_normal"
         android:orientation="horizontal"
         android:text="@string/changeColorButton"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size" />
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/photoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/picture"
-        android:layout_alignRight="@+id/picture"
+        android:layout_alignEnd="@+id/picture"
+        android:layout_alignStart="@+id/picture"
         android:layout_below="@+id/colorButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/button_fullwidth"
-
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/button_normal"
         android:orientation="horizontal"
         android:text="@string/takePhotoButton"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size" />
+        android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/confirmNewPlayerButtonBlue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5sp"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:background="@drawable/button_fullwidth"
-        android:text="@string/confirm"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/confirmNewPlayerButtonGrey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5sp"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:background="@drawable/button_disabled"
-        android:text="@string/confirm"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size"
-        android:visibility="visible" />
 
 </RelativeLayout>
