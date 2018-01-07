@@ -84,29 +84,15 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
          return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int index = getIndexOfChosenGame(chosenGame);
-                if(index >= 0){
+                if(chosenGame != null){
+                    gds.setGame(chosenGame);
                     Intent intent = new Intent(ResumeGameActivity.this, GameCountDownActivity.class);
-                    intent.putExtra(TAGHelper.GAME_INDEX_FROM_LIST, index);
                     startActivity(intent);
                 }
                 else
                     showToast(getString(R.string.pleaseChooseAGame));
             }
         };
-    }
-
-    /**
-     * @param game
-     * @return the index of the given game in the gds.getAllGames List
-     */
-    private int getIndexOfChosenGame(Game game){
-        int i = 0;
-        for(Game g:gds.getAllGames()){
-            if(g.getName().equals(game.getName())) return i;
-            else i++;
-        }
-        return -1;
     }
 
     @Override

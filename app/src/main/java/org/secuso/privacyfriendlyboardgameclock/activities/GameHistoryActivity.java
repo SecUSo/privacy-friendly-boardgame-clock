@@ -203,6 +203,8 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
             gameListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             fabDeleteButton.setVisibility(View.VISIBLE);
+            // so all check box are visible
+            gameListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -222,6 +224,8 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
             gameListAdapter.clearSelection();
             actionMode = null;
             fabDeleteButton.setVisibility(View.GONE);
+            // so all check box are gone
+            gameListAdapter.notifyDataSetChanged();
         }
     }
 }

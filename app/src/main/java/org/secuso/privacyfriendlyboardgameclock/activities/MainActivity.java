@@ -17,9 +17,7 @@
 
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -35,8 +33,6 @@ import android.widget.Button;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuChoosePlayersFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.MainMenuNewGameFragment;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
@@ -68,12 +64,8 @@ public class MainActivity extends BaseActivity {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuNewGameFragment());
-                fragmentTransaction.addToBackStack(getString(R.string.newGameFragment));
-                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                fragmentTransaction.commit();
-
+                Intent intent = new Intent(MainActivity.this, NewGameActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -138,41 +130,15 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (!drawer.isDrawerOpen(GravityCompat.START) && fm.getBackStackEntryCount() > 0) {
-            Fragment currentFragment = fm.findFragmentById(R.id.MainActivity_fragment_container);
-            if (currentFragment instanceof MainMenuChoosePlayersFragment) {
-                // Pop all the DialogFragment in BackStack
-                int backstackCount =  fm.getBackStackEntryCount();
-                int i =  backstackCount -1;
-                String backstackEntryName = fm.getBackStackEntryAt(i).getName();
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            try{
+                gds.close();
+                pds.close();
+            }catch (Exception e){
 
-                // if no dialog fragment open, call super onBackPressed
-                if(backstackEntryName == getString(R.string.choosePlayersFragment)){
-                    super.onBackPressed();
-                    return;
-                }
-                while(i >= 0 && backstackEntryName == null){
-                    if(backstackEntryName != null){
-                        if(backstackEntryName.equals(getString(R.string.choosePlayersFragment))) break;
-                    }
-                    fm.popBackStack();
-                    i--;
-                    backstackEntryName = fm.getBackStackEntryAt(i).getName();
-                }
-                // restart ChoosePlayerFragment
-                FragmentTransaction fragTransaction = fm.beginTransaction();
-                fragTransaction.detach(currentFragment);
-                fragTransaction.attach(currentFragment);
-                fragTransaction.commit();
-            }
-            else{
-                super.onBackPressed();
             }
         }
-        else if(fm.getBackStackEntryCount() > 1){
-            fm.popBackStack();
-    }
-        else super.onBackPressed();
+        super.onBackPressed();
     }
 
     public void setDrawerEnabled(final boolean enabled) {
@@ -195,39 +161,6 @@ public class MainActivity extends BaseActivity {
         toggle.syncState();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if(fm.getBackStackEntryCount() > 1)
-                    fm.popBackStack();
-                else
-                    finish();
-                Log.i("MainActivity", "Home Action Bar selected");
-                return true;
-            default:
-                Log.i("MainActivity", "Default option selected?");
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    /**
-     * when ever user chooses to navigate up within app activity hierachy from the action bar
-     * @return
-     */
-    @Override
-    public boolean onSupportNavigateUp() {
-        // TODO if Fragmentmanager > 1 then...
-        onBackPressed();
-        return true;
-    }
-
-
     public Game getGame() {
         return game;
     }
@@ -238,12 +171,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        try{
-            gds.close();
-            pds.close();
-        }catch (Exception e){
-
-        }
         super.onDestroy();
     }
 }

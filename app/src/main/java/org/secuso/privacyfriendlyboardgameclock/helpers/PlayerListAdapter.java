@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -105,16 +107,25 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
                 viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
                 viewHolder.selectedPlayerNumber.setText("");
             }
+            viewHolder.selectedCheckbox.setVisibility(View.VISIBLE);
+            viewHolder.selectedCheckbox.setOnCheckedChangeListener(null);
+            viewHolder.selectedCheckbox.setChecked(isSelected(position));
+            viewHolder.selectedCheckbox.setOnCheckedChangeListener(viewHolder.checkedBoxListener);
         }
         // Highlight the item with grey if it's long selected
         else if (!isSimpleClickedSelected && isLongClickedSelected){
             viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
             viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+            viewHolder.selectedCheckbox.setVisibility(View.VISIBLE);
+            viewHolder.selectedCheckbox.setOnCheckedChangeListener(null);
+            viewHolder.selectedCheckbox.setChecked(isSelected(position));
+            viewHolder.selectedCheckbox.setOnCheckedChangeListener(viewHolder.checkedBoxListener);
         }
         else{
             viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
             viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
             viewHolder.selectedPlayerNumber.setText("");
+            viewHolder.selectedCheckbox.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -228,6 +239,14 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         private View longClickedSelectedOverlay;
         private View simpleClickedSelectedOverlay;
         private TextView selectedPlayerNumber;
+        private CheckBox selectedCheckbox;
+        private View rootView;
+        private CompoundButton.OnCheckedChangeListener checkedBoxListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                onClick(rootView);
+            }
+        };
 
         /**
          *
@@ -236,6 +255,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
          */
         public ViewHolder(View itemView, ItemClickListener itemClickListener) {
             super(itemView);
+            this.rootView = itemView;
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
             playerIMGView = (ImageView) itemView.findViewById(R.id.player_image);
@@ -243,6 +263,8 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
             simpleClickedSelectedOverlay = itemView.findViewById(R.id.simpleClicked_selected_overlay);
             longClickedSelectedOverlay = itemView.findViewById(R.id.longClicked_selected_overlay);
             selectedPlayerNumber = itemView.findViewById(R.id.selectedPlayerNumberTextView);
+            selectedCheckbox = itemView.findViewById(R.id.selectedCheckbox);
+            selectedCheckbox.setOnCheckedChangeListener(checkedBoxListener);
             this.itemClickListener = itemClickListener;
         }
 

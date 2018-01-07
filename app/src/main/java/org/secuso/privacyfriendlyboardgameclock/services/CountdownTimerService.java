@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 
@@ -26,6 +28,8 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
  */
 
 public class CountdownTimerService extends Service{
+    private MediaPlayer roundEndSound = null;
+    private MediaPlayer gameEndSound = null;
     public static final String classTAG = "CountdownTimerService";
     private NotificationManager notificationManager;
     private CountDownTimer gameCountDownTimer;
@@ -38,6 +42,8 @@ public class CountdownTimerService extends Service{
     // RemoteService for a more complete example.
     private final IBinder mBinder = new LocalBinder();
     private Intent broadcastIntent;
+    //TODO run on new thread crash if update UI along side
+    private HandlerThread handlerThread;
     private Handler handler;
     private long exeedGameTimeMs, exeedGameTimeInitMs, exeedGameTimeNowMs, exeedGameTimePauseMs;
     private long exeedRoundTimeMs, exeedRoundTimeInitMs, exeedRoundTimeNowMs, exeedRoundTimePauseMs;
@@ -79,9 +85,17 @@ public class CountdownTimerService extends Service{
         exeedRoundTimeMs = exeedRoundTimeInitMs = exeedRoundTimeNowMs = exeedRoundTimePauseMs = -1;
         broadcastIntent = new Intent(TAGHelper.COUNTDOWN_SERVICE_BROADCAST_TAG);
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        // prepare the sound files
+        roundEndSound = MediaPlayer.create(this,R.raw.roundend);
+        gameEndSound = MediaPlayer.create(this, R.raw.gameend);
+
         // Display a notification about us starting.  We put an icon in the status bar.
         showNotification();
-        handler = new Handler();
+
+        // Create new thread for the Handler
+        /*handlerThread = new HandlerThread("CountingThread");
+        handlerThread.start();*/
+        handler = new Handler(/*handlerThread.getLooper()*/);
         Log.i(classTAG, "CountdownTimerService created.");
     }
 
@@ -94,6 +108,8 @@ public class CountdownTimerService extends Service{
     public void onDestroy() {
         notificationManager.cancel(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID);
         pauseTimer();
+        roundEndSound.release();
+        gameEndSound.release();
         Log.i(classTAG, "CountdownTimerService destroyed.");
         Toast.makeText(this, R.string.CountDownTimerServiceStopped,Toast.LENGTH_SHORT).show();
         super.onDestroy();
@@ -118,10 +134,10 @@ public class CountdownTimerService extends Service{
 
             @Override
             public void onFinish() {
+                gameEndSound.start();
                 // if game finished, send a true signal
                 broadcastIntent.putExtra(TAGHelper.GAME_FINISHED_SIGNAL, true);
                 sendBroadcast(broadcastIntent);
-                broadcastIntent.removeExtra(TAGHelper.GAME_FINISHED_SIGNAL);
                 currentGameTimeMs = 0;
                 exeedGameTimeInitMs = System.currentTimeMillis();
                 handler.post(exeedGameTimeMsCounter);
@@ -142,10 +158,10 @@ public class CountdownTimerService extends Service{
 
             @Override
             public void onFinish() {
+                roundEndSound.start();
                 // if round finished, send a true signal
                 broadcastIntent.putExtra(TAGHelper.ROUND_FINISHED_SIGNAL, true);
                 sendBroadcast(broadcastIntent);
-                broadcastIntent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL);
                 currentRoundTimeMs = 0;
                 exeedRoundTimeInitMs = System.currentTimeMillis();
                 handler.post(exeedRoundTimeMsCounter);
@@ -205,13 +221,12 @@ public class CountdownTimerService extends Service{
      * Show a notification while this service is running.
      */
     private void showNotification() {
-        // TODO click notification bar to come back to fragment
         // In this sample, we'll use the same text for the ticker and the expanded notification
         CharSequence text = getText(R.string.serviceNotificationContent);
 
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+                new Intent(this, GameCountDownActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Set the info for the views that show in the notification panel.
         Notification notification = new Notification.Builder(this)
@@ -257,5 +272,9 @@ public class CountdownTimerService extends Service{
 
     public void setPaused(boolean paused) {
         isPaused = paused;
+    }
+
+    public Intent getBroadcastIntent() {
+        return broadcastIntent;
     }
 }

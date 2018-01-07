@@ -20,6 +20,9 @@
         <service android:name=".services.CountdownTimerService"
             android:exported="false"
             android:description="@string/CountdownTimerServiceDescription"/>
+        <service android:name=".services.DetectTaskClearedService"
+            android:stopWithTask="false"
+            android:description="@string/CountdownTimerServiceDescription"/>
 
         <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.SplashActivity"
@@ -93,12 +96,28 @@
         <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
-        <!--TODO #11 Add the new Activities-->
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.NewGameActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.ChoosePlayersActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
     </application>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

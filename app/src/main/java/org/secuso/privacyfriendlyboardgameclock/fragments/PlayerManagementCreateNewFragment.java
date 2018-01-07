@@ -52,7 +52,10 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
 
             pds.createPlayer(playerNameEditText.getText().toString(), playerIcon);
 
-            activity.onBackPressed();
+            // reload the activity starting this
+            Intent intent = getActivity().getIntent();
+            getActivity().finish();
+            startActivity(intent);
         }
     };
 

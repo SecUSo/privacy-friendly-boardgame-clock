@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -69,6 +70,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
 
                         String photoThumbnailUri = c.getString(c.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
                         Bitmap androidIcon = BitmapFactory.decodeResource(getActivity().getResources(), R.mipmap.ic_android);
+                        // TODO E/BitmapFactory: Unable to decode stream: java.io.FileNotFoundException:  (No such file or directory)
 
                         if (photoThumbnailUri != null) {
                             // TODO Exception not found
@@ -83,7 +85,10 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
                 }
             }
 
-            getActivity().onBackPressed();
+            // reload the activity starting this
+            Intent intent = getActivity().getIntent();
+            getActivity().finish();
+            startActivity(intent);
         }
     };
 

@@ -6,29 +6,47 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="6dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:duplicateParentState="true">
 
         <ImageView
             android:id="@+id/player_image"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:padding="5dp"/><!--TODO Relative Number?-->
+            android:padding="5dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/player_text"
+            android:layout_toEndOf="@id/player_image"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/player_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </RelativeLayout>
-    </LinearLayout>
+        <CheckBox
+            android:id="@+id/selectedCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/selectedPlayerNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_toStartOf="@id/selectedCheckbox"
+            android:layout_centerVertical="true"
+            android:duplicateParentState="true"
+            android:textColor="@drawable/list_item_textcolor"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
     <View
         android:id="@+id/longClicked_selected_overlay"
@@ -46,15 +64,6 @@
             android:layout_height="match_parent"
             android:background="@color/trans50blue"
             android:visibility="invisible" />
-        <TextView
-            android:id="@+id/selectedPlayerNumberTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_gravity="center|end"
-            android:duplicateParentState="true"
-            android:textColor="@drawable/list_item_textcolor"
-            android:textSize="20sp" />
     </FrameLayout>
 
 </android.support.v7.widget.CardView>

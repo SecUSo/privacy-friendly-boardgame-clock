@@ -51,7 +51,7 @@ public class GameResultDialogFragment extends DialogFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                activity.showMainMenu();
                             }
                         }
                 );
@@ -110,70 +110,4 @@ public class GameResultDialogFragment extends DialogFragment {
         else
             return Collections.max(playerRounds.values()) - 1;
     }
-
-
-    public void setKeyListenerOnView(View v) {
-        v.setFocusableInTouchMode(true);
-        v.requestFocus();
-        v.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getAction() == KeyEvent.ACTION_DOWN)) {
-
-                    boolean gameHistoryOrPlayerStatisticsInBackground = false;
-                    for (int i = 0; i < getFragmentManager().getBackStackEntryCount(); i++) {
-                        if (getFragmentManager().getBackStackEntryAt(i).getName().equals(getString(R.string.gameHistoryFragment)))
-                            gameHistoryOrPlayerStatisticsInBackground = true;
-                        if (getFragmentManager().getBackStackEntryAt(i).getName().equals(getString(R.string.playerStatisticsFragment)))
-                            gameHistoryOrPlayerStatisticsInBackground = true;
-                    }
-
-                    if (!gameHistoryOrPlayerStatisticsInBackground) {
-                        showMainMenu();
-                    } else {
-                        activity.onBackPressed();
-                    }
-                }
-
-                return true;
-            }
-
-        });
-    }
-
-    private void showMainMenu() {
-
-        rootView.setFocusableInTouchMode(true);
-        rootView.requestFocus();
-        rootView.setOnKeyListener(null);
-
-        getFragmentManager().popBackStack(getString(R.string.mainMenuWelcomeFragment), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuWelcomeFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.mainMenuWelcomeFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        fragmentTransaction.commit();
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        setKeyListenerOnView(getView());
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        Activity a;
-
-        if (context instanceof Activity) {
-            a = (Activity) context;
-        }
-
-    }
-
 }

@@ -19,6 +19,7 @@ package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,7 @@ import android.support.design.widget.NavigationView.OnNavigationItemSelectedList
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -218,6 +220,13 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
         }
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        toggle.onConfigurationChanged(newConfig);
+    }
+
+
     /**
      * show a toast with certain text as message
      * @param text
@@ -243,5 +252,43 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
             return true;
         }
         else return false;
+    }
+
+    /**
+     * make sure to call this method after onPostCreate of Activity finishes
+     * @param enabled
+     */
+    public void setDrawerEnabled(final boolean enabled) {
+
+        int lockMode = enabled ?
+                DrawerLayout.LOCK_MODE_UNLOCKED :
+                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+
+        mDrawerLayout.setDrawerLockMode(lockMode);
+
+        toggle.setDrawerIndicatorEnabled(enabled);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(!enabled);
+            actionBar.setDisplayShowHomeEnabled(enabled);
+            actionBar.setHomeButtonEnabled(enabled);
+        }
+        if(!enabled){
+            toggle.setToolbarNavigationClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+        }
+        toggle.syncState();
+    }
+
+    public void showMainMenu() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

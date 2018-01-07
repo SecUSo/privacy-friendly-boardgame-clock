@@ -2,8 +2,11 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,8 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
+import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
+import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter;
 
 /**
  * Step 1 in creating new Player Process
@@ -46,10 +54,42 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View rootView =  inflater.inflate(R.layout.fragment_player_management_choose_mode, container, false);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = getActivity();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(R.string.dialog_choose_new_player)
+                .setItems(new CharSequence[]{getString(R.string.new_player), getString(R.string.contact)},
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                switch (i){
+                                    case 0:
+                                        createNewPlayer();
+                                        break;
+                                    case 1:
+                                        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(activity,
+                                                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
+                                            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_READ_CONTACT_CODE);
+                                        else if (ContextCompat.checkSelfPermission(activity,
+                                                Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED)
+                                            addPlayerFromContacts();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        })
+                .setPositiveButton(R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }
+                );
+        /*LayoutInflater inflater = activity.getLayoutInflater();
+        View rootView = inflater.inflate(R.layout.fragment_player_management_choose_mode,null);
+
         final Button createNewPlayerButton = rootView.findViewById(R.id.button_new_player);
         createNewPlayerButton.setOnClickListener(new View.OnClickListener(){
 
@@ -82,9 +122,10 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
                 }
             }
         });
-        return rootView;
-    }
 
+        builder.setView(rootView);*/
+        return builder.create();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

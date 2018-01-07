@@ -57,6 +57,15 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     private ActionModeCallback actionModeCallback = new ActionModeCallback();
     private ActionMode actionMode;
     private Player playerToEdit;
+    View.OnClickListener onFABDeleteListenter = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
+            actionMode.finish();
+            actionMode = null;
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +75,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fm = getFragmentManager();
         // pds already opened in MainActivity
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
-
-        /* Check if Data Corrupt, if yes move to main menu immediately
-        GamesDataSourceSingleton.getInstance(this).setGame(null);
-        if(checkIfSingletonDataIsCorrupt()) return;*/
-
         listPlayers = pds.getAllPlayers();
         layoutManager = new LinearLayoutManager(this);
 
@@ -78,7 +82,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fabAdd = findViewById(R.id.fab_add_new_player);
         fabAdd.setOnClickListener(onFABAddClickListener());
         fabDelete = findViewById(R.id.fab_delete_player);
-        fabDelete.setOnClickListener(onFABDeleteListenter());
+        fabDelete.setOnClickListener(onFABDeleteListenter);
 
         // Lookup the recyclerview in fragment layout
         playersRecycleView = findViewById(R.id.player_list);
@@ -103,9 +107,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         if(actionMode != null){
             toggleSelection(position);
         } else{
-            playerListAdapter.setLongClickedSelected(false);
-            playerListAdapter.setSimpleClickedSelected(true);
-
             List<Player> playersList = playerListAdapter.getPlayersList();
             final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
             LayoutInflater factory = getLayoutInflater();
@@ -211,22 +212,6 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         };
     }
 
-    /**
-     * remove all the selected players
-     * @return
-     */
-    private View.OnClickListener onFABDeleteListenter() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
-                actionMode.finish();
-                actionMode = null;
-
-            }
-        };
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -293,6 +278,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
+            // so all check box are visible
+            playerListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -312,6 +299,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
+            // so all check box are gone
+            playerListAdapter.notifyDataSetChanged();
         }
     }
 }

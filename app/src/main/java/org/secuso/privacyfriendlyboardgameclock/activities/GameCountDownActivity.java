@@ -52,8 +52,6 @@ import java.util.Random;
  */
 
 public class GameCountDownActivity extends BaseActivity {
-    private MediaPlayer roundEndSound = null;
-    private MediaPlayer gameEndSound = null;
     private BroadcastReceiver br;
     private GamesDataSourceSingleton gds;
     private Game game;
@@ -420,11 +418,14 @@ public class GameCountDownActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Check if date saved in Singleton Class corrupted, if yes return to Main Menu
+        if(checkIfSingletonDataIsCorrupt()) return;
+
         gds = GamesDataSourceSingleton.getInstance(this);
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                updateGUI(intent); // or whatever method used to update your GUI fields
+                updateGUI(intent);
             }
         };
         startTimerService();
@@ -456,15 +457,9 @@ public class GameCountDownActivity extends BaseActivity {
         gameTimerTv = findViewById(R.id.game_timer);
         roundTimerTv = findViewById(R.id.round_timer);
 
-        // get game from Intent, if not found show MainMenu
-        Intent intent = getIntent();
-        Bundle bd = intent.getExtras();
-        if(bd != null){
-            int index = bd.getInt(TAGHelper.GAME_INDEX_FROM_LIST);
-            if(index >= 0 && index < gds.getAllGames().size()){
-                game =  gds.getAllGames().get(index);
-            }
-            else showMainMenu();
+        // get game from SingleTon Class, if null, show MainMenu
+        if(gds.getGame() != null){
+            game = gds.getGame();
         }
         else showMainMenu();
 
@@ -538,10 +533,6 @@ public class GameCountDownActivity extends BaseActivity {
                 });
             }
         });
-
-        // prepare the sound files
-        roundEndSound = MediaPlayer.create(this,R.raw.roundend);
-        gameEndSound = MediaPlayer.create(this, R.raw.gameend);
     }
 
     @Override
@@ -572,8 +563,6 @@ public class GameCountDownActivity extends BaseActivity {
     @Override
     public void onDestroy() {
         stopTimerService();
-        roundEndSound.release();
-        gameEndSound.release();
         super.onDestroy();
     }
 
@@ -660,13 +649,6 @@ public class GameCountDownActivity extends BaseActivity {
                 retPlayers.add(players.get(i));
 
         return retPlayers;
-    }
-
-    private void showMainMenu() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
     }
 
     /**
@@ -842,8 +824,9 @@ public class GameCountDownActivity extends BaseActivity {
 
             // handle game timer
             if(gameFinishedSignal){
+                // Remove finish signal after reading
+                mBoundService.getBroadcastIntent().removeExtra(TAGHelper.GAME_FINISHED_SIGNAL);
                 isFinished = 1;
-                gameEndSound.start();
                 currentGameTimeMs = 0;
                 // all buttons gone but finished button
                 saveGameButton.setVisibility(View.GONE);
@@ -853,17 +836,11 @@ public class GameCountDownActivity extends BaseActivity {
                 playPauseButton.setText(R.string.finishGame);
                 playPauseButton.setOnClickListener(finishGame);
             }
-            if(gameMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG){
-                currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
-                currentGameTimeMs = gameMsTillFinished;
-            }
-            else if(gameMsExceeded != TAGHelper.DEFAULT_VALUE_LONG){
-                currentExceedGameTimeMs = gameMsExceeded;
-            }
 
             // handle round timer
             if(roundFinishedSignal){
-                roundEndSound.start();
+                // Remove finish signal after reading
+                mBoundService.getBroadcastIntent().removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL);
                 currentRoundTimeMs = 0;
                 if(game.getChess_mode() == 1){
                     if (isFinished == 0 && game.getReset_round_time() == 0){
@@ -872,7 +849,7 @@ public class GameCountDownActivity extends BaseActivity {
                     }
                     else nextPlayerButton.performClick();
                 } else if (isFinished == 0 && game.getReset_round_time() == 1){
-                    // TODO optional else case
+                    // optional else case
                 } else if (isFinished == 0 && game.getReset_round_time() == 0) {
                     playPauseButton.setOnClickListener(wantToFinish);
                     playPauseButton.setVisibility(View.VISIBLE);
@@ -880,10 +857,19 @@ public class GameCountDownActivity extends BaseActivity {
                     nextPlayerButton.setVisibility(View.VISIBLE);
                 }
                 else{
-                    // TODO optional else case
+                    // optional else case
                 }
 
             }
+
+            if(gameMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG){
+                currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
+                currentGameTimeMs = gameMsTillFinished;
+            }
+            else if(gameMsExceeded != TAGHelper.DEFAULT_VALUE_LONG){
+                currentExceedGameTimeMs = gameMsExceeded;
+            }
+
             if(roundMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG){
                 currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
                 currentRoundTimeMs = roundMsTillFinished;

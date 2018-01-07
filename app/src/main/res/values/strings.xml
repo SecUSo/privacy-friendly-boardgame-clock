@@ -218,6 +218,7 @@
     <string name="CountDownTimerServiceStopped" >CountDown Timer Service stopped.</string>
     <string name="serviceNotificationLabel" >Privacy Friendly Boardgame Clock</string>
     <string name="serviceNotificationContent" >The Clock is counting down.</string>
+    <string name="DetectTaskClearedServiceDescription" >Privacy friendly Board Game Clock Service to detect if app is killed.</string>
 
 
 </resources>

@@ -1,47 +1,41 @@
-package org.secuso.privacyfriendlyboardgameclock.fragments;
+package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 /**
- * Created by Quang Anh Dang on 15.12.2017.
+ * Created by Quang Anh Dang on 06.01.2018.
  *
  * @author Quang Anh Dang
  */
-// TODO #4 Fragment backbutton not possible
-public class MainMenuChoosePlayersFragment extends Fragment implements ItemClickListener{
-    private MainActivity activity;
+
+public class ChoosePlayersActivity extends BaseActivity implements ItemClickListener {
     private List<Player> listPlayers;
     private GamesDataSourceSingleton gds;
     private PlayersDataSourceSingleton pds;
@@ -53,49 +47,55 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
     private int fabActive;
     private int fabInactive;
     // To toggle selection mode
-    private MainMenuChoosePlayersFragment.ActionModeCallback actionModeCallback = new MainMenuChoosePlayersFragment.ActionModeCallback();
+    private ChoosePlayersActivity.ActionModeCallback actionModeCallback = new ChoosePlayersActivity.ActionModeCallback();
     private ActionMode actionMode;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Check if date saved in Singleton Class corrupted, if yes return to Main Menu
+        if(checkIfSingletonDataIsCorrupt()) return;
+
+        setContentView(R.layout.activity_choose_players);
         fabActive = getResources().getColor(R.color.fabActive);
         fabInactive = getResources().getColor(R.color.fabInactive);
-    }
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        activity = (MainActivity) this.getActivity();
-        gds = GamesDataSourceSingleton.getInstance(activity);
-        pds = PlayersDataSourceSingleton.getInstance(activity);
-
-        View rootView = inflater.inflate(R.layout.fragment_main_menu_choose_players, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.choose_players);
-        container.removeAllViews();
-
+        gds = GamesDataSourceSingleton.getInstance(this);
+        pds = PlayersDataSourceSingleton.getInstance(this);
         listPlayers = pds.getAllPlayers();
 
-        // Set the plus icon in toolbar to add more players
-        setHasOptionsMenu(true);
-
         // FAB Listener
-        fabStartGame = (FloatingActionButton) rootView.findViewById(R.id.fab_start_game);
+        fabStartGame = findViewById(R.id.fab_start_game);
         fabStartGame.setBackgroundColor(R.drawable.button_disabled);
         fabStartGame.setOnClickListener(selectPlayerToast());
 
-        fabDelete = (FloatingActionButton) rootView.findViewById(R.id.fab_delete_player);
+        fabDelete = findViewById(R.id.fab_delete_player);
         fabDelete.setOnClickListener(onFABDeleteListenter());
 
         // Lookup the recyclerview in fragment layout
-        layoutManager = new LinearLayoutManager(activity);
-        playersRecycleView = rootView.findViewById(R.id.player_list);
+        layoutManager = new LinearLayoutManager(this);
+        playersRecycleView = findViewById(R.id.player_list);
         playersRecycleView.setHasFixedSize(true);
-        playerListAdapter = new PlayerListAdapter(activity, listPlayers, this);
+        playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
+    }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        getSupportActionBar().setTitle(R.string.choose_players);
         // disable NavigationDrawer
-        ((MainActivity)activity).setDrawerEnabled(false);
-        return rootView;
+        setDrawerEnabled(false);
+    }
+
+    private View.OnClickListener selectPlayerToast(){
+        return new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                showToast(getResources().getString(R.string.selectAtLeast2Players));
+            }
+        };
     }
 
     /**
@@ -114,6 +114,40 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
         };
     }
 
+    @Override
+    protected int getNavigationDrawerID() {
+        return 0;
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if(playerListAdapter.isLongClickedSelected() && !playerListAdapter.isSimpleClickedSelected()){
+            toggleSelection(position);
+        }
+        else{
+            playerListAdapter.setSimpleClickedSelected(true);
+            playerListAdapter.setLongClickedSelected(false);
+            toggleSelection(position);
+            if (playerListAdapter.getSelectedItemCount() >= 2 && playerListAdapter.isSimpleClickedSelected()) {
+                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabActive));
+                fabStartGame.setOnClickListener(createNewGame());
+            }
+            else{
+                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
+                fabStartGame.setOnClickListener(selectPlayerToast());
+            }
+        }
+    }
+
+    @Override
+    public boolean onItemLongClicked(View view, int position) {
+        if (actionMode == null) {
+            actionMode = startSupportActionMode(actionModeCallback);
+        }
+        toggleSelection(position);
+        return true;
+    }
+
     /**
      *
      * @return OnClickListener
@@ -122,7 +156,12 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Game game = ((MainActivity) activity).getGame();
+                Game game = gds.getGame();
+                if(game == null){
+                    showToast("Data Corruppted! You have been returned to Main Menu.");
+                    showMainMenu();
+                    return;
+                }
                 List<Player> selectedPlayers = playerListAdapter.getOrderdSelectedPlayers();
                 HashMap<Long, Long> player_round_times = new HashMap<>();
                 for (Player p : selectedPlayers) {
@@ -159,7 +198,7 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
                 game.setPlayers(selectedPlayers);
                 game.setPlayer_round_times(player_round_times);
                 game.setPlayer_rounds(players_rounds);
-                ((MainActivity) activity).setGame(game);
+                gds.setGame(game);
 
                 // if game is finally created and game time is infinite, set game time to -1
                 if (game.getGame_time_infinite() == 1) {
@@ -168,7 +207,7 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
                 }
 
                 // store game number
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(activity);
+                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(ChoosePlayersActivity.this);
                 int gameNumber = settings.getInt("gameNumber", 1);
                 gameNumber++;
                 SharedPreferences.Editor editor = settings.edit();
@@ -180,27 +219,9 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
         };
     }
 
-    private View.OnClickListener selectPlayerToast(){
-        return new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                activity.showToast(getResources().getString(R.string.selectAtLeast2Players));
-        }
-        };
-    }
-
-    private void clearListSelections() {
-        playerListAdapter.clearSelection();
-    }
-
-    public void startNewGame() {
-        /*final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.MainActivity_fragment_container, new MainMenuGameFragment());
-        fragmentTransaction.addToBackStack(getString(R.string.gameFragment));
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        clearListSelections();
-        fragmentTransaction.commit();*/
+    private void startNewGame() {
+        Intent intent = new Intent(ChoosePlayersActivity.this, GameCountDownActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -209,8 +230,9 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
      * @return
      */
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.main_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     @Override
@@ -225,36 +247,8 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
                 // Create and show the dialog
                 PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
                 chooseDialogFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
+                // TODO  #14 after adding new players --> numbers wrong
         }
-        return true;
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        if(playerListAdapter.isLongClickedSelected() && !playerListAdapter.isSimpleClickedSelected()){
-            toggleSelection(position);
-        }
-        else{
-            playerListAdapter.setSimpleClickedSelected(true);
-            playerListAdapter.setLongClickedSelected(false);
-            toggleSelection(position);
-            if (playerListAdapter.getSelectedItemCount() >= 2 && playerListAdapter.isSimpleClickedSelected()) {
-                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                fabStartGame.setOnClickListener(createNewGame());
-            }
-            else{
-                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
-                fabStartGame.setOnClickListener(selectPlayerToast());
-            }
-        }
-    }
-
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
-        if (actionMode == null) {
-            actionMode = activity.startSupportActionMode(actionModeCallback);
-        }
-        toggleSelection(position);
         return true;
     }
 
@@ -273,7 +267,9 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
             if (count == 0) {
                 playerListAdapter.setSimpleClickedSelected(false);
                 playerListAdapter.setLongClickedSelected(false);
+                playerListAdapter.notifyDataSetChanged();
             }
+            if(count == 1) playerListAdapter.notifyDataSetChanged();
         }
         else if(playerListAdapter.isLongClickedSelected()){
             if (count == 0) {
@@ -303,7 +299,7 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
 
     private class ActionModeCallback implements ActionMode.Callback {
         @SuppressWarnings("unused")
-        private final String TAG = MainMenuChoosePlayersFragment.ActionModeCallback.class.getSimpleName();
+        private final String TAG = ChoosePlayersActivity.ActionModeCallback.class.getSimpleName();
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -311,6 +307,7 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
             playerListAdapter.setLongClickedSelected(true);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
+            playerListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -331,6 +328,7 @@ public class MainMenuChoosePlayersFragment extends Fragment implements ItemClick
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
+            playerListAdapter.notifyDataSetChanged();
         }
     }
 }
