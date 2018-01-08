@@ -43,7 +43,8 @@
     <string name="help_new_game">New Game</string>
     <string name="help_new_game_answer"><b>Spielzeit</b>\nMaximale Gesamtdauer eines Spiel.\n\n<b>Rundenzeit</b>\nThe time a player has available per round/turn. After this time the tuZeit, die ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird der Zug automatisch beendet.\n\n<b>Zusatzzeit</b>\nZeit, welche einem Spieler zu Beginn einer neuen Runde gutgeschrieben wird.
     </string>
-    <string name="help_new_game_mode"><b>Im Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird im Uhrzeigersinn weitergegeben.\n\n<b>Entgegen dem Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird gegen den Uhrzeigersinn weitergegeben.\n\n<b>Zufällig</b>\nDer nächste Spieler wird zufällig aus der Spielerliste bestimmt.\n\n<b>Schach</b>\nDie Zugreihenfolge entspricht der Spielerliste, zwischen den Runden gibt es keine Pause.
+    <string name="help_game_mode">Spielmodus</string>
+    <string name="help_game_mode_answer"><b>Im Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird im Uhrzeigersinn weitergegeben.\n\n<b>Entgegen dem Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird gegen den Uhrzeigersinn weitergegeben.\n\n<b>Zufällig</b>\nDer nächste Spieler wird zufällig aus der Spielerliste bestimmt.\n\n<b>Schach</b>\nDie Zugreihenfolge entspricht der Spielerliste, zwischen den Runden gibt es keine Pause.
     </string>
     <string name="help_next_player">Next Player</string>
     <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
@@ -84,5 +85,108 @@
 
     <string name="next">Weiter</string>
     <string name="skip">Überspringen</string>
+    <string name="exportDatabaseBackupInfoMessage">Bist du dir sicher, dass du ein Backup der aktuellen Datenbank erstellen möchtest? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
+    <string name="importDatabaseBackupInfoMessage">Bist du dir sicher, dass du das aktuelle Datenbank-Backup importieren möchtest? Die aktuelle Datenbank wird dadurch ersetzt.</string>
+    <string name="sureToSaveGameQuestion">Bist du dir sicher, dass du den aktuellen Fortschritt der Uhr speichern möchtest?</string>
+    <string name="action_backup">Backup</string>
+    <string name="exportDatabaseBackupSuccess">"Backup erfolgreich erstellt unter: "</string>
+    <string name="importDatabaseBackupSuccess">Backup erfolgreich wiederhergestellt!</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="modeChess">Schach</string>
+    <string name="chess_clock">Schachuhr</string>
+    <string name="chooseContacts">Kontakte auswählen:</string>
+    <string name="dialog_choose_new_player">Wie soll der neue Spieler erstellt werden:</string>
+    <string name="choose_players">Spieler auswählen</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="error">Fehler</string>
+    <string name="players">Spieler</string>
+    <string name="ok">Okay</string>
+    <string name="dialog_no_permissions">Die benötigten Permissions wurden nicht erteilt!</string>
+    <string name="action_player_management">Spielerverwaltung</string>
+    <string name="action_game_history">Spielhistorie</string>
+    <string name="action_new_game">Neues Spiel</string>
+    <string name="action_resume_game">Spiel fortsetzen</string>
+    <string name="exit">Spiel verlassen</string>
+    <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
+    <string name="resumeGameErrorToast">Kein gespeichertes Spiel gefunden.</string>
+    <string name="modeClockwise">Im Uhrzeigersinn</string>
+    <string name="modeCounterClockwise">Entgegen dem Uhrzeigersinn</string>
+    <string name="modeRandom">Zufällig</string>
+    <string name="gameMode">Spielmodus:</string>
+    <string name="resetTimeAfterRoundCheck">Zeit nach jeder Runde zurücksetzen?</string>
+    <string name="increaseTimeAfterRoundCheck">Zeit nach jeder Runde erhöhen?</string>
+    <string name="gameName">Spielname:</string>
+    <string name="timeDelta">Zusatzzeit:</string>
+    <string name="gameNameStandard">Spiel</string>
+    <string name="roundTimeLargerInfo">Die ausgewählte Rundenzeit wurde auf die Höhe der Spielzeit verringert, da die Rundenzeit nicht größer als die Spielzeit sein kann.</string>
+    <string name="roundTime">Rundenzeit:</string>
+    <string name="quitGame">Spiel verlassen</string>
+    <string name="finishGame">Beenden</string>
+    <string name="infinite">Unendlich</string>
+    <string name="resume">Fortsetzen</string>
+    <string name="quitGameQuestion">Möchtest du den Fortschritt der Uhr vor dem Verlassen speichern?</string>
+    <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
+    <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
+    <string name="gameNameSizeError">Bitte gebe einen Namen für das Spiel ein.</string>
+    <string name="roundTimeSetError">Bitte wähle eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
+    <string name="gameSavedSuccess">Fortschritt der Uhr erfolgreich gespeichert!</string>
+    <string name="swipeDialogQuestion">Wischgesten</string>
+    <string name="swipeDialogAnswer">Anstelle der Schaltfläche \'Nächster Spieler\' kann der nächste Spieler auch durch eine Wischgeste ausgewählt werden.</string>
+    <string name="roundTimeOverDialogHeading">Spiel beenden</string>
+    <string name="roundTimeOverDialogQuestion">Die Rundenzeit des aktuellen Spielers ist vorüber. Möchtest du dieses Spiel beenden oder mit dem nächsten Spieler fortfahren, um die aktuelle Runde zu beenden?</string>
+    <string name="manualChoiceError">Es müssen alle Spieler aus der Liste einer Reihenfolge zugeordnet werden!</string>
+    <string name="manualChoiceHeading">Spielerreihenfolge festlegen</string>
+    <string name="round">Runde:</string>
+    <string name="saveGame">Uhr speichern</string>
+    <string name="showResults">Ergebnisse anzeigen</string>
+    <string name="gameTime">Spielzeit:</string>
+    <string name="currentPlayer">Spieler:</string>
+    <string name="nextPlayer">Nächster Spieler</string>
+    <string name="save">Speichern</string>
+    <string name="play">Spielen</string>
+
+    <!-- Game Results -->
+    <string name="gameResults">Spielergebnisse</string>
+    <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
+    <string name="activeGameTimeHeader">Übrige Spielzeit:</string>
+    <string name="playedRoundsHeader">Letzte Runde:</string>
+    <string name="playerResults">Spielerergebnisse:</string>
+    <string name="timeLeft">Übrige Zeit:</string>
+    <string name="backToMainMenu">Zum Hauptmenü</string>
+    <string name="loadGame">Spiel laden</string>
+    <string name="loadSelectedGame">Spiel laden</string>
+    <string name="pleaseChooseAGame">Bitte wähle ein Spiel aus der Liste aus.</string>
+    <string name="errorAtLeastTwoPlayers">Bitte wähle mindestens zwei Spieler um fortzufahren.</string>
+    <string name="startNewGame">Neues Spiel starten</string>
+    <string name="player_management">Spielerverwaltung</string>
+    <string name="new_player">Neuer Spieler</string>
+    <string name="contact">Kontakt</string>
+    <string name="nameDots">Name:</string>
+    <string name="picDots">Foto:</string>
+    <string name="changeColorButton">FARBE</string>
+    <string name="takePhotoButton">FOTO</string>
+    <string name="confirm">BESTÄTIGEN</string>
+    <string name="editPlayer">Spieler editieren</string>
+    <string name="enterAName">Geben Sie einen Namen ein.</string>
+    <string name="playerStatistic">Spieler Statistik</string>
+    <string name="playedGames">Gespielte Spiele:</string>
+    <string name="completedRounds">Beendete Runden:</string>
+    <string name="totalTimePlayed">Gesamtspielzeit:</string>
+    <string name="title_activity_game_history">Spiel Historie</string>
+    <string name="importDatabaseBackup">Datenbank-Backup importieren</string>
+    <string name="exportDatabaseBackup">Datenbank-Backup exportieren</string>
+    <string name="noBackupFound">Es konnte kein Datenbank-Backup gefunden werden!</string>
+    <string name="backupExportError">Export der Datenbank fehlgeschlagen!</string>
+    <string name="selectAtLeast2Players">Bitte wähle mindestens zwei Spieler um fortzufahren.</string>
+    <string name="CountDownTimerServiceStopped">CountDown Timer Service angehalten.</string>
+    <string name="serviceNotificationContent">Die Uhr zählt gerade runter.</string>
+
+    <string-array name="game_modes">
+        <item>Im Uhrzeigersinn</item>
+        <item>Entgegen dem Uhrzeigersinn</item>
+        <item>Zufällig</item>
+        <item>Manuelle Reihenfolge</item>
+    </string-array>
 
 </resources>

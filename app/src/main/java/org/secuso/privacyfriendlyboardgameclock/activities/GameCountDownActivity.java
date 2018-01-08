@@ -252,11 +252,12 @@ public class GameCountDownActivity extends BaseActivity {
 
                     final ArrayList<Player> selectedPlayers = new ArrayList<>();
 
-                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(GameCountDownActivity.this);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(GameCountDownActivity.this);
                     View dialogView = getLayoutInflater().inflate(R.layout.dialog_set_player_sequence, null);
-                    alertDialog.setView(dialogView);
-                    alertDialog.setTitle(R.string.manualChoiceHeading);
-                    alertDialog.setCancelable(false);
+                    builder.setView(dialogView);
+                    builder.setTitle(R.string.manualChoiceHeading);
+                    builder.setPositiveButton(R.string.confirm,null);
+                    builder.setCancelable(false);
 
                     final ListView myListView = (ListView) dialogView.findViewById(R.id.set_player_sequence_list);
                     SelectPlayerListAdapter listAdapter = new SelectPlayerListAdapter(GameCountDownActivity.this, R.id.set_player_sequence_list, players);
@@ -295,19 +296,13 @@ public class GameCountDownActivity extends BaseActivity {
                             }
                         }
                     });
-                    final AlertDialog ad = alertDialog.show();
-
-                    final Button resumeButton = (Button) dialogView.findViewById(R.id.setPlayerSequenceButton);
-                    resumeButton.setOnClickListener(new View.OnClickListener() {
+                    final AlertDialog ad = builder.show();
+                    Button positiveButton = ad.getButton(AlertDialog.BUTTON_POSITIVE);
+                    positiveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if (players.size() != selectedPlayers.size()) {
-                                new AlertDialog.Builder(GameCountDownActivity.this)
-                                        .setTitle(R.string.error)
-                                        .setMessage(R.string.manualChoiceError)
-                                        .setIcon(android.R.drawable.ic_menu_info_details)
-                                        .setPositiveButton(R.string.ok, null)
-                                        .show();
+                                showToast(getString(R.string.manualChoiceError));
                             } else {
                                 players = selectedPlayers;
                                 game.setPlayers(players);
