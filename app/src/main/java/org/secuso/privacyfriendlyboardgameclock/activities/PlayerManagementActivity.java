@@ -249,6 +249,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
+            // so all check box are visible
+            playerListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -268,6 +270,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
+            // so all check box are visible
+            playerListAdapter.notifyDataSetChanged();
         }
     }
 }

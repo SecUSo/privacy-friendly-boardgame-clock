@@ -37,7 +37,6 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 public class PlayerManagementEditPlayerFragment extends DialogFragment {
-    // TODO FIX java.lang.RuntimeException: Canvas: trying to use a recycled bitmap android.graphics.Bitmap@3cef10f
     private static final int CAMERA_REQUEST = 1888;
     private Activity activity;
     private View rootView;
@@ -90,6 +89,10 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
                                 playerIcon = pictureIMGView.getDrawingCache();
                                 p.setIcon(playerIcon);
                                 pds.updatePlayer(p);
+                                // reload the activity starting this
+                                Intent intent = getActivity().getIntent();
+                                getActivity().finish();
+                                startActivity(intent);
                             }
                         }
                 )

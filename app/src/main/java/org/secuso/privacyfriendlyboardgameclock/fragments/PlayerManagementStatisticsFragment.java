@@ -1,19 +1,29 @@
 package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.GamesListAdapterOld;
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
@@ -21,7 +31,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class PlayerManagementStatisticsFragment extends DialogFragment {
+public class PlayerManagementStatisticsFragment extends DialogFragment implements ItemClickListener {
 
     private PlayerManagementActivity activity;
     private View rootView;
@@ -29,6 +39,7 @@ public class PlayerManagementStatisticsFragment extends DialogFragment {
     private Player player;
     private List<Game> playerGames;
     private GamesDataSourceSingleton gds;
+    private GameListAdapter gameListAdapter;
 
     public PlayerManagementStatisticsFragment() {
         // Empty constructor is required for DialogFragment
@@ -44,23 +55,42 @@ public class PlayerManagementStatisticsFragment extends DialogFragment {
         return frag;
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = (PlayerManagementActivity) getActivity();
         player = activity.getPlayerToEdit();
         gds = GamesDataSourceSingleton.getInstance(activity);
         playerGames = gds.getGamesOfPlayer(player);
 
-        rootView = inflater.inflate(R.layout.fragment_player_statistics, container, false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity)
+                .setTitle(player.getName())
+                .setPositiveButton(R.string.okay,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                activity.onBackPressed();
+                            }
+                        }
+                );
+
+        rootView = activity.getLayoutInflater().inflate(R.layout.fragment_player_statistics, null);
 
         ((TextView) rootView.findViewById(R.id.totalTimePlayedText)).setText(getTotalTimePlayed());
         ((TextView) rootView.findViewById(R.id.completedRoundsText)).setText(String.valueOf(getTotalRoundsPlayed()));
 
-        GamesListAdapterOld listAdapter = new GamesListAdapterOld(this.getActivity(), R.id.list, playerGames);
-        games = (ListView) rootView.findViewById(R.id.list);
-        games.setAdapter(listAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView gamesRecycleView = rootView.findViewById(R.id.game_list);
+        gamesRecycleView.setHasFixedSize(true);
+        gameListAdapter= new GameListAdapter(this.getActivity(), playerGames, this);
+        gamesRecycleView.setAdapter(gameListAdapter);
+        gamesRecycleView.setLayoutManager(layoutManager);
+        // Set max height for list
+        /*ViewGroup.LayoutParams params = gamesRecycleView.getLayoutParams();
+        params.height = getResources().getDimensionPixelSize(R.dimen.recycle_view_popup_height);
+        gamesRecycleView.setLayoutParams(params);*/
 
-        return rootView;
+        builder.setView(rootView);
+        return builder.create();
     }
 
     private String getTotalTimePlayed() {
@@ -143,4 +173,13 @@ public class PlayerManagementStatisticsFragment extends DialogFragment {
 
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+
+    }
+
+    @Override
+    public boolean onItemLongClicked(View view, int position) {
+        return false;
+    }
 }

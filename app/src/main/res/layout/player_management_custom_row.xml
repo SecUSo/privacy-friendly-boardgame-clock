@@ -15,8 +15,8 @@
             android:id="@+id/player_image"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/picSize"
+            android:layout_height="@dimen/picSize"
             android:padding="5dp"/>
 
         <TextView

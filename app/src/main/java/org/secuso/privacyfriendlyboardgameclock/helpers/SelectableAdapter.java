@@ -93,6 +93,10 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> exte
         return items;
     }
 
+    public SparseBooleanArray getSelectedItemsAsSparseBooleanArray(){
+        return selectedItems;
+    }
+
     public boolean isLongClickedSelected() {
         return isLongClickedSelected;
     }

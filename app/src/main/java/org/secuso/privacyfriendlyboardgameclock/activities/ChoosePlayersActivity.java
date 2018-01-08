@@ -247,7 +247,6 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
                 // Create and show the dialog
                 PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
                 chooseDialogFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
-                // TODO  #14 after adding new players --> numbers wrong
         }
         return true;
     }
