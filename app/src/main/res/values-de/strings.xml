@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Beispiel</string>
-    <string name="app_name_long">Privacy Friendly Beispiel</string>
+    <string name="app_name">Board Game Clock</string>
+    <string name="app_name_long">Privacy Friendly Board Game Clock</string>
 
     <!-- ###DRAWER###-->
     <string name="action_help">Hilfe</string>
@@ -41,13 +41,13 @@
     <string name="help_privacy">Was macht die App privatsphäre-freundlich?</string>
     <string name="help_privacy_answer">Privacy Friendly Board Game Clock benötigt keine Berechtigungen. Auch beinhaltet sie keine Werbungs- sowie Trackingmechanismen.</string>
     <string name="help_new_game">New Game</string>
-    <string name="help_new_game_answer"><b>Spielzeit</b>\nMaximale Gesamtdauer eines Spiel.\n\n<b>Rundenzeit</b>\nThe time a player has available per round/turn. After this time the tuZeit, die ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird der Zug automatisch beendet.\n\n<b>Zusatzzeit</b>\nZeit, welche einem Spieler zu Beginn einer neuen Runde gutgeschrieben wird.
+    <string name="help_new_game_answer"><b>Spielzeit</b>\nMaximale Gesamtdauer eines Spiel.\n\n<b>Rundenzeit</b>\nZeit, die ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird der Zug automatisch beendet.\n\n<b>Zusatzzeit</b>\nZeit, welche einem Spieler zu Beginn einer neuen Runde gutgeschrieben wird.
     </string>
     <string name="help_game_mode">Spielmodus</string>
     <string name="help_game_mode_answer"><b>Im Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird im Uhrzeigersinn weitergegeben.\n\n<b>Entgegen dem Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird gegen den Uhrzeigersinn weitergegeben.\n\n<b>Zufällig</b>\nDer nächste Spieler wird zufällig aus der Spielerliste bestimmt.\n\n<b>Schach</b>\nDie Zugreihenfolge entspricht der Spielerliste, zwischen den Runden gibt es keine Pause.
     </string>
     <string name="help_next_player">Next Player</string>
-    <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
+    <string name="help_next_player_answer">Anstelle der Schaltfläche \'Nächster Spieler\' kann der nächste Spieler auch durch eine Wischgeste ausgewählt werden.</string>
     <string name="help_permissions">Permissions</string>
     <string name="help_permissions_answer"><b>Kontakte</b>\nZum Hinzufügen vom Spielern können auch Adressbucheinträge verwendet werden. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Kontaktbuch" im Menü "Spielerverwaltung" ist nur ausgegraut sichtbar.\n\n<b>Externer Speicher lesen</b>\nMit der App ist es möglich gespeicherte Datenbank-Backups wiederzuherstellen. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Datenbank-Backup importieren" im Menü "Backup" ist nur ausgegraut sichtbar.\n\n<b>Externer Speicher schreiben</b>\nDaten der App können als Datenbank-Backup auf dem Gerät gespeichert werden. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Datenbank-Backup exportieren" im Menü "Backup" ist nur ausgegraut sichtbar.\n\n
     </string>
