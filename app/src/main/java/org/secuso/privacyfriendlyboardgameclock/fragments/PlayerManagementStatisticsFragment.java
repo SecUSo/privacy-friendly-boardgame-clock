@@ -24,6 +24,7 @@ import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleto
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.GamesListAdapterOld;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
@@ -103,8 +104,10 @@ public class PlayerManagementStatisticsFragment extends DialogFragment implement
             else {
                 long game_time = g.getGame_time();
                 long current_game_time = g.getCurrentGameTime();
-
-                totalTimePlayed += (1000 + game_time - current_game_time);
+                // Time for time tracking mode is different
+                if(g.getGame_mode() == TAGHelper.TIME_TRACKING)
+                    totalTimePlayed += 1000 + current_game_time;
+                else totalTimePlayed += (1000 + game_time - current_game_time);
             }
         }
 

@@ -191,9 +191,39 @@ public class GameCountDownActivity extends BaseActivity {
             playPauseButton.setOnClickListener(run);
 
             updateTimerTextViews();
-
         }
     };
+
+    private View.OnClickListener pauseFinishedGame = new View.OnClickListener() {
+        public void onClick(View v) {
+            isPaused = true;
+
+            mBoundService.pauseTimer();
+            gameTime = currentGameTimeMs;
+
+            playPauseButton.setText(R.string.resume);
+            playPauseButton.setOnClickListener(continueFinishedGame);
+
+            updateTimerTextViews();
+        }
+    };
+
+    private View.OnClickListener continueFinishedGame = new View.OnClickListener() {
+        public void onClick(View v) {
+            alreadySaved = false;
+
+            saveGameButton.setVisibility(View.GONE);
+            finishGameButton.setVisibility(View.GONE);
+
+            isPaused = false;
+
+            updateAndResumeTimer();
+
+            playPauseButton.setText(R.string.pause_capslock);
+            playPauseButton.setOnClickListener(pauseFinishedGame);
+        }
+    };
+
     private View.OnClickListener nextPlayer = new View.OnClickListener() {
         public void onClick(View v) {
             currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
@@ -502,7 +532,7 @@ public class GameCountDownActivity extends BaseActivity {
             public void onClick(View v) {
                 alreadySaved = false;
                 isPaused = false;
-
+                mBoundService.showNotification();
                 mBoundService.initRoundCountdownTimer(currentRoundTimeMs);
                 // if game time not infinit, init game timer
                 if(game.getGame_time_infinite() == 0){
@@ -534,6 +564,7 @@ public class GameCountDownActivity extends BaseActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         getSupportActionBar().setSubtitle(game.getName());
+        setDrawerEnabled(false);
     }
 
     @Override
@@ -684,6 +715,7 @@ public class GameCountDownActivity extends BaseActivity {
      */
     private void finishGame() {
         isFinished = 1;
+        gds.setGame(game);
         game.setFinished(isFinished);
         updateGame();
         stopTimerService();
@@ -698,50 +730,36 @@ public class GameCountDownActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {if (!isPaused && (isFinished == 0))
-        playPauseButton.performClick();
-
-        String dialogTitle;
-        String dialogQuestion;
+    public void onBackPressed() {
+        if (!isPaused && (isFinished == 0))
+            playPauseButton.performClick();
 
         if (isFinished == 1) {
-            dialogTitle = getString(R.string.backToMainMenu);
-            dialogQuestion = getString(R.string.backToMainMenuQuestion);
+            showMainMenu();
         } else {
-            dialogTitle = getString(R.string.quitGame);
-            dialogQuestion = getString(R.string.leaveGameQuestion);
-        }
-
-        new AlertDialog.Builder(this)
-                .setTitle(dialogTitle)
-                .setMessage(dialogQuestion)
-                .setIcon(android.R.drawable.ic_menu_help)
-                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        if ((isFinished == 0) && !alreadySaved)
-                            new AlertDialog.Builder(GameCountDownActivity.this)
-                                    .setTitle(R.string.quitGame)
-                                    .setMessage(R.string.quitGameQuestion)
-                                    .setIcon(android.R.drawable.ic_menu_help)
-                                    .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int whichButton) {
-                                            saveGameToDb(1);
-                                            showMainMenu();
-                                        }
-                                    })
-                                    .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int whichButton) {
-                                            showMainMenu();
-                                        }
-                                    })
-                                    .show();
-                        else
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.quitGame))
+                    .setMessage(getString(R.string.leaveGameQuestion))
+                    .setIcon(android.R.drawable.ic_menu_help)
+                    .setPositiveButton(getString(R.string.saveGame), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            if (!alreadySaved){
+                                saveGameToDb(1);
+                                showMainMenu();
+                            }
+                            else
+                                showMainMenu();
+                        }
+                    })
+                    .setNeutralButton(R.string.withoutSave, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
                             showMainMenu();
-
-                    }
-                })
-                .setNegativeButton(getString(R.string.no), null)
-                .show();
+                        }
+                    })
+                    .setNegativeButton(getString(R.string.cancel), null)
+                    .show();
+        }
     }
 
     /**
@@ -826,10 +844,11 @@ public class GameCountDownActivity extends BaseActivity {
                 // all buttons gone but finished button
                 saveGameButton.setVisibility(View.GONE);
                 finishGameButton.setVisibility(View.GONE);
-                nextPlayerButton.setVisibility(View.GONE);
+                nextPlayerButton.setVisibility(View.VISIBLE);
+                nextPlayerButton.setOnClickListener(finishGame);
+                nextPlayerButton.setText(R.string.finishGame);
                 playPauseButton.setVisibility(View.VISIBLE);
-                playPauseButton.setText(R.string.finishGame);
-                playPauseButton.setOnClickListener(finishGame);
+                playPauseButton.setOnClickListener(pauseFinishedGame);
             }
 
             // handle round timer

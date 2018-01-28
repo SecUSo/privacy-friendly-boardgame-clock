@@ -75,13 +75,12 @@
 
     <!-- ### TUTORIAL DIALOG ### -->
     <string name="slide1_heading">Willkommen!</string>
-    <string name="slide1_text">Diese App soll als Anleitung zum Design von Privacy Friendly Apps dienen. Hier wird die App in ein bis zwei Sätzen vorgestellt.</string>
+    <string name="slide1_text">Willkommen zur Privacy Friendly Boardgame Clock. Diese Anleitung wird dir die wichtigsten Information geben, was du brauchst.</string>
 
-    <string name="slide2_heading">Schlüsselelements</string>
-    <string name="slide2_text">Hier können Schlüsselelemente vorgestellt werden. Achtung: Nicht zu detailliert werden.</string>
+    <string name="slide2_heading">Lass anfangen</string>
 
-    <string name="slide3_heading">Github und Guide</string>
-    <string name="slide3_text">Der Quellcode dieser App ist auf GitHub. Weitere Infos gibt es im Privacy Friendly App Guide.</string>
+    <string name="slide3_heading">Mehr Features</string>
+    <string name="slide3_text">Die App speichert auch Spiel und Spielerhistorie. Du kannst diese auch importieren/exportieren, vorausgesetzt du gibst der App Speicherberechtigung.</string>
 
     <string name="next">Weiter</string>
     <string name="skip">Überspringen</string>
@@ -149,10 +148,10 @@
     <!-- Game Results -->
     <string name="gameResults">Spielergebnisse</string>
     <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
-    <string name="activeGameTimeHeader">Übrige Spielzeit:</string>
+    <string name="activeGameTimeHeader">Spielzeit:</string>
     <string name="playedRoundsHeader">Letzte Runde:</string>
     <string name="playerResults">Spielerergebnisse:</string>
-    <string name="timeLeft">Übrige Zeit:</string>
+    <string name="timeLeft">Spielers Zeit:</string>
     <string name="backToMainMenu">Zum Hauptmenü</string>
     <string name="loadGame">Spiel laden</string>
     <string name="loadSelectedGame">Spiel laden</string>
@@ -181,12 +180,17 @@
     <string name="selectAtLeast2Players">Bitte wähle mindestens zwei Spieler um fortzufahren.</string>
     <string name="CountDownTimerServiceStopped">CountDown Timer Service angehalten.</string>
     <string name="serviceNotificationContent">Die Uhr zählt gerade runter.</string>
+    <string name="contactListIsEmpty">Kein Kontakt gefunden.</string>
+    <string name="withoutSave">Nicht Speichern</string>
+    <string name="playerDeleteWarning">Alle Spiele, welche mit diesen Spielern assoziiert sind, werden auch gelöscht. Sind Sie sicher?</string>
 
     <string-array name="game_modes">
         <item>Im Uhrzeigersinn</item>
         <item>Entgegen dem Uhrzeigersinn</item>
         <item>Zufällig</item>
         <item>Manuelle Reihenfolge</item>
+        <item>Zeitüberwachung</item>
     </string-array>
+    <string name="slide2_text">Du kannst entweder eine neue Uhr erschaffen oder eine alte fortsetzen. Drücke auf <b>Neues Spiel</b> um eine zu erschaffen. Folglich fülle die Parameter aus. Wähle/Kreiere mindesten 2 Spieler aus und los legen.</string>
 
 </resources>

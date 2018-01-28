@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 
 import java.sql.SQLOutput;
@@ -50,35 +52,42 @@ public class NewGameActivity extends BaseActivity {
         @Override
         public void onValueChange(android.widget.NumberPicker picker, int oldVal, int newVal) {
             setGameTime();
-
-            gameTimeEntered = game_total_time_in_s > 0;
-
-            if (nameEntered && roundTimeEntered && gameTimeEntered) {
-                choosePlayersButtonBlue.setVisibility(View.VISIBLE);
-                choosePlayersButtonGrey.setVisibility(View.GONE);
-            } else {
-                choosePlayersButtonBlue.setVisibility(View.GONE);
-                choosePlayersButtonGrey.setVisibility(View.VISIBLE);
-            }
-
+            checkIfGameTimeEntered();
         }
     };
+
+    private void checkIfGameTimeEntered() {
+        gameTimeEntered = game_total_time_in_s > 0;
+
+        if (nameEntered && roundTimeEntered && gameTimeEntered) {
+            choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+            choosePlayersButtonGrey.setVisibility(View.GONE);
+        } else {
+            choosePlayersButtonBlue.setVisibility(View.GONE);
+            choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+        }
+
+    }
+
     NumberPicker.OnValueChangeListener roundValueChangedListener = new NumberPicker.OnValueChangeListener() {
         @Override
         public void onValueChange(android.widget.NumberPicker picker, int oldVal, int newVal) {
             setRoundTime();
-
-            roundTimeEntered = round_total_time_in_s > 0;
-
-            if (nameEntered && roundTimeEntered && gameTimeEntered) {
-                choosePlayersButtonBlue.setVisibility(View.VISIBLE);
-                choosePlayersButtonGrey.setVisibility(View.GONE);
-            } else {
-                choosePlayersButtonBlue.setVisibility(View.GONE);
-                choosePlayersButtonGrey.setVisibility(View.VISIBLE);
-            }
+            checkIfRoundTimeEntered();
         }
     };
+
+    private void checkIfRoundTimeEntered() {
+        roundTimeEntered = round_total_time_in_s > 0;
+
+        if (nameEntered && roundTimeEntered && gameTimeEntered) {
+            choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+            choosePlayersButtonGrey.setVisibility(View.GONE);
+        } else {
+            choosePlayersButtonBlue.setVisibility(View.GONE);
+            choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,31 +139,6 @@ public class NewGameActivity extends BaseActivity {
         round_time_m.setOnValueChangedListener(roundValueChangedListener);
         round_time_s.setOnValueChangedListener(roundValueChangedListener);
 
-        // standard values
-        if (gds.getGame() != null) {
-            Game g = gds.getGame();
-
-            game_time_h.setValue(getTimeValues(g.getGame_time())[0]);
-            game_time_m.setValue(getTimeValues(g.getGame_time())[1]);
-            game_time_s.setValue(getTimeValues(g.getGame_time())[2]);
-            round_time_h.setValue(getTimeValues(g.getRound_time())[0]);
-            round_time_m.setValue(getTimeValues(g.getRound_time())[1]);
-            round_time_s.setValue(getTimeValues(g.getRound_time())[2]);
-
-            if (g.getRound_time_delta() > 0) {
-                delta_seconds.setValue(getTimeValues(g.getRound_time_delta())[0]);
-                delta_minutes.setValue(getTimeValues(g.getRound_time_delta())[1]);
-                delta_hours.setValue(getTimeValues(g.getRound_time_delta())[2]);
-            }
-        } else {
-            game_time_h.setValue(1);
-            round_time_m.setValue(5);
-        }
-
-
-        setGameTime();
-        setRoundTime();
-
         String dividerColor = "#024265";
         setDividerColor(round_time_s, dividerColor);
         setDividerColor(round_time_m, dividerColor);
@@ -170,7 +154,6 @@ public class NewGameActivity extends BaseActivity {
         check_new_game_reset_time = findViewById(R.id.check_new_game_reset_time);
         check_game_time_infinite = findViewById(R.id.check_game_time_infinite);
         chess_mode = findViewById(R.id.check_chess_mode);
-
 
         final LinearLayout delta_timers = findViewById(R.id.timer_new_game_delta);
         check_new_game_delta.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -214,6 +197,37 @@ public class NewGameActivity extends BaseActivity {
         });
 
         game_mode = findViewById(R.id.spinner_new_game_mode);
+        game_mode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(game_mode.getSelectedItemPosition() == TAGHelper.TIME_TRACKING){
+                    choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                    choosePlayersButtonGrey.setVisibility(View.GONE);
+                    findViewById(R.id.time_properties).setVisibility(View.INVISIBLE);
+                    // standard time for time tracking mode, all start by 0
+                    round_time_h.setValue(0);
+                    round_time_m.setValue(0);
+                    round_time_s.setValue(0);
+                    game_time_h.setValue(0);
+                    game_time_m.setValue(0);
+                    game_time_s.setValue(0);
+                    gameTimeEntered = true;
+                    roundTimeEntered = true;
+                }
+                else{
+                    findViewById(R.id.time_properties).setVisibility(View.VISIBLE);
+                    setGameTime();
+                    setRoundTime();
+                    checkIfGameTimeEntered();
+                    checkIfRoundTimeEntered();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         game_name = findViewById(R.id.input_new_game_name);
 
@@ -262,7 +276,40 @@ public class NewGameActivity extends BaseActivity {
         int gameNumber = settings.getInt("gameNumber", 1);
         inputGameName.setText(getString(R.string.gameNameStandard) + " " + gameNumber);
 
+        // standard values
+        if (gds.getGame() != null) {
+            Game g = gds.getGame();
+
+            game_time_h.setValue(getTimeValues(g.getGame_time())[0]);
+            game_time_m.setValue(getTimeValues(g.getGame_time())[1]);
+            game_time_s.setValue(getTimeValues(g.getGame_time())[2]);
+            round_time_h.setValue(getTimeValues(g.getRound_time())[0]);
+            round_time_m.setValue(getTimeValues(g.getRound_time())[1]);
+            round_time_s.setValue(getTimeValues(g.getRound_time())[2]);
+            // previous game mode
+            game_mode.setSelection(g.getGame_mode());
+
+            if (g.getRound_time_delta() > 0) {
+                delta_seconds.setValue(getTimeValues(g.getRound_time_delta())[0]);
+                delta_minutes.setValue(getTimeValues(g.getRound_time_delta())[1]);
+                delta_hours.setValue(getTimeValues(g.getRound_time_delta())[2]);
+            }
+        } else {
+            game_time_h.setValue(1);
+            round_time_m.setValue(5);
+        }
+
+        setGameTime();
+        setRoundTime();
         gds.setGame(null);
+    }
+
+    private boolean isRoundTimeEntered() {
+        return round_time_h.getValue() != 0 || round_time_m.getValue() != 0 || round_time_s.getValue() != 0;
+    }
+
+    private boolean isGameTimeEntered() {
+        return game_time_h.getValue() != 0 || game_time_m.getValue() != 0 || game_time_s.getValue() != 0;
     }
 
     @Override
@@ -351,21 +398,11 @@ public class NewGameActivity extends BaseActivity {
         newGame.setIsLastRound(0);
 
         if (!nameEntered) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.error)
-                    .setMessage(getString(R.string.gameNameSizeError))
-                    .setIcon(android.R.drawable.ic_menu_info_details)
-
-                    .setPositiveButton(getString(R.string.ok), null)
-                    .show();
+            showToast(getString(R.string.gameNameSizeError));
+            return;
         } else if (!gameTimeEntered || !roundTimeEntered) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.ok)
-                    .setMessage(R.string.roundTimeSetError)
-                    .setPositiveButton(R.string.ok, null)
-                    .setIcon(android.R.drawable.ic_menu_info_details)
-
-                    .show();
+            showToast(getString(R.string.roundTimeSetError));
+            return;
         } else {
             //reset round time
             if (check_new_game_reset_time.isChecked())
@@ -382,9 +419,6 @@ public class NewGameActivity extends BaseActivity {
                 newGame.setRound_time_delta(total_delta_in_seconds * 1000);
             }
 
-            //game mode
-            newGame.setGame_mode(game_mode.getSelectedItemPosition());
-
             //game time infinite
             if (check_game_time_infinite.isChecked())
                 newGame.setGame_time_infinite(1);
@@ -399,6 +433,9 @@ public class NewGameActivity extends BaseActivity {
 
             //new games are never saved
             newGame.setSaved(0);
+
+            //game mode
+            newGame.setGame_mode(game_mode.getSelectedItemPosition());
 
             gds.setGame(newGame);
 
@@ -418,7 +455,6 @@ public class NewGameActivity extends BaseActivity {
                         .show();
             } else
                 choosePlayers();
-
         }
     }
 

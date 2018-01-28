@@ -4,7 +4,10 @@ package org.secuso.privacyfriendlyboardgameclock.activities;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -20,11 +23,13 @@ import android.support.v7.view.ActionMode;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementStatisticsFragment;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
@@ -62,14 +67,9 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_management);
-
         fm = getFragmentManager();
         // pds already opened in MainActivity
         pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
-
-        /* Check if Data Corrupt, if yes move to main menu immediately
-        GamesDataSourceSingleton.getInstance(this).setGame(null);
-        if(checkIfSingletonDataIsCorrupt()) return;*/
 
         listPlayers = pds.getAllPlayers();
         layoutManager = new LinearLayoutManager(this);
@@ -80,12 +80,34 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fabDelete = findViewById(R.id.fab_delete_player);
         fabDelete.setOnClickListener(onFABDeleteListenter());
 
-        // Lookup the recyclerview in fragment layout
         playersRecycleView = findViewById(R.id.player_list);
         playersRecycleView.setHasFixedSize(true);
         playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
+        playersRecycleView.setItemAnimator(null);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case TAGHelper.REQUEST_READ_CONTACT_CODE:{
+                // If request is cancelled, the result arrays are empty.
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // Permission granted
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    Fragment prev = fm.findFragmentByTag("dialog");
+                    if(prev != null) ft.remove(prev);
+                    ft.addToBackStack(null);
+
+                    // Create and show the dialog
+                    PlayerManagementContactListFragment contactListFragment = new PlayerManagementContactListFragment();
+                    contactListFragment.show(ft, "dialog");
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -175,10 +197,19 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
-                actionMode.finish();
-                actionMode = null;
-
+                new AlertDialog.Builder(PlayerManagementActivity.this)
+                        .setTitle(R.string.warning)
+                        .setMessage(R.string.playerDeleteWarning)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
+                                actionMode.finish();
+                                actionMode = null;
+                            }
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
             }
         };
     }
@@ -250,6 +281,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
             // so all check box are visible
+            playerListAdapter.clearSelection();
             playerListAdapter.notifyDataSetChanged();
             return true;
         }
@@ -271,6 +303,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
             actionMode = null;
             switchVisibilityOf2FABs();
             // so all check box are visible
+            playerListAdapter.clearSelection();
             playerListAdapter.notifyDataSetChanged();
         }
     }

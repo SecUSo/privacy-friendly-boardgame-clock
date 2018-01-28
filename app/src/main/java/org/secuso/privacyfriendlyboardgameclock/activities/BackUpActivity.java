@@ -40,14 +40,7 @@ public class BackUpActivity extends BaseActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_backup);
         importBackupButton = findViewById(R.id.importBackupButton);
-        if(ContextCompat.checkSelfPermission(this
-                , Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            importBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
         exportBackupButton = findViewById(R.id.exportBackupButton);
-        if(ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            exportBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
-
     }
 
     public void importBackupButton(View view){
@@ -56,7 +49,6 @@ public class BackUpActivity extends BaseActivity{
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_READ_EXTERNAL_STORAGE);
         else if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            importBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
             new AlertDialog.Builder(this)
                     .setTitle(R.string.importDatabaseBackup)
                     .setMessage(R.string.importDatabaseBackupInfoMessage)
@@ -68,8 +60,6 @@ public class BackUpActivity extends BaseActivity{
                     .setNegativeButton(R.string.no, null)
                     .setIcon(android.R.drawable.ic_menu_help)
                     .show();
-        } else {
-            importBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
         }
     }
 
@@ -79,7 +69,6 @@ public class BackUpActivity extends BaseActivity{
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EXTERNAL_STORAGE);
         else if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            exportBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
             new AlertDialog.Builder(this)
                     .setTitle(R.string.exportDatabaseBackup)
                     .setMessage(R.string.exportDatabaseBackupInfoMessage)
@@ -92,8 +81,6 @@ public class BackUpActivity extends BaseActivity{
                     .setIcon(android.R.drawable.ic_menu_help)
 
                     .show();
-        } else {
-            exportBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
         }
        }
     @Override
@@ -104,7 +91,6 @@ public class BackUpActivity extends BaseActivity{
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    importBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
                     new AlertDialog.Builder(this)
                             .setTitle(R.string.importDatabaseBackup)
                             .setMessage(R.string.importDatabaseBackupInfoMessage)
@@ -117,15 +103,12 @@ public class BackUpActivity extends BaseActivity{
                             .setIcon(android.R.drawable.ic_menu_help)
 
                             .show();
-                } else {
-                    importBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
                 }
                 return;
             }
             case REQUEST_WRITE_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    exportBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
                     new AlertDialog.Builder(this)
                             .setTitle(R.string.exportDatabaseBackup)
                             .setMessage(R.string.exportDatabaseBackupInfoMessage)
@@ -138,10 +121,7 @@ public class BackUpActivity extends BaseActivity{
                             .setIcon(android.R.drawable.ic_menu_help)
 
                             .show();
-                } else {
-                    exportBackupButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
                 }
-
                 return;
             }
         }

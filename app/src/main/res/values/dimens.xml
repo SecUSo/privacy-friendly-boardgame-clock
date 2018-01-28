@@ -16,7 +16,7 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="main_button_padding">20dp</dimen>
     <dimen name="picSize">50dp</dimen>
-    <dimen name="text_size">20dp</dimen>
+    <dimen name="text_size">20sp</dimen>
     <dimen name="button_text_size">25sp</dimen>
     <dimen name="icon_max_size">250dp</dimen>
 </resources>

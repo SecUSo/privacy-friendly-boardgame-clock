@@ -1,12 +1,15 @@
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +22,7 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
@@ -78,6 +82,7 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
         playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
+        playersRecycleView.setItemAnimator(null);
     }
 
     @Override
@@ -86,6 +91,28 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
         getSupportActionBar().setTitle(R.string.choose_players);
         // disable NavigationDrawer
         setDrawerEnabled(false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case TAGHelper.REQUEST_READ_CONTACT_CODE:{
+                // If request is cancelled, the result arrays are empty.
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // Permission granted
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    Fragment prev = fm.findFragmentByTag("dialog");
+                    if(prev != null) ft.remove(prev);
+                    ft.addToBackStack(null);
+
+                    // Create and show the dialog
+                    PlayerManagementContactListFragment contactListFragment = new PlayerManagementContactListFragment();
+                    contactListFragment.show(ft, "dialog");
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private View.OnClickListener selectPlayerToast(){
@@ -180,13 +207,13 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
                         game.getChess_mode(), 0);
 
                 //start player index
-                if (game.getGame_mode() == 0 || game.getGame_mode() == 3) {
+                if (game.getGame_mode() == TAGHelper.CLOCKWISE || game.getGame_mode() == TAGHelper.MANUAL_SEQUENCE || game.getGame_mode() == TAGHelper.TIME_TRACKING) {
                     game.setStartPlayerIndex(0);
                     game.setNextPlayerIndex(1);
-                } else if (game.getGame_mode() == 1) {
+                } else if (game.getGame_mode() == TAGHelper.COUNTER_CLOCKWISE) {
                     game.setStartPlayerIndex(0);
                     game.setNextPlayerIndex(selectedPlayers.size() - 1);
-                } else if (game.getGame_mode() == 2) {
+                } else if (game.getGame_mode() == TAGHelper.RANDOM) {
                     game.setStartPlayerIndex(0);
 
                     int randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
@@ -220,7 +247,11 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
     }
 
     private void startNewGame() {
-        Intent intent = new Intent(ChoosePlayersActivity.this, GameCountDownActivity.class);
+        Intent intent;
+        if(gds.getGame().getGame_mode() == TAGHelper.TIME_TRACKING)
+            intent = new Intent(ChoosePlayersActivity.this, GameTimeTrackingModeActivity.class);
+        else
+            intent = new Intent(ChoosePlayersActivity.this, GameCountDownActivity.class);
         startActivity(intent);
     }
 
@@ -306,6 +337,7 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
             playerListAdapter.setLongClickedSelected(true);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
+            playerListAdapter.clearSelection();
             playerListAdapter.notifyDataSetChanged();
             return true;
         }
@@ -327,6 +359,7 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
             playerListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
+            playerListAdapter.clearSelection();
             playerListAdapter.notifyDataSetChanged();
         }
     }

@@ -98,13 +98,10 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
 
         // Highlight the item with blue if it's simple selected
         if(isSimpleClickedSelected && !isLongClickedSelected){
-            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
             if(isSelected(position)){
-                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.VISIBLE);
                 viewHolder.selectedPlayerNumber.setText(orderedSelectedItems.indexOf(position)+1+".");
             }
             else{
-                viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
                 viewHolder.selectedPlayerNumber.setText("");
             }
             viewHolder.selectedCheckbox.setVisibility(View.VISIBLE);
@@ -114,16 +111,14 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         }
         // Highlight the item with grey if it's long selected
         else if (!isSimpleClickedSelected && isLongClickedSelected){
-            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-            viewHolder.longClickedSelectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+            // deactivate the index of player
+            viewHolder.selectedPlayerNumber.setText("");
             viewHolder.selectedCheckbox.setVisibility(View.VISIBLE);
             viewHolder.selectedCheckbox.setOnCheckedChangeListener(null);
             viewHolder.selectedCheckbox.setChecked(isSelected(position));
             viewHolder.selectedCheckbox.setOnCheckedChangeListener(viewHolder.checkedBoxListener);
         }
         else{
-            viewHolder.simpleClickedSelectedOverlay.setVisibility(View.INVISIBLE);
-            viewHolder.longClickedSelectedOverlay.setVisibility(View.INVISIBLE);
             viewHolder.selectedPlayerNumber.setText("");
             viewHolder.selectedCheckbox.setVisibility(View.INVISIBLE);
         }
@@ -134,6 +129,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      * @param position position von diesem Item
      */
     public void removeItem(int position) {
+        // TODO make database removal run in background
         pdss.deletePlayer(playersList.get(position));
         playersList.remove(position);
         orderedSelectedItems = new ArrayList<>();
@@ -236,8 +232,6 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         private ImageView playerIMGView;
         private TextView playerTextView;
         private ItemClickListener itemClickListener;
-        private View longClickedSelectedOverlay;
-        private View simpleClickedSelectedOverlay;
         private TextView selectedPlayerNumber;
         private CheckBox selectedCheckbox;
         private View rootView;
@@ -260,8 +254,6 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
             itemView.setOnLongClickListener(this);
             playerIMGView = (ImageView) itemView.findViewById(R.id.player_image);
             playerTextView = (TextView) itemView.findViewById(R.id.player_text);
-            simpleClickedSelectedOverlay = itemView.findViewById(R.id.simpleClicked_selected_overlay);
-            longClickedSelectedOverlay = itemView.findViewById(R.id.longClicked_selected_overlay);
             selectedPlayerNumber = itemView.findViewById(R.id.selectedPlayerNumberTextView);
             selectedCheckbox = itemView.findViewById(R.id.selectedCheckbox);
             selectedCheckbox.setOnCheckedChangeListener(checkedBoxListener);

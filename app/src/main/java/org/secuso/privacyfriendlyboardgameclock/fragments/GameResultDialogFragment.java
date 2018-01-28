@@ -19,10 +19,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.BaseActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter;
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 
 import java.util.Collections;
@@ -36,15 +39,22 @@ import java.util.HashMap;
 
 public class GameResultDialogFragment extends DialogFragment {
 
-    GameCountDownActivity activity;
+    BaseActivity activity;
     View rootView;
     ListView players;
     Game game;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        activity = (GameCountDownActivity) getActivity();
-        game = activity.getGame();
+        GamesDataSourceSingleton gds = GamesDataSourceSingleton.getInstance(getActivity());
+        activity = (BaseActivity) getActivity();
+        if(gds == null){
+            ((BaseActivity)getActivity()).showMainMenu();
+        }else{
+            if(((BaseActivity)getActivity()).checkIfSingletonDataIsCorrupt()) return null;
+        }
+
+        game = gds.getGame();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(game.getName())
                 .setPositiveButton(R.string.okay,
@@ -59,6 +69,29 @@ public class GameResultDialogFragment extends DialogFragment {
         View v = inflater.inflate(R.layout.fragment_game_results,null);
         ((TextView)v.findViewById(R.id.timePlayedText)).setText(getTimeLeft());
         ((TextView)v.findViewById(R.id.roundsPlayedText)).setText(String.valueOf(getLastRound()));
+
+        // Set TextView for game mode
+        TextView gameModeTV = v.findViewById(R.id.gameModeText);
+        String[] gameModes = getResources().getStringArray(R.array.game_modes);
+        switch (game.getGame_mode()){
+            case TAGHelper.CLOCKWISE:
+                gameModeTV.setText(gameModes[TAGHelper.CLOCKWISE]);
+                break;
+            case TAGHelper.COUNTER_CLOCKWISE:
+                gameModeTV.setText(gameModes[TAGHelper.COUNTER_CLOCKWISE]);
+                break;
+            case TAGHelper.RANDOM:
+                gameModeTV.setText(gameModes[TAGHelper.RANDOM]);
+                break;
+            case TAGHelper.MANUAL_SEQUENCE:
+                gameModeTV.setText(gameModes[TAGHelper.MANUAL_SEQUENCE]);
+                break;
+            case TAGHelper.TIME_TRACKING:
+                gameModeTV.setText(gameModes[TAGHelper.TIME_TRACKING]);
+                break;
+            default:
+                break;
+        }
 
         ListView players = (ListView) v.findViewById(R.id.list);
         PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.list, game.getPlayers());

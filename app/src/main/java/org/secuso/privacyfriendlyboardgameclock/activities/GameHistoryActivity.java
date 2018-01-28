@@ -83,6 +83,7 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
         gameListAdapter = new GameListAdapter(this,gamesList,this);
         gamesRecycleView.setAdapter(gameListAdapter);
         gamesRecycleView.setLayoutManager(layoutManager);
+        gamesRecycleView.setItemAnimator(null);
 
         // Delete FAB
         fabDeleteButton = findViewById(R.id.fab_delete_game);
@@ -204,6 +205,7 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             fabDeleteButton.setVisibility(View.VISIBLE);
             // so all check box are visible
+            gameListAdapter.clearSelection();
             gameListAdapter.notifyDataSetChanged();
             return true;
         }
@@ -225,6 +227,7 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
             actionMode = null;
             fabDeleteButton.setVisibility(View.GONE);
             // so all check box are gone
+            gameListAdapter.clearSelection();
             gameListAdapter.notifyDataSetChanged();
         }
     }

@@ -62,30 +62,6 @@
                 android:text="@string/game_button_continue"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                android:gravity="center|bottom"
-                android:orientation="vertical" >
-
-                <Button
-                    android:id="@+id/button_welcomedialog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/activity_horizontal_margin"
-                    android:paddingEnd="@dimen/activity_horizontal_margin"
-                    android:layout_gravity="bottom|center"
-                    android:background="@drawable/button_normal"
-                    android:text="@string/main_button_welcomedialog"
-                    android:textColor="@color/white"
-                    android:layout_margin="@dimen/fab_margin"/>
-
-            </LinearLayout>
-
-
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>

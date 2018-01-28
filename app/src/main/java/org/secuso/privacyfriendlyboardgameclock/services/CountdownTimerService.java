@@ -36,7 +36,6 @@ public class CountdownTimerService extends Service{
     private CountDownTimer roundCountDownTimer;
     // Start Value is -1
     private long currentRoundTimeMs, currentGameTimeMs, gameTime;
-    private final long COUNTDOWN_INTERVAL = 50;
     private boolean isPaused = true;
     // This is the object that receives interactions from clients.  See
     // RemoteService for a more complete example.
@@ -45,6 +44,7 @@ public class CountdownTimerService extends Service{
     //TODO run on new thread crash if update UI along side
     private HandlerThread handlerThread;
     private Handler handler;
+    // In order: The actual time delta, the system time by the time we start counting, the system time now and the system time when paused
     private long exeedGameTimeMs, exeedGameTimeInitMs, exeedGameTimeNowMs, exeedGameTimePauseMs;
     private long exeedRoundTimeMs, exeedRoundTimeInitMs, exeedRoundTimeNowMs, exeedRoundTimePauseMs;
     private Runnable exeedGameTimeMsCounter = new Runnable() {
@@ -55,7 +55,7 @@ public class CountdownTimerService extends Service{
             broadcastIntent.putExtra(TAGHelper.GAME_COUNT_IN_NEGATIVE_TAG,exeedGameTimeMs);
             sendBroadcast(broadcastIntent);
             broadcastIntent.removeExtra(TAGHelper.GAME_COUNT_IN_NEGATIVE_TAG);
-            handler.postDelayed(this, COUNTDOWN_INTERVAL);
+            handler.postDelayed(this, TAGHelper.COUNTDOWN_INTERVAL);
         }
     };
     private Runnable exeedRoundTimeMsCounter = new Runnable() {
@@ -66,7 +66,7 @@ public class CountdownTimerService extends Service{
             broadcastIntent.putExtra(TAGHelper.ROUND_COUNT_IN_NEGATIVE_TAG,exeedRoundTimeMs);
             sendBroadcast(broadcastIntent);
             broadcastIntent.removeExtra(TAGHelper.ROUND_COUNT_IN_NEGATIVE_TAG);
-            handler.postDelayed(this, COUNTDOWN_INTERVAL);
+            handler.postDelayed(this, TAGHelper.COUNTDOWN_INTERVAL);
         }
     };
 
@@ -88,9 +88,6 @@ public class CountdownTimerService extends Service{
         // prepare the sound files
         roundEndSound = MediaPlayer.create(this,R.raw.roundend);
         gameEndSound = MediaPlayer.create(this, R.raw.gameend);
-
-        // Display a notification about us starting.  We put an icon in the status bar.
-        showNotification();
 
         // Create new thread for the Handler
         /*handlerThread = new HandlerThread("CountingThread");
@@ -123,7 +120,7 @@ public class CountdownTimerService extends Service{
 
     public void initGameCountdownTimer(final long initTime){
         Log.i(classTAG, "Game Countdown Timer initialized.");
-        gameCountDownTimer = new CountDownTimer(initTime, COUNTDOWN_INTERVAL) {
+        gameCountDownTimer = new CountDownTimer(initTime, TAGHelper.COUNTDOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
                 currentGameTimeMs = millisUntilFinished;
@@ -147,7 +144,7 @@ public class CountdownTimerService extends Service{
 
     public void initRoundCountdownTimer(final long initTime){
         Log.i(classTAG, "Round Countdown Timer initialized.");
-        roundCountDownTimer = new CountDownTimer(initTime, COUNTDOWN_INTERVAL) {
+        roundCountDownTimer = new CountDownTimer(initTime, TAGHelper.COUNTDOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
                 currentRoundTimeMs = millisUntilFinished;
@@ -218,9 +215,10 @@ public class CountdownTimerService extends Service{
     }
 
     /**
-     * Show a notification while this service is running.
+     * Show a notification while this service is running
+     * and also start the service as foreground
      */
-    private void showNotification() {
+    public void showNotification() {
         // In this sample, we'll use the same text for the ticker and the expanded notification
         CharSequence text = getText(R.string.serviceNotificationContent);
 
@@ -238,8 +236,9 @@ public class CountdownTimerService extends Service{
                 .setContentIntent(contentIntent)  // The intent to send when the entry is clicked
                 .build();
 
+        startForeground(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID, notification);
         // Send the notification.
-        notificationManager.notify(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID, notification);
+        //notificationManager.notify(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID, notification);
     }
 
     public long getCurrentRoundTimeMs() {

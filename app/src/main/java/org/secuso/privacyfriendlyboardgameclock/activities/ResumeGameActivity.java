@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -67,6 +68,7 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
         gameListAdapter = new GameListAdapter(this, savedGamesList, this);
         gameListRecyleView.setAdapter(gameListAdapter);
         gameListRecyleView.setLayoutManager(layoutManager);
+        gameListRecyleView.setItemAnimator(null);
     }
 
     @Override
@@ -86,7 +88,12 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
             public void onClick(View view) {
                 if(chosenGame != null){
                     gds.setGame(chosenGame);
-                    Intent intent = new Intent(ResumeGameActivity.this, GameCountDownActivity.class);
+                    Intent intent;
+                    if(chosenGame.getGame_mode() == TAGHelper.TIME_TRACKING)
+                        intent = new Intent(ResumeGameActivity.this, GameTimeTrackingModeActivity.class);
+                    else
+                        intent = new Intent(ResumeGameActivity.this, GameCountDownActivity.class);
+
                     startActivity(intent);
                 }
                 else
@@ -115,6 +122,8 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
                     gameListAdapter.setSimpleClickedSelected(false);
                     gameListAdapter.setLongClickedSelected(false);
                     chosenGame = null;
+                    // so all the check box disappear
+                    gameListAdapter.notifyDataSetChanged();
                     gameListAdapter.clearSelection();
                     loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
                     loadGameFAB.setOnClickListener(selectAGameToast);
@@ -221,6 +230,8 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
             gameListAdapter.setSimpleClickedSelected(false);
             mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
             switchVisibilityOf2FABs();
+            gameListAdapter.clearSelection();
+            gameListAdapter.notifyDataSetChanged();
             return true;
         }
 
@@ -240,6 +251,8 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
             gameListAdapter.clearSelection();
             actionMode = null;
             switchVisibilityOf2FABs();
+            gameListAdapter.clearSelection();
+            gameListAdapter.notifyDataSetChanged();
         }
     }
 }

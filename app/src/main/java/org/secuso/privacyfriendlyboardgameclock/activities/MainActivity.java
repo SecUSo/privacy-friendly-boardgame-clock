@@ -37,6 +37,8 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
+import java.util.ArrayList;
+
 /**
  * @author Christopher Beckmann, Karola Marky
  * @version 20171016
@@ -85,21 +87,6 @@ public class MainActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, ResumeGameActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        // Use this a button to display the tutorial screen
-        final Button tutorialButton = findViewById(R.id.button_welcomedialog);
-        if(tutorialButton != null) {
-            tutorialButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PrefManager prefManager = new PrefManager(getBaseContext());
-                    prefManager.setFirstTimeLaunch(true);
-                    Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             });

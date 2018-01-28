@@ -45,6 +45,7 @@
         <item>Counter-Clockwise</item>
         <item>Random</item>
         <item>Manual sequence</item>
+        <item>Time Tracking</item>
     </string-array>
     <string name="modeClockwise">Clockwise</string>
     <string name="modeCounterClockwise">Counter-Clockwise</string>
@@ -61,6 +62,7 @@
     <!-- Game -->
     <string name="round">Round:</string>
     <string name="saveGame">Save Clock</string>
+    <string name="withoutSave">Without Saving</string>
     <string name="showResults">Show Results</string>
     <string name="gameTime">Game Time:</string>
     <string name="currentPlayer">Player:</string>
@@ -91,10 +93,10 @@
     <string name="gameResults">Game Results</string>
     <string name="backToMainMenu">Back to Main Menu</string>
     <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
-    <string name="activeGameTimeHeader">Game Time left:</string>
+    <string name="activeGameTimeHeader">Game Time:</string>
     <string name="playedRoundsHeader">Last Round:</string>
     <string name="playerResults">Player Results:</string>
-    <string name="timeLeft">Time left:</string>
+    <string name="timeLeft">Player\'s time:</string>
 
     <!-- Load Game -->
     <string name="loadGame">Load Game</string>
@@ -118,6 +120,7 @@
     <string name="editPlayer">Edit Player</string>
     <string name="enterAName">Please enter a name.</string>
     <string name="chooseContacts">Choose contacts:</string>
+    <string name="contactListIsEmpty">There was no contact found.</string>
 
     <!-- Player Statistics -->
     <string name="playerStatistic">Player Statistic</string>
@@ -208,13 +211,17 @@
     <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
     <string name="newGameFragment" translatable="false">NewGameFragment</string>
     <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
+    <string name="playerDeleteWarning">Deleting these players will lead to the removal of the associated games as well. Are you sure you want to do this?</string>
+
 
 
     <!-- ### Toast ### -->
     <string name="selectAtLeast2Players" >Please select at least 2 Players to continue.</string>
+    <string name="warning" >Warning</string>
 
     <!-- ### Service ### -->
     <string name="CountdownTimerServiceDescription" translatable="false">Privacy friendly Board Game Clock Countdown Timer Service.</string>
+    <string name="TimeTrackingServiceDescription" translatable="false">Privacy friendly Board Game Clock Time Tracking Service.</string>
     <string name="CountDownTimerServiceStopped" >CountDown Timer Service stopped.</string>
     <string name="serviceNotificationLabel" translatable="false">Privacy Friendly Boardgame Clock</string>
     <string name="serviceNotificationContent" >The Clock is counting down.</string>

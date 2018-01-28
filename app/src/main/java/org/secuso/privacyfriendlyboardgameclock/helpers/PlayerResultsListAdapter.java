@@ -11,6 +11,7 @@ import android.widget.TextView;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
+import org.secuso.privacyfriendlyboardgameclock.activities.GameTimeTrackingModeActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
@@ -32,6 +33,9 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
         }
         else if(mContext instanceof GameHistoryActivity){
             game = ((GameHistoryActivity)mContext).getSelectedGame();
+        }
+        else if(mContext instanceof GameTimeTrackingModeActivity){
+            game = ((GameTimeTrackingModeActivity) mContext).getGame();
         }
     }
 

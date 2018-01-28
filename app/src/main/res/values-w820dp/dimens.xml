@@ -5,5 +5,5 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="main_button_padding">30dp</dimen>
     <dimen name="picSize">120dp</dimen>
-    <dimen name="text_size">40dp</dimen>
+    <dimen name="text_size">40sp</dimen>
 </resources>

@@ -16,6 +16,17 @@ public class TAGHelper {
     public static final long DEFAULT_VALUE_LONG = -1;
     public static final String GAME_FINISHED_SIGNAL = "game finished";
     public static final String ROUND_FINISHED_SIGNAL = "round finished";
+    public static final long COUNTDOWN_INTERVAL = 100;
     // Intent Tag
     public static final String GAME_INDEX_FROM_LIST = "game index from list";
+    // Permissions TAGS
+    public static final int REQUEST_READ_CONTACT_CODE = 7;
+    // Game Mode Index
+    public static final int CLOCKWISE = 0;
+    public static final int COUNTER_CLOCKWISE = 1;
+    public static final int RANDOM = 2;
+    public static final int MANUAL_SEQUENCE= 3;
+    public static final int TIME_TRACKING = 4;
+    // TimeTrackingService
+    public static final String GAME_TIME_TRACKING = "game time tracking";
 }

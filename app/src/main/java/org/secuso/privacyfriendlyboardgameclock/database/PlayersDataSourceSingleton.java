@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import org.secuso.privacyfriendlyboardgameclock.model.Game;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 import java.io.ByteArrayOutputStream;
@@ -101,9 +102,12 @@ public class PlayersDataSourceSingleton {
     }
 
     public void deletePlayer(Player p) {
+        // delete all games associated with this player also
+        GamesDataSourceSingleton gds = GamesDataSourceSingleton.getInstance(null);
+        gds.deleteGamesWithPlayer(p.getId());
+
         String whereClause = "_id" + "=?";
         String[] whereArgs = new String[]{String.valueOf(p.getId())};
-
         database.delete(DbHelper.TABLE_PLAYERS, whereClause, whereArgs);
     }
 

@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:background="@drawable/button_disabled"
+                    android:background="@drawable/button_fullwidth"
                     android:text="@string/importDatabaseBackup"
                     android:id="@+id/importBackupButton"
                     android:onClick="importBackupButton"
@@ -56,7 +56,7 @@
                     android:id="@+id/exportBackupButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_disabled"
+                    android:background="@drawable/button_fullwidth"
                     android:onClick="exportBackupButton"
                     android:text="@string/exportDatabaseBackup"
                     android:textColor="@color/white"/>

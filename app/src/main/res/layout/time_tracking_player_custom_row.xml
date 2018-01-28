@@ -25,30 +25,20 @@
         <TextView
             android:id="@+id/player_text"
             android:layout_toEndOf="@id/player_image"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textStyle="bold"/>
 
-        <CheckBox
-            android:id="@+id/selectedCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
-
         <TextView
-            android:id="@+id/selectedPlayerNumberTextView"
+            android:id="@+id/current_round_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:layout_toStartOf="@id/selectedCheckbox"
-            android:layout_centerVertical="true"
-            android:duplicateParentState="true"
-            android:textColor="@drawable/list_item_textcolor"
-            android:textSize="20sp" />
+            android:layout_below="@+id/player_text"
+            android:layout_toEndOf="@id/player_image"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

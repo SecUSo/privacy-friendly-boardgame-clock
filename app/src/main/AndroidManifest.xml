@@ -20,6 +20,9 @@
         <service android:name=".services.CountdownTimerService"
             android:exported="false"
             android:description="@string/CountdownTimerServiceDescription"/>
+        <service android:name=".services.TimeTrackingService"
+            android:exported="false"
+            android:description="@string/TimeTrackingServiceDescription"/>
         <service android:name=".services.DetectTaskClearedService"
             android:stopWithTask="false"
             android:description="@string/CountdownTimerServiceDescription"/>
@@ -95,6 +98,15 @@
         </activity>
         <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameTimeTrackingModeActivity"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">

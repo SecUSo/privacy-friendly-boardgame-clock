@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.SimpleCursorAdapter;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
+import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ContactListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
@@ -133,6 +134,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
         contactListRecycleView = v.findViewById(R.id.contactList);
         contactListRecycleView.setAdapter(contactListAdapter);
         contactListRecycleView.setLayoutManager(layoutManager);
+        contactListRecycleView.setItemAnimator(null);
 
         // and tell loader manager to start loading
         getLoaderManager().initLoader(0, null, this);
@@ -142,10 +144,27 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        int countContacts = 1;
+        if(contactListAdapter.getCursorAdapter().getCursor() != null){
+            countContacts = contactListAdapter.getCursorAdapter().getCursor().getCount();
+        }
+        if (dialog != null) {
+            // If no contacts found, change title of dialog
+            if(countContacts == 0)
+                dialog.setTitle(R.string.contactListIsEmpty);
+        }
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
+
+
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {

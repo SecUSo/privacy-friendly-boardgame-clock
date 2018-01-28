@@ -42,8 +42,8 @@ tools:openDrawer="start">
                     android:id="@+id/header_new_game_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/main_button_padding"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:text="@string/gameName"
                     android:textSize="15sp" />
@@ -53,8 +53,8 @@ tools:openDrawer="start">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/header_new_game_name"
-                    android:layout_marginLeft="130sp"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="130sp"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-10sp"
                     android:hint="..."
                     android:inputType="text"
@@ -63,14 +63,52 @@ tools:openDrawer="start">
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/header_new_game_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header_new_game_name"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/gameMode"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_new_game_mode"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/input_new_game_name"
+                    android:layout_alignStart="@+id/input_new_game_name"
+                    android:layout_alignTop="@+id/header_new_game_mode"
+                    android:layout_marginEnd="@dimen/main_button_padding"
+                    android:layout_marginTop="-3sp"
+                    android:entries="@array/game_modes" />
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/time_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinner_new_game_mode">
+
+                <CheckBox
+                    android:id="@+id/check_chess_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="130sp"
+                    android:layout_marginEnd="@dimen/main_button_padding"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/chess_clock" />
+
+                <TextView
                     android:id="@+id/header_new_game_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/header_new_game_name"
-                    android:layout_alignStart="@+id/header_new_game_name"
-                    android:layout_below="@+id/header_new_game_name"
-                    android:layout_marginBottom="30sp"
-                    android:layout_marginTop="25sp"
+                    android:layout_below="@+id/check_chess_mode"
+                    android:layout_marginStart="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
+                    android:layout_marginTop="10dp"
                     android:text="@string/gameTime"
                     android:textSize="15sp" />
 
@@ -80,8 +118,8 @@ tools:openDrawer="start">
                     android:layout_height="50dp"
                     android:layout_alignTop="@+id/header_new_game_time"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="134sp"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="134sp"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -96,7 +134,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
                         android:textColor="@color/black"
@@ -111,7 +149,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
                         android:textColor="@color/black"
@@ -127,7 +165,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
                         android:textColor="@color/black"
@@ -138,11 +176,10 @@ tools:openDrawer="start">
                     android:id="@+id/check_game_time_infinite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
+                    android:layout_alignStart="@+id/check_chess_mode"
                     android:layout_below="@+id/timer_new_game_time"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:text="@string/infinite" />
 
@@ -152,8 +189,8 @@ tools:openDrawer="start">
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/check_game_time_infinite"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="@dimen/main_button_padding"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:text="@string/roundTime"
                     android:textSize="15sp" />
@@ -164,8 +201,8 @@ tools:openDrawer="start">
                     android:layout_height="50dp"
                     android:layout_alignTop="@+id/header_new_round_time"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="134sp"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="134sp"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -179,7 +216,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
                         android:textColor="@color/black"
@@ -194,7 +231,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
                         android:textColor="@color/black"
@@ -209,7 +246,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
                         android:textColor="@color/black"
@@ -220,56 +257,20 @@ tools:openDrawer="start">
                     android:id="@+id/check_new_game_reset_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
+                    android:layout_alignStart="@+id/check_chess_mode"
                     android:layout_below="@+id/timer_new_round_time"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:text="@string/resetTimeAfterRoundCheck" />
-
-                <TextView
-                    android:id="@+id/header_new_game_mode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/check_new_game_reset_time"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="@dimen/main_button_padding"
-                    android:layout_marginRight="@dimen/main_button_padding"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/gameMode"
-                    android:textSize="15sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_new_game_mode"
-                    android:layout_width="200sp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
-                    android:layout_alignTop="@+id/header_new_game_mode"
-                    android:layout_marginRight="@dimen/main_button_padding"
-                    android:layout_marginTop="-3sp"
-                    android:entries="@array/game_modes" />
-
-                <CheckBox
-                    android:id="@+id/check_chess_mode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
-                    android:layout_below="@+id/spinner_new_game_mode"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="@dimen/main_button_padding"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/chess_clock" />
 
                 <TextView
                     android:id="@+id/header_new_game_delta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/check_chess_mode"
+                    android:layout_below="@+id/check_new_game_reset_time"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="@dimen/main_button_padding"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:text="@string/timeDelta"
                     android:textSize="15sp" />
@@ -278,10 +279,9 @@ tools:openDrawer="start">
                     android:id="@+id/check_new_game_delta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
+                    android:layout_alignStart="@+id/check_chess_mode"
                     android:layout_alignTop="@+id/header_new_game_delta"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-9sp"
                     android:text="@string/increaseTimeAfterRoundCheck" />
 
@@ -290,8 +290,8 @@ tools:openDrawer="start">
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_below="@+id/check_new_game_delta"
-                    android:layout_marginLeft="134sp"
-                    android:layout_marginRight="@dimen/main_button_padding"
+                    android:layout_marginStart="134sp"
+                    android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
                     android:background="@color/white"
                     android:orientation="horizontal"
@@ -306,7 +306,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
                         android:textColor="@color/black"
@@ -321,7 +321,7 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
                         android:textColor="@color/black"
@@ -336,12 +336,13 @@ tools:openDrawer="start">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
+            </RelativeLayout>
 
             </RelativeLayout>
 
@@ -352,8 +353,8 @@ tools:openDrawer="start">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5sp"
-            android:layout_marginLeft="@dimen/main_button_padding"
-            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_marginStart="@dimen/main_button_padding"
+            android:layout_marginEnd="@dimen/main_button_padding"
             android:layout_marginTop="10sp"
             android:background="@drawable/button_fullwidth"
             android:onClick="choosePlayersButton"
@@ -367,8 +368,8 @@ tools:openDrawer="start">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5sp"
-            android:layout_marginLeft="@dimen/main_button_padding"
-            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_marginStart="@dimen/main_button_padding"
+            android:layout_marginEnd="@dimen/main_button_padding"
             android:layout_marginTop="10sp"
             android:background="@drawable/button_disabled"
             android:onClick="choosePlayersButton"
@@ -377,19 +378,18 @@ tools:openDrawer="start">
             android:textSize="@dimen/button_text_size"
             android:visibility="visible" />
 
-
     </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+<android.support.design.widget.NavigationView
+    android:id="@+id/nav_view"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    app:headerLayout="@layout/nav_header_main"
+    app:menu="@menu/activity_main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -53,10 +53,32 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/playerListHeader"
+            android:id="@+id/gameModeHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/roundsPlayedHeader"
+            android:layout_marginLeft="@dimen/main_button_padding"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:layout_marginTop="10dp"
+            android:text="@string/gameMode"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/gameModeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/gameModeHeader"
+            android:layout_alignLeft="@+id/timePlayedText"
+            android:layout_alignStart="@+id/timePlayedText"
+            android:layout_marginRight="@dimen/main_button_padding"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/playerListHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameModeHeader"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="@dimen/main_button_padding"
             android:layout_marginRight="@dimen/main_button_padding"
