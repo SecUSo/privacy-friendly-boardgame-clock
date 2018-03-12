@@ -1,25 +1,29 @@
 package org.secuso.privacyfriendlyboardgameclock.services;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
+import org.secuso.privacyfriendlyboardgameclock.model.Game;
 
 /**
  * Created by Quang Anh Dang on 26.12.2017.
@@ -28,6 +32,7 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
  */
 
 public class CountdownTimerService extends Service{
+    private Game game;
     private MediaPlayer roundEndSound = null;
     private MediaPlayer gameEndSound = null;
     public static final String classTAG = "CountdownTimerService";
@@ -108,7 +113,6 @@ public class CountdownTimerService extends Service{
         roundEndSound.release();
         gameEndSound.release();
         Log.i(classTAG, "CountdownTimerService destroyed.");
-        Toast.makeText(this, R.string.CountDownTimerServiceStopped,Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 
@@ -170,6 +174,7 @@ public class CountdownTimerService extends Service{
      * called after init method to start game timer
      */
     public void startGameTimer(){
+        isPaused = false;
         if(gameCountDownTimer != null){
             gameCountDownTimer.start();
         }
@@ -179,6 +184,7 @@ public class CountdownTimerService extends Service{
      * called after init method to start round timer
      */
     public void startRoundTimer(){
+        isPaused = false;
         if (roundCountDownTimer != null) {
             roundCountDownTimer.start();
         }
@@ -226,19 +232,33 @@ public class CountdownTimerService extends Service{
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, GameCountDownActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+        initChannels(this);
+
         // Set the info for the views that show in the notification panel.
-        Notification notification = new Notification.Builder(this)
+        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this,"countdown")
                 .setSmallIcon(R.mipmap.icon)  // the status icon
                 .setTicker(text)  // the status text
                 .setWhen(System.currentTimeMillis())  // the time stamp
                 .setContentTitle(getText(R.string.serviceNotificationLabel))  // the label of the entry
                 .setContentText(text)  // the contents of the entry
-                .setContentIntent(contentIntent)  // The intent to send when the entry is clicked
-                .build();
+                .setContentIntent(contentIntent);  // The intent to send when the entry is clicked
+
+        Notification notification = nBuilder.build();
 
         startForeground(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID, notification);
-        // Send the notification.
-        //notificationManager.notify(TAGHelper.COUNT_DOWN_TIMER_NOTIFICATION_ID, notification);
+    }
+
+    public void initChannels(Context context) {
+        if (Build.VERSION.SDK_INT < 26) {
+            return;
+        }
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel channel = new NotificationChannel("countdown",
+                "Count Down Timer",
+                NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription("Count Down Timer");
+        notificationManager.createNotificationChannel(channel);
     }
 
     public long getCurrentRoundTimeMs() {
@@ -271,6 +291,14 @@ public class CountdownTimerService extends Service{
 
     public void setPaused(boolean paused) {
         isPaused = paused;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public Intent getBroadcastIntent() {

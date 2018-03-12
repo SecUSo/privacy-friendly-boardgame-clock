@@ -4,8 +4,9 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="3dp"
-    android:layout_marginBottom="3dp"
+    android:padding="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:layout_marginEnd="@dimen/activity_horizontal_margin"
     android:layout_marginStart="@dimen/activity_horizontal_margin">
 
@@ -13,7 +14,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:duplicateParentState="true">
+        android:duplicateParentState="true"
+        android:padding="8dp">
 
         <CheckBox
             android:id="@+id/selectedCheckbox"

@@ -146,16 +146,6 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
     @Override
     public void onResume() {
         super.onResume();
-        final AlertDialog dialog = (AlertDialog) getDialog();
-        int countContacts = 1;
-        if(contactListAdapter.getCursorAdapter().getCursor() != null){
-            countContacts = contactListAdapter.getCursorAdapter().getCursor().getCount();
-        }
-        if (dialog != null) {
-            // If no contacts found, change title of dialog
-            if(countContacts == 0)
-                dialog.setTitle(R.string.contactListIsEmpty);
-        }
     }
 
     @Override
@@ -188,6 +178,17 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Once cursor is loaded, give it to adapter
         contactListAdapter.getCursorAdapter().swapCursor(data);
+
+        final AlertDialog dialog = (AlertDialog) getDialog();
+        int countContacts = 1;
+        if(contactListAdapter.getCursorAdapter().getCursor() != null){
+            countContacts = contactListAdapter.getCursorAdapter().getCursor().getCount();
+        }
+        if (dialog != null) {
+            // If no contacts found, change title of dialog
+            if(countContacts == 0)
+                dialog.setTitle(R.string.contactListIsEmpty);
+        }
     }
 
     @Override

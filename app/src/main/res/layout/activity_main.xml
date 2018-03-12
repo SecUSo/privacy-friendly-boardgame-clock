@@ -29,13 +29,13 @@
 
             <ImageView
                 android:id="@+id/appIcon"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/main_button_padding"
                 android:layout_marginRight="@dimen/main_button_padding"
-                android:src="@mipmap/icon" />
+                android:src="@drawable/ic_boardgameclock" />
 
             <Button
                 android:id="@+id/newGameButton"

@@ -1,5 +1,6 @@
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -98,6 +99,7 @@ public class GameCountDownActivity extends BaseActivity {
             // service that we know is running in our own process, we can
             // cast its IBinder to a concrete class and directly access it.
             mBoundService = ((CountdownTimerService.LocalBinder)service).getService();
+            prepareAll();
             Log.i("GameCountDownActivity", "Service Connected.");
         }
 
@@ -453,7 +455,7 @@ public class GameCountDownActivity extends BaseActivity {
                 updateGUI(intent);
             }
         };
-        startTimerService();
+
         // prevent phone from sleeping while game is running
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -482,90 +484,113 @@ public class GameCountDownActivity extends BaseActivity {
         gameTimerTv = findViewById(R.id.game_timer);
         roundTimerTv = findViewById(R.id.round_timer);
 
-        // get game from SingleTon Class, if null, show MainMenu
-        if(gds.getGame() != null){
-            game = gds.getGame();
+        currentPlayerTv = findViewById(R.id.game_current_player_name);
+        currentPlayerRound = findViewById(R.id.game_current_player_round);
+        currentPlayerIcon = findViewById(R.id.imageViewIcon);
+        nextPlayerButton = findViewById(R.id.nextPlayerButton);
+        ImageButton saveGameButton = findViewById(R.id.saveGameButton);
+        saveGameButton.setOnClickListener(saveGame);
+        ImageButton finishGameButton = findViewById(R.id.finishGameButton);
+        finishGameButton.setOnClickListener(finishGame);
+
+        // If service already exists
+        if(isMyServiceRunning(CountdownTimerService.class)){
+            game = null;
+        }else{
+            // get game from SingleTon Class, if null, show MainMenu
+            if(gds.getGame() != null){
+                game = gds.getGame();
+            }
+            else showMainMenu();
         }
-        else showMainMenu();
+        startTimerService();
+    }
+
+    /**
+     * before starting, prepare everything incl. views based on
+     * if the service already exists and running or this is a
+     * complete new game
+     */
+    private void prepareAll(){
+        // if the service already exists
+        boolean isNewGame = game != null;
+        if(game == null) game = mBoundService.getGame();
+
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        if(ab != null) ab.setSubtitle(game.getName());
 
         players = game.getPlayers();
         playerRoundTimes = game.getPlayer_round_times();
         playerRounds = game.getPlayer_rounds();
-
         currentPlayerIndex = game.getStartPlayerIndex();
         nextPlayerIndex = game.getNextPlayerIndex();
-
         currentPlayer = players.get(game.getStartPlayerIndex());
         playersQueue = getPlayersNotInRound(playerRounds.get(currentPlayer.getId()));
-
-        currentPlayerTv = findViewById(R.id.game_current_player_name);
         currentPlayerTv.setText(currentPlayer.getName());
-
-        currentPlayerRound = findViewById(R.id.game_current_player_round);
         currentPlayerRound.setText(playerRounds.get(currentPlayer.getId()).toString());
-
-        currentPlayerIcon = findViewById(R.id.imageViewIcon);
         currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
-
         currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId());
         currentGameTimeMs = game.getCurrentGameTime();
         gameTime = currentGameTimeMs;
-
         isLastRound = game.getIsLastRound();
-
         if (game.getGame_time_infinite() == 1) {
             gameTimerTv.setText(getString(R.string.infinite));
         }
-
         updateTimerTextViews();
-
-        nextPlayerButton = findViewById(R.id.nextPlayerButton);
         nextPlayerButton.setOnClickListener(nextPlayer);
+        findViewById(R.id.main_content).setOnTouchListener(new OnSwipeTouchListener(getBaseContext()) {
+            @Override
+            public void onSwipeLeft() {
+                nextPlayerButton.callOnClick();
+            }
 
-        ImageButton saveGameButton = findViewById(R.id.saveGameButton);
-        saveGameButton.setOnClickListener(saveGame);
-
-        ImageButton finishGameButton = findViewById(R.id.finishGameButton);
-        finishGameButton.setOnClickListener(finishGame);
-
-        playPauseButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                alreadySaved = false;
-                isPaused = false;
-                mBoundService.showNotification();
-                mBoundService.initRoundCountdownTimer(currentRoundTimeMs);
-                // if game time not infinit, init game timer
-                if(game.getGame_time_infinite() == 0){
-                    mBoundService.initGameCountdownTimer(currentGameTimeMs);
-                    mBoundService.startGameTimer();
-                }
-                mBoundService.startRoundTimer();
-
-                playPauseButton.setText(R.string.pause_capslock);
-                playPauseButton.setOnClickListener(pause);
-                nextPlayerButton.setVisibility(View.VISIBLE);
-
-                findViewById(R.id.main_content).setOnTouchListener(new OnSwipeTouchListener(getBaseContext()) {
-                    @Override
-                    public void onSwipeLeft() {
-                        nextPlayerButton.callOnClick();
-                    }
-
-                    @Override
-                    public void onSwipeRight() {
-                        nextPlayerButton.callOnClick();
-                    }
-                });
+            @Override
+            public void onSwipeRight() {
+                nextPlayerButton.callOnClick();
             }
         });
+
+        if(isNewGame){
+            playPauseButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    alreadySaved = false;
+                    isPaused = false;
+                    mBoundService.showNotification();
+                    mBoundService.initRoundCountdownTimer(currentRoundTimeMs);
+                    // if game time not infinit, init game timer
+                    if(game.getGame_time_infinite() == 0){
+                        mBoundService.initGameCountdownTimer(currentGameTimeMs);
+                        mBoundService.startGameTimer();
+                    }
+                    mBoundService.startRoundTimer();
+
+                    playPauseButton.setText(R.string.pause_capslock);
+                    playPauseButton.setOnClickListener(pause);
+                    nextPlayerButton.setVisibility(View.VISIBLE);
+                }
+            });
+            mBoundService.setGame(game);
+        }else{
+            alreadySaved = game.getSaved() == 1;
+            isPaused = mBoundService.isPaused();
+            if(isPaused){
+                playPauseButton.setText(R.string.resume);
+                playPauseButton.setOnClickListener(run);
+
+            }else{
+                playPauseButton.setText(R.string.pause_capslock);
+                playPauseButton.setOnClickListener(pause);
+            }
+            nextPlayerButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        getSupportActionBar().setSubtitle(game.getName());
         setDrawerEnabled(false);
     }
+
 
     @Override
     protected void onResume() {
@@ -588,7 +613,8 @@ public class GameCountDownActivity extends BaseActivity {
 
     @Override
     public void onDestroy() {
-        stopTimerService();
+        unregisterRegister();
+        doUnbindService();
         super.onDestroy();
     }
 
@@ -745,6 +771,7 @@ public class GameCountDownActivity extends BaseActivity {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             if (!alreadySaved){
                                 saveGameToDb(1);
+                                stopTimerService();
                                 showMainMenu();
                             }
                             else
@@ -754,6 +781,7 @@ public class GameCountDownActivity extends BaseActivity {
                     .setNeutralButton(R.string.withoutSave, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            stopTimerService();
                             showMainMenu();
                         }
                     })
@@ -784,6 +812,9 @@ public class GameCountDownActivity extends BaseActivity {
         return new String[]{hh, mm, ss, ms};
     }
 
+    /**
+     * @return true if service has already been running and started
+     */
     private void startTimerService(){
         startService(new Intent(this, CountdownTimerService.class));
         doBindService();
@@ -892,7 +923,8 @@ public class GameCountDownActivity extends BaseActivity {
                 currentExceedRoundTimeMs = roundMsExceeded;
             }
             gameTime = currentGameTimeMs;
-            // updateGame(); do we need to call this every tick?
+            updateGame(); //do we need to call this every tick?
+            mBoundService.setGame(game);
             updateTimerTextViews();
         }
     }

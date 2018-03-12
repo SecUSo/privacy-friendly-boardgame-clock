@@ -148,14 +148,14 @@
     <string name="help_whatis_answer">Privacy Friendly Board Game Clock allows to measure in (round-based) games with any amount of players.</string>
     <string name="help_privacy">What makes the app privacy-friendly?</string>
     <string name="help_privacy_answer">Privacy Friendly Board Game Clock does not require any permission. It further does not include any tracking mechanisms or advertisement.</string>
-    <string name="help_new_game">New Game</string>
+    <string name="help_new_game">What do the different options in New Game Windows mean?</string>
     <string name="help_new_game_answer"><b>Game Time</b>\nTotal time for a game.\n\n<b>Round Time</b>\nThe time a player has available per round/turn. After this time the turn will be finished automatically.\n\n<b>Extra Time</b>\nThe time a player a player gets credited once a new round starts.</string>
-    <string name="help_game_mode">Game Modes</string>
-    <string name="help_game_mode_answer"><b>Clockwise</b>\nThe turn order corresponds to the player list and will continue clockwise.\n\n<b>Counter-Clockwise</b>\nThe turn order corresponds to the player list and will continue counter-clockwise.\n\n<b>Random</b>\nThe next player will be selected randomly from the player list.\n\n<b>Chess</b>\nThe turn order corresponds to the player list, no game pause after a round ends.
+    <string name="help_game_mode">What are the different Game Modes?</string>
+    <string name="help_game_mode_answer"><b>Clockwise</b>\nThe turn order corresponds to the player list and will continue clockwise.\n\n<b>Counter-Clockwise</b>\nThe turn order corresponds to the player list and will continue counter-clockwise.\n\n<b>Random</b>\nThe next player will be selected randomly from the player list.\n\n<b>Manual sequence</b>\nPlayers decide for a manual sequence each round.\n\n<b>Chess</b>\nThe turn order corresponds to the player list, no game pause after a round ends.\n\n<b>Time Tracking</b>\nThere is no turn order. Time will be counted up, if a player is touched.
     </string>
-    <string name="help_next_player">Next Player</string>
+    <string name="help_next_player">What is an alternative to the \"Next Player\" Button?</string>
     <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
-    <string name="help_permissions">Permissions</string>
+    <string name="help_permissions">Which Permissions could be asked for?</string>
     <string name="help_permissions_answer"><b>Read Contacts</b>\nAdditional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.\n\n<b>Read External Storage</b>\nThe app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.\n\n<b>Write External Storage</b>\nApp data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.\n\n
     </string>
 
@@ -164,11 +164,11 @@
     <string name="version_number">Version</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Karola Marky</string>
-    <string name="about_author_contributors">and contributors.</string>
+    <string name="about_author_contributors">, Quang Anh Dang and contributors</string>
     <string name="about_affiliation">In affiliation with</string>
     <string name="privacy_friendly">This application belongs to the group of Privacy Friendly Apps developed by Technische Universität Darmstadt. Sourcecode licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>
     <string name="more_info">More information can be found on:</string>
-    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-app-example">Github-Repo</a></string>
+    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-boardgame-clock/tree/Version-2.0">Github-Repo</a></string>
     <string name="url" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
 
     <!-- ###SETTINGS### -->
@@ -182,7 +182,7 @@
     <string name="slide1_heading">Welcome!</string>
     <string name="slide1_text">Welcome to Privacy Friendly Board Game Clock. This tutorial will cover the most important things you need to know.</string>
 
-    <string name="slide2_heading">Let\'s start</string>
+    <string name="slide2_heading">Introduction</string>
     <string name="slide2_text">You either create a new clock or resume one. Press <b>new game</b> to create a new clock. Then fill in the parameters. Choose/Create at least 2 players afterward and have fun!</string>
 
     <string name="slide3_heading">More features</string>
@@ -193,6 +193,7 @@
     <string name="main_button_welcomedialog">Show Welcome</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    <string name="showHelp">Show Help</string>
 
     <!-- ### FRAGMENT AND DIALOG ### -->
     <!-- ### Main Menu ### -->
@@ -240,4 +241,7 @@
     <string name="main_text_title">This is an example app to demonstrate the design of a Privacy Friendly App. Further explanations can be found in the Privacy Friendly App Guide.</string>
     <string name="main_text_normalbutton_desc">There are multiple ways to display basic buttons. Button 1 is the basic button. If you wish to separate a button visually, use button 2. The buttons 3&#8211;5 are examples for highlighted buttons. Depending on the app other colors are possible.</string>
     <string name="main_button_welcomedialog_text">Use the button in the lower left corner to call the Welcome Dialog.</string>
+
+    <string name="alertEmptyList">Create a player</string>
+    <string name="emptyPlayerList">Your player list is empty.</string>
 </resources>

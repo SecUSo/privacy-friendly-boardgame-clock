@@ -17,6 +17,8 @@
 
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -41,6 +43,7 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
+import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedService;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
@@ -70,6 +73,13 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // for every activity, create/open database if necessary
+        PlayersDataSourceSingleton.getInstance(this.getApplicationContext()).open();
+        GamesDataSourceSingleton.getInstance(this.getApplicationContext()).open();
+
+        // start service to close database when app is killed
+        startService(new Intent(getBaseContext(), DetectTaskClearedService.class));
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mHandler = new Handler();
@@ -290,5 +300,20 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+    }
+
+    /**
+     *
+     * @param serviceClass name of the service class you want to check
+     * @return true if the service is running
+     */
+    public boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

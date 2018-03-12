@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
-    android:padding="5dp">
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
             android:id="@+id/player_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="5dp"/><!--TODO Relative Number?-->
+            android:padding="5dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

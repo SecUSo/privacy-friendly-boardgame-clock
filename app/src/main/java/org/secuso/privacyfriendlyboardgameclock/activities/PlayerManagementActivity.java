@@ -20,7 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.view.ActionMode;
-import android.widget.Button;
+import android.view.animation.AlphaAnimation;import android.view.animation.Animation;import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +62,8 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     private ActionModeCallback actionModeCallback = new ActionModeCallback();
     private ActionMode actionMode;
     private Player playerToEdit;
+    private View insertAlert;
+    private View emptyListLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +82,22 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         fabDelete = findViewById(R.id.fab_delete_player);
         fabDelete.setOnClickListener(onFABDeleteListenter());
 
+        insertAlert = findViewById(R.id.insert_alert);
+        emptyListLayout = findViewById(R.id.emptyListLayout);
+
         playersRecycleView = findViewById(R.id.player_list);
         playersRecycleView.setHasFixedSize(true);
         playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
         playersRecycleView.setItemAnimator(null);
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        insertAlert.startAnimation(anim);
     }
 
     @Override
@@ -113,6 +125,13 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
     @Override
     protected void onResume() {
         super.onResume();
+        if(playerListAdapter.getPlayersList().size() == 0){
+            insertAlert.setVisibility(View.VISIBLE);
+            emptyListLayout.setVisibility(View.VISIBLE);
+        } else {
+            insertAlert.setVisibility(View.GONE);
+            emptyListLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -206,6 +225,13 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
                                 playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
                                 actionMode.finish();
                                 actionMode = null;
+                                if(playerListAdapter.getPlayersList().size() == 0){
+                                    insertAlert.setVisibility(View.VISIBLE);
+                                    emptyListLayout.setVisibility(View.VISIBLE);
+                                } else {
+                                    insertAlert.setVisibility(View.GONE);
+                                    emptyListLayout.setVisibility(View.GONE);
+                                }
                             }
                         })
                         .setNegativeButton(R.string.no, null)

@@ -54,6 +54,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
     private long currentGameTimeMs = 0;
     private BroadcastReceiver br;
     private TimeTrackingPlayerAdapter timeTrackingAdapter;
+    private RecyclerView playerRecycleView;
     private int isFinished = 0;
     private boolean alreadySaved = false;
 
@@ -167,6 +168,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             // service that we know is running in our own process, we can
             // cast its IBinder to a concrete class and directly access it.
             mBoundService = ((TimeTrackingService.LocalBinder)service).getService();
+            prepareAll();
             // Init only once
             if(!mBoundService.isAllTrackerInit()){
                 mBoundService.initAllTracker(playersTime, currentGameTimeMs);
@@ -215,12 +217,6 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
         // prevent phone from sleeping while game is running
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        // get game from SingleTon Class, if null, show MainMenu
-        if(gds.getGame() != null){
-            game = gds.getGame();
-        }
-        else showMainMenu();
-
         // register broadcast receiver
         br = new BroadcastReceiver() {
             @Override
@@ -229,41 +225,62 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             }
         };
 
+        // If service already exists
+        if(isMyServiceRunning(TimeTrackingService.class)){
+            game = null;
+        }else{
+            // get game from SingleTon Class, if null, show MainMenu
+            if(gds.getGame() != null){
+                game = gds.getGame();
+            }
+            else showMainMenu();
+        }
+
+        // start time tracking service
+        startTimeTrackerService();
+
+        currentGameTimeTV = findViewById(R.id.game_timer);
+        saveGameButton =  findViewById(R.id.saveGameButton);
+        playPauseButton = findViewById(R.id.gamePlayPauseButton);
+        finishGameButton = findViewById(R.id.finishGameButton);
+        playerRecycleView = findViewById(R.id.player_list);
+        playerRecycleView.setHasFixedSize(false);
+    }
+
+    /**
+     * before starting, prepare everything incl. views based on
+     * if the service already exists and running or this is a
+     * complete new game
+     */
+    private void prepareAll(){
+        // if the service already exists
+        boolean isNewGame = game != null;
+        if(game == null) game = mBoundService.getGame();
+
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        if(ab != null) ab.setSubtitle(game.getName());
+
+
         // populate data
         players = game.getPlayers();
         for(Player p: players) playerIDs.add(p.getId());
         playersTime = game.getPlayer_round_times();
-
         currentGameTimeMs = game.getCurrentGameTime();
-        currentGameTimeTV = findViewById(R.id.game_timer);
         updateGameTimerTextview();
-
-        saveGameButton =  findViewById(R.id.saveGameButton);
         saveGameButton.setOnClickListener(saveGame);
-
-        playPauseButton = findViewById(R.id.gamePlayPauseButton);
         playPauseButton.setText(R.string.pause_capslock);
         playPauseButton.setOnClickListener(pauseAll);
         playPauseButton.setVisibility(View.VISIBLE);
-
-        finishGameButton = findViewById(R.id.finishGameButton);
         finishGameButton.setOnClickListener(finishGame);
-
-        RecyclerView playerRecycleView = findViewById(R.id.player_list);
-        playerRecycleView.setHasFixedSize(false);
         timeTrackingAdapter = new TimeTrackingPlayerAdapter(this, players, this);
         playerRecycleView.setAdapter(timeTrackingAdapter);
         playerRecycleView.setLayoutManager(new LinearLayoutManager(this));
         playerRecycleView.setItemAnimator(null);
-
-        // start time tracking service
-        startTimeTrackerService();
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        getSupportActionBar().setSubtitle(game.getName());
         setDrawerEnabled(false);
     }
 
@@ -288,7 +305,8 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
 
     @Override
     public void onDestroy() {
-        stopTimeTrackerService();
+        unregisterRegister();
+        doUnbindService();
         super.onDestroy();
     }
 
@@ -396,6 +414,8 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
                 updateGameTimerTextview();
             }
         }
+        updateGame();
+        mBoundService.setGame(game);
     }
 
     private void updateGameTimerTextview() {
@@ -443,6 +463,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
                         public void onClick(DialogInterface dialog, int whichButton) {
                             if (!alreadySaved){
                                 saveGameToDb(1);
+                                stopTimeTrackerService();
                                 showMainMenu();
                             }
                             else
@@ -452,6 +473,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
                     .setNeutralButton(R.string.withoutSave, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            stopTimeTrackerService();
                             showMainMenu();
                         }
                     })

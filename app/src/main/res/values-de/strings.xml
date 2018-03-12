@@ -40,15 +40,15 @@
     <string name="help_whatis_answer">Privacy Friendly Board Game Clock ermöglicht es Zeit in (rundenbasierten) Spielen mit beliebiger Spieleranzahl zu messen.</string>
     <string name="help_privacy">Was macht die App privatsphäre-freundlich?</string>
     <string name="help_privacy_answer">Privacy Friendly Board Game Clock benötigt keine Berechtigungen. Auch beinhaltet sie keine Werbungs- sowie Trackingmechanismen.</string>
-    <string name="help_new_game">New Game</string>
+    <string name="help_new_game">Was bedeuten die verschiedene Optionen in Neues Spiel Fenster?</string>
     <string name="help_new_game_answer"><b>Spielzeit</b>\nMaximale Gesamtdauer eines Spiel.\n\n<b>Rundenzeit</b>\nZeit, die ein Spieler pro Runde/Zug zur Verfügung hat. Nach Ablauf dieser Zeit wird der Zug automatisch beendet.\n\n<b>Zusatzzeit</b>\nZeit, welche einem Spieler zu Beginn einer neuen Runde gutgeschrieben wird.
     </string>
-    <string name="help_game_mode">Spielmodus</string>
-    <string name="help_game_mode_answer"><b>Im Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird im Uhrzeigersinn weitergegeben.\n\n<b>Entgegen dem Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird gegen den Uhrzeigersinn weitergegeben.\n\n<b>Zufällig</b>\nDer nächste Spieler wird zufällig aus der Spielerliste bestimmt.\n\n<b>Schach</b>\nDie Zugreihenfolge entspricht der Spielerliste, zwischen den Runden gibt es keine Pause.
+    <string name="help_game_mode">Was sind die verschiedene Game Modi?</string>
+    <string name="help_game_mode_answer"><b>Im Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird im Uhrzeigersinn weitergegeben.\n\n<b>Entgegen dem Uhrzeigersinn</b>\nDie Zugreihenfolge entspricht der Spielerliste und wird gegen den Uhrzeigersinn weitergegeben.\n\n<b>Zufällig</b>\nDer nächste Spieler wird zufällig aus der Spielerliste bestimmt.\n\n<b>Manuelle Reihenfolge</b>\nSpieler sucht in jeder Runde manuell eine Reihenfolge aus.\n\n<b>Schach</b>\nDie Zugreihenfolge entspricht der Spielerliste, zwischen den Runden gibt es keine Pause.\n\n<b>Zeitüberwachung</b>\nEs gibt keine Reihenfolge. Die Zeit wird für einen Spieler hochgezählt, wenn diesen Spieler angeklickt wird.
     </string>
-    <string name="help_next_player">Next Player</string>
+    <string name="help_next_player">Was ist eine Alternativ zum \"Nächster Spieler\" Button?</string>
     <string name="help_next_player_answer">Anstelle der Schaltfläche \'Nächster Spieler\' kann der nächste Spieler auch durch eine Wischgeste ausgewählt werden.</string>
-    <string name="help_permissions">Permissions</string>
+    <string name="help_permissions">Welche Berechtigungen kann gefortdert werden?</string>
     <string name="help_permissions_answer"><b>Kontakte</b>\nZum Hinzufügen vom Spielern können auch Adressbucheinträge verwendet werden. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Kontaktbuch" im Menü "Spielerverwaltung" ist nur ausgegraut sichtbar.\n\n<b>Externer Speicher lesen</b>\nMit der App ist es möglich gespeicherte Datenbank-Backups wiederzuherstellen. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Datenbank-Backup importieren" im Menü "Backup" ist nur ausgegraut sichtbar.\n\n<b>Externer Speicher schreiben</b>\nDaten der App können als Datenbank-Backup auf dem Gerät gespeichert werden. Wird diese Berechtigung nicht erteilt, so ist diese Funktion nicht möglich und die Schaltfläche "Datenbank-Backup exportieren" im Menü "Backup" ist nur ausgegraut sichtbar.\n\n
     </string>
 
@@ -56,7 +56,7 @@
     <string name="about">Über</string>
     <string name="version_number">Version</string>
     <string name="about_author">Autoren: </string>
-    <string name="about_author_contributors">und Mitwirkende.</string>
+    <string name="about_author_contributors">, Quang Anh Dang und Mitwirkende.</string>
     <string name="about_affiliation">In Zusammenarbeit mit</string>
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt von der Technischen Universität Darmstadt. Quelltext lizenziert unter GPLv3. Bilder copyright TU Darmstadt und Google Inc.</string>
     <string name="more_info">Weitere Infos unter:</string>
@@ -75,18 +75,18 @@
 
     <!-- ### TUTORIAL DIALOG ### -->
     <string name="slide1_heading">Willkommen!</string>
-    <string name="slide1_text">Willkommen zur Privacy Friendly Boardgame Clock. Diese Anleitung wird dir die wichtigsten Information geben, was du brauchst.</string>
+    <string name="slide1_text">Willkommen zur Privacy Friendly Boardgame Clock. Diese Anleitung wird Ihnen die wichtigsten Information geben, was Sie benötigen.</string>
 
-    <string name="slide2_heading">Lass anfangen</string>
+    <string name="slide2_heading">Einführung</string>
 
     <string name="slide3_heading">Mehr Features</string>
-    <string name="slide3_text">Die App speichert auch Spiel und Spielerhistorie. Du kannst diese auch importieren/exportieren, vorausgesetzt du gibst der App Speicherberechtigung.</string>
+    <string name="slide3_text">Die App speichert auch Spiel und Spielerhistorie. Sie können diese auch importieren/exportieren, vorausgesetzt Sie geben der App Speicherberechtigung.</string>
 
     <string name="next">Weiter</string>
-    <string name="skip">Überspringen</string>
-    <string name="exportDatabaseBackupInfoMessage">Bist du dir sicher, dass du ein Backup der aktuellen Datenbank erstellen möchtest? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
-    <string name="importDatabaseBackupInfoMessage">Bist du dir sicher, dass du das aktuelle Datenbank-Backup importieren möchtest? Die aktuelle Datenbank wird dadurch ersetzt.</string>
-    <string name="sureToSaveGameQuestion">Bist du dir sicher, dass du den aktuellen Fortschritt der Uhr speichern möchtest?</string>
+    <string name="skip">Skip</string>
+    <string name="exportDatabaseBackupInfoMessage">Sind Sie sicher, dass Sie ein Backup der aktuellen Datenbank erstellen möchten? Das aktuelle Datenbank-Backup wird dadurch ersetzt.</string>
+    <string name="importDatabaseBackupInfoMessage">Sind Sie sicher, dass Sie das aktuelle Datenbank-Backup importieren möchten? Die aktuelle Datenbank wird dadurch ersetzt.</string>
+    <string name="sureToSaveGameQuestion">Sind Sie sicher, dass Sie den aktuellen Fortschritt der Uhr speichern möchten?</string>
     <string name="action_backup">Backup</string>
     <string name="exportDatabaseBackupSuccess">"Backup erfolgreich erstellt unter: "</string>
     <string name="importDatabaseBackupSuccess">Backup erfolgreich wiederhergestellt!</string>
@@ -107,7 +107,7 @@
     <string name="action_new_game">Neues Spiel</string>
     <string name="action_resume_game">Spiel fortsetzen</string>
     <string name="exit">Spiel verlassen</string>
-    <string name="exitQuestion">Bist du dir sicher, dass du die Anwendung verlassen möchtest?</string>
+    <string name="exitQuestion">Sind Sie sicher, dass Sie die Anwendung verlassen möchten?</string>
     <string name="resumeGameErrorToast">Kein gespeichertes Spiel gefunden.</string>
     <string name="modeClockwise">Im Uhrzeigersinn</string>
     <string name="modeCounterClockwise">Entgegen dem Uhrzeigersinn</string>
@@ -124,16 +124,16 @@
     <string name="finishGame">Beenden</string>
     <string name="infinite">Unendlich</string>
     <string name="resume">Fortsetzen</string>
-    <string name="quitGameQuestion">Möchtest du den Fortschritt der Uhr vor dem Verlassen speichern?</string>
-    <string name="finishGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel beenden möchtest?</string>
-    <string name="leaveGameQuestion">Bist du dir sicher, dass du das aktuelle Spiel verlassen möchtest?</string>
-    <string name="gameNameSizeError">Bitte gebe einen Namen für das Spiel ein.</string>
-    <string name="roundTimeSetError">Bitte wähle eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
+    <string name="quitGameQuestion">Möchten Sie den Fortschritt der Uhr vor dem Verlassen speichern?</string>
+    <string name="finishGameQuestion">Sind Sie sicher, dass Sie das aktuelle Spiel beenden möchten?</string>
+    <string name="leaveGameQuestion">Sind Sie sicher, dass Sie das aktuelle Spiel verlassen möchten?</string>
+    <string name="gameNameSizeError">Bitte geben Sie einen Namen für das Spiel ein.</string>
+    <string name="roundTimeSetError">Bitte wählen Sie eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
     <string name="gameSavedSuccess">Fortschritt der Uhr erfolgreich gespeichert!</string>
     <string name="swipeDialogQuestion">Wischgesten</string>
     <string name="swipeDialogAnswer">Anstelle der Schaltfläche \'Nächster Spieler\' kann der nächste Spieler auch durch eine Wischgeste ausgewählt werden.</string>
     <string name="roundTimeOverDialogHeading">Spiel beenden</string>
-    <string name="roundTimeOverDialogQuestion">Die Rundenzeit des aktuellen Spielers ist vorüber. Möchtest du dieses Spiel beenden oder mit dem nächsten Spieler fortfahren, um die aktuelle Runde zu beenden?</string>
+    <string name="roundTimeOverDialogQuestion">Die Rundenzeit des aktuellen Spielers ist vorüber. Möchten Sie dieses Spiel beenden oder mit dem nächsten Spieler fortfahren, um die aktuelle Runde zu beenden?</string>
     <string name="manualChoiceError">Es müssen alle Spieler aus der Liste einer Reihenfolge zugeordnet werden!</string>
     <string name="manualChoiceHeading">Spielerreihenfolge festlegen</string>
     <string name="round">Runde:</string>
@@ -147,7 +147,7 @@
 
     <!-- Game Results -->
     <string name="gameResults">Spielergebnisse</string>
-    <string name="backToMainMenuQuestion">Bist du dir sicher, dass du zum Hauptmenü gehen möchtest?</string>
+    <string name="backToMainMenuQuestion">Sind Sie sicher, zurück zum Hauptmenü zu gehen?</string>
     <string name="activeGameTimeHeader">Spielzeit:</string>
     <string name="playedRoundsHeader">Letzte Runde:</string>
     <string name="playerResults">Spielerergebnisse:</string>
@@ -191,6 +191,8 @@
         <item>Manuelle Reihenfolge</item>
         <item>Zeitüberwachung</item>
     </string-array>
-    <string name="slide2_text">Du kannst entweder eine neue Uhr erschaffen oder eine alte fortsetzen. Drücke auf <b>Neues Spiel</b> um eine zu erschaffen. Folglich fülle die Parameter aus. Wähle/Kreiere mindesten 2 Spieler aus und los legen.</string>
-
+    <string name="slide2_text">Sie können entweder eine neue Uhr erschaffen oder eine alte fortsetzen. Drücke auf <b>Neues Spiel</b> um eine zu erschaffen. Folglich fülle die Parameter aus. Wähle/Kreiere mindesten 2 Spieler aus und los legen.</string>
+    <string name="showHelp">Hilfe Anzeigen</string>
+    <string name="alertEmptyList">Einen Spieler erschaffen</string>
+    <string name="emptyPlayerList">Ihre Spielerliste ist leer.</string>
 </resources>

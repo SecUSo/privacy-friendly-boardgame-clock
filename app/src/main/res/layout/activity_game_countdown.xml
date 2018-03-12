@@ -16,20 +16,19 @@
         android:fitsSystemWindows="true"
         tools:context="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity">
 
-        <include layout="@layout/toolbar"/>
+        <include layout="@layout/toolbar" />
 
-        <LinearLayout
-            android:id="@+id/main_content"
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_content"
+            style="?android:buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity"
             android:orientation="vertical"
             android:weightSum="10"
-            style="?android:buttonBarStyle">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/show_hint_main_layout"
@@ -119,16 +118,17 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="@dimen/main_button_padding"
                     android:textColor="@color/black"
-                    android:textSize="40dp" />
+                    android:textSize="40dp"
+                    android:text="00:00:00'0"/>
 
                 <Button
                     android:id="@+id/nextPlayerButton"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_above="@+id/gameButtons"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginLeft="@dimen/main_button_padding"
                     android:layout_marginRight="@dimen/main_button_padding"
-                    android:layout_above="@+id/gameButtons"
                     android:background="@drawable/button_fullwidth"
                     android:onClick="nextPlayerButton"
                     android:text="@string/nextPlayer"
@@ -138,13 +138,13 @@
 
                 <LinearLayout
                     android:id="@+id/gameButtons"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_alignParentBottom="true"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/activity_vertical_margin">
 
                     <ImageButton
                         android:id="@+id/saveGameButton"
@@ -190,7 +190,7 @@
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"

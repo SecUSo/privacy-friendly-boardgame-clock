@@ -54,11 +54,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Create Database, only once
+
         pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
-        pds.open();
         gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
-        gds.open();
         fm = getFragmentManager();
 
         // New Game Button

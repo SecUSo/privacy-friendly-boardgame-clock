@@ -16,7 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.View;import android.view.animation.AlphaAnimation;import android.view.animation.Animation;import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
@@ -53,6 +53,8 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
     // To toggle selection mode
     private ChoosePlayersActivity.ActionModeCallback actionModeCallback = new ChoosePlayersActivity.ActionModeCallback();
     private ActionMode actionMode;
+    private View insertAlert;
+    private View emptyListLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,28 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
         playersRecycleView.setAdapter(playerListAdapter);
         playersRecycleView.setLayoutManager(layoutManager);
         playersRecycleView.setItemAnimator(null);
+
+        insertAlert = findViewById(R.id.insert_alert);
+        emptyListLayout = findViewById(R.id.emptyListLayout);
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        insertAlert.startAnimation(anim);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(playerListAdapter.getPlayersList().size() == 0){
+            insertAlert.setVisibility(View.VISIBLE);
+            emptyListLayout.setVisibility(View.VISIBLE);
+        } else {
+            insertAlert.setVisibility(View.GONE);
+            emptyListLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -136,7 +160,13 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
                 playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
                 actionMode.finish();
                 actionMode = null;
-
+                if(playerListAdapter.getPlayersList().size() == 0){
+                    insertAlert.setVisibility(View.VISIBLE);
+                    emptyListLayout.setVisibility(View.VISIBLE);
+                } else {
+                    insertAlert.setVisibility(View.GONE);
+                    emptyListLayout.setVisibility(View.GONE);
+                }
             }
         };
     }

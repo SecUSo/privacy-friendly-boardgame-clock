@@ -36,7 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
+import org.secuso.privacyfriendlyboardgameclock.activities.HelpActivity;import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity;
 
 /**
  * Class structure taken from tutorial at http://www.androidhive.info/2016/05/android-build-intro-slider-app/
@@ -178,6 +178,14 @@ public class TutorialActivity extends AppCompatActivity {
         finish();
     }
 
+    private void launchHelp(){
+        prefManager.setFirstTimeLaunch(false);
+        Intent intent = new Intent(TutorialActivity.this, HelpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -189,11 +197,24 @@ public class TutorialActivity extends AppCompatActivity {
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.okay));
-                btnSkip.setVisibility(View.GONE);
+                btnSkip.setText(R.string.showHelp);
+                btnSkip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        launchHelp();
+                    }
+                });
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
+                btnSkip.setText(R.string.skip);
+                btnSkip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        launchHomeScreen();
+                    }
+                });
             }
         }
 

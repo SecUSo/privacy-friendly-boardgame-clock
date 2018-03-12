@@ -64,7 +64,11 @@ public class GamesDataSourceSingleton {
     }
 
     public void open() {
-        database = dbHelper.getWritableDatabase();
+        if(database != null){
+            if(!database.isOpen()) database = dbHelper.getWritableDatabase();
+        }else{
+            database = dbHelper.getWritableDatabase();
+        }
     }
 
     public void close() {
