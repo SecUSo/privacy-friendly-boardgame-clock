@@ -24,7 +24,8 @@ import java.util.List;
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 
@@ -75,6 +76,7 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         getSupportActionBar().setTitle(R.string.action_resume_game);
+        setDrawerEnabled(false);
     }
 
     @Override

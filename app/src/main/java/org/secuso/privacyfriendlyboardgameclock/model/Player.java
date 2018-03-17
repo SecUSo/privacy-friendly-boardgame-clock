@@ -5,6 +5,10 @@ import android.graphics.Bitmap;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ */
 public class Player {
 
     private long id;

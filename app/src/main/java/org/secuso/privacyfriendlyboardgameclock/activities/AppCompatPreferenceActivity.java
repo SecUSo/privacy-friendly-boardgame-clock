@@ -32,6 +32,8 @@ import android.view.ViewGroup;
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  */
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 

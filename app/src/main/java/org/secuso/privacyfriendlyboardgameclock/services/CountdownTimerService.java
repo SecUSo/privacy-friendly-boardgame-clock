@@ -27,7 +27,8 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
 
 /**
  * Created by Quang Anh Dang on 26.12.2017.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 

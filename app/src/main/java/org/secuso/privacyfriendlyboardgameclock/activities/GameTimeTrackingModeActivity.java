@@ -13,9 +13,13 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,6 +31,7 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment;
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TimeTrackingPlayerAdapter;
@@ -40,7 +45,8 @@ import java.util.List;
 
 /**
  * Created by Quang Anh Dang on 26.01.2018.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 
@@ -127,7 +133,8 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             finishGameButton.setVisibility(View.VISIBLE);
 
             playPauseButton.setText(R.string.resume);
-            playPauseButton.setOnClickListener(runAllPendlingTrackers);
+            playPauseButton.setOnClickListener(null);
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_disabled));
         }
     };
 
@@ -135,6 +142,14 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
         @Override
         public void onClick(View view) {
             pauseTimeTrackers();
+            playPauseButton.setText(R.string.resume);
+            playPauseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(getResources().getString(R.string.alreadyPaused));
+                }
+            });
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_disabled));
         }
     };
 
@@ -340,6 +355,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
         playPauseButton.setOnClickListener(showGameResults);
 
         saveGameToDb(0);
+        playPauseButton.performClick();
     }
 
     /**
@@ -514,7 +530,11 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             playPauseButton.setOnClickListener(pauseAllActiveTrackers);
             playPauseButton.setText(R.string.pause_capslock);
         }*/
-        playPauseButton.setVisibility(View.VISIBLE);
+        if(activePlayers.size() > 0){
+            playPauseButton.setText(R.string.pause_capslock);
+            playPauseButton.setOnClickListener(pauseAllActiveTrackers);
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_fullwidth));
+        }
     }
 
     @Override
@@ -525,5 +545,33 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
 
     public Game getGame() {
         return game;
+    }
+
+    /**
+     * Infalte the Actionicons on Toolbar, in this case the plus icon
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.time_tracking_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_info:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(R.string.instruction_details)
+                        .setTitle(R.string.instruction)
+                        .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).show();
+        }
+        return true;
     }
 }

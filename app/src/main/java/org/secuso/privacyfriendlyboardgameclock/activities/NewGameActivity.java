@@ -33,7 +33,8 @@ import java.sql.SQLOutput;
 
 /**
  * Created by Quang Anh Dang on 04.01.2018.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 
@@ -59,7 +60,7 @@ public class NewGameActivity extends BaseActivity {
     private void checkIfGameTimeEntered() {
         gameTimeEntered = game_total_time_in_s > 0;
 
-        if (nameEntered && roundTimeEntered && gameTimeEntered) {
+        if (nameEntered && roundTimeEntered && (gameTimeEntered || check_game_time_infinite.isChecked())) {
             choosePlayersButtonBlue.setVisibility(View.VISIBLE);
             choosePlayersButtonGrey.setVisibility(View.GONE);
         } else {
@@ -80,7 +81,7 @@ public class NewGameActivity extends BaseActivity {
     private void checkIfRoundTimeEntered() {
         roundTimeEntered = round_total_time_in_s > 0;
 
-        if (nameEntered && roundTimeEntered && gameTimeEntered) {
+        if (nameEntered && roundTimeEntered && (gameTimeEntered || check_game_time_infinite.isChecked())) {
             choosePlayersButtonBlue.setVisibility(View.VISIBLE);
             choosePlayersButtonGrey.setVisibility(View.GONE);
         } else {
@@ -172,6 +173,14 @@ public class NewGameActivity extends BaseActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 LinearLayout game_timers = findViewById(R.id.timer_new_game_time);
                 if (isChecked) {
+                    if (nameEntered && roundTimeEntered){
+                        choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                        choosePlayersButtonGrey.setVisibility(View.GONE);
+                    } else {
+                        choosePlayersButtonBlue.setVisibility(View.GONE);
+                        choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+                    }
+
                     for (int i = 0; i < game_timers.getChildCount(); i++)
                         if (game_timers.getChildAt(i) instanceof org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker) {
                             game_timers.getChildAt(i).setEnabled(false);
@@ -182,6 +191,14 @@ public class NewGameActivity extends BaseActivity {
                             ((TextView) game_timers.getChildAt(i)).setTextColor(Color.LTGRAY);
 
                 } else {
+                    if (nameEntered && roundTimeEntered && gameTimeEntered ) {
+                        choosePlayersButtonBlue.setVisibility(View.VISIBLE);
+                        choosePlayersButtonGrey.setVisibility(View.GONE);
+                    } else {
+                        choosePlayersButtonBlue.setVisibility(View.GONE);
+                        choosePlayersButtonGrey.setVisibility(View.VISIBLE);
+                    }
+
                     System.err.println(game_timers.getChildCount());
                     for (int i = 0; i < game_timers.getChildCount(); i++)
                         if (game_timers.getChildAt(i) instanceof org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker) {
@@ -302,6 +319,8 @@ public class NewGameActivity extends BaseActivity {
         setGameTime();
         setRoundTime();
         gds.setGame(null);
+        View rootView = findViewById(R.id.main_content);
+        rootView.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
     private boolean isRoundTimeEntered() {

@@ -34,11 +34,14 @@ import java.io.IOException;
 
 /**
  * Created by Quang Anh Dang on 03.12.2017.
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
-
 public class PlayerManagementContactListFragment extends DialogFragment implements LoaderManager.LoaderCallbacks<Cursor>,ItemClickListener {
     // columns requested from the database
     private Activity activity;
+    private View emptyListLayout;
     private static final String[] PROJECTION = {
             ContactsContract.Contacts._ID, // _ID is always required
             ContactsContract.Contacts.DISPLAY_NAME, // that's what we want to display
@@ -128,6 +131,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
                 });
 
         View v = activity.getLayoutInflater().inflate(R.layout.fragment_contact_list, null);
+        emptyListLayout = v.findViewById(R.id.emptyListLayout);
         pds = PlayersDataSourceSingleton.getInstance(null);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -187,7 +191,9 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
         if (dialog != null) {
             // If no contacts found, change title of dialog
             if(countContacts == 0)
-                dialog.setTitle(R.string.contactListIsEmpty);
+                emptyListLayout.setVisibility(View.VISIBLE);
+            else
+                emptyListLayout.setVisibility(View.GONE);
         }
     }
 

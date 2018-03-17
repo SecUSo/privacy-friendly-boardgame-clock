@@ -51,6 +51,8 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  * @version 20171017
  * This class is a parent class of all activities that can be accessed from the
  * Navigation Drawer (example see MainActivity.java)
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  */
 public abstract class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 

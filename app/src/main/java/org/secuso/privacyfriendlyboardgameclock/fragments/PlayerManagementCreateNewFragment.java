@@ -40,6 +40,9 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
  * Diaglog Fragment responsible for creating new Player
  * Step 2 in creating new player process
  * Created by Quang Anh Dang on 03.12.2017.
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
 
 public class PlayerManagementCreateNewFragment extends DialogFragment {
@@ -49,6 +52,7 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
     Bitmap playerIcon;
     EditText playerNameEditText;
     ImageView pictureIMGView;
+    ImageView colorIMGView;
     boolean confirmReady = false;
     private PlayersDataSourceSingleton pds;
     View.OnClickListener confirmButtonListener = new View.OnClickListener() {
@@ -111,20 +115,17 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
         pictureIMGView = rootView.findViewById(R.id.picture);
         pictureIMGView.setImageBitmap(playerIcon);
 
-        final Button colorButton = rootView.findViewById(R.id.colorButton);
-        colorButton.setOnClickListener(colorWheelDialog());
-
-        final Button photoButton = rootView.findViewById(R.id.photoButton);
+        colorIMGView = rootView.findViewById(R.id.color);
+        colorIMGView.setOnClickListener(colorWheelDialog());
         if (activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            photoButton.setOnClickListener(new View.OnClickListener() {
+            pictureIMGView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, CAMERA_REQUEST);
                 }
             });
-        } else
-            photoButton.setVisibility(View.GONE);
+        }
 
 
         builder.setView(rootView);
@@ -160,6 +161,7 @@ public class PlayerManagementCreateNewFragment extends DialogFragment {
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
                                 pictureIMGView.setImageBitmap(playerIcon);
                                 pictureIMGView.setColorFilter(selectedColor, PorterDuff.Mode.DST_OVER);
+                                colorIMGView.setBackgroundColor(selectedColor);
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

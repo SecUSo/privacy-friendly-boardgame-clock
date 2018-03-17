@@ -23,9 +23,11 @@ import java.util.List;
 
 /**
  * Created by Quang Anh Dang on 01.12.2017.
- * https://guides.codepath.com/android/Using-the-RecyclerView#creating-the-recyclerview-adapter
- * https://www.youtube.com/watch?v=puyiZKvxBa0
- * TODO DOC
+ * Tutorial: https://guides.codepath.com/android/Using-the-RecyclerView#creating-the-recyclerview-adapter
+ * Tutorial: https://www.youtube.com/watch?v=puyiZKvxBa0
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
 public class ContactListAdapter extends SelectableAdapter<ContactListAdapter.ViewHolder> {
     private Activity activity;

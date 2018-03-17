@@ -27,6 +27,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20171016
  * Class structure taken from tutorial at http://www.journaldev.com/9942/android-expandablelistview-example-tutorial

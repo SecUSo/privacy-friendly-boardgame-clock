@@ -33,6 +33,8 @@ import java.util.List;
  * @version 20171016
  * Class structure taken from tutorial at http://www.journaldev.com/9942/android-expandablelistview-example-tutorial
  * last access 27th October 2016
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  */
 
 public class HelpActivity extends BaseActivity {

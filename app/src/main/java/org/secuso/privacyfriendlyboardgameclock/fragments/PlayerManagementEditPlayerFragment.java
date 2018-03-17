@@ -36,6 +36,11 @@ import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingle
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
+/**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
+ */
 public class PlayerManagementEditPlayerFragment extends DialogFragment {
     private static final int CAMERA_REQUEST = 1888;
     private Activity activity;
@@ -44,6 +49,7 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
     private Bitmap playerIcon;
     private EditText playerName;
     private ImageView pictureIMGView;
+    private ImageView colorIMGView;
     private Player p;
     View.OnClickListener confirmButtonListener = new View.OnClickListener() {
 
@@ -125,21 +131,18 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
         pictureIMGView = (ImageView) rootView.findViewById(R.id.picture);
         pictureIMGView.setImageBitmap(playerIcon);
 
-        final Button colorButton = (Button) rootView.findViewById(R.id.colorButton);
-        colorButton.setOnClickListener(colorWheelDialog());
-
-        final Button photoButton = (Button) rootView.findViewById(R.id.photoButton);
+        colorIMGView = rootView.findViewById(R.id.color);
+        colorIMGView.setOnClickListener(colorWheelDialog());
 
         if (activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            photoButton.setOnClickListener(new View.OnClickListener() {
+            pictureIMGView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, CAMERA_REQUEST);
                 }
             });
-        } else
-            photoButton.setVisibility(View.GONE);
+        }
 
         builder.setView(rootView);
         return builder.create();
@@ -164,6 +167,7 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
                                 pictureIMGView.setImageBitmap(playerIcon);
                                 pictureIMGView.setColorFilter(selectedColor, PorterDuff.Mode.OVERLAY);
+                                colorIMGView.setBackgroundColor(selectedColor);
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

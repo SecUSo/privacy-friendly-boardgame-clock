@@ -70,7 +70,7 @@
     <string name="play">Play</string>
     <string name="nextPlayer">Next Player</string>
     <string name="roundTime">Round Time:</string>
-    <string name="finishGame">Finish</string>
+    <string name="finishGame">Finish Game</string>
     <string name="quitGame">Quit Game</string>
     <string name="infinite">Infinite</string>
     <string name="pause_capslock" translatable="false">Pause</string>
@@ -114,6 +114,7 @@
     <string name="dialog_choose_new_player">Choose how to create new player:</string>
     <string name="nameDots">Name:</string>
     <string name="picDots">Picture:</string>
+    <string name="colorDots">Color:</string>
     <string name="changeColorButton">COLOR</string>
     <string name="takePhotoButton">PHOTO</string>
     <string name="confirm">CONFIRM</string>
@@ -244,4 +245,9 @@
 
     <string name="alertEmptyList">Create a player</string>
     <string name="emptyPlayerList">Your player list is empty.</string>
+    <string name="emptyContactList">Your contact list is empty. For that reason no contact can be added.</string>
+    <string name="alreadyPaused">Everything is already paused.</string>
+    <string name="instruction">Instructions</string>
+    <string name="instruction_details">Touch a player to start counting time for this player.\nPress PAUSE button, to pause all the counter.</string>
+
 </resources>

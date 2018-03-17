@@ -13,6 +13,11 @@ import org.secuso.privacyfriendlyboardgameclock.model.Player;
 
 import java.util.List;
 
+/**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
+ */
 public class SelectPlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
     private List mList; //--CloneChangeRequired
     private Context mContext;

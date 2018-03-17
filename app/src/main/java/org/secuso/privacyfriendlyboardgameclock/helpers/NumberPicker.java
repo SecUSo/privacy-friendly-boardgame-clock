@@ -6,6 +6,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
+ */
 public class NumberPicker extends android.widget.NumberPicker {
 
     private EditText editText;

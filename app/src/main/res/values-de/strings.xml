@@ -106,7 +106,7 @@
     <string name="action_game_history">Spielhistorie</string>
     <string name="action_new_game">Neues Spiel</string>
     <string name="action_resume_game">Spiel fortsetzen</string>
-    <string name="exit">Spiel verlassen</string>
+    <string name="exit">Anwendung verlassen</string>
     <string name="exitQuestion">Sind Sie sicher, dass Sie die Anwendung verlassen möchten?</string>
     <string name="resumeGameErrorToast">Kein gespeichertes Spiel gefunden.</string>
     <string name="modeClockwise">Im Uhrzeigersinn</string>
@@ -120,13 +120,13 @@
     <string name="gameNameStandard">Spiel</string>
     <string name="roundTimeLargerInfo">Die ausgewählte Rundenzeit wurde auf die Höhe der Spielzeit verringert, da die Rundenzeit nicht größer als die Spielzeit sein kann.</string>
     <string name="roundTime">Rundenzeit:</string>
-    <string name="quitGame">Spiel verlassen</string>
-    <string name="finishGame">Beenden</string>
+    <string name="quitGame">Spiel unterbrechen</string>
+    <string name="finishGame">Spiel Beenden</string>
     <string name="infinite">Unendlich</string>
     <string name="resume">Fortsetzen</string>
     <string name="quitGameQuestion">Möchten Sie den Fortschritt der Uhr vor dem Verlassen speichern?</string>
     <string name="finishGameQuestion">Sind Sie sicher, dass Sie das aktuelle Spiel beenden möchten?</string>
-    <string name="leaveGameQuestion">Sind Sie sicher, dass Sie das aktuelle Spiel verlassen möchten?</string>
+    <string name="leaveGameQuestion">Sind Sie sicher, dass Sie das aktuelle Spiel unterbrechen möchten?</string>
     <string name="gameNameSizeError">Bitte geben Sie einen Namen für das Spiel ein.</string>
     <string name="roundTimeSetError">Bitte wählen Sie eine Spielzeit und Rundenzeit von jeweils mindestens 1 Sekunde Dauer.</string>
     <string name="gameSavedSuccess">Fortschritt der Uhr erfolgreich gespeichert!</string>
@@ -195,4 +195,10 @@
     <string name="showHelp">Hilfe Anzeigen</string>
     <string name="alertEmptyList">Einen Spieler erschaffen</string>
     <string name="emptyPlayerList">Ihre Spielerliste ist leer.</string>
+    <string name="emptyContactList">Ihre Kontaktliste ist leer, deshalb können keine Kontakte hinzugefügt werden.</string>
+    <string name="alreadyPaused">Alles wurden schon pausiert.</string>
+    <string name="instruction">Instruktionen</string>
+    <string name="instruction_details">Drücken Sie auf einen Spieler, um die Zeit für diese Spieler zu zählen.\nDrücken Sie die PAUSE Taste, um alle Zähler zu pausieren.</string>
+    <string name="warning" >Warning</string>
+    <string name="colorDots">Farbe:</string>
 </resources>

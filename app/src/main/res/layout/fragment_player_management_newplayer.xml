@@ -20,6 +20,7 @@
     <EditText
         android:id="@+id/editName"
         android:layout_width="100sp"
+        android:maxLength="10"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/picture"
         android:layout_alignTop="@+id/nameHeading"
@@ -52,7 +53,19 @@
         android:orientation="horizontal"
         android:src="@mipmap/ic_android"/>
 
-    <Button
+    <TextView
+        android:id="@+id/colorHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/picture"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/colorDots"
+        android:textSize="15sp" />
+
+    <!--<Button
         android:id="@+id/colorButton"
         android:layout_width="@+id/picture"
         android:layout_height="wrap_content"
@@ -64,22 +77,19 @@
         android:background="@drawable/button_normal"
         android:orientation="horizontal"
         android:text="@string/changeColorButton"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"/>-->
 
-    <Button
-        android:id="@+id/photoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/picture"
-        android:layout_alignStart="@+id/picture"
-        android:layout_below="@+id/colorButton"
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/color"
+        android:layout_width="@dimen/picSize"
+        android:layout_height="@dimen/picSize"
+        android:layout_alignTop="@+id/colorHeading"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@drawable/button_normal"
-        android:orientation="horizontal"
-        android:text="@string/takePhotoButton"
-        android:textColor="@color/white"/>
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_below="@id/editName"
+        android:background="@drawable/button_fullwidth"
+        android:orientation="horizontal"/>
 
 
 </RelativeLayout>

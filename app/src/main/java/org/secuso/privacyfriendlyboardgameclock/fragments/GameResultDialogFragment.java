@@ -33,7 +33,8 @@ import java.util.HashMap;
 
 /**
  * Created by Quang Anh Dang on 23.12.2017.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 
@@ -57,7 +58,7 @@ public class GameResultDialogFragment extends DialogFragment {
         game = gds.getGame();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(game.getName())
-                .setPositiveButton(R.string.okay,
+                .setPositiveButton(R.string.backToMainMenu,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {

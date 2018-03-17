@@ -1,9 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/player_management_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contactList"
@@ -13,4 +15,25 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin">
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/emptyListLayout"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_add_player"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="@string/emptyContactList"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

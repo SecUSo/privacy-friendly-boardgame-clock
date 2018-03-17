@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * Created by Quang Anh Dang on 10.12.2017.
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
 
 public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {

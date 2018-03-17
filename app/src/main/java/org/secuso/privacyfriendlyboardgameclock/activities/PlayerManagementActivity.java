@@ -44,6 +44,9 @@ import java.util.List;
  * http://www.vogella.com/tutorials/AndroidActionBar/article.html#exercise-using-the-contextual-action-mode
  * Selection State tutorial
  * https://enoent.fr/blog/2015/01/18/recyclerview-basics/
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
 public class PlayerManagementActivity extends BaseActivity implements ItemClickListener{
     @SuppressWarnings("unused")

@@ -25,6 +25,8 @@ import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedServic
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 
 /**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20161022
  */

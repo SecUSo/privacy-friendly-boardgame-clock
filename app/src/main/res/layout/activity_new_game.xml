@@ -19,6 +19,7 @@ tools:openDrawer="start">
     <include layout="@layout/toolbar"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/activity_vertical_margin"
@@ -58,7 +59,7 @@ tools:openDrawer="start">
                     android:layout_marginTop="-10sp"
                     android:hint="..."
                     android:inputType="text"
-                    android:maxLength="30"
+                    android:maxLength="20"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -267,7 +268,7 @@ tools:openDrawer="start">
                     android:id="@+id/header_new_game_delta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/check_new_game_reset_time"
+                    android:layout_below="@+id/check_new_game_delta"
                     android:layout_marginBottom="20dp"
                     android:layout_marginStart="@dimen/main_button_padding"
                     android:layout_marginEnd="@dimen/main_button_padding"
@@ -280,9 +281,8 @@ tools:openDrawer="start">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/check_chess_mode"
-                    android:layout_alignTop="@+id/header_new_game_delta"
+                    android:layout_below="@+id/check_new_game_reset_time"
                     android:layout_marginEnd="@dimen/main_button_padding"
-                    android:layout_marginTop="-9sp"
                     android:text="@string/increaseTimeAfterRoundCheck" />
 
                 <LinearLayout

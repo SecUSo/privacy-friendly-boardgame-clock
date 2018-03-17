@@ -48,7 +48,8 @@ import java.util.Random;
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
- *
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
  */
 
@@ -73,6 +74,9 @@ public class GameCountDownActivity extends BaseActivity {
     private long currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
     private long currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG;
     private int nextPlayerIndex, currentPlayerIndex;
+
+    private long roundTimeOriTenPercent = TAGHelper.DEFAULT_VALUE_LONG;
+    private long gameTimeOriTenPercent = TAGHelper.DEFAULT_VALUE_LONG;
 
     private TextView currentPlayerTv;
     private TextView currentPlayerRound;
@@ -133,6 +137,8 @@ public class GameCountDownActivity extends BaseActivity {
     View.OnClickListener saveGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            playPauseButton.setOnClickListener(pause);
+            playPauseButton.performClick();
             new AlertDialog.Builder(GameCountDownActivity.this)
                     .setTitle(R.string.saveGame)
                     .setMessage(R.string.sureToSaveGameQuestion)
@@ -397,6 +403,8 @@ public class GameCountDownActivity extends BaseActivity {
     private View.OnClickListener finishGame = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            playPauseButton.setOnClickListener(pause);
+            playPauseButton.performClick();
             new AlertDialog.Builder(GameCountDownActivity.this)
                     .setTitle(R.string.finishGame)
                     .setMessage(R.string.finishGameQuestion)
@@ -417,6 +425,8 @@ public class GameCountDownActivity extends BaseActivity {
             // if one player runs out of time --> ask if game ends or continue with other
             // remaining players
             if (getPlayersNotInRound(playerRounds.get(currentPlayer.getId()) + 1).size() - 1 > 0){
+                playPauseButton.setOnClickListener(pause);
+                playPauseButton.performClick();
                 new AlertDialog.Builder(GameCountDownActivity.this)
                         .setTitle(R.string.roundTimeOverDialogHeading)
                         .setMessage(R.string.roundTimeOverDialogQuestion)
@@ -429,11 +439,11 @@ public class GameCountDownActivity extends BaseActivity {
                         })
                         .setNegativeButton(R.string.resume, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                isLastRound = 1;
-                                game.setIsLastRound(1);
-                                playPauseButton.setOnClickListener(pause);
+                                //isLastRound = 1;
+                                //game.setIsLastRound(1);
+                                playPauseButton.setOnClickListener(run);
                                 nextPlayerButton.setOnClickListener(nextPlayer);
-                                nextPlayerButton.performClick();
+                                //nextPlayerButton.performClick();
                             }
                         })
                         .show();
@@ -531,6 +541,8 @@ public class GameCountDownActivity extends BaseActivity {
         currentPlayerIcon.setImageBitmap(currentPlayer.getIcon());
         currentRoundTimeMs = playerRoundTimes.get(currentPlayer.getId());
         currentGameTimeMs = game.getCurrentGameTime();
+        roundTimeOriTenPercent = (long)(currentRoundTimeMs * 0.1);
+        gameTimeOriTenPercent = (long)(currentGameTimeMs * 0.1);
         gameTime = currentGameTimeMs;
         isLastRound = game.getIsLastRound();
         if (game.getGame_time_infinite() == 1) {
@@ -672,7 +684,7 @@ public class GameCountDownActivity extends BaseActivity {
         roundTimerTv.setText(round_time_result);
 
         // highlight low timers red colored
-        if (currentRoundTimeMs <= 5000)
+        if (currentRoundTimeMs <= roundTimeOriTenPercent)
             roundTimerTv.setTextColor(Color.RED);
         else
             roundTimerTv.setTextColor(Color.BLACK);
@@ -686,7 +698,7 @@ public class GameCountDownActivity extends BaseActivity {
             game_time_result = game_time_result + game_time_hh + ":" + game_time_mm + ":" + game_time_ss;
             gameTimerTv.setText(game_time_result);
 
-            if (game.getGame_time_infinite() == 0 && currentGameTimeMs <= 5000)
+            if (game.getGame_time_infinite() == 0 && currentGameTimeMs <= gameTimeOriTenPercent)
                 gameTimerTv.setTextColor(Color.RED);
             else
                 gameTimerTv.setTextColor(Color.BLACK);
@@ -763,6 +775,8 @@ public class GameCountDownActivity extends BaseActivity {
         if (isFinished == 1) {
             showMainMenu();
         } else {
+            playPauseButton.setOnClickListener(pause);
+            playPauseButton.performClick();
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.quitGame))
                     .setMessage(getString(R.string.leaveGameQuestion))
@@ -870,16 +884,16 @@ public class GameCountDownActivity extends BaseActivity {
             if(gameFinishedSignal){
                 // Remove finish signal after reading
                 mBoundService.getBroadcastIntent().removeExtra(TAGHelper.GAME_FINISHED_SIGNAL);
-                isFinished = 1;
                 currentGameTimeMs = 0;
+                /*isFinished = 1;*/
                 // all buttons gone but finished button
-                saveGameButton.setVisibility(View.GONE);
+                /*saveGameButton.setVisibility(View.GONE);
                 finishGameButton.setVisibility(View.GONE);
                 nextPlayerButton.setVisibility(View.VISIBLE);
                 nextPlayerButton.setOnClickListener(finishGame);
                 nextPlayerButton.setText(R.string.finishGame);
                 playPauseButton.setVisibility(View.VISIBLE);
-                playPauseButton.setOnClickListener(pauseFinishedGame);
+                playPauseButton.setOnClickListener(pauseFinishedGame);*/
             }
 
             // handle round timer
@@ -895,12 +909,12 @@ public class GameCountDownActivity extends BaseActivity {
                     else nextPlayerButton.performClick();
                 } else if (isFinished == 0 && game.getReset_round_time() == 1){
                     // optional else case
-                } else if (isFinished == 0 && game.getReset_round_time() == 0) {
+                } /*else if (isFinished == 0 && game.getReset_round_time() == 0) {
                     playPauseButton.setOnClickListener(wantToFinish);
                     playPauseButton.setVisibility(View.VISIBLE);
                     nextPlayerButton.setOnClickListener(wantToFinish);
                     nextPlayerButton.setVisibility(View.VISIBLE);
-                }
+                }*/
                 else{
                     // optional else case
                 }

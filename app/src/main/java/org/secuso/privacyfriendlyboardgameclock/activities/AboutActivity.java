@@ -29,6 +29,8 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 
 /**
  * Created by yonjuni on 15.06.16.
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  */
 public class AboutActivity extends AppCompatActivity {
 

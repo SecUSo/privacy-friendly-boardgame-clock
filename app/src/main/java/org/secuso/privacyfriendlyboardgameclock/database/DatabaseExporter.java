@@ -28,6 +28,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20161225
  *          Structure based on http://tech.sarathdr.com/android-app/convert-database-cursor-result-to-json-array-android-app-development/

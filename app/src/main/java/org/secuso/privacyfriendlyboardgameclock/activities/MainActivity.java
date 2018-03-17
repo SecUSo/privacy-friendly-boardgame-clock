@@ -40,6 +40,8 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 import java.util.ArrayList;
 
 /**
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
  * @author Christopher Beckmann, Karola Marky
  * @version 20171016
  */
@@ -49,6 +51,7 @@ public class MainActivity extends BaseActivity {
     private Game game;
     private PlayersDataSourceSingleton pds;
     private GamesDataSourceSingleton gds;
+    private Button continueGameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,17 @@ public class MainActivity extends BaseActivity {
         });
 
         // Continue Game Button
-        final Button continueGameButton = findViewById(R.id.resumeGameButton);
+        continueGameButton = findViewById(R.id.resumeGameButton);
+
+        overridePendingTransition(0, 0);
+        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (gds.getSavedGames().size() == 0) {
             continueGameButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
             continueGameButton.setOnClickListener(new View.OnClickListener() {
@@ -88,11 +101,6 @@ public class MainActivity extends BaseActivity {
                     startActivity(intent);
                 }
             });
-        }
-
-        overridePendingTransition(0, 0);
-        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
-            finish();
         }
     }
 

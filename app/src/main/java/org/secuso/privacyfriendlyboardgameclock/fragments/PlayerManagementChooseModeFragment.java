@@ -34,6 +34,9 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
  * User choose, if he/she prefers to add new player via Contact or Normal
  * Created by Quang Anh Dang on 03.12.2017.
  * https://guides.codepath.com/android/using-dialogfragment
+ * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
+ * Copyright (C) 2016-2017  Karola Marky
+ * @author Quang Anh Dang
  */
 
 public class PlayerManagementChooseModeFragment extends DialogFragment {
