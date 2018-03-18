@@ -17,6 +17,7 @@ import java.util.List;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * The Adapter for playerlist for manual sequence mode
  */
 public class SelectPlayerListAdapter extends ArrayAdapter { //--CloneChangeRequired
     private List mList; //--CloneChangeRequired

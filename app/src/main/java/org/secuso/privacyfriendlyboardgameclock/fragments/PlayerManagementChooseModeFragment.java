@@ -37,6 +37,7 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ *
  */
 
 public class PlayerManagementChooseModeFragment extends DialogFragment {

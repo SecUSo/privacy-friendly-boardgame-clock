@@ -6,15 +6,10 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,7 +17,6 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
-import org.secuso.privacyfriendlyboardgameclock.helpers.GamesListAdapterOld;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
@@ -36,6 +30,7 @@ import java.util.List;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This fragment opens up a dialog with statistic about a chosen player
  */
 public class PlayerManagementStatisticsFragment extends DialogFragment implements ItemClickListener {
 

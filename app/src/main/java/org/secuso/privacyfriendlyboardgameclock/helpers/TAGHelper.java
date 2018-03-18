@@ -5,6 +5,7 @@ package org.secuso.privacyfriendlyboardgameclock.helpers;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This class contains all the TAGs
  */
 
 public class TAGHelper {

@@ -14,6 +14,7 @@ import android.view.View;
  * FAB should disappear while scrolling down and reappear while scrolling up
  * Created by Quang Anh Dang 03.12.2017.
  * https://guides.codepath.com/android/floating-action-buttons#converting-from-listview-to-recyclerview
+ * This class is not used at the moment
  */
 
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {

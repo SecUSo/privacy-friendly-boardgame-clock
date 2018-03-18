@@ -32,6 +32,7 @@ import java.util.Map;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * the service responsible for counting up time in time tracking service
  */
 
 public class TimeTrackingService extends Service {

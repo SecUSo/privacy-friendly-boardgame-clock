@@ -31,6 +31,7 @@ import java.util.List;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * Adapter for the player list in Time Tracking Mode
  */
 public class TimeTrackingPlayerAdapter extends SelectableAdapter<TimeTrackingPlayerAdapter.ViewHolder> {
     private GameTimeTrackingModeActivity activity;

@@ -40,6 +40,7 @@ import org.secuso.privacyfriendlyboardgameclock.model.Player;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This Fragment opens up a dialog from which user can edit existing players
  */
 public class PlayerManagementEditPlayerFragment extends DialogFragment {
     private static final int CAMERA_REQUEST = 1888;

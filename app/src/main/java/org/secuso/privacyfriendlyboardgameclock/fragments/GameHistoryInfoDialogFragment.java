@@ -24,6 +24,8 @@ import java.util.HashMap;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This Dialog Fragment opens up a dialog with information about the chosen game.
+ * This dialog is opened by touching a game in Game History Page
  */
 
 public class GameHistoryInfoDialogFragment extends DialogFragment{

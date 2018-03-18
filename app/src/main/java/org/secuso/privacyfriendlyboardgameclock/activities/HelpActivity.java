@@ -35,6 +35,7 @@ import java.util.List;
  * last access 27th October 2016
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
+ * This is the Activity for the Help Page
  */
 
 public class HelpActivity extends BaseActivity {

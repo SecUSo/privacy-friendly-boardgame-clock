@@ -51,6 +51,7 @@ import java.util.Random;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This is the Activity for the actual Game Countdown Mode
  */
 
 public class GameCountDownActivity extends BaseActivity {

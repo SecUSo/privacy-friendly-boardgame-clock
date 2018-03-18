@@ -27,6 +27,7 @@ import java.io.OutputStream;
  * Created by Quang Anh Dang on 24.12.2017.
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3. Copyright (C) 2016-2017 Karola Marky
  * @author Quang Anh Dang
+ * This is the Activity Class for the Back Up Page
  */
 
 public class BackUpActivity extends BaseActivity{

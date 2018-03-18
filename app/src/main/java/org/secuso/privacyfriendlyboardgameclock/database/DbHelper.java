@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This class help manage the SQLite Database
  */
 public class DbHelper extends SQLiteOpenHelper {
 

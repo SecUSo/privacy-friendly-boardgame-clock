@@ -8,6 +8,7 @@ import java.util.Date;
 /**
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
+ * Model for Player Object
  */
 public class Player {
 

@@ -29,6 +29,7 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20161022
+ * This activity starts first when the app is opened
  */
 
 public class SplashActivity extends AppCompatActivity {

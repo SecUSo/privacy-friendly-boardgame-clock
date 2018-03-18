@@ -44,6 +44,7 @@ import org.secuso.privacyfriendlyboardgameclock.activities.HelpActivity;import o
  * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20161214
+ * The activity responsible for the tutorials
  */
 
 public class TutorialActivity extends AppCompatActivity {

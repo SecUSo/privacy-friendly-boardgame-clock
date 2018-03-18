@@ -27,6 +27,7 @@ import java.util.List;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This is the Activity for resuming saved games
  */
 
 public class ResumeGameActivity extends BaseActivity implements ItemClickListener {

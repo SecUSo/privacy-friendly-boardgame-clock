@@ -47,6 +47,7 @@ import java.util.List;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This is the Activity for the Player Management Page
  */
 public class PlayerManagementActivity extends BaseActivity implements ItemClickListener{
     @SuppressWarnings("unused")

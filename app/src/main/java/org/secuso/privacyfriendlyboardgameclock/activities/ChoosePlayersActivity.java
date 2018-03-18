@@ -38,6 +38,7 @@ import java.util.Random;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This is the Choose Player Activity after creating a new game
  */
 
 public class ChoosePlayersActivity extends BaseActivity implements ItemClickListener {

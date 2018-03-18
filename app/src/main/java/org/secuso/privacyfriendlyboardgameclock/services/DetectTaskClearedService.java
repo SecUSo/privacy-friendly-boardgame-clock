@@ -14,6 +14,8 @@ import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingle
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * the Service responsible for that the app is killed.
+ * Originally used to detect when to close the database
  */
 
 public class DetectTaskClearedService extends Service {

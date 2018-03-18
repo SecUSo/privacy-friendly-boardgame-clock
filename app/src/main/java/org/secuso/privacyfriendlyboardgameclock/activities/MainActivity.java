@@ -44,6 +44,7 @@ import java.util.ArrayList;
  * Copyright (C) 2016-2017  Karola Marky
  * @author Christopher Beckmann, Karola Marky
  * @version 20171016
+ * This is the Activity for the Main Page
  */
 
 public class MainActivity extends BaseActivity {

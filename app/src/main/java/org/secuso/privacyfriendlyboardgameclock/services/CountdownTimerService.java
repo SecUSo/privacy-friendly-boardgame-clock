@@ -30,6 +30,7 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * The Service responsible for counting down time
  */
 
 public class CountdownTimerService extends Service{

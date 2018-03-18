@@ -37,6 +37,8 @@ import java.io.IOException;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * Adding a new player from contact list. This Fragment open a RecycleView with a list of all contacts
+ * from which user can choose.
  */
 public class PlayerManagementContactListFragment extends DialogFragment implements LoaderManager.LoaderCallbacks<Cursor>,ItemClickListener {
     // columns requested from the database

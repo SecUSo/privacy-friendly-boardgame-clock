@@ -36,6 +36,8 @@ import java.util.HashMap;
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
  * Copyright (C) 2016-2017  Karola Marky
  * @author Quang Anh Dang
+ * This Dialog shows by touching the "Show Result" Button after a game is finished.
+ * Normally the game result is automatically shown after finishing a game
  */
 
 public class GameResultDialogFragment extends DialogFragment {
