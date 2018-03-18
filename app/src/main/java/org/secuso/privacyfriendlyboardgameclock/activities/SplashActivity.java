@@ -1,7 +1,7 @@
 /*
- This file is part of Privacy Friendly App Example.
+ This file is part of Privacy Friendly Board Game Clock.
 
- Privacy Friendly App Example is free software:
+ Privacy Friendly Board Game Clock is free software:
  you can redistribute it and/or modify it under the terms of the
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
@@ -29,6 +29,7 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20161022
+ * Last changed on 18.03.18
  * This activity starts first when the app is opened
  */
 

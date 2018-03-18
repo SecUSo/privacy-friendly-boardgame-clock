@@ -1,3 +1,19 @@
+/*
+ This file is part of Privacy Friendly Board Game Clock.
+
+ Privacy Friendly Board Game Clock is free software:
+ you can redistribute it and/or modify it under the terms of the
+ GNU General Public License as published by the Free Software Foundation,
+ either version 3 of the License, or any later version.
+
+ Privacy Friendly App Example is distributed in the hope
+ that it will be useful, but WITHOUT ANY WARRANTY; without even
+ the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.secuso.privacyfriendlyboardgameclock.helpers;
 
 
@@ -13,6 +29,8 @@ import android.view.View;
  * Describe the behavior of FAB when scrolled
  * FAB should disappear while scrolling down and reappear while scrolling up
  * Created by Quang Anh Dang 03.12.2017.
+ * @author Quang Anh Dang
+ * Last changed on 18.03.18
  * https://guides.codepath.com/android/floating-action-buttons#converting-from-listview-to-recyclerview
  * This class is not used at the moment
  */

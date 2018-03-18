@@ -1,5 +1,20 @@
-package org.secuso.privacyfriendlyboardgameclock.activities;
+/*
+ This file is part of Privacy Friendly Board Game Clock.
 
+ Privacy Friendly Board Game Clock is free software:
+ you can redistribute it and/or modify it under the terms of the
+ GNU General Public License as published by the Free Software Foundation,
+ either version 3 of the License, or any later version.
+
+ Privacy Friendly App Example is distributed in the hope
+ that it will be useful, but WITHOUT ANY WARRANTY; without even
+ the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
+ */
+package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -44,9 +59,9 @@ import java.util.List;
  * http://www.vogella.com/tutorials/AndroidActionBar/article.html#exercise-using-the-contextual-action-mode
  * Selection State tutorial
  * https://enoent.fr/blog/2015/01/18/recyclerview-basics/
- * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
- * Copyright (C) 2016-2017  Karola Marky
+ * Created by Quang Anh Dang on 24.12.2017.
  * @author Quang Anh Dang
+ * Last changed on 18.03.18
  * This is the Activity for the Player Management Page
  */
 public class PlayerManagementActivity extends BaseActivity implements ItemClickListener{

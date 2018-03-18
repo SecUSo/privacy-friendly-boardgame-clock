@@ -1,7 +1,7 @@
 /*
- This file is part of Privacy Friendly App Example.
+ This file is part of Privacy Friendly Board Game Clock.
 
- Privacy Friendly App Example is free software:
+ Privacy Friendly Board Game Clock is free software:
  you can redistribute it and/or modify it under the terms of the
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
@@ -14,7 +14,6 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.ActivityManager;
@@ -49,10 +48,9 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
 /**
  * @author Christopher Beckmann, Karola Marky
  * @version 20171017
+ * Last changed on 18.03.18
  * This class is a parent class of all activities that can be accessed from the
  * Navigation Drawer (example see MainActivity.java)
- * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
- * Copyright (C) 2016-2017  Karola Marky
  */
 public abstract class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 

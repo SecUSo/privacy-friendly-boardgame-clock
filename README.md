@@ -17,7 +17,7 @@ Target SDK: 26
 
 ## License
 
-Privacy Friendly App Example is licensed under the GPLv3.
+Privacy Friendly Boardgame Clock is licensed under the GPLv3.
 Copyright (C) 2016-2017  Karola Marky
 
 This program is free software: you can redistribute it and/or modify

@@ -1,7 +1,7 @@
 /*
- This file is part of Privacy Friendly App Example.
+ This file is part of Privacy Friendly Board Game Clock.
 
- Privacy Friendly App Example is free software:
+ Privacy Friendly Board Game Clock is free software:
  you can redistribute it and/or modify it under the terms of the
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
@@ -31,8 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
- * Copyright (C) 2016-2017  Karola Marky
  * @author Karola Marky
  * @version 20171016
  * Class structure taken from tutorial at http://www.journaldev.com/9942/android-expandablelistview-example-tutorial
