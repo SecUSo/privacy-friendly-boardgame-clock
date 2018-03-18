@@ -134,7 +134,12 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             finishGameButton.setVisibility(View.VISIBLE);
 
             playPauseButton.setText(R.string.resume);
-            playPauseButton.setOnClickListener(null);
+            playPauseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(getResources().getString(R.string.alreadyPaused));
+                }
+            });
             playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_disabled));
         }
     };
@@ -292,6 +297,23 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
         playerRecycleView.setAdapter(timeTrackingAdapter);
         playerRecycleView.setLayoutManager(new LinearLayoutManager(this));
         playerRecycleView.setItemAnimator(null);
+
+        List<Long> activePlayers = mBoundService.getActivePlayersList();
+        if(activePlayers.size() > 0){
+            playPauseButton.setText(R.string.pause_capslock);
+            playPauseButton.setOnClickListener(pauseAllActiveTrackers);
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_fullwidth));
+        }
+        else{
+            playPauseButton.setText(R.string.pause_capslock);
+            playPauseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(getResources().getString(R.string.alreadyPaused));
+                }
+            });
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_disabled));
+        }
     }
 
     @Override
@@ -535,6 +557,15 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             playPauseButton.setText(R.string.pause_capslock);
             playPauseButton.setOnClickListener(pauseAllActiveTrackers);
             playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_fullwidth));
+        }else{
+            playPauseButton.setText(R.string.pause_capslock);
+            playPauseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showToast(getResources().getString(R.string.alreadyPaused));
+                }
+            });
+            playPauseButton.setBackground(ContextCompat.getDrawable(GameTimeTrackingModeActivity.this, R.drawable.button_disabled));
         }
     }
 
