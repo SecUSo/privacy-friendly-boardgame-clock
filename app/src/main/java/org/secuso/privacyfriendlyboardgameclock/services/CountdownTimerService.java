@@ -44,7 +44,6 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
 /**
  * Created by Quang Anh Dang on 26.12.2017.
  * @author Quang Anh Dang
- * Last changed on 18.03.18
  * The Service responsible for counting down time
  */
 

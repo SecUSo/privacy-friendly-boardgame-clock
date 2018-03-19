@@ -260,6 +260,18 @@ public class GameCountDownActivity extends BaseActivity {
             // update the round number for current player
             playerRounds.put(currPlayerId, nextPlayerRound);
 
+            // in case of chess mode and the time is not reseted each round
+            if(game.getChess_mode() == 1 && isFinished == 0 && game.getReset_round_time() == 0){
+                boolean isAllRoundTimeZero = true;
+                for(Long playerID:playerRoundTimes.keySet()){
+                    isAllRoundTimeZero = isAllRoundTimeZero && (playerRoundTimes.get(playerID) == 0);
+                }
+                if(isAllRoundTimeZero){
+                    finishGame();
+                    return;
+                }
+            }
+
             if (game.getIsLastRound() == 1 && getPlayersNotInRound(nextPlayerRound).size() == 0) {
                 nextPlayerRound -= 1;
                 playerRounds.put(currPlayerId, nextPlayerRound);
@@ -779,6 +791,7 @@ public class GameCountDownActivity extends BaseActivity {
         nextPlayerButton.setVisibility(View.GONE);
         playPauseButton.setText(R.string.showResults);
         playPauseButton.setOnClickListener(showGameResults);
+        playPauseButton.performClick();
 
         saveGameToDb(0);
     }
@@ -897,10 +910,15 @@ public class GameCountDownActivity extends BaseActivity {
             roundFinishedSignal = intent.getBooleanExtra(TAGHelper.ROUND_FINISHED_SIGNAL, false);
 
             // handle game timer
-            if(gameFinishedSignal){
+            // apparently the 2 signals don't always match => combine signal from intent and signal from mBoundService.getBroadcastIntent()
+            // for only one time signal
+            if(gameFinishedSignal && mBoundService.getBroadcastIntent().getBooleanExtra(TAGHelper.GAME_FINISHED_SIGNAL, false)){
                 // Remove finish signal after reading
                 mBoundService.getBroadcastIntent().removeExtra(TAGHelper.GAME_FINISHED_SIGNAL);
                 currentGameTimeMs = 0;
+                if(game.getChess_mode() == 1){
+                    finishGame();
+                }
                 /*isFinished = 1;*/
                 // all buttons gone but finished button
                 /*saveGameButton.setVisibility(View.GONE);
@@ -913,14 +931,19 @@ public class GameCountDownActivity extends BaseActivity {
             }
 
             // handle round timer
-            if(roundFinishedSignal){
+            // apparently the 2 signals don't always match => combine signal from intent and signal from mBoundService.getBroadcastIntent()
+            // for only one time signal
+            if(roundFinishedSignal && mBoundService.getBroadcastIntent().getBooleanExtra(TAGHelper.ROUND_FINISHED_SIGNAL, false)){
                 // Remove finish signal after reading
                 mBoundService.getBroadcastIntent().removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL);
+                intent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL);
                 currentRoundTimeMs = 0;
                 if(game.getChess_mode() == 1){
                     if (isFinished == 0 && game.getReset_round_time() == 0){
                         mBoundService.pauseTimer();
-                        wantToFinish.onClick(findViewById(R.id.main_content));
+                        nextPlayerButton.performClick();
+                        // TODO if chess mode => last player then automatically finish
+                        //wantToFinish.onClick(findViewById(R.id.main_content));
                     }
                     else nextPlayerButton.performClick();
                 } else if (isFinished == 0 && game.getReset_round_time() == 1){
