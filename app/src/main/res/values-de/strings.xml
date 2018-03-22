@@ -201,4 +201,6 @@
     <string name="instruction_details">Drücken Sie auf einen Spieler, um die Zeit für diese Spieler zu zählen.\nDrücken Sie die PAUSE Taste, um alle Zähler zu pausieren.</string>
     <string name="warning" >Warning</string>
     <string name="colorDots">Farbe:</string>
+    <string name="help_add_new_player_feature">Welche Features gibt es beim Hinzufügen von neuen Spielern?</string>
+    <string name="help_add_new_player_feature_answer">Beim Kreieren neuer Spielern können Sie das Android Symbol anklicken, um einen Foto mit dem Kamera aufzunehmen. Außerdem können Sie das Farbefeld unter dem Android Symbol anklicken, um eine Hintergrundsfarbe auszuwählen.</string>
 </resources>

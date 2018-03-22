@@ -50,6 +50,7 @@ public class HelpDataDump {
         addTextToList(context.getResources().getText(R.string.help_game_mode),context.getResources().getText(R.string.help_game_mode_answer));
         addTextToList(context.getResources().getText(R.string.help_next_player),context.getResources().getText(R.string.help_next_player_answer));
         addTextToList(context.getResources().getText(R.string.help_permissions),context.getResources().getText(R.string.help_permissions_answer));
+        addTextToList(context.getResources().getText(R.string.help_add_new_player_feature), context.getResources().getText(R.string.help_add_new_player_feature_answer));
 
         return expandableListDetail;
     }

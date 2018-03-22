@@ -159,6 +159,8 @@
     <string name="help_permissions">Which Permissions could be asked for?</string>
     <string name="help_permissions_answer"><b>Read Contacts</b>\nAdditional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.\n\n<b>Read External Storage</b>\nThe app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.\n\n<b>Write External Storage</b>\nApp data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.\n\n
     </string>
+    <string name="help_add_new_player_feature">Which features are there when adding new players?</string>
+    <string name="help_add_new_player_feature_answer">When creating a new player, you can click on the Android Icon to take a custom picture with the camera. You can also click on the color field under the Android Icon to choose a background color for the picture.</string>
 
     <!--###ABOUT###-->
     <string name="about">About</string>
