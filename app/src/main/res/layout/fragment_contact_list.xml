@@ -1,32 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/player_management_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
-    <ListView
-        android:id="@android:id/list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contactList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_weight="1"
-        android:choiceMode="multipleChoice" />
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin">
+    </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/addContactSelectionButton"
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/emptyListLayout"
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5sp"
-        android:layout_marginLeft="@dimen/main_button_padding"
-        android:layout_marginRight="@dimen/main_button_padding"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_grey"
-        android:onClick="addContactSelectionButton"
-        android:text="@string/addContact"
-        android:textColor="@android:color/white"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_add_player"/>
 
-        android:textSize="@dimen/text_size" />
+        <TextView
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="@string/emptyContactList"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

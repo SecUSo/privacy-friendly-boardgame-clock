@@ -1,42 +1,51 @@
 <resources>
-    <!-- App -->
-    <string name="app_name" translatable="false">Board Game Clock</string>
-    <string name="app_name_long" translatable="false">Privacy Friendly Board Game Clock</string>
+    <string name="app_name">Board Game Clock</string>
+    <string name="app_name_long">Privacy Friendly Board Game Clock</string>
+    <string name="app_prefix" translatable="false">Privacy Friendly</string>
 
-    <!-- General -->
+    <!-- TODO #8 Translate to German -->
+    <!-- ###GENERAL### -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="error">Error</string>
-    <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="players">Players</string>
     <string name="ok">Okay</string>
     <string name="dialog_no_permissions">Required permissions are not granted!</string>
 
-    <!-- Drawer -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- ###DRAWER###-->
     <string name="action_help">Help</string>
     <string name="action_about">About</string>
-    <string name="action_main">Main Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_main">Main</string>
+    <string name="action_game">Game</string>
     <string name="action_player_management">Player Management</string>
-    <string name="backup" translatable="false">Backup</string>
-    <string name="gameHistory">Game History</string>
-    <string name="action_navigation" translatable="false">Navigation</string>
-    <string name="backupDuringGame">Please quit the current game first before importing or exporting database backups.</string>
+    <string name="action_game_history">Game History</string>
+    <string name="action_backup">Backup</string>
+    <string name="action_tutorial">Tutorial</string>
 
-    <!-- Main Menu -->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- ###MAIN### -->
+    <string name="title_activity_game">Game</string>
+    <string name="game_button_start">New Game</string>
+    <string name="game_button_continue">Continue Game</string>
     <string name="action_new_game">New Game</string>
     <string name="action_resume_game">Resume Game</string>
+    <string name="choose_players">Choose Players</string>
     <string name="exit">Exit</string>
     <string name="exitQuestion">Do you really want to close the application?</string>
-
+    <string name="game_desc">This is the default main menu for game apps. The viewpager above should be used to switch between game modes.</string>
+    <string name="resumeGameErrorToast">No saved games found.</string>
     <!-- New Game -->
     <string-array name="game_modes">
         <item>Clockwise</item>
         <item>Counter-Clockwise</item>
         <item>Random</item>
         <item>Manual sequence</item>
+        <item>Time Tracking</item>
     </string-array>
     <string name="modeClockwise">Clockwise</string>
     <string name="modeCounterClockwise">Counter-Clockwise</string>
@@ -50,11 +59,10 @@
     <string name="gameNameStandard">Game</string>
     <string name="chess_clock">Chess Clock</string>
     <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
-
-
     <!-- Game -->
     <string name="round">Round:</string>
     <string name="saveGame">Save Clock</string>
+    <string name="withoutSave">Without Saving</string>
     <string name="showResults">Show Results</string>
     <string name="gameTime">Game Time:</string>
     <string name="currentPlayer">Player:</string>
@@ -62,7 +70,7 @@
     <string name="play">Play</string>
     <string name="nextPlayer">Next Player</string>
     <string name="roundTime">Round Time:</string>
-    <string name="finishGame">Finish</string>
+    <string name="finishGame">Finish Game</string>
     <string name="quitGame">Quit Game</string>
     <string name="infinite">Infinite</string>
     <string name="pause_capslock" translatable="false">Pause</string>
@@ -81,6 +89,15 @@
     <string name="manualChoiceError">Please select every player from the list!</string>
     <string name="manualChoiceHeading">Set player sequence</string>
 
+    <!-- Game Results -->
+    <string name="gameResults">Game Results</string>
+    <string name="backToMainMenu">Back to Main Menu</string>
+    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
+    <string name="activeGameTimeHeader">Game Time:</string>
+    <string name="playedRoundsHeader">Last Round:</string>
+    <string name="playerResults">Player Results:</string>
+    <string name="timeLeft">Player\'s time:</string>
+
     <!-- Load Game -->
     <string name="loadGame">Load Game</string>
     <string name="loadSelectedGame">Load Game</string>
@@ -90,21 +107,30 @@
     <string name="errorAtLeastTwoPlayers">Please choose at least two players to continue.</string>
     <string name="startNewGame">Start New Game</string>
 
-    <!-- Player Management -->
-    <string name="createNewPlayer">New Player</string>
-    <string name="playerManagement">Player Management</string>
-    <string name="addPlayerFromContacts">Contacts</string>
-    <string name="deletePlayer">Delete Player</string>
+    <!-- ###PLAYER MANAGEMENT### -->
+    <string name="player_management">Player Management</string>
+    <string name="new_player">New Player</string>
+    <string name="contact">Contact</string>
+    <string name="dialog_choose_new_player">Choose how to create new player:</string>
+    <string name="nameDots">Name:</string>
+    <string name="picDots">Picture:</string>
+    <string name="colorDots">Color:</string>
+    <string name="changeColorButton">COLOR</string>
+    <string name="takePhotoButton">PHOTO</string>
+    <string name="confirm">CONFIRM</string>
     <string name="editPlayer">Edit Player</string>
-    <string name="deletePlayerQuestion">Do you really want to delete the selected player? This also deletes every saved game where this player took part. This step cannot be undone.</string>
-    <string name="showPlayerStats">Statistics</string>
+    <string name="enterAName">Please enter a name.</string>
+    <string name="chooseContacts">Choose contacts:</string>
+    <string name="contactListIsEmpty">There was no contact found.</string>
 
+    <!-- Player Statistics -->
+    <string name="playerStatistic">Player Statistic</string>
+    <string name="playedGames">Games played:</string>
+    <string name="completedRounds">Rounds finished:</string>
+    <string name="totalTimePlayed">Total Time played:</string>
 
     <!-- Game History -->
-    <string name="deleteGame">Delete Game</string>
-    <string name="deleteGameQuestion">Do you really want to delete the selected game?</string>
-    <string name="removeEntry">Remove Entry</string>
-    <string name="removeEntryQuestion">Do you really want to remove the selected entry from history?</string>
+    <string name="title_activity_game_history">Game History</string>
 
     <!-- Backup -->
     <string name="importDatabaseBackup">Import Database Backup</string>
@@ -116,80 +142,68 @@
     <string name="noBackupFound">No database backup found!</string>
     <string name="backupExportError">Export of database failed!</string>
 
+    <!--###HELP###-->
+    <string name="help">Help</string>
 
-    <!-- Contact List -->
-    <string name="addSelectedContacts">Add Contacts</string>
-    <string name="addContact">Add Contact</string>
+    <string name="help_whatis">What is Privacy Friendly Board Game Clock?</string>
+    <string name="help_whatis_answer">Privacy Friendly Board Game Clock allows to measure in (round-based) games with any amount of players.</string>
+    <string name="help_privacy">What makes the app privacy-friendly?</string>
+    <string name="help_privacy_answer">Privacy Friendly Board Game Clock does not require any permission. It further does not include any tracking mechanisms or advertisement.</string>
+    <string name="help_new_game">What do the different options in New Game Windows mean?</string>
+    <string name="help_new_game_answer"><b>Game Time</b>\nTotal time for a game.\n\n<b>Round Time</b>\nThe time a player has available per round/turn. After this time the turn will be finished automatically.\n\n<b>Extra Time</b>\nThe time a player a player gets credited once a new round starts.</string>
+    <string name="help_game_mode">What are the different Game Modes?</string>
+    <string name="help_game_mode_answer"><b>Clockwise</b>\nThe turn order corresponds to the player list and will continue clockwise.\n\n<b>Counter-Clockwise</b>\nThe turn order corresponds to the player list and will continue counter-clockwise.\n\n<b>Random</b>\nThe next player will be selected randomly from the player list.\n\n<b>Manual sequence</b>\nPlayers decide for a manual sequence each round.\n\n<b>Chess</b>\nThe turn order corresponds to the player list, no game pause after a round ends.\n\n<b>Time Tracking</b>\nThere is no turn order. Time will be counted up, if a player is touched.
+    </string>
+    <string name="help_next_player">What is an alternative to the \"Next Player\" Button?</string>
+    <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
+    <string name="help_permissions">Which Permissions could be asked for?</string>
+    <string name="help_permissions_answer"><b>Read Contacts</b>\nAdditional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.\n\n<b>Read External Storage</b>\nThe app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.\n\n<b>Write External Storage</b>\nApp data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.\n\n
+    </string>
+    <string name="help_add_new_player_feature">Which features are there when adding new players?</string>
+    <string name="help_add_new_player_feature_answer">When creating a new player, you can click on the Android Icon to take a custom picture with the camera. You can also click on the color field under the Android Icon to choose a background color for the picture.</string>
 
-    <!-- Help -->
-    <string name="permissionContacts">Additional players can be added based on address book data. If this permission is not granted, this function is not possible and the button "Contacts" at the menu "Player Management" is greyed out.</string>
-    <string name="permissionReadExtStorage">The app allows to restore saved database backups. If this permission is not granted, this function is not possible and the button "Export Database Backup" is greyed out.</string>
-    <string name="permissionSaveExtStorage">App data can be stored as a database backup on the device. If this permission is not granted, this function is not possible and the button "Import Database Backup" at the menu "Backup" is greyed out.</string>
-    <string name="gameModeNoColon">Game Modes</string>
-    <string name="gameTimeNoColon">Game Time</string>
-    <string name="roundTimeNoColon">Round Time</string>
-    <string name="timeDeltaNoColon">Extra Time</string>
-    <string name="permissionHeading">Permissions</string>
-    <string name="modeClockwiseSummary">The turn order corresponds to the player list and will continue clockwise.</string>
-    <string name="modeCounterClockwiseSummary">The turn order corresponds to the player list and will continue counter-clockwise.</string>
-    <string name="modeRandomSummary">The next player will be selected randomly from the player list.</string>
-    <string name="modeChessSummary">The turn order corresponds to the player list, no game pause after a round ends.</string>
-    <string name="overviewHeading">Overview</string>
-    <string name="overviewSummary">Privacy Friendly Board Game Clock allows to measure in (round-based) games with any amount of players. </string>
-    <string name="permissionContactsName">Read Contacts</string>
-    <string name="permissionReadExtStorageName">Read External Storage</string>
-    <string name="permissionSaveExtStorageName">Write External Storage</string>
-    <string name="help_gameTime">Total time for a game.</string>
-    <string name="help_roundTime">The time a player has available per round/turn. After this time the turn will be finished automatically.</string>
-    <string name="help_timeDelta">The time a player a player gets credited once a new round starts.</string>
-
-    <!-- Game Results -->
-    <string name="gameResults">Game Results</string>
-    <string name="backToMainMenu">Back to Main Menu</string>
-    <string name="backToMainMenuQuestion">Do you really want to go back to the main menu?</string>
-    <string name="activeGameTimeHeader">Game Time left:</string>
-    <string name="playedRoundsHeader">Last Round:</string>
-    <string name="playerResults">Player Results:</string>
-    <string name="timeLeft">Time left:</string>
-
-    <!-- Welcome Dialog -->
-    <string name="welcome">Welcome</string>
-    <string name="welcome_part4">Choose time, round time and players for your game.</string>
-    <string name="welcomePlay">3. Play!</string>
-    <string name="welcomeNewGame">1. New Game</string>
-    <string name="welcome_part3">Start a New Game by pressing the button.</string>
-    <string name="welcome_part2">Thanks for using Privacy Friendly Board Game Clock.</string>
-    <string name="viewHelp">View Help</string>
-    <string name="setParameters">2. Set Parameters</string>
-
-    <!-- About -->
-    <string name="url" translatable="false"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/secuso/research/results/privacy-friendly-apps/">https://www.secuso.org</a></string>
-    <string name="version_number" translatable="false">Version 1.0</string>
+    <!--###ABOUT###-->
+    <string name="about">About</string>
+    <string name="version_number">Version</string>
     <string name="about_author">Authors: </string>
-    <string name="about_author_names" translatable="false">Marco Bräuning</string>
-    <string name="about_author_contributors">and contributors.</string>
+    <string name="about_author_names" translatable="false">Quang Anh Dang, Marco Bräuning</string>
+    <string name="about_author_contributors">and contributors</string>
     <string name="about_affiliation">In affiliation with</string>
     <string name="privacy_friendly">This application belongs to the group of Privacy Friendly Apps developed by Technische Universität Darmstadt. Sourcecode licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>
     <string name="more_info">More information can be found on:</string>
-    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-boardgame-clock">Github-Repo</a></string>
+    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-boardgame-clock/tree/Version-2.0">Github-Repo</a></string>
+    <string name="url" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
 
-    <!-- New / Edit Player -->
-    <string name="pickColor">Pick color</string>
-    <string name="takePhotoButton">Photo</string>
-    <string name="changeColorButton">Color</string>
-    <string name="picture">Picture:</string>
-    <string name="nameDots" translatable="false">Name:</string>
+    <!-- ###SETTINGS### -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_header_general">General</string>
+    <string name="pref_example_switch">Example Switch</string>
+    <string name="pref_example_switch_summary">Example Switch Summary</string>
+    <string name="pref_example_summary">Example Summary</string>
 
-    <!-- Player Statistics -->
-    <string name="playerStatistics">Player Statistics</string>
-    <string name="playedGames">Games played:</string>
-    <string name="completedRounds">Rounds finished:</string>
-    <string name="totalTimePlayed">Total Time played:</string>
+    <!-- ### TUTORIAL DIALOG ### -->
+    <string name="slide1_heading">Welcome!</string>
+    <string name="slide1_text">Welcome to Privacy Friendly Board Game Clock. This tutorial will cover the most important things you need to know.</string>
 
-    <!-- Fragments and Dialogs-->
-    <string name="welcomeDialog" translatable="false">WelcomeDialog</string>
-    <string name="backupDialog" translatable="false">BackupDialog</string>
-    <string name="aboutFragment" translatable="false">AboutFragment</string>
+    <string name="slide2_heading">Introduction</string>
+    <string name="slide2_text">You either create a new clock or resume one. Press <b>new game</b> to create a new clock. Then fill in the parameters. Choose/Create at least 2 players afterward and have fun!</string>
+
+    <string name="slide3_heading">More features</string>
+    <string name="slide3_text">The app also keep track of the game and player history. You can also import/export data after granting storage permission.</string>
+
+    <string name="okay">Okay</string>
+    <string name="viewhelp">View Help</string>
+    <string name="main_button_welcomedialog">Show Welcome</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="showHelp">Show Help</string>
+
+    <!-- ### FRAGMENT AND DIALOG ### -->
+    <!-- ### Main Menu ### -->
+    <string name="mainMenuWelcomeFragment" translatable="false">MainMenuWelcomeFragment</string>
+    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
+    <!-- ### Player Management ### -->
+    <string name="chooseNewPlayerMode" translatable="false">ChooseNewPlayerModeFragment</string>
     <string name="createNewPlayerFragment" translatable="false">CreateNewPlayerFragment</string>
     <string name="choosePlayersFragment" translatable="false">ChoosePlayersFragment</string>
     <string name="contactListFragment" translatable="false">ContactListFragment</string>
@@ -197,12 +211,45 @@
     <string name="gameFragment" translatable="false">GameFragment</string>
     <string name="gameHistoryFragment" translatable="false">GameHistoryFragment</string>
     <string name="gameResultsFragment" translatable="false">GameResultsFragment</string>
-    <string name="loadGameFragment" translatable="false">LoadGameFragment</string>
     <string name="helpFragment" translatable="false">HelpFragment</string>
-    <string name="mainMenuFragment" translatable="false">MainMenuFragment</string>
     <string name="playerManagementFragment" translatable="false">PlayerManagementFragment</string>
     <string name="newGameFragment" translatable="false">NewGameFragment</string>
     <string name="playerStatisticsFragment" translatable="false">PlayerStatisticsFragment</string>
+    <string name="playerDeleteWarning">Deleting these players will lead to the removal of the associated games as well. Are you sure you want to do this?</string>
 
+
+
+    <!-- ### Toast ### -->
+    <string name="selectAtLeast2Players" >Please select at least 2 Players to continue.</string>
+    <string name="warning" >Warning</string>
+
+    <!-- ### Service ### -->
+    <string name="CountdownTimerServiceDescription" translatable="false">Privacy friendly Board Game Clock Countdown Timer Service.</string>
+    <string name="TimeTrackingServiceDescription" translatable="false">Privacy friendly Board Game Clock Time Tracking Service.</string>
+    <string name="CountDownTimerServiceStopped" >CountDown Timer Service stopped.</string>
+    <string name="serviceNotificationLabel" translatable="false">Privacy Friendly Boardgame Clock</string>
+    <string name="serviceNotificationContent" >The Clock is counting down.</string>
+    <string name="DetectTaskClearedServiceDescription" translatable="false">Privacy friendly Board Game Clock Service to detect if app is killed.</string>
+
+    <!-- ### Example App ### -->
+    <string name="main_button_text">Full Width Button</string>
+    <string name="main_button_disabled_text">Inactive Button</string>
+    <string name="main_button_1">1</string>
+    <string name="main_button_2">2</string>
+    <string name="main_button_3">3</string>
+    <string name="main_button_4">4</string>
+    <string name="main_button_5">5</string>
+    <string name="main_text_fullwithbutton_desc">A button that uses the full width of the screen looks like this:</string>
+    <string name="main_text_disabledbutton_desc">A disabled button looks like this (any size):</string>
+    <string name="main_text_title">This is an example app to demonstrate the design of a Privacy Friendly App. Further explanations can be found in the Privacy Friendly App Guide.</string>
+    <string name="main_text_normalbutton_desc">There are multiple ways to display basic buttons. Button 1 is the basic button. If you wish to separate a button visually, use button 2. The buttons 3&#8211;5 are examples for highlighted buttons. Depending on the app other colors are possible.</string>
+    <string name="main_button_welcomedialog_text">Use the button in the lower left corner to call the Welcome Dialog.</string>
+
+    <string name="alertEmptyList">Add a player</string>
+    <string name="emptyPlayerList">Your player list is empty.</string>
+    <string name="emptyContactList">Your contact list is empty. For that reason no contact can be added.</string>
+    <string name="alreadyPaused">Everything is already paused.</string>
+    <string name="instruction">Instructions</string>
+    <string name="instruction_details">Touch a player to start counting time for this player.\nPress PAUSE button, to pause all the counter.</string>
 
 </resources>

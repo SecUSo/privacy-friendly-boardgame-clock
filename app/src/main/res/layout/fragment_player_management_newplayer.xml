@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top">
+
+    <TextView
+        android:id="@+id/nameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/pictureHeading"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/nameDots"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="100sp"
+        android:maxLength="10"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/picture"
+        android:layout_alignTop="@+id/nameHeading"
+        android:layout_marginTop="-15sp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/pictureHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameHeading"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:text="@string/picDots"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/picture"
+        android:layout_width="@dimen/picSize"
+        android:layout_height="@dimen/picSize"
+        android:layout_alignTop="@+id/pictureHeading"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_below="@id/editName"
+        android:background="@null"
+        android:orientation="horizontal"
+        android:src="@mipmap/ic_android"/>
+
+    <TextView
+        android:id="@+id/colorHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/picture"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/colorDots"
+        android:textSize="15sp" />
+
+    <!--<Button
+        android:id="@+id/colorButton"
+        android:layout_width="@+id/picture"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/picture"
+        android:layout_alignStart="@+id/picture"
+        android:layout_below="@+id/picture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/button_normal"
+        android:orientation="horizontal"
+        android:text="@string/changeColorButton"
+        android:textColor="@color/white"/>-->
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/color"
+        android:layout_width="@dimen/picSize"
+        android:layout_height="@dimen/picSize"
+        android:layout_alignTop="@+id/colorHeading"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_below="@id/editName"
+        android:background="@drawable/button_fullwidth"
+        android:orientation="horizontal"/>
+
+
+</RelativeLayout>
