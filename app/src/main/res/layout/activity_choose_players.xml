@@ -75,15 +75,15 @@
                     android:visibility="visible"
                     android:id="@+id/insert_alert"
                     android:orientation="horizontal"
+                    android:layout_gravity="end"
                     android:layout_width="wrap_content"
                     android:layout_height="50sp"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginStart="220dp">
+                    android:paddingRight="8dp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
 
                     <TextView
                         android:id="@+id/alertEmptyList"
                         android:text="@string/alertEmptyList"
-                        android:gravity="center_vertical"
                         android:textStyle="bold|italic"
                         android:textColor="@color/colorPrimaryDark"
                         android:layout_width="wrap_content"

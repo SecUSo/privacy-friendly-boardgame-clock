@@ -107,7 +107,7 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
         emptyListLayout = findViewById(R.id.emptyListLayout);
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setDuration(1500); //You can manage the blinking time with this parameter
         anim.setStartOffset(20);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);

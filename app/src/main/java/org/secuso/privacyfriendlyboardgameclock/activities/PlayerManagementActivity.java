@@ -112,7 +112,7 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
         playersRecycleView.setItemAnimator(null);
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setDuration(1500); //You can manage the blinking time with this parameter
         anim.setStartOffset(20);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
