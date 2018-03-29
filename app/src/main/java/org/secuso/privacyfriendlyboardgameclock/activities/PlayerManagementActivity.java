@@ -6,47 +6,43 @@
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
 
- Privacy Friendly App Example is distributed in the hope
+ Privacy Friendly Board Game Clock is distributed in the hope
  that it will be useful, but WITHOUT ANY WARRANTY; without even
  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
+ along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v7.view.ActionMode;
-import android.view.animation.AlphaAnimation;import android.view.animation.Animation;import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment;
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementStatisticsFragment;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;

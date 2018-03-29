@@ -6,14 +6,15 @@
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
 
- Privacy Friendly App Example is distributed in the hope
+ Privacy Friendly Board Game Clock is distributed in the hope
  that it will be useful, but WITHOUT ANY WARRANTY; without even
  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
+ along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
@@ -24,9 +25,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,10 +32,6 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
-import org.secuso.privacyfriendlyboardgameclock.tutorial.PrefManager;
-import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
-
-import java.util.ArrayList;
 
 /**
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.

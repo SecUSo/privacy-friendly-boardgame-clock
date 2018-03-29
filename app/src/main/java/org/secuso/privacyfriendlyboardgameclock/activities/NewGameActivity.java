@@ -6,14 +6,15 @@
  GNU General Public License as published by the Free Software Foundation,
  either version 3 of the License, or any later version.
 
- Privacy Friendly App Example is distributed in the hope
+ Privacy Friendly Board Game Clock is distributed in the hope
  that it will be useful, but WITHOUT ANY WARRANTY; without even
  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
+ along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.AlertDialog;
@@ -27,7 +28,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,8 +44,6 @@ import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
 import org.secuso.privacyfriendlyboardgameclock.model.Game;
-
-import java.sql.SQLOutput;
 
 /**
  * Created by Quang Anh Dang on 04.01.2018.
@@ -226,9 +224,6 @@ public class NewGameActivity extends BaseActivity {
                             ((TextView) game_timers.getChildAt(i)).setTextColor(Color.BLACK);
 
                 }
-
-                setGameTime();
-                checkIfGameTimeEntered();
             }
         });
 
@@ -386,12 +381,6 @@ public class NewGameActivity extends BaseActivity {
     }
 
     private void setGameTime() {
-
-        if(check_game_time_infinite.isChecked()) {
-            game_total_time_in_s = Integer.MAX_VALUE;
-            return;
-        }
-
         int game_time_h_in_s = game_time_h.getValue() * 3600;
         int game_time_m_in_s = game_time_m.getValue() * 60;
         game_total_time_in_s = game_time_s.getValue() + game_time_m_in_s + game_time_h_in_s;
@@ -419,6 +408,7 @@ public class NewGameActivity extends BaseActivity {
     }
 
     private void createNewGame() {
+
         Game newGame = new Game();
 
         //game name
@@ -431,13 +421,12 @@ public class NewGameActivity extends BaseActivity {
         setRoundTime();
         newGame.setRound_time(round_total_time_in_s * 1000);
 
-
         //game time
         game_time_h.clearFocus();
         game_time_m.clearFocus();
         game_time_s.clearFocus();
         setGameTime();
-        newGame.setGame_time(check_game_time_infinite.isChecked() ? game_total_time_in_s : game_total_time_in_s * 1000);
+        newGame.setGame_time(game_total_time_in_s * 1000);
 
         newGame.setIsLastRound(0);
 
