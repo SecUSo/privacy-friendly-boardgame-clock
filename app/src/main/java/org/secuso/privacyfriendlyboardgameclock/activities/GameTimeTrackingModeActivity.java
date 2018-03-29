@@ -147,7 +147,6 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
             saveGameButton.setVisibility(View.VISIBLE);
             finishGameButton.setVisibility(View.VISIBLE);
 
-            playPauseButton.setText(R.string.resume);
             playPauseButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
