@@ -18,6 +18,9 @@
 
 package org.secuso.privacyfriendlyboardgameclock.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -217,4 +220,5 @@ public class Game {
     public void setIsLastRound(int isLastRound) {
         this.isLastRound = isLastRound;
     }
+
 }

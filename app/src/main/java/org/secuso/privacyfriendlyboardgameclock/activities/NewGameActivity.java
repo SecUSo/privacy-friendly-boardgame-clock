@@ -14,7 +14,6 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.app.AlertDialog;
@@ -51,7 +50,6 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
  * Last changed on 18.03.18
  * This is the Activity for the New Game Page, after touching New Game Button on the main page
  */
-
 public class NewGameActivity extends BaseActivity {
     private GamesDataSourceSingleton gds;
     private NumberPicker round_time_s, round_time_m, round_time_h;
@@ -224,6 +222,9 @@ public class NewGameActivity extends BaseActivity {
                             ((TextView) game_timers.getChildAt(i)).setTextColor(Color.BLACK);
 
                 }
+
+                setGameTime();
+                checkIfGameTimeEntered();
             }
         });
 
@@ -381,6 +382,12 @@ public class NewGameActivity extends BaseActivity {
     }
 
     private void setGameTime() {
+
+        if(check_game_time_infinite.isChecked()) {
+            game_total_time_in_s = Integer.MAX_VALUE;
+            return;
+        }
+
         int game_time_h_in_s = game_time_h.getValue() * 3600;
         int game_time_m_in_s = game_time_m.getValue() * 60;
         game_total_time_in_s = game_time_s.getValue() + game_time_m_in_s + game_time_h_in_s;
@@ -408,7 +415,6 @@ public class NewGameActivity extends BaseActivity {
     }
 
     private void createNewGame() {
-
         Game newGame = new Game();
 
         //game name
@@ -421,12 +427,13 @@ public class NewGameActivity extends BaseActivity {
         setRoundTime();
         newGame.setRound_time(round_total_time_in_s * 1000);
 
+
         //game time
         game_time_h.clearFocus();
         game_time_m.clearFocus();
         game_time_s.clearFocus();
         setGameTime();
-        newGame.setGame_time(game_total_time_in_s * 1000);
+        newGame.setGame_time(check_game_time_infinite.isChecked() ? game_total_time_in_s : game_total_time_in_s * 1000);
 
         newGame.setIsLastRound(0);
 
