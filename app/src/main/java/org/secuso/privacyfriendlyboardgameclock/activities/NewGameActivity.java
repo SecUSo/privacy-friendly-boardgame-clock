@@ -312,9 +312,20 @@ public class NewGameActivity extends BaseActivity {
         if (gds.getGame() != null) {
             Game g = gds.getGame();
 
-            game_time_h.setValue(getTimeValues(g.getGame_time())[0]);
-            game_time_m.setValue(getTimeValues(g.getGame_time())[1]);
-            game_time_s.setValue(getTimeValues(g.getGame_time())[2]);
+            chess_mode.setChecked(g.getChess_mode() != 0);
+            check_game_time_infinite.setChecked(g.getGame_time_infinite() != 0);
+            check_new_game_reset_time.setChecked(g.getReset_round_time() != 0);
+            check_new_game_delta.setChecked(g.getRound_time_delta() > 0);
+
+            if(g.getGame_time_infinite() != 0) {
+                game_time_h.setValue(getTimeValues(g.getGame_time())[0]);
+                game_time_m.setValue(getTimeValues(g.getGame_time())[1]);
+                game_time_s.setValue(getTimeValues(g.getGame_time())[2]);
+            } else {
+                game_time_h.setValue(0);
+                game_time_m.setValue(0);
+                game_time_s.setValue(0);
+            }
             round_time_h.setValue(getTimeValues(g.getRound_time())[0]);
             round_time_m.setValue(getTimeValues(g.getRound_time())[1]);
             round_time_s.setValue(getTimeValues(g.getRound_time())[2]);
@@ -449,6 +460,7 @@ public class NewGameActivity extends BaseActivity {
                 newGame.setReset_round_time(1);
             else
                 newGame.setReset_round_time(0);
+
 
             //round time delta
             if (check_new_game_delta.isChecked()) {

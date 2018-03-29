@@ -138,7 +138,6 @@ public class Game {
         this.round_time_delta = round_time_delta;
     }
 
-
     public HashMap<Long, Long> getPlayer_round_times() {
         return player_round_times;
     }
