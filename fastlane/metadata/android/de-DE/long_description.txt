@@ -1,0 +1,13 @@
+Privacy Friendly Brettspieluhr bietet Stoppuhren und Timer, die beim Spielen von Brettspielen unterstützen.
+
+Dafür bietet Privacy Friendly Brettspieluhr verschiedene Modi, die abhängig vom gespielten Spiel sind. In rundenbasierten Spielen können Spieler als auch Rundenzeiten konfiguriert und überwacht werden. Hält ein Spieler seine Rundenzeit nicht ein, so benachrichtigt ihn die App. Im Modus Zeitüberwachung kann die verbrauchte Spielzeit rundenunabhängig erfasst werden. Unabhängig vom gewählten Modus zeigt die App am Ende eine Übersicht über die Zeiten an.
+
+Was unterscheidet Privacy Friendly Brettspieluhr von anderen, ähnlichen Apps?
+
+1) Minimale Berechtigungen
+Privacy Friendly Brettspieluhr fragt Zugriff auf den Speicher an, um ein Datenbackup anzufertigen.
+
+2) Keine störende Werbung
+Viele andere kostenlose Apps im Google Play Store blenden störende Werbung ein, die unter anderem auch die Akkulaufzeit verkürzt und Datenvolumen verbrauchen kann.
+
+Die App gehört zur Gruppe der Privacy Friendly Apps, die von der Forschungsgruppe SECUSO der Technischen Universität Darmstadt entwickelt werden. Mehr Informationen unter: https://secuso.org/pfa
