@@ -1,1 +1,1 @@
-PF Boardgame Clock offers stopwatches and timers for boardgame time tracking
+(SECUSO) Boardgame Clock offers timers for boardgame time tracking
