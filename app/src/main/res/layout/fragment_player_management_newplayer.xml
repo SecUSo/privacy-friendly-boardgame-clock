@@ -41,7 +41,7 @@
         android:text="@string/picDots"
         android:textSize="15sp" />
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/picture"
         android:layout_width="@dimen/picSize"
         android:layout_height="@dimen/picSize"
@@ -79,7 +79,7 @@
         android:text="@string/changeColorButton"
         android:textColor="@color/white"/>-->
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/color"
         android:layout_width="@dimen/picSize"
         android:layout_height="@dimen/picSize"

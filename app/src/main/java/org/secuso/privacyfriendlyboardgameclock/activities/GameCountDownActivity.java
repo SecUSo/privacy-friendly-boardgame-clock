@@ -552,7 +552,7 @@ public class GameCountDownActivity extends BaseActivity {
         boolean isNewGame = game != null;
         if(game == null) game = mBoundService.getGame();
 
-        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        androidx.appcompat.app.ActionBar ab = getSupportActionBar();
         if(ab != null) ab.setSubtitle(game.getName());
 
         players = game.getPlayers();

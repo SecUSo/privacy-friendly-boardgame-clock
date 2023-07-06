@@ -31,8 +31,8 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
@@ -245,7 +245,7 @@ public class CountdownTimerService extends Service{
 
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, GameCountDownActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+                new Intent(this, GameCountDownActivity.class), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         initChannels(this);
 

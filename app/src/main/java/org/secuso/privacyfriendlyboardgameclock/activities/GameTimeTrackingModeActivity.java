@@ -30,9 +30,9 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -291,7 +291,7 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
         boolean isNewGame = game != null;
         if(game == null) game = mBoundService.getGame();
 
-        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        androidx.appcompat.app.ActionBar ab = getSupportActionBar();
         if(ab != null) ab.setSubtitle(game.getName());
 
 
