@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.secuso.privacyfriendlyboardgameclock">
 
     <supports-screens
@@ -15,6 +16,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".PFBoardgameclock"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -150,5 +152,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
+
+        <service
+            android:name=".backup.PFABackupService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":backup"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="org.secuso.privacyfriendlybackup.api.pfa.PFAAuthService" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
     </application>
 </manifest>
