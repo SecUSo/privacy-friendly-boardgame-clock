@@ -27,8 +27,8 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 import android.util.LongSparseArray;
 
@@ -138,7 +138,7 @@ public class TimeTrackingService extends Service {
 
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, GameTimeTrackingModeActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+                new Intent(this, GameTimeTrackingModeActivity.class), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         initChannels(this);
 

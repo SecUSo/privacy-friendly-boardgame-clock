@@ -34,8 +34,9 @@
 package org.secuso.privacyfriendlyboardgameclock.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedService;
 import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
@@ -55,7 +56,12 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Start Service to detect if app is killed
-        startService(new Intent(getBaseContext(), DetectTaskClearedService.class));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(new Intent(getBaseContext(), DetectTaskClearedService.class));
+        } else {
+            startService(new Intent(getBaseContext(), DetectTaskClearedService.class));
+        }
         Intent mainIntent = new Intent(SplashActivity.this, TutorialActivity.class);
         SplashActivity.this.startActivity(mainIntent);
         SplashActivity.this.finish();
