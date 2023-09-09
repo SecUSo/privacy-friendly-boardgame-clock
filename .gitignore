@@ -35,4 +35,5 @@ Thumbs.db
 
 # APKs, release files
 app/release/*
+app/debug/*
 *.apk
