@@ -252,4 +252,11 @@
     <string name="instruction">Instructions</string>
     <string name="instruction_details">Touch a player to start counting time for this player.\nPress PAUSE button, to pause all the counter.</string>
 
+    <string name="settings_appearance_heading">Appearance</string>
+    <string-array name="array_day_night_theme">
+        <item>System</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string name="select_day_night_theme">Design</string>
 </resources>

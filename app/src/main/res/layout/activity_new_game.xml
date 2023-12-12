@@ -6,6 +6,7 @@ android:id="@+id/drawer_layout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:fitsSystemWindows="true"
+android:background="?attr/colorBackground"
 tools:openDrawer="start">
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,6 +15,7 @@ tools:openDrawer="start">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="?attr/colorBackground"
     tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity">
 
     <include layout="@layout/toolbar"/>
@@ -25,6 +27,7 @@ tools:openDrawer="start">
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:orientation="vertical"
+        android:backgroundTint="?attr/colorBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ScrollView
@@ -60,7 +63,7 @@ tools:openDrawer="start">
                     android:hint="..."
                     android:inputType="text"
                     android:maxLength="20"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <TextView
@@ -90,6 +93,7 @@ tools:openDrawer="start">
                 android:id="@+id/time_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/colorBackground"
                 android:layout_below="@id/spinner_new_game_mode">
 
                 <CheckBox
@@ -122,7 +126,6 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
-                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -138,7 +141,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -153,7 +156,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -169,7 +172,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -205,7 +208,6 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
-                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -220,7 +222,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -235,7 +237,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -250,7 +252,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -293,7 +295,6 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:orientation="horizontal"
                     android:visibility="invisible">
 
@@ -309,7 +310,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -324,7 +325,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -339,7 +340,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnBackground"
                         android:textSize="15sp" />
                 </LinearLayout>
             </RelativeLayout>
@@ -358,7 +359,6 @@ tools:openDrawer="start">
             android:layout_marginTop="10sp"
             android:background="@drawable/button_fullwidth"
             android:text="@string/confirm"
-            android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"
             android:visibility="gone" />
 
@@ -372,7 +372,6 @@ tools:openDrawer="start">
             android:layout_marginTop="10sp"
             android:background="@drawable/button_disabled"
             android:text="@string/confirm"
-            android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"
             android:visibility="visible" />
 
@@ -381,13 +380,14 @@ tools:openDrawer="start">
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-<com.google.android.material.navigation.NavigationView
-    android:id="@+id/nav_view"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    app:headerLayout="@layout/nav_header_main"
-    app:menu="@menu/activity_main_drawer" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="?attr/colorBackground"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

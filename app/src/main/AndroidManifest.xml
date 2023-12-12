@@ -38,6 +38,15 @@
             android:stopWithTask="false" />
 
         <activity
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
+        </activity>
+        <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.SplashActivity"
             android:theme="@style/SplashTheme"
             android:exported="true">
