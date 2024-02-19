@@ -1,14 +1,5 @@
-Privacy Friendly Boardgames Clock offers stopwatches and timers to support time tracking while playing boardgames.
 
-The app offers different modes depending on the game that is played. If the game is round based players and round times can be continued. The app tracks the time that the player needs in each round and alerts the player if he or she takes too much time.
-Privacy Friendly Boardgame Clock furthermore offers a time tracking mode. This is a stopwatch for each player that participates in the game as well as for the overall game time.
 
-How does Privacy Friendly Boardgame Clock differ from other similar apps?
-
-1) Minimal permissions
-Privacy Friendly Boardgame Clock does request to storage permission in case the data is backed up.
-
-2) No advertisement
-Moreover, Privacy Friendly Boardgame Clock completely relinquishes advertisement. Many other apps in the Google Play Store display advertisement and therefore might violate the users privacy, shorten battery life or use mobile data.
-
-Privacy Friendly Boardgame Clock is part of the Privacy Friendly Apps group developed by the research group SECUSO at Technische Universität Darmstadt. More information at: https://secuso.org/pfa
+Twitter - @SECUSOResearch https://twitter.com/secusoresearch
+Mastodon - @SECUSO_Research@baw  .social https://xn--baw-joa.social/@SECUSO_Research/
+Job opening - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
