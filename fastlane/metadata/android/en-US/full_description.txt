@@ -1,4 +1,7 @@
+Privacy Friendly Boardgames Clock offers stopwatches and timers to support time tracking while playing boardgames.
 
+The app offers different modes depending on the game that is played. If the game is round based players and round times can be continued. The app tracks the time that the player needs in each round and alerts the player if he or she takes too much time.
+Privacy Friendly Boardgame Clock furthermore offers a time tracking mode. This is a stopwatch for each player that participates in the game as well as for the overall game time.
 
 How does Privacy Friendly Boardgame Clock differ from other similar apps?
 
