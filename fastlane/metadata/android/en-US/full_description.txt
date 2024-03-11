@@ -12,3 +12,9 @@ Privacy Friendly Boardgame Clock does request to storage permission in case the 
 Moreover, Privacy Friendly Boardgame Clock completely relinquishes advertisement. Many other apps in the Google Play Store display advertisement and therefore might violate the users privacy, shorten battery life or use mobile data.
 
 Privacy Friendly Boardgame Clock is part of the Privacy Friendly Apps group developed by the research group SECUSO at Technische Universität Darmstadt. More information at: https://secuso.org/pfa
+
+
+Feel free to contact us via:
+Twitter - @SECUSOResearch https://twitter.com/secusoresearch
+Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+Job opening - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
