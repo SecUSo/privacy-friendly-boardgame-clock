@@ -605,17 +605,16 @@ public class GameTimeTrackingModeActivity extends BaseActivity implements ItemCl
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_info:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(R.string.instruction_details)
-                        .setTitle(R.string.instruction)
-                        .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+        if (item.getItemId() == R.id.action_info) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.instruction_details)
+                    .setTitle(R.string.instruction)
+                    .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                            }
-                        }).show();
+                        }
+                    }).show();
         }
         return true;
     }

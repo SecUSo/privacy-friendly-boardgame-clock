@@ -318,16 +318,15 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_add_newplayer:
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-                if(prev != null) ft.remove(prev);
-                ft.addToBackStack(null);
+        if (item.getItemId() == R.id.action_add_newplayer) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment prev = getFragmentManager().findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
+            if (prev != null) ft.remove(prev);
+            ft.addToBackStack(null);
 
-                // Create and show the dialog
-                PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
-                chooseDialogFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
+            // Create and show the dialog
+            PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
+            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT);
         }
         return true;
     }
