@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
     namespace "org.secuso.privacyfriendlyboardgameclock"
 
     defaultConfig {
         applicationId "org.secuso.privacyfriendlyboardgameclock"
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 2
-        versionName "1.1"
+        targetSdkVersion 34
+        compileSdk 34
+        versionCode 3
+        versionName "1.1.1"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -22,13 +22,16 @@ android {
     buildFeatures {
         //noinspection DataBindingWithoutKapt
         dataBinding true
+        buildConfig true
     }
     compileOptions {
         coreLibraryDesugaringEnabled true
 
-        // java-11 to allow to use java stream api
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
     }
     lintOptions {
         checkReleaseBuilds true
