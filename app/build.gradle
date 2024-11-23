@@ -39,6 +39,13 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            def appName = "pfa-boargame-clock"
+            outputFileName = appName + "-${variant.name}-v${variant.versionName}.apk"
+        }
+    }
 }
 
 dependencies {
