@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 33
+    namespace "org.secuso.privacyfriendlyboardgameclock"
 
     defaultConfig {
         applicationId "org.secuso.privacyfriendlyboardgameclock"
