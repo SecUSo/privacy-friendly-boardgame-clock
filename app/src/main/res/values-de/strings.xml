@@ -203,4 +203,11 @@
     <string name="colorDots">Farbe:</string>
     <string name="help_add_new_player_feature">Welche Features gibt es beim Hinzufügen von neuen Spielern?</string>
     <string name="help_add_new_player_feature_answer">Beim Kreieren neuer Spielern können Sie das Android Symbol anklicken, um einen Foto mit dem Kamera aufzunehmen. Außerdem können Sie das Farbefeld unter dem Android Symbol anklicken, um eine Hintergrundsfarbe auszuwählen.</string>
+
+    <string name="dialog_goodbye_google_title">Wir verlassen den Google Play Store 😢</string>
+    <string name="dialog_goodbye_google_desc">
+        Unsere Apps müssen sich zum Ende des Jahres vom Google Play Store verabschieden. Mehr Informationen zu den Gründen und warum das nicht das Ende der Privacy Friendly Apps ist, finden Sie auf unserer Website:\n
+        <a href="https://secuso.aifb.kit.edu/2809.php">Hier klicken, um mehr zu erfahren</a>
+    </string>
+    <string name="dialog_goodbye_google_deactivate_notice">Zeige diese Mitteilung nicht nochmal</string>
 </resources>

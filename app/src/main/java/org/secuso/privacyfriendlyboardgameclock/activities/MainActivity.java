@@ -28,6 +28,7 @@ import androidx.appcompat.app.ActionBar;
 import android.view.View;
 import android.widget.Button;
 
+import org.secuso.privacyfriendlyboardgameclock.GoodbyeGoogleHelperKt;
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
@@ -75,6 +76,8 @@ public class MainActivity extends BaseActivity {
         if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
             finish();
         }
+
+        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
     }
 
     @Override
