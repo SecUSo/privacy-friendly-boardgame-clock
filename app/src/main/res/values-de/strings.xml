@@ -206,7 +206,7 @@
 
     <string name="dialog_goodbye_google_title">Wir verlassen den Google Play Store 😢</string>
     <string name="dialog_goodbye_google_desc">
-        Unsere Apps müssen sich zum Ende des Jahres vom Google Play Store verabschieden. Mehr Informationen zu den Gründen und warum das nicht das Ende der Privacy Friendly Apps ist, finden Sie auf unserer Website:\n
+        Unsere Apps müssen sich Mitte März 2025 vom Google Play Store verabschieden. Mehr Informationen zu den Gründen und warum das nicht das Ende der Privacy Friendly Apps ist, finden Sie auf unserer Website:\n
         <a href="https://secuso.aifb.kit.edu/2809.php">Hier klicken, um mehr zu erfahren</a>
     </string>
     <string name="dialog_goodbye_google_deactivate_notice">Zeige diese Mitteilung nicht nochmal</string>

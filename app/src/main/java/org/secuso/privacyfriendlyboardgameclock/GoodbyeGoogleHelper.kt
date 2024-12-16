@@ -21,7 +21,7 @@ fun checkGoodbyeGoogle(context: Context, layoutInflater: LayoutInflater) {
     if (installSource == "com.android.vending" && showNotice) {
         val binding = DialogGoodbyeGogleBinding.inflate(layoutInflater)
         binding.showNoticeCheckbox.setOnClickListener {
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("show_goodbye_google_notice", binding.checked ?: true).apply()
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("show_goodbye_google_notice", !binding.showNoticeCheckbox.isChecked).apply()
         }
         val dialog = MaterialAlertDialogBuilder(context)
             .setIcon(android.R.drawable.ic_dialog_info)
