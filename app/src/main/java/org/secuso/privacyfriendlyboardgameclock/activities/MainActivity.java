@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity {
             finish();
         }
 
-        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
+//        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
     }
 
     @Override
