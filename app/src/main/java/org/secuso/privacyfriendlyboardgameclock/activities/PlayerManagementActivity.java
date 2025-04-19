@@ -279,10 +279,9 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_delete:
-                if(actionMode == null)
-                    actionMode = startSupportActionMode(actionModeCallback);
+        if (item.getItemId() == R.id.action_delete) {
+            if (actionMode == null)
+                actionMode = startSupportActionMode(actionModeCallback);
         }
         return true;
     }

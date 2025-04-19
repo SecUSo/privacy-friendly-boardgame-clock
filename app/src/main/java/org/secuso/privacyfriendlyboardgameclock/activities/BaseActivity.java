@@ -168,38 +168,29 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
 
         Intent intent;
 
-        switch(itemId) {
-            case R.id.nav_example:
-                intent = new Intent(this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                break;
-            case R.id.nav_tutorial:
-                intent = new Intent(this, TutorialActivity.class);
-                intent.setAction(TutorialActivity.ACTION_SHOW_ANYWAYS);
-                createBackStack(intent);
-                break;
-            case R.id.nav_about:
-                intent = new Intent(this, AboutActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_help:
-                intent = new Intent(this, HelpActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_player_management:
-                intent = new Intent(this, PlayerManagementActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_game_history:
-                intent = new Intent(this, GameHistoryActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_backup:
-                intent = new Intent(this, BackUpActivity.class);
-                createBackStack(intent);
-                break;
-            default:
+        if (itemId == R.id.nav_example) {
+            intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (itemId == R.id.nav_tutorial) {
+            intent = new Intent(this, TutorialActivity.class);
+            intent.setAction(TutorialActivity.ACTION_SHOW_ANYWAYS);
+            createBackStack(intent);
+        } else if (itemId == R.id.nav_about) {
+            intent = new Intent(this, AboutActivity.class);
+            createBackStack(intent);
+        } else if (itemId == R.id.nav_help) {
+            intent = new Intent(this, HelpActivity.class);
+            createBackStack(intent);
+        } else if (itemId == R.id.nav_player_management) {
+            intent = new Intent(this, PlayerManagementActivity.class);
+            createBackStack(intent);
+        } else if (itemId == R.id.nav_game_history) {
+            intent = new Intent(this, GameHistoryActivity.class);
+            createBackStack(intent);
+        } else if (itemId == R.id.nav_backup) {
+            intent = new Intent(this, BackUpActivity.class);
+            createBackStack(intent);
         }
     }
 
