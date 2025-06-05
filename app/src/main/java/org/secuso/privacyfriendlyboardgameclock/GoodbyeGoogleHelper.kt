@@ -15,7 +15,7 @@ fun checkGoodbyeGoogle(context: Context, layoutInflater: LayoutInflater) {
     val showNotice = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_goodbye_google_notice", true);
 
     if (showNotice) {
-        val view = layoutInflater.inflate(R.layout.dialog_goodbye_gogle, null, false)
+        val view = layoutInflater.inflate(R.layout.dialog_goodbye_google, null, false)
         view.findViewById<CheckBox>(R.id.show_notice_checkbox).apply {
             setOnClickListener {
                 PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("show_goodbye_google_notice", !isChecked).apply()
