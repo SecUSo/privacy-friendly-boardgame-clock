@@ -8,7 +8,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.TextView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.appcompat.app.AlertDialog
 
 fun checkGoodbyeGoogle(context: Context, layoutInflater: LayoutInflater) {
 
@@ -21,9 +21,9 @@ fun checkGoodbyeGoogle(context: Context, layoutInflater: LayoutInflater) {
                 PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("show_goodbye_google_notice", !isChecked).apply()
             }
         }
-        val dialog = MaterialAlertDialogBuilder(context)
+        val dialog = AlertDialog.Builder(context)
             .setView(view)
-            .setNeutralButton(android.R.string.ok) { _,_ -> }
+            .setNeutralButton(android.R.string.ok) { _, _ -> }
             .create()
 
         dialog.show()
