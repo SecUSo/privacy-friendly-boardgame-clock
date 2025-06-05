@@ -24,6 +24,7 @@ fun checkGoodbyeGoogle(context: Context, layoutInflater: LayoutInflater) {
         val dialog = AlertDialog.Builder(context)
             .setView(view)
             .setNeutralButton(android.R.string.ok) { _, _ -> }
+            .setCancelable(false)
             .create()
 
         dialog.show()
