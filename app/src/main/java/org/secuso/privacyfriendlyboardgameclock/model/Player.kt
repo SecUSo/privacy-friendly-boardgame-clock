@@ -17,6 +17,10 @@
 package org.secuso.privacyfriendlyboardgameclock.model
 
 import android.graphics.Bitmap
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -26,10 +30,15 @@ import java.util.Date
  * Last changed on 18.03.18
  * Model for Player Object
  */
+@Entity(tableName = "players")
 class Player {
+    @PrimaryKey
+    @ColumnInfo(name = "_id")
     @JvmField
     var id: Long = 0
     private var date: Long = 0
+
+    @Ignore
     var dateString: String? = null
         private set
     private var name: String? = null

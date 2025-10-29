@@ -16,6 +16,9 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -25,12 +28,16 @@ import java.util.Date
  * Last changed on 18.03.18
  * Model for Game Object
  */
+@Entity(tableName = "games")
 class Game {
+    @PrimaryKey
+    @ColumnInfo(name = "_id")
     @JvmField
     var id: Long = 0
     @JvmField
-    var players: MutableList<Player?>? = null
+    var players: MutableList<Player> = mutableListOf()
     @JvmField
+    @ColumnInfo(name = "players_time")
     var player_round_times: HashMap<Long?, Long?>? = null
     @JvmField
     var player_rounds: HashMap<Long?, Long?>? = null

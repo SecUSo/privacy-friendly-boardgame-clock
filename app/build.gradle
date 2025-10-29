@@ -1,7 +1,8 @@
 plugins {
-    alias(libs.plugins.android.app) apply true
-    alias(libs.plugins.kotlin.android) apply true
-    alias(libs.plugins.kotlin.kapt) apply true
+    alias(libs.plugins.android.app)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -82,4 +83,9 @@ dependencies {
 
     implementation project(path: ":model")
     implementation project(path: ":ui-view")
+
+    // room
+    implementation(libs.ax.room)
+    ksp(libs.ax.room.compiler)
+    implementation(libs.ax.room.ktx)
 }
