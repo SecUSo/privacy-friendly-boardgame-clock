@@ -38,44 +38,9 @@
             android:stopWithTask="false" />
 
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
-        </activity>
-        <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.AboutActivity"
-            android:label="@string/about"
-            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
-        </activity>
-        <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.HelpActivity"
-            android:label="@string/help"
-            android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
-        </activity>
         <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity"
             android:label="@string/player_management"
@@ -153,17 +118,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
-
-        <service
-            android:name=".backup.PFABackupService"
-            android:enabled="true"
-            android:exported="true"
-            android:process=":backup"
-            tools:ignore="ExportedService">
-            <intent-filter>
-                <action android:name="org.secuso.privacyfriendlybackup.api.pfa.PFAAuthService" />
-            </intent-filter>
-        </service>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
