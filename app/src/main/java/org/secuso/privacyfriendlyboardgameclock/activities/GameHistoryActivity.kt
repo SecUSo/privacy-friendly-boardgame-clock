@@ -14,31 +14,25 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.fragments.GameHistoryInfoDialogFragment;
-import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
-
-import java.util.List;
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.view.ActionMode
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.secuso.pfacore.model.DrawerElement
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.fragments.GameHistoryInfoDialogFragment
+import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
+import org.secuso.privacyfriendlyboardgameclock.model.Game
 
 /**
  * Created by Quang Anh Dang on 24.12.2017.
@@ -46,72 +40,58 @@ import java.util.List;
  * Last changed on 18.03.18
  * This is the activity for the Game History
  */
+class GameHistoryActivity : BaseActivity(), ItemClickListener {
+    @JvmField
+    var selectedGame: Game? = null
+    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this) }
+    private val gamesList: MutableList<Game> by lazy { gds.allGames }
+    private lateinit var gameListAdapter: GameListAdapter
+    private val fabDeleteButton: FloatingActionButton by lazy { findViewById(R.id.fab_delete_game) }
+    private val actionModeCallback: ActionModeCallback by lazy { ActionModeCallback() }
+    private var actionMode: ActionMode? = null
 
-public class GameHistoryActivity extends BaseActivity implements ItemClickListener{
+    override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_game_history
 
-    private String selectedGameId = "-1";
-    private Game selectedGame;
-    private GamesDataSourceSingleton gds;
-    private List<Game> gamesList;
-    private GameListAdapter gameListAdapter;
-    private FloatingActionButton fabDeleteButton;
-    private android.app.FragmentManager fm;
-    private GameHistoryActivity.ActionModeCallback actionModeCallback = new GameHistoryActivity.ActionModeCallback();
-    private ActionMode actionMode;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_history);
-        fm = getFragmentManager();
-        gds = GamesDataSourceSingleton.getInstance(this);
-        gamesList = gds.getAllGames();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_game_history)
 
         // RecycleView for Game List
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView gamesRecycleView = findViewById(R.id.game_list);
-        gamesRecycleView.setHasFixedSize(true);
-        gameListAdapter = new GameListAdapter(this,gamesList,this);
-        gamesRecycleView.setAdapter(gameListAdapter);
-        gamesRecycleView.setLayoutManager(layoutManager);
-        gamesRecycleView.setItemAnimator(null);
+        gameListAdapter = GameListAdapter(this, gamesList, this)
+        findViewById<RecyclerView>(R.id.game_list).apply { 
+            setHasFixedSize(true)
+            adapter = gameListAdapter
+            layoutManager = LinearLayoutManager(this@GameHistoryActivity)
+            itemAnimator = null
+        }
 
         // Delete FAB
-        fabDeleteButton = findViewById(R.id.fab_delete_game);
-        fabDeleteButton.setOnClickListener(onFABDeleteListenter());
+        fabDeleteButton.setOnClickListener(onFABDeleteListenter())
     }
 
-    @Override
-    protected int getNavigationDrawerID() {
-        return R.id.nav_game_history;
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        if(actionMode != null){
-            toggleSelection(position);
-        } else{
-            selectedGame = gamesList.get(position);
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-            if(prev != null) ft.remove(prev);
-            ft.addToBackStack(null);
+    override fun onItemClick(view: View?, position: Int) {
+        if (actionMode != null) {
+            toggleSelection(position)
+        } else {
+            selectedGame = gamesList[position]
+            val fm = supportFragmentManager
+            val ft = fm.beginTransaction()
+            val prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
+            if (prev != null) ft.remove(prev)
+            ft.addToBackStack(null)
 
             // Create and show the dialog
-            GameHistoryInfoDialogFragment showGameInfo = new GameHistoryInfoDialogFragment();
-            showGameInfo.show(ft, TAGHelper.DIALOG_FRAGMENT);
+            val showGameInfo = GameHistoryInfoDialogFragment()
+            showGameInfo.show(ft, TAGHelper.DIALOG_FRAGMENT)
         }
     }
 
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
+    override fun onItemLongClicked(view: View?, position: Int): Boolean {
         if (actionMode == null) {
-            actionMode = startSupportActionMode(actionModeCallback);
+            actionMode = startSupportActionMode(actionModeCallback)
         }
-        toggleSelection(position);
-        return true;
+        toggleSelection(position)
+        return true
     }
 
     /**
@@ -122,15 +102,15 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
      *
      * @param position Position of the item to toggle the selection state
      */
-    private void toggleSelection(int position) {
-        gameListAdapter.toggleSelection(position);
-        int count = gameListAdapter.getSelectedItemCount();
+    private fun toggleSelection(position: Int) {
+        gameListAdapter.toggleSelection(position)
+        val count = gameListAdapter.selectedItemCount
 
         if (count == 0) {
-            actionMode.finish();
+            actionMode?.finish()
         } else {
-            actionMode.setTitle(String.valueOf(count));
-            actionMode.invalidate();
+            actionMode?.title = count.toString()
+            actionMode?.invalidate()
         }
     }
 
@@ -138,24 +118,10 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
      * remove all the selected games
      * @return
      */
-    private View.OnClickListener onFABDeleteListenter() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gameListAdapter.removeItems(gameListAdapter.getSelectedItems());
-                actionMode.finish();
-                actionMode = null;
-
-            }
-        };
-    }
-
-    public Game getSelectedGame() {
-        return selectedGame;
-    }
-
-    public void setSelectedGame(Game selectedGame) {
-        this.selectedGame = selectedGame;
+    private fun onFABDeleteListenter() = View.OnClickListener {
+        gameListAdapter.removeItems(gameListAdapter.getSelectedItems())
+        actionMode?.finish()
+        actionMode = null
     }
 
     /**
@@ -163,20 +129,16 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
      * @param menu
      * @return
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.player_management_menu, menu);
-        return true;
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.player_management_menu, menu)
+        return true
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_delete) {
-            if (actionMode == null)
-                actionMode = startSupportActionMode(actionModeCallback);
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_delete) {
+            if (actionMode == null) actionMode = startSupportActionMode(actionModeCallback)
         }
-        return true;
+        return true
     }
 
     /*  #################################################################
@@ -184,42 +146,37 @@ public class GameHistoryActivity extends BaseActivity implements ItemClickListen
         #                       Helper class                            #
         #                                                               #
         #################################################################*/
+    private inner class ActionModeCallback : ActionMode.Callback {
+        @Suppress("unused")
+        private val TAG: String = ActionModeCallback::class.java.simpleName
 
-    private class ActionModeCallback implements ActionMode.Callback {
-        @SuppressWarnings("unused")
-        private final String TAG = GameHistoryActivity.ActionModeCallback.class.getSimpleName();
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            gameListAdapter.setLongClickedSelected(true);
-            gameListAdapter.setSimpleClickedSelected(false);
-            mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
-            fabDeleteButton.setVisibility(View.VISIBLE);
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
+            gameListAdapter.setLongClickedSelected(true)
+            gameListAdapter.setSimpleClickedSelected(false)
+            mode.menuInflater.inflate(R.menu.selected_menu, menu)
+            fabDeleteButton.visibility = View.VISIBLE
             // so all check box are visible
-            gameListAdapter.clearSelection();
-            gameListAdapter.notifyDataSetChanged();
-            return true;
+            gameListAdapter.clearSelection()
+            gameListAdapter.notifyDataSetChanged()
+            return true
         }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
         }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            return false;
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            return false
         }
 
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            gameListAdapter.setLongClickedSelected(false);
-            gameListAdapter.clearSelection();
-            actionMode = null;
-            fabDeleteButton.setVisibility(View.GONE);
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            gameListAdapter.setLongClickedSelected(false)
+            gameListAdapter.clearSelection()
+            actionMode = null
+            fabDeleteButton.visibility = View.GONE
             // so all check box are gone
-            gameListAdapter.clearSelection();
-            gameListAdapter.notifyDataSetChanged();
+            gameListAdapter.clearSelection()
+            gameListAdapter.notifyDataSetChanged()
         }
     }
 }

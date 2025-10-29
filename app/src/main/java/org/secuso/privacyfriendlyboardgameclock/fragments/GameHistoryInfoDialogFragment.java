@@ -19,13 +19,14 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.DialogFragment;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
@@ -44,13 +45,13 @@ import java.util.HashMap;
  * This dialog is opened by touching a game in Game History Page
  */
 
-public class GameHistoryInfoDialogFragment extends DialogFragment{
+public class GameHistoryInfoDialogFragment extends DialogFragment {
     private GameHistoryActivity activity;
     private Game game;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = (GameHistoryActivity) getActivity();
-        game = activity.getSelectedGame();
+        game = activity.selectedGame;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(game.getName())
                 .setPositiveButton(R.string.okay,
