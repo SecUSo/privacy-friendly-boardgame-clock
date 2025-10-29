@@ -14,12 +14,11 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly App Example. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.secuso.privacyfriendlyboardgameclock.model;
+package org.secuso.privacyfriendlyboardgameclock.model
 
-import android.graphics.Bitmap;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.graphics.Bitmap
+import java.text.SimpleDateFormat
+import java.util.Date
 
 /**
  * Created by Quang Anh Dang on 24.12.2017.
@@ -27,63 +26,41 @@ import java.util.Date;
  * Last changed on 18.03.18
  * Model for Player Object
  */
-public class Player {
+class Player {
+    @JvmField
+    var id: Long = 0
+    private var date: Long = 0
+    var dateString: String? = null
+        private set
+    private var name: String? = null
+    @JvmField
+    var icon: Bitmap? = null
 
-    private long id;
-    private long date;
-    private String dateString;
-    private String name;
-    private Bitmap icon;
-
-    public Player(long id, long date, String name, Bitmap icon) {
-        this.id = id;
-        this.date = date;
-        this.name = name;
-        this.icon = icon;
+    constructor(id: Long, date: Long, name: String, icon: Bitmap?) {
+        this.id = id
+        this.date = date
+        this.name = name
+        this.icon = icon
     }
 
-    public Player() {
+    constructor()
 
+    fun getName(): String {
+        return name!!
     }
 
-    public String getName() {
-        return name;
+    fun setName(name: String) {
+        this.name = name
     }
 
-    public void setName(String name) {
-        this.name = name;
+    override fun toString(): String {
+        return name!!
     }
 
-    public Bitmap getIcon() {
-        return icon;
+    fun setDate(date: Long) {
+        this.date = date
+
+        val formatter = SimpleDateFormat("dd.MM.yyyy kk:mm")
+        dateString = formatter.format(Date(date))
     }
-
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    public void setDate(long date) {
-        this.date = date;
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy kk:mm");
-        dateString = formatter.format(new Date(date));
-    }
-
-    public String getDateString() {
-        return dateString;
-    }
-
 }

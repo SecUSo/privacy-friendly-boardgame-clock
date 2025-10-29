@@ -65,7 +65,7 @@ public class GameResultDialogFragment extends DialogFragment {
 
         game = gds.getGame();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
-                .setTitle(game.getName())
+                .setTitle(game.name)
                 .setPositiveButton(R.string.backToMainMenu,
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -82,7 +82,7 @@ public class GameResultDialogFragment extends DialogFragment {
         // Set TextView for game mode
         TextView gameModeTV = v.findViewById(R.id.gameModeText);
         String[] gameModes = getResources().getStringArray(R.array.game_modes);
-        switch (game.getGame_mode()){
+        switch (game.game_mode){
             case TAGHelper.CLOCKWISE:
                 gameModeTV.setText(gameModes[TAGHelper.CLOCKWISE]);
                 break;
@@ -103,7 +103,7 @@ public class GameResultDialogFragment extends DialogFragment {
         }
 
         ListView players = (ListView) v.findViewById(R.id.list);
-        PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.list, game.getPlayers());
+        PlayerResultsListAdapter listAdapter = new PlayerResultsListAdapter(this.getActivity(), R.id.list, game.players);
         players.setAdapter(listAdapter);
 
         builder.setView(v);
@@ -111,9 +111,9 @@ public class GameResultDialogFragment extends DialogFragment {
     }
 
     private String getTimeLeft() {
-        String[] times = getTimeStrings(game.getCurrentGameTime());
+        String[] times = getTimeStrings(game.currentGameTime);
 
-        if (game.getGame_time_infinite() == 1)
+        if (game.game_time_infinite == 1)
             return activity.getString(R.string.infinite);
 
         if (times[0].equals("00"))
@@ -145,7 +145,7 @@ public class GameResultDialogFragment extends DialogFragment {
     }
 
     private long getLastRound() {
-        HashMap<Long, Long> playerRounds = game.getPlayer_rounds();
+        HashMap<Long, Long> playerRounds = game.player_rounds;
         long lastRound = Collections.max(playerRounds.values());
         if (lastRound == Collections.min(playerRounds.values()))
             return lastRound;

@@ -61,7 +61,7 @@ public class SelectPlayerListAdapter extends ArrayAdapter { //--CloneChangeRequi
                         .setText(p.getName());
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageBitmap(p.getIcon());
+                        .setImageBitmap(p.icon);
 
                 ((TextView) view.findViewById(R.id.textViewNumber))
                         .setText("");

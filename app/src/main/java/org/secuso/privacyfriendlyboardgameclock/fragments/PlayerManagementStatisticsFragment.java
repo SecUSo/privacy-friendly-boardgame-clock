@@ -117,13 +117,13 @@ public class PlayerManagementStatisticsFragment extends DialogFragment implement
         int infiniteCount = 0;
 
         for (Game g : playerGames) {
-            if (g.getGame_time_infinite() == 1)
+            if (g.game_time_infinite == 1)
                 infiniteCount++;
             else {
-                long game_time = g.getGame_time();
-                long current_game_time = g.getCurrentGameTime();
+                long game_time = g.game_time;
+                long current_game_time = g.currentGameTime;
                 // Time for time tracking mode is different
-                if(g.getGame_mode() == TAGHelper.TIME_TRACKING)
+                if(g.game_mode == TAGHelper.TIME_TRACKING)
                     totalTimePlayed += 1000 + current_game_time;
                 else totalTimePlayed += (1000 + game_time - current_game_time);
             }
@@ -169,7 +169,7 @@ public class PlayerManagementStatisticsFragment extends DialogFragment implement
     }
 
     private long getLastRound(Game g) {
-        HashMap<Long, Long> playerRounds = g.getPlayer_rounds();
+        HashMap<Long, Long> playerRounds = g.player_rounds;
         long lastRound = Collections.max(playerRounds.values());
         if (lastRound == Collections.min(playerRounds.values()))
             return lastRound;

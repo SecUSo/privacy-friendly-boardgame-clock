@@ -106,7 +106,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         TextView textView = viewHolder.playerTextView;
         textView.setText(player.getName());
         ImageView imageView = viewHolder.playerIMGView;
-        imageView.setImageBitmap(player.getIcon());
+        imageView.setImageBitmap(player.icon);
 
         // Highlight the item with blue if it's simple selected
         if(isSimpleClickedSelected && !isLongClickedSelected){

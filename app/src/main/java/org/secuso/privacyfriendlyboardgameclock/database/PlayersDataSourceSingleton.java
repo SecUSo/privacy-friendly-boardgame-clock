@@ -117,11 +117,11 @@ public class PlayersDataSourceSingleton {
 
     public void updatePlayer(Player p) {
         String whereClause = "_id" + "=?";
-        String[] whereArgs = new String[]{String.valueOf(p.getId())};
+        String[] whereArgs = new String[]{String.valueOf(p.id)};
 
         ContentValues values = new ContentValues();
         values.put(DbHelper.PLAYERS_COL_NAME, p.getName());
-        values.put(DbHelper.PLAYERS_COL_ICON, getBytes(p.getIcon()));
+        values.put(DbHelper.PLAYERS_COL_ICON, getBytes(p.icon));
 
         database.update(DbHelper.TABLE_PLAYERS, values, whereClause, whereArgs);
     }
@@ -129,10 +129,10 @@ public class PlayersDataSourceSingleton {
     public void deletePlayer(Player p) {
         // delete all games associated with this player also
         GamesDataSourceSingleton gds = GamesDataSourceSingleton.getInstance(null);
-        gds.deleteGamesWithPlayer(p.getId());
+        gds.deleteGamesWithPlayer(p.id);
 
         String whereClause = "_id" + "=?";
-        String[] whereArgs = new String[]{String.valueOf(p.getId())};
+        String[] whereArgs = new String[]{String.valueOf(p.id)};
         database.delete(DbHelper.TABLE_PLAYERS, whereClause, whereArgs);
     }
 
@@ -151,10 +151,10 @@ public class PlayersDataSourceSingleton {
         long date = cursor.getLong(idDate);
 
         Player player = new Player();
-        player.setId(id);
+        player.id = id;
         player.setDate(date);
         player.setName(name);
-        player.setIcon(icon);
+        player.icon = icon;
 
         return player;
     }
@@ -170,7 +170,7 @@ public class PlayersDataSourceSingleton {
 
         while (!cursor.isAfterLast()) {
             player = cursorToPlayer(cursor);
-            String idString = String.valueOf(player.getId());
+            String idString = String.valueOf(player.id);
 
             for (int i = 0; i < playerIds.length; i++)
                 if (idString.equals(playerIds[i]))

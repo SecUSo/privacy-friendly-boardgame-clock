@@ -100,9 +100,9 @@ public class GameListAdapter extends SelectableAdapter<GameListAdapter.ViewHolde
         Game game = gamesList.get(position);
         if(game != null){
             TextView gameName = viewHolder.gameName;
-            gameName.setText(game.getName());
+            gameName.setText(game.name);
             TextView gameInfo = viewHolder.gameInfo;
-            gameInfo.setText(game.getDateString() + ", " + game.getPlayers().size() + " " + getContext().getString(R.string.players));
+            gameInfo.setText(game.getDateString() + ", " + game.players.size() + " " + getContext().getString(R.string.players));
 
             // if simple selected or long selected
             if(isSimpleClickedSelected && !isLongClickedSelected){

@@ -98,10 +98,10 @@ public class TimeTrackingPlayerAdapter extends SelectableAdapter<TimeTrackingPla
         TextView playerName = viewHolder.playerName;
         playerName.setText(player.getName());
         ImageView playerIMGView = viewHolder.playerIMGView;
-        playerIMGView.setImageBitmap(player.getIcon());
+        playerIMGView.setImageBitmap(player.icon);
 
         TextView playerTime = viewHolder.playerTime;
-        long currentTimeMS = activity.getPlayerTime().get(player.getId());
+        long currentTimeMS = activity.getPlayerTime().get(player.id);
         String[] currentTimeArray = getTimeStrings(currentTimeMS);
         String currentTimeString = currentTimeArray[0] + ":" +  currentTimeArray[1] + ":" + currentTimeArray[2] + ":" + currentTimeArray[3];
         playerTime.setText(currentTimeString);

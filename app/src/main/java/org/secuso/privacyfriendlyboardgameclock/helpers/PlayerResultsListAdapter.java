@@ -79,7 +79,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
                         .setText(mContext.getString(R.string.timeLeft) + " " + getTimeLeft(p));
 
                 ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageBitmap(p.getIcon());
+                        .setImageBitmap(p.icon);
 
             }
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
 
     private String getTimeLeft(Player p) {
 
-        long timeLeft = game.getPlayer_round_times().get(p.getId());
+        long timeLeft = game.player_round_times.get(p.id);
 
         String[] times = getTimeStrings(timeLeft);
         if (times[0].equals("00"))

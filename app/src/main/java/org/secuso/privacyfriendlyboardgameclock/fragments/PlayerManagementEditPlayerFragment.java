@@ -73,7 +73,7 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
             p.setName(playerName.getText().toString());
             pictureIMGView.buildDrawingCache();
             playerIcon = pictureIMGView.getDrawingCache();
-            p.setIcon(playerIcon);
+            p.icon = playerIcon;
             pds.updatePlayer(p);
 
             activity.onBackPressed();
@@ -107,7 +107,7 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
                                 p.setName(playerName.getText().toString());
                                 pictureIMGView.buildDrawingCache();
                                 playerIcon = pictureIMGView.getDrawingCache();
-                                p.setIcon(playerIcon);
+                                p.icon = playerIcon;
                                 pds.updatePlayer(p);
                                 // reload the activity starting this
                                 Intent intent = getActivity().getIntent();
@@ -141,7 +141,7 @@ public class PlayerManagementEditPlayerFragment extends DialogFragment {
         playerName.setInputType(InputType.TYPE_CLASS_TEXT);
         playerName.setText(p.getName());
 
-        playerIcon = p.getIcon();
+        playerIcon = p.icon;
         pictureIMGView = (ImageView) rootView.findViewById(R.id.picture);
         pictureIMGView.setImageBitmap(playerIcon);
 

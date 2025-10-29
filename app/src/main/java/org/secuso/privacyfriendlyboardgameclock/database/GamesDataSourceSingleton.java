@@ -133,7 +133,7 @@ public class GamesDataSourceSingleton {
         // serialize players id's
         String playerIds = "";
         for (Player p : players)
-            playerIds = playerIds + p.getId() + ";";
+            playerIds = playerIds + p.id + ";";
         //remove last semicolon
         playerIds = playerIds.substring(0, playerIds.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS, playerIds);
@@ -141,7 +141,7 @@ public class GamesDataSourceSingleton {
         // serialize player round times
         String playerRoundTimes = "";
         for (Player p : players)
-            playerRoundTimes = playerRoundTimes + player_round_times.get(p.getId()) + ";";
+            playerRoundTimes = playerRoundTimes + player_round_times.get(p.id) + ";";
         //remove last semicolon
         playerRoundTimes = playerRoundTimes.substring(0, playerRoundTimes.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUND_TIMES, playerRoundTimes);
@@ -149,7 +149,7 @@ public class GamesDataSourceSingleton {
         // serialize player rounds
         String playerRounds = "";
         for (Player p : players)
-            playerRounds = playerRounds + player_rounds.get(p.getId()) + ";";
+            playerRounds = playerRounds + player_rounds.get(p.id) + ";";
         //remove last semicolon
         playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
@@ -174,7 +174,7 @@ public class GamesDataSourceSingleton {
 
         while (!cursor.isAfterLast()) {
             Game g = cursorToGame(cursor);
-            String idString = String.valueOf(g.getId());
+            String idString = String.valueOf(g.id);
 
             if (gameId.equals(idString))
                 game = g;
@@ -200,9 +200,9 @@ public class GamesDataSourceSingleton {
         while (!cursor.isAfterLast()) {
             game = cursorToGame(cursor);
 
-            for (Player player : game.getPlayers()) {
-                if (player.getId() == playerId)
-                    gameIds.add(String.valueOf(game.getId()));
+            for (Player player : game.players) {
+                if (player.id == playerId)
+                    gameIds.add(String.valueOf(game.id));
             }
             cursor.moveToNext();
         }
@@ -224,17 +224,17 @@ public class GamesDataSourceSingleton {
     public void saveGame(final Game game) {
 
         ContentValues values = new ContentValues();
-        values.put(DbHelper.GAMES_COL_SAVED, game.getSaved());
-        values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, game.getCurrentGameTime());
-        values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, game.getNextPlayerIndex());
-        values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, game.getStartPlayerIndex());
-        values.put(DbHelper.GAMES_COL_FINISHED, game.getFinished());
-        values.put(DbHelper.GAMES_COL_IS_LAST_ROUND, game.getIsLastRound());
+        values.put(DbHelper.GAMES_COL_SAVED, game.saved);
+        values.put(DbHelper.GAMES_COL_CURRENT_GAME_TIME, game.currentGameTime);
+        values.put(DbHelper.GAMES_COL_NEXT_PLAYER_INDEX, game.nextPlayerIndex);
+        values.put(DbHelper.GAMES_COL_START_PLAYER_INDEX, game.startPlayerIndex);
+        values.put(DbHelper.GAMES_COL_FINISHED, game.finished);
+        values.put(DbHelper.GAMES_COL_IS_LAST_ROUND, game.isLastRound);
 
         // serialize players id's
         String playerIds = "";
-        for (Player p : game.getPlayers())
-            playerIds = playerIds + p.getId() + ";";
+        for (Player p : game.players)
+            playerIds = playerIds + p.id + ";";
 
 
         //remove last semicolon
@@ -243,8 +243,8 @@ public class GamesDataSourceSingleton {
 
         // serialize player round times
         String playerRoundTimes = "";
-        for (Player p : game.getPlayers())
-            playerRoundTimes = playerRoundTimes + game.getPlayer_round_times().get(p.getId()) + ";";
+        for (Player p : game.players)
+            playerRoundTimes = playerRoundTimes + game.player_round_times.get(p.id) + ";";
 
         //remove last semicolon
         playerRoundTimes = playerRoundTimes.substring(0, playerRoundTimes.length() - 1);
@@ -252,20 +252,20 @@ public class GamesDataSourceSingleton {
 
         // serialize player rounds
         String playerRounds = "";
-        for (Player p : game.getPlayers())
-            playerRounds = playerRounds + game.getPlayer_rounds().get(p.getId()) + ";";
+        for (Player p : game.players)
+            playerRounds = playerRounds + game.player_rounds.get(p.id) + ";";
 
         //remove last semicolon
         playerRounds = playerRounds.substring(0, playerRounds.length() - 1);
         values.put(DbHelper.GAMES_COL_PLAYERS_ROUNDS, playerRounds);
 
-        int result = database.update(DbHelper.TABLE_GAMES, values, "_id=?", new String[]{String.valueOf(game.getId())});
+        int result = database.update(DbHelper.TABLE_GAMES, values, "_id=?", new String[]{String.valueOf(game.id)});
     }
 
     public void deleteGame(final Game g) {
 
         String whereClause = "_id" + "=?";
-        String[] whereArgs = new String[]{String.valueOf(g.getId())};
+        String[] whereArgs = new String[]{String.valueOf(g.id)};
 
         database.delete(DbHelper.TABLE_GAMES, whereClause, whereArgs);
 
@@ -332,25 +332,25 @@ public class GamesDataSourceSingleton {
         }
 
         Game game = new Game();
-        game.setId(id);
+        game.id = id;
         game.setDate(date);
-        game.setName(name);
-        game.setRound_time(round_time);
-        game.setGame_time(game_time);
+        game.name = name;
+        game.round_time = round_time;
+        game.game_time = game_time;
         game.setPlayer_round_times(player_round_times);
         game.setPlayer_rounds(player_rounds);
-        game.setReset_round_time(reset_round_time);
-        game.setGame_mode(game_mode);
-        game.setRound_time_delta(round_time_delta);
+        game.reset_round_time = reset_round_time;
+        game.game_mode = game_mode;
+        game.round_time_delta = round_time_delta;
         game.setPlayers(players);
-        game.setNextPlayerIndex(next_player_index);
-        game.setStartPlayerIndex(start_player_index);
-        game.setCurrentGameTime(current_game_time);
-        game.setSaved(saved);
-        game.setFinished(finished);
-        game.setGame_time_infinite(game_time_infinite);
-        game.setChess_mode(chess_mode);
-        game.setIsLastRound(is_last_round);
+        game.nextPlayerIndex = next_player_index;
+        game.startPlayerIndex = start_player_index;
+        game.currentGameTime = current_game_time;
+        game.saved = saved;
+        game.finished = finished;
+        game.game_time_infinite = game_time_infinite;
+        game.chess_mode = chess_mode;
+        game.isLastRound = is_last_round;
 
         return game;
     }
@@ -426,9 +426,9 @@ public class GamesDataSourceSingleton {
         List<Game> gameList = new ArrayList<>();
 
         for (Game g : getFinishedGames()) {
-            System.err.println(g.getPlayers());
-            for (Player player : g.getPlayers())
-                if (player.getId() == p.getId())
+            System.err.println(g.players);
+            for (Player player : g.players)
+                if (player.id == p.id)
                     gameList.add(g);
         }
 

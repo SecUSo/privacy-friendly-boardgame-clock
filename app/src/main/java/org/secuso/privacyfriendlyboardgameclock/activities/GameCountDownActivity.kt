@@ -237,7 +237,7 @@ class GameCountDownActivity : BaseActivity() {
         override fun onClick(v: View?) {
             currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG
             // save current player data
-            val currPlayerId = currentPlayer!!.getId()
+            val currPlayerId = currentPlayer!!.id
             var nextPlayerRound = playerRounds!!.get(currPlayerId)!! + 1
 
             // just put the time current player has left in to the list
