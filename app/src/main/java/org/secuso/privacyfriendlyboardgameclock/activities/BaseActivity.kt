@@ -112,18 +112,4 @@ abstract class BaseActivity : DrawerActivity() {
         finish()
     }
 
-    /**
-     *
-     * @param serviceClass name of the service class you want to check
-     * @return true if the service is running
-     */
-    fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
-        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        for (service in manager.getRunningServices(Int.Companion.MAX_VALUE)) {
-            if (serviceClass.getName() == service.service.className) {
-                return true
-            }
-        }
-        return false
-    }
 }
