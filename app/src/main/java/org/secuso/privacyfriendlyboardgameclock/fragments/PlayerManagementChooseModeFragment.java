@@ -21,9 +21,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -31,6 +28,9 @@ import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
@@ -101,7 +101,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
     }
 
     private void createNewPlayer() {
-        FragmentManager fm = getActivity().getFragmentManager();
+        FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Fragment prev = fm.findFragmentByTag("dialog");
         if(prev != null) ft.remove(prev);
@@ -113,7 +113,7 @@ public class PlayerManagementChooseModeFragment extends DialogFragment {
     }
 
     private void addPlayerFromContacts() {
-        FragmentManager fm = getActivity().getFragmentManager();
+        FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Fragment prev = fm.findFragmentByTag("dialog");
         if(prev != null) ft.remove(prev);

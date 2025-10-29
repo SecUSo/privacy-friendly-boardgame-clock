@@ -16,6 +16,7 @@ class PFBoardgameclock: PFApplication() {
     override val name: String
         get() = ContextCompat.getString(applicationContext, R.string.app_name)
     override val data: PFData
+        get() = PFApplicationData.instance(this).data
     override val mainActivity = MainActivity::class.java
 
     override val workManagerConfiguration by lazy {
