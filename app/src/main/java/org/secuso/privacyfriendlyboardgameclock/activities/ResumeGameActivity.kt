@@ -14,29 +14,27 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter;
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
-
-import java.util.List;
+import android.content.Intent
+import android.content.res.ColorStateList
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.view.ActionMode
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.secuso.pfacore.ui.activities.BaseActivity
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
+import org.secuso.privacyfriendlyboardgameclock.model.Game
+import androidx.core.view.isGone
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
@@ -44,129 +42,95 @@ import java.util.List;
  * Last changed on 18.03.18
  * This is the Activity for resuming saved games
  */
+class ResumeGameActivity : BaseActivity(), ItemClickListener {
+    private val loadGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_start_game) }
+    private val deleteGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_delete_game) }
+    private lateinit var gameListAdapter: GameListAdapter
+    private val gds by lazy { GamesDataSourceSingleton.getInstance(this) }
+    private var chosenGame: Game? = null
+    private val actionModeCallback: ActionModeCallback by lazy { ActionModeCallback() }
+    private var actionMode: ActionMode? = null
+    private val fabActive by lazy { getResources().getColor(R.color.fabActive)  }
+    private val fabInactive by lazy { getResources().getColor(R.color.fabInactive)  }
 
-public class ResumeGameActivity extends BaseActivity implements ItemClickListener {
-    private FloatingActionButton loadGameFAB, deleteGameFAB;
-    private RecyclerView gameListRecyleView;
-    private GameListAdapter gameListAdapter;
-    private List<Game> savedGamesList;
-    private GamesDataSourceSingleton gds;
-    private Game chosenGame;
-    private ResumeGameActivity.ActionModeCallback actionModeCallback = new ResumeGameActivity.ActionModeCallback();
-    private ActionMode actionMode;
-    private int fabActive;
-    private int fabInactive;
-    private View.OnClickListener selectAGameToast = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            showToast(getString(R.string.pleaseChooseAGame));
-        }
-    };
+    private val selectAGameToast: View.OnClickListener = View.OnClickListener {
+        Toast.makeText(this, R.string.pleaseChooseAGame, Toast.LENGTH_SHORT).show()
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        gds = GamesDataSourceSingleton.getInstance(this);
-        savedGamesList = gds.getSavedGames();
-        fabActive = getResources().getColor(R.color.fabActive);
-        fabInactive = getResources().getColor(R.color.fabInactive);
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_resume)
 
-        setContentView(R.layout.activity_resume);
-
-        loadGameFAB = findViewById(R.id.fab_start_game);
-        loadGameFAB.setOnClickListener(selectAGameToast);
-        deleteGameFAB = findViewById(R.id.fab_delete_game);
-        deleteGameFAB.setOnClickListener(onFABDeleteListenter());
+        loadGameFAB.setOnClickListener(selectAGameToast)
+        deleteGameFAB.setOnClickListener(onFABDeleteListenter())
 
         // Recycle View for Game List
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        gameListRecyleView = findViewById(R.id.savedGamesList);
-        gameListRecyleView.setHasFixedSize(true);
-        gameListAdapter = new GameListAdapter(this, savedGamesList, this);
-        gameListRecyleView.setAdapter(gameListAdapter);
-        gameListRecyleView.setLayoutManager(layoutManager);
-        gameListRecyleView.setItemAnimator(null);
+        gameListAdapter = GameListAdapter(this, gds.getSavedGames(), this)
+        findViewById<RecyclerView>(R.id.savedGamesList).apply {
+            layoutManager = LinearLayoutManager(this@ResumeGameActivity)
+            setHasFixedSize(true)
+            adapter = gameListAdapter
+            itemAnimator = null
+        }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        getSupportActionBar().setTitle(R.string.action_resume_game);
-        setDrawerEnabled(false);
-    }
-
-    @Override
-    protected int getNavigationDrawerID() {
-        return 0;
-    }
-
-    private View.OnClickListener resumeGame(){
-         return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chosenGame != null){
-                    gds.setGame(chosenGame);
-                    Intent intent;
-                    if(chosenGame.getGame_mode() == TAGHelper.TIME_TRACKING)
-                        intent = new Intent(ResumeGameActivity.this, GameTimeTrackingModeActivity.class);
-                    else
-                        intent = new Intent(ResumeGameActivity.this, GameCountDownActivity.class);
-
-                    startActivity(intent);
-                }
-                else
-                    showToast(getString(R.string.pleaseChooseAGame));
+    private fun resumeGame() = View.OnClickListener {
+        if (chosenGame != null) {
+            gds.game = chosenGame
+            val intent = if (chosenGame!!.game_mode == TAGHelper.TIME_TRACKING) {
+                Intent(this@ResumeGameActivity, GameTimeTrackingModeActivity::class.java)
+            } else {
+                Intent(this@ResumeGameActivity, GameCountDownActivity::class.java)
             }
-        };
+
+            startActivity(intent)
+        } else {
+            Toast.makeText(this@ResumeGameActivity, R.string.pleaseChooseAGame, Toast.LENGTH_SHORT).show()
+        }
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        if(actionMode != null){
-            toggleSelection(position);
-        }else{
+    override fun onItemClick(view: View?, position: Int) {
+        if (actionMode != null) {
+            toggleSelection(position)
+        } else {
             // If no game has been selected yet
-            if(chosenGame == null){
-                gameListAdapter.setSimpleClickedSelected(true);
-                gameListAdapter.setLongClickedSelected(false);
-                chosenGame = gameListAdapter.getGame(position);
-                gameListAdapter.toggleSelection(position);
-                loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                loadGameFAB.setOnClickListener(resumeGame());
-            }
-            else{
+            if (chosenGame == null) {
+                gameListAdapter.setSimpleClickedSelected(true)
+                gameListAdapter.setLongClickedSelected(false)
+                chosenGame = gameListAdapter.getGame(position)
+                gameListAdapter.toggleSelection(position)
+                loadGameFAB.backgroundTintList = ColorStateList.valueOf(fabActive)
+                loadGameFAB.setOnClickListener(resumeGame())
+            } else {
                 // If the same game has been selected again, deselect this
-                if(gameListAdapter.isSelected(position)){
-                    gameListAdapter.setSimpleClickedSelected(false);
-                    gameListAdapter.setLongClickedSelected(false);
-                    chosenGame = null;
+                if (gameListAdapter.isSelected(position)) {
+                    gameListAdapter.setSimpleClickedSelected(false)
+                    gameListAdapter.setLongClickedSelected(false)
+                    chosenGame = null
                     // so all the check box disappear
-                    gameListAdapter.notifyDataSetChanged();
-                    gameListAdapter.clearSelection();
-                    loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
-                    loadGameFAB.setOnClickListener(selectAGameToast);
-                }
-                // If another game has been selected, clear all selection and select this one
-                else{
-                    gameListAdapter.setSimpleClickedSelected(true);
-                    gameListAdapter.setLongClickedSelected(false);
-                    chosenGame = gameListAdapter.getGame(position);
-                    gameListAdapter.clearSelection();
-                    gameListAdapter.toggleSelection(position);
-                    loadGameFAB.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                    loadGameFAB.setOnClickListener(resumeGame());
+                    gameListAdapter.notifyDataSetChanged()
+                    gameListAdapter.clearSelection()
+                    loadGameFAB.backgroundTintList = ColorStateList.valueOf(fabInactive)
+                    loadGameFAB.setOnClickListener(selectAGameToast)
+                } else {
+                    gameListAdapter.setSimpleClickedSelected(true)
+                    gameListAdapter.setLongClickedSelected(false)
+                    chosenGame = gameListAdapter.getGame(position)
+                    gameListAdapter.clearSelection()
+                    gameListAdapter.toggleSelection(position)
+                    loadGameFAB.backgroundTintList = ColorStateList.valueOf(fabActive)
+                    loadGameFAB.setOnClickListener(resumeGame())
                 }
             }
         }
     }
 
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
+    override fun onItemLongClicked(view: View?, position: Int): Boolean {
         if (actionMode == null) {
-            actionMode = startSupportActionMode(actionModeCallback);
+            actionMode = startSupportActionMode(actionModeCallback)
         }
-        toggleSelection(position);
-        return true;
+        toggleSelection(position)
+        return true
     }
 
     /**
@@ -177,57 +141,48 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
      *
      * @param position Position of the item to toggle the selection state
      */
-    private void toggleSelection(int position) {
-        if(gameListAdapter.isLongClickedSelected()){
-            gameListAdapter.toggleSelection(position);
-            int count = gameListAdapter.getSelectedItemCount();
+    private fun toggleSelection(position: Int) {
+        if (gameListAdapter.isLongClickedSelected()) {
+            gameListAdapter.toggleSelection(position)
+            val count = gameListAdapter.selectedItemCount
             if (count == 0) {
-                actionMode.finish();
+                actionMode?.finish()
             } else {
-                actionMode.setTitle(String.valueOf(count));
-                actionMode.invalidate();
+                actionMode?.title = count.toString()
+                actionMode?.invalidate()
             }
         }
     }
+
     /**
      * remove all the selected games
      * @return
      */
-    private View.OnClickListener onFABDeleteListenter() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gameListAdapter.removeItems(gameListAdapter.getSelectedItems());
-                actionMode.finish();
-                actionMode = null;
-
-            }
-        };
+    private fun onFABDeleteListenter() = View.OnClickListener {
+        gameListAdapter.removeItems(gameListAdapter.getSelectedItems())
+        actionMode?.finish()
+        actionMode = null
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.player_management_menu, menu);
-        return true;
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.player_management_menu, menu)
+        return true
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_delete) {
-            if (actionMode == null)
-                actionMode = startSupportActionMode(actionModeCallback);
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_delete) {
+            if (actionMode == null) actionMode = startSupportActionMode(actionModeCallback)
         }
-        return true;
+        return true
     }
 
-    private void switchVisibilityOf2FABs(){
-        if(loadGameFAB.getVisibility() != View.GONE && deleteGameFAB.getVisibility() == View.GONE){
-            loadGameFAB.setVisibility(View.GONE);
-            deleteGameFAB.setVisibility(View.VISIBLE);
-        }else{
-            loadGameFAB.setVisibility(View.VISIBLE);
-            deleteGameFAB.setVisibility(View.GONE);
+    private fun switchVisibilityOf2FABs() {
+        if (loadGameFAB.visibility != View.GONE && deleteGameFAB.isGone) {
+            loadGameFAB.visibility = View.GONE
+            deleteGameFAB.visibility = View.VISIBLE
+        } else {
+            loadGameFAB.visibility = View.VISIBLE
+            deleteGameFAB.visibility = View.GONE
         }
     }
 
@@ -236,40 +191,35 @@ public class ResumeGameActivity extends BaseActivity implements ItemClickListene
         #                       Helper class                            #
         #                                                               #
         #################################################################*/
+    private inner class ActionModeCallback : ActionMode.Callback {
+        @Suppress("unused")
+        private val TAG: String = ActionModeCallback::class.java.getSimpleName()
 
-    private class ActionModeCallback implements ActionMode.Callback {
-        @SuppressWarnings("unused")
-        private final String TAG = ResumeGameActivity.ActionModeCallback.class.getSimpleName();
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            gameListAdapter.setLongClickedSelected(true);
-            gameListAdapter.setSimpleClickedSelected(false);
-            mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
-            switchVisibilityOf2FABs();
-            gameListAdapter.clearSelection();
-            gameListAdapter.notifyDataSetChanged();
-            return true;
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
+            gameListAdapter.setLongClickedSelected(true)
+            gameListAdapter.setSimpleClickedSelected(false)
+            mode.menuInflater.inflate(R.menu.selected_menu, menu)
+            switchVisibilityOf2FABs()
+            gameListAdapter.clearSelection()
+            gameListAdapter.notifyDataSetChanged()
+            return true
         }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
         }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            return false;
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            return false
         }
 
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            gameListAdapter.setLongClickedSelected(false);
-            gameListAdapter.clearSelection();
-            actionMode = null;
-            switchVisibilityOf2FABs();
-            gameListAdapter.clearSelection();
-            gameListAdapter.notifyDataSetChanged();
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            gameListAdapter.setLongClickedSelected(false)
+            gameListAdapter.clearSelection()
+            actionMode = null
+            switchVisibilityOf2FABs()
+            gameListAdapter.clearSelection()
+            gameListAdapter.notifyDataSetChanged()
         }
     }
 }
