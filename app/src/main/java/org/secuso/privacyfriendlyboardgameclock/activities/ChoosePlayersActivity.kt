@@ -14,43 +14,34 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment;
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
-import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
-import org.secuso.privacyfriendlyboardgameclock.model.Player;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.os.Bundle
+import android.preference.PreferenceManager
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.widget.Toast
+import androidx.appcompat.view.ActionMode
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.secuso.pfacore.ui.activities.BaseActivity
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
+import org.secuso.privacyfriendlyboardgameclock.model.Player
+import java.util.Random
 
 /**
  * Created by Quang Anh Dang on 06.01.2018.
@@ -58,251 +49,242 @@ import java.util.Random;
  * Last changed on 18.03.18
  * This is the Choose Player Activity after creating a new game
  */
+class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
+    private val listPlayers: MutableList<Player> by lazy { pds.getAllPlayers() }
+    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this) }
+    private val pds: PlayersDataSourceSingleton by lazy { PlayersDataSourceSingleton.getInstance(this) }
+    private lateinit var playerListAdapter: PlayerListAdapter
+    private val fabStartGame: FloatingActionButton by lazy { findViewById(R.id.fab_start_game) }
+    private val fabDelete: FloatingActionButton by lazy { findViewById(R.id.fab_delete_player) }
+    private val fabActive by lazy { getResources().getColor(R.color.fabActive) }
+    private val fabInactive by lazy { getResources().getColor(R.color.fabInactive) }
 
-public class ChoosePlayersActivity extends BaseActivity implements ItemClickListener {
-    private List<Player> listPlayers;
-    private GamesDataSourceSingleton gds;
-    private PlayersDataSourceSingleton pds;
-    private RecyclerView playersRecycleView;
-    private PlayerListAdapter playerListAdapter;
-    private LinearLayoutManager layoutManager;
-    private FloatingActionButton fabStartGame;
-    private FloatingActionButton fabDelete;
-    private int fabActive;
-    private int fabInactive;
     // To toggle selection mode
-    private ChoosePlayersActivity.ActionModeCallback actionModeCallback = new ChoosePlayersActivity.ActionModeCallback();
-    private ActionMode actionMode;
-    private View insertAlert;
-    private View emptyListLayout;
+    private val actionModeCallback by lazy { ActionModeCallback() } 
+    private var actionMode: ActionMode? = null
+    private val insertAlert: View by lazy { findViewById(R.id.insert_alert) }
+    private val emptyListLayout: View by lazy { findViewById(R.id.emptyListLayout) }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    /**
+     * before starting to work, check if Database and Singleton Object (use to save some objects
+     * and transferring objects between activity), if any attribute is null --> move to main activity
+     * and remove all other activities --> start new
+     */
+    fun checkIfSingletonDataIsCorrupt(): Boolean {
+        if (!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
+                    && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())
+        ) {
+            val intent = Intent(this, MainActivity::class.java)
+            // clear all other activities
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+            return true
+        } else return false
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         // Check if date saved in Singleton Class corrupted, if yes return to Main Menu
-        if(checkIfSingletonDataIsCorrupt()) return;
+        if (checkIfSingletonDataIsCorrupt()) return
 
-        setContentView(R.layout.activity_choose_players);
-        fabActive = getResources().getColor(R.color.fabActive);
-        fabInactive = getResources().getColor(R.color.fabInactive);
-        gds = GamesDataSourceSingleton.getInstance(this);
-        pds = PlayersDataSourceSingleton.getInstance(this);
-        listPlayers = pds.getAllPlayers();
+        setContentView(R.layout.activity_choose_players)
 
         // FAB Listener
-        fabStartGame = findViewById(R.id.fab_start_game);
-        fabStartGame.setBackgroundColor(R.drawable.button_disabled);
-        fabStartGame.setOnClickListener(selectPlayerToast());
+        fabStartGame.setBackgroundColor(R.drawable.button_disabled)
+        fabStartGame.setOnClickListener(selectPlayerToast())
 
-        fabDelete = findViewById(R.id.fab_delete_player);
-        fabDelete.setOnClickListener(onFABDeleteListenter());
+        fabDelete.setOnClickListener(onFABDeleteListenter())
 
-        // Lookup the recyclerview in fragment layout
-        layoutManager = new LinearLayoutManager(this);
-        playersRecycleView = findViewById(R.id.player_list);
-        playersRecycleView.setHasFixedSize(true);
-        playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
-        playersRecycleView.setAdapter(playerListAdapter);
-        playersRecycleView.setLayoutManager(layoutManager);
-        playersRecycleView.setItemAnimator(null);
+        playerListAdapter = PlayerListAdapter(this, listPlayers, this)
+        findViewById<RecyclerView>(R.id.player_list).apply {
+            setHasFixedSize(true)
+            adapter = playerListAdapter
+            layoutManager = LinearLayoutManager(this@ChoosePlayersActivity)
+            itemAnimator = null
+        }
 
-        insertAlert = findViewById(R.id.insert_alert);
-        emptyListLayout = findViewById(R.id.emptyListLayout);
-
-        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(1500); //You can manage the blinking time with this parameter
-        anim.setStartOffset(20);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(Animation.INFINITE);
-        insertAlert.startAnimation(anim);
+        val anim: Animation = AlphaAnimation(0.0f, 1.0f).apply {
+            duration = 1500
+            startOffset = 20
+            repeatMode = Animation.REVERSE
+            repeatCount = Animation.INFINITE
+        }
+        insertAlert.startAnimation(anim)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(playerListAdapter.getPlayersList().size() == 0){
-            insertAlert.setVisibility(View.VISIBLE);
-            emptyListLayout.setVisibility(View.VISIBLE);
+    override fun onResume() {
+        super.onResume()
+        if (playerListAdapter.playersList.isEmpty()) {
+            insertAlert.visibility = View.VISIBLE
+            emptyListLayout.visibility = View.VISIBLE
         } else {
-            insertAlert.setVisibility(View.GONE);
-            emptyListLayout.setVisibility(View.GONE);
+            insertAlert.visibility = View.GONE
+            emptyListLayout.visibility = View.GONE
         }
     }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        getSupportActionBar().setTitle(R.string.choose_players);
-        // disable NavigationDrawer
-        setDrawerEnabled(false);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case TAGHelper.REQUEST_READ_CONTACT_CODE:{
+    
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            TAGHelper.REQUEST_READ_CONTACT_CODE -> {
                 // If request is cancelled, the result arrays are empty.
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission granted
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    Fragment prev = fm.findFragmentByTag("dialog");
-                    if(prev != null) ft.remove(prev);
-                    ft.addToBackStack(null);
+                    val fm = supportFragmentManager
+                    val ft = fm.beginTransaction()
+                    val prev = fm.findFragmentByTag("dialog")
+                    if (prev != null) ft.remove(prev)
+                    ft.addToBackStack(null)
 
                     // Create and show the dialog
-                    PlayerManagementContactListFragment contactListFragment = new PlayerManagementContactListFragment();
-                    contactListFragment.show(ft, "dialog");
+                    val contactListFragment = PlayerManagementContactListFragment()
+                    contactListFragment.show(ft, "dialog")
                 }
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    private View.OnClickListener selectPlayerToast(){
-        return new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                showToast(getResources().getString(R.string.selectAtLeast2Players));
-            }
-        };
+    private fun selectPlayerToast() = View.OnClickListener { 
+        Toast.makeText(this, getResources().getString(R.string.selectAtLeast2Players), Toast.LENGTH_SHORT).show()
     }
 
     /**
      * remove all the selected players
      * @return
      */
-    private View.OnClickListener onFABDeleteListenter() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
-                actionMode.finish();
-                actionMode = null;
-                if(playerListAdapter.getPlayersList().size() == 0){
-                    insertAlert.setVisibility(View.VISIBLE);
-                    emptyListLayout.setVisibility(View.VISIBLE);
-                } else {
-                    insertAlert.setVisibility(View.GONE);
-                    emptyListLayout.setVisibility(View.GONE);
-                }
-            }
-        };
-    }
-
-    @Override
-    protected int getNavigationDrawerID() {
-        return 0;
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        if(playerListAdapter.isLongClickedSelected() && !playerListAdapter.isSimpleClickedSelected()){
-            toggleSelection(position);
+    private fun onFABDeleteListenter() = View.OnClickListener {
+        playerListAdapter.removeItems(playerListAdapter.getSelectedItems())
+        actionMode?.finish()
+        actionMode = null
+        if (playerListAdapter.playersList.isEmpty()) {
+            insertAlert.visibility = View.VISIBLE
+            emptyListLayout.visibility = View.VISIBLE
+        } else {
+            insertAlert.visibility = View.GONE
+            emptyListLayout.visibility = View.GONE
         }
-        else{
-            playerListAdapter.setSimpleClickedSelected(true);
-            playerListAdapter.setLongClickedSelected(false);
-            toggleSelection(position);
-            if (playerListAdapter.getSelectedItemCount() >= 2 && playerListAdapter.isSimpleClickedSelected()) {
-                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabActive));
-                fabStartGame.setOnClickListener(createNewGame());
-            }
-            else{
-                fabStartGame.setBackgroundTintList(ColorStateList.valueOf(fabInactive));
-                fabStartGame.setOnClickListener(selectPlayerToast());
+    }
+    
+    override fun onItemClick(view: View?, position: Int) {
+        if (playerListAdapter.isLongClickedSelected() && !playerListAdapter.isSimpleClickedSelected()) {
+            toggleSelection(position)
+        } else {
+            playerListAdapter.setSimpleClickedSelected(true)
+            playerListAdapter.setLongClickedSelected(false)
+            toggleSelection(position)
+            if (playerListAdapter.selectedItemCount >= 2 && playerListAdapter.isSimpleClickedSelected()) {
+                fabStartGame.backgroundTintList = ColorStateList.valueOf(fabActive)
+                fabStartGame.setOnClickListener(createNewGame())
+            } else {
+                fabStartGame.backgroundTintList = ColorStateList.valueOf(fabInactive)
+                fabStartGame.setOnClickListener(selectPlayerToast())
             }
         }
     }
 
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
+    override fun onItemLongClicked(view: View?, position: Int): Boolean {
         if (actionMode == null) {
-            actionMode = startSupportActionMode(actionModeCallback);
+            actionMode = startSupportActionMode(actionModeCallback)
         }
-        toggleSelection(position);
-        return true;
+        toggleSelection(position)
+        return true
     }
 
     /**
      *
      * @return OnClickListener
      */
-    private View.OnClickListener createNewGame() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Game game = gds.getGame();
-                if(game == null){
-                    showToast("Data Corruppted! You have been returned to Main Menu.");
-                    showMainMenu();
-                    return;
-                }
-                List<Player> selectedPlayers = playerListAdapter.getOrderdSelectedPlayers();
-                HashMap<Long, Long> player_round_times = new HashMap<>();
-                for (Player p : selectedPlayers) {
-                    player_round_times.put(p.getId(), Long.valueOf(game.getRound_time()));
-                }
-
-                HashMap<Long, Long> players_rounds = new HashMap<>();
-                for (Player p : selectedPlayers) {
-                    players_rounds.put(p.getId(), Long.valueOf(1));
-                }
-
-                long dateMs = System.currentTimeMillis();
-
-                game = gds.createGame(dateMs, selectedPlayers, player_round_times, players_rounds, game.getName(), game.getRound_time(),
-                        game.getGame_time(), game.getReset_round_time(), game.getGame_mode(), game.getRound_time_delta(), game.getGame_time(), 0, 0, game.getSaved(), 0, game.getGame_time_infinite(),
-                        game.getChess_mode(), 0);
-
-                //start player index
-                if (game.getGame_mode() == TAGHelper.CLOCKWISE || game.getGame_mode() == TAGHelper.MANUAL_SEQUENCE || game.getGame_mode() == TAGHelper.TIME_TRACKING) {
-                    game.setStartPlayerIndex(0);
-                    game.setNextPlayerIndex(1);
-                } else if (game.getGame_mode() == TAGHelper.COUNTER_CLOCKWISE) {
-                    game.setStartPlayerIndex(0);
-                    game.setNextPlayerIndex(selectedPlayers.size() - 1);
-                } else if (game.getGame_mode() == TAGHelper.RANDOM) {
-                    game.setStartPlayerIndex(0);
-
-                    int randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
-                    while (randomPlayerIndex == game.getStartPlayerIndex())
-                        randomPlayerIndex = new Random().nextInt(selectedPlayers.size());
-                    game.setNextPlayerIndex(randomPlayerIndex);
-                }
-
-                game.setPlayers(selectedPlayers);
-                game.setPlayer_round_times(player_round_times);
-                game.setPlayer_rounds(players_rounds);
-                gds.setGame(game);
-
-                // if game is finally created and game time is infinite, set game time to -1
-                if (game.getGame_time_infinite() == 1) {
-                    game.setGame_time(0);
-                    game.setCurrentGameTime(TAGHelper.DEFAULT_VALUE_LONG);
-                }
-
-                // store game number
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(ChoosePlayersActivity.this);
-                int gameNumber = settings.getInt("gameNumber", 1);
-                gameNumber++;
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt("gameNumber", gameNumber);
-                editor.commit();
-
-                startNewGame();
+    private fun createNewGame() = View.OnClickListener {
+            var game = gds.getGame()
+            if (game == null) {
+                Toast.makeText(this@ChoosePlayersActivity, "Data Corruppted! You have been returned to Main Menu.", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@ChoosePlayersActivity, MainActivity::class.java))
+                finish()
             }
-        };
-    }
+            val selectedPlayers = playerListAdapter.getOrderdSelectedPlayers()
+            val player_round_times = HashMap<Long?, Long?>()
+            for (p in selectedPlayers) {
+                player_round_times[p.id] = game.round_time
+            }
 
-    private void startNewGame() {
-        Intent intent;
-        if(gds.getGame().getGame_mode() == TAGHelper.TIME_TRACKING)
-            intent = new Intent(ChoosePlayersActivity.this, GameTimeTrackingModeActivity.class);
-        else
-            intent = new Intent(ChoosePlayersActivity.this, GameCountDownActivity.class);
-        startActivity(intent);
+            val players_rounds = HashMap<Long?, Long?>()
+            for (p in selectedPlayers) {
+                players_rounds[p.id] = 1
+            }
+
+            val dateMs = System.currentTimeMillis()
+
+            game = gds.createGame(
+                dateMs,
+                selectedPlayers,
+                player_round_times,
+                players_rounds,
+                game.name,
+                game.round_time,
+                game.game_time,
+                game.reset_round_time,
+                game.game_mode,
+                game.round_time_delta,
+                game.game_time,
+                0,
+                0,
+                game.saved,
+                0,
+                game.game_time_infinite,
+                game.chess_mode,
+                0
+            )
+
+            //start player index
+            if (game.game_mode == TAGHelper.CLOCKWISE || game.game_mode == TAGHelper.MANUAL_SEQUENCE || game.game_mode == TAGHelper.TIME_TRACKING) {
+                game.startPlayerIndex = 0
+                game.nextPlayerIndex = 1
+            } else if (game.game_mode == TAGHelper.COUNTER_CLOCKWISE) {
+                game.startPlayerIndex = 0
+                game.nextPlayerIndex = selectedPlayers.size - 1
+            } else if (game.game_mode == TAGHelper.RANDOM) {
+                game.startPlayerIndex = 0
+
+                var randomPlayerIndex = Random().nextInt(selectedPlayers.size)
+                while (randomPlayerIndex == game.startPlayerIndex) {
+                    randomPlayerIndex = Random().nextInt(selectedPlayers.size)
+                }
+                game.nextPlayerIndex = randomPlayerIndex
+            }
+
+        game.players = selectedPlayers
+        game.player_round_times = player_round_times
+        game.player_rounds = players_rounds
+        gds.game = game
+
+        // if game is finally created and game time is infinite, set game time to -1
+        if (game.game_time_infinite == 1) {
+            game.game_time = 0
+            game.currentGameTime = TAGHelper.DEFAULT_VALUE_LONG
+        }
+
+        // store game number
+        val settings =
+            PreferenceManager.getDefaultSharedPreferences(this@ChoosePlayersActivity)
+        var gameNumber = settings.getInt("gameNumber", 1)
+        gameNumber++
+        val editor = settings.edit()
+        editor.putInt("gameNumber", gameNumber)
+        editor.commit()
+
+        startNewGame()
+        }
+
+    private fun startNewGame() {
+        val intent = if (gds.game.game_mode == TAGHelper.TIME_TRACKING) {
+            Intent(this@ChoosePlayersActivity, GameTimeTrackingModeActivity::class.java)
+        } else Intent(this@ChoosePlayersActivity, GameCountDownActivity::class.java)
+        startActivity(intent)
     }
 
     /**
@@ -310,25 +292,24 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
      * @param menu
      * @return
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_add_newplayer) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            Fragment prev = getFragmentManager().findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-            if (prev != null) ft.remove(prev);
-            ft.addToBackStack(null);
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_add_newplayer) {
+            val ft = supportFragmentManager.beginTransaction()
+            val prev = supportFragmentManager.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
+            if (prev != null) ft.remove(prev)
+            ft.addToBackStack(null)
 
             // Create and show the dialog
-            PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
-            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT);
+            val chooseDialogFragment =
+                PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:")
+            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT)
         }
-        return true;
+        return true
     }
 
     /**
@@ -339,34 +320,33 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
      *
      * @param position Position of the item to toggle the selection state
      */
-    private void toggleSelection(int position) {
-        playerListAdapter.toggleSelection(position);
-        int count = playerListAdapter.getSelectedItemCount();
-        if(playerListAdapter.isSimpleClickedSelected()){
+    private fun toggleSelection(position: Int) {
+        playerListAdapter.toggleSelection(position)
+        val count = playerListAdapter.selectedItemCount
+        if (playerListAdapter.isSimpleClickedSelected()) {
             if (count == 0) {
-                playerListAdapter.setSimpleClickedSelected(false);
-                playerListAdapter.setLongClickedSelected(false);
-                playerListAdapter.notifyDataSetChanged();
+                playerListAdapter.setSimpleClickedSelected(false)
+                playerListAdapter.setLongClickedSelected(false)
+                playerListAdapter.notifyDataSetChanged()
             }
-            if(count == 1) playerListAdapter.notifyDataSetChanged();
-        }
-        else if(playerListAdapter.isLongClickedSelected()){
+            if (count == 1) playerListAdapter.notifyDataSetChanged()
+        } else if (playerListAdapter.isLongClickedSelected()) {
             if (count == 0) {
-                actionMode.finish();
+                actionMode?.finish()
             } else {
-                actionMode.setTitle(String.valueOf(count));
-                actionMode.invalidate();
+                actionMode?.title = count.toString()
+                actionMode?.invalidate()
             }
         }
     }
 
-    private void switchVisibilityOf2FABs(){
-        if(fabStartGame.getVisibility() != View.GONE && fabDelete.getVisibility() == View.GONE){
-            fabStartGame.setVisibility(View.GONE);
-            fabDelete.setVisibility(View.VISIBLE);
-        }else{
-            fabStartGame.setVisibility(View.VISIBLE);
-            fabDelete.setVisibility(View.GONE);
+    private fun switchVisibilityOf2FABs() {
+        if (fabStartGame.visibility != View.GONE && fabDelete.visibility == View.GONE) {
+            fabStartGame.visibility = View.GONE
+            fabDelete.visibility = View.VISIBLE
+        } else {
+            fabStartGame.visibility = View.VISIBLE
+            fabDelete.visibility = View.GONE
         }
     }
 
@@ -375,41 +355,36 @@ public class ChoosePlayersActivity extends BaseActivity implements ItemClickList
         #                       Helper class                            #
         #                                                               #
         #################################################################*/
+    private inner class ActionModeCallback : ActionMode.Callback {
+        @Suppress("unused")
+        private val TAG: String = ActionModeCallback::class.java.simpleName
 
-    private class ActionModeCallback implements ActionMode.Callback {
-        @SuppressWarnings("unused")
-        private final String TAG = ChoosePlayersActivity.ActionModeCallback.class.getSimpleName();
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            playerListAdapter.setSimpleClickedSelected(false);
-            playerListAdapter.setLongClickedSelected(true);
-            mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
-            switchVisibilityOf2FABs();
-            playerListAdapter.clearSelection();
-            playerListAdapter.notifyDataSetChanged();
-            return true;
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
+            playerListAdapter.setSimpleClickedSelected(false)
+            playerListAdapter.setLongClickedSelected(true)
+            mode.menuInflater.inflate(R.menu.selected_menu, menu)
+            switchVisibilityOf2FABs()
+            playerListAdapter.clearSelection()
+            playerListAdapter.notifyDataSetChanged()
+            return true
         }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
         }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            return false;
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            return false
         }
 
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            playerListAdapter.setSimpleClickedSelected(false);
-            playerListAdapter.setLongClickedSelected(false);
-            playerListAdapter.clearSelection();
-            actionMode = null;
-            switchVisibilityOf2FABs();
-            playerListAdapter.clearSelection();
-            playerListAdapter.notifyDataSetChanged();
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            playerListAdapter.setSimpleClickedSelected(false)
+            playerListAdapter.setLongClickedSelected(false)
+            playerListAdapter.clearSelection()
+            actionMode = null
+            switchVisibilityOf2FABs()
+            playerListAdapter.clearSelection()
+            playerListAdapter.notifyDataSetChanged()
         }
     }
 }

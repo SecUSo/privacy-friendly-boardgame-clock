@@ -54,7 +54,7 @@ public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequ
             game = ((GameCountDownActivity) mContext).getGame();
         }
         else if(mContext instanceof GameHistoryActivity){
-            game = ((GameHistoryActivity)mContext).getSelectedGame();
+            game = ((GameHistoryActivity)mContext).selectedGame;
         }
         else if(mContext instanceof GameTimeTrackingModeActivity){
             game = ((GameTimeTrackingModeActivity) mContext).getGame();
