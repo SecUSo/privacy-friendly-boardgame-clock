@@ -1,5 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    alias(libs.plugins.android.app) apply true
+    alias(libs.plugins.kotlin.android) apply true
+    alias(libs.plugins.kotlin.kapt) apply true
+}
 
 android {
     namespace "org.secuso.privacyfriendlyboardgameclock"
@@ -17,12 +20,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            postprocessing {
+                removeUnusedCode true
+                shrinkResources true
+                obfuscate false
+                optimizeCode true
+            }
         }
     }
     buildFeatures {
         //noinspection DataBindingWithoutKapt
         dataBinding true
         buildConfig true
+        viewBinding true
     }
     compileOptions {
         coreLibraryDesugaringEnabled true
@@ -52,31 +63,23 @@ android {
 }
 
 dependencies {
-    constraints {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
-            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
-        }
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
-            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
-        }
-    }
-
-    testImplementation 'junit:junit:4.13.2'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.github.QuadFlask:colorpicker:0.0.13'
-    implementation 'com.google.android.material:material:1.12.0'
+    testImplementation libs.junit
+    implementation libs.ax.appcompat
+    implementation libs.material
+    implementation libs.ax.legacy.v4
+    implementation libs.ax.recyclerview
+    implementation libs.ax.cardview
+    implementation libs.quadflask.colorpicker
 
     // Backup
     implementation project(path: ':backup-api')
-    def work_version = "2.4.0"
-    implementation "androidx.work:work-runtime:$work_version"
-    implementation "androidx.work:work-runtime-ktx:$work_version"
-    androidTestImplementation "androidx.work:work-testing:$work_version"
-    implementation 'androidx.sqlite:sqlite-ktx:2.3.1'
+    implementation libs.ax.work.runtime.ktx
+    implementation libs.ax.work.runtime
+    androidTestImplementation libs.ax.work.testing
+    implementation libs.ax.sqlite.ktx
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    coreLibraryDesugaring libs.desugar.jdk
+
+    implementation project(path: ":model")
+    implementation project(path: ":ui-view")
 }
