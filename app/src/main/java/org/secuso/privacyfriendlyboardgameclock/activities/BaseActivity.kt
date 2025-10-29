@@ -14,36 +14,26 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
-import androidx.core.app.TaskStackBuilder;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedService;
-import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.preference.PreferenceManager
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.TaskStackBuilder
+import androidx.drawerlayout.widget.DrawerLayout
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity
 
 /**
  * @author Christopher Beckmann, Karola Marky
@@ -52,110 +42,99 @@ import org.secuso.privacyfriendlyboardgameclock.tutorial.TutorialActivity;
  * This class is a parent class of all activities that can be accessed from the
  * Navigation Drawer (example see MainActivity.java)
  */
-public abstract class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
-
-    // delay to launch nav drawer item, to allow close animation to play
-    static final int NAVDRAWER_LAUNCH_DELAY = 250;
-    // fade in and fade out durations for the main content when switching between
-    // different Activities of the app through the Nav Drawer
-    static final int MAIN_CONTENT_FADEOUT_DURATION = 150;
-    static final int MAIN_CONTENT_FADEIN_DURATION = 250;
-
+abstract class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     // Navigation drawer:
-    DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
-    ActionBarDrawerToggle toggle;
+    @JvmField
+    var mDrawerLayout: DrawerLayout? = null
+    private var mNavigationView: NavigationView? = null
+    @JvmField
+    var toggle: ActionBarDrawerToggle? = null
 
     // Helper
-    private Handler mHandler;
-    protected SharedPreferences mSharedPreferences;
+    private var mHandler: Handler? = null
+    protected var mSharedPreferences: SharedPreferences? = null
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         // for every activity, create/open database if necessary
-        PlayersDataSourceSingleton.getInstance(this.getApplicationContext()).open();
-        GamesDataSourceSingleton.getInstance(this.getApplicationContext()).open();
+        PlayersDataSourceSingleton.getInstance(this.getApplicationContext()).open()
+        GamesDataSourceSingleton.getInstance(this.getApplicationContext()).open()
 
         // start service to close database when app is killed
-        startService(new Intent(getBaseContext(), DetectTaskClearedService.class));
+        startService(Intent(getBaseContext(), DetectTaskClearedService::class.java))
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mHandler = new Handler();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        mHandler = Handler()
 
-        overridePendingTransition(0, 0);
+        overridePendingTransition(0, 0)
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    override fun onBackPressed() {
+        val drawer = findViewById<View?>(R.id.drawer_layout) as DrawerLayout
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+            drawer.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed();
+            super.onBackPressed()
         }
     }
 
-    protected abstract int getNavigationDrawerID();
+    protected abstract val navigationDrawerID: Int
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        final int itemId = item.getItemId();
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val itemId = item.getItemId()
 
-        return goToNavigationItem(itemId);
+        return goToNavigationItem(itemId)
     }
 
-    protected boolean goToNavigationItem(final int itemId) {
-
-        if(itemId == getNavigationDrawerID()) {
+    protected fun goToNavigationItem(itemId: Int): Boolean {
+        if (itemId == this.navigationDrawerID) {
             // just close drawer because we are already in this activity
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-            return true;
+            mDrawerLayout.closeDrawer(GravityCompat.START)
+            return true
         }
 
         // delay transition so the drawer can close
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                callDrawerItem(itemId);
+        mHandler!!.postDelayed(object : Runnable {
+            override fun run() {
+                callDrawerItem(itemId)
             }
-        }, NAVDRAWER_LAUNCH_DELAY);
+        }, NAVDRAWER_LAUNCH_DELAY.toLong())
 
-        mDrawerLayout.closeDrawer(GravityCompat.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START)
 
-        selectNavigationItem(itemId);
+        selectNavigationItem(itemId)
 
         // fade out the active activity
-        View mainContent = findViewById(R.id.main_content);
+        val mainContent = findViewById<View?>(R.id.main_content)
         if (mainContent != null) {
-            mainContent.animate().alpha(0).setDuration(MAIN_CONTENT_FADEOUT_DURATION);
+            mainContent.animate().alpha(0f).setDuration(MAIN_CONTENT_FADEOUT_DURATION.toLong())
         }
-        return true;
+        return true
     }
 
     // set active navigation item
-    private void selectNavigationItem(int itemId) {
-        for(int i = 0 ; i < mNavigationView.getMenu().size(); i++) {
-            boolean b = itemId == mNavigationView.getMenu().getItem(i).getItemId();
-            mNavigationView.getMenu().getItem(i).setChecked(b);
+    private fun selectNavigationItem(itemId: Int) {
+        for (i in 0..<mNavigationView.getMenu().size()) {
+            val b = itemId == mNavigationView.getMenu().getItem(i).getItemId()
+            mNavigationView.getMenu().getItem(i).setChecked(b)
         }
     }
 
     /**
      * Enables back navigation for activities that are launched from the NavBar. See
-     * {@code AndroidManifest.xml} to find out the parent activity names for each activity.
+     * `AndroidManifest.xml` to find out the parent activity names for each activity.
      * so in case back button pressed --> go directly to parent
      * @param intent
      */
-    private void createBackStack(Intent intent) {
+    private fun createBackStack(intent: Intent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            TaskStackBuilder builder = TaskStackBuilder.create(this);
-            builder.addNextIntentWithParentStack(intent);
-            builder.startActivities();
+            val builder = TaskStackBuilder.create(this)
+            builder.addNextIntentWithParentStack(intent)
+            builder.startActivities()
         } else {
-            startActivity(intent);
-            finish();
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -164,67 +143,69 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
      * Add your menu items (ids) to res/menu/activity_main_drawer.xml
      * @param itemId Item that has been clicked by the user
      */
-    private void callDrawerItem(final int itemId) {
-
-        Intent intent;
+    private fun callDrawerItem(itemId: Int) {
+        val intent: Intent?
 
         if (itemId == R.id.nav_example) {
-            intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            intent = Intent(this, MainActivity::class.java)
+            intent!!.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         } else if (itemId == R.id.nav_tutorial) {
-            intent = new Intent(this, TutorialActivity.class);
-            intent.setAction(TutorialActivity.ACTION_SHOW_ANYWAYS);
-            createBackStack(intent);
+            intent = Intent(this, TutorialActivity::class.java)
+            intent!!.setAction(TutorialActivity.ACTION_SHOW_ANYWAYS)
+            createBackStack(intent)
         } else if (itemId == R.id.nav_about) {
-            intent = new Intent(this, AboutActivity.class);
-            createBackStack(intent);
+            intent = Intent(this, AboutActivity::class.java)
+            createBackStack(intent!!)
         } else if (itemId == R.id.nav_help) {
-            intent = new Intent(this, HelpActivity.class);
-            createBackStack(intent);
+            intent = Intent(this, HelpActivity::class.java)
+            createBackStack(intent!!)
         } else if (itemId == R.id.nav_player_management) {
-            intent = new Intent(this, PlayerManagementActivity.class);
-            createBackStack(intent);
+            intent = Intent(this, PlayerManagementActivity::class.java)
+            createBackStack(intent!!)
         } else if (itemId == R.id.nav_game_history) {
-            intent = new Intent(this, GameHistoryActivity.class);
-            createBackStack(intent);
+            intent = Intent(this, GameHistoryActivity::class.java)
+            createBackStack(intent!!)
         } else if (itemId == R.id.nav_backup) {
-            intent = new Intent(this, BackUpActivity.class);
-            createBackStack(intent);
+            intent = Intent(this, BackUpActivity::class.java)
+            createBackStack(intent!!)
         }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(getSupportActionBar() == null) {
-            setSupportActionBar(toolbar);
+        val toolbar = findViewById<View?>(R.id.toolbar) as Toolbar?
+        if (getSupportActionBar() == null) {
+            setSupportActionBar(toolbar)
         }
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        mDrawerLayout = findViewById<View?>(R.id.drawer_layout) as DrawerLayout
+        toggle = ActionBarDrawerToggle(
+            this,
+            mDrawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        mDrawerLayout!!.addDrawerListener(toggle!!)
+        toggle!!.syncState()
 
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
+        mNavigationView = findViewById<View?>(R.id.nav_view) as NavigationView
+        mNavigationView.setNavigationItemSelectedListener(this)
 
-        selectNavigationItem(getNavigationDrawerID());
+        selectNavigationItem(this.navigationDrawerID)
 
-        View mainContent = findViewById(R.id.main_content);
+        val mainContent = findViewById<View?>(R.id.main_content)
         if (mainContent != null) {
-            mainContent.setAlpha(0);
-            mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
+            mainContent.setAlpha(0f)
+            mainContent.animate().alpha(1f).setDuration(MAIN_CONTENT_FADEIN_DURATION.toLong())
         }
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        toggle.onConfigurationChanged(newConfig);
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        toggle!!.onConfigurationChanged(newConfig)
     }
 
 
@@ -232,9 +213,9 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
      * show a toast with certain text as message
      * @param text
      */
-    public void showToast(String text){
-        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
-        toast.show();
+    fun showToast(text: String?) {
+        val toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
     /**
@@ -242,55 +223,52 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
      * and transferring objects between activity), if any attribute is null --> move to main activity
      * and remove all other activities --> start new
      */
-    public boolean checkIfSingletonDataIsCorrupt(){
-        if(!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
-                && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())){
-            Intent intent = new Intent(this, MainActivity.class);
+    fun checkIfSingletonDataIsCorrupt(): Boolean {
+        if (!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
+                    && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())
+        ) {
+            val intent = Intent(this, MainActivity::class.java)
             // clear all other activities
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            return true;
-        }
-        else return false;
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+            return true
+        } else return false
     }
 
     /**
      * make sure to call this method after onPostCreate of Activity finishes
      * @param enabled
      */
-    public void setDrawerEnabled(final boolean enabled) {
+    open fun setDrawerEnabled(enabled: Boolean) {
+        val lockMode =
+            if (enabled) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 
-        int lockMode = enabled ?
-                DrawerLayout.LOCK_MODE_UNLOCKED :
-                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+        mDrawerLayout!!.setDrawerLockMode(lockMode)
 
-        mDrawerLayout.setDrawerLockMode(lockMode);
+        toggle!!.setDrawerIndicatorEnabled(enabled)
 
-        toggle.setDrawerIndicatorEnabled(enabled);
-
-        ActionBar actionBar = getSupportActionBar();
+        val actionBar = getSupportActionBar()
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(!enabled);
-            actionBar.setDisplayShowHomeEnabled(enabled);
-            actionBar.setHomeButtonEnabled(enabled);
+            actionBar.setDisplayHomeAsUpEnabled(!enabled)
+            actionBar.setDisplayShowHomeEnabled(enabled)
+            actionBar.setHomeButtonEnabled(enabled)
         }
-        if(!enabled){
-            toggle.setToolbarNavigationClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
+        if (!enabled) {
+            toggle!!.setToolbarNavigationClickListener(object : View.OnClickListener {
+                override fun onClick(view: View?) {
+                    onBackPressed()
                 }
-            });
+            })
         }
-        toggle.syncState();
+        toggle!!.syncState()
     }
 
-    public void showMainMenu() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+    fun showMainMenu() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        finish()
     }
 
     /**
@@ -298,13 +276,23 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
      * @param serviceClass name of the service class you want to check
      * @return true if the service is running
      */
-    public boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
+    fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
+        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (service in manager.getRunningServices(Int.Companion.MAX_VALUE)) {
+            if (serviceClass.getName() == service.service.getClassName()) {
+                return true
             }
         }
-        return false;
+        return false
+    }
+
+    companion object {
+        // delay to launch nav drawer item, to allow close animation to play
+        const val NAVDRAWER_LAUNCH_DELAY: Int = 250
+
+        // fade in and fade out durations for the main content when switching between
+        // different Activities of the app through the Nav Drawer
+        const val MAIN_CONTENT_FADEOUT_DURATION: Int = 150
+        const val MAIN_CONTENT_FADEIN_DURATION: Int = 250
     }
 }
