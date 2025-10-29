@@ -20,13 +20,9 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.LoaderManager;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,6 +30,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseBooleanArray;
@@ -47,6 +49,7 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.ContactListAdapter;
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Created by Quang Anh Dang on 03.12.2017.
@@ -158,7 +161,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
         contactListRecycleView.setItemAnimator(null);
 
         // and tell loader manager to start loading
-        getLoaderManager().initLoader(0, null, this);
+        LoaderManager.getInstance(this).initLoader(0, null, this);
 
         builder.setView(v);
         return builder.create();
@@ -185,7 +188,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
 
         // no sub-selection, no sort order, simply every row
         // projection says we want just the _id and the name column
-        this.contacts = new CursorLoader(getActivity(),
+        this.contacts = new CursorLoader(requireActivity(),
                 contentUri,
                 PROJECTION,
                 ContactsContract.Contacts.DISPLAY_NAME + " IS NOT NULL ",
@@ -196,7 +199,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(@NonNull androidx.loader.content.Loader<Cursor> loader, Cursor data) {
         // Once cursor is loaded, give it to adapter
         contactListAdapter.getCursorAdapter().swapCursor(data);
 
@@ -215,7 +218,7 @@ public class PlayerManagementContactListFragment extends DialogFragment implemen
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    public void onLoaderReset(@NonNull androidx.loader.content.Loader<Cursor> loader) {
         // on reset take any old cursor away
         contactListAdapter.getCursorAdapter().swapCursor(null);
     }

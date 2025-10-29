@@ -20,10 +20,11 @@ package org.secuso.privacyfriendlyboardgameclock.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
@@ -76,7 +77,7 @@ public class PlayerManagementStatisticsFragment extends DialogFragment implement
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         activity = (PlayerManagementActivity) getActivity();
-        player = activity.getPlayerToEdit();
+        player = activity.playerToEdit;
         gds = GamesDataSourceSingleton.getInstance(activity);
         playerGames = gds.getGamesOfPlayer(player);
 

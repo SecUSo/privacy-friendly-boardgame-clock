@@ -14,41 +14,35 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment;
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment;
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener;
-import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter;
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper;
-import org.secuso.privacyfriendlyboardgameclock.model.Player;
-
-import java.util.List;
+import android.app.AlertDialog
+import android.app.FragmentManager
+import android.content.DialogInterface
+import android.content.pm.PackageManager
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import androidx.appcompat.view.ActionMode
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.secuso.pfacore.model.DrawerElement
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
+import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
+import org.secuso.privacyfriendlyboardgameclock.model.Player
+import androidx.core.view.isGone
 
 /**
  * Actionbar Tutorial
@@ -60,124 +54,115 @@ import java.util.List;
  * Last changed on 18.03.18
  * This is the Activity for the Player Management Page
  */
-public class PlayerManagementActivity extends BaseActivity implements ItemClickListener{
-    @SuppressWarnings("unused")
-    private static final String TAG = MainActivity.class.getSimpleName();
+class PlayerManagementActivity : BaseActivity(), ItemClickListener {
+    private val pds by lazy { PlayersDataSourceSingleton.getInstance(this) }
+    private val playersRecycleView by lazy { findViewById<RecyclerView>(R.id.player_list) }
+    private lateinit var playerListAdapter: PlayerListAdapter
+    private var listPlayers: MutableList<Player> = mutableListOf()
+    private val fabAdd by lazy { findViewById<FloatingActionButton>(R.id.fab_add_new_player) }
+    private val fabDelete by lazy { findViewById<FloatingActionButton>(R.id.fab_delete_player) }
+    private val fm by lazy { supportFragmentManager }
 
-    private PlayersDataSourceSingleton pds;
-    private RecyclerView playersRecycleView;
-    private PlayerListAdapter playerListAdapter;
-    private List<Player> listPlayers;
-    private LinearLayoutManager layoutManager;
-    private FloatingActionButton fabAdd;
-    private FloatingActionButton fabDelete;
-    private int selectedPlayerId = -1;
-    private FragmentManager fm;
     // To toggle selection mode
-    private ActionModeCallback actionModeCallback = new ActionModeCallback();
-    private ActionMode actionMode;
-    private Player playerToEdit;
-    private View insertAlert;
-    private View emptyListLayout;
+    private val actionModeCallback: ActionModeCallback = ActionModeCallback()
+    private var actionMode: ActionMode? = null
+    @JvmField
+    var playerToEdit: Player? = null
+    private val insertAlert by lazy { findViewById<View>(R.id.insert_alert) }
+    private val emptyListLayout by lazy { findViewById<View>(R.id.emptyListLayout) }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_management);
-        fm = getFragmentManager();
+    override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_player_management
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_player_management)
         // pds already opened in MainActivity
-        pds = PlayersDataSourceSingleton.getInstance(getApplicationContext());
 
-        listPlayers = pds.getAllPlayers();
-        layoutManager = new LinearLayoutManager(this);
+        listPlayers = pds.getAllPlayers()
 
         // FAB Listener
-        fabAdd = findViewById(R.id.fab_add_new_player);
-        fabAdd.setOnClickListener(onFABAddClickListener());
-        fabDelete = findViewById(R.id.fab_delete_player);
-        fabDelete.setOnClickListener(onFABDeleteListenter());
+        fabAdd.setOnClickListener(onFABAddClickListener())
+        fabDelete.setOnClickListener(onFABDeleteListenter())
 
-        insertAlert = findViewById(R.id.insert_alert);
-        emptyListLayout = findViewById(R.id.emptyListLayout);
+        playerListAdapter = PlayerListAdapter(this, listPlayers, this)
+        playersRecycleView.apply {
+            setHasFixedSize(true)
+            adapter = playerListAdapter
+            layoutManager = LinearLayoutManager(this@PlayerManagementActivity)
+            itemAnimator = null
+        }
 
-        playersRecycleView = findViewById(R.id.player_list);
-        playersRecycleView.setHasFixedSize(true);
-        playerListAdapter = new PlayerListAdapter(this, listPlayers, this);
-        playersRecycleView.setAdapter(playerListAdapter);
-        playersRecycleView.setLayoutManager(layoutManager);
-        playersRecycleView.setItemAnimator(null);
-
-        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(1500); //You can manage the blinking time with this parameter
-        anim.setStartOffset(20);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(Animation.INFINITE);
-        insertAlert.startAnimation(anim);
+        val anim: Animation = AlphaAnimation(0.0f, 1.0f).apply {
+            duration = 1500
+            startOffset = 20
+            repeatMode = Animation.REVERSE
+            repeatCount = Animation.INFINITE
+        }
+        insertAlert.startAnimation(anim)
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case TAGHelper.REQUEST_READ_CONTACT_CODE:{
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            TAGHelper.REQUEST_READ_CONTACT_CODE -> {
                 // If request is cancelled, the result arrays are empty.
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission granted
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    Fragment prev = fm.findFragmentByTag("dialog");
-                    if(prev != null) ft.remove(prev);
-                    ft.addToBackStack(null);
+                    val fm = supportFragmentManager
+                    val ft = fm.beginTransaction()
+                    val prev = fm.findFragmentByTag("dialog")
+                    if (prev != null) ft.remove(prev)
+                    ft.addToBackStack(null)
 
                     // Create and show the dialog
-                    PlayerManagementContactListFragment contactListFragment = new PlayerManagementContactListFragment();
-                    contactListFragment.show(ft, "dialog");
+                    val contactListFragment = PlayerManagementContactListFragment()
+                    contactListFragment.show(ft, "dialog")
                 }
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(playerListAdapter.getPlayersList().size() == 0){
-            insertAlert.setVisibility(View.VISIBLE);
-            emptyListLayout.setVisibility(View.VISIBLE);
+    override fun onResume() {
+        super.onResume()
+        if (playerListAdapter.playersList.isEmpty()) {
+            insertAlert.visibility = View.VISIBLE
+            emptyListLayout.visibility = View.VISIBLE
         } else {
-            insertAlert.setVisibility(View.GONE);
-            emptyListLayout.setVisibility(View.GONE);
+            insertAlert.visibility = View.GONE
+            emptyListLayout.visibility = View.GONE
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
-    @Override
-    public void onItemClick(View view, final int position) {
-        if(actionMode != null){
-            toggleSelection(position);
-        } else{
-            FragmentTransaction ft = fm.beginTransaction();
-            Fragment prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-            if(prev != null) ft.remove(prev);
-            ft.addToBackStack(null);
-            playerToEdit = playerListAdapter.getPlayer(position);
+    override fun onItemClick(view: View?, position: Int) {
+        if (actionMode != null) {
+            toggleSelection(position)
+        } else {
+            val ft = fm.beginTransaction()
+            val prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
+            if (prev != null) ft.remove(prev)
+            ft.addToBackStack(null)
+            playerToEdit = playerListAdapter.getPlayer(position)
 
             // Create and show the dialog
-            PlayerManagementEditPlayerFragment editPlayerFragment = PlayerManagementEditPlayerFragment.newInstance("Edit Player");
-            editPlayerFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
+            PlayerManagementEditPlayerFragment.newInstance("Edit Player").show(ft, TAGHelper.DIALOG_FRAGMENT)
+            return
         }
     }
 
-    @Override
-    public boolean onItemLongClicked(View view, int position) {
+    override fun onItemLongClicked(view: View?, position: Int): Boolean {
         if (actionMode == null) {
-            actionMode = startSupportActionMode(actionModeCallback);
+            actionMode = startSupportActionMode(actionModeCallback)
         }
-        toggleSelection(position);
-        return true;
+        toggleSelection(position)
+        return true
     }
 
     /**
@@ -188,81 +173,57 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
      *
      * @param position Position of the item to toggle the selection state
      */
-    private void toggleSelection(int position) {
-        playerListAdapter.toggleSelection(position);
-        int count = playerListAdapter.getSelectedItemCount();
+    private fun toggleSelection(position: Int) {
+        playerListAdapter.toggleSelection(position)
+        val count = playerListAdapter.selectedItemCount
 
         if (count == 0) {
-            actionMode.finish();
+            actionMode?.finish()
         } else {
-            actionMode.setTitle(String.valueOf(count));
-            actionMode.invalidate();
+            actionMode?.title = count.toString()
+            actionMode?.invalidate()
         }
     }
-
-    @Override
-    protected int getNavigationDrawerID() {return R.id.nav_player_management;}
 
     /**
      * open Dialogfragment for user to choose how to create new player
      * @return
      */
-    private View.OnClickListener onFABAddClickListener(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction ft = fm.beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag(TAGHelper.DIALOG_FRAGMENT);
-                if(prev != null) ft.remove(prev);
-                ft.addToBackStack(null);
+    private fun onFABAddClickListener() = View.OnClickListener {
+            val ft = fm.beginTransaction()
+            val prev = supportFragmentManager.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
+            if (prev != null) ft.remove(prev)
+            ft.addToBackStack(null)
 
-                // Create and show the dialog
-                PlayerManagementChooseModeFragment chooseDialogFragment = PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:");
-                chooseDialogFragment.show(ft,TAGHelper.DIALOG_FRAGMENT);
-            }
-        };
-    }
+            // Create and show the dialog
+            val chooseDialogFragment =
+                PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:")
+            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT)
+        }
 
     /**
      * remove all the selected players
      * @return
      */
-    private View.OnClickListener onFABDeleteListenter() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(PlayerManagementActivity.this)
-                        .setTitle(R.string.warning)
-                        .setMessage(R.string.playerDeleteWarning)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                playerListAdapter.removeItems(playerListAdapter.getSelectedItems());
-                                actionMode.finish();
-                                actionMode = null;
-                                if(playerListAdapter.getPlayersList().size() == 0){
-                                    insertAlert.setVisibility(View.VISIBLE);
-                                    emptyListLayout.setVisibility(View.VISIBLE);
-                                } else {
-                                    insertAlert.setVisibility(View.GONE);
-                                    emptyListLayout.setVisibility(View.GONE);
-                                }
-                            }
-                        })
-                        .setNegativeButton(R.string.no, null)
-                        .show();
-            }
-        };
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (!drawer.isDrawerOpen(GravityCompat.START) && fm.getBackStackEntryCount() > 0) {
-            finish();
-            startActivity(getIntent());
-        }
-        else super.onBackPressed();
+    private fun onFABDeleteListenter() = View.OnClickListener {
+            AlertDialog.Builder(this@PlayerManagementActivity)
+                .setTitle(R.string.warning)
+                .setMessage(R.string.playerDeleteWarning)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(R.string.yes) { dialog, whichButton ->
+                    playerListAdapter.removeItems(playerListAdapter.getSelectedItems())
+                    actionMode?.finish()
+                    actionMode = null
+                    if (playerListAdapter.playersList.isEmpty()) {
+                        insertAlert.visibility = View.VISIBLE
+                        emptyListLayout.visibility = View.VISIBLE
+                    } else {
+                        insertAlert.visibility = View.GONE
+                        emptyListLayout.visibility = View.GONE
+                    }
+                }
+                .setNegativeButton(R.string.no, null)
+                .show()
     }
 
     /**
@@ -270,81 +231,69 @@ public class PlayerManagementActivity extends BaseActivity implements ItemClickL
      * @param menu
      * @return
      */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.player_management_menu, menu);
-        return true;
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.player_management_menu, menu)
+        return true
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_delete) {
-            if (actionMode == null)
-                actionMode = startSupportActionMode(actionModeCallback);
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_delete) {
+            if (actionMode == null) actionMode = startSupportActionMode(actionModeCallback)
         }
-        return true;
+        return true
     }
 
-    private void switchVisibilityOf2FABs(){
-        if(fabAdd.getVisibility() != View.GONE && fabDelete.getVisibility() == View.GONE){
-            fabAdd.setVisibility(View.GONE);
-            fabDelete.setVisibility(View.VISIBLE);
-        }else{
-            fabAdd.setVisibility(View.VISIBLE);
-            fabDelete.setVisibility(View.GONE);
+    private fun switchVisibilityOf2FABs() {
+        if (fabAdd.visibility != View.GONE && fabDelete.isGone) {
+            fabAdd.visibility = View.GONE
+            fabDelete.visibility = View.VISIBLE
+        } else {
+            fabAdd.visibility = View.VISIBLE
+            fabDelete.visibility = View.GONE
         }
-    }
-
-    public Player getPlayerToEdit() {
-        return playerToEdit;
-    }
-
-    public void setPlayerToEdit(Player playerToEdit) {
-        this.playerToEdit = playerToEdit;
     }
 
     /*  #################################################################
-        #                                                               #
-        #                       Helper class                            #
-        #                                                               #
-        #################################################################*/
+         #                                                               #
+         #                       Helper class                            #
+         #                                                               #
+         #################################################################*/
+    private inner class ActionModeCallback : ActionMode.Callback {
+        @Suppress("unused")
+        private val TAG: String = ActionModeCallback::class.java.simpleName
 
-    private class ActionModeCallback implements ActionMode.Callback {
-        @SuppressWarnings("unused")
-        private final String TAG = ActionModeCallback.class.getSimpleName();
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            playerListAdapter.setLongClickedSelected(true);
-            playerListAdapter.setSimpleClickedSelected(false);
-            mode.getMenuInflater().inflate (R.menu.selected_menu, menu);
-            switchVisibilityOf2FABs();
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu?): Boolean {
+            playerListAdapter.setLongClickedSelected(true)
+            playerListAdapter.setSimpleClickedSelected(false)
+            mode.menuInflater.inflate(R.menu.selected_menu, menu)
+            switchVisibilityOf2FABs()
             // so all check box are visible
-            playerListAdapter.clearSelection();
-            playerListAdapter.notifyDataSetChanged();
-            return true;
+            playerListAdapter.clearSelection()
+            playerListAdapter.notifyDataSetChanged()
+            return true
         }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            return false
         }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            return false;
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+            return false
         }
 
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            playerListAdapter.setLongClickedSelected(false);
-            playerListAdapter.clearSelection();
-            actionMode = null;
-            switchVisibilityOf2FABs();
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            playerListAdapter.setLongClickedSelected(false)
+            playerListAdapter.clearSelection()
+            actionMode = null
+            switchVisibilityOf2FABs()
             // so all check box are visible
-            playerListAdapter.clearSelection();
-            playerListAdapter.notifyDataSetChanged();
+            playerListAdapter.clearSelection()
+            playerListAdapter.notifyDataSetChanged()
         }
+    }
+
+    companion object {
+        @Suppress("unused")
+        private val TAG: String = MainActivity::class.java.simpleName
     }
 }
