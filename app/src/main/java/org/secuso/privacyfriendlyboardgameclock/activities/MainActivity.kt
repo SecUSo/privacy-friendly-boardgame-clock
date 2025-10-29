@@ -14,25 +14,18 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.activities
 
-
-package org.secuso.privacyfriendlyboardgameclock.activities;
-
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import android.view.View;
-import android.widget.Button;
-
-import org.secuso.privacyfriendlyboardgameclock.GoodbyeGoogleHelperKt;
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
+import android.app.FragmentManager
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import androidx.drawerlayout.widget.DrawerLayout
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.model.Game
 
 /**
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
@@ -42,127 +35,125 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game;
  * Last changed on 18.03.18
  * This is the Activity for the Main Page
  */
+class MainActivity : BaseActivity() {
+    private var fm: FragmentManager? = null
+    private var game: Game? = null
+    private var pds: PlayersDataSourceSingleton? = null
+    private var gds: GamesDataSourceSingleton? = null
+    private var continueGameButton: Button? = null
 
-public class MainActivity extends BaseActivity {
-    private FragmentManager fm;
-    private Game game;
-    private PlayersDataSourceSingleton pds;
-    private GamesDataSourceSingleton gds;
-    private Button continueGameButton;
+    protected override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext());
-        gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext());
-        fm = getFragmentManager();
+        pds = PlayersDataSourceSingleton.getInstance(this.getApplicationContext())
+        gds = GamesDataSourceSingleton.getInstance(this.getApplicationContext())
+        fm = getFragmentManager()
 
         // New Game Button
-        final Button newGameButton = findViewById(R.id.newGameButton);
-        newGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NewGameActivity.class);
-                startActivity(intent);
+        val newGameButton = findViewById<Button>(R.id.newGameButton)
+        newGameButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                val intent = Intent(this@MainActivity, NewGameActivity::class.java)
+                startActivity(intent)
             }
-        });
+        })
 
         // Continue Game Button
-        continueGameButton = findViewById(R.id.resumeGameButton);
+        continueGameButton = findViewById<Button>(R.id.resumeGameButton)
 
-        overridePendingTransition(0, 0);
-        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
-            finish();
+        overridePendingTransition(0, 0)
+        if (getIntent().getExtras() != null && getIntent().getExtras()!!
+                .getBoolean("EXIT", false)
+        ) {
+            finish()
         }
 
-//        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
+        //        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (gds.getSavedGames().size() == 0) {
-            continueGameButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_disabled));
-            continueGameButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    showToast(getString(R.string.resumeGameErrorToast));
+    override fun onResume() {
+        super.onResume()
+        if (gds.getSavedGames().size == 0) {
+            continueGameButton!!.setBackground(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.button_disabled
+                )
+            )
+            continueGameButton!!.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(view: View?) {
+                    showToast(getString(R.string.resumeGameErrorToast))
                 }
-            });
+            })
         } else {
-            continueGameButton.setBackground(ContextCompat.getDrawable(this, R.drawable.button_fullwidth));
-            continueGameButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, ResumeGameActivity.class);
-                    startActivity(intent);
+            continueGameButton!!.setBackground(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.button_fullwidth
+                )
+            )
+            continueGameButton!!.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View?) {
+                    val intent = Intent(this@MainActivity, ResumeGameActivity::class.java)
+                    startActivity(intent)
                 }
-            });
+            })
         }
     }
 
-    /**
-     * This method connects the Activity to the menu item
-     * @return ID of the menu item it belongs to
-     */
-    @Override
-    protected int getNavigationDrawerID() {
-        return R.id.nav_example;
-    }
+    val navigationDrawerID: Int
+        /**
+         * This method connects the Activity to the menu item
+         * @return ID of the menu item it belongs to
+         */
+        get() = R.id.nav_example
 
-    public void onClick(View view) {
-        switch(view.getId()) {
-            // do something with all these buttons?
-            default:
+    fun onClick(view: View) {
+        when (view.getId()) {
+            else -> {}
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    public override fun onBackPressed() {
+        val drawer = findViewById<View?>(R.id.drawer_layout) as DrawerLayout
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-            try{
-                gds.close();
-                pds.close();
-            }catch (Exception e){
-
+            try {
+                gds.close()
+                pds.close()
+            } catch (e: Exception) {
             }
         }
-        super.onBackPressed();
+        super.onBackPressed()
     }
 
-    public void setDrawerEnabled(final boolean enabled) {
+    fun setDrawerEnabled(enabled: Boolean) {
+        val lockMode =
+            if (enabled) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 
-        int lockMode = enabled ?
-                DrawerLayout.LOCK_MODE_UNLOCKED :
-                DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+        mDrawerLayout.setDrawerLockMode(lockMode)
 
-        mDrawerLayout.setDrawerLockMode(lockMode);
+        toggle.setDrawerIndicatorEnabled(enabled)
 
-        toggle.setDrawerIndicatorEnabled(enabled);
-
-        ActionBar actionBar = getSupportActionBar();
+        val actionBar = getSupportActionBar()
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(!enabled);
-            actionBar.setDisplayShowHomeEnabled(enabled);
-            actionBar.setHomeButtonEnabled(enabled);
+            actionBar.setDisplayHomeAsUpEnabled(!enabled)
+            actionBar.setDisplayShowHomeEnabled(enabled)
+            actionBar.setHomeButtonEnabled(enabled)
         }
 
-        toggle.syncState();
+        toggle.syncState()
     }
 
-    public Game getGame() {
-        return game;
+    fun getGame(): Game? {
+        return game
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    fun setGame(game: Game?) {
+        this.game = game
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
