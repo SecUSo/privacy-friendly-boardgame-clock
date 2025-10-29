@@ -50,9 +50,6 @@ abstract class BaseActivity : DrawerActivity() {
 
     }
 
-
-    protected abstract val navigationDrawerID: Int
-
     override fun drawer() = DrawerMenu.build {
         name = ContextCompat.getString(this@BaseActivity, R.string.app_name)
         icon = R.mipmap.icon
