@@ -38,12 +38,11 @@ import android.widget.TextView
 import android.widget.Toast
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Game
 import androidx.core.view.size
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import androidx.lifecycle.ViewModelProvider
 
 /**
  * Created by Quang Anh Dang on 04.01.2018.
@@ -52,7 +51,7 @@ import androidx.core.graphics.toColorInt
  * This is the Activity for the New Game Page, after touching New Game Button on the main page
  */
 class NewGameActivity : BaseActivity() {
-    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this) }
+    private val viewModel by lazy { ViewModelProvider(this)[NewGameActivityViewModel::class.java] }
     private val round_time_s by lazy { findViewById<NumberPicker>(R.id.seconds_new_round_time) }
     private val round_time_m by lazy { findViewById<NumberPicker>(R.id.minutes_new_round_time) }
     private val round_time_h by lazy { findViewById<NumberPicker>(R.id.hours_new_round_time) }
@@ -230,17 +229,9 @@ class NewGameActivity : BaseActivity() {
             }
         }
 
-        choosePlayersButtonBlue.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                createNewGame()
-            }
-        })
+        choosePlayersButtonBlue.setOnClickListener { createNewGame() }
 
-        choosePlayersButtonGrey.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                createNewGame()
-            }
-        })
+        choosePlayersButtonGrey.setOnClickListener { createNewGame() }
 
         game_name.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(arg0: Editable?) {
@@ -267,34 +258,33 @@ class NewGameActivity : BaseActivity() {
         val gameNumber = settings.getInt("gameNumber", 1)
         game_name.setText(getString(R.string.gameNameStandard) + " " + gameNumber)
 
+        val lastGame = viewModel.getLastGame()
         // standard values
-        if (gds.game != null) {
-            val g = gds.game
+        if (lastGame != null) {
+            chess_mode.setChecked(lastGame.chessMode != 0)
+            check_game_time_infinite.setChecked(lastGame.gameTimeInfinite != 0)
+            check_new_game_reset_time.setChecked(lastGame.resetRoundTime != 0)
+            check_new_game_delta.setChecked(lastGame.roundTimeDelta > 0)
 
-            chess_mode.setChecked(g.chess_mode != 0)
-            check_game_time_infinite.setChecked(g.game_time_infinite != 0)
-            check_new_game_reset_time.setChecked(g.reset_round_time != 0)
-            check_new_game_delta.setChecked(g.round_time_delta > 0)
-
-            if (g.game_time_infinite != 0) {
-                game_time_h.value = getTimeValues(g.game_time)[0]
-                game_time_m.value = getTimeValues(g.game_time)[1]
-                game_time_s.value = getTimeValues(g.game_time)[2]
+            if (lastGame.gameTimeInfinite != 0) {
+                game_time_h.value = getTimeValues(lastGame.gameTime)[0]
+                game_time_m.value = getTimeValues(lastGame.gameTime)[1]
+                game_time_s.value = getTimeValues(lastGame.gameTime)[2]
             } else {
                 game_time_h.value = 0
                 game_time_m.value = 0
                 game_time_s.value = 0
             }
-            round_time_h.value = getTimeValues(g.round_time)[0]
-            round_time_m.value = getTimeValues(g.round_time)[1]
-            round_time_s.value = getTimeValues(g.round_time)[2]
+            round_time_h.value = getTimeValues(lastGame.roundTime)[0]
+            round_time_m.value = getTimeValues(lastGame.roundTime)[1]
+            round_time_s.value = getTimeValues(lastGame.roundTime)[2]
             // previous game mode
-            game_mode.setSelection(g.game_mode)
+            game_mode.setSelection(lastGame.gameMode)
 
-            if (g.round_time_delta > 0) {
-                delta_seconds.value = getTimeValues(g.round_time_delta)[0]
-                delta_minutes.value = getTimeValues(g.round_time_delta)[1]
-                delta_hours.value = getTimeValues(g.round_time_delta)[2]
+            if (lastGame.roundTimeDelta > 0) {
+                delta_seconds.value = getTimeValues(lastGame.roundTimeDelta)[0]
+                delta_minutes.value = getTimeValues(lastGame.roundTimeDelta)[1]
+                delta_hours.value = getTimeValues(lastGame.roundTimeDelta)[2]
             }
         } else {
             game_time_h.value = 1
@@ -303,7 +293,6 @@ class NewGameActivity : BaseActivity() {
 
         setGameTime()
         setRoundTime()
-        gds.game = null
         val rootView = findViewById<View>(R.id.main_content)
         rootView.setBackgroundColor(getResources().getColor(R.color.white))
     }
@@ -346,7 +335,7 @@ class NewGameActivity : BaseActivity() {
     }
 
     private fun createNewGame() {
-        val newGame = Game()
+        val newGame = org.secuso.privacyfriendlyboardgameclock.room.model.Game()
 
         //game name
         newGame.name = game_name.getText().toString()
@@ -356,7 +345,7 @@ class NewGameActivity : BaseActivity() {
         round_time_m.clearFocus()
         round_time_s.clearFocus()
         setRoundTime()
-        newGame.round_time = (round_total_time_in_s * 1000).toLong()
+        newGame.roundTime = (round_total_time_in_s * 1000).toLong()
 
 
         //game time
@@ -364,7 +353,7 @@ class NewGameActivity : BaseActivity() {
         game_time_m.clearFocus()
         game_time_s.clearFocus()
         setGameTime()
-        newGame.game_time = (if (check_game_time_infinite.isChecked) game_total_time_in_s else game_total_time_in_s * 1000).toLong()
+        newGame.gameTime = (if (check_game_time_infinite.isChecked) game_total_time_in_s else game_total_time_in_s * 1000).toLong()
 
         newGame.isLastRound = 0
 
@@ -376,8 +365,8 @@ class NewGameActivity : BaseActivity() {
             return
         } else {
             //reset round time
-            if (check_new_game_reset_time.isChecked) newGame.reset_round_time = 1
-            else newGame.reset_round_time = 0
+            if (check_new_game_reset_time.isChecked) newGame.resetRoundTime = 1
+            else newGame.resetRoundTime = 0
 
 
             //round time delta
@@ -387,29 +376,29 @@ class NewGameActivity : BaseActivity() {
                 val total_delta_in_seconds =
                     delta_seconds.value + delta_hours_in_seconds + delta_minutes_in_seconds
 
-                newGame.round_time_delta = (total_delta_in_seconds * 1000).toLong()
+                newGame.roundTimeDelta = (total_delta_in_seconds * 1000).toLong()
             }
 
             //game time infinite
-            if (check_game_time_infinite.isChecked) newGame.game_time_infinite = 1
-            else newGame.game_time_infinite = 0
+            if (check_game_time_infinite.isChecked) newGame.gameTimeInfinite = 1
+            else newGame.gameTimeInfinite = 0
 
             //chess mode
-            if (chess_mode.isChecked) newGame.chess_mode = 1
-            else newGame.chess_mode = 0
+            if (chess_mode.isChecked) newGame.chessMode = 1
+            else newGame.chessMode = 0
 
             //new games are never saved
             newGame.saved = 0
 
             //game mode
-            newGame.game_mode = game_mode.selectedItemPosition
+            newGame.gameMode = game_mode.selectedItemPosition
 
-            gds.game = newGame
+            viewModel.addGame(newGame)
 
 
             // round time must not be larger than game time
-            if (newGame.game_time < newGame.round_time) {
-                gds.game.round_time = newGame.game_time
+            if (newGame.gameTime < newGame.roundTime) {
+                newGame.roundTime = newGame.gameTime
                 AlertDialog.Builder(this)
                     .setTitle(R.string.action_new_game)
                     .setMessage(R.string.roundTimeLargerInfo)
