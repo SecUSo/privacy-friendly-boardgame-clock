@@ -5,7 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
+import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
 
 @Dao
 interface GameDao {
@@ -20,7 +22,13 @@ interface GameDao {
     fun getGames(games: List<Int>): List<GameWithPlayer>
 
     @Insert
-    fun addGame(game: GameWithPlayer)
+    fun addGameWithPlayer(game: GameWithPlayer)
+
+    @Insert
+    fun addGame(game: Game)
+
+    @Insert(entity = PlayerGameData::class)
+    fun addPlayersToGame(players: List<PlayerGameData>)
 
     @Update
     fun updateGame(game: GameWithPlayer)
@@ -33,5 +41,8 @@ interface GameDao {
 
     @Query("SELECT * FROM games WHERE finished = 1")
     fun allFinishedGames(): List<GameWithPlayer>
+
+    @Query("SELECT * FROM games WHERE _id = MAX(_id)")
+    fun getLastGame(): Game?
 
 }

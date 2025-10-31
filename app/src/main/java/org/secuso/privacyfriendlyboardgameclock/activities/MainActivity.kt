@@ -18,15 +18,11 @@ package org.secuso.privacyfriendlyboardgameclock.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
 
 /**
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.
@@ -37,13 +33,12 @@ import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingle
  * This is the Activity for the Main Page
  */
 class MainActivity : BaseActivity() {
-    private val pds: PlayersDataSourceSingleton by lazy { PlayersDataSourceSingleton.getInstance(this.applicationContext) }
-    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this.applicationContext) }
+    private val viewModel by lazy { ViewModelProvider(this)[MainActivityViewModel::class.java] }
     private val continueGameButton by lazy { findViewById<Button>(R.id.resumeGameButton) }
 
     override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_home
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -59,7 +54,7 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         continueGameButton.apply {
-            if (gds.savedGames.isEmpty()) {
+            if (viewModel.hasSavedGames()) {
                 background = ContextCompat.getDrawable(this@MainActivity, R.drawable.button_disabled)
                 setOnClickListener { showToast(getString(R.string.resumeGameErrorToast)) }
             } else {
@@ -70,17 +65,5 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-    }
-
-    public override fun onBackPressed() {
-        val drawer = findViewById<View?>(R.id.drawer_layout) as DrawerLayout
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            try {
-                gds.close()
-                pds.close()
-            } catch (e: Exception) {
-            }
-        }
-        super.onBackPressed()
     }
 }
