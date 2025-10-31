@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import org.secuso.privacyfriendlyboardgameclock.room.dao.GameDao
+import org.secuso.privacyfriendlyboardgameclock.room.dao.PlayerDao
 import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
@@ -16,9 +18,11 @@ import java.io.File
     entities = [Game::class, Player::class, PlayerGameData::class],
     version = BoardGameClockDatabase.VERSION
 )
+@TypeConverters(Converters::class)
 abstract class BoardGameClockDatabase: RoomDatabase() {
 
     abstract fun gameDao(): GameDao
+    abstract fun playerDao(): PlayerDao
 
     companion object {
         const val VERSION = 2

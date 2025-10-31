@@ -38,7 +38,7 @@ data class Player(
     @ColumnInfo(name = "icon") var icon: Bitmap? = null
 
 ) {
-    @ColumnInfo(name = "date") var date: Long = 0
+    @ColumnInfo(name = "date", defaultValue = "CURRENT_TIMESTAMP") var date: Long = 0
         set(date) {
             field = date
             dateString = SimpleDateFormat("dd.MM.yyyy kk:mm").format(Date(date))
