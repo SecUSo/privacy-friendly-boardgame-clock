@@ -1,20 +1,4 @@
-/*
- This file is part of Privacy Friendly Board Game Clock.
-
- Privacy Friendly Board Game Clock is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Board Game Clock is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
- */
-package org.secuso.privacyfriendlyboardgameclock.activities
+package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.ActivityManager
 import android.app.AlertDialog
@@ -38,8 +22,10 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
@@ -47,9 +33,10 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.SelectPlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.model.Game
-import org.secuso.privacyfriendlyboardgameclock.model.Player
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.services.CountdownTimerService
 import java.util.Random
+import kotlin.collections.indexOf
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
@@ -59,9 +46,8 @@ import java.util.Random
  */
 class GameCountDownActivity : BaseActivity() {
     private var br: BroadcastReceiver? = null
-    private val gds by lazy { GamesDataSourceSingleton.getInstance(this) }
-    var game: Game? = null
-        private set
+    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
+
     private var gameTime: Long = 0
     private var playerRoundTimes: HashMap<Long?, Long?>? = null
 
@@ -246,7 +232,7 @@ class GameCountDownActivity : BaseActivity() {
             playerRounds!![currPlayerId] = nextPlayerRound
 
             // in case of chess mode and the time is not reseted each round
-            if (game!!.chess_mode == 1 && isFinished == 0 && game!!.reset_round_time == 0) {
+            if (viewModel.game.chessMode == 1 && isFinished == 0 && viewModel.game.resetRoundTime == 0) {
                 var isAllRoundTimeZero = true
                 for (playerID in playerRoundTimes!!.keys) {
                     isAllRoundTimeZero =
@@ -258,13 +244,13 @@ class GameCountDownActivity : BaseActivity() {
                 }
             }
 
-            if (game!!.isLastRound == 1 && getPlayersNotInRound(nextPlayerRound).isEmpty()) {
+            if (viewModel.game.isLastRound == 1 && getPlayersNotInRound(nextPlayerRound).isEmpty()) {
                 nextPlayerRound -= 1
                 playerRounds!![currPlayerId] = nextPlayerRound
                 finishGame()
                 return
             } else if (!isPaused) {
-                if (game!!.chess_mode == 1) mBoundService!!.pauseTimer()
+                if (viewModel.game.chessMode == 1) mBoundService!!.pauseTimer()
                 else  // update view by clicking pause button
                     playPauseButton!!.performClick()
 
@@ -273,12 +259,12 @@ class GameCountDownActivity : BaseActivity() {
 
 
             // determine next player
-            if (game!!.game_mode == 0) {
+            if (viewModel.game.gameMode == 0) {
                 nextPlayerIndex = (currentPlayerIndex + 1) % players!!.size
-            } else if (game!!.game_mode == 1) {
+            } else if (viewModel.game.gameMode == 1) {
                 if (currentPlayerIndex == 0) nextPlayerIndex = players!!.size - 1
                 else nextPlayerIndex = currentPlayerIndex - 1
-            } else if (game!!.game_mode == 2) {
+            } else if (viewModel.game.gameMode == 2) {
                 playersQueue = getPlayersNotInRound(nextPlayerRound)
                 playersQueue!!.remove(currentPlayer)
 
@@ -289,7 +275,7 @@ class GameCountDownActivity : BaseActivity() {
                 val r = Random().nextInt(playersQueue!!.size)
 
                 nextPlayerIndex = players!!.indexOf(playersQueue!![r]!!)
-            } else if (game!!.game_mode == 3) {
+            } else if (viewModel.game.gameMode == 3) {
                 if (getPlayersNotInRound(nextPlayerRound).isEmpty()) {
                     // hide player
                     currentPlayerTv!!.visibility = View.INVISIBLE
@@ -363,7 +349,7 @@ class GameCountDownActivity : BaseActivity() {
                             Toast.makeText(this@GameCountDownActivity, R.string.manualChoiceError, Toast.LENGTH_SHORT).show()
                         } else {
                             players = selectedPlayers
-                            game!!.players = players
+                            viewModel.players = players!!.toList()
 
                             // unhide player
                             currentPlayerTv!!.visibility = View.VISIBLE
@@ -377,11 +363,9 @@ class GameCountDownActivity : BaseActivity() {
                             restorePlayerData(currentPlayer!!.id)
                             updateViews()
 
-                            if (!isPaused && game!!.chess_mode == 1) {
+                            if (!isPaused && viewModel.game.chessMode == 1) {
                                 updateAndResumeTimer()
                             }
-
-                            updateGame()
 
                             ad.dismiss()
                         }
@@ -395,26 +379,22 @@ class GameCountDownActivity : BaseActivity() {
                     restorePlayerData(currentPlayer!!.id)
                     updateViews()
 
-                    if (!isPaused && game!!.chess_mode == 1) {
+                    if (!isPaused && viewModel.game.chessMode == 1) {
                         updateAndResumeTimer()
                     }
-
-                    updateGame()
                 }
             }
 
-            if (game!!.game_mode != 3) {
+            if (viewModel.game.gameMode != 3) {
                 // set next player to current player
                 currentPlayerIndex = nextPlayerIndex
                 currentPlayer = players!![nextPlayerIndex]
                 restorePlayerData(currentPlayer!!.id)
                 updateViews()
 
-                if (!isPaused && game!!.chess_mode == 1) {
+                if (!isPaused && viewModel.game.chessMode == 1) {
                     updateAndResumeTimer()
                 }
-
-                updateGame()
             }
         }
     }
@@ -448,7 +428,8 @@ class GameCountDownActivity : BaseActivity() {
                     isFinished = 1
                     finishGame()
                 }
-                .setNegativeButton(R.string.resume
+                .setNegativeButton(
+                    R.string.resume
                 ) { dialog, whichButton ->
                     //isLastRound = 1;
                     //game.setIsLastRound(1);
@@ -497,15 +478,6 @@ class GameCountDownActivity : BaseActivity() {
         val finishGameButton = findViewById<ImageButton>(R.id.finishGameButton)
         finishGameButton.setOnClickListener(finishGame)
 
-        // If service already exists
-        if (isMyServiceRunning(CountdownTimerService::class.java)) {
-            game = null
-        } else {
-            // get game from SingleTon Class, if null, show MainMenu
-            if (gds!!.game != null) {
-                game = gds!!.game
-            } else showMainMenu()
-        }
         startTimerService()
     }
 
@@ -515,28 +487,23 @@ class GameCountDownActivity : BaseActivity() {
      * complete new game
      */
     private fun prepareAll() {
-        // if the service already exists
-        val isNewGame = game != null
-        if (game == null) game = mBoundService!!.game
-
-
-        players = game!!.players
+        players = viewModel.players.toMutableList()
         playerRoundTimes = game!!.player_round_times
         playerRounds = game!!.player_rounds
-        currentPlayerIndex = game!!.startPlayerIndex
-        nextPlayerIndex = game!!.nextPlayerIndex
-        currentPlayer = players!![game!!.startPlayerIndex]
+        currentPlayerIndex = viewModel.game.startPlayerIndex
+        nextPlayerIndex = viewModel.game.nextPlayerIndex
+        currentPlayer = players!![viewModel.game.startPlayerIndex]
         playersQueue = getPlayersNotInRound(playerRounds!![currentPlayer!!.id]!!)
         currentPlayerTv!!.text = currentPlayer!!.name
         currentPlayerRound!!.text = playerRounds!!.get(currentPlayer!!.id).toString()
         currentPlayerIcon!!.setImageBitmap(currentPlayer!!.icon)
         currentRoundTimeMs = playerRoundTimes!!.get(currentPlayer!!.id)!!
-        currentGameTimeMs = game!!.currentGameTime
+        currentGameTimeMs = viewModel.game.currentGameTime
         roundTimeOriTenPercent = (currentRoundTimeMs * 0.1).toLong()
         gameTimeOriTenPercent = (currentGameTimeMs * 0.1).toLong()
         gameTime = currentGameTimeMs
-        isLastRound = game!!.isLastRound
-        if (game!!.game_time_infinite == 1) {
+        isLastRound = viewModel.game.isLastRound
+        if (viewModel.game.gameTimeInfinite == 1) {
             gameTimerTv!!.text = getString(R.string.infinite)
         }
         updateTimerTextViews()
@@ -552,14 +519,14 @@ class GameCountDownActivity : BaseActivity() {
             }
         })
 
-        if (isNewGame) {
+        if (viewModel.getLastGame() == viewModel.game) {
             playPauseButton!!.setOnClickListener {
                 alreadySaved = false
                 isPaused = false
                 mBoundService!!.showNotification()
                 mBoundService!!.initRoundCountdownTimer(currentRoundTimeMs)
                 // if game time not infinit, init game timer
-                if (game!!.game_time_infinite == 0) {
+                if (viewModel.game.gameTimeInfinite == 0) {
                     mBoundService!!.initGameCountdownTimer(currentGameTimeMs)
                     mBoundService!!.startGameTimer()
                 }
@@ -569,9 +536,8 @@ class GameCountDownActivity : BaseActivity() {
                 playPauseButton!!.setOnClickListener(pause)
                 nextPlayerButton!!.visibility = View.VISIBLE
             }
-            mBoundService!!.game = game
         } else {
-            alreadySaved = game!!.saved == 1
+            alreadySaved = viewModel.game.saved == 1
             isPaused = mBoundService!!.isPaused
             if (isPaused) {
                 playPauseButton!!.setText(R.string.resume)
@@ -609,16 +575,16 @@ class GameCountDownActivity : BaseActivity() {
 
     private fun restorePlayerData(currPlayerId: Long) {
         // restore player data
-        if (game!!.reset_round_time == 1) {
-            currentRoundTimeMs = game!!.round_time
+        if (viewModel.game.resetRoundTime == 1) {
+            currentRoundTimeMs = viewModel.game.roundTime
 
-            if ((game!!.round_time_delta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += game!!.round_time_delta * (playerRounds!!.get(
+            if ((viewModel.game.roundTimeDelta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += viewModel.game.roundTimeDelta * (playerRounds!!.get(
                 currPlayerId
             )!! - 1)
         } else {
             currentRoundTimeMs = playerRoundTimes!!.get(currPlayerId)!!
 
-            if ((game!!.round_time_delta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += game!!.round_time_delta
+            if ((viewModel.game.roundTimeDelta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += viewModel.game.roundTimeDelta
         }
     }
 
@@ -661,7 +627,7 @@ class GameCountDownActivity : BaseActivity() {
         else roundTimerTv!!.setTextColor(Color.BLACK)
 
         // if game time is not infinite
-        if (game!!.game_time_infinite == 0) {
+        if (viewModel.game.gameTimeInfinite == 0) {
             val game_time_hh = getTimeStrings(gameTimeToUse)[0]
             val game_time_mm = getTimeStrings(gameTimeToUse)[1]
             val game_time_ss = getTimeStrings(gameTimeToUse)[2]
@@ -669,7 +635,7 @@ class GameCountDownActivity : BaseActivity() {
                 "$game_time_result$game_time_hh:$game_time_mm:$game_time_ss"
             gameTimerTv!!.text = game_time_result
 
-            if (game!!.game_time_infinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv!!.setTextColor(
+            if (viewModel.game.gameTimeInfinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv!!.setTextColor(
                 Color.RED
             )
             else gameTimerTv!!.setTextColor(Color.BLACK)
@@ -688,33 +654,14 @@ class GameCountDownActivity : BaseActivity() {
     }
 
     /**
-     * update the current game object
-     * called by saveGameToDb, by nextPlayer button,
-     * (3)
-     */
-    fun updateGame() {
-        playerRoundTimes!![currentPlayer!!.id] = currentRoundTimeMs
-        playerRounds!![currentPlayer!!.id] = playerRounds!!.get(currentPlayer!!.id)
-
-        game!!.player_round_times = playerRoundTimes
-        game!!.player_rounds = playerRounds
-        game!!.nextPlayerIndex = nextPlayerIndex
-        game!!.startPlayerIndex = currentPlayerIndex
-        if (game!!.game_time_infinite == 0) game!!.currentGameTime = currentGameTimeMs
-        game!!.finished = isFinished
-        game!!.isLastRound = isLastRound
-    }
-
-    /**
      * save Game to DB is called when game is finished or save button is clicked
      * is called by finishGame, or when click saveGame Button
      * (2)
      * @param save 0 if game is finished, 1 if game is still on going
      */
     private fun saveGameToDb(save: Int) {
-        updateGame()
-        game!!.saved = save
-        gds!!.saveGame(game)
+        viewModel.game.saved = save
+        viewModel.saveGame()
     }
 
     /**
@@ -724,9 +671,7 @@ class GameCountDownActivity : BaseActivity() {
      */
     private fun finishGame() {
         isFinished = 1
-        gds!!.game = game
-        game!!.finished = isFinished
-        updateGame()
+        viewModel.game.finished = isFinished
         stopTimerService()
 
         saveGameButton!!.visibility = View.GONE
@@ -761,10 +706,11 @@ class GameCountDownActivity : BaseActivity() {
         finish()
     }
 
+    @Deprecated("Deprecated in Java")
     public override fun onBackPressed() {
         if (!isPaused && (isFinished == 0)) playPauseButton!!.performClick()
 
-        if (isFinished == 1) {
+        if (viewModel.game.finished == 1) {
             showMainMenu()
         } else {
             playPauseButton!!.setOnClickListener(pause)
@@ -782,7 +728,8 @@ class GameCountDownActivity : BaseActivity() {
                         showMainMenu()
                     } else showMainMenu()
                 }
-                .setNeutralButton(R.string.withoutSave
+                .setNeutralButton(
+                    R.string.withoutSave
                 ) { dialogInterface, i ->
                     stopTimerService()
                     showMainMenu()
@@ -790,6 +737,7 @@ class GameCountDownActivity : BaseActivity() {
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show()
         }
+        super.onBackPressed()
     }
 
     /**
@@ -838,7 +786,7 @@ class GameCountDownActivity : BaseActivity() {
 
     private fun updateAndResumeTimer() {
         mBoundService!!.currentRoundTimeMs = currentRoundTimeMs
-        if (game!!.game_time_infinite == 0) {
+        if (viewModel.game.gameTimeInfinite == 0) {
             mBoundService!!.currentGameTimeMs = currentGameTimeMs
         }
         mBoundService!!.resumeTimer()
@@ -846,7 +794,7 @@ class GameCountDownActivity : BaseActivity() {
 
     private fun updateTimer() {
         mBoundService!!.currentRoundTimeMs = currentRoundTimeMs
-        if (game!!.game_time_infinite == 0) {
+        if (viewModel.game.gameTimeInfinite == 0) {
             mBoundService!!.currentGameTimeMs = currentGameTimeMs
         }
     }
@@ -888,7 +836,7 @@ class GameCountDownActivity : BaseActivity() {
                 // Remove finish signal after reading
                 mBoundService!!.broadcastIntent.removeExtra(TAGHelper.GAME_FINISHED_SIGNAL)
                 currentGameTimeMs = 0
-                if (game!!.chess_mode == 1) {
+                if (viewModel.game.chessMode == 1) {
                     finishGame()
                 }
                 /*isFinished = 1;*/
@@ -904,8 +852,8 @@ class GameCountDownActivity : BaseActivity() {
                 mBoundService!!.broadcastIntent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL)
                 intent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL)
                 currentRoundTimeMs = 0
-                if (game!!.chess_mode == 1) {
-                    if (isFinished == 0 && game!!.reset_round_time == 0) {
+                if (viewModel.game.chessMode == 1) {
+                    if (isFinished == 0 && viewModel.game.resetRoundTime == 0) {
                         mBoundService!!.pauseTimer()
                         nextPlayerButton!!.performClick()
                         // TODO if chess mode => last player then automatically finish
@@ -928,8 +876,6 @@ class GameCountDownActivity : BaseActivity() {
                 currentExceedRoundTimeMs = roundMsExceeded
             }
             gameTime = currentGameTimeMs
-            updateGame() //do we need to call this every tick?
-            mBoundService!!.game = game
             updateTimerTextViews()
         }
     }

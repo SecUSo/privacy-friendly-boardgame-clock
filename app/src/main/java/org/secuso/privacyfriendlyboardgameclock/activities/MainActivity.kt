@@ -23,6 +23,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.game.NewGameActivity
+import org.secuso.privacyfriendlyboardgameclock.activities.game.ResumeGameActivity
 
 /**
  * Privacy Friendly Boardgame Clock is licensed under the GPLv3.

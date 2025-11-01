@@ -14,7 +14,7 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.secuso.privacyfriendlyboardgameclock.activities
+package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -28,11 +28,15 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Toast
 import androidx.appcompat.view.ActionMode
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.game.GameCountDownActivity
+import org.secuso.privacyfriendlyboardgameclock.activities.game.GameTimeTrackingModeActivity
+import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment
@@ -40,7 +44,7 @@ import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContac
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Player
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import java.util.Random
 
 /**
@@ -50,9 +54,8 @@ import java.util.Random
  * This is the Choose Player Activity after creating a new game
  */
 class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
-    private val listPlayers: MutableList<Player> by lazy { pds.getAllPlayers() }
-    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this) }
-    private val pds: PlayersDataSourceSingleton by lazy { PlayersDataSourceSingleton.getInstance(this) }
+    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
+    private val listPlayers: MutableList<Player> by lazy { viewModel.getAllPlayers().toMutableList() }
     private lateinit var playerListAdapter: PlayerListAdapter
     private val fabStartGame: FloatingActionButton by lazy { findViewById(R.id.fab_start_game) }
     private val fabDelete: FloatingActionButton by lazy { findViewById(R.id.fab_delete_player) }
@@ -200,90 +203,44 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
      * @return OnClickListener
      */
     private fun createNewGame() = View.OnClickListener {
-            var game = gds.getGame()
-            if (game == null) {
-                Toast.makeText(this@ChoosePlayersActivity, "Data Corruppted! You have been returned to Main Menu.", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@ChoosePlayersActivity, MainActivity::class.java))
-                finish()
-            }
-            val selectedPlayers = playerListAdapter.getOrderdSelectedPlayers()
-            val player_round_times = HashMap<Long?, Long?>()
-            for (p in selectedPlayers) {
-                player_round_times[p.id] = game.round_time
-            }
+        val selectedPlayers = playerListAdapter.getOrderdSelectedPlayers()
 
-            val players_rounds = HashMap<Long?, Long?>()
-            for (p in selectedPlayers) {
-                players_rounds[p.id] = 1
-            }
-
-            val dateMs = System.currentTimeMillis()
-
-            game = gds.createGame(
-                dateMs,
-                selectedPlayers,
-                player_round_times,
-                players_rounds,
-                game.name,
-                game.round_time,
-                game.game_time,
-                game.reset_round_time,
-                game.game_mode,
-                game.round_time_delta,
-                game.game_time,
-                0,
-                0,
-                game.saved,
-                0,
-                game.game_time_infinite,
-                game.chess_mode,
-                0
-            )
-
+        viewModel.newGame!!.apply {
             //start player index
-            if (game.game_mode == TAGHelper.CLOCKWISE || game.game_mode == TAGHelper.MANUAL_SEQUENCE || game.game_mode == TAGHelper.TIME_TRACKING) {
-                game.startPlayerIndex = 0
-                game.nextPlayerIndex = 1
-            } else if (game.game_mode == TAGHelper.COUNTER_CLOCKWISE) {
-                game.startPlayerIndex = 0
-                game.nextPlayerIndex = selectedPlayers.size - 1
-            } else if (game.game_mode == TAGHelper.RANDOM) {
-                game.startPlayerIndex = 0
-
-                var randomPlayerIndex = Random().nextInt(selectedPlayers.size)
-                while (randomPlayerIndex == game.startPlayerIndex) {
-                    randomPlayerIndex = Random().nextInt(selectedPlayers.size)
+            when (gameMode) {
+                TAGHelper.CLOCKWISE, TAGHelper.MANUAL_SEQUENCE, TAGHelper.TIME_TRACKING -> {
+                    startPlayerIndex = 0
+                    nextPlayerIndex = 1
                 }
-                game.nextPlayerIndex = randomPlayerIndex
-            }
+                TAGHelper.COUNTER_CLOCKWISE -> {
+                    startPlayerIndex = 0
+                    nextPlayerIndex = selectedPlayers.size - 1
+                }
+                TAGHelper.RANDOM -> {
+                    startPlayerIndex = 0
 
-        game.players = selectedPlayers
-        game.player_round_times = player_round_times
-        game.player_rounds = players_rounds
-        gds.game = game
+                    var randomPlayerIndex = Random().nextInt(selectedPlayers.size)
+                    while (randomPlayerIndex == startPlayerIndex) {
+                        randomPlayerIndex = Random().nextInt(selectedPlayers.size)
+                    }
+                    nextPlayerIndex = randomPlayerIndex
+                }
+            }
+        }
+
+        viewModel.addPlayersToGame(selectedPlayers)
 
         // if game is finally created and game time is infinite, set game time to -1
-        if (game.game_time_infinite == 1) {
-            game.game_time = 0
-            game.currentGameTime = TAGHelper.DEFAULT_VALUE_LONG
+        if (viewModel.game.game.gameTimeInfinite == 1) {
+            viewModel.game.game.gameTime = 0
+            viewModel.game.game.currentGameTime = TAGHelper.DEFAULT_VALUE_LONG
         }
 
-        // store game number
-        val settings =
-            PreferenceManager.getDefaultSharedPreferences(this@ChoosePlayersActivity)
-        var gameNumber = settings.getInt("gameNumber", 1)
-        gameNumber++
-        val editor = settings.edit()
-        editor.putInt("gameNumber", gameNumber)
-        editor.commit()
-
-        startNewGame()
-        }
-
-    private fun startNewGame() {
-        val intent = if (gds.game.game_mode == TAGHelper.TIME_TRACKING) {
+        val intent = if (viewModel.game.game.gameMode == TAGHelper.TIME_TRACKING) {
             Intent(this@ChoosePlayersActivity, GameTimeTrackingModeActivity::class.java)
-        } else Intent(this@ChoosePlayersActivity, GameCountDownActivity::class.java)
+        } else {
+            Intent(this@ChoosePlayersActivity, GameCountDownActivity::class.java)
+        }
         startActivity(intent)
     }
 

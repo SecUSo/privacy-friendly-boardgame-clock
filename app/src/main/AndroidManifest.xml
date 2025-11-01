@@ -72,7 +72,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.ResumeGameActivity"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.game.ResumeGameActivity"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -81,7 +81,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.game.GameCountDownActivity"
             android:launchMode="singleTop"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
@@ -91,7 +91,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.GameTimeTrackingModeActivity"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.game.GameTimeTrackingModeActivity"
             android:launchMode="singleTop"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
@@ -101,7 +101,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.NewGameActivity"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.game.NewGameActivity"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -110,7 +110,7 @@
                 android:value="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity" />
         </activity>
         <activity
-            android:name="org.secuso.privacyfriendlyboardgameclock.activities.ChoosePlayersActivity"
+            android:name="org.secuso.privacyfriendlyboardgameclock.activities.game.ChoosePlayersActivity"
             android:parentActivityName="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

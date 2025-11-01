@@ -1,20 +1,4 @@
-/*
- This file is part of Privacy Friendly Board Game Clock.
-
- Privacy Friendly Board Game Clock is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Board Game Clock is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
- */
-package org.secuso.privacyfriendlyboardgameclock.activities
+package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -24,17 +8,17 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.view.ActionMode
+import androidx.core.view.isGone
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Game
-import androidx.core.view.isGone
+import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
@@ -43,11 +27,11 @@ import androidx.core.view.isGone
  * This is the Activity for resuming saved games
  */
 class ResumeGameActivity : BaseActivity(), ItemClickListener {
+    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
     private val loadGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_start_game) }
     private val deleteGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_delete_game) }
     private lateinit var gameListAdapter: GameListAdapter
-    private val gds by lazy { GamesDataSourceSingleton.getInstance(this) }
-    private var chosenGame: Game? = null
+    private var chosenGame: GameWithPlayer? = null
     private val actionModeCallback: ActionModeCallback by lazy { ActionModeCallback() }
     private var actionMode: ActionMode? = null
     private val fabActive by lazy { getResources().getColor(R.color.fabActive)  }
@@ -65,7 +49,7 @@ class ResumeGameActivity : BaseActivity(), ItemClickListener {
         deleteGameFAB.setOnClickListener(onFABDeleteListenter())
 
         // Recycle View for Game List
-        gameListAdapter = GameListAdapter(this, gds.getSavedGames(), this)
+        gameListAdapter = GameListAdapter(this, viewModel.getAllSavedGames(), this)
         findViewById<RecyclerView>(R.id.savedGamesList).apply {
             layoutManager = LinearLayoutManager(this@ResumeGameActivity)
             setHasFixedSize(true)
@@ -76,8 +60,8 @@ class ResumeGameActivity : BaseActivity(), ItemClickListener {
 
     private fun resumeGame() = View.OnClickListener {
         if (chosenGame != null) {
-            gds.game = chosenGame
-            val intent = if (chosenGame!!.game_mode == TAGHelper.TIME_TRACKING) {
+            viewModel.game = chosenGame!!
+            val intent = if (chosenGame!!.gameMode == TAGHelper.TIME_TRACKING) {
                 Intent(this@ResumeGameActivity, GameTimeTrackingModeActivity::class.java)
             } else {
                 Intent(this@ResumeGameActivity, GameCountDownActivity::class.java)

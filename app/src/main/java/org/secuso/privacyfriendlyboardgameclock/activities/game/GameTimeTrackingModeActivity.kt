@@ -1,27 +1,10 @@
-/*
- This file is part of Privacy Friendly Board Game Clock.
-
- Privacy Friendly Board Game Clock is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Board Game Clock is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
- */
-package org.secuso.privacyfriendlyboardgameclock.activities
+package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.ActivityManager
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.ServiceConnection
@@ -37,10 +20,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
@@ -58,12 +43,7 @@ import org.secuso.privacyfriendlyboardgameclock.services.TimeTrackingService
  * This is the activity for the Game Time Tracking Mode
  */
 class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
-    private val pds by lazy { PlayersDataSourceSingleton.getInstance(this) }
-    private val gds by lazy { GamesDataSourceSingleton.getInstance(this) }
-    var game: Game? = null
-        private set
-    private var players: MutableList<Player> = mutableListOf()
-    private var playersTime: java.util.HashMap<Long, Long> = hashMapOf()
+    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
     private val playerIDs: MutableList<Long> = ArrayList<Long>()
     private var currentGameTimeMs: Long = 0
     private var br: BroadcastReceiver? = null
@@ -107,7 +87,7 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
             .setNegativeButton(R.string.no, null)
             .show()
     }
-    
+
 
     /**
      * TODO OLD maybe removed later if not needed
@@ -118,7 +98,8 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
         saveGameButton.visibility = View.VISIBLE
         finishGameButton.visibility = View.VISIBLE
 
-        playPauseButton.setOnClickListener { Toast.makeText(this@GameTimeTrackingModeActivity, getResources().getString(R.string.alreadyPaused), Toast.LENGTH_SHORT).show() }
+        playPauseButton.setOnClickListener { Toast.makeText(this@GameTimeTrackingModeActivity, getResources().getString(
+            R.string.alreadyPaused), Toast.LENGTH_SHORT).show() }
         playPauseButton.background = ContextCompat.getDrawable(
             this@GameTimeTrackingModeActivity,
             R.drawable.button_disabled
@@ -222,7 +203,7 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
     }
 
     fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
-        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val manager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
         for (service in manager.getRunningServices(Int.Companion.MAX_VALUE)) {
             if (serviceClass.name == service.service.className) {
                 return true
@@ -255,16 +236,6 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
             }
         }
 
-        // If service already exists
-        if (isMyServiceRunning(TimeTrackingService::class.java)) {
-            game = null
-        } else {
-            // get game from SingleTon Class, if null, show MainMenu
-            if (gds.game != null) {
-                game = gds.game
-            } else showMainMenu()
-        }
-
         // start time tracking service
         startTimeTrackerService()
     }
@@ -275,21 +246,16 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
      * complete new game
      */
     private fun prepareAll() {
-        // if the service already exists
-        if (game == null) game = mBoundService!!.game
-        
         // populate data
-        players = game!!.players
-        for (p in players) playerIDs.add(p.id)
-        playersTime = game!!.player_round_times
-        currentGameTimeMs = game!!.currentGameTime
+        for (p in viewModel.players) playerIDs.add(p.id)
+        currentGameTimeMs = viewModel.game.currentGameTime
         updateGameTimerTextview()
         saveGameButton.setOnClickListener(saveGame)
         playPauseButton.setText(R.string.pause_capslock)
         playPauseButton.setOnClickListener(pauseAll)
         playPauseButton.visibility = View.VISIBLE
         finishGameButton.setOnClickListener(finishGame)
-        timeTrackingAdapter = TimeTrackingPlayerAdapter(this, players, this)
+        timeTrackingAdapter = TimeTrackingPlayerAdapter(this, viewModel.players, this)
 
         findViewById<RecyclerView>(R.id.player_list).apply {
             setHasFixedSize(true)
@@ -297,7 +263,7 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
             layoutManager = LinearLayoutManager(this@GameTimeTrackingModeActivity)
             itemAnimator = null
         }
-        
+
         val activePlayers = mBoundService!!.activePlayersList
         if (activePlayers.isNotEmpty()) {
             playPauseButton.setText(R.string.pause_capslock)
@@ -324,7 +290,8 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
 
     override fun onResume() {
         super.onResume()
-        registerReceiver(br, IntentFilter(TAGHelper.COUNTDOWN_SERVICE_BROADCAST_TAG))
+        ContextCompat.registerReceiver(this, br, IntentFilter(TAGHelper.COUNTDOWN_SERVICE_BROADCAST_TAG),
+            ContextCompat.RECEIVER_NOT_EXPORTED)
         Log.i("GameTimeTrackingModeAct", "Registered Broadcast Receiver.")
     }
 
@@ -351,9 +318,8 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
      * @param save 0 if game is finished, 1 if game is still on going
      */
     private fun saveGameToDb(save: Int) {
-        updateGame()
-        game?.saved = save
-        gds.saveGame(game)
+        viewModel.game.saved = save
+        viewModel.saveGame()
     }
 
     /**
@@ -363,9 +329,7 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
      */
     private fun finishGame() {
         isFinished = 1
-        gds.game = game
-        game?.finished = isFinished
-        updateGame()
+        viewModel.game.finished = isFinished
         stopTimeTrackerService()
 
         saveGameButton.visibility = View.GONE
@@ -376,18 +340,6 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
         saveGameToDb(0)
         playPauseButton.performClick()
     }
-
-    /**
-     * update the current game object
-     * called by saveGameToDb, by nextPlayer button,
-     * (3)
-     */
-    fun updateGame() {
-        game?.player_round_times = playersTime
-        game?.currentGameTime = currentGameTimeMs
-        game?.finished = isFinished
-    }
-    
 
     /**
      * pause all the active time trackers
@@ -442,8 +394,6 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
                 updateGameTimerTextview()
             }
         }
-        updateGame()
-        mBoundService?.game = game
     }
 
     private fun updateGameTimerTextview() {
@@ -474,10 +424,11 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
         Log.i("GameTimeTrackingModeAct", "Unregistered Broadcast Receiver.")
     }
 
+    @Deprecated("Deprecated in Java")
     public override fun onBackPressed() {
         if (!mBoundService!!.isGamePaused) playPauseButton.performClick()
 
-        if (isFinished == 1) {
+        if (viewModel.game.finished == 1) {
             showMainMenu()
         } else {
             AlertDialog.Builder(this)
@@ -493,7 +444,8 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
                         showMainMenu()
                     } else showMainMenu()
                 }
-                .setNeutralButton(R.string.withoutSave
+                .setNeutralButton(
+                    R.string.withoutSave
                 ) { dialogInterface, i ->
                     stopTimeTrackerService()
                     showMainMenu()
@@ -501,10 +453,8 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show()
         }
+        super.onBackPressed()
     }
-
-    val playerTime: HashMap<Long, Long>
-        get() = playersTime
 
     override fun onItemClick(view: View?, position: Int) {
         val activePlayers = mBoundService!!.activePlayersList
@@ -516,7 +466,7 @@ class GameTimeTrackingModeActivity : BaseActivity(), ItemClickListener {
         } else {
             mBoundService!!.resumeTimeTracker(currentPlayer.id)
         }
-        
+
         if (activePlayers.isNotEmpty()) {
             playPauseButton.setText(R.string.pause_capslock)
             playPauseButton.setOnClickListener(pauseAllActiveTrackers)

@@ -14,7 +14,7 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.secuso.privacyfriendlyboardgameclock.activities
+package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -43,6 +43,7 @@ import androidx.core.view.size
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.ViewModelProvider
+import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 
 /**
  * Created by Quang Anh Dang on 04.01.2018.
@@ -51,7 +52,7 @@ import androidx.lifecycle.ViewModelProvider
  * This is the Activity for the New Game Page, after touching New Game Button on the main page
  */
 class NewGameActivity : BaseActivity() {
-    private val viewModel by lazy { ViewModelProvider(this)[NewGameActivityViewModel::class.java] }
+    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
     private val round_time_s by lazy { findViewById<NumberPicker>(R.id.seconds_new_round_time) }
     private val round_time_m by lazy { findViewById<NumberPicker>(R.id.minutes_new_round_time) }
     private val round_time_h by lazy { findViewById<NumberPicker>(R.id.hours_new_round_time) }
@@ -335,7 +336,7 @@ class NewGameActivity : BaseActivity() {
     }
 
     private fun createNewGame() {
-        val newGame = org.secuso.privacyfriendlyboardgameclock.room.model.Game()
+        val newGame = Game()
 
         //game name
         newGame.name = game_name.getText().toString()
@@ -393,7 +394,7 @@ class NewGameActivity : BaseActivity() {
             //game mode
             newGame.gameMode = game_mode.selectedItemPosition
 
-            viewModel.addGame(newGame)
+            viewModel.newGame = newGame
 
 
             // round time must not be larger than game time
