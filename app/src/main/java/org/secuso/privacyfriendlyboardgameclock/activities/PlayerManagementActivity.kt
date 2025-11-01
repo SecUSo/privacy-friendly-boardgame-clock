@@ -41,8 +41,10 @@ import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPl
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Player
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import androidx.core.view.isGone
+import androidx.lifecycle.ViewModelProvider
+import org.secuso.privacyfriendlyboardgameclock.activities.game.GameViewModel
 
 /**
  * Actionbar Tutorial
@@ -55,7 +57,7 @@ import androidx.core.view.isGone
  * This is the Activity for the Player Management Page
  */
 class PlayerManagementActivity : BaseActivity(), ItemClickListener {
-    private val pds by lazy { PlayersDataSourceSingleton.getInstance(this) }
+    private val viewModel by lazy { ViewModelProvider(this)[PlayerManagementActivityViewModel::class.java] }
     private val playersRecycleView by lazy { findViewById<RecyclerView>(R.id.player_list) }
     private lateinit var playerListAdapter: PlayerListAdapter
     private var listPlayers: MutableList<Player> = mutableListOf()
@@ -78,7 +80,7 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         setContentView(R.layout.activity_player_management)
         // pds already opened in MainActivity
 
-        listPlayers = pds.getAllPlayers()
+        listPlayers = viewModel.getAllPlayers().toMutableList()
 
         // FAB Listener
         fabAdd.setOnClickListener(onFABAddClickListener())

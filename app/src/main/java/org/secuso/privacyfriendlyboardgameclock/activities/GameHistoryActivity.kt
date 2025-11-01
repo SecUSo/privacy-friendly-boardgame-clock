@@ -22,17 +22,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.game.GameViewModel
 import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameHistoryInfoDialogFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Game
+import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
 
 /**
  * Created by Quang Anh Dang on 24.12.2017.
@@ -41,10 +43,11 @@ import org.secuso.privacyfriendlyboardgameclock.model.Game
  * This is the activity for the Game History
  */
 class GameHistoryActivity : BaseActivity(), ItemClickListener {
+
+    private val viewModel by lazy { ViewModelProvider(this)[GameHistoryActivityViewModel::class.java] }
     @JvmField
-    var selectedGame: Game? = null
-    private val gds: GamesDataSourceSingleton by lazy { GamesDataSourceSingleton.getInstance(this) }
-    private val gamesList: MutableList<Game> by lazy { gds.allGames }
+    var selectedGame: GameWithPlayer? = null
+    private val gamesList: MutableList<GameWithPlayer> by lazy { viewModel.getAllGames().toMutableList() }
     private lateinit var gameListAdapter: GameListAdapter
     private val fabDeleteButton: FloatingActionButton by lazy { findViewById(R.id.fab_delete_game) }
     private val actionModeCallback: ActionModeCallback by lazy { ActionModeCallback() }
