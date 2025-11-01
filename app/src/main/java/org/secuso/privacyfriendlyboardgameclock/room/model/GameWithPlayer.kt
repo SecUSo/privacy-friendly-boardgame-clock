@@ -11,4 +11,4 @@ data class GameWithPlayer(
         entity = PlayerGameData::class
     )
     val players: List<PlayerGameData>
-)
+): IGame by game

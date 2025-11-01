@@ -71,6 +71,7 @@ dependencies {
     implementation libs.ax.recyclerview
     implementation libs.ax.cardview
     implementation libs.quadflask.colorpicker
+    implementation libs.ax.lifecycle.viewmodel
 
     // Backup
     implementation project(path: ':backup-api')

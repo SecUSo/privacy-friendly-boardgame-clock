@@ -24,8 +24,8 @@ import androidx.room.Index
     indices = [Index("game_id"), Index("player_id")]
 )
 data class PlayerGameData(
-    @ColumnInfo(name = "game_id") var gameId: Int,
-    @ColumnInfo(name = "player_id") var playerId: Int,
+    @ColumnInfo(name = "game_id") var gameId: Long,
+    @ColumnInfo(name = "player_id") var playerId: Long,
     @ColumnInfo(name = "rounds") var rounds: Int,
-    @ColumnInfo(name = "round_times") var roundTimes: Int
+    @ColumnInfo(name = "round_times") var roundTimes: Long
 )

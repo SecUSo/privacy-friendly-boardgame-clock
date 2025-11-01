@@ -32,22 +32,22 @@ import java.util.Date
 @Entity(tableName = "games")
 data class Game(
     @PrimaryKey
-    @ColumnInfo(name = "_id") var id: Long = 0,
-    @ColumnInfo(name = "name") var name: String? = null,
-    @ColumnInfo(name = "round_time") var roundTime: Long = 0,
-    @ColumnInfo(name = "game_time") var gameTime: Long = 0,
-    @ColumnInfo(name = "reset_round_time") var resetRoundTime: Int = 0, //0 = false, 1 = true
-    @ColumnInfo(name = "game_mode") var gameMode: Int = 0, //0 = clockwise, 1= counter_clockwise, 2=random, 3  = chess
-    @ColumnInfo(name = "round_time_delta") var roundTimeDelta: Long = -1,
-    @ColumnInfo(name = "current_game_time") var currentGameTime: Long = 0,
-    @ColumnInfo(name = "next_player_index") var nextPlayerIndex: Int = 0,
-    @ColumnInfo(name = "start_player_index") var startPlayerIndex: Int = 0,
-    @ColumnInfo(name = "finished") var finished: Int = 0,
-    @ColumnInfo(name = "saved") var saved: Int = 0,
-    @ColumnInfo(name = "chess_mode") var chessMode: Int = 0,
-    @ColumnInfo(name = "is_last_round") var isLastRound: Int = 0,
-    @ColumnInfo(name = "game_time_infinite") var gameTimeInfinite: Int = 0
-) {
+    @ColumnInfo(name = "_id") override var id: Long = 0,
+    @ColumnInfo(name = "name") override var name: String? = null,
+    @ColumnInfo(name = "round_time") override var roundTime: Long = 0,
+    @ColumnInfo(name = "game_time") override var gameTime: Long = 0,
+    @ColumnInfo(name = "reset_round_time") override var resetRoundTime: Int = 0, //0 = false, 1 = true
+    @ColumnInfo(name = "game_mode") override var gameMode: Int = 0, //0 = clockwise, 1= counter_clockwise, 2=random, 3  = chess
+    @ColumnInfo(name = "round_time_delta") override var roundTimeDelta: Long = -1,
+    @ColumnInfo(name = "current_game_time") override var currentGameTime: Long = 0,
+    @ColumnInfo(name = "next_player_index") override var nextPlayerIndex: Int = 0,
+    @ColumnInfo(name = "start_player_index") override var startPlayerIndex: Int = 0,
+    @ColumnInfo(name = "finished") override var finished: Int = 0,
+    @ColumnInfo(name = "saved") override var saved: Int = 0,
+    @ColumnInfo(name = "chess_mode") override var chessMode: Int = 0,
+    @ColumnInfo(name = "is_last_round") override var isLastRound: Int = 0,
+    @ColumnInfo(name = "game_time_infinite") override var gameTimeInfinite: Int = 0
+): IGame {
     @ColumnInfo(name = "date") var date: Long = 0
         set(date) {
             field = date
@@ -55,4 +55,22 @@ data class Game(
         }
     @Ignore var dateString: String = ""
         private set
+}
+
+interface IGame {
+    var id: Long
+    var name: String?
+    var roundTime: Long
+    var gameTime: Long
+    var resetRoundTime: Int
+    var gameMode: Int
+    var roundTimeDelta: Long
+    var currentGameTime: Long
+    var nextPlayerIndex: Int
+    var startPlayerIndex: Int
+    var finished: Int
+    var saved: Int
+    var chessMode: Int
+    var isLastRound: Int
+    var gameTimeInfinite: Int
 }

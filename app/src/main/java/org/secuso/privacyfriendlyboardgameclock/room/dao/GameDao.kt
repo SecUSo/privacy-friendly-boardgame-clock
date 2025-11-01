@@ -16,10 +16,10 @@ interface GameDao {
     fun allGames(): List<GameWithPlayer>
 
     @Query("SELECT * FROM games WHERE _id = :game")
-    fun getGame(game: Int)
+    fun getGame(game: Long): GameWithPlayer?
 
     @Query("SELECT * FROM games WHERE _id IN (:games)")
-    fun getGames(games: List<Int>): List<GameWithPlayer>
+    fun getGames(games: List<Long>): List<GameWithPlayer>
 
     @Insert
     fun addGameWithPlayer(game: GameWithPlayer)
