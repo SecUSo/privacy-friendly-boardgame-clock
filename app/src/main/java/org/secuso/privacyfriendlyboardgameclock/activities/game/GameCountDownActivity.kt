@@ -1,18 +1,10 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
-import android.app.ActivityManager
 import android.app.AlertDialog
-import android.content.BroadcastReceiver
-import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.content.ServiceConnection
 import android.graphics.Color
 import android.os.Bundle
-import android.os.IBinder
 import android.preference.PreferenceManager
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -22,21 +14,30 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.view.size
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
+import org.secuso.pfacore.model.dialog.AbortElseDialog
+import org.secuso.pfacore.model.dialog.ValueSelectionDialog
 import org.secuso.pfacore.ui.activities.BaseActivity
+import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
+import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.databinding.DialogSetPlayerSequenceBinding
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.SelectPlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.model.Game
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
-import org.secuso.privacyfriendlyboardgameclock.services.CountdownTimerService
 import java.util.Random
 import kotlin.collections.indexOf
+import kotlin.math.min
 
 /**
  * Created by Quang Anh Dang on 03.01.2018.
@@ -45,17 +46,12 @@ import kotlin.collections.indexOf
  * This is the Activity for the actual Game Countdown Mode
  */
 class GameCountDownActivity : BaseActivity() {
-    private var br: BroadcastReceiver? = null
     private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
 
     private var gameTime: Long = 0
     private var playerRoundTimes: HashMap<Long?, Long?>? = null
 
     // which round number will the player be in the next time he has turn
-    private var playerRounds: HashMap<Long?, Long?>? = null
-    private var players: MutableList<Player>? = null
-
-    private var currentPlayer: Player? = null
 
     private val playPauseButton: Button by lazy { findViewById(R.id.gamePlayPauseButton) }
     private val nextPlayerButton: Button by lazy { findViewById(R.id.nextPlayerButton) }
@@ -66,8 +62,6 @@ class GameCountDownActivity : BaseActivity() {
     private var currentGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG
     private var currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG
     private var currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG
-    private var nextPlayerIndex = 0
-    private var currentPlayerIndex = 0
 
     private var roundTimeOriTenPercent = TAGHelper.DEFAULT_VALUE_LONG
     private var gameTimeOriTenPercent = TAGHelper.DEFAULT_VALUE_LONG
@@ -80,67 +74,15 @@ class GameCountDownActivity : BaseActivity() {
     private val roundTimerTv: TextView by lazy { findViewById(R.id.round_timer) }
 
     private var alreadySaved = true
-    private var isFinished = 0
-    private var isLastRound = 0
-    private var isPaused = true
 
-    private var playersQueue: MutableList<Player> = mutableListOf()
+    val saveGameDialog by lazy {
+        AbortElseDialog.build(this) {
+            title = { ContextCompat.getString(this@GameCountDownActivity, R.string.saveGame) }
+            content = { ContextCompat.getString(this@GameCountDownActivity, R.string.sureToSaveGameQuestion) }
+            icon = R.drawable.ic_menu_help
+            onShow = { viewModel.pauseTimer() }
 
-    private var mBoundService: CountdownTimerService? = null
-    private var mIsBound = false
-
-    private val mConnection: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(className: ComponentName?, service: IBinder) {
-            // This is called when the connection with the service has been
-            // established, giving us the service object we can use to
-            // interact with the service.  Because we have bound to a explicit
-            // service that we know is running in our own process, we can
-            // cast its IBinder to a concrete class and directly access it.
-            mBoundService = (service as CountdownTimerService.LocalBinder).service
-            prepareAll()
-            Log.i("GameCountDownActivity", "Service Connected.")
-        }
-
-        override fun onServiceDisconnected(className: ComponentName?) {
-            // This is called when the connection with the service has been
-            // unexpectedly disconnected -- that is, its process crashed.
-            // Because it is running in our same process, we should never
-            // see this happen.
-            mBoundService = null
-            Log.i("GameCountDownActivity", "Service Disconnected.")
-        }
-    }
-
-    fun doBindService() {
-        // Establish a connection with the service.  We use an explicit
-        // class name because we want a specific service implementation that
-        // we know will be running in our own process (and thus won't be
-        // supporting component replacement by other applications).
-        bindService(
-            Intent(
-                this@GameCountDownActivity,
-                CountdownTimerService::class.java
-            ), mConnection, BIND_AUTO_CREATE
-        )
-        mIsBound = true
-    }
-
-    fun doUnbindService() {
-        if (mIsBound) {
-            // Detach our existing connection.
-            unbindService(mConnection)
-            mIsBound = false
-        }
-    }
-
-    var saveGame: View.OnClickListener = View.OnClickListener {
-        playPauseButton!!.setOnClickListener(pause)
-        playPauseButton!!.performClick()
-        AlertDialog.Builder(this@GameCountDownActivity)
-            .setTitle(R.string.saveGame)
-            .setMessage(R.string.sureToSaveGameQuestion)
-            .setIcon(android.R.drawable.ic_menu_help)
-            .setPositiveButton(R.string.yes) { dialog, whichButton ->
+            onElse = {
                 saveGameToDb(1)
                 alreadySaved = true
                 Toast.makeText(
@@ -148,9 +90,14 @@ class GameCountDownActivity : BaseActivity() {
                     R.string.gameSavedSuccess,
                     Toast.LENGTH_LONG
                 ).show()
+                viewModel.resumeTimer()
             }
-            .setNegativeButton(R.string.no, null)
-            .show()
+            onAbort = {
+                viewModel.resumeTimer()
+            }
+            handleDismiss = true
+
+        }
     }
     private val showGameResults: View.OnClickListener = View.OnClickListener {
         val fm = supportFragmentManager
@@ -164,254 +111,18 @@ class GameCountDownActivity : BaseActivity() {
         showGameInfo.show(ft, TAGHelper.DIALOG_FRAGMENT)
     }
 
-    private val run: View.OnClickListener = View.OnClickListener {
-        alreadySaved = false
+    private val finishGameDialog by lazy {
+        AbortElseDialog.build(this) {
+            title = { ContextCompat.getString(this@GameCountDownActivity, R.string.finishGame) }
+            content = { ContextCompat.getString(this@GameCountDownActivity, R.string.finishGameQuestion) }
+            icon = android.R.drawable.ic_menu_help
+            acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.yes)
+            abortLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.no)
 
-        saveGameButton!!.visibility = View.GONE
-        finishGameButton!!.visibility = View.GONE
-
-        isPaused = false
-
-        updateAndResumeTimer()
-
-        playPauseButton!!.setText(R.string.pause_capslock)
-        playPauseButton!!.setOnClickListener(pause)
-    }
-
-    private val pause: View.OnClickListener = View.OnClickListener {
-        isPaused = true
-
-        mBoundService!!.pauseTimer()
-        gameTime = currentGameTimeMs
-
-        saveGameButton!!.visibility = View.VISIBLE
-        finishGameButton!!.visibility = View.VISIBLE
-
-        playPauseButton!!.setText(R.string.resume)
-        playPauseButton!!.setOnClickListener(run)
-
-        updateTimerTextViews()
-    }
-
-    private val pauseFinishedGame: View.OnClickListener = View.OnClickListener {
-        isPaused = true
-
-        mBoundService!!.pauseTimer()
-        gameTime = currentGameTimeMs
-
-        playPauseButton!!.setText(R.string.resume)
-        playPauseButton!!.setOnClickListener(continueFinishedGame)
-
-        updateTimerTextViews()
-    }
-
-    private val continueFinishedGame: View.OnClickListener = View.OnClickListener {
-        alreadySaved = false
-
-        saveGameButton!!.visibility = View.GONE
-        finishGameButton!!.visibility = View.GONE
-
-        isPaused = false
-
-        updateAndResumeTimer()
-
-        playPauseButton!!.setText(R.string.pause_capslock)
-        playPauseButton!!.setOnClickListener(pauseFinishedGame)
-    }
-
-    private val nextPlayer: View.OnClickListener = object : View.OnClickListener {
-        override fun onClick(v: View?) {
-            currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG
-            // save current player data
-            val currPlayerId = currentPlayer!!.id
-            var nextPlayerRound = playerRounds!!.get(currPlayerId)!! + 1
-
-            // just put the time current player has left in to the list
-            playerRoundTimes!![currPlayerId] = currentRoundTimeMs
-            // update the round number for current player
-            playerRounds!![currPlayerId] = nextPlayerRound
-
-            // in case of chess mode and the time is not reseted each round
-            if (viewModel.game.chessMode == 1 && isFinished == 0 && viewModel.game.resetRoundTime == 0) {
-                var isAllRoundTimeZero = true
-                for (playerID in playerRoundTimes!!.keys) {
-                    isAllRoundTimeZero =
-                        isAllRoundTimeZero && (playerRoundTimes!!.get(playerID) == 0L)
-                }
-                if (isAllRoundTimeZero) {
-                    finishGame()
-                    return
-                }
-            }
-
-            if (viewModel.game.isLastRound == 1 && getPlayersNotInRound(nextPlayerRound).isEmpty()) {
-                nextPlayerRound -= 1
-                playerRounds!![currPlayerId] = nextPlayerRound
-                finishGame()
-                return
-            } else if (!isPaused) {
-                if (viewModel.game.chessMode == 1) mBoundService!!.pauseTimer()
-                else  // update view by clicking pause button
-                    playPauseButton!!.performClick()
-
-                gameTime = currentGameTimeMs
-            }
-
-
-            // determine next player
-            if (viewModel.game.gameMode == 0) {
-                nextPlayerIndex = (currentPlayerIndex + 1) % players!!.size
-            } else if (viewModel.game.gameMode == 1) {
-                if (currentPlayerIndex == 0) nextPlayerIndex = players!!.size - 1
-                else nextPlayerIndex = currentPlayerIndex - 1
-            } else if (viewModel.game.gameMode == 2) {
-                playersQueue = getPlayersNotInRound(nextPlayerRound)
-                playersQueue!!.remove(currentPlayer)
-
-                if (playersQueue!!.isEmpty()) for (p in players!!) playersQueue!!.add(p)
-
-                playersQueue!!.remove(currentPlayer)
-
-                val r = Random().nextInt(playersQueue!!.size)
-
-                nextPlayerIndex = players!!.indexOf(playersQueue!![r]!!)
-            } else if (viewModel.game.gameMode == 3) {
-                if (getPlayersNotInRound(nextPlayerRound).isEmpty()) {
-                    // hide player
-                    currentPlayerTv!!.visibility = View.INVISIBLE
-                    currentPlayerRound!!.visibility = View.INVISIBLE
-                    currentPlayerIcon!!.visibility = View.INVISIBLE
-                    roundTimerTv!!.visibility = View.INVISIBLE
-
-                    val selectedPlayers = ArrayList<Player>()
-
-                    val builder = AlertDialog.Builder(this@GameCountDownActivity)
-                    val dialogView =
-                        layoutInflater.inflate(R.layout.dialog_set_player_sequence, null)
-                    builder.setView(dialogView)
-                    builder.setTitle(R.string.manualChoiceHeading)
-                    builder.setPositiveButton(R.string.confirm, null)
-                    builder.setCancelable(false)
-
-                    val myListView =
-                        dialogView.findViewById<View?>(R.id.set_player_sequence_list) as ListView
-                    val listAdapter = SelectPlayerListAdapter(
-                        this@GameCountDownActivity,
-                        R.id.set_player_sequence_list,
-                        players
-                    )
-                    myListView.adapter = listAdapter
-                    myListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
-                    myListView.onItemClickListener =
-                        AdapterView.OnItemClickListener { adapter, v, position, id ->
-                            val tv = v.findViewById<View?>(R.id.textViewNumber) as TextView
-                            if (tv.text === "" && myListView.checkedItemCount > 0) {
-                                selectedPlayers.add((adapter.getItemAtPosition(position) as Player?)!!)
-                                tv.text = (selectedPlayers.indexOf(
-                                    adapter.getItemAtPosition(
-                                        position
-                                    ) as Player?
-                                ) + 1).toString() + "."
-                            } else {
-                                val deletedNumber =
-                                    selectedPlayers.indexOf(adapter.getItemAtPosition(position)) + 1
-                                selectedPlayers.remove(adapter.getItemAtPosition(position))
-                                tv.text = ""
-
-                                val playersList = v.parent as ListView
-                                val checked = playersList.checkedItemPositions
-                                val size = checked.size()
-                                for (i in 0..<size) {
-                                    val key = checked.keyAt(i)
-                                    val checkedValue = checked.get(key)
-                                    if (checkedValue) {
-                                        val number =
-                                            playersList.getChildAt(key).findViewById<View?>(
-                                                R.id.textViewNumber
-                                            ) as TextView
-                                        val numberText = number.text.toString()
-                                        val indexDot = numberText.indexOf(".")
-                                        if (indexDot != -1) {
-                                            var value = numberText.take(indexDot).toInt()
-                                            if (value > deletedNumber) {
-                                                value--
-                                                number.text = "$value."
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    val ad = builder.show()
-                    val positiveButton = ad.getButton(AlertDialog.BUTTON_POSITIVE)
-                    positiveButton.setOnClickListener {
-                        if (players!!.size != selectedPlayers.size) {
-                            Toast.makeText(this@GameCountDownActivity, R.string.manualChoiceError, Toast.LENGTH_SHORT).show()
-                        } else {
-                            players = selectedPlayers
-                            viewModel.players = players!!.toList()
-
-                            // unhide player
-                            currentPlayerTv!!.visibility = View.VISIBLE
-                            currentPlayerRound!!.visibility = View.VISIBLE
-                            currentPlayerIcon!!.visibility = View.VISIBLE
-                            roundTimerTv!!.visibility = View.VISIBLE
-
-                            nextPlayerIndex = 0
-                            currentPlayerIndex = nextPlayerIndex
-                            currentPlayer = players!![nextPlayerIndex]
-                            restorePlayerData(currentPlayer!!.id)
-                            updateViews()
-
-                            if (!isPaused && viewModel.game.chessMode == 1) {
-                                updateAndResumeTimer()
-                            }
-
-                            ad.dismiss()
-                        }
-                    }
-                } else {
-                    nextPlayerIndex = (currentPlayerIndex + 1) % players!!.size
-
-                    // set next player to current player
-                    currentPlayerIndex = nextPlayerIndex
-                    currentPlayer = players!![nextPlayerIndex]
-                    restorePlayerData(currentPlayer!!.id)
-                    updateViews()
-
-                    if (!isPaused && viewModel.game.chessMode == 1) {
-                        updateAndResumeTimer()
-                    }
-                }
-            }
-
-            if (viewModel.game.gameMode != 3) {
-                // set next player to current player
-                currentPlayerIndex = nextPlayerIndex
-                currentPlayer = players!![nextPlayerIndex]
-                restorePlayerData(currentPlayer!!.id)
-                updateViews()
-
-                if (!isPaused && viewModel.game.chessMode == 1) {
-                    updateAndResumeTimer()
-                }
-            }
+            onElse = { finishGame() }
         }
     }
-    private val finishGame: View.OnClickListener = View.OnClickListener {
-        playPauseButton!!.setOnClickListener(pause)
-        playPauseButton!!.performClick()
-        AlertDialog.Builder(this@GameCountDownActivity)
-            .setTitle(R.string.finishGame)
-            .setMessage(R.string.finishGameQuestion)
-            .setIcon(android.R.drawable.ic_menu_help)
-            .setPositiveButton(
-                getString(R.string.yes)
-            ) { dialog, whichButton -> finishGame() }
-            .setNegativeButton(getString(R.string.no), null)
-            .show()
-    }
-    private val wantToFinish: View.OnClickListener = View.OnClickListener {
+    /*private val wantToFinish: View.OnClickListener = View.OnClickListener {
         // Option not reset Round Time, each player has only certain amount of time
         // if one player runs out of time --> ask if game ends or continue with other
         // remaining players
@@ -439,18 +150,66 @@ class GameCountDownActivity : BaseActivity() {
                 }
                 .show()
         } else finishGame()
-    }
+    }*/
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Check if date saved in Singleton Class corrupted, if yes return to Main Menu
-        if (checkIfSingletonDataIsCorrupt()) return
+    val selectPlayerOrder = GameViewModel.SelectNewPlayerOrder { players, defer ->
+        val binding = DialogSetPlayerSequenceBinding.inflate(layoutInflater)
+        val _isValid = MutableLiveData<Boolean>(false)
+        val selectedPlayers = mutableListOf<Int>()
+        binding.setPlayerSequenceList.apply {
+            choiceMode = ListView.CHOICE_MODE_MULTIPLE
+            onItemClickListener = AdapterView.OnItemClickListener { adapter, v, position, id ->
+                val tv = v.findViewById<TextView>(R.id.textViewNumber)
+                if (tv.text.isEmpty() && checkedItemCount > 0) {
+                    selectedPlayers.add(position)
+                    tv.text = (selectedPlayers.indexOf(position) + 1).toString() + "."
+                    _isValid.postValue(selectedPlayers.size == adapter.size)
+                } else {
+                    // TODO: Improve this legacy code
+                    _isValid.postValue(false)
+                    val deletedNumber =
+                        selectedPlayers.indexOf(position) + 1
+                    selectedPlayers.remove(position)
+                    tv.text = ""
 
-        br = object : BroadcastReceiver() {
-            override fun onReceive(context: Context?, intent: Intent) {
-                updateGUI(intent)
+                    val playersList = v.parent as ListView
+                    val checked = playersList.checkedItemPositions
+                    val size = checked.size()
+                    for (i in 0..<size) {
+                        val key = checked.keyAt(i)
+                        val checkedValue = checked.get(key)
+                        if (checkedValue) {
+                            val number =
+                                playersList.getChildAt(key).findViewById<View?>(
+                                    R.id.textViewNumber
+                                ) as TextView
+                            val numberText = number.text.toString()
+                            val indexDot = numberText.indexOf(".")
+                            if (indexDot != -1) {
+                                var value = numberText.take(indexDot).toInt()
+                                if (value > deletedNumber) {
+                                    value--
+                                    number.text = "$value."
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+        val dialog = ValueSelectionDialog.build<List<Int>>(this) {
+            title = { ContextCompat.getString(this@GameCountDownActivity, R.string.manualChoiceHeading) }
+            acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.confirm)
+            onConfirmation = { defer.complete(it) }
+            lifecycleOwner = this@GameCountDownActivity
+            required = true
+            isValid = { _isValid }
+        }
+        ShowValueSelectionDialog(binding, { selectedPlayers }, dialog).show()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         // prevent phone from sleeping while game is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -473,128 +232,77 @@ class GameCountDownActivity : BaseActivity() {
             editor.commit()
         }
 
-        val saveGameButton = findViewById<ImageButton>(R.id.saveGameButton)
-        saveGameButton.setOnClickListener(saveGame)
-        val finishGameButton = findViewById<ImageButton>(R.id.finishGameButton)
-        finishGameButton.setOnClickListener(finishGame)
+        viewModel.selectPlayers = selectPlayerOrder
 
-        startTimerService()
-    }
+        findViewById<ImageButton>(R.id.saveGameButton).setOnClickListener {
+            saveGameDialog.show()
+        }
+        findViewById<ImageButton>(R.id.finishGameButton).setOnClickListener {
+            finishGameDialog.show()
+        }
+        findViewById<Button>(R.id.nextPlayerButton).setOnClickListener {
+            viewModel.endPlayerRound()
+        }
+        findViewById<Button>(R.id.gamePlayPauseButton).setOnClickListener {
+            nextPlayerButton.visibility = View.VISIBLE
+            viewModel.toggleTimer()
+            (it as Button).text = ContextCompat.getString(this, if (viewModel.isTimerRunning()) { R.string.pause_capslock } else { R.string.resume })
+        }
+        findViewById<View>(R.id.main_content).setOnTouchListener(object : OnSwipeTouchListener(baseContext) {
+            override fun onSwipeLeft() {
+                viewModel.endPlayerRound()
+            }
 
-    /**
-     * before starting, prepare everything incl. views based on
-     * if the service already exists and running or this is a
-     * complete new game
-     */
-    private fun prepareAll() {
-        players = viewModel.players.toMutableList()
-        playerRoundTimes = game!!.player_round_times
-        playerRounds = game!!.player_rounds
-        currentPlayerIndex = viewModel.game.startPlayerIndex
-        nextPlayerIndex = viewModel.game.nextPlayerIndex
-        currentPlayer = players!![viewModel.game.startPlayerIndex]
-        playersQueue = getPlayersNotInRound(playerRounds!![currentPlayer!!.id]!!)
-        currentPlayerTv!!.text = currentPlayer!!.name
-        currentPlayerRound!!.text = playerRounds!!.get(currentPlayer!!.id).toString()
-        currentPlayerIcon!!.setImageBitmap(currentPlayer!!.icon)
-        currentRoundTimeMs = playerRoundTimes!!.get(currentPlayer!!.id)!!
+            override fun onSwipeRight() {
+                viewModel.endPlayerRound()
+            }
+        })
+
+        if (!viewModel.isNewGame) {
+            if (viewModel.game.gameTimeInfinite == 0) {
+                viewModel.initCountdownGame { _,_ -> TODO() }
+            } else {
+                viewModel.initTimeTrackingGame()
+            }
+        } else {
+            alreadySaved = viewModel.game.saved == 1
+            nextPlayerButton.visibility = View.VISIBLE
+        }
+
+        if (viewModel.game.gameTimeInfinite == 1) {
+            gameTimerTv.text = getString(R.string.infinite)
+        }
+
+        updateTimerTextViews()
+        nextPlayerButton.setOnClickListener {
+            viewModel.endPlayerRound()
+        }
+
+        viewModel.prepareGame()
+        currentPlayerTv.text = viewModel.currentPlayer.name
+        currentPlayerRound.text = viewModel.currentPlayerData.rounds.toString()
+        currentPlayerIcon.setImageBitmap(viewModel.currentPlayer.icon)
+        currentRoundTimeMs = viewModel.currentPlayerData.roundTimes
         currentGameTimeMs = viewModel.game.currentGameTime
         roundTimeOriTenPercent = (currentRoundTimeMs * 0.1).toLong()
         gameTimeOriTenPercent = (currentGameTimeMs * 0.1).toLong()
         gameTime = currentGameTimeMs
-        isLastRound = viewModel.game.isLastRound
-        if (viewModel.game.gameTimeInfinite == 1) {
-            gameTimerTv!!.text = getString(R.string.infinite)
-        }
-        updateTimerTextViews()
-        nextPlayerButton!!.setOnClickListener(nextPlayer)
-        findViewById<View>(R.id.main_content).setOnTouchListener(object :
-            OnSwipeTouchListener(baseContext) {
-            override fun onSwipeLeft() {
-                nextPlayerButton!!.callOnClick()
-            }
 
-            override fun onSwipeRight() {
-                nextPlayerButton!!.callOnClick()
-            }
-        })
-
-        if (viewModel.getLastGame() == viewModel.game) {
-            playPauseButton!!.setOnClickListener {
-                alreadySaved = false
-                isPaused = false
-                mBoundService!!.showNotification()
-                mBoundService!!.initRoundCountdownTimer(currentRoundTimeMs)
-                // if game time not infinit, init game timer
-                if (viewModel.game.gameTimeInfinite == 0) {
-                    mBoundService!!.initGameCountdownTimer(currentGameTimeMs)
-                    mBoundService!!.startGameTimer()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.tick.collect {
+                    updateGUI()
+                    updateViews()
                 }
-                mBoundService!!.startRoundTimer()
-
-                playPauseButton!!.setText(R.string.pause_capslock)
-                playPauseButton!!.setOnClickListener(pause)
-                nextPlayerButton!!.visibility = View.VISIBLE
             }
-        } else {
-            alreadySaved = viewModel.game.saved == 1
-            isPaused = mBoundService!!.isPaused
-            if (isPaused) {
-                playPauseButton!!.setText(R.string.resume)
-                playPauseButton!!.setOnClickListener(run)
-            } else {
-                playPauseButton!!.setText(R.string.pause_capslock)
-                playPauseButton!!.setOnClickListener(pause)
-            }
-            nextPlayerButton!!.visibility = View.VISIBLE
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        registerReceiver(br, IntentFilter(TAGHelper.COUNTDOWN_SERVICE_BROADCAST_TAG))
-        Log.i("GameCountDownActivity", "Registered Broadcast Receiver.")
-    }
-
-    public override fun onPause() {
-        super.onPause()
-        unregisterRegister()
-    }
-
-    public override fun onStop() {
-        unregisterRegister()
-        super.onStop()
-    }
-
-    public override fun onDestroy() {
-        unregisterRegister()
-        doUnbindService()
-        super.onDestroy()
-    }
-
-
-    private fun restorePlayerData(currPlayerId: Long) {
-        // restore player data
-        if (viewModel.game.resetRoundTime == 1) {
-            currentRoundTimeMs = viewModel.game.roundTime
-
-            if ((viewModel.game.roundTimeDelta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += viewModel.game.roundTimeDelta * (playerRounds!!.get(
-                currPlayerId
-            )!! - 1)
-        } else {
-            currentRoundTimeMs = playerRoundTimes!!.get(currPlayerId)!!
-
-            if ((viewModel.game.roundTimeDelta != -1L) && (playerRounds!!.get(currPlayerId)!! > 1)) currentRoundTimeMs += viewModel.game.roundTimeDelta
         }
     }
 
     private fun updateViews() {
-        updateTimer()
-
         // update view
-        currentPlayerTv!!.text = currentPlayer!!.name
-        currentPlayerRound!!.text = playerRounds!!.get(currentPlayer!!.id).toString()
-        currentPlayerIcon!!.setImageBitmap(currentPlayer!!.icon)
+        currentPlayerTv.text = viewModel.currentPlayer.name
+        currentPlayerRound.text = viewModel.currentPlayerData.rounds.toString()
+        currentPlayerIcon.setImageBitmap(viewModel.currentPlayer.icon)
         updateTimerTextViews()
     }
 
@@ -642,17 +350,6 @@ class GameCountDownActivity : BaseActivity() {
         }
     }
 
-    private fun getPlayersNotInRound(round: Long): MutableList<Player> {
-        val retPlayers: MutableList<Player> = ArrayList<Player>()
-
-        for (i in players!!.indices) if (playerRounds!!.get(
-                players!![i].id
-            ) != round
-        ) retPlayers.add(players!![i])
-
-        return retPlayers
-    }
-
     /**
      * save Game to DB is called when game is finished or save button is clicked
      * is called by finishGame, or when click saveGame Button
@@ -670,33 +367,17 @@ class GameCountDownActivity : BaseActivity() {
      * (1)
      */
     private fun finishGame() {
-        isFinished = 1
-        viewModel.game.finished = isFinished
-        stopTimerService()
+        viewModel.game.finished = 1
+        viewModel.finishGame()
 
-        saveGameButton!!.visibility = View.GONE
-        finishGameButton!!.visibility = View.GONE
-        nextPlayerButton!!.visibility = View.GONE
-        playPauseButton!!.setText(R.string.showResults)
-        playPauseButton!!.setOnClickListener(showGameResults)
-        playPauseButton!!.performClick()
+        saveGameButton.visibility = View.GONE
+        finishGameButton.visibility = View.GONE
+        nextPlayerButton.visibility = View.GONE
+        playPauseButton.setText(R.string.showResults)
+        playPauseButton.setOnClickListener(showGameResults)
+        playPauseButton.performClick()
 
         saveGameToDb(0)
-    }
-
-    /**
-     *
-     * @param serviceClass name of the service class you want to check
-     * @return true if the service is running
-     */
-    fun isMyServiceRunning(serviceClass: Class<*>): Boolean {
-        val manager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
-        for (service in manager.getRunningServices(Int.Companion.MAX_VALUE)) {
-            if (serviceClass.name == service.service.className) {
-                return true
-            }
-        }
-        return false
     }
 
     private fun showMainMenu() {
@@ -708,34 +389,27 @@ class GameCountDownActivity : BaseActivity() {
 
     @Deprecated("Deprecated in Java")
     public override fun onBackPressed() {
-        if (!isPaused && (isFinished == 0)) playPauseButton!!.performClick()
-
+        viewModel.pauseTimer()
         if (viewModel.game.finished == 1) {
             showMainMenu()
         } else {
-            playPauseButton!!.setOnClickListener(pause)
-            playPauseButton!!.performClick()
-            AlertDialog.Builder(this)
-                .setTitle(getString(R.string.quitGame))
-                .setMessage(getString(R.string.leaveGameQuestion))
-                .setIcon(android.R.drawable.ic_menu_help)
-                .setPositiveButton(
-                    getString(R.string.saveGame)
-                ) { dialog, whichButton ->
+            AbortElseDialog.build(this) {
+                title = { ContextCompat.getString(this@GameCountDownActivity, R.string.quitGame) }
+                content = { ContextCompat.getString(this@GameCountDownActivity, R.string.leaveGameQuestion) }
+                icon = R.drawable.ic_menu_help
+                acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.saveGame)
+                abortLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.withoutSave)
+
+                onElse = {
                     if (!alreadySaved) {
                         saveGameToDb(1)
-                        stopTimerService()
-                        showMainMenu()
-                    } else showMainMenu()
-                }
-                .setNeutralButton(
-                    R.string.withoutSave
-                ) { dialogInterface, i ->
-                    stopTimerService()
+                    }
                     showMainMenu()
                 }
-                .setNegativeButton(getString(R.string.cancel), null)
-                .show()
+                onAbort = {
+                    showMainMenu()
+                }
+            }.show()
         }
         super.onBackPressed()
     }
@@ -763,138 +437,37 @@ class GameCountDownActivity : BaseActivity() {
     }
 
     /**
-     * @return true if service has already been running and started
-     */
-    private fun startTimerService() {
-        startService(Intent(this, CountdownTimerService::class.java))
-        doBindService()
-    }
-
-    private fun stopTimerService() {
-        unregisterRegister()
-        doUnbindService()
-        stopService(Intent(this, CountdownTimerService::class.java))
-    }
-
-    private fun unregisterRegister() {
-        try {
-            unregisterReceiver(br)
-        } catch (e: Exception) {
-        }
-        Log.i("GameCountDownActivity", "Unregistered Broadcast Receiver.")
-    }
-
-    private fun updateAndResumeTimer() {
-        mBoundService!!.currentRoundTimeMs = currentRoundTimeMs
-        if (viewModel.game.gameTimeInfinite == 0) {
-            mBoundService!!.currentGameTimeMs = currentGameTimeMs
-        }
-        mBoundService!!.resumeTimer()
-    }
-
-    private fun updateTimer() {
-        mBoundService!!.currentRoundTimeMs = currentRoundTimeMs
-        if (viewModel.game.gameTimeInfinite == 0) {
-            mBoundService!!.currentGameTimeMs = currentGameTimeMs
-        }
-    }
-
-    /**
      * receive Broadcast Information, interpret this and update GUI and every variable based on information received
      * @param intent
      */
-    private fun updateGUI(intent: Intent) {
-        var gameMsTillFinished: Long
-        var gameMsExceeded: Long
-        var roundMsTillFinished: Long
-        var roundMsExceeded: Long
-        var gameFinishedSignal = false
-        var roundFinishedSignal = false
-        if (intent.extras != null) {
-            // retrieved all possible value
-            gameMsTillFinished =
-                intent.getLongExtra(TAGHelper.GAME_COUNT_DOWN_TAG, TAGHelper.DEFAULT_VALUE_LONG)
-            gameMsExceeded = intent.getLongExtra(
-                TAGHelper.GAME_COUNT_IN_NEGATIVE_TAG,
-                TAGHelper.DEFAULT_VALUE_LONG
-            )
-            gameFinishedSignal = intent.getBooleanExtra(TAGHelper.GAME_FINISHED_SIGNAL, false)
-            roundMsTillFinished =
-                intent.getLongExtra(TAGHelper.ROUND_COUNT_DOWN_TAG, TAGHelper.DEFAULT_VALUE_LONG)
-            roundMsExceeded = intent.getLongExtra(
-                TAGHelper.ROUND_COUNT_IN_NEGATIVE_TAG,
-                TAGHelper.DEFAULT_VALUE_LONG
-            )
-            roundFinishedSignal = intent.getBooleanExtra(TAGHelper.ROUND_FINISHED_SIGNAL, false)
+    private fun updateGUI() {
 
-            // handle game timer
-            // apparently the 2 signals don't always match => combine signal from intent and signal from mBoundService.getBroadcastIntent()
-            // for only one time signal
-            if (gameFinishedSignal && mBoundService!!.broadcastIntent
-                    .getBooleanExtra(TAGHelper.GAME_FINISHED_SIGNAL, false)
-            ) {
-                // Remove finish signal after reading
-                mBoundService!!.broadcastIntent.removeExtra(TAGHelper.GAME_FINISHED_SIGNAL)
-                currentGameTimeMs = 0
-                if (viewModel.game.chessMode == 1) {
-                    finishGame()
-                }
-                /*isFinished = 1;*/
-            }
+        val gameMsTillFinished: Long = viewModel.remainingGameTime
+        val gameMsExceeded: Long = -min(0, viewModel.remainingGameTime)
+        val roundMsTillFinished: Long = viewModel.elapsedTime()
+        val roundMsExceeded: Long = -min(0, viewModel.elapsedTime())
 
-            // handle round timer
-            // apparently the 2 signals don't always match => combine signal from intent and signal from mBoundService.getBroadcastIntent()
-            // for only one time signal
-            if (roundFinishedSignal && mBoundService!!.broadcastIntent
-                    .getBooleanExtra(TAGHelper.ROUND_FINISHED_SIGNAL, false)
-            ) {
-                // Remove finish signal after reading
-                mBoundService!!.broadcastIntent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL)
-                intent.removeExtra(TAGHelper.ROUND_FINISHED_SIGNAL)
-                currentRoundTimeMs = 0
-                if (viewModel.game.chessMode == 1) {
-                    if (isFinished == 0 && viewModel.game.resetRoundTime == 0) {
-                        mBoundService!!.pauseTimer()
-                        nextPlayerButton!!.performClick()
-                        // TODO if chess mode => last player then automatically finish
-                        //wantToFinish.onClick(findViewById(R.id.main_content));
-                    } else nextPlayerButton!!.performClick()
-                }
-            }
-
-            if (gameMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG) {
-                currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG
-                currentGameTimeMs = gameMsTillFinished
-            } else if (gameMsExceeded != TAGHelper.DEFAULT_VALUE_LONG) {
-                currentExceedGameTimeMs = gameMsExceeded
-            }
-
-            if (roundMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG) {
-                currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG
-                currentRoundTimeMs = roundMsTillFinished
-            } else if (roundMsExceeded != TAGHelper.DEFAULT_VALUE_LONG) {
-                currentExceedRoundTimeMs = roundMsExceeded
-            }
-            gameTime = currentGameTimeMs
-            updateTimerTextViews()
+        if (viewModel.game.chessMode == 1 && gameMsExceeded > 0) {
+            finishGame()
         }
-    }
+        if (viewModel.game.chessMode == 1 && roundMsExceeded > 0) {
+            viewModel.endPlayerRound()
+        }
 
-    /**
-     * before starting to work, check if Database and Singleton Object (use to save some objects
-     * and transferring objects between activity), if any attribute is null --> move to main activity
-     * and remove all other activities --> start new
-     */
-    fun checkIfSingletonDataIsCorrupt(): Boolean {
-        if (!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
-                    && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())
-        ) {
-            val intent = Intent(this, MainActivity::class.java)
-            // clear all other activities
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
-            return true
-        } else return false
+        if (gameMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG) {
+            currentExceedGameTimeMs = TAGHelper.DEFAULT_VALUE_LONG
+            currentGameTimeMs = gameMsTillFinished
+        } else if (gameMsExceeded != TAGHelper.DEFAULT_VALUE_LONG) {
+            currentExceedGameTimeMs = gameMsExceeded
+        }
+
+        if (roundMsTillFinished != TAGHelper.DEFAULT_VALUE_LONG) {
+            currentExceedRoundTimeMs = TAGHelper.DEFAULT_VALUE_LONG
+            currentRoundTimeMs = roundMsTillFinished
+        } else if (roundMsExceeded != TAGHelper.DEFAULT_VALUE_LONG) {
+            currentExceedRoundTimeMs = roundMsExceeded
+        }
+        gameTime = currentGameTimeMs
+        updateTimerTextViews()
     }
 }
