@@ -22,19 +22,19 @@ interface GameDao {
     fun getGames(games: List<Long>): List<GameWithPlayer>
 
     @Insert
-    fun addGameWithPlayer(game: GameWithPlayer)
-
-    @Insert
     fun addGame(game: Game)
 
     @Insert(entity = PlayerGameData::class)
     fun addPlayersToGame(players: List<PlayerGameData>)
 
     @Update
-    fun updateGame(game: GameWithPlayer)
+    fun updateGame(game: Game)
+
+    @Update
+    fun updatePlayerData(players: List<PlayerGameData>)
 
     @Delete
-    fun deleteGame(game: GameWithPlayer)
+    fun deleteGame(game: Game)
 
     @Query("SELECT * FROM games WHERE saved = 1")
     fun allSavedGames(): List<GameWithPlayer>
@@ -42,7 +42,7 @@ interface GameDao {
     @Query("SELECT * FROM games WHERE finished = 1")
     fun allFinishedGames(): List<GameWithPlayer>
 
-    @Query("SELECT * FROM games WHERE _id = MAX(_id)")
-    fun getLastGame(): Game?
+    @Query("SELECT * FROM games WHERE _id = (SELECT MAX(_id) FROM games)")
+    fun getLastGame(): List<Game>
 
 }

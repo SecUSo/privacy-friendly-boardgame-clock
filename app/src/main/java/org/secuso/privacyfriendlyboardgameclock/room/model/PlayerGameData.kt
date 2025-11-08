@@ -7,21 +7,7 @@ import androidx.room.Index
 
 @Entity(
     tableName = "player_game_data",
-    foreignKeys = [
-        ForeignKey(
-            entity = Game::class,
-            parentColumns = ["_id"],
-            childColumns = ["game_id"],
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = Player::class,
-            parentColumns = ["_id"],
-            childColumns = ["player_id"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ],
-    indices = [Index("game_id"), Index("player_id")]
+    primaryKeys = ["game_id", "player_id"],
 )
 data class PlayerGameData(
     @ColumnInfo(name = "game_id") var gameId: Long,

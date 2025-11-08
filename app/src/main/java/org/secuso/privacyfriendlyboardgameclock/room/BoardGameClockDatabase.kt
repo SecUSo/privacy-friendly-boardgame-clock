@@ -29,6 +29,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
         const val DATABASE_NAME = "database.db"
 
         val MIGRATION_1_2 = Migration(1,2) { database ->
+
             database.execSQL(
                 "CREATE TABLE player_game_data (" +
                         "game_id INTEGER NOT NULL, " +
@@ -42,7 +43,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                 "CREATE TABLE games_new (" +
                         "_id INTEGER NOT NULL," +
                         "date INTEGER NOT NULL," +
-                        "name TEXT NOT NULL," +
+                        "name TEXT NULL," +
                         "round_time INTEGER NOT NULL," +
                         "game_time INTEGER NOT NULL," +
                         "reset_round_time INTEGER NOT NULL," +
@@ -63,12 +64,28 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                 "INSERT INTO games_new (" +
                         "_id, date, name, round_time, game_time, reset_round_time, game_mode, round_time_delta," +
                         "current_game_time, next_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
-                    ") FROM games VALUES (" +
+                    ") SELECT " +
                         "_id, date, name, round_time, game_time, reset_round_time, game_mode, round_time_delta," +
                         "current_game_time, next_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
-                    ");"
+                    " FROM games;"
             )
-            val cursor = database.query("SELECT _id, players, players_times, player_rounds FROM games;")
+            database.execSQL(
+                "CREATE TABLE players_new (" +
+                        "_id INTEGER NOT NULL," +
+                        "date INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP," +
+                        "name TEXT NOT NULL," +
+                        "icon TEXT NULL," +
+                        "PRIMARY KEY (_id)" +
+                        ");"
+            )
+            database.execSQL(
+                "INSERT INTO players_new (" +
+                        "_id, date, name, icon" +
+                        ") SELECT " +
+                        "_id, date, name, icon" +
+                        " FROM players;"
+            )
+            val cursor = database.query("SELECT _id, players, players_times, players_rounds FROM games;")
             val insertStatement = database.compileStatement("INSERT INTO player_game_data (game_id, player_id, rounds, round_times) VALUES (?, ?, ?, ?);")
 
             while (cursor.moveToNext()) {
@@ -95,6 +112,8 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
 
             database.execSQL("DROP TABLE games;");
             database.execSQL("ALTER TABLE games_new RENAME TO games");
+            database.execSQL("DROP TABLE players;");
+            database.execSQL("ALTER TABLE players_new RENAME TO players");
         }
 
 

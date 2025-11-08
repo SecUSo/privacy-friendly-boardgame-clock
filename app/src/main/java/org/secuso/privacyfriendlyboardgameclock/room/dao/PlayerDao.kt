@@ -16,8 +16,8 @@ interface PlayerDao {
     @Query("SELECT _id FROM games INNER JOIN player_game_data ON _id = game_id WHERE player_id = :player")
     fun allGamesOfPlayer(player: Int): List<Int>
 
-    @Insert(entity = Player::class)
-    fun addPlayer(name: String, icon: Bitmap): Player
+    @Query("INSERT INTO players (name, icon) VALUES (:name, :icon)")
+    fun addPlayer(name: String, icon: Bitmap): Long
 
     @Query("SELECT * FROM players WHERE _id = :player")
     fun getPlayer(player: Int): Player

@@ -32,11 +32,10 @@ import java.util.Date
  */
 @Entity(tableName = "players")
 data class Player(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id") var id: Long = 0,
     @ColumnInfo(name = "name") var name: String = "",
     @ColumnInfo(name = "icon") var icon: Bitmap? = null
-
 ) {
     @ColumnInfo(name = "date", defaultValue = "CURRENT_TIMESTAMP") var date: Long = 0
         set(date) {
