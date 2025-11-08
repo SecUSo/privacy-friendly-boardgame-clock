@@ -18,7 +18,6 @@
 package org.secuso.privacyfriendlyboardgameclock.helpers;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
@@ -59,7 +58,6 @@ public class NumberPicker extends android.widget.NumberPicker {
         if (view instanceof EditText) {
             editText = ((EditText) view);
             editText.setTextSize(15);
-            editText.setTextColor(Color.BLACK);
         }
     }
 

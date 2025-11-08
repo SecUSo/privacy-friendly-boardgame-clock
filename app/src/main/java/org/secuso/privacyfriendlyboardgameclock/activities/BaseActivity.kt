@@ -16,8 +16,6 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.activities
 
-import android.app.ActivityManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -25,8 +23,6 @@ import androidx.core.content.ContextCompat
 import org.secuso.pfacore.model.DrawerMenu
 import org.secuso.pfacore.ui.activities.DrawerActivity
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
 import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedService
 
 /**
@@ -40,10 +36,6 @@ abstract class BaseActivity : DrawerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // for every activity, create/open database if necessary
-        PlayersDataSourceSingleton.getInstance(this.applicationContext).open()
-        GamesDataSourceSingleton.getInstance(this.applicationContext).open()
 
         // start service to close database when app is killed
         startService(Intent(baseContext, DetectTaskClearedService::class.java))
@@ -85,24 +77,6 @@ abstract class BaseActivity : DrawerActivity() {
     fun showToast(text: String?) {
         val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
         toast.show()
-    }
-
-    /**
-     * before starting to work, check if Database and Singleton Object (use to save some objects
-     * and transferring objects between activity), if any attribute is null --> move to main activity
-     * and remove all other activities --> start new
-     */
-    fun checkIfSingletonDataIsCorrupt(): Boolean {
-        if (!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
-                    && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())
-        ) {
-            val intent = Intent(this, MainActivity::class.java)
-            // clear all other activities
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
-            return true
-        } else return false
     }
 
     fun showMainMenu() {

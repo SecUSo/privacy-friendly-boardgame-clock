@@ -18,13 +18,14 @@ package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.content.res.Resources
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -36,13 +37,13 @@ import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.toColor
+import androidx.core.view.size
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import androidx.core.view.size
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.toColorInt
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.color.MaterialColors
 import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 
 /**
@@ -116,16 +117,13 @@ class NewGameActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
 
-        val dividerColor = "#024265"
         for (entry in listOf(game_time_s, game_time_m, round_time_s, round_time_m, delta_seconds, delta_minutes)) {
             entry.minValue = 0
             entry.maxValue = 59
-            setDividerColor(entry, dividerColor)
         }
         for (entry in listOf(game_time_h, round_time_h, delta_hours)) {
             entry.minValue = 0
             entry.maxValue = 99
-            setDividerColor(entry, dividerColor)
         }
 
         game_time_h.setOnValueChangedListener(gameValueChangedListener)
@@ -146,6 +144,10 @@ class NewGameActivity : BaseActivity() {
         // game timer number pickers should be greyed out and deactivated once "infinite" is selected
         check_game_time_infinite.setOnCheckedChangeListener { buttonView, isChecked ->
             val game_timers = findViewById<LinearLayout>(R.id.timer_new_game_time)
+            val color = TypedValue().let {
+                theme.resolveAttribute(org.secuso.pfacore.R.attr.colorOnSurface, it, true)
+                it.data
+            }
             if (isChecked) {
                 if (nameEntered && roundTimeEntered) {
                     choosePlayersButtonBlue.visibility = View.VISIBLE
@@ -156,19 +158,17 @@ class NewGameActivity : BaseActivity() {
                 }
 
                 for (i in 0..<game_timers.size) {
-                    if (game_timers.getChildAt(i) is org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker) {
-                        game_timers.getChildAt(i).setEnabled(false)
-                        for (j in 0..<(game_timers.getChildAt(i) as ViewGroup).size) {
-                            (game_timers.getChildAt(i) as ViewGroup).getChildAt(j).apply {
-                                if (this is EditText) {
-                                    setTextColor(Color.LTGRAY)
-                                }
-                            }
-                        }
-                    } else if (game_timers.getChildAt(i) is TextView) {
-                        (game_timers.getChildAt(i) as TextView).setTextColor(Color.LTGRAY)
-                    }
+                    game_timers.getChildAt(i).isEnabled = false
                 }
+
+                // Calculate the correct disabled color and set it for the text views
+                val disabledAlpha = resources.getFloat(com.google.android.material.R.dimen.material_emphasis_disabled)
+                val disabledColor = color.toColor().let {
+                    Color.argb(it.alpha() *  disabledAlpha, it.red(), it.green(), it.blue())
+                }
+                findViewById<TextView>(R.id.hours_new_game_time_label).setTextColor(disabledColor)
+                findViewById<TextView>(R.id.minutes_new_game_time_label).setTextColor(disabledColor)
+                findViewById<TextView>(R.id.seconds_new_game_time_label).setTextColor(disabledColor)
             } else {
                 if (nameEntered && roundTimeEntered && gameTimeEntered) {
                     choosePlayersButtonBlue.visibility = View.VISIBLE
@@ -179,18 +179,12 @@ class NewGameActivity : BaseActivity() {
                 }
 
                 Log.e("NewGameActivity", game_timers.size.toString())
-                for (i in 0..<game_timers.size) if (game_timers.getChildAt(i) is org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker) {
-                    game_timers.getChildAt(i).setEnabled(true)
-                    for (j in 0..<(game_timers.getChildAt(i) as ViewGroup).size) {
-                        (game_timers.getChildAt(i) as ViewGroup).getChildAt(j).apply {
-                            if (this is EditText) {
-                                setTextColor(Color.BLACK)
-                            }
-                        }
-                    }
-                } else if (game_timers.getChildAt(i) is TextView) (game_timers.getChildAt(i) as TextView).setTextColor(
-                    Color.BLACK
-                )
+                for (i in 0..<game_timers.size) {
+                    game_timers.getChildAt(i).isEnabled = true
+                }
+                findViewById<TextView>(R.id.hours_new_game_time_label).setTextColor(color)
+                findViewById<TextView>(R.id.minutes_new_game_time_label).setTextColor(color)
+                findViewById<TextView>(R.id.seconds_new_game_time_label).setTextColor(color)
             }
 
             setGameTime()
@@ -294,8 +288,6 @@ class NewGameActivity : BaseActivity() {
 
         setGameTime()
         setRoundTime()
-        val rootView = findViewById<View>(R.id.main_content)
-        rootView.setBackgroundColor(getResources().getColor(R.color.white))
     }
 
     private fun setRoundTime() {
@@ -313,26 +305,6 @@ class NewGameActivity : BaseActivity() {
         val game_time_h_in_s = game_time_h.value * 3600
         val game_time_m_in_s = game_time_m.value * 60
         game_total_time_in_s = game_time_s.value + game_time_m_in_s + game_time_h_in_s
-    }
-
-    private fun setDividerColor(picker: NumberPicker?, color: String) {
-        val pickerFields = NumberPicker::class.java.declaredFields
-        for (pf in pickerFields) {
-            if (pf.getName() == "mSelectionDivider") {
-                pf.isAccessible = true
-                try {
-                    val colorDrawable = color.toColorInt().toDrawable()
-                    pf.set(picker, colorDrawable)
-                } catch (e: IllegalArgumentException) {
-                    e.printStackTrace()
-                } catch (e: Resources.NotFoundException) {
-                    e.printStackTrace()
-                } catch (e: IllegalAccessException) {
-                    e.printStackTrace()
-                }
-                break
-            }
-        }
     }
 
     private fun createNewGame() {
