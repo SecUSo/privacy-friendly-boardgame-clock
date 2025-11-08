@@ -67,10 +67,13 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val remainingGameTime
         get() = gameTimer.currentElapsedTime
 
-    fun getLastGame() = repository.gameDao().getLastGame()
+    fun getLastGame() = repository.gameDao().getLastGame().firstOrNull()
 
     fun addGame(game: Game) = repository.gameDao().addGame(game)
-    fun saveGame() = repository.gameDao().updateGame(game)
+    fun saveGame() {
+        repository.gameDao().updateGame(game.game)
+        repository.gameDao().updatePlayerData(game.players)
+    }
 
     fun getAllPlayers() = repository.playerDao().allPlayers()
 
