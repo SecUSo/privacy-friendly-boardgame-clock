@@ -60,12 +60,12 @@ class ResumeGameActivity : BaseActivity(), ItemClickListener {
 
     private fun resumeGame() = View.OnClickListener {
         if (chosenGame != null) {
-            viewModel.game = chosenGame!!
             val intent = if (chosenGame!!.gameMode == TAGHelper.TIME_TRACKING) {
                 Intent(this@ResumeGameActivity, GameTimeTrackingModeActivity::class.java)
             } else {
                 Intent(this@ResumeGameActivity, GameCountDownActivity::class.java)
             }
+            intent.putExtra(GameViewModel.EXTRA_GAME_ID, chosenGame!!.game.id)
 
             startActivity(intent)
         } else {
