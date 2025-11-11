@@ -7,10 +7,10 @@ import java.io.ByteArrayOutputStream
 
 class Converters {
     @TypeConverter
-    fun fromBitmap(bitmap: Bitmap?) = ByteArrayOutputStream().let {
+    fun fromBitmap(bitmap: Bitmap?): ByteArray = ByteArrayOutputStream().let {
         bitmap?.compress(Bitmap.CompressFormat.PNG, 0, it)
-        it.toByteArray().toString()
+        it.toByteArray()
     }
     @TypeConverter
-    fun toBitmap(bytes: String) = BitmapFactory.decodeByteArray(bytes.toByteArray(), 0, bytes.length)
+    fun toBitmap(bytes: ByteArray) = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
 }
