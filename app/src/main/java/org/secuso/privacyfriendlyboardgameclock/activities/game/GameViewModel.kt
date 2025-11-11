@@ -2,7 +2,13 @@ package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -14,38 +20,14 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.ITimer
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.helpers.Timer
 import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
-import org.secuso.privacyfriendlyboardgameclock.room.model.Game
-import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
+class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(application) {
 
     private val repository = BoardGameClockDatabase.getInstance(application)
-
-    var newGame: Game? = null
-        set(value) {
-            field = value
-            if (value == null) {
-                return
-            }
-            viewModelScope.launch {
-                repository.gameDao().apply {
-                    if (getGame(value.id) == null) {
-                      addGame(value)
-                    }
-                }
-            }
-        }
-    private var _game: GameWithPlayer? = null
-
-    var game: GameWithPlayer
-        get() = _game ?: throw IllegalStateException("Set game first")
-        set(value) {
-            _game = value
-        }
-
-    var players: List<Player> = listOf()
+    val game = repository.gameDao().getGame(gameId)!!
+    var players: List<Player> = repository.playerDao().getPlayers(game.players.map { it.playerId }.toList())
     val currentPlayerData
         get() = game.players[currentIndex]
     val currentPlayer
@@ -67,25 +49,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val remainingGameTime
         get() = gameTimer.currentElapsedTime
 
-    fun getLastGame() = repository.gameDao().getLastGame().firstOrNull()
-
-    fun addGame(game: Game) = repository.gameDao().addGame(game)
     fun saveGame() {
         repository.gameDao().updateGame(game.game)
         repository.gameDao().updatePlayerData(game.players)
-    }
-
-    fun getAllPlayers() = repository.playerDao().allPlayers()
-
-    fun addPlayersToGame(players: List<Player>) {
-        players.map { PlayerGameData(newGame!!.id, it.id, 1, newGame!!.roundTime) }.apply {
-            viewModelScope.launch {
-                repository.gameDao().addPlayersToGame(this@apply)
-            }
-            game = GameWithPlayer(newGame!!, this)
-            newGame = null
-            isNewGame = true
-        }
     }
 
     fun initTimeTrackingGame() {
@@ -128,9 +94,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun elapsedTime(index: Int = currentIndex) = timers[index].currentElapsedTime
     fun toggleTimer(index: Int = currentIndex) {
         if (isTimerRunning(index)) {
-            timers[index].stop()
+            stopTimer(index)
         } else {
-            timers[index].start()
+            startTimer(index)
         }
     }
     fun endPlayerRound() {
@@ -180,7 +146,20 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getAllSavedGames() = repository.gameDao().allSavedGames()
 
+    fun addPlayer(player: Player) = repository.playerDao().addPlayer(player.name, player.icon)
+
     fun interface SelectNewPlayerOrder {
         fun select(players: List<Pair<Int, PlayerGameData>>, defer: CompletableDeferred<List<Int>>): Unit
+    }
+
+    companion object {
+        const val EXTRA_GAME_ID = "game_id"
+        val GAME_ID_KEY: CreationExtras.Key<Long> = object : CreationExtras.Key<Long> {}
+
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                GameViewModel(application = checkNotNull(this[APPLICATION_KEY]), checkNotNull(this[GAME_ID_KEY]))
+            }
+        }
     }
 }

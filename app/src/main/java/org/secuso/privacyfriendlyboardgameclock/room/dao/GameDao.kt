@@ -18,11 +18,14 @@ interface GameDao {
     @Query("SELECT * FROM games WHERE _id = :game")
     fun getGame(game: Long): GameWithPlayer?
 
+    @Query("SELECT * FROM games WHERE _id = :game")
+    fun getUnfinishedGame(game: Long): Game?
+
     @Query("SELECT * FROM games WHERE _id IN (:games)")
     fun getGames(games: List<Long>): List<GameWithPlayer>
 
     @Insert
-    fun addGame(game: Game)
+    fun addGame(game: Game): Long
 
     @Insert(entity = PlayerGameData::class)
     fun addPlayersToGame(players: List<PlayerGameData>)

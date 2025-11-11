@@ -43,7 +43,8 @@ import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.color.MaterialColors
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 
 /**
@@ -53,7 +54,7 @@ import org.secuso.privacyfriendlyboardgameclock.room.model.Game
  * This is the Activity for the New Game Page, after touching New Game Button on the main page
  */
 class NewGameActivity : BaseActivity() {
-    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
+    private val viewModel by lazy { ViewModelProvider(this)[NewGameViewModel::class.java] }
     private val round_time_s by lazy { findViewById<NumberPicker>(R.id.seconds_new_round_time) }
     private val round_time_m by lazy { findViewById<NumberPicker>(R.id.minutes_new_round_time) }
     private val round_time_h by lazy { findViewById<NumberPicker>(R.id.hours_new_round_time) }
@@ -366,24 +367,26 @@ class NewGameActivity : BaseActivity() {
             //game mode
             newGame.gameMode = game_mode.selectedItemPosition
 
-            viewModel.newGame = newGame
-
-
-            // round time must not be larger than game time
-            if (newGame.gameTime < newGame.roundTime) {
-                newGame.roundTime = newGame.gameTime
-                AlertDialog.Builder(this)
-                    .setTitle(R.string.action_new_game)
-                    .setMessage(R.string.roundTimeLargerInfo)
-                    .setPositiveButton(R.string.ok) { _,_ -> choosePlayers() }
-                    .setIcon(android.R.drawable.ic_menu_info_details)
-                    .show()
-            } else choosePlayers()
+            lifecycleScope.launch {
+                val id = viewModel.addNewGame(newGame)
+                // round time must not be larger than game time
+                if (newGame.gameTime < newGame.roundTime) {
+                    newGame.roundTime = newGame.gameTime
+                    AlertDialog.Builder(this@NewGameActivity)
+                        .setTitle(R.string.action_new_game)
+                        .setMessage(R.string.roundTimeLargerInfo)
+                        .setPositiveButton(R.string.ok) { _,_ -> choosePlayers(id) }
+                        .setIcon(android.R.drawable.ic_menu_info_details)
+                        .show()
+                } else choosePlayers(id)
+            }
         }
     }
 
-    fun choosePlayers() {
-        val intent = Intent(this, ChoosePlayersActivity::class.java)
+    fun choosePlayers(id: Long) {
+        val intent = Intent(this, ChoosePlayersActivity::class.java).apply {
+            putExtra(GameViewModel.EXTRA_GAME_ID, id)
+        }
         startActivity(intent)
     }
 
