@@ -8,8 +8,7 @@
     android:layout_height="match_parent"
     tools:context="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
     android:orientation="vertical"
-    android:weightSum="10"
-    style="?android:buttonBarStyle">
+    android:weightSum="10">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/player_management_main"
