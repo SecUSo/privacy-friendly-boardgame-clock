@@ -31,7 +31,7 @@ import java.util.Date
  */
 @Entity(tableName = "games")
 data class Game(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id") override var id: Long = 0,
     @ColumnInfo(name = "name") override var name: String? = null,
     @ColumnInfo(name = "round_time") override var roundTime: Long = 0,
