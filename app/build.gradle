@@ -89,4 +89,6 @@ dependencies {
     implementation(libs.ax.room)
     ksp(libs.ax.room.compiler)
     implementation(libs.ax.room.ktx)
+
+    implementation libs.bundles.camerax
 }

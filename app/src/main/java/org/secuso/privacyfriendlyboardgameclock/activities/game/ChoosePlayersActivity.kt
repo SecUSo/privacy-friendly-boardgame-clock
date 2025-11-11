@@ -16,29 +16,54 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.PorterDuff
+import android.media.Image
+import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.view.ActionMode
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.ImageProxy
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.await
+import com.flask.colorpicker.ColorPickerView
+import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.launch
+import org.secuso.pfacore.model.dialog.ValueSelectionDialog
+import org.secuso.pfacore.model.permission.PFAPermission
 import org.secuso.pfacore.ui.activities.BaseActivity
+import org.secuso.pfacore.ui.declareUsage
+import org.secuso.pfacore.ui.dialog.ShowSelectOptionDialog
+import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
+import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.activities.game.GameCountDownActivity
-import org.secuso.privacyfriendlyboardgameclock.activities.game.GameTimeTrackingModeActivity
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
+import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentPlayerManagementNewplayerBinding
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
@@ -46,6 +71,10 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import java.util.Random
+import java.util.concurrent.Executors
+import androidx.core.graphics.scale
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.repeatOnLifecycle
 
 /**
  * Created by Quang Anh Dang on 06.01.2018.
@@ -54,8 +83,7 @@ import java.util.Random
  * This is the Choose Player Activity after creating a new game
  */
 class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
-    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
-    private val listPlayers: MutableList<Player> by lazy { viewModel.getAllPlayers().toMutableList() }
+    private val viewModel by lazy { ViewModelProvider(this)[ChoosePlayersActivityViewModel::class.java] }
     private lateinit var playerListAdapter: PlayerListAdapter
     private val fabStartGame: FloatingActionButton by lazy { findViewById(R.id.fab_start_game) }
     private val fabDelete: FloatingActionButton by lazy { findViewById(R.id.fab_delete_player) }
@@ -68,30 +96,145 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
     private val insertAlert: View by lazy { findViewById(R.id.insert_alert) }
     private val emptyListLayout: View by lazy { findViewById(R.id.emptyListLayout) }
 
-    /**
-     * before starting to work, check if Database and Singleton Object (use to save some objects
-     * and transferring objects between activity), if any attribute is null --> move to main activity
-     * and remove all other activities --> start new
-     */
-    fun checkIfSingletonDataIsCorrupt(): Boolean {
-        if (!(GamesDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull()
-                    && PlayersDataSourceSingleton.getInstance(this).checkIfAllVariableNotNull())
-        ) {
-            val intent = Intent(this, MainActivity::class.java)
-            // clear all other activities
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
-            return true
-        } else return false
+    private fun createColorSelectionDialog(onColorChosen: (Int) -> Unit) = ColorPickerDialogBuilder
+        .with(this@ChoosePlayersActivity)
+        .setTitle("Choose color")
+        .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
+        .density(12)
+        .setOnColorSelectedListener { }
+        .setPositiveButton("OK") { dialog, selectedColor, allColors -> onColorChosen(selectedColor)}
+        .setNegativeButton("Cancel", null)
+        .build()
+
+    private lateinit var pictureConsumer: (Image) -> Unit
+
+    private lateinit var useCamera: () -> Unit
+
+    private val createNewPlayerDialog: ShowValueSelectionDialog<Player, FragmentPlayerManagementNewplayerBinding> by lazy {
+        val valid = MutableLiveData(false)
+        var icon: Bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_android)
+
+        val bindingSupplier: () -> FragmentPlayerManagementNewplayerBinding = {
+            val binding = FragmentPlayerManagementNewplayerBinding.inflate(layoutInflater)
+
+            binding.editName.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    valid.postValue(s?.isNotEmpty() ?: false)
+                }
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
+            val colorDialog = createColorSelectionDialog {
+                binding.picture.setImageBitmap(icon)
+                binding.picture.setColorFilter(it, PorterDuff.Mode.DST_OVER)
+                binding.color.setBackgroundColor(it)
+            }
+            binding.color.setOnClickListener { colorDialog.show() }
+
+            pictureConsumer = {
+                val bitmap = it.planes[0].buffer.let { buffer ->
+                    val bytes = ByteArray(buffer.capacity())
+                    buffer[bytes]
+                    BitmapFactory.decodeByteArray(bytes, 0, bytes.size, null)
+                }
+                runOnUiThread {
+                    val icon = cutSquareBitmap(bitmap).scale(
+                        binding.picture.width,
+                        binding.picture.height,
+                        false
+                    )
+                    binding.picture.setImageBitmap(icon)
+                    binding.picture.colorFilter = null
+                }
+
+            }
+            binding.picture.setOnClickListener { useCamera() }
+            binding
+        }
+
+        val dialog = ValueSelectionDialog.build<Player>(this@ChoosePlayersActivity) {
+            title = { ContextCompat.getString(this@ChoosePlayersActivity, R.string.editPlayer) }
+            acceptLabel = ContextCompat.getString(this@ChoosePlayersActivity, R.string.confirm)
+            lifecycleOwner = this@ChoosePlayersActivity
+            isValid = { valid }
+            onConfirmation = {
+                viewModel.addPlayer(it)
+            }
+        }
+        ShowValueSelectionDialog(
+            bindingSupplier = bindingSupplier,
+            dialog = dialog,
+            extraction = { Player(
+                name = it.editName.text.toString(),
+                icon = it.picture.drawToBitmap()
+            ) }
+        )
     }
+
+    private val choosePlayerCreationMethod by lazy {
+        ShowSelectOptionDialog(this) {
+            title = { ContextCompat.getString(this@ChoosePlayersActivity, R.string.dialog_choose_new_player) }
+            entry {
+                title = ContextCompat.getString(this@ChoosePlayersActivity, R.string.new_player)
+                onClick = {
+                    createNewPlayerDialog.show()
+                }
+            }
+            entry {
+                title = ContextCompat.getString(this@ChoosePlayersActivity, R.string.contact)
+                onClick = {
+                    if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this@ChoosePlayersActivity, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(
+                            this@ChoosePlayersActivity,
+                            arrayOf<String>(Manifest.permission.READ_CONTACTS),
+                            TAGHelper.REQUEST_READ_CONTACT_CODE
+                        )
+                    }
+                    else if (ContextCompat.checkSelfPermission(this@ChoosePlayersActivity, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+//                        addPlayerFromContacts()
+                    }
+                }
+            }
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Check if date saved in Singleton Class corrupted, if yes return to Main Menu
-        if (checkIfSingletonDataIsCorrupt()) return
-
         setContentView(R.layout.activity_choose_players)
+
+        useCamera = PFAPermission.Camera.declareUsage(this) {
+            onDenied = { Log.d("Camera", "denied") }
+            showRationale = {
+                rationaleTitle = "Feature: Custom Image"
+                rationaleText = "This is needed"
+            }
+            onGranted = {
+                lifecycleScope.launch {
+                    val cameraProvider =
+                        ProcessCameraProvider.getInstance(this@ChoosePlayersActivity).await()
+                    val imageCapture = ImageCapture.Builder()
+                        .setTargetRotation(display!!.rotation)
+                        .build()
+                    cameraProvider.bindToLifecycle(
+                        this@ChoosePlayersActivity,
+                        CameraSelector.DEFAULT_BACK_CAMERA,
+                        imageCapture
+                    )
+
+                    imageCapture.takePicture(
+                        Executors.newSingleThreadExecutor(),
+                        object : ImageCapture.OnImageCapturedCallback() {
+                            override fun onError(exception: ImageCaptureException) {
+                                Log.d("Camera", "error: $exception")
+                            }
+                            override fun onCaptureSuccess(image: ImageProxy) {
+                                pictureConsumer(image.image!!)
+                            }
+                        })
+                }
+            }
+        }
 
         // FAB Listener
         fabStartGame.setBackgroundColor(R.drawable.button_disabled)
@@ -99,12 +242,20 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
 
         fabDelete.setOnClickListener(onFABDeleteListenter())
 
-        playerListAdapter = PlayerListAdapter(this, listPlayers, this)
+        playerListAdapter = PlayerListAdapter(this, viewModel.getAllPlayersSync(), this)
         findViewById<RecyclerView>(R.id.player_list).apply {
             setHasFixedSize(true)
             adapter = playerListAdapter
             layoutManager = LinearLayoutManager(this@ChoosePlayersActivity)
             itemAnimator = null
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.getAllPlayers().collect {
+                    playerListAdapter.playersList = it
+                }
+            }
         }
 
         val anim: Animation = AlphaAnimation(0.0f, 1.0f).apply {
@@ -204,44 +355,22 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
      */
     private fun createNewGame() = View.OnClickListener {
         val selectedPlayers = playerListAdapter.getOrderdSelectedPlayers()
+        val gameId = intent.getLongExtra(GameViewModel.EXTRA_GAME_ID, -1)
 
-        viewModel.newGame!!.apply {
-            //start player index
-            when (gameMode) {
-                TAGHelper.CLOCKWISE, TAGHelper.MANUAL_SEQUENCE, TAGHelper.TIME_TRACKING -> {
-                    startPlayerIndex = 0
-                    nextPlayerIndex = 1
-                }
-                TAGHelper.COUNTER_CLOCKWISE -> {
-                    startPlayerIndex = 0
-                    nextPlayerIndex = selectedPlayers.size - 1
-                }
-                TAGHelper.RANDOM -> {
-                    startPlayerIndex = 0
+        if (gameId == -1L) {
+            throw IllegalStateException("No gameId was supplied in the intent")
+        }
 
-                    var randomPlayerIndex = Random().nextInt(selectedPlayers.size)
-                    while (randomPlayerIndex == startPlayerIndex) {
-                        randomPlayerIndex = Random().nextInt(selectedPlayers.size)
-                    }
-                    nextPlayerIndex = randomPlayerIndex
-                }
+        lifecycleScope.launch {
+            val game = viewModel.createGame(gameId, selectedPlayers)
+            val intent = if (game.gameMode == TAGHelper.TIME_TRACKING) {
+                Intent(this@ChoosePlayersActivity, GameTimeTrackingModeActivity::class.java)
+            } else {
+                Intent(this@ChoosePlayersActivity, GameCountDownActivity::class.java)
             }
+            intent.putExtra(GameViewModel.EXTRA_GAME_ID, gameId)
+            startActivity(intent)
         }
-
-        viewModel.addPlayersToGame(selectedPlayers)
-
-        // if game is finally created and game time is infinite, set game time to -1
-        if (viewModel.game.game.gameTimeInfinite == 1) {
-            viewModel.game.game.gameTime = 0
-            viewModel.game.game.currentGameTime = TAGHelper.DEFAULT_VALUE_LONG
-        }
-
-        val intent = if (viewModel.game.game.gameMode == TAGHelper.TIME_TRACKING) {
-            Intent(this@ChoosePlayersActivity, GameTimeTrackingModeActivity::class.java)
-        } else {
-            Intent(this@ChoosePlayersActivity, GameCountDownActivity::class.java)
-        }
-        startActivity(intent)
     }
 
     /**
@@ -256,15 +385,10 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_add_newplayer) {
-            val ft = supportFragmentManager.beginTransaction()
-            val prev = supportFragmentManager.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
-            if (prev != null) ft.remove(prev)
-            ft.addToBackStack(null)
-
-            // Create and show the dialog
-            val chooseDialogFragment =
-                PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:")
-            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT)
+            choosePlayerCreationMethod.show()
+        }
+        else {
+            super.onOptionsItemSelected(item)
         }
         return true
     }
@@ -344,4 +468,21 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
             playerListAdapter.notifyDataSetChanged()
         }
     }
+}
+
+private fun cutSquareBitmap(b: Bitmap): Bitmap {
+    val bHeight = b.getHeight()
+    val bWidth = b.getWidth()
+    var longEdge = bHeight
+    var shortEdge = bWidth
+
+    if (bWidth > bHeight) {
+        longEdge = bWidth
+        shortEdge = bHeight
+    }
+
+    val diff = longEdge - shortEdge
+
+    if (bWidth <= bHeight) return Bitmap.createBitmap(b, 0, diff / 2, shortEdge, shortEdge)
+    else return Bitmap.createBitmap(b, diff / 2, 0, shortEdge, shortEdge)
 }
