@@ -23,7 +23,7 @@ class Timer(startTime: Long = 0L): ITimer {
     override val currentElapsedTime: Long
         get() {
             return if (isRunning) {
-                measuredTime + (System.currentTimeMillis() - measuredTime)
+                measuredTime + (System.currentTimeMillis() - startTime!!)
             } else {
                 measuredTime
             }
@@ -48,6 +48,7 @@ class Timer(startTime: Long = 0L): ITimer {
     override fun stop() {
         if (startTime != null) {
             measuredTime = currentElapsedTime
+            startTime = null
         }
         isPaused = false
     }
@@ -100,7 +101,7 @@ class CountdownTimer(private val timeToMeasure: Long, val onFinish: () -> Unit):
     }
     override fun stop() = timer.stop()
     override val currentElapsedTime: Long
-        get() = timer.currentElapsedTime
+        get() = currentRemainingTime
     override val isRunning: Boolean
         get() = timer.isRunning
     override val measuredTime: Long
