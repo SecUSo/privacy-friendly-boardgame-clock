@@ -2,9 +2,9 @@ package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.TypedValue
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -19,8 +19,10 @@ import androidx.core.view.size
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.viewmodel.MutableCreationExtras
 import kotlinx.coroutines.launch
 import org.secuso.pfacore.model.dialog.AbortElseDialog
 import org.secuso.pfacore.model.dialog.ValueSelectionDialog
@@ -32,11 +34,7 @@ import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.databinding.DialogSetPlayerSequenceBinding
 import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
-import org.secuso.privacyfriendlyboardgameclock.helpers.SelectPlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import org.secuso.privacyfriendlyboardgameclock.room.model.Player
-import java.util.Random
-import kotlin.collections.indexOf
 import kotlin.math.min
 
 /**
@@ -46,10 +44,27 @@ import kotlin.math.min
  * This is the Activity for the actual Game Countdown Mode
  */
 class GameCountDownActivity : BaseActivity() {
-    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
+    private val viewModel by lazy {
+        ViewModelProvider(
+            this@GameCountDownActivity.viewModelStore,
+            factory = GameViewModel.Factory,
+            defaultCreationExtras = MutableCreationExtras().apply {
+                set(APPLICATION_KEY, application)
+                set(GameViewModel.GAME_ID_KEY, this@GameCountDownActivity.intent.extras!!.getLong(GameViewModel.EXTRA_GAME_ID))
+            }
+        )[GameViewModel::class.java]
+    }
+
+    val colorNormal by lazy {
+        TypedValue().apply {
+            theme.resolveAttribute(org.secuso.pfacore.R.attr.colorOnSurface, this, true)
+        }.data
+    }
+    val colorOvertime by lazy {
+        ContextCompat.getColor(this, R.color.red)
+    }
 
     private var gameTime: Long = 0
-    private var playerRoundTimes: HashMap<Long?, Long?>? = null
 
     // which round number will the player be in the next time he has turn
 
@@ -153,50 +168,54 @@ class GameCountDownActivity : BaseActivity() {
     }*/
 
     val selectPlayerOrder = GameViewModel.SelectNewPlayerOrder { players, defer ->
-        val binding = DialogSetPlayerSequenceBinding.inflate(layoutInflater)
         val _isValid = MutableLiveData<Boolean>(false)
         val selectedPlayers = mutableListOf<Int>()
-        binding.setPlayerSequenceList.apply {
-            choiceMode = ListView.CHOICE_MODE_MULTIPLE
-            onItemClickListener = AdapterView.OnItemClickListener { adapter, v, position, id ->
-                val tv = v.findViewById<TextView>(R.id.textViewNumber)
-                if (tv.text.isEmpty() && checkedItemCount > 0) {
-                    selectedPlayers.add(position)
-                    tv.text = (selectedPlayers.indexOf(position) + 1).toString() + "."
-                    _isValid.postValue(selectedPlayers.size == adapter.size)
-                } else {
-                    // TODO: Improve this legacy code
-                    _isValid.postValue(false)
-                    val deletedNumber =
-                        selectedPlayers.indexOf(position) + 1
-                    selectedPlayers.remove(position)
-                    tv.text = ""
+        val binding = {
+            val binding = DialogSetPlayerSequenceBinding.inflate(layoutInflater)
+            binding.setPlayerSequenceList.apply {
+                choiceMode = ListView.CHOICE_MODE_MULTIPLE
+                onItemClickListener = AdapterView.OnItemClickListener { adapter, v, position, id ->
+                    val tv = v.findViewById<TextView>(R.id.textViewNumber)
+                    if (tv.text.isEmpty() && checkedItemCount > 0) {
+                        selectedPlayers.add(position)
+                        tv.text = (selectedPlayers.indexOf(position) + 1).toString() + "."
+                        _isValid.postValue(selectedPlayers.size == adapter.size)
+                    } else {
+                        // TODO: Improve this legacy code
+                        _isValid.postValue(false)
+                        val deletedNumber =
+                            selectedPlayers.indexOf(position) + 1
+                        selectedPlayers.remove(position)
+                        tv.text = ""
 
-                    val playersList = v.parent as ListView
-                    val checked = playersList.checkedItemPositions
-                    val size = checked.size()
-                    for (i in 0..<size) {
-                        val key = checked.keyAt(i)
-                        val checkedValue = checked.get(key)
-                        if (checkedValue) {
-                            val number =
-                                playersList.getChildAt(key).findViewById<View?>(
-                                    R.id.textViewNumber
-                                ) as TextView
-                            val numberText = number.text.toString()
-                            val indexDot = numberText.indexOf(".")
-                            if (indexDot != -1) {
-                                var value = numberText.take(indexDot).toInt()
-                                if (value > deletedNumber) {
-                                    value--
-                                    number.text = "$value."
+                        val playersList = v.parent as ListView
+                        val checked = playersList.checkedItemPositions
+                        val size = checked.size()
+                        for (i in 0..<size) {
+                            val key = checked.keyAt(i)
+                            val checkedValue = checked.get(key)
+                            if (checkedValue) {
+                                val number =
+                                    playersList.getChildAt(key).findViewById<View?>(
+                                        R.id.textViewNumber
+                                    ) as TextView
+                                val numberText = number.text.toString()
+                                val indexDot = numberText.indexOf(".")
+                                if (indexDot != -1) {
+                                    var value = numberText.take(indexDot).toInt()
+                                    if (value > deletedNumber) {
+                                        value--
+                                        number.text = "$value."
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+            binding
         }
+
         val dialog = ValueSelectionDialog.build<List<Int>>(this) {
             title = { ContextCompat.getString(this@GameCountDownActivity, R.string.manualChoiceHeading) }
             acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.confirm)
@@ -331,8 +350,8 @@ class GameCountDownActivity : BaseActivity() {
         roundTimerTv!!.text = round_time_result
 
         // highlight low timers red colored
-        if (currentRoundTimeMs <= roundTimeOriTenPercent) roundTimerTv!!.setTextColor(Color.RED)
-        else roundTimerTv!!.setTextColor(Color.BLACK)
+        if (currentRoundTimeMs <= roundTimeOriTenPercent) roundTimerTv!!.setTextColor(colorOvertime)
+        else roundTimerTv!!.setTextColor(colorNormal)
 
         // if game time is not infinite
         if (viewModel.game.gameTimeInfinite == 0) {
@@ -344,9 +363,9 @@ class GameCountDownActivity : BaseActivity() {
             gameTimerTv!!.text = game_time_result
 
             if (viewModel.game.gameTimeInfinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv!!.setTextColor(
-                Color.RED
+                colorOvertime
             )
-            else gameTimerTv!!.setTextColor(Color.BLACK)
+            else gameTimerTv!!.setTextColor(colorNormal)
         }
     }
 
