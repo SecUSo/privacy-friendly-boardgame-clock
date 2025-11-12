@@ -10,5 +10,5 @@ data class GameWithPlayer(
         entityColumn = "game_id",
         entity = PlayerGameData::class
     )
-    val players: List<PlayerGameData>
+    var players: List<PlayerGameData>
 ): IGame by game

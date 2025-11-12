@@ -2,7 +2,6 @@ package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
@@ -23,7 +22,7 @@ import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
 
-class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(application) {
+class GameViewModel(val application: Application, gameId: Long) : AndroidViewModel(application) {
 
     private val repository = BoardGameClockDatabase.getInstance(application)
     val game = repository.gameDao().getGame(gameId)!!
@@ -49,6 +48,23 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
     val remainingGameTime
         get() = gameTimer.currentElapsedTime
 
+    val remainingGameTimeString: String
+        get() {
+            if (game.gameTimeInfinite == 1) {
+                return application.getString(org.secuso.privacyfriendlyboardgameclock.R.string.infinite)
+            }
+
+            val time = TimeComponents(remainingGameTime)
+            val (h, m, s) = time.toStringComponents()
+
+            return when {
+                time.hour == 0 && time.minute == 0 -> "${s}s"
+                time.hour == 0 -> "${m}m ${s}s"
+                else -> "${h}h ${m}m ${s}s"
+            }
+        }
+
+
     fun saveGame() {
         repository.gameDao().updateGame(game.game)
         repository.gameDao().updatePlayerData(game.players)
@@ -58,7 +74,12 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         timers = game.players.map { player -> Timer(player.roundTimes) }
     }
     fun initCountdownGame(onFinish: (Int, PlayerGameData) -> Unit) {
-        timers = game.players.mapIndexed { index, player -> CountdownTimer(player.roundTimes) { onFinish(index, player) } }
+        timers = game.players.mapIndexed { index, player ->
+            CountdownTimer(player.roundTimes) {
+                onFinish(index, player)
+
+            }
+        }
     }
 
     /**
@@ -69,6 +90,9 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         currentIndex = game.startPlayerIndex
         gameTimer = CountdownTimer(game.gameTime) {}
 
+        startTick()
+    }
+    fun startTick() {
         ticker = viewModelScope.launch {
             while (game.finished == 0) {
                 _tick.emit(Unit)
@@ -113,7 +137,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         }
     }
     fun finishGame() {
-        for (index in 0..players.size) {
+        for (index in 0 until players.size) {
             if (timers[index].isRunning) {
                 timers[index].stop()
                 game.players[index].apply {
@@ -121,6 +145,10 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
                 }
             }
         }
+    }
+
+    fun isGameFinished(): Boolean {
+        return remainingGameTime < 0 || timers.filter { timer ->  timer.currentElapsedTime > 0 }.size <= 1
     }
 
     suspend fun nextPlayerIndex(): Int {
@@ -146,7 +174,49 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
 
     fun getAllSavedGames() = repository.gameDao().allSavedGames()
 
-    fun addPlayer(player: Player) = repository.playerDao().addPlayer(player.name, player.icon)
+    fun excludePlayer(index: Int = currentIndex) {
+        stopTimer(index)
+        players = players.filterIndexed { i, _ -> i != index }
+        game.players = game.players.filterIndexed { i, _ -> i != index }
+        timers = timers.filterIndexed { i, _ -> i != index }
+        stopTick()
+        viewModelScope.launch {
+            currentIndex = nextPlayerIndex()
+            if (game.chessMode == 1) {
+                startTimer(currentIndex)
+            }
+            startTick()
+        }
+    }
+
+    data class TimeComponents(
+        val hour: Int,
+        val minute: Int,
+        val seconds: Int,
+        val millis: Int
+    ) {
+        constructor(millis: Long): this(
+            (millis / 3600000).toInt(),
+            ((millis / 60000) % 60000).toInt(),
+            ((millis / 1000) % 60).toInt(),
+            (millis % 10000).toInt()
+        )
+
+        fun toStringComponents(): Array<String> {
+            val ms = millis.toString()
+            val hh = if (hour < 10) "0$hour" else hour.toString() + ""
+            val mm = if (minute < 10) "0$minute" else minute.toString() + ""
+            val ss = if (seconds < 10) "0$seconds" else seconds.toString() + ""
+            return arrayOf(hh, mm, ss, ms)
+        }
+        override fun toString() = toStringComponents().let {
+            val h = it[0]
+            val m = it[1]
+            val s = it[2]
+            val ms = it[3]
+            "${h}h:${m}m:${s}.${m}s"
+        }
+    }
 
     fun interface SelectNewPlayerOrder {
         fun select(players: List<Pair<Int, PlayerGameData>>, defer: CompletableDeferred<List<Int>>): Unit
@@ -156,6 +226,8 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         const val EXTRA_GAME_ID = "game_id"
         val GAME_ID_KEY: CreationExtras.Key<Long> = object : CreationExtras.Key<Long> {}
 
+        fun getTimeComponentStrings(millis: Long) = TimeComponents(millis).toStringComponents()
+        fun getTimeComponent(millis: Long) = TimeComponents(millis)
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 GameViewModel(application = checkNotNull(this[APPLICATION_KEY]), checkNotNull(this[GAME_ID_KEY]))

@@ -114,16 +114,9 @@ class GameCountDownActivity : BaseActivity() {
 
         }
     }
-    private val showGameResults: View.OnClickListener = View.OnClickListener {
-        val fm = supportFragmentManager
-        val ft = fm.beginTransaction()
-        val prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
-        if (prev != null) ft.remove(prev)
-        ft.addToBackStack(null)
 
-        // Create and show the dialog
-        val showGameInfo = GameResultDialogFragment()
-        showGameInfo.show(ft, TAGHelper.DIALOG_FRAGMENT)
+    private val showGameResultsDialog by lazy {
+        buildGameResultDialog(viewModel)
     }
 
     private val finishGameDialog by lazy {
@@ -137,35 +130,23 @@ class GameCountDownActivity : BaseActivity() {
             onElse = { finishGame() }
         }
     }
-    /*private val wantToFinish: View.OnClickListener = View.OnClickListener {
-        // Option not reset Round Time, each player has only certain amount of time
-        // if one player runs out of time --> ask if game ends or continue with other
-        // remaining players
-        if (getPlayersNotInRound(playerRounds!!.get(currentPlayer!!.id)!! + 1).size - 1 > 0) {
-            playPauseButton!!.setOnClickListener(pause)
-            playPauseButton!!.performClick()
-            AlertDialog.Builder(this@GameCountDownActivity)
-                .setTitle(R.string.roundTimeOverDialogHeading)
-                .setMessage(R.string.roundTimeOverDialogQuestion)
-                .setIcon(android.R.drawable.ic_menu_help)
-                .setPositiveButton(
-                    R.string.finishGame
-                ) { dialog, whichButton ->
-                    isFinished = 1
-                    finishGame()
-                }
-                .setNegativeButton(
-                    R.string.resume
-                ) { dialog, whichButton ->
-                    //isLastRound = 1;
-                    //game.setIsLastRound(1);
-                    playPauseButton!!.setOnClickListener(run)
-                    nextPlayerButton!!.setOnClickListener(nextPlayer)
-                    //nextPlayerButton.performClick();
-                }
-                .show()
-        } else finishGame()
-    }*/
+
+    private val excludePlayerDialog by lazy {
+        AbortElseDialog.build(this@GameCountDownActivity) {
+            title = { ContextCompat.getString(this@GameCountDownActivity, R.string.roundTimeOverDialogHeading) }
+            content = { ContextCompat.getString(this@GameCountDownActivity, R.string.roundTimeOverDialogQuestion) }
+            icon = android.R.drawable.ic_menu_help
+            acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.finishGame)
+            abortLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.resume)
+
+            handleDismiss = true
+            onShow = { viewModel.pauseTimer() }
+            onAbort = { viewModel.excludePlayer() }
+            onElse = {
+                finishGame()
+            }
+        }
+    }
 
     val selectPlayerOrder = GameViewModel.SelectNewPlayerOrder { players, defer ->
         val _isValid = MutableLiveData<Boolean>(false)
@@ -279,7 +260,20 @@ class GameCountDownActivity : BaseActivity() {
 
         if (!viewModel.isNewGame) {
             if (viewModel.game.gameTimeInfinite == 0) {
-                viewModel.initCountdownGame { _,_ -> TODO() }
+                viewModel.initCountdownGame { _, player ->
+                    if (viewModel.players.size > 1) {
+                        if (viewModel.game.chessMode == 1) {
+                            viewModel.players.withIndex().find { it.value.id == player.playerId }?.apply {
+                                viewModel.excludePlayer(index)
+                            }
+                        } else {
+                            excludePlayerDialog.show()
+                        }
+                    }
+                    if (viewModel.isGameFinished()) {
+                        finishGame()
+                    }
+                }
             } else {
                 viewModel.initTimeTrackingGame()
             }
@@ -341,12 +335,9 @@ class GameCountDownActivity : BaseActivity() {
             game_time_result = "-"
         } else gameTimeToUse = currentGameTimeMs
 
-        val round_time_hh = getTimeStrings(roundTimeToUse)[0]
-        val round_time_mm = getTimeStrings(roundTimeToUse)[1]
-        val round_time_ss = getTimeStrings(roundTimeToUse)[2]
-        val round_time_ms = getTimeStrings(roundTimeToUse)[3]
+        val (roundTimeH, roundTimeM, roundTimeS, roundTimeMS) = GameViewModel.getTimeComponentStrings(roundTimeToUse)
         round_time_result =
-            "$round_time_result$round_time_hh:$round_time_mm:$round_time_ss'$round_time_ms"
+            "$round_time_result$roundTimeH:$roundTimeM:$roundTimeS'$roundTimeMS"
         roundTimerTv!!.text = round_time_result
 
         // highlight low timers red colored
@@ -355,11 +346,9 @@ class GameCountDownActivity : BaseActivity() {
 
         // if game time is not infinite
         if (viewModel.game.gameTimeInfinite == 0) {
-            val game_time_hh = getTimeStrings(gameTimeToUse)[0]
-            val game_time_mm = getTimeStrings(gameTimeToUse)[1]
-            val game_time_ss = getTimeStrings(gameTimeToUse)[2]
+            val (gameTimeH, gameTimeM, gameTimeS) = GameViewModel.getTimeComponentStrings(gameTimeToUse)
             game_time_result =
-                "$game_time_result$game_time_hh:$game_time_mm:$game_time_ss"
+                "$game_time_result$gameTimeH:$gameTimeM:$gameTimeS"
             gameTimerTv!!.text = game_time_result
 
             if (viewModel.game.gameTimeInfinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv!!.setTextColor(
@@ -393,24 +382,19 @@ class GameCountDownActivity : BaseActivity() {
         finishGameButton.visibility = View.GONE
         nextPlayerButton.visibility = View.GONE
         playPauseButton.setText(R.string.showResults)
-        playPauseButton.setOnClickListener(showGameResults)
-        playPauseButton.performClick()
+        playPauseButton.setOnClickListener {
+            showGameResultsDialog.show()
+        }
+        showGameResultsDialog.show()
 
         saveGameToDb(0)
-    }
-
-    private fun showMainMenu() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
-        finish()
     }
 
     @Deprecated("Deprecated in Java")
     public override fun onBackPressed() {
         viewModel.pauseTimer()
         if (viewModel.game.finished == 1) {
-            showMainMenu()
+            super.onBackPressed()
         } else {
             AbortElseDialog.build(this) {
                 title = { ContextCompat.getString(this@GameCountDownActivity, R.string.quitGame) }
@@ -423,36 +407,13 @@ class GameCountDownActivity : BaseActivity() {
                     if (!alreadySaved) {
                         saveGameToDb(1)
                     }
-                    showMainMenu()
+                    super.onBackPressed()
                 }
                 onAbort = {
-                    showMainMenu()
+                    super.onBackPressed()
                 }
             }.show()
         }
-        super.onBackPressed()
-    }
-
-    /**
-     *
-     * @param time_ms time in milliseconds
-     * @return a String Array list of 4 elements, hour, minutes, seconds and milliseconds
-     */
-    private fun getTimeStrings(time_ms: Long): Array<String> {
-        val h = (time_ms / 3600000).toInt()
-        val m = (time_ms - h * 3600000).toInt() / 60000
-        val s = (time_ms - h * 3600000 - m * 60000).toInt() / 1000
-
-        var ms = "0"
-        try {
-            ms = time_ms.toString().get(time_ms.toString().length - 3).toString()
-        } catch (e: StringIndexOutOfBoundsException) {
-        }
-        val hh = if (h < 10) "0$h" else h.toString() + ""
-        val mm = if (m < 10) "0$m" else m.toString() + ""
-        val ss = if (s < 10) "0$s" else s.toString() + ""
-
-        return arrayOf<String>(hh, mm, ss, ms)
     }
 
     /**
