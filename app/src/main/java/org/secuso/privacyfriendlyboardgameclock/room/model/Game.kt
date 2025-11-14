@@ -48,7 +48,7 @@ data class Game(
     @ColumnInfo(name = "is_last_round") override var isLastRound: Int = 0,
     @ColumnInfo(name = "game_time_infinite") override var gameTimeInfinite: Int = 0
 ): IGame {
-    @ColumnInfo(name = "date") var date: Long = 0
+    @ColumnInfo(name = "date") var date: Long = System.currentTimeMillis()
         set(date) {
             field = date
             dateString = SimpleDateFormat("dd.MM.yyyy kk:mm").format(Date(date))

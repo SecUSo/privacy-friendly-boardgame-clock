@@ -107,7 +107,7 @@
             android:layout_marginLeft="@dimen/main_button_padding"
             android:layout_marginRight="@dimen/main_button_padding"
             android:background="@drawable/button_fullwidth"
-            android:onClick="nextPlayerButton"
+            android:textColor="@color/white"
             android:text="@string/nextPlayer"
             android:textSize="@dimen/text_size"
             android:visibility="gone" />
@@ -129,7 +129,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_fullwidth"
-                android:onClick="saveGameButton"
                 android:src="@drawable/ic_assignment_returned"
                 android:text=""
                 android:textSize="@dimen/text_size"
@@ -141,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@drawable/button_fullwidth"
-                android:onClick="gamePlayPauseButton"
+                android:textColor="@color/white"
                 android:text="@string/play"
                 android:textSize="@dimen/text_size" />
 
@@ -152,7 +151,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_fullwidth"
-                android:onClick="finishGameButton"
                 android:src="@drawable/ic_exit_to_app"
                 android:visibility="gone" />
         </LinearLayout>

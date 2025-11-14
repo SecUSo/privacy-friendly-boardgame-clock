@@ -27,7 +27,7 @@ import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
  * This is the Activity for resuming saved games
  */
 class ResumeGameActivity : BaseActivity(), ItemClickListener {
-    private val viewModel by lazy { ViewModelProvider(this)[GameViewModel::class.java] }
+    private val viewModel by lazy { ViewModelProvider(this)[ResumeGameViewModel::class.java] }
     private val loadGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_start_game) }
     private val deleteGameFAB by lazy { findViewById<FloatingActionButton>(R.id.fab_delete_game) }
     private lateinit var gameListAdapter: GameListAdapter

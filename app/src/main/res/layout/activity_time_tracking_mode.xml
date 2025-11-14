@@ -50,7 +50,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/player_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:listitem="@layout/time_tracking_player_custom_row">
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,7 +22,7 @@ import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
 
-class GameViewModel(val application: Application, gameId: Long) : AndroidViewModel(application) {
+class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(application) {
 
     private val repository = BoardGameClockDatabase.getInstance(application)
     val game = repository.gameDao().getGame(gameId)!!
@@ -41,7 +41,7 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
 
     private var _tick = MutableSharedFlow<Unit>()
     val tick = _tick.asSharedFlow()
-
+    
     private var ticker: Job? = null
 
     private var gameTimer: ITimer = CountdownTimer(0) {}
@@ -51,7 +51,7 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
     val remainingGameTimeString: String
         get() {
             if (game.gameTimeInfinite == 1) {
-                return application.getString(org.secuso.privacyfriendlyboardgameclock.R.string.infinite)
+                return getApplication<Application>().getString(org.secuso.privacyfriendlyboardgameclock.R.string.infinite)
             }
 
             val time = TimeComponents(remainingGameTime)
@@ -64,9 +64,17 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
             }
         }
 
+    val activeTimers
+        get() = timers.withIndex().filter { it.value.isRunning }
 
     fun saveGame() {
+        game.saved = 1
+        game.currentGameTime = gameTimer.currentElapsedTime
         repository.gameDao().updateGame(game.game)
+        game.players = game.players.mapIndexed { index, player ->
+            player.roundTimes = timers[index].currentElapsedTime
+            player
+        }
         repository.gameDao().updatePlayerData(game.players)
     }
 
@@ -77,7 +85,6 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
         timers = game.players.mapIndexed { index, player ->
             CountdownTimer(player.roundTimes) {
                 onFinish(index, player)
-
             }
         }
     }
@@ -88,7 +95,11 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
      */
     fun prepareGame() {
         currentIndex = game.startPlayerIndex
-        gameTimer = CountdownTimer(game.gameTime) {}
+        if (game.gameTimeInfinite > 0 || game.gameMode == TAGHelper.TIME_TRACKING) {
+            gameTimer = Timer(game.currentGameTime)
+        } else {
+            gameTimer = CountdownTimer(if (game.currentGameTime == 0L) { game.gameTime } else { game.currentGameTime }) {}
+        }
 
         startTick()
     }
@@ -115,6 +126,19 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
     fun resumeTimer(index: Int = currentIndex) = timers[index].resume()
     fun isTimerRunning(index: Int = currentIndex) = timers[index].isRunning
 
+    fun pauseAllTimers() {
+        (0 until players.size).forEach { pauseTimer(it) }
+        gameTimer.pause()
+    }
+    fun resumeAllTimers() {
+        (0 until players.size).forEach { resumeTimer(it) }
+        gameTimer.resume()
+    }
+
+    fun stopAllPausedTimers() {
+        (0 until players.size).forEach { if (!isTimerRunning(it)) { stopTimer(it) } }
+    }
+
     fun elapsedTime(index: Int = currentIndex) = timers[index].currentElapsedTime
     fun toggleTimer(index: Int = currentIndex) {
         if (isTimerRunning(index)) {
@@ -126,7 +150,13 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
     fun endPlayerRound() {
         stopTimer(currentIndex)
         game.players[currentIndex].apply {
-            roundTimes = timers[currentIndex].measuredTime
+            roundTimes = if (game.resetRoundTime > 0) {
+                game.roundTime + rounds * game.roundTimeDelta
+            } else if (game.roundTimeDelta > 0) {
+                timers[currentIndex].measuredTime + game.roundTimeDelta
+            } else {
+                timers[currentIndex].measuredTime
+            }
             rounds += 1
         }
         viewModelScope.launch {
@@ -172,8 +202,6 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
         }
     }
 
-    fun getAllSavedGames() = repository.gameDao().allSavedGames()
-
     fun excludePlayer(index: Int = currentIndex) {
         stopTimer(index)
         players = players.filterIndexed { i, _ -> i != index }
@@ -199,7 +227,7 @@ class GameViewModel(val application: Application, gameId: Long) : AndroidViewMod
             (millis / 3600000).toInt(),
             ((millis / 60000) % 60000).toInt(),
             ((millis / 1000) % 60).toInt(),
-            (millis % 10000).toInt()
+            (millis % 1000).toInt()
         )
 
         fun toStringComponents(): Array<String> {

@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
             android:paddingRight="10dp"
-            android:textColor="@drawable/list_item_textcolor"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -40,7 +39,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:duplicateParentState="true"
-        android:textColor="@drawable/list_item_textcolor"
         android:textSize="20sp" />
 
 </RelativeLayout>

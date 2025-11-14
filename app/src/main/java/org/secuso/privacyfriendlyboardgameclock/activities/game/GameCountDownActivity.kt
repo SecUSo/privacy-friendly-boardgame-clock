@@ -1,10 +1,10 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.TypedValue
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -30,9 +30,7 @@ import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.databinding.DialogSetPlayerSequenceBinding
-import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import kotlin.math.min
@@ -89,6 +87,18 @@ class GameCountDownActivity : BaseActivity() {
     private val roundTimerTv: TextView by lazy { findViewById(R.id.round_timer) }
 
     private var alreadySaved = true
+
+    val saveGameAndQuitDialog by lazy {
+        buildSaveGameAndQuitDialog(
+            viewModel,
+            { playPauseButton.text = ContextCompat.getString(this,  R.string.resume) },
+            {
+                if (!alreadySaved) {
+                    saveGameToDb(1)
+                }
+            }
+        )
+    }
 
     val saveGameDialog by lazy {
         AbortElseDialog.build(this) {
@@ -244,6 +254,8 @@ class GameCountDownActivity : BaseActivity() {
             viewModel.endPlayerRound()
         }
         findViewById<Button>(R.id.gamePlayPauseButton).setOnClickListener {
+            saveGameButton.visibility = View.VISIBLE
+            finishGameButton.visibility = View.VISIBLE
             nextPlayerButton.visibility = View.VISIBLE
             viewModel.toggleTimer()
             (it as Button).text = ContextCompat.getString(this, if (viewModel.isTimerRunning()) { R.string.pause_capslock } else { R.string.resume })
@@ -259,23 +271,19 @@ class GameCountDownActivity : BaseActivity() {
         })
 
         if (!viewModel.isNewGame) {
-            if (viewModel.game.gameTimeInfinite == 0) {
-                viewModel.initCountdownGame { _, player ->
-                    if (viewModel.players.size > 1) {
-                        if (viewModel.game.chessMode == 1) {
-                            viewModel.players.withIndex().find { it.value.id == player.playerId }?.apply {
-                                viewModel.excludePlayer(index)
-                            }
-                        } else {
-                            excludePlayerDialog.show()
+            viewModel.initCountdownGame { _, player ->
+                if (viewModel.players.size > 1) {
+                    if (viewModel.game.chessMode == 1) {
+                        viewModel.players.withIndex().find { it.value.id == player.playerId }?.apply {
+                            viewModel.excludePlayer(index)
                         }
-                    }
-                    if (viewModel.isGameFinished()) {
-                        finishGame()
+                    } else {
+                        excludePlayerDialog.show()
                     }
                 }
-            } else {
-                viewModel.initTimeTrackingGame()
+                if (viewModel.isGameFinished()) {
+                    finishGame()
+                }
             }
         } else {
             alreadySaved = viewModel.game.saved == 1
@@ -396,24 +404,16 @@ class GameCountDownActivity : BaseActivity() {
         if (viewModel.game.finished == 1) {
             super.onBackPressed()
         } else {
-            AbortElseDialog.build(this) {
-                title = { ContextCompat.getString(this@GameCountDownActivity, R.string.quitGame) }
-                content = { ContextCompat.getString(this@GameCountDownActivity, R.string.leaveGameQuestion) }
-                icon = R.drawable.ic_menu_help
-                acceptLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.saveGame)
-                abortLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.withoutSave)
-
-                onElse = {
-                    if (!alreadySaved) {
-                        saveGameToDb(1)
-                    }
-                    super.onBackPressed()
-                }
-                onAbort = {
-                    super.onBackPressed()
-                }
-            }.show()
+            saveGameAndQuitDialog.show()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> saveGameAndQuitDialog.show()
+            else -> super.onOptionsItemSelected(item)
+        }
+        return true
     }
 
     /**

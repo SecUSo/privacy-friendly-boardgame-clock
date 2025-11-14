@@ -14,22 +14,18 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.helpers
 
-package org.secuso.privacyfriendlyboardgameclock.helpers;
-
-import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.activities.GameTimeTrackingModeActivity;
-import org.secuso.privacyfriendlyboardgameclock.model.Player;
-
-import java.util.List;
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.databinding.TimeTrackingPlayerCustomRowBinding
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 
 /**
  * Created by Quang Anh Dang on 01.12.2017.
@@ -39,72 +35,51 @@ import java.util.List;
  * Last changed on 18.03.18
  * Adapter for the player list in Time Tracking Mode
  */
-public class TimeTrackingPlayerAdapter extends SelectableAdapter<TimeTrackingPlayerAdapter.ViewHolder> {
-    private GameTimeTrackingModeActivity activity;
-    private List<Player> playerList;
-    private ItemClickListener itemClickListener;
-
-    /**
-     *
-     * @param activity
-     * @param playersList
-     * @param itemClickListener the class which implement ItemClickListener Interface. In this case PlayerManagementActivity
-     */
-    public TimeTrackingPlayerAdapter(GameTimeTrackingModeActivity activity, List<Player> playersList, ItemClickListener itemClickListener) {
-        super();
-        this.activity = activity;
-        this.playerList = playersList;
-        this.itemClickListener = itemClickListener;
-    }
-
-    public Context getContext() {
-        return activity;
-    }
-
+class TimeTrackingPlayerAdapter(
+    private val layoutInflater: LayoutInflater,
+    var playersList: List<Player>,
+    private var onClick: (Int) -> Unit,
+    val getPlayerTime: (Long) -> Long,
+) : SelectableAdapter<TimeTrackingPlayerAdapter.ViewHolder>() {
     /**
      * Usually involves inflating a layout from XML and returning the holder
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
-     *                 an adapter position.
+     * an adapter position.
      * @param viewType The view type of the new View.
      * @return A new ViewHolder that holds a View of the given view type.
-     * @see #getItemViewType(int)
-     * @see #onBindViewHolder(ViewHolder, int)
+     * @see .getItemViewType
+     * @see .onBindViewHolder
      */
-    @Override
-    public TimeTrackingPlayerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = activity.getLayoutInflater();
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        // Inflate the custom layout
-        View playersView = inflater.inflate(R.layout.time_tracking_player_custom_row, parent, false);
-
-        // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(playersView,itemClickListener);
-        return viewHolder;
+        val binding = TimeTrackingPlayerCustomRowBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     /**
      * Involves populating data into the item through holder
      * @param viewHolder   The ViewHolder which should be updated to represent the contents of the
-     *                 item at the given position in the data set.
+     * item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    @Override
-    public void onBindViewHolder(TimeTrackingPlayerAdapter.ViewHolder viewHolder, int position) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Get the data model based on position
-        Player player = playerList.get(position);
+        val player = playersList[position]
 
         // Set item views based on your views and data model
-        TextView playerName = viewHolder.playerName;
-        playerName.setText(player.getName());
-        ImageView playerIMGView = viewHolder.playerIMGView;
-        playerIMGView.setImageBitmap(player.icon);
+        val playerName = viewHolder.playerName
+        playerName.text = player.name
+        val playerIMGView = viewHolder.playerIMGView
+        playerIMGView.setImageBitmap(player.icon)
 
-        TextView playerTime = viewHolder.playerTime;
-        long currentTimeMS = activity.getPlayerTime().get(player.id);
-        String[] currentTimeArray = getTimeStrings(currentTimeMS);
-        String currentTimeString = currentTimeArray[0] + ":" +  currentTimeArray[1] + ":" + currentTimeArray[2] + ":" + currentTimeArray[3];
-        playerTime.setText(currentTimeString);
+        val playerTime = viewHolder.playerTime
+        val currentTimeMS: Long = getPlayerTime(player.id)
+        val currentTimeArray = getTimeStrings(currentTimeMS)
+        val currentTimeString =
+            currentTimeArray[0] + ":" + currentTimeArray[1] + ":" + currentTimeArray[2] + ":" + currentTimeArray[3]
+        playerTime.text = currentTimeString
+
+        viewHolder.binding.root.setOnClickListener { onClick(position) }
     }
 
     /**
@@ -112,43 +87,30 @@ public class TimeTrackingPlayerAdapter extends SelectableAdapter<TimeTrackingPla
      *
      * @return The total number of items in this adapter.
      */
-    @Override
-    public int getItemCount() {
-        return (playerList != null ? playerList.size() : 0);
-    }
+    override fun getItemCount() = playersList.size
 
-    public List<Player> getPlayersList() {
-        return playerList;
-    }
-
-    public void setPlayersList(List<Player> playersList) {
-        this.playerList = playersList;
-    }
-
-    public Player getPlayer(int posision){
-        return playerList.get(posision);
-    }
+    fun getPlayer(position: Int) = playersList[position]
 
     /**
      *
      * @param time_ms time in milliseconds
      * @return a String Array list of 4 elements, hour, minutes, seconds and milliseconds
      */
-    private String[] getTimeStrings(long time_ms) {
-        int h = (int) (time_ms / 3600000);
-        int m = (int) (time_ms - h * 3600000) / 60000;
-        int s = (int) (time_ms - h * 3600000 - m * 60000) / 1000;
+    private fun getTimeStrings(time_ms: Long): Array<String> {
+        val h = (time_ms / 3600000).toInt()
+        val m = (time_ms - h * 3600000).toInt() / 60000
+        val s = (time_ms - h * 3600000 - m * 60000).toInt() / 1000
 
-        String ms = "0";
+        var ms = "0"
         try {
-            ms = String.valueOf(String.valueOf(time_ms).charAt(String.valueOf(time_ms).length() - 3));
-        } catch (StringIndexOutOfBoundsException e) {
+            ms = time_ms.toString().get(time_ms.toString().length - 3).toString()
+        } catch (e: StringIndexOutOfBoundsException) {
         }
-        String hh = h < 10 ? "0" + h : h + "";
-        String mm = m < 10 ? "0" + m : m + "";
-        String ss = s < 10 ? "0" + s : s + "";
+        val hh = if (h < 10) "0" + h else h.toString() + ""
+        val mm = if (m < 10) "0" + m else m.toString() + ""
+        val ss = if (s < 10) "0" + s else s.toString() + ""
 
-        return new String[]{hh, mm, ss, ms};
+        return arrayOf<String>(hh, mm, ss, ms)
     }
 
 
@@ -157,43 +119,9 @@ public class TimeTrackingPlayerAdapter extends SelectableAdapter<TimeTrackingPla
         #                       Helper class                            #
         #                                                               #
         #################################################################*/
-
-    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
-        private ImageView playerIMGView;
-        private TextView playerName;
-        private TextView playerTime;
-        private ItemClickListener itemClickListener;
-
-        /**
-         *
-         * @param itemView
-         * @param itemClickListener the class which implement the interface, in this case PlayermanagementActivity
-         */
-        public ViewHolder(View itemView, ItemClickListener itemClickListener) {
-            super(itemView);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
-            playerIMGView = itemView.findViewById(R.id.player_image);
-            playerName = itemView.findViewById(R.id.player_text);
-            playerTime = itemView.findViewById(R.id.current_round_time);
-            this.itemClickListener = itemClickListener;
-        }
-
-        public void setItemClickListener(ItemClickListener itemClickListener){
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            if(itemClickListener != null)
-                itemClickListener.onItemClick(view, getAdapterPosition());
-        }
-
-        @Override
-        public boolean onLongClick(View view) {
-            if(itemClickListener != null)
-                return itemClickListener.onItemLongClicked(view,getAdapterPosition());
-            return false;
-        }
+    class ViewHolder(val binding: TimeTrackingPlayerCustomRowBinding) : RecyclerView.ViewHolder(binding.root) {
+        val playerIMGView: ImageView = binding.playerImage
+        val playerName: TextView = binding.playerText
+        val playerTime: TextView = binding.currentRoundTime
     }
 }

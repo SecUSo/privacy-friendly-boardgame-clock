@@ -1,9 +1,12 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import org.secuso.pfacore.ui.dialog.ShowCustomInfoDialog
+import org.secuso.pfacore.ui.dialog.ShowSelectOptionDialog
 import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentGameResultsBinding
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
@@ -33,5 +36,45 @@ fun AppCompatActivity.buildGameResultDialog(viewModel: GameViewModel): ShowCusto
             )
         }
         acceptLabel = ContextCompat.getString(context, R.string.backToMainMenu)
+        onClose = {
+            Intent(this@buildGameResultDialog, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                this@buildGameResultDialog.startActivity(this)
+            }
+        }
+    }
+}
+
+fun AppCompatActivity.buildSaveGameAndQuitDialog(viewModel: GameViewModel, _onShow: () -> Unit, save: () -> Unit): ShowSelectOptionDialog {
+    return ShowSelectOptionDialog(
+        this,
+        ContextCompat.getString(this, R.string.leaveGameQuestion)
+    ) {
+        title = { ContextCompat.getString(this@buildSaveGameAndQuitDialog, R.string.quitGame) }
+        icon = R.drawable.ic_menu_help
+        onShow = {
+            viewModel.pauseTimer()
+            _onShow()
+        }
+
+        entry {
+            title = ContextCompat.getString(this@buildSaveGameAndQuitDialog, R.string.saveGame)
+            onClick = {
+                save()
+                Intent(this@buildSaveGameAndQuitDialog, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(this)
+                }
+            }
+        }
+        entry {
+            title = ContextCompat.getString(this@buildSaveGameAndQuitDialog, R.string.withoutSave)
+            onClick = {
+                Intent(this@buildSaveGameAndQuitDialog, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(this)
+                }
+            }
+        }
     }
 }
