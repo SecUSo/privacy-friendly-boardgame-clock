@@ -25,19 +25,6 @@
         android:supportsRtl="true"
         android:theme="@style/PrivacyFriendlyCoreTheme">
 
-        <service
-            android:name=".services.CountdownTimerService"
-            android:description="@string/CountdownTimerServiceDescription"
-            android:exported="false" />
-        <service
-            android:name=".services.TimeTrackingService"
-            android:description="@string/TimeTrackingServiceDescription"
-            android:exported="false" />
-        <service
-            android:name=".services.DetectTaskClearedService"
-            android:description="@string/CountdownTimerServiceDescription"
-            android:stopWithTask="false" />
-
         <activity
             android:name="org.secuso.privacyfriendlyboardgameclock.activities.MainActivity"
             android:label="@string/app_name"
