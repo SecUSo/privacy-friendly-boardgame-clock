@@ -50,6 +50,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                         "game_mode INTEGER NOT NULL," +
                         "round_time_delta INTEGER NOT NULL," +
                         "current_game_time INTEGER NOT NULL," +
+                        "custom_player_order TEXT," +
                         "next_player_index INTEGER NOT NULL," +
                         "start_player_index INTEGER NOT NULL," +
                         "finished INTEGER NOT NULL," +
@@ -87,6 +88,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
             )
             val cursor = database.query("SELECT _id, players, players_times, players_rounds FROM games;")
             val insertStatement = database.compileStatement("INSERT INTO player_game_data (game_id, player_id, rounds, round_times) VALUES (?, ?, ?, ?);")
+            val insertPlayerOrderStatement = database.compileStatement("INSERT INTO games_new (game_id, custom_player_order) VALUES (?, ?);")
 
             while (cursor.moveToNext()) {
                 val gameId = cursor.getInt(cursor.getColumnIndexOrThrow("_id"))
@@ -108,6 +110,10 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                     insertStatement.bindLong(4, rounds.getOrNull(i)?.toLongOrNull() ?: 0L)
                     insertStatement.executeInsert()
                 }
+                insertPlayerOrderStatement.clearBindings()
+                insertPlayerOrderStatement.bindLong(1, gameId.toLong())
+                insertPlayerOrderStatement.bindString(2, Converters().fromPlayerOrder(players.map { it.toInt() }))
+                insertStatement.executeInsert()
             }
 
             database.execSQL("DROP TABLE games;");

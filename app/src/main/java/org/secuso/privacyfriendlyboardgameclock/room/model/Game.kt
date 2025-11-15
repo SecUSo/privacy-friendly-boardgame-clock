@@ -40,6 +40,7 @@ data class Game(
     @ColumnInfo(name = "game_mode") override var gameMode: Int = 0, //0 = clockwise, 1= counter_clockwise, 2=random, 3  = chess
     @ColumnInfo(name = "round_time_delta") override var roundTimeDelta: Long = -1,
     @ColumnInfo(name = "current_game_time") override var currentGameTime: Long = 0,
+    @ColumnInfo(name = "custom_player_order") override var customPlayerOrder: List<Int>? = null,
     @ColumnInfo(name = "next_player_index") override var nextPlayerIndex: Int = 0,
     @ColumnInfo(name = "start_player_index") override var startPlayerIndex: Int = 0,
     @ColumnInfo(name = "finished") override var finished: Int = 0,
@@ -66,6 +67,7 @@ interface IGame {
     var gameMode: Int
     var roundTimeDelta: Long
     var currentGameTime: Long
+    var customPlayerOrder: List<Int>?
     var nextPlayerIndex: Int
     var startPlayerIndex: Int
     var finished: Int

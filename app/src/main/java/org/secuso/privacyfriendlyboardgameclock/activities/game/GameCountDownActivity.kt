@@ -32,6 +32,7 @@ import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.databinding.DialogSetPlayerSequenceBinding
 import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.SelectPlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import kotlin.math.min
 
@@ -164,6 +165,7 @@ class GameCountDownActivity : BaseActivity() {
         val binding = {
             val binding = DialogSetPlayerSequenceBinding.inflate(layoutInflater)
             binding.setPlayerSequenceList.apply {
+                adapter = SelectPlayerListAdapter(this@GameCountDownActivity, R.id.set_player_sequence_list, viewModel.players)
                 choiceMode = ListView.CHOICE_MODE_MULTIPLE
                 onItemClickListener = AdapterView.OnItemClickListener { adapter, v, position, id ->
                     val tv = v.findViewById<TextView>(R.id.textViewNumber)

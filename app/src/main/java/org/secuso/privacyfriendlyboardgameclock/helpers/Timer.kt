@@ -7,6 +7,7 @@ interface ITimer {
     val measuredTime: Long
     val currentElapsedTime: Long
     val isRunning: Boolean
+    fun newInitial(time: Long): ITimer
     fun reset()
     fun start()
     fun stop()
@@ -66,6 +67,8 @@ class Timer(startTime: Long = 0L): ITimer {
             isPaused = false
         }
     }
+
+    override fun newInitial(time: Long) = Timer(time)
 }
 
 class CountdownTimer(private val timeToMeasure: Long, val onFinish: () -> Unit): ITimer {
@@ -110,4 +113,5 @@ class CountdownTimer(private val timeToMeasure: Long, val onFinish: () -> Unit):
     override fun pause() = timer.pause()
     override fun resume() = timer.resume()
 
+    override fun newInitial(time: Long): ITimer = CountdownTimer(time, onFinish)
 }

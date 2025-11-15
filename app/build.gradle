@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.ktx.serialization)
 }
 
 android {
@@ -91,4 +92,5 @@ dependencies {
     implementation(libs.ax.room.ktx)
 
     implementation libs.bundles.camerax
+    implementation libs.ktx.serialization.json
 }

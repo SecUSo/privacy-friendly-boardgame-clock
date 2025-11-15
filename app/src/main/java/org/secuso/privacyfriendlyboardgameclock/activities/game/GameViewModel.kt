@@ -70,6 +70,10 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
     fun saveGame() {
         game.saved = 1
         game.currentGameTime = gameTimer.currentElapsedTime
+        game.nextPlayerIndex = currentIndex
+        if (game.gameMode == TAGHelper.MANUAL_SEQUENCE) {
+            game.customPlayerOrder = manualSequence
+        }
         repository.gameDao().updateGame(game.game)
         game.players = game.players.mapIndexed { index, player ->
             player.roundTimes = timers[index].currentElapsedTime
@@ -94,11 +98,21 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
      * Also start the tick-flow.
      */
     fun prepareGame() {
-        currentIndex = game.startPlayerIndex
         if (game.gameTimeInfinite > 0 || game.gameMode == TAGHelper.TIME_TRACKING) {
             gameTimer = Timer(game.currentGameTime)
         } else {
             gameTimer = CountdownTimer(if (game.currentGameTime == 0L) { game.gameTime } else { game.currentGameTime }) {}
+        }
+
+        if (game.gameMode == TAGHelper.MANUAL_SEQUENCE) {
+            val min = game.players.minOf { it.rounds }
+            manualSequence = game.customPlayerOrder?.filter { game.players[it].rounds == min }?.toMutableList()
+                ?: (0 until game.players.size).map{ (it + game.startPlayerIndex) % game.players.size  }.toMutableList()
+            currentIndex = manualSequence.first()
+            manualSequence.removeAt(0)
+        } else {
+            currentIndex = game.startPlayerIndex
+
         }
 
         startTick()
@@ -155,9 +169,9 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
             } else if (game.resetRoundTime > 0) {
                 game.roundTime
             } else if (game.roundTimeDelta > 0) {
-                timers[currentIndex].measuredTime + game.roundTimeDelta
+                timers[currentIndex].currentElapsedTime + game.roundTimeDelta
             } else {
-                timers[currentIndex].measuredTime
+                timers[currentIndex].currentElapsedTime
             }
             rounds += 1
         }
@@ -198,7 +212,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
                         manualSequence = defer.await().toMutableList()
                     }
                     val next = manualSequence.first()
-                    manualSequence.remove(0)
+                    manualSequence.removeAt(0)
                     next
             }
             else -> (currentIndex + 1) % players.size
