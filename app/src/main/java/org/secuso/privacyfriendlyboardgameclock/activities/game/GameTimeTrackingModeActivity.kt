@@ -1,13 +1,6 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
-import android.app.ActivityManager
-import android.app.AlertDialog
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -31,10 +24,6 @@ import org.secuso.pfacore.model.dialog.InfoDialog
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
-import org.secuso.privacyfriendlyboardgameclock.fragments.GameResultDialogFragment
-import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.helpers.TimeTrackingPlayerAdapter
 
 /**

@@ -23,7 +23,6 @@ import androidx.core.content.ContextCompat
 import org.secuso.pfacore.model.DrawerMenu
 import org.secuso.pfacore.ui.activities.DrawerActivity
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedService
 
 /**
  * @author Christopher Beckmann, Karola Marky
@@ -33,14 +32,6 @@ import org.secuso.privacyfriendlyboardgameclock.services.DetectTaskClearedServic
  * Navigation Drawer (example see MainActivity.java)
  */
 abstract class BaseActivity : DrawerActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // start service to close database when app is killed
-        startService(Intent(baseContext, DetectTaskClearedService::class.java))
-
-    }
 
     override fun drawer() = DrawerMenu.build {
         name = ContextCompat.getString(this@BaseActivity, R.string.app_name)

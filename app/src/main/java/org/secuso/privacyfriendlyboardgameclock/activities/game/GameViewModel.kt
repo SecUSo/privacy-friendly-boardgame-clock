@@ -33,7 +33,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         get() = players.getOrNull(currentIndex) ?: throw java.lang.IllegalStateException("Set game first")
     var isNewGame = false
 
-    private var timers: List<ITimer> = listOf()
+    private var timers: MutableList<ITimer> = mutableListOf()
     private var currentIndex: Int = 0
 
     var selectPlayers: SelectNewPlayerOrder? = null
@@ -79,14 +79,14 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
     }
 
     fun initTimeTrackingGame() {
-        timers = game.players.map { player -> Timer(player.roundTimes) }
+        timers = game.players.map { player -> Timer(player.roundTimes) }.toMutableList()
     }
     fun initCountdownGame(onFinish: (Int, PlayerGameData) -> Unit) {
         timers = game.players.mapIndexed { index, player ->
             CountdownTimer(player.roundTimes) {
                 onFinish(index, player)
             }
-        }
+        }.toMutableList()
     }
 
     /**
@@ -150,8 +150,10 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
     fun endPlayerRound() {
         stopTimer(currentIndex)
         game.players[currentIndex].apply {
-            roundTimes = if (game.resetRoundTime > 0) {
+            roundTimes = if (game.resetRoundTime > 0 && game.roundTimeDelta > 0) {
                 game.roundTime + rounds * game.roundTimeDelta
+            } else if (game.resetRoundTime > 0) {
+                game.roundTime
             } else if (game.roundTimeDelta > 0) {
                 timers[currentIndex].measuredTime + game.roundTimeDelta
             } else {
@@ -159,6 +161,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
             }
             rounds += 1
         }
+        timers[currentIndex] = timers[currentIndex].newInitial(game.players[currentIndex].roundTimes)
         viewModelScope.launch {
             currentIndex = nextPlayerIndex()
             if (game.chessMode == 1) {
@@ -206,7 +209,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
         stopTimer(index)
         players = players.filterIndexed { i, _ -> i != index }
         game.players = game.players.filterIndexed { i, _ -> i != index }
-        timers = timers.filterIndexed { i, _ -> i != index }
+        timers = timers.filterIndexed { i, _ -> i != index }.toMutableList()
         stopTick()
         viewModelScope.launch {
             currentIndex = nextPlayerIndex()
