@@ -81,7 +81,7 @@ class ResumeGameActivity : BaseActivity(), ItemClickListener {
             if (chosenGame == null) {
                 gameListAdapter.setSimpleClickedSelected(true)
                 gameListAdapter.setLongClickedSelected(false)
-                chosenGame = gameListAdapter.getGame(position)
+                chosenGame = gameListAdapter.games[position]
                 gameListAdapter.toggleSelection(position)
                 loadGameFAB.backgroundTintList = ColorStateList.valueOf(fabActive)
                 loadGameFAB.setOnClickListener(resumeGame())
@@ -99,7 +99,7 @@ class ResumeGameActivity : BaseActivity(), ItemClickListener {
                 } else {
                     gameListAdapter.setSimpleClickedSelected(true)
                     gameListAdapter.setLongClickedSelected(false)
-                    chosenGame = gameListAdapter.getGame(position)
+                    chosenGame = gameListAdapter.games[position]
                     gameListAdapter.clearSelection()
                     gameListAdapter.toggleSelection(position)
                     loadGameFAB.backgroundTintList = ColorStateList.valueOf(fabActive)

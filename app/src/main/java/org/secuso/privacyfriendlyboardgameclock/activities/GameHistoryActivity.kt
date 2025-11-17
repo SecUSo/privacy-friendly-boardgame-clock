@@ -21,18 +21,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.view.ActionMode
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.model.DrawerElement
+import org.secuso.pfacore.ui.dialog.ShowCustomInfoDialog
+import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.activities.game.GameViewModel
-import org.secuso.privacyfriendlyboardgameclock.database.GamesDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.fragments.GameHistoryInfoDialogFragment
+import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentGameResultsBinding
 import org.secuso.privacyfriendlyboardgameclock.helpers.GameListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
+import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.GameWithPlayer
 
@@ -54,6 +55,31 @@ class GameHistoryActivity : BaseActivity(), ItemClickListener {
     private var actionMode: ActionMode? = null
 
     override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_game_history
+
+    val gameInfoDialog by lazy {
+        val bindingSupplier = {
+            val binding = FragmentGameResultsBinding.inflate(layoutInflater)
+            binding.timePlayedText.text = GameViewModel.getTimeComponent(selectedGame!!.currentGameTime).toStringComponents().joinToString(":")
+            binding.roundsPlayedText.text = selectedGame!!.isLastRound.toString()
+            // Set TextView for game mode
+            val gameModes = getResources().getStringArray(R.array.game_modes)
+            binding.gameModeText.text = when (selectedGame!!.gameMode) {
+                TAGHelper.CLOCKWISE -> gameModes[TAGHelper.CLOCKWISE]
+                TAGHelper.COUNTER_CLOCKWISE -> gameModes[TAGHelper.COUNTER_CLOCKWISE]
+                TAGHelper.RANDOM -> gameModes[TAGHelper.RANDOM]
+                TAGHelper.MANUAL_SEQUENCE -> gameModes[TAGHelper.MANUAL_SEQUENCE]
+                TAGHelper.TIME_TRACKING -> gameModes[TAGHelper.TIME_TRACKING]
+                else -> ""
+            }
+            val players = viewModel.getPlayers(selectedGame!!.players.map { it.playerId })
+            val data = players.map { it to selectedGame!!.players.find { data -> data.playerId == it.id }!! }
+            binding.list.adapter = PlayerResultsListAdapter(this, R.id.list, data)
+            binding
+        }
+        ShowCustomInfoDialog(this@GameHistoryActivity, bindingSupplier) {
+            title = { selectedGame!!.name ?: "" }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,15 +103,7 @@ class GameHistoryActivity : BaseActivity(), ItemClickListener {
             toggleSelection(position)
         } else {
             selectedGame = gamesList[position]
-            val fm = supportFragmentManager
-            val ft = fm.beginTransaction()
-            val prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
-            if (prev != null) ft.remove(prev)
-            ft.addToBackStack(null)
-
-            // Create and show the dialog
-            val showGameInfo = GameHistoryInfoDialogFragment()
-            showGameInfo.show(ft, TAGHelper.DIALOG_FRAGMENT)
+            gameInfoDialog.show()
         }
     }
 
@@ -122,6 +140,7 @@ class GameHistoryActivity : BaseActivity(), ItemClickListener {
      * @return
      */
     private fun onFABDeleteListenter() = View.OnClickListener {
+        viewModel.deleteGames(gameListAdapter.selectedItems.map { gameListAdapter.games[it].game })
         gameListAdapter.removeItems(gameListAdapter.getSelectedItems())
         actionMode?.finish()
         actionMode = null
@@ -140,6 +159,8 @@ class GameHistoryActivity : BaseActivity(), ItemClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_delete) {
             if (actionMode == null) actionMode = startSupportActionMode(actionModeCallback)
+        } else {
+            return super.onOptionsItemSelected(item)
         }
         return true
     }

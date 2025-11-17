@@ -39,6 +39,9 @@ interface GameDao {
     @Delete
     fun deleteGame(game: Game)
 
+    @Delete
+    fun deleteGames(games: List<Game>)
+
     @Query("SELECT * FROM games WHERE saved = 1 AND finished = 0")
     fun allSavedGames(): List<GameWithPlayer>
 

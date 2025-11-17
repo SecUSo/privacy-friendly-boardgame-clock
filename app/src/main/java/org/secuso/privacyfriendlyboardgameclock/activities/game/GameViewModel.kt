@@ -21,6 +21,7 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.Timer
 import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
+import kotlin.math.max
 
 class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(application) {
 
@@ -175,6 +176,7 @@ class GameViewModel(application: Application, gameId: Long) : AndroidViewModel(a
             }
             rounds += 1
         }
+        game.isLastRound = max(game.isLastRound, game.players[currentIndex].rounds)
         timers[currentIndex] = timers[currentIndex].newInitial(game.players[currentIndex].roundTimes)
         viewModelScope.launch {
             currentIndex = nextPlayerIndex()
