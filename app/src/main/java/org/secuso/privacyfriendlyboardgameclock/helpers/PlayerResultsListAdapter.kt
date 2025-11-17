@@ -14,25 +14,19 @@
  You should have received a copy of the GNU General Public License
  along with Privacy Friendly Board Game Clock. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.secuso.privacyfriendlyboardgameclock.helpers
 
-package org.secuso.privacyfriendlyboardgameclock.helpers;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.activities.GameCountDownActivity;
-import org.secuso.privacyfriendlyboardgameclock.activities.GameHistoryActivity;
-import org.secuso.privacyfriendlyboardgameclock.activities.GameTimeTrackingModeActivity;
-import org.secuso.privacyfriendlyboardgameclock.model.Game;
-import org.secuso.privacyfriendlyboardgameclock.model.Player;
-
-import java.util.List;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player
+import org.secuso.privacyfriendlyboardgameclock.room.model.PlayerGameData
 
 /**
  * Created by Quang Anh Dang on 24.12.2017.
@@ -40,82 +34,56 @@ import java.util.List;
  * Last changed on 18.03.18
  * This is the adapter for the player result list
  */
-public class PlayerResultsListAdapter extends ArrayAdapter { //--CloneChangeRequired
-    private List mList; //--CloneChangeRequired
-    private Context mContext;
-    private Game game;
+class PlayerResultsListAdapter(
+    private val layoutInflater: LayoutInflater,
+    mContext: Context,
+    textViewResourceId: Int,
+    private val mList: List<Pair<Player, PlayerGameData>>
+) : ArrayAdapter<Pair<Player, PlayerGameData>>(mContext, textViewResourceId, mList) {
 
-    public PlayerResultsListAdapter(Context context, int textViewResourceId,
-                                    List list) { //--CloneChangeRequired
-        super(context, textViewResourceId, list);
-        this.mList = list;
-        this.mContext = context;
-        if(mContext instanceof GameCountDownActivity){
-            game = ((GameCountDownActivity) mContext).getGame();
-        }
-        else if(mContext instanceof GameHistoryActivity){
-            game = ((GameHistoryActivity)mContext).selectedGame;
-        }
-        else if(mContext instanceof GameTimeTrackingModeActivity){
-            game = ((GameTimeTrackingModeActivity) mContext).getGame();
-        }
-    }
+    constructor(activity: AppCompatActivity, textViewResourceId: Int, list: List<Pair<Player, PlayerGameData>>)
+            : this(activity.layoutInflater, activity, textViewResourceId, list)
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var view = convertView
 
         try {
             if (view == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = vi.inflate(R.layout.playerresultslist_item_row, null); //--CloneChangeRequired(list_item)
+                view = layoutInflater.inflate(R.layout.playerresultslist_item_row,parent, false)
             }
-            final Player p = (Player) mList.get(position); //--CloneChangeRequired
-            if (p != null) {
-                // setting list_item views
-                ((TextView) view.findViewById(R.id.textViewName))
-                        .setText(p.getName());
-
-                ((TextView) view.findViewById(R.id.textViewDescription))
-                        .setText(mContext.getString(R.string.timeLeft) + " " + getTimeLeft(p));
-
-                ((ImageView) view.findViewById(R.id.imageViewIcon))
-                        .setImageBitmap(p.icon);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            val (player, data) = mList[position]
+            // setting list_item views
+            view.findViewById<TextView>(R.id.textViewName).text = player.name
+            view.findViewById<TextView>(R.id.textViewDescription).text = context.getString(R.string.timeLeft) + " " + getTimeLeft(data.roundTimes)
+            view.findViewById<ImageView>(R.id.imageViewIcon).setImageBitmap(player.icon)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return view;
+        return view!!
     }
 
-    private String getTimeLeft(Player p) {
-
-        long timeLeft = game.player_round_times.get(p.id);
-
-        String[] times = getTimeStrings(timeLeft);
-        if (times[0].equals("00"))
-            if (times[1].equals("00"))
-                return times[2] + "'" + times[3] + "s ";
-            else
-                return times[1] + "m " + times[2] + "'" + times[3] + "s ";
-        else
-            return times[0] + "h " + times[1] + "m " + times[2] + "'" + times[3] + "s ";
+    private fun getTimeLeft(timeLeft: Long): String {
+        val times = getTimeStrings(timeLeft)
+        return if (times[0] == "00") {
+            if (times[1] == "00") times[2] + "'" + times[3] + "s "
+            else times[1] + "m " + times[2] + "'" + times[3] + "s "
+        } else times[0] + "h " + times[1] + "m " + times[2] + "'" + times[3] + "s "
     }
 
-    private String[] getTimeStrings(long time_ms) {
-        int h = (int) (time_ms / 3600000);
-        int m = (int) (time_ms - h * 3600000) / 60000;
-        int s = (int) (time_ms - h * 3600000 - m * 60000) / 1000;
+    private fun getTimeStrings(time_ms: Long): Array<String> {
+        val h = (time_ms / 3600000).toInt()
+        val m = (time_ms - h * 3600000).toInt() / 60000
+        val s = (time_ms - h * 3600000 - m * 60000).toInt() / 1000
 
-        String ms = "0";
+        var ms = "0"
         try {
-            ms = String.valueOf(String.valueOf(time_ms).charAt(String.valueOf(time_ms).length() - 3));
-        } catch (StringIndexOutOfBoundsException e) {
+            ms = time_ms.toString().get(time_ms.toString().length - 3).toString()
+        } catch (e: StringIndexOutOfBoundsException) {
         }
-        String hh = h < 10 ? "0" + h : h + "";
-        String mm = m < 10 ? "0" + m : m + "";
-        String ss = s < 10 ? "0" + s : s + "";
+        val hh = if (h < 10) "0" + h else h.toString() + ""
+        val mm = if (m < 10) "0" + m else m.toString() + ""
+        val ss = if (s < 10) "0" + s else s.toString() + ""
 
-        return new String[]{hh, mm, ss, ms};
+        return arrayOf<String>(hh, mm, ss, ms)
     }
 }
