@@ -3,6 +3,7 @@ package org.secuso.privacyfriendlyboardgameclock.room
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.room.TypeConverter
+import kotlinx.serialization.json.Json
 import java.io.ByteArrayOutputStream
 
 class Converters {
@@ -13,4 +14,10 @@ class Converters {
     }
     @TypeConverter
     fun toBitmap(bytes: ByteArray) = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+
+    @TypeConverter
+    fun fromPlayerOrder(order: List<Int>) = Json.encodeToString(order)
+
+    @TypeConverter
+    fun toPlayerOrder(value: String) = Json.decodeFromString<List<Int>>(value)
 }
