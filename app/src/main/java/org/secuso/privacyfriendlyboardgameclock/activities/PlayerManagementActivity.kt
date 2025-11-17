@@ -17,9 +17,9 @@
 package org.secuso.privacyfriendlyboardgameclock.activities
 
 import android.app.AlertDialog
-import android.app.FragmentManager
-import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -27,15 +27,11 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.appcompat.view.ActionMode
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementChooseModeFragment
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
@@ -44,7 +40,10 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
-import org.secuso.privacyfriendlyboardgameclock.activities.game.GameViewModel
+import org.secuso.pfacore.ui.dialog.show
+import org.secuso.privacyfriendlyboardgameclock.activities.game.buildChooseNewPlayerCreationMethodDialog
+import org.secuso.privacyfriendlyboardgameclock.activities.game.buildCreateNewPlayerDialog
+import org.secuso.privacyfriendlyboardgameclock.activities.game.useCameraForPlayerPicture
 
 /**
  * Actionbar Tutorial
@@ -75,15 +74,47 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
 
     override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_player_management
 
+    private lateinit var pictureConsumer: (Bitmap) -> Unit
+    private val useCamera = useCameraForPlayerPicture {
+        val bitmap = it.planes[0].buffer.let { buffer ->
+            val bytes = ByteArray(buffer.capacity())
+            buffer[bytes]
+            BitmapFactory.decodeByteArray(bytes, 0, bytes.size, null)
+        }
+        pictureConsumer(bitmap)
+    }
+
+    private val createNewPlayerDialog by lazy {
+        buildCreateNewPlayerDialog(
+            onPlayerCreated = {
+                viewModel.addPlayer(it)
+                playerListAdapter.playersList.add(it)
+                playerListAdapter.notifyItemInserted(playerListAdapter.itemCount - 1)
+            },
+            useCamera = {
+                pictureConsumer = it
+                useCamera()
+            }
+        )
+    }
+
+    private val choosePlayerCreationMethod by lazy {
+        buildChooseNewPlayerCreationMethodDialog(
+            createNewPlayerDialog
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_management)
         // pds already opened in MainActivity
 
-        listPlayers = viewModel.getAllPlayers().toMutableList()
+        listPlayers = viewModel.getAllPlayersSync().toMutableList()
 
         // FAB Listener
-        fabAdd.setOnClickListener(onFABAddClickListener())
+        fabAdd.setOnClickListener {
+            choosePlayerCreationMethod.show()
+        }
         fabDelete.setOnClickListener(onFABDeleteListenter())
 
         playerListAdapter = PlayerListAdapter(this, listPlayers, this)
@@ -187,21 +218,6 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         }
     }
 
-    /**
-     * open Dialogfragment for user to choose how to create new player
-     * @return
-     */
-    private fun onFABAddClickListener() = View.OnClickListener {
-            val ft = fm.beginTransaction()
-            val prev = supportFragmentManager.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
-            if (prev != null) ft.remove(prev)
-            ft.addToBackStack(null)
-
-            // Create and show the dialog
-            val chooseDialogFragment =
-                PlayerManagementChooseModeFragment.newInstance("Choose how to create new player:")
-            chooseDialogFragment.show(ft, TAGHelper.DIALOG_FRAGMENT)
-        }
 
     /**
      * remove all the selected players
@@ -241,6 +257,8 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_delete) {
             if (actionMode == null) actionMode = startSupportActionMode(actionModeCallback)
+        } else {
+            return super.onOptionsItemSelected(item)
         }
         return true
     }
