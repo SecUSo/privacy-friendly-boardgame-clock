@@ -23,15 +23,13 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.database.DbHelper
+import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -162,7 +160,7 @@ class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResult
             val sd = Environment.getExternalStorageDirectory()
 
             if (sd.canWrite()) {
-                val currentDBPath = this.getDatabasePath(DbHelper.DB_NAME).getPath()
+                val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
                 val backupDBPath = "pfa-boardgameclock-database.db"
                 val currentDB = File(currentDBPath)
                 val backupDB = File(sd, backupDBPath)
@@ -187,7 +185,7 @@ class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResult
             val sd = Environment.getExternalStorageDirectory()
 
             if (sd.canWrite()) {
-                val currentDBPath = this.getDatabasePath(DbHelper.DB_NAME).getPath()
+                val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
                 val backupDBPath = "pfa-boardgameclock-database.db"
                 val currentDB = File(currentDBPath)
                 val backupDB = File(sd, backupDBPath)
