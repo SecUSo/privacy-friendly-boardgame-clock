@@ -53,7 +53,6 @@ class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResult
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_backup)
         findViewById<Button>(R.id.importBackupButton).setOnClickListener { importBackupButton() }
         findViewById<Button>(R.id.exportBackupButton).setOnClickListener { exportBackupButton() }
