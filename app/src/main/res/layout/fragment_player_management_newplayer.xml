@@ -18,24 +18,29 @@
             android:text="@string/nameDots"
             android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/editName"
-            android:layout_width="100sp"
-            android:maxLength="10"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editNameLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/picture"
             android:layout_alignTop="@+id/nameHeading"
             android:layout_marginTop="-15sp"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:layout_gravity="center">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:layout_width="100sp"
+                android:maxLength="10"
+                android:layout_height="wrap_content"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/pictureHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nameHeading"
+            android:layout_below="@+id/editNameLayout"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -49,7 +54,7 @@
             android:layout_alignTop="@+id/pictureHeading"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_below="@id/editName"
+            android:layout_below="@id/editNameLayout"
             android:background="@null"
             android:orientation="horizontal"
             android:src="@mipmap/ic_android"/>
@@ -88,7 +93,6 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:layout_below="@id/editName"
             android:background="@drawable/button_fullwidth"
             android:orientation="horizontal"/>
 
