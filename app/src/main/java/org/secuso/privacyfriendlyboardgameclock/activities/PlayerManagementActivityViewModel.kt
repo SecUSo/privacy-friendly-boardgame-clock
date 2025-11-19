@@ -13,4 +13,5 @@ class PlayerManagementActivityViewModel(application: Application) : AndroidViewM
 
     fun addPlayer(player: Player) = repository.playerDao().addPlayer(player.name, player.icon)
 
+    fun updatePlayer(player: Player) = repository.playerDao().updatePlayer(player)
 }

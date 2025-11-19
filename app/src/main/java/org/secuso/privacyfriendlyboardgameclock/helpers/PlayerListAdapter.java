@@ -29,8 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
-import org.secuso.privacyfriendlyboardgameclock.model.Player;
+import org.secuso.privacyfriendlyboardgameclock.room.model.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +48,6 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
     private List<Player> playersList;
     private Activity activity;
     private ItemClickListener itemClickListener;
-    private PlayersDataSourceSingleton pdss;
 
     /**
      *
@@ -62,7 +60,6 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         this.playersList = playersList;
         this.activity = activity;
         this.itemClickListener = itemClickListener;
-        this.pdss = PlayersDataSourceSingleton.getInstance(activity);
     }
 
     public Context getContext() {
@@ -106,7 +103,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
         TextView textView = viewHolder.playerTextView;
         textView.setText(player.getName());
         ImageView imageView = viewHolder.playerIMGView;
-        imageView.setImageBitmap(player.icon);
+        imageView.setImageBitmap(player.getIcon());
 
         // Highlight the item with blue if it's simple selected
         if(isSimpleClickedSelected && !isLongClickedSelected){
@@ -142,7 +139,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      */
     public void removeItem(int position) {
         // TODO make database removal run in background
-        pdss.deletePlayer(playersList.get(position));
+//        pdss.deletePlayer(playersList.get(position));
         playersList.remove(position);
         orderedSelectedItems = new ArrayList<>();
         notifyItemRemoved(position);
@@ -193,7 +190,7 @@ public class PlayerListAdapter extends SelectableAdapter<PlayerListAdapter.ViewH
      */
     private void removeRange(int positionStart, int itemCount) {
         for (int i = 0; i < itemCount; ++i) {
-            pdss.deletePlayer(playersList.get(positionStart));
+//            pdss.deletePlayer(playersList.get(positionStart));
             playersList.remove(positionStart);
             orderedSelectedItems.remove((Integer)positionStart);
         }

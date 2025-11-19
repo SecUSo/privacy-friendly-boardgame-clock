@@ -164,7 +164,8 @@ private fun AppCompatActivity.createColorSelectionDialog(onColorChosen: (Int) ->
 
 fun AppCompatActivity.buildCreateNewPlayerDialog(
     onPlayerCreated: (Player) -> Unit,
-    useCamera: ((Bitmap) -> Unit) -> Unit
+    useCamera: ((Bitmap) -> Unit) -> Unit,
+    playerSupplier: (() -> Player)? = null
 ): ShowValueSelectionDialog<Player, FragmentPlayerManagementNewplayerBinding> {
     val valid = MutableLiveData(false)
 
@@ -172,6 +173,13 @@ fun AppCompatActivity.buildCreateNewPlayerDialog(
         val binding = FragmentPlayerManagementNewplayerBinding.inflate(layoutInflater)
         var icon: Bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_android)
 
+        if (playerSupplier != null) {
+            val player = playerSupplier()
+            binding.editName.setText(player.name)
+            if (player.icon != null) {
+                binding.picture.setImageBitmap(player.icon)
+            }
+        }
         binding.editName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 valid.postValue(s?.isNotEmpty() ?: false)

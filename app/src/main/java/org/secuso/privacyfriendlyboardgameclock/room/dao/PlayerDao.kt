@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 
@@ -19,6 +20,9 @@ interface PlayerDao {
 
     @Query("INSERT INTO players (name, icon) VALUES (:name, :icon)")
     fun addPlayer(name: String, icon: Bitmap?): Long
+
+    @Update
+    fun updatePlayer(player: Player)
 
     @Query("SELECT * FROM players WHERE _id = :player")
     fun getPlayer(player: Int): Player

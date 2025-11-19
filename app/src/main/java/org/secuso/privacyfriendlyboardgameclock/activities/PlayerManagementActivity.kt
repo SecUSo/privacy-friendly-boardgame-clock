@@ -33,7 +33,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementEditPlayerFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
@@ -69,6 +68,7 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
     private var actionMode: ActionMode? = null
     @JvmField
     var playerToEdit: Player? = null
+    var playerToEditIndex: Int? = null
     private val insertAlert by lazy { findViewById<View>(R.id.insert_alert) }
     private val emptyListLayout by lazy { findViewById<View>(R.id.emptyListLayout) }
 
@@ -101,6 +101,23 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
     private val choosePlayerCreationMethod by lazy {
         buildChooseNewPlayerCreationMethodDialog(
             createNewPlayerDialog
+        )
+    }
+
+    private val editPlayerDialog by lazy {
+        buildCreateNewPlayerDialog(
+            onPlayerCreated = {
+                viewModel.updatePlayer(it)
+                playerListAdapter.playersList[playerToEditIndex!!] = it
+                playerListAdapter.notifyItemChanged(playerToEditIndex!!)
+                playerToEditIndex = null
+                playerToEdit = null
+            },
+            useCamera = {
+                pictureConsumer = it
+                useCamera()
+            },
+            playerSupplier = { playerToEdit!! }
         )
     }
 
@@ -178,15 +195,9 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         if (actionMode != null) {
             toggleSelection(position)
         } else {
-            val ft = fm.beginTransaction()
-            val prev = fm.findFragmentByTag(TAGHelper.DIALOG_FRAGMENT)
-            if (prev != null) ft.remove(prev)
-            ft.addToBackStack(null)
             playerToEdit = playerListAdapter.getPlayer(position)
-
-            // Create and show the dialog
-            PlayerManagementEditPlayerFragment.newInstance("Edit Player").show(ft, TAGHelper.DIALOG_FRAGMENT)
-            return
+            playerToEditIndex = position
+            editPlayerDialog.show()
         }
     }
 
