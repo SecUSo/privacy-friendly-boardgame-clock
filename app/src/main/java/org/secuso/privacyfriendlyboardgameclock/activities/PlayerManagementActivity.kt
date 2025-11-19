@@ -27,6 +27,7 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.appcompat.view.ActionMode
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,6 +40,7 @@ import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
+import org.secuso.pfacore.model.dialog.AbortElseDialog
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.activities.game.buildChooseNewPlayerCreationMethodDialog
 import org.secuso.privacyfriendlyboardgameclock.activities.game.buildCreateNewPlayerDialog
@@ -61,7 +63,6 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
     private var listPlayers: MutableList<Player> = mutableListOf()
     private val fabAdd by lazy { findViewById<FloatingActionButton>(R.id.fab_add_new_player) }
     private val fabDelete by lazy { findViewById<FloatingActionButton>(R.id.fab_delete_player) }
-    private val fm by lazy { supportFragmentManager }
 
     // To toggle selection mode
     private val actionModeCallback: ActionModeCallback = ActionModeCallback()
@@ -132,7 +133,28 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         fabAdd.setOnClickListener {
             choosePlayerCreationMethod.show()
         }
-        fabDelete.setOnClickListener(onFABDeleteListenter())
+        fabDelete.setOnClickListener {
+            AbortElseDialog.build(this) {
+                title = { ContextCompat.getString(this@PlayerManagementActivity, R.string.warning) }
+                content = { ContextCompat.getString(this@PlayerManagementActivity, R.string.playerDeleteWarning) }
+                icon = android.R.drawable.ic_dialog_alert
+                acceptLabel = ContextCompat.getString(this@PlayerManagementActivity, R.string.yes)
+                abortLabel = ContextCompat.getString(this@PlayerManagementActivity, R.string.no)
+
+                onElse = {
+                    playerListAdapter.removeItems(playerListAdapter.getSelectedItems())
+                    actionMode?.finish()
+                    actionMode = null
+                    if (playerListAdapter.playersList.isEmpty()) {
+                        insertAlert.visibility = View.VISIBLE
+                        emptyListLayout.visibility = View.VISIBLE
+                    } else {
+                        insertAlert.visibility = View.GONE
+                        emptyListLayout.visibility = View.GONE
+                    }
+                }
+            }.show()
+        }
 
         playerListAdapter = PlayerListAdapter(this, listPlayers, this)
         playersRecycleView.apply {
@@ -187,10 +209,6 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     override fun onItemClick(view: View?, position: Int) {
         if (actionMode != null) {
             toggleSelection(position)
@@ -227,32 +245,6 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
             actionMode?.title = count.toString()
             actionMode?.invalidate()
         }
-    }
-
-
-    /**
-     * remove all the selected players
-     * @return
-     */
-    private fun onFABDeleteListenter() = View.OnClickListener {
-            AlertDialog.Builder(this@PlayerManagementActivity)
-                .setTitle(R.string.warning)
-                .setMessage(R.string.playerDeleteWarning)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(R.string.yes) { dialog, whichButton ->
-                    playerListAdapter.removeItems(playerListAdapter.getSelectedItems())
-                    actionMode?.finish()
-                    actionMode = null
-                    if (playerListAdapter.playersList.isEmpty()) {
-                        insertAlert.visibility = View.VISIBLE
-                        emptyListLayout.visibility = View.VISIBLE
-                    } else {
-                        insertAlert.visibility = View.GONE
-                        emptyListLayout.visibility = View.GONE
-                    }
-                }
-                .setNegativeButton(R.string.no, null)
-                .show()
     }
 
     /**
