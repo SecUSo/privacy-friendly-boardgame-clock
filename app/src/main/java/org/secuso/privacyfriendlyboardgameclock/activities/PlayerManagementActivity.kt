@@ -80,12 +80,7 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
 
     private lateinit var pictureConsumer: (Bitmap) -> Unit
     private val useCamera = useCameraForPlayerPicture {
-        val bitmap = it.planes[0].buffer.let { buffer ->
-            val bytes = ByteArray(buffer.capacity())
-            buffer[bytes]
-            BitmapFactory.decodeByteArray(bytes, 0, bytes.size, null)
-        }
-        pictureConsumer(bitmap)
+        pictureConsumer(it)
     }
 
     private val createNewPlayerDialog by lazy {

@@ -41,11 +41,14 @@ import kotlinx.coroutines.launch
 import org.secuso.pfacore.model.dialog.ValueSelectionDialog
 import org.secuso.pfacore.model.permission.PFAPermission
 import org.secuso.pfacore.model.permission.PFAPermissionOwner
+import org.secuso.pfacore.ui.PFAPermissionLauncher
+import org.secuso.pfacore.ui.asFunction
 import org.secuso.pfacore.ui.declareUsage
 import org.secuso.pfacore.ui.dialog.ShowCustomInfoDialog
 import org.secuso.pfacore.ui.dialog.ShowSelectOptionDialog
 import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
 import org.secuso.pfacore.ui.dialog.show
+import org.secuso.pfacore.ui.permission.CameraUsageProvider
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
 import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentContactListBinding
@@ -141,40 +144,9 @@ fun AppCompatActivity.buildSaveGameAndQuitDialog(viewModel: GameViewModel, _onSh
 }
 
 fun <A> A.useCameraForPlayerPicture(
-    pictureConsumer: (Image) -> Unit
+    pictureConsumer: (Bitmap) -> Unit
 ) where A: AppCompatActivity, A: PFAPermissionOwner
-        = PFAPermission.Camera.declareUsage(this) {
-    onDenied = { Log.d("Camera", "denied") }
-    showRationale = {
-        rationaleTitle = "Feature: Custom Image"
-        rationaleText = "This is needed"
-    }
-    onGranted = {
-        lifecycleScope.launch {
-            val cameraProvider =
-                ProcessCameraProvider.getInstance(this@useCameraForPlayerPicture).await()
-            val imageCapture = ImageCapture.Builder()
-                .setTargetRotation(display!!.rotation)
-                .build()
-            cameraProvider.bindToLifecycle(
-                this@useCameraForPlayerPicture,
-                CameraSelector.DEFAULT_BACK_CAMERA,
-                imageCapture
-            )
-
-            imageCapture.takePicture(
-                Executors.newSingleThreadExecutor(),
-                object : ImageCapture.OnImageCapturedCallback() {
-                    override fun onError(exception: ImageCaptureException) {
-                        Log.d("Camera", "error: $exception")
-                    }
-                    override fun onCaptureSuccess(image: ImageProxy) {
-                        pictureConsumer(image.image!!)
-                    }
-                })
-        }
-    }
-}
+        = CameraUsageProvider(this).takePictureImmediately(pictureConsumer)
 
 private fun AppCompatActivity.createColorSelectionDialog(onColorChosen: (Int) -> Unit) = ColorPickerDialogBuilder
     .with(this@createColorSelectionDialog)
@@ -261,8 +233,8 @@ fun <A> A.useContactsForAddingPlayers(
     = PFAPermission.ReadContacts.declareUsage(this@useContactsForAddingPlayers) {
     onDenied = { Log.d("Camera", "denied") }
     showRationale = {
-        rationaleTitle = "Feature: Custom Image"
-        rationaleText = "This is needed"
+        rationaleTitle = { "Feature: Custom Image" }
+        rationaleText =  { "This is needed" }
     }
     onGranted = {
         LoaderManager.getInstance<A>(this@useContactsForAddingPlayers)
@@ -403,7 +375,7 @@ fun AppCompatActivity.buildCreatePlayerFromContactDialog(
     )
 }
 fun AppCompatActivity.buildChooseNewPlayerCreationMethodDialog(
-    useContactPermission: () -> Unit,
+    useContactPermission: PFAPermissionLauncher,
     createNewPlayerDialog: ShowValueSelectionDialog<Player, FragmentPlayerManagementNewplayerBinding>
 ) = ShowSelectOptionDialog(this) {
         title = { ContextCompat.getString(this@buildChooseNewPlayerCreationMethodDialog, R.string.dialog_choose_new_player) }
