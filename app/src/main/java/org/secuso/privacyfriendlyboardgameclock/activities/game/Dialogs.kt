@@ -1,17 +1,22 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.PorterDuff
 import android.media.Image
 import android.os.Build
+import android.os.Bundle
+import android.provider.ContactsContract
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -21,10 +26,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.scale
+import androidx.core.net.toUri
 import androidx.core.view.drawToBitmap
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.await
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
@@ -39,12 +48,27 @@ import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.activities.MainActivity
+import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentContactListBinding
 import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentGameResultsBinding
 import org.secuso.privacyfriendlyboardgameclock.databinding.FragmentPlayerManagementNewplayerBinding
+import org.secuso.privacyfriendlyboardgameclock.helpers.ContactListAdapter
+import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerResultsListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
+import java.io.IOException
 import java.util.concurrent.Executors
+
+val PROJECTION = arrayOf<String>(
+    ContactsContract.Contacts._ID,  // _ID is always required
+    ContactsContract.Contacts.DISPLAY_NAME,  // that's what we want to display
+    ContactsContract.Contacts.PHOTO_THUMBNAIL_URI
+)
+val FROM = arrayOf<String?>(
+    ContactsContract.Contacts.DISPLAY_NAME,
+    ContactsContract.Contacts.PHOTO_THUMBNAIL_URI
+)
+val TO = intArrayOf(R.id.player_text, R.id.player_image)
 
 fun AppCompatActivity.buildGameResultDialog(viewModel: GameViewModel): ShowCustomInfoDialog<FragmentGameResultsBinding> {
     val bindingSupplier = {
@@ -229,7 +253,157 @@ fun AppCompatActivity.buildCreateNewPlayerDialog(
     )
 }
 
+fun <A> A.useContactsForAddingPlayers(
+    onContactsLoaded: (Cursor?) -> Unit
+) where
+        A: AppCompatActivity,
+        A: PFAPermissionOwner
+    = PFAPermission.ReadContacts.declareUsage(this@useContactsForAddingPlayers) {
+    onDenied = { Log.d("Camera", "denied") }
+    showRationale = {
+        rationaleTitle = "Feature: Custom Image"
+        rationaleText = "This is needed"
+    }
+    onGranted = {
+        LoaderManager.getInstance<A>(this@useContactsForAddingPlayers)
+            .initLoader(0, null, object : LoaderManager.LoaderCallbacks<Cursor> {
+                override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor?> {
+
+
+                    // load from the "Contacts table"
+                    val contentUri = ContactsContract.Contacts.CONTENT_URI
+
+
+                    // no sub-selection, no sort order, simply every row
+                    // projection says we want just the _id and the name column
+                    return CursorLoader(
+                        this@useContactsForAddingPlayers,
+                        contentUri,
+                        PROJECTION,
+                        ContactsContract.Contacts.DISPLAY_NAME + " IS NOT NULL ",
+                        null,
+                        ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+                    )
+                }
+
+                override fun onLoadFinished(loader: Loader<Cursor?>, data: Cursor?) {
+                    onContactsLoaded(data)
+                }
+
+                override fun onLoaderReset(loader: Loader<Cursor?>) {}
+            })
+    }
+}
+
+fun AppCompatActivity.buildCreatePlayerFromContactDialog(
+    data: () -> Cursor?,
+    onPlayerCreated: (String, Bitmap) -> Unit,
+): ShowValueSelectionDialog<List<Pair<String, Bitmap>>, FragmentContactListBinding> {
+    val _isValid = MutableLiveData(false)
+    val bindingSupplier = {
+        val binding = FragmentContactListBinding.inflate(layoutInflater)
+
+        binding.contactList.apply {
+            val itemClickListener = object : ItemClickListener {
+                override fun onItemClick(view: View?, position: Int) {
+                    val contactListAdapter = adapter as ContactListAdapter
+                    if (!contactListAdapter.isLongClickedSelected() && !contactListAdapter.isSimpleClickedSelected()) {
+                        contactListAdapter.setSimpleClickedSelected(true)
+                        contactListAdapter.setLongClickedSelected(false)
+                    }
+                    contactListAdapter.toggleSelection(position)
+                    val count = contactListAdapter.selectedItemCount
+                    if (count == 0) {
+                        contactListAdapter.setSimpleClickedSelected(false)
+                        contactListAdapter.setLongClickedSelected(false)
+                        contactListAdapter.notifyDataSetChanged()
+                        _isValid.postValue(false)
+                    } else if (count == 1) {
+                        contactListAdapter.notifyDataSetChanged()
+                        _isValid.postValue(true)
+                    }
+                }
+
+                override fun onItemLongClicked(view: View?, position: Int) = false
+            }
+
+            layoutManager = LinearLayoutManager(this@buildCreatePlayerFromContactDialog)
+            itemAnimator = null
+            val data = data()
+            adapter = ContactListAdapter(
+                this@buildCreatePlayerFromContactDialog,
+                itemClickListener,
+                SimpleCursorAdapter(
+                    this@buildCreatePlayerFromContactDialog,
+                    R.layout.player_management_custom_row,
+                    data,
+                    FROM,
+                    TO,
+                    0
+                )
+            )
+            if (data == null || data.count == 0) {
+                binding.emptyListLayout.visibility = View.VISIBLE
+                visibility = View.GONE
+            }
+        }
+        binding
+    }
+    val extraction: (FragmentContactListBinding) -> List<Pair<String, Bitmap>> = { binding ->
+        val adapter = (binding.contactList.adapter as ContactListAdapter)
+
+        adapter.selectedItems.map { index ->
+            try {
+                val c = adapter.cursorAdapter.getItem(0) as Cursor
+                c.move(index)
+                val name = c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME).let {
+                    if (it < 0) {
+                        return@map null
+                    }
+                    c.getString(it)
+                }
+
+                val photo = c.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI).let {
+                    if (it < 0) {
+                        return@map null
+                    }
+                    val uri = c.getString(it)
+                    if (uri != null) {
+                        MediaStore.Images.Media.getBitmap(contentResolver, uri.toUri())
+                    } else {
+                        BitmapFactory.decodeResource(resources,R.mipmap.ic_android)
+                    }
+                }
+                return@map  name to photo
+            } catch (e: IOException) {
+                return@map null
+            }
+        }.filterNotNull()
+
+    }
+    return ShowValueSelectionDialog<List<Pair<String, Bitmap>>, FragmentContactListBinding>(
+        bindingSupplier,
+        extraction,
+        ValueSelectionDialog.build(this@buildCreatePlayerFromContactDialog) {
+            title = { ContextCompat.getString(this@buildCreatePlayerFromContactDialog, R.string.chooseContacts) }
+            acceptLabel = ContextCompat.getString(this@buildCreatePlayerFromContactDialog, R.string.confirm)
+            abortLabel = ContextCompat.getString(this@buildCreatePlayerFromContactDialog, R.string.cancel)
+
+            isValid = { _isValid }
+            required = false
+            onConfirmation = {
+                lifecycleScope.launch {
+                    it.forEach { (name, photo) ->
+                        onPlayerCreated(name, photo)
+                    }
+                }
+
+            }
+        }
+    )
+}
 fun AppCompatActivity.buildChooseNewPlayerCreationMethodDialog(
+    useContactPermission: () -> Unit,
     createNewPlayerDialog: ShowValueSelectionDialog<Player, FragmentPlayerManagementNewplayerBinding>
 ) = ShowSelectOptionDialog(this) {
         title = { ContextCompat.getString(this@buildChooseNewPlayerCreationMethodDialog, R.string.dialog_choose_new_player) }
@@ -250,7 +424,7 @@ fun AppCompatActivity.buildChooseNewPlayerCreationMethodDialog(
                     )
                 }
                 else if (ContextCompat.checkSelfPermission(this@buildChooseNewPlayerCreationMethodDialog, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-//                        addPlayerFromContacts()
+                    useContactPermission()
                 }
             }
         }

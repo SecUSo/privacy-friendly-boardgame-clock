@@ -16,8 +16,7 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.activities
 
-import android.app.AlertDialog
-import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -33,18 +32,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Player
 import androidx.core.view.isGone
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 import org.secuso.pfacore.model.dialog.AbortElseDialog
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.activities.game.buildChooseNewPlayerCreationMethodDialog
 import org.secuso.privacyfriendlyboardgameclock.activities.game.buildCreateNewPlayerDialog
+import org.secuso.privacyfriendlyboardgameclock.activities.game.buildCreatePlayerFromContactDialog
 import org.secuso.privacyfriendlyboardgameclock.activities.game.useCameraForPlayerPicture
+import org.secuso.privacyfriendlyboardgameclock.activities.game.useContactsForAddingPlayers
 
 /**
  * Actionbar Tutorial
@@ -99,8 +102,20 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
         )
     }
 
+    private var data: Cursor? = null
+    private val createNewPlayerFromContactDialog by lazy {
+        buildCreatePlayerFromContactDialog({ data }) { name, icon ->
+            viewModel.addPlayer(name, icon)
+        }
+    }
+    private val useContacts = useContactsForAddingPlayers {
+        data = it
+        createNewPlayerFromContactDialog.show()
+    }
+
     private val choosePlayerCreationMethod by lazy {
         buildChooseNewPlayerCreationMethodDialog(
+            useContacts,
             createNewPlayerDialog
         )
     }
@@ -125,8 +140,15 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_management)
-        // pds already opened in MainActivity
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.getAllPlayers().collect {
+                    playerListAdapter.playersList = it
+                    playerListAdapter.notifyDataSetChanged()
+                }
+            }
+        }
         listPlayers = viewModel.getAllPlayersSync().toMutableList()
 
         // FAB Listener
@@ -142,6 +164,11 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
                 abortLabel = ContextCompat.getString(this@PlayerManagementActivity, R.string.no)
 
                 onElse = {
+                    lifecycleScope.launch {
+                        playerListAdapter.selectedItems
+                            .map { playerListAdapter.playersList[it] }
+                            .forEach { viewModel.removePlayer(it) }
+                    }
                     playerListAdapter.removeItems(playerListAdapter.getSelectedItems())
                     actionMode?.finish()
                     actionMode = null
@@ -171,31 +198,6 @@ class PlayerManagementActivity : BaseActivity(), ItemClickListener {
             repeatCount = Animation.INFINITE
         }
         insertAlert.startAnimation(anim)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            TAGHelper.REQUEST_READ_CONTACT_CODE -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Permission granted
-                    val fm = supportFragmentManager
-                    val ft = fm.beginTransaction()
-                    val prev = fm.findFragmentByTag("dialog")
-                    if (prev != null) ft.remove(prev)
-                    ft.addToBackStack(null)
-
-                    // Create and show the dialog
-                    val contactListFragment = PlayerManagementContactListFragment()
-                    contactListFragment.show(ft, "dialog")
-                }
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onResume() {

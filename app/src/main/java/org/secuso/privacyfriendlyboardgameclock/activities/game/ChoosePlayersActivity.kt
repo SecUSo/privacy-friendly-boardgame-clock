@@ -17,8 +17,8 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -29,23 +29,21 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Toast
 import androidx.appcompat.view.ActionMode
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.flask.colorpicker.ColorPickerView
-import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.fragments.PlayerManagementContactListFragment
 import org.secuso.privacyfriendlyboardgameclock.helpers.ItemClickListener
 import org.secuso.privacyfriendlyboardgameclock.helpers.PlayerListAdapter
 import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.core.view.isGone
 
 /**
  * Created by Quang Anh Dang on 06.01.2018.
@@ -66,16 +64,6 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
     private var actionMode: ActionMode? = null
     private val insertAlert: View by lazy { findViewById(R.id.insert_alert) }
     private val emptyListLayout: View by lazy { findViewById(R.id.emptyListLayout) }
-
-    private fun createColorSelectionDialog(onColorChosen: (Int) -> Unit) = ColorPickerDialogBuilder
-        .with(this@ChoosePlayersActivity)
-        .setTitle("Choose color")
-        .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
-        .density(12)
-        .setOnColorSelectedListener { }
-        .setPositiveButton("OK") { dialog, selectedColor, allColors -> onColorChosen(selectedColor)}
-        .setNegativeButton("Cancel", null)
-        .build()
 
     private lateinit var pictureConsumer: (Bitmap) -> Unit
     private val useCamera = useCameraForPlayerPicture {
@@ -101,8 +89,20 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
         )
     }
 
+    private var data: Cursor? = null
+    private val createNewPlayerFromContactDialog by lazy {
+        buildCreatePlayerFromContactDialog({ data }) { name, icon ->
+            viewModel.addPlayer(name, icon)
+        }
+    }
+    private val useContacts = useContactsForAddingPlayers {
+        data = it
+        createNewPlayerFromContactDialog.show()
+    }
+
     private val choosePlayerCreationMethod by lazy {
         buildChooseNewPlayerCreationMethodDialog(
+            useContacts,
             createNewPlayerDialog
         )
     }
@@ -130,6 +130,7 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.getAllPlayers().collect {
                     playerListAdapter.playersList = it
+                    playerListAdapter.notifyDataSetChanged()
                 }
             }
         }
@@ -152,31 +153,6 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
             insertAlert.visibility = View.GONE
             emptyListLayout.visibility = View.GONE
         }
-    }
-    
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            TAGHelper.REQUEST_READ_CONTACT_CODE -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Permission granted
-                    val fm = supportFragmentManager
-                    val ft = fm.beginTransaction()
-                    val prev = fm.findFragmentByTag("dialog")
-                    if (prev != null) ft.remove(prev)
-                    ft.addToBackStack(null)
-
-                    // Create and show the dialog
-                    val contactListFragment = PlayerManagementContactListFragment()
-                    contactListFragment.show(ft, "dialog")
-                }
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun selectPlayerToast() = View.OnClickListener { 
@@ -298,7 +274,7 @@ class ChoosePlayersActivity : BaseActivity(), ItemClickListener {
     }
 
     private fun switchVisibilityOf2FABs() {
-        if (fabStartGame.visibility != View.GONE && fabDelete.visibility == View.GONE) {
+        if (fabStartGame.visibility != View.GONE && fabDelete.isGone) {
             fabStartGame.visibility = View.GONE
             fabDelete.visibility = View.VISIBLE
         } else {

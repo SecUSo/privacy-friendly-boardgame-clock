@@ -1,6 +1,7 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CompletableDeferred
@@ -74,5 +75,6 @@ class ChoosePlayersActivityViewModel(application: Application) : AndroidViewMode
 
 
     fun addPlayer(player: Player) = repository.playerDao().addPlayer(player.name, player.icon)
+    fun addPlayer(name: String, icon: Bitmap) = repository.playerDao().addPlayer(name, icon)
 
 }
