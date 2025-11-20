@@ -17,16 +17,21 @@
 package org.secuso.privacyfriendlyboardgameclock.activities
 
 import android.os.Bundle
-import android.os.Environment
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import org.secuso.pfacore.model.DrawerElement
-import org.secuso.pfacore.model.permission.PFAPermission
-import org.secuso.pfacore.ui.declareUsage
+import org.secuso.pfacore.model.dialog.AbortElseDialog
+import org.secuso.pfacore.model.permission.FileLoadOptions
+import org.secuso.pfacore.model.permission.FileSaveOptions
+import org.secuso.pfacore.model.permission.loadFileFromUserChosenPlace
+import org.secuso.pfacore.model.permission.saveToUserChosenPlace
+import org.secuso.pfacore.ui.dialog.show
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
+import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -41,20 +46,45 @@ import java.io.OutputStream
  * This is the Activity Class for the Back Up Page
  */
 class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
-    private val useReadExternalStorage = PFAPermission.ReadExternalStorage.declareUsage(this) {
-        onGranted = { importBackup() }
-        showRationale = {
-            rationaleTitle = { ContextCompat.getString(it, R.string.permission_read_external_storage_rationale_title) }
-            rationaleText = { ContextCompat.getString(it, R.string.permission_read_external_storage_rationale_description) }
+    private val useReadExternalStorage = loadFileFromUserChosenPlace { inputStream ->
+        val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
+        val currentDB = File(currentDBPath)
+
+        val bufferedInputStream = BufferedInputStream(inputStream)
+        bufferedInputStream.mark(1024)
+        val bytes = ByteArray(16)
+        bufferedInputStream.read(bytes)
+        val header = String(bytes, Charsets.US_ASCII)
+        if (!header.contains("SQLite format 3")) {
+            Log.e("DatabaseImport", "File is not a valid sqlite db: ${header}")
+            Toast.makeText(this, R.string.noBackupFound, Toast.LENGTH_LONG).show()
+            return@loadFileFromUserChosenPlace
         }
+
+        bufferedInputStream.reset()
+        FileOutputStream(currentDB).use { outputStream ->
+            copy(bufferedInputStream, outputStream)
+        }
+
+        Toast.makeText(
+            this,
+            R.string.importDatabaseBackupSuccess,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
-    private val useWriteExternalStorage = PFAPermission.WriteExternalStorage.declareUsage(this) {
-        onGranted = { exportBackup() }
-        showRationale = {
-            rationaleTitle = { ContextCompat.getString(it, R.string.permission_write_external_storage_rationale_title) }
-            rationaleText = { ContextCompat.getString(it, R.string.permission_write_external_storage_rationale_description) }
+    private val useWriteExternalStorage = saveToUserChosenPlace { outputStream ->
+        val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
+        val currentDB = File(currentDBPath)
+        FileInputStream(currentDB).use { inputStream ->
+            copy(inputStream, outputStream)
         }
+
+        Toast.makeText(
+            this,
+            R.string.exportDatabaseBackupSuccess,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_backup
@@ -62,72 +92,41 @@ class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResult
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_backup)
-        findViewById<Button>(R.id.importBackupButton).setOnClickListener { useReadExternalStorage() }
-        findViewById<Button>(R.id.exportBackupButton).setOnClickListener { useWriteExternalStorage() }
-    }
+        findViewById<Button>(R.id.importBackupButton).setOnClickListener {
+            AbortElseDialog.build(this) {
+                title = { ContextCompat.getString(this@BackUpActivity, R.string.importDatabaseBackup) }
+                content = { ContextCompat.getString(this@BackUpActivity, R.string.importDatabaseBackupInfoMessage) }
+                acceptLabel = ContextCompat.getString(this@BackUpActivity, R.string.yes)
+                abortLabel = ContextCompat.getString(this@BackUpActivity, R.string.no)
+                icon = android.R.drawable.ic_menu_help
 
-    private fun importBackup() {
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) try {
-            val sd = Environment.getExternalStorageDirectory()
-
-            if (sd.canWrite()) {
-                val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
-                val backupDBPath = "pfa-boardgameclock-database.db"
-                val currentDB = File(currentDBPath)
-                val backupDB = File(sd, backupDBPath)
-
-                if (backupDB.exists()) {
-                    copy(backupDB, currentDB)
+                onElse = {
+                    useReadExternalStorage(FileLoadOptions())
                 }
-
-                if (currentDB.exists() && backupDB.length() == currentDB.length()) Toast.makeText(
-                    this,
-                    R.string.importDatabaseBackupSuccess,
-                    Toast.LENGTH_LONG
-                ).show()
-                else Toast.makeText(this, R.string.noBackupFound, Toast.LENGTH_LONG).show()
-            }
-        } catch (e: Exception) {
+            }.show()
         }
-    }
+        findViewById<Button>(R.id.exportBackupButton).setOnClickListener {
+            AbortElseDialog.build(this) {
+                title = { ContextCompat.getString(this@BackUpActivity, R.string.importDatabaseBackup) }
+                content = { ContextCompat.getString(this@BackUpActivity, R.string.importDatabaseBackupInfoMessage) }
+                acceptLabel = ContextCompat.getString(this@BackUpActivity, R.string.yes)
+                abortLabel = ContextCompat.getString(this@BackUpActivity, R.string.no)
+                icon = android.R.drawable.ic_menu_help
 
-    private fun exportBackup() {
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) try {
-            val sd = Environment.getExternalStorageDirectory()
-
-            if (sd.canWrite()) {
-                val currentDBPath = this.getDatabasePath(BoardGameClockDatabase.DATABASE_NAME).getPath()
-                val backupDBPath = "pfa-boardgameclock-database.db"
-                val currentDB = File(currentDBPath)
-                val backupDB = File(sd, backupDBPath)
-
-                if (currentDB.exists()) {
-                    copy(currentDB, backupDB)
+                onElse = {
+                    useWriteExternalStorage(FileSaveOptions("pfa-boardgameclock-database.db", "application/x-sqlite3"))
                 }
-
-                if (backupDB.exists() && backupDB.length() == currentDB.length()) Toast.makeText(
-                    this, getString(
-                        R.string.exportDatabaseBackupSuccess
-                    ) + " " + backupDB.getPath(), Toast.LENGTH_LONG
-                ).show()
-            }
-        } catch (e: Exception) {
-            Toast.makeText(this, R.string.backupExportError, Toast.LENGTH_LONG).show()
+            }.show()
         }
     }
 
     @Throws(IOException::class)
-    private fun copy(src: File?, dst: File?) {
-        val `in`: InputStream = FileInputStream(src)
-        val out: OutputStream = FileOutputStream(dst)
-
+    private fun copy(src: InputStream, dst: OutputStream) {
         // Transfer bytes from in to out
         val buf = ByteArray(1024)
         var len: Int
-        while ((`in`.read(buf).also { len = it }) > 0) {
-            out.write(buf, 0, len)
+        while ((src.read(buf).also { len = it }) > 0) {
+            dst.write(buf, 0, len)
         }
-        `in`.close()
-        out.close()
     }
 }
