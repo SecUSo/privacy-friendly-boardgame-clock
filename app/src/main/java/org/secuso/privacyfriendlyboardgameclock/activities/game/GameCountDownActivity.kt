@@ -90,6 +90,12 @@ class GameCountDownActivity : BaseActivity() {
 
     private var alreadySaved = true
 
+    private val playSoundOnRoundEnd by lazy { PFApplicationData.instance(this).playSoundOnRoundEnd.value }
+    private val playSoundOnGameEnd by lazy { PFApplicationData.instance(this).playSoundOnGamedEnd.value }
+
+    var mediaPlayerRoundEnd: MediaPlayer? = null
+    var mediaPlayerGameEnd: MediaPlayer? = null
+
     val saveGameAndQuitDialog by lazy {
         buildSaveGameAndQuitDialog(
             viewModel,
@@ -140,6 +146,9 @@ class GameCountDownActivity : BaseActivity() {
             abortLabel = ContextCompat.getString(this@GameCountDownActivity, R.string.no)
 
             onElse = { finishGame() }
+            onShow = {
+                mediaPlayerGameEnd?.start()
+            }
         }
     }
 
@@ -228,6 +237,15 @@ class GameCountDownActivity : BaseActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         setContentView(R.layout.activity_game_countdown)
+
+        lifecycleScope.launch {
+            if (playSoundOnRoundEnd) {
+                mediaPlayerRoundEnd = MediaPlayer.create(this@GameCountDownActivity, R.raw.roundend)
+            }
+            if (playSoundOnGameEnd) {
+                mediaPlayerGameEnd = MediaPlayer.create(this@GameCountDownActivity, R.raw.gameend)
+            }
+        }
 
         // show swipe dialog
         val firstStart = PFApplicationData.instance(this).showSwipeDialog

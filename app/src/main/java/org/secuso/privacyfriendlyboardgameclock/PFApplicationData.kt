@@ -28,6 +28,10 @@ class PFApplicationData private constructor(context: Context) {
         private set
     lateinit var showSwipeDialog: Preferable<Boolean>
         private set
+    lateinit var playSoundOnRoundEnd: Preferable<Boolean>
+        private set
+    lateinit var playSoundOnGamedEnd: Preferable<Boolean>
+        private set
     lateinit var gameNumber: Preferable<Int>
         private set
 
@@ -51,6 +55,20 @@ class PFApplicationData private constructor(context: Context) {
                 theme = settingThemeSelector
             }
             general {
+                playSoundOnRoundEnd = switch {
+                    key = "playSoundOnRoundEnd"
+                    default = true
+                    backup = true
+                    title { resource(R.string.play_sound_on_round_end_title) }
+                    summary { resource(R.string.play_sound_on_round_end_desc) }
+                }
+                playSoundOnGamedEnd = switch {
+                    key = "playSoundOnGameEnd"
+                    default = true
+                    backup = true
+                    title { resource(R.string.play_sound_on_game_end_title) }
+                    summary { resource(R.string.play_sound_on_game_end_desc) }
+                }
                 includeDeviceDataInReport = settingDeviceInformationOnErrorReport
             }
         }
