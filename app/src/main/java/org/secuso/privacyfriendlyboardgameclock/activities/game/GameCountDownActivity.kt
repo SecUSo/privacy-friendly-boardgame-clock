@@ -281,10 +281,12 @@ class GameCountDownActivity : BaseActivity() {
         findViewById<View>(R.id.main_content).setOnTouchListener(object : OnSwipeTouchListener(baseContext) {
             override fun onSwipeLeft() {
                 viewModel.endPlayerRound()
+                mediaPlayerRoundEnd?.start()
             }
 
             override fun onSwipeRight() {
                 viewModel.endPlayerRound()
+                mediaPlayerRoundEnd?.start()
             }
         })
 
@@ -313,9 +315,6 @@ class GameCountDownActivity : BaseActivity() {
         }
 
         updateTimerTextViews()
-        nextPlayerButton.setOnClickListener {
-            viewModel.endPlayerRound()
-        }
 
         viewModel.prepareGame()
         currentPlayerTv.text = viewModel.currentPlayer.name
@@ -335,6 +334,12 @@ class GameCountDownActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        mediaPlayerGameEnd?.release()
+        mediaPlayerRoundEnd?.release()
+        super.onDestroy()
     }
 
     private fun updateViews() {
@@ -415,6 +420,8 @@ class GameCountDownActivity : BaseActivity() {
 
         saveGameToDb(0)
     }
+
+
 
     @Deprecated("Deprecated in Java")
     public override fun onBackPressed() {
