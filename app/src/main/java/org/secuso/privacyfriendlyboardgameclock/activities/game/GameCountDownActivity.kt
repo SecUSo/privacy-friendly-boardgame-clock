@@ -1,8 +1,7 @@
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
-import android.app.AlertDialog
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.TypedValue
 import android.view.MenuItem
 import android.view.View
@@ -25,10 +24,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import kotlinx.coroutines.launch
 import org.secuso.pfacore.model.dialog.AbortElseDialog
+import org.secuso.pfacore.model.dialog.InfoDialog
 import org.secuso.pfacore.model.dialog.ValueSelectionDialog
 import org.secuso.pfacore.ui.activities.BaseActivity
 import org.secuso.pfacore.ui.dialog.ShowValueSelectionDialog
 import org.secuso.pfacore.ui.dialog.show
+import org.secuso.privacyfriendlyboardgameclock.PFApplicationData
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.databinding.DialogSetPlayerSequenceBinding
 import org.secuso.privacyfriendlyboardgameclock.helpers.OnSwipeTouchListener
@@ -229,19 +230,15 @@ class GameCountDownActivity : BaseActivity() {
         setContentView(R.layout.activity_game_countdown)
 
         // show swipe dialog
-        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-        val firstStart = settings.getBoolean("showSwipeDialog", true)
-        if (firstStart) {
-            AlertDialog.Builder(this)
-                .setTitle(R.string.swipeDialogQuestion)
-                .setMessage(R.string.swipeDialogAnswer)
-                .setIcon(android.R.drawable.ic_menu_info_details)
-                .setPositiveButton(R.string.ok, null)
-                .show()
+        val firstStart = PFApplicationData.instance(this).showSwipeDialog
+        if (firstStart.value) {
+            InfoDialog.build(this) {
+                title = { ContextCompat.getString(this@GameCountDownActivity, R.string.swipeDialogQuestion) }
+                content = { ContextCompat.getString(this@GameCountDownActivity, R.string.swipeDialogAnswer) }
+                icon = android.R.drawable.ic_menu_info_details
+            }.show()
 
-            val editor = settings.edit()
-            editor.putBoolean("showSwipeDialog", false)
-            editor.commit()
+            firstStart.value = false
         }
 
         viewModel.selectPlayers = selectPlayerOrder
@@ -254,6 +251,7 @@ class GameCountDownActivity : BaseActivity() {
         }
         findViewById<Button>(R.id.nextPlayerButton).setOnClickListener {
             viewModel.endPlayerRound()
+            mediaPlayerRoundEnd?.start()
         }
         findViewById<Button>(R.id.gamePlayPauseButton).setOnClickListener {
             saveGameButton.visibility = View.VISIBLE
@@ -348,23 +346,23 @@ class GameCountDownActivity : BaseActivity() {
         val (roundTimeH, roundTimeM, roundTimeS, roundTimeMS) = GameViewModel.getTimeComponentStrings(roundTimeToUse)
         round_time_result =
             "$round_time_result$roundTimeH:$roundTimeM:$roundTimeS'$roundTimeMS"
-        roundTimerTv!!.text = round_time_result
+        roundTimerTv.text = round_time_result
 
         // highlight low timers red colored
-        if (currentRoundTimeMs <= roundTimeOriTenPercent) roundTimerTv!!.setTextColor(colorOvertime)
-        else roundTimerTv!!.setTextColor(colorNormal)
+        if (currentRoundTimeMs <= roundTimeOriTenPercent) roundTimerTv.setTextColor(colorOvertime)
+        else roundTimerTv.setTextColor(colorNormal)
 
         // if game time is not infinite
         if (viewModel.game.gameTimeInfinite == 0) {
             val (gameTimeH, gameTimeM, gameTimeS) = GameViewModel.getTimeComponentStrings(gameTimeToUse)
             game_time_result =
                 "$game_time_result$gameTimeH:$gameTimeM:$gameTimeS"
-            gameTimerTv!!.text = game_time_result
+            gameTimerTv.text = game_time_result
 
-            if (viewModel.game.gameTimeInfinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv!!.setTextColor(
+            if (viewModel.game.gameTimeInfinite == 0 && currentGameTimeMs <= gameTimeOriTenPercent) gameTimerTv.setTextColor(
                 colorOvertime
             )
-            else gameTimerTv!!.setTextColor(colorNormal)
+            else gameTimerTv.setTextColor(colorNormal)
         }
     }
 

@@ -16,18 +16,13 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.activities.game
 
-import android.app.AlertDialog
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.CheckBox
@@ -37,14 +32,18 @@ import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.toColor
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.size
-import org.secuso.pfacore.ui.activities.BaseActivity
-import org.secuso.privacyfriendlyboardgameclock.R
-import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import org.secuso.pfacore.model.dialog.InfoDialog
+import org.secuso.pfacore.ui.activities.BaseActivity
+import org.secuso.pfacore.ui.dialog.show
+import org.secuso.privacyfriendlyboardgameclock.PFApplicationData
+import org.secuso.privacyfriendlyboardgameclock.R
+import org.secuso.privacyfriendlyboardgameclock.helpers.TAGHelper
 import org.secuso.privacyfriendlyboardgameclock.room.model.Game
 
 /**
@@ -163,10 +162,13 @@ class NewGameActivity : BaseActivity() {
                 }
 
                 // Calculate the correct disabled color and set it for the text views
-                val disabledAlpha = resources.getFloat(com.google.android.material.R.dimen.material_emphasis_disabled)
-                val disabledColor = color.toColor().let {
-                    Color.argb(it.alpha() *  disabledAlpha, it.red(), it.green(), it.blue())
-                }
+                val disabledAlpha = ResourcesCompat.getFloat(resources, com.google.android.material.R.dimen.material_emphasis_disabled)
+                val a = (color shr 24) and 0xff // or color >>> 24
+                val r = (color shr 16) and 0xff
+                val g = (color shr 8) and 0xff
+                val b = (color) and 0xff
+                val disabledColor = ((a * disabledAlpha).toInt() shl 24) or (r shl 16) or (g shl 8) or b
+
                 findViewById<TextView>(R.id.hours_new_game_time_label).setTextColor(disabledColor)
                 findViewById<TextView>(R.id.minutes_new_game_time_label).setTextColor(disabledColor)
                 findViewById<TextView>(R.id.seconds_new_game_time_label).setTextColor(disabledColor)
@@ -250,9 +252,8 @@ class NewGameActivity : BaseActivity() {
         })
 
         // load game number
-        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-        val gameNumber = settings.getInt("gameNumber", 1)
-        game_name.setText(getString(R.string.gameNameStandard) + " " + gameNumber)
+        val gameNumber = PFApplicationData.instance(this).gameNumber.value
+        game_name.setText(getString(R.string.gameNameStandard, gameNumber))
 
         val lastGame = viewModel.getLastGame()
         // standard values
@@ -367,17 +368,18 @@ class NewGameActivity : BaseActivity() {
             //game mode
             newGame.gameMode = game_mode.selectedItemPosition
 
+            PFApplicationData.instance(this).gameNumber.value += 1
             lifecycleScope.launch {
                 val id = viewModel.addNewGame(newGame)
                 // round time must not be larger than game time
                 if (newGame.gameTime < newGame.roundTime) {
                     newGame.roundTime = newGame.gameTime
-                    AlertDialog.Builder(this@NewGameActivity)
-                        .setTitle(R.string.action_new_game)
-                        .setMessage(R.string.roundTimeLargerInfo)
-                        .setPositiveButton(R.string.ok) { _,_ -> choosePlayers(id) }
-                        .setIcon(android.R.drawable.ic_menu_info_details)
-                        .show()
+                    InfoDialog.build(this@NewGameActivity) {
+                        title = { ContextCompat.getString(this@NewGameActivity, R.string.action_new_game) }
+                        content = { ContextCompat.getString(this@NewGameActivity, R.string.roundTimeLargerInfo) }
+                        onClose = { choosePlayers(id) }
+                        icon = android.R.drawable.ic_menu_info_details
+                    }.show()
                 } else choosePlayers(id)
             }
         }
