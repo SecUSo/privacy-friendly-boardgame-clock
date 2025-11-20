@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.secuso.privacyfriendlyboardgameclock">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -14,7 +17,6 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
