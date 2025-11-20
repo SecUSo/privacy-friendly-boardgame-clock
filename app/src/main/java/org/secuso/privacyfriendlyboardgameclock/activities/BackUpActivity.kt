@@ -16,11 +16,6 @@
  */
 package org.secuso.privacyfriendlyboardgameclock.activities
 
-import android.Manifest
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.widget.Button
@@ -28,6 +23,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import org.secuso.pfacore.model.DrawerElement
+import org.secuso.pfacore.model.permission.PFAPermission
+import org.secuso.pfacore.ui.declareUsage
 import org.secuso.privacyfriendlyboardgameclock.R
 import org.secuso.privacyfriendlyboardgameclock.room.BoardGameClockDatabase
 import java.io.File
@@ -44,115 +41,29 @@ import java.io.OutputStream
  * This is the Activity Class for the Back Up Page
  */
 class BackUpActivity : BaseActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
-    private val REQUEST_READ_EXTERNAL_STORAGE = 1
-    private val REQUEST_WRITE_EXTERNAL_STORAGE = 2
+    private val useReadExternalStorage = PFAPermission.ReadExternalStorage.declareUsage(this) {
+        onGranted = { importBackup() }
+        showRationale = {
+            rationaleTitle = { ContextCompat.getString(it, R.string.permission_read_external_storage_rationale_title) }
+            rationaleText = { ContextCompat.getString(it, R.string.permission_read_external_storage_rationale_description) }
+        }
+    }
+
+    private val useWriteExternalStorage = PFAPermission.WriteExternalStorage.declareUsage(this) {
+        onGranted = { exportBackup() }
+        showRationale = {
+            rationaleTitle = { ContextCompat.getString(it, R.string.permission_write_external_storage_rationale_title) }
+            rationaleText = { ContextCompat.getString(it, R.string.permission_write_external_storage_rationale_description) }
+        }
+    }
 
     override fun isActiveDrawerElement(element: DrawerElement) = element.icon == R.drawable.ic_menu_backup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_backup)
-        findViewById<Button>(R.id.importBackupButton).setOnClickListener { importBackupButton() }
-        findViewById<Button>(R.id.exportBackupButton).setOnClickListener { exportBackupButton() }
-    }
-
-    fun importBackupButton() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(
-                arrayOf<String>(Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_READ_EXTERNAL_STORAGE
-            )
-        }  else if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            AlertDialog.Builder(this)
-                .setTitle(R.string.importDatabaseBackup)
-                .setMessage(R.string.importDatabaseBackupInfoMessage)
-                .setPositiveButton(R.string.yes
-                ) { dialog, whichButton -> importBackup() }
-                .setNegativeButton(R.string.no, null)
-                .setIcon(android.R.drawable.ic_menu_help)
-                .show()
-        }
-    }
-
-    fun exportBackupButton() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(
-                arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                REQUEST_WRITE_EXTERNAL_STORAGE
-            )
-        } else if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            AlertDialog.Builder(this)
-                .setTitle(R.string.exportDatabaseBackup)
-                .setMessage(R.string.exportDatabaseBackupInfoMessage)
-                .setPositiveButton(R.string.yes
-                ) { dialog, whichButton -> exportBackup() }
-                .setNegativeButton(R.string.no, null)
-                .setIcon(android.R.drawable.ic_menu_help)
-                .show()
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            REQUEST_READ_EXTERNAL_STORAGE -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.size > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                ) {
-                    AlertDialog.Builder(this)
-                        .setTitle(R.string.importDatabaseBackup)
-                        .setMessage(R.string.importDatabaseBackupInfoMessage)
-                        .setPositiveButton(R.string.yes
-                        ) { dialog, whichButton -> importBackup() }
-                        .setNegativeButton(R.string.no, null)
-                        .setIcon(android.R.drawable.ic_menu_help)
-
-                        .show()
-                }
-                return
-            }
-
-            REQUEST_WRITE_EXTERNAL_STORAGE -> {
-                if (grantResults.size > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                ) {
-                    AlertDialog.Builder(this)
-                        .setTitle(R.string.exportDatabaseBackup)
-                        .setMessage(R.string.exportDatabaseBackupInfoMessage)
-                        .setPositiveButton(R.string.yes, object : DialogInterface.OnClickListener {
-                            override fun onClick(dialog: DialogInterface?, whichButton: Int) {
-                                exportBackup()
-                            }
-                        })
-                        .setNegativeButton(R.string.no, null)
-                        .setIcon(android.R.drawable.ic_menu_help)
-
-                        .show()
-                }
-                return
-            }
-            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
+        findViewById<Button>(R.id.importBackupButton).setOnClickListener { useReadExternalStorage() }
+        findViewById<Button>(R.id.exportBackupButton).setOnClickListener { useWriteExternalStorage() }
     }
 
     private fun importBackup() {
