@@ -52,7 +52,7 @@
     <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
     <string name="gameName">Game Name:</string>
     <string name="timeDelta">Extra Time:</string>
-    <string name="gameNameStandard">Game</string>
+    <string name="gameNameStandard">Game %d</string>
     <string name="chess_clock">Chess Clock</string>
     <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
     <!-- Game -->
@@ -139,8 +139,7 @@
     <string name="help_new_game">What do the different options in New Game Windows mean?</string>
     <string name="help_new_game_answer"><b>Game Time</b>\nTotal time for a game.\n\n<b>Round Time</b>\nThe time a player has available per round/turn. After this time the turn will be finished automatically.\n\n<b>Extra Time</b>\nThe time a player a player gets credited once a new round starts.</string>
     <string name="help_game_mode">What are the different Game Modes?</string>
-    <string name="help_game_mode_answer"><b>Clockwise</b>\nThe turn order corresponds to the player list and will continue clockwise.\n\n<b>Counter-Clockwise</b>\nThe turn order corresponds to the player list and will continue counter-clockwise.\n\n<b>Random</b>\nThe next player will be selected randomly from the player list.\n\n<b>Manual sequence</b>\nPlayers decide for a manual sequence each round.\n\n<b>Chess</b>\nThe turn order corresponds to the player list, no game pause after a round ends.\n\n<b>Time Tracking</b>\nThere is no turn order. Time will be counted up, if a player is touched.
-    </string>
+    <string name="help_game_mode_answer">"<b>Clockwise</b> The turn order corresponds to the player list and will continue clockwise.  <b>Counter-Clockwise</b> The turn order corresponds to the player list and will continue counter-clockwise.  <b>Random</b> The next player will be selected randomly from the player list.  <b>Manual sequence</b> Players decide for a manual sequence each round.  <b>Chess</b> The turn order corresponds to the player list, no game pause after a round ends.  <b>Time Tracking</b> There is no turn order. Time will be counted up, if a player is touched.     "</string>
     <string name="help_next_player">What is an alternative to the \"Next Player\" Button?</string>
     <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
     <string name="help_permissions">Which Permissions could be asked for?</string>
@@ -232,4 +231,8 @@
         <a href="https://secuso.aifb.kit.edu/2809.php">Click here to learn more</a>
     </string>
     <string name="dialog_goodbye_google_deactivate_notice">Don\'t show this notice again.</string>
+    <string name="permission_read_external_storage_rationale_title">Permission to read external storage is required</string>
+    <string name="permission_read_external_storage_rationale_description">The game data backup is located in the external storage. To read this, the permission has to be granted, otherwise this backup function is not available. A backup restoral via the Privacy Friendly Backup App is still possible.</string>
+    <string name="permission_write_external_storage_rationale_title">Permission to write external storage is required</string>
+    <string name="permission_write_external_storage_rationale_description">The game data backup will be stored in the external storage. To write this, the permission has to be granted, otherwise this backup function is not available. A backup via the Privacy Friendly Backup App is still possible.</string>
 </resources>

@@ -2,7 +2,6 @@ package org.secuso.privacyfriendlyboardgameclock
 
 import android.content.Context
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.map
 import org.secuso.pfacore.application.PFData
 import org.secuso.pfacore.model.Theme
@@ -15,6 +14,7 @@ import org.secuso.pfacore.ui.preferences.settings.general
 import org.secuso.pfacore.ui.preferences.settings.preferenceFirstTimeLaunch
 import org.secuso.pfacore.ui.preferences.settings.settingDeviceInformationOnErrorReport
 import org.secuso.pfacore.ui.preferences.settings.settingThemeSelector
+import org.secuso.pfacore.ui.preferences.settings.switch
 import org.secuso.pfacore.ui.tutorial.buildTutorial
 
 class PFApplicationData private constructor(context: Context) {
@@ -26,10 +26,25 @@ class PFApplicationData private constructor(context: Context) {
         private set
     lateinit var includeDeviceDataInReport: Preferable<Boolean>
         private set
+    lateinit var showSwipeDialog: Preferable<Boolean>
+        private set
+    lateinit var gameNumber: Preferable<Int>
+        private set
+
 
     private val preferences = appPreferences(context) {
         preferences {
             firstTimeLaunch = preferenceFirstTimeLaunch
+            showSwipeDialog = preference {
+                key = "showSwipeDialog"
+                default = true
+                backup = true
+            }
+            gameNumber = preference {
+                key = "gameNumber"
+                default = 1
+                backup = true
+            }
         }
         settings {
             appearance {
