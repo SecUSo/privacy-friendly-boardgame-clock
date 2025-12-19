@@ -64,10 +64,10 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
             database.execSQL(
                 "INSERT INTO games_new (" +
                         "_id, date, name, round_time, game_time, reset_round_time, game_mode, round_time_delta," +
-                        "current_game_time, next_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
+                        "current_game_time, next_player_index, start_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
                     ") SELECT " +
                         "_id, date, name, round_time, game_time, reset_round_time, game_mode, round_time_delta," +
-                        "current_game_time, next_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
+                        "current_game_time, next_player_index, start_player_index, finished, saved, chess_mode, is_last_round, game_time_infinite" +
                     " FROM games;"
             )
             database.execSQL(
@@ -75,7 +75,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                         "_id INTEGER NOT NULL," +
                         "date INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP," +
                         "name TEXT NOT NULL," +
-                        "icon TEXT NULL," +
+                        "icon BLOB NULL," +
                         "PRIMARY KEY (_id)" +
                         ");"
             )
@@ -88,13 +88,13 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
             )
             val cursor = database.query("SELECT _id, players, players_times, players_rounds FROM games;")
             val insertStatement = database.compileStatement("INSERT INTO player_game_data (game_id, player_id, rounds, round_times) VALUES (?, ?, ?, ?);")
-            val insertPlayerOrderStatement = database.compileStatement("INSERT INTO games_new (game_id, custom_player_order) VALUES (?, ?);")
+            val insertPlayerOrderStatement = database.compileStatement("UPDATE games_new SET custom_player_order = ? WHERE _id = ?;")
 
             while (cursor.moveToNext()) {
                 val gameId = cursor.getInt(cursor.getColumnIndexOrThrow("_id"))
                 val playersStr = cursor.getString(cursor.getColumnIndexOrThrow("players")) ?: ""
                 val timesStr = cursor.getString(cursor.getColumnIndexOrThrow("players_times")) ?: ""
-                val roundsStr = cursor.getString(cursor.getColumnIndexOrThrow("player_rounds")) ?: ""
+                val roundsStr = cursor.getString(cursor.getColumnIndexOrThrow("players_rounds")) ?: ""
 
                 val players = playersStr.split(";")
                 val times = timesStr.split(";")
@@ -113,7 +113,7 @@ abstract class BoardGameClockDatabase: RoomDatabase() {
                 insertPlayerOrderStatement.clearBindings()
                 insertPlayerOrderStatement.bindLong(1, gameId.toLong())
                 insertPlayerOrderStatement.bindString(2, Converters().fromPlayerOrder(players.map { it.toInt() }))
-                insertStatement.executeInsert()
+                insertPlayerOrderStatement.executeInsert()
             }
 
             database.execSQL("DROP TABLE games;");
