@@ -45,7 +45,6 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlyboardgameclock.R;
-import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingleton;
 
 /**
  * Created by Quang Anh Dang on 01.12.2017.
@@ -58,7 +57,6 @@ import org.secuso.privacyfriendlyboardgameclock.database.PlayersDataSourceSingle
 public class ContactListAdapter extends SelectableAdapter<ContactListAdapter.ViewHolder> {
     private Activity activity;
     private ItemClickListener itemClickListener;
-    private PlayersDataSourceSingleton pdss;
     // Because RecyclerView.Adapter in its current form doesn't natively
     // support cursors, we wrap a CursorAdapter that will do all the job
     // for us.
@@ -74,7 +72,6 @@ public class ContactListAdapter extends SelectableAdapter<ContactListAdapter.Vie
         super();
         this.activity = activity;
         this.itemClickListener = itemClickListener;
-        this.pdss = PlayersDataSourceSingleton.getInstance(activity);
         this.mCursorAdapter = cursor;
     }
 

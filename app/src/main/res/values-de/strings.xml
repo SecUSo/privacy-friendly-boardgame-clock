@@ -117,7 +117,7 @@
     <string name="increaseTimeAfterRoundCheck">Zeit nach jeder Runde erhöhen?</string>
     <string name="gameName">Spielname:</string>
     <string name="timeDelta">Zusatzzeit:</string>
-    <string name="gameNameStandard">Spiel</string>
+    <string name="gameNameStandard">Spiel %d</string>
     <string name="roundTimeLargerInfo">Die ausgewählte Rundenzeit wurde auf die Höhe der Spielzeit verringert, da die Rundenzeit nicht größer als die Spielzeit sein kann.</string>
     <string name="roundTime">Rundenzeit:</string>
     <string name="quitGame">Spiel unterbrechen</string>

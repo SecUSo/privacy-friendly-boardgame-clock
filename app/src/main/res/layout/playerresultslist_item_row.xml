@@ -26,7 +26,6 @@
             android:duplicateParentState="true"
             android:gravity="top"
             android:paddingRight="10dp"
-            android:textColor="@drawable/list_item_textcolor"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -39,7 +38,6 @@
             android:duplicateParentState="true"
             android:gravity="bottom"
             android:paddingRight="10dp"
-            android:textColor="@drawable/list_item_textcolor"
             android:textSize="12sp" />
 
     </RelativeLayout>

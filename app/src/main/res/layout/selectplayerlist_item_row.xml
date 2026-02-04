@@ -21,26 +21,24 @@
         android:layout_toRightOf="@+id/imageViewIcon"
         android:duplicateParentState="true">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
             android:paddingRight="10dp"
-            android:textColor="@drawable/list_item_textcolor"
             android:textSize="14sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:duplicateParentState="true"
-        android:textColor="@drawable/list_item_textcolor"
         android:textSize="20sp" />
 
 </RelativeLayout>

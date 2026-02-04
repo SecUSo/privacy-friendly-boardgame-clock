@@ -52,7 +52,7 @@
     <string name="increaseTimeAfterRoundCheck">Increase time after each round?</string>
     <string name="gameName">Game Name:</string>
     <string name="timeDelta">Extra Time:</string>
-    <string name="gameNameStandard">Game</string>
+    <string name="gameNameStandard">Game %d</string>
     <string name="chess_clock">Chess Clock</string>
     <string name="roundTimeLargerInfo">The selected round time has been reduced to equal the selected game time, since round time must not be bigger than game time.</string>
     <!-- Game -->
@@ -139,8 +139,7 @@
     <string name="help_new_game">What do the different options in New Game Windows mean?</string>
     <string name="help_new_game_answer"><b>Game Time</b>\nTotal time for a game.\n\n<b>Round Time</b>\nThe time a player has available per round/turn. After this time the turn will be finished automatically.\n\n<b>Extra Time</b>\nThe time a player a player gets credited once a new round starts.</string>
     <string name="help_game_mode">What are the different Game Modes?</string>
-    <string name="help_game_mode_answer"><b>Clockwise</b>\nThe turn order corresponds to the player list and will continue clockwise.\n\n<b>Counter-Clockwise</b>\nThe turn order corresponds to the player list and will continue counter-clockwise.\n\n<b>Random</b>\nThe next player will be selected randomly from the player list.\n\n<b>Manual sequence</b>\nPlayers decide for a manual sequence each round.\n\n<b>Chess</b>\nThe turn order corresponds to the player list, no game pause after a round ends.\n\n<b>Time Tracking</b>\nThere is no turn order. Time will be counted up, if a player is touched.
-    </string>
+    <string name="help_game_mode_answer">"<b>Clockwise</b> The turn order corresponds to the player list and will continue clockwise.  <b>Counter-Clockwise</b> The turn order corresponds to the player list and will continue counter-clockwise.  <b>Random</b> The next player will be selected randomly from the player list.  <b>Manual sequence</b> Players decide for a manual sequence each round.  <b>Chess</b> The turn order corresponds to the player list, no game pause after a round ends.  <b>Time Tracking</b> There is no turn order. Time will be counted up, if a player is touched.     "</string>
     <string name="help_next_player">What is an alternative to the \"Next Player\" Button?</string>
     <string name="help_next_player_answer">Instead of using the button \'Next Player\' you can also swipe for selecting the next player.</string>
     <string name="help_permissions">Which Permissions could be asked for?</string>
@@ -166,17 +165,17 @@
     <string name="pref_example_switch_summary">Example Switch Summary</string>
     <string name="pref_example_summary">Example Summary</string>
     <!-- ### TUTORIAL DIALOG ### -->
-    <string name="slide1_heading">Bienvenue!</string>
+    <string name="slide1_heading">Welcome!</string>
     <string name="slide1_text">Welcome to Privacy Friendly Board Game Clock. This tutorial will cover the most important things you need to know.</string>
     <string name="slide2_heading">Introduction</string>
     <string name="slide2_text">You either create a new clock or resume one. Press <b>new game</b> to create a new clock. Then fill in the parameters. Choose/Create at least 2 players afterward and have fun!</string>
     <string name="slide3_heading">More features</string>
     <string name="slide3_text">The app also keep track of the game and player history. You can also import/export data after granting storage permission.</string>
-    <string name="okay">Ok</string>
-    <string name="viewhelp">Voir l\'aide</string>
+    <string name="okay">Okay</string>
+    <string name="viewhelp">View Help</string>
     <string name="main_button_welcomedialog">Show Welcome</string>
-    <string name="next">Suivant</string>
-    <string name="skip">Passer</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
     <string name="showHelp">Show Help</string>
     <!-- ### FRAGMENT AND DIALOG ### -->
     <!-- ### Main Menu ### -->
@@ -225,11 +224,12 @@
     <string name="alreadyPaused">Everything is already paused.</string>
     <string name="instruction">Instructions</string>
     <string name="instruction_details">Touch a player to start counting time for this player.\nPress PAUSE button, to pause all the counter.</string>
-    <string name="dialog_goodbye_google_title">Goodbye Google Play Store 😢</string>
-    <string name="dialog_goodbye_google_desc">
-        Our apps will have to say good-bye to the Google Play Store at the midst of March 2025. You can find more info about the reasons and why this isn’t the end of the Privacy Friendly Apps on our website:\n
-
-        <a href="https://secuso.aifb.kit.edu/2809.php">Click here to learn more</a>
-    </string>
-    <string name="dialog_goodbye_google_deactivate_notice">Don\'t show this notice again.</string>
+    <string name="play_sound_on_round_end_title">Play sound on round end</string>
+    <string name="play_sound_on_round_end_desc">If enabled, a small sound effect will be played if a player ends their round.</string>
+    <string name="play_sound_on_game_end_title">Play sound on game end</string>
+    <string name="play_sound_on_game_end_desc">If enabled, a small sound effect will be played if the game ends.</string>
+    <string name="permission_read_external_storage_rationale_title">Permission to read external storage is required</string>
+    <string name="permission_read_external_storage_rationale_description">The game data backup is located in the external storage. To read this, the permission has to be granted, otherwise this backup function is not available. A backup restoral via the Privacy Friendly Backup App is still possible.</string>
+    <string name="permission_write_external_storage_rationale_title">Permission to write external storage is required</string>
+    <string name="permission_write_external_storage_rationale_description">The game data backup will be stored in the external storage. To write this, the permission has to be granted, otherwise this backup function is not available. A backup via the Privacy Friendly Backup App is still possible.</string>
 </resources>

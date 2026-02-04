@@ -1,90 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/drawer_layout"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:fitsSystemWindows="true"
-tools:openDrawer="start">
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="org.secuso.privacyfriendlyboardgameclock.activities.PlayerManagementActivity">
+    android:orientation="vertical">
 
-    <include layout="@layout/toolbar"/>
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/show_hint_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/main_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <TextView
+                android:id="@+id/header_new_game_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_button_padding"
+                android:layout_marginEnd="@dimen/main_button_padding"
+                android:layout_marginTop="10dp"
+                android:text="@string/gameName"
+                android:textSize="15sp" />
 
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:isScrollContainer="false">
-
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/show_hint_main_layout"
+            <EditText
+                android:id="@+id/input_new_game_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/header_new_game_name"
+                android:layout_marginStart="130sp"
+                android:layout_marginEnd="@dimen/main_button_padding"
+                android:layout_marginTop="-10sp"
+                android:hint="..."
+                android:inputType="text"
+                android:maxLength="20"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/header_new_game_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/main_button_padding"
-                    android:layout_marginEnd="@dimen/main_button_padding"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/gameName"
-                    android:textSize="15sp" />
+            <TextView
+                android:id="@+id/header_new_game_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_new_game_name"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="@dimen/main_button_padding"
+                android:layout_marginEnd="@dimen/main_button_padding"
+                android:layout_marginTop="20dp"
+                android:text="@string/gameMode"
+                android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/input_new_game_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/header_new_game_name"
-                    android:layout_marginStart="130sp"
-                    android:layout_marginEnd="@dimen/main_button_padding"
-                    android:layout_marginTop="-10sp"
-                    android:hint="..."
-                    android:inputType="text"
-                    android:maxLength="20"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/header_new_game_mode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/header_new_game_name"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginStart="@dimen/main_button_padding"
-                    android:layout_marginEnd="@dimen/main_button_padding"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/gameMode"
-                    android:textSize="15sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_new_game_mode"
-                    android:layout_width="200sp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/input_new_game_name"
-                    android:layout_alignStart="@+id/input_new_game_name"
-                    android:layout_alignTop="@+id/header_new_game_mode"
-                    android:layout_marginEnd="@dimen/main_button_padding"
-                    android:layout_marginTop="-3sp"
-                    android:entries="@array/game_modes" />
+            <Spinner
+                android:id="@+id/spinner_new_game_mode"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/input_new_game_name"
+                android:layout_alignStart="@+id/input_new_game_name"
+                android:layout_alignTop="@+id/header_new_game_mode"
+                android:layout_marginEnd="@dimen/main_button_padding"
+                android:layout_marginTop="-3sp"
+                android:entries="@array/game_modes" />
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/time_properties"
@@ -122,7 +94,7 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
-                    android:background="@color/white"
+                    android:background="?attr/colorSurface"
                     android:orientation="horizontal">
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -130,15 +102,17 @@ tools:openDrawer="start">
                         android:layout_width="30dp"
                         android:layout_height="120dp"
                         android:layout_gravity="center"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
 
                     <TextView
+                        android:id="@+id/hours_new_game_time_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -148,12 +122,13 @@ tools:openDrawer="start">
                         android:layout_gravity="center" />
 
                     <TextView
+                        android:id="@+id/minutes_new_game_time_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -164,12 +139,13 @@ tools:openDrawer="start">
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/seconds_new_game_time_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -205,7 +181,7 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="-15sp"
-                    android:background="@color/white"
+                    android:background="?attr/colorSurface"
                     android:orientation="horizontal">
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -220,7 +196,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -235,7 +211,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -250,7 +226,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -293,7 +269,7 @@ tools:openDrawer="start">
                     android:layout_marginStart="134sp"
                     android:layout_marginEnd="@dimen/main_button_padding"
                     android:layout_marginTop="10dp"
-                    android:background="@color/white"
+                    android:background="?attr/colorSurface"
                     android:orientation="horizontal"
                     android:visibility="invisible">
 
@@ -309,7 +285,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="h"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -324,7 +300,7 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="m"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
 
                     <org.secuso.privacyfriendlyboardgameclock.helpers.NumberPicker
@@ -339,55 +315,39 @@ tools:openDrawer="start">
                         android:layout_marginEnd="5dp"
                         android:gravity="center_vertical"
                         android:text="s"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp" />
                 </LinearLayout>
             </RelativeLayout>
 
-            </RelativeLayout>
+        </RelativeLayout>
 
-        </ScrollView>
+    <Button
+        android:id="@+id/choosePlayersButtonBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginStart="@dimen/main_button_padding"
+        android:layout_marginEnd="@dimen/main_button_padding"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/button_fullwidth"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_text_size"
+        android:visibility="gone" />
 
-        <Button
-            android:id="@+id/choosePlayersButtonBlue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:layout_marginStart="@dimen/main_button_padding"
-            android:layout_marginEnd="@dimen/main_button_padding"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/button_fullwidth"
-            android:text="@string/confirm"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size"
-            android:visibility="gone" />
+    <Button
+        android:id="@+id/choosePlayersButtonGrey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginStart="@dimen/main_button_padding"
+        android:layout_marginEnd="@dimen/main_button_padding"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/button_disabled"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_text_size"
+        android:visibility="visible" />
 
-        <Button
-            android:id="@+id/choosePlayersButtonGrey"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:layout_marginStart="@dimen/main_button_padding"
-            android:layout_marginEnd="@dimen/main_button_padding"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/button_disabled"
-            android:text="@string/confirm"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size"
-            android:visibility="visible" />
-
-    </LinearLayout>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-<com.google.android.material.navigation.NavigationView
-    android:id="@+id/nav_view"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    app:headerLayout="@layout/nav_header_main"
-    app:menu="@menu/activity_main_drawer" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
