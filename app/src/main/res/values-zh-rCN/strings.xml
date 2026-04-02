@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="navigation_drawer_open">打开抽屉式导航栏</string>
+    <string name="navigation_drawer_open">展开侧边栏</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="error">错误</string>
