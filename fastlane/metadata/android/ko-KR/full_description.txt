@@ -1,0 +1,20 @@
+Privacy Friendly Boardgames Clock은 보드게임 플레이 중 시간 추적을 위한 스톱워치와 타이머 기능을 제공합니다.
+
+이 앱은 플레이하는 게임 종류에 따라 다양한 모드를 제공합니다. 라운드 기반 게임의 경우, 플레이어와 라운드 시간을 기록할 수 있습니다. 앱은 각 라운드에 필요한 시간을 추적하고, 시간이 너무 오래 걸릴 경우 플레이어에게 알림을 보냅니다.
+Privacy Friendly Boardgame Clock은 또한 시간 추적 모드를 제공합니다. 이 모드는 게임에 참여하는 각 플레이어의 시간과 전체 게임 시간을 기록하는 스톱워치 기능을 포함합니다.
+
+Privacy Friendly Boardgame Clock은 다른 유사 앱과 어떻게 다를까요?
+
+1) 최소한의 권한
+Privacy Friendly Boardgame Clock은 데이터 백업을 위해 필요한 저장소 권한만 요청합니다.
+
+2) 광고 없음
+Privacy Friendly Boardgame Clock은 광고를 전혀 표시하지 않습니다. Google Play 스토어의 다른 많은 앱들은 광고를 게재하여 사용자의 개인정보를 침해하거나, 배터리 수명을 단축시키거나, 모바일 데이터를 과도하게 사용할 수 있습니다.
+
+개인정보보호 친화적인 보드게임 시계(Privacy Friendly Boardgame Clock)는 카를스루에 공과대학교 SECUSO 연구 그룹에서 개발한 개인정보보호 친화적 앱 그룹의 일부입니다. 더 자세한 정보는 https://secuso.org/pfa 에서 확인하세요.
+
+
+문의 사항은 다음 채널을 통해 연락해 주세요.
+트위터 - @SECUSOResearch https://twitter.com/secusoresearch
+마스토돈 - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+채용 공고 - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
