@@ -14,7 +14,7 @@ Moreover, Privacy Friendly Boardgame Clock completely relinquishes advertisement
 Privacy Friendly Boardgame Clock is part of the Privacy Friendly Apps group developed by the research group SECUSO at Karlsruhe Institute of Technology. More information at: https://secuso.org/pfa
 
 
-Feel free to contact us via:
-Twitter - @SECUSOResearch https://twitter.com/secusoresearch
+You can reach us via
+BlueSky - https://bsky.app/profile/secusoresearch.bsky.social
 Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
-Job opening - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
+Job opening - https://secuso.aifb.kit.edu/english/Job_Offers.php
